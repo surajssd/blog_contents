@@ -21,9 +21,27 @@
     <item>
       <title>Fedora</title>
       <link>http://suraj.io/tags/fedora/</link>
-      <pubDate>Tue, 14 Mar 2017 00:31:57 +0530</pubDate>
+      <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
       
       <guid>http://suraj.io/tags/fedora/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ide</title>
+      <link>http://suraj.io/tags/ide/</link>
+      <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/tags/ide/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Intellij</title>
+      <link>http://suraj.io/tags/intellij/</link>
+      <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/tags/intellij/</guid>
       <description></description>
     </item>
     
@@ -33,6 +51,24 @@
       <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
       
       <guid>http://suraj.io/tags/openshift/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Productivity</title>
+      <link>http://suraj.io/tags/productivity/</link>
+      <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/tags/productivity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Programming</title>
+      <link>http://suraj.io/tags/programming/</link>
+      <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/tags/programming/</guid>
       <description></description>
     </item>
     

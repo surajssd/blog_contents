@@ -9,6 +9,120 @@
     <atom:link href="http://suraj.io/tags/fedora/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Packaging &#39;kompose&#39; for centos paas sig</title>
+      <link>http://suraj.io/post/packaging-kompose-for-centos-paas-sig/</link>
+      <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/packaging-kompose-for-centos-paas-sig/</guid>
+      <description>&lt;p&gt;Following are steps to package kompose for CentOS pass SIG.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: This is a living document and will be updated from time to time.&lt;/p&gt;
+
+&lt;p&gt;For release 0.3.0&lt;/p&gt;
+
+&lt;p&gt;Pull sprm&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ wget https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Build the rpm on cbs from src.rpm&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cbs build paas7-openshift-common-el7 ./kompose-0.3.0-0.1.git135165b.el7.src.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once build is done successfully goto build page and download the rpm that is built for x86_64&lt;/p&gt;
+
+&lt;p&gt;The page where builds were listed: &lt;a href=&#34;https://cbs.centos.org/koji/taskinfo?taskID=169117&#34;&gt;https://cbs.centos.org/koji/taskinfo?taskID=169117&lt;/a&gt;
+The page where this particular build happened and where I had download link to rpm: &lt;a href=&#34;https://cbs.centos.org/koji/buildinfo?buildID=16681&#34;&gt;https://cbs.centos.org/koji/buildinfo?buildID=16681&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://cbs.centos.org/kojifiles/packages/kompose/0.3.0/0.1.git135165b.el7/x86_64/kompose-0.3.0-0.1.git135165b.el7.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Try to install this rpm and see if it works on CentOS:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;yum install -y epel-release
+yum install -y wget jq make
+
+wget http://cbs.centos.org/kojifiles/packages/kompose/0.3.0/0.1.git135165b.el7/x86_64/kompose-0.3.0-0.1.git135165b.el7.x86_64.rpm
+
+yum install -y kompose-0.3.0-0.1.git135165b.el7.x86_64.rpm
+
+git clone https://github.com/kubernetes-incubator/kompose/
+cd kompose
+make test-cmd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If everything is okay, Tag it into testing,
+Verify that whatever you built last cbs is the good, the output should be version you wanted, and not the old one.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cbs latest-build paas7-openshift-common-candidate kompose
+Build                                     Tag                   Built by
+----------------------------------------  --------------------  ----------------
+kompose-0.3.0-0.1.git135165b.el7          paas7-openshift-common-candidate  surajd
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tag the build output of above command to testing&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cbs tag-pkg paas7-openshift-common-testing kompose-0.3.0-0.1.git135165b.el7
+Created task 169130
+Watching tasks (this may be safely interrupted)...
+169130 tagBuild (noarch): open (x86_64-4.cbs.centos.org)
+169130 tagBuild (noarch): open (x86_64-4.cbs.centos.org) -&amp;gt; closed
+  0 free  0 open  1 done  0 failed
+
+169130 tagBuild (noarch) completed successfully
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Verify it is in testing&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cbs latest-build paas7-openshift-common-testing kompose
+Build                                     Tag                   Built by
+----------------------------------------  --------------------  ----------------
+kompose-0.3.0-0.1.git135165b.el7          paas7-openshift-common-testing  surajd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Run whatever tests you want to verify that it&amp;rsquo;s a good build.
+It takes anywhere from 5 to 30 minutes for the rpm to make it into testing
+&lt;a href=&#34;http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/&#34;&gt;http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;yum -y install centos-release-openshift-origin
+yum -y --enablerepo=centos-openshift-origin-testing install kompose
+yum install -y epel-release
+yum install -y jq make
+
+git clone https://github.com/kubernetes-incubator/kompose/
+cd kompose
+make test-cmd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Check if the package is in testing&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cbs latest-build paas7-openshift-common-testing kompose
+Build                                     Tag                   Built by
+----------------------------------------  --------------------  ----------------
+kompose-0.3.0-0.1.git135165b.el7          paas7-openshift-common-testing  surajd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tag it into release:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cbs tag-pkg paas7-openshift-common-release kompose-0.3.0-0.1.git135165b.el7
+Created task 169131
+Watching tasks (this may be safely interrupted)...
+169131 tagBuild (noarch): free
+169131 tagBuild (noarch): free -&amp;gt; closed
+  0 free  0 open  1 done  0 failed
+
+169131 tagBuild (noarch) completed successfully
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</title>
       <link>http://suraj.io/post/test-kompose/</link>
       <pubDate>Tue, 14 Mar 2017 00:31:57 +0530</pubDate>

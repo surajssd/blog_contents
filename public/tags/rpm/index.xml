@@ -122,5 +122,70 @@ Watching tasks (this may be safely interrupted)...
 </description>
     </item>
     
+    <item>
+      <title>Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</title>
+      <link>http://suraj.io/post/test-kompose/</link>
+      <pubDate>Tue, 14 Mar 2017 00:31:57 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/test-kompose/</guid>
+      <description>
+
+&lt;p&gt;I generally do &lt;code&gt;kompose&lt;/code&gt; package testing for fedora and CentOS. So here are the steps I follow.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: All the commands that start with &lt;code&gt;#&lt;/code&gt; are inside the container.&lt;/p&gt;
+
+&lt;h2 id=&#34;fedora&#34;&gt;Fedora&lt;/h2&gt;
+
+&lt;p&gt;Spin the fedora test environment, let&amp;rsquo;s say fedora 25, I do it in containers.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run -it fedora:25 bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once inside the container download the latest package from the testing repo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# dnf --enablerepo updates-testing -y install kompose
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: Make sure you download the latest release, there might be conditions that you download the old package.&lt;/p&gt;
+
+&lt;p&gt;Now having the package is not enough, we need to run the functional tests, which is in the source repoistory. But before we clone the repo, we need some dependencies like &lt;code&gt;make&lt;/code&gt; and &lt;code&gt;jq&lt;/code&gt;. So install them using packages.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# dnf install -y jq make
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;centos&#34;&gt;CentOS&lt;/h2&gt;
+
+&lt;p&gt;Spin the CentOS environment in container.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run -it centos bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Install kompose from &lt;code&gt;epel-testing&lt;/code&gt; repo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# yum --enablerepo=epel-testing -y install kompose
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And packages needed to run tests:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# yum install -y jq make
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;functional-tests&#34;&gt;Functional tests&lt;/h2&gt;
+
+&lt;p&gt;Now lets get the functional tests:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# git clone https://github.com/kubernetes-incubator/kompose/
+# cd kompose
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Run tests:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# make test-cmd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If all tests pass then just give a karma for it on the release page.&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>

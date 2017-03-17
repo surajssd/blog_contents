@@ -5,9 +5,10 @@ date = "2017-03-17T14:41:51+05:30"
 title = "Intellij Shortcuts"
 featuredalt = ""
 featured = ""
-categories = ["ide", "intellij"]
+categories = ["ide"]
 author = "Suraj Deshmukh"
 featuredpath = ""
+tags = ["intellij", "ide", "programming", "productivity"]
 
 +++
 

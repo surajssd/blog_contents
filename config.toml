@@ -43,7 +43,7 @@ googleAnalytics = ""
 [params.intro]
     header    = "My little hacks"
 
-    paragraph = "Things I came across and wanted to document."
+    paragraph = "containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos"
 
     about     = "I am a Software Engineer at Red Hat, working on various tooling around container technology like docker, kubernetes and OpenShift."
 

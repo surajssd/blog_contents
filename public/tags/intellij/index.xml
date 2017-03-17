@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Intellij on Suraj Deshmukh</title>
+    <link>http://suraj.io/tags/intellij/index.xml</link>
+    <description>Recent content in Intellij on Suraj Deshmukh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://suraj.io/tags/intellij/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Intellij Shortcuts</title>
+      <link>http://suraj.io/post/intellij-shortcuts/</link>
+      <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/intellij-shortcuts/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: This is a living document and will be updated as I discover new things.&lt;/p&gt;
+
+&lt;h2 id=&#34;shortcuts&#34;&gt;Shortcuts&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Shift + A&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Find any action in IDE&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Shift + F&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Find in Path&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Alt + 1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Open project navigator.
+You can search here, just start typing here, after the project navigator window is opened.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Shift + Insert&lt;/code&gt; in Project window&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here you can add new file to the project. The filename could be the entire path, so the intermediate directories will be created for you.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + N&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Find a struct or class definition by name.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Shift + N&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Find a file by name.
+If you type file name and number seprated by number it will take you to the line in that file. e.g. &lt;code&gt;main.go:6&lt;/code&gt; This will take you to line 6 in &lt;code&gt;main.go&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Shift + Alt + N&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Find any symbol in the project. Here symbol means mainly type.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Shift + Shift&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Search anything anywhere.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + F4&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Close section that is active.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Tab&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Switcher to switch between open items&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Shift + B&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Jump to definition.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + B&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Find usage of that element in project. Or find declaration of a variable.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Shift + P&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Find type of a variable.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + cursor up/down&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Navigate the code window up and down&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + D&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Duplicate a line or selection.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Y&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Delete a line or selection.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + /&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Comment/Uncomment out with line comment, a line or selected block.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Shift + /&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Comment/Uncomment out with block comment, a line or selected block.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Alt + Shift + cursor up/down&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Move line or selection up/down.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Alt + -&amp;gt;&lt;/code&gt; or &lt;code&gt;Alt + &amp;lt;-&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Switch tabs of open files.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + E&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Show recently openend files.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Shift + A&lt;/code&gt; &amp;lsquo;Scratch files&amp;rsquo;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you need files that are not part of project but need to test something.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Shift + F12&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hide all the windows and make editor full screen and press again to go back to having all the windows.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;View + Enter Distraction Free mode&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This will only keep editor rest everything goes away.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Shift + &amp;lt;-&lt;/code&gt; or &lt;code&gt;Ctrl + Shift + -&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When in the project navigation window you can resize it.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + W&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Select a word, press again and select a line, then select entire line then entire block, then entire outcasting block and so on.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Shift + Alt + up/down cursor&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When a line or block of code is selected and wanna move up and down.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Shift + V&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To see your clipboard history&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Alt + mouse click in location&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To have multiple cursors. To get out of this mode just press &lt;code&gt;escape&lt;/code&gt; key.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Alt + J&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When pressed on a word, it finds the next occurrence of the word and puts a cursor there. So I can edit mutiple occurrences of same word simultaneously.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Alt + I&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Select a block of code and get indentation right.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Alt + L&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Reformat the code.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Alt + Enter&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Goto a string and press this key and then you can do language injection. So you can tell intellij to interpret that string as &lt;code&gt;json&lt;/code&gt; or something like that.
+So this helps in adding markup languages as string as a part of code. Also you can inject &lt;code&gt;regular expression&lt;/code&gt; and then check if the string is validated
+against the regular expressions you put in.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Alt + /&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So when a recommendation is opened up and if you press above key combination, the word is completed but if you keep pressing those keys the recommendation
+rotates through all the recommendation.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + J&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Recommend templates, if there are any pre-defined.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Shift + Enter&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Auto complete the current statement.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + F12&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Navigate file structure, you can start typing and search for things. And then by pressing the enter key you can jump to the definition.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Alt + 7&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Similar functionality as above only difference is that it opens in a side bar.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + Shift + A&lt;/code&gt; &amp;lsquo;annotate&amp;rsquo;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Start annotation to see who made changes on each line. From here you can copy the revision number and then search it in the &amp;lsquo;version control&amp;rsquo; window.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Alt + F12&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Terminal in IDE&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Alt + 9&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Version Control window&lt;/p&gt;
+
+&lt;h2 id=&#34;notes-and-tips&#34;&gt;Notes and Tips&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;In code you can write TODOs and FIXME and then IDE can identify them and you can write code later on in there.&lt;/li&gt;
+&lt;li&gt;There is a plugin called as &amp;lsquo;Presentation Assistant&amp;rsquo; which shows what keys did you type&lt;/li&gt;
+&lt;li&gt;In the project window(side bar), select &lt;em&gt;Auto Scroll from Source&lt;/em&gt; so when you are moving from one file to another it shows in the project side bar where that file is right now.&lt;/li&gt;
+&lt;li&gt;When navigating in the project side bar, to start editing certain file press function key &lt;code&gt;F4&lt;/code&gt;. Press &lt;code&gt;Enter&lt;/code&gt; to just view it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;other-receipes&#34;&gt;Other receipes&lt;/h2&gt;
+
+&lt;h4 id=&#34;compare-branches&#34;&gt;Compare branches&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Press &lt;code&gt;Ctrl + Shift + A&lt;/code&gt; to open the action window, search for &lt;code&gt;branches&lt;/code&gt;, open branches window. Also can be done &lt;a href=&#34;https://www.jetbrains.com/help/pycharm/2016.1/accessing-git-branches-popup-menu.html&#34;&gt;as&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Once branch pop-window is open, select with what branch you wanna compare current checked out branch and select &lt;code&gt;compare&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;It will open up a window with all changes, in top tabs select &lt;code&gt;diff&lt;/code&gt;, then select a file you wanna compare.&lt;/li&gt;
+&lt;li&gt;Above steps are also given &lt;a href=&#34;https://www.jetbrains.com/help/pycharm/2016.1/merging-deleting-and-comparing-branches.html&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;ref&#34;&gt;Ref:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=vsyT-7n5-1I&#34;&gt;IntelliJ IDEA Tutorial - Shortcuts to Ditch Your Mouse Today&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://youtu.be/eq3KiAH4IBI&#34;&gt;42 IntelliJ IDEA Tips and Tricks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -2,7 +2,7 @@
 author = "Suraj Deshmukh"
 title = "Testing 'fedora' and 'CentOS' kompose package"
 date = "2017-03-14T00:31:57+05:30"
-tags = ["centos", "fedora"]
+tags = ["centos", "fedora", "rpm"]
 categories = ["packaging"]
 +++
 
