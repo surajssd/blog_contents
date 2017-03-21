@@ -2,8 +2,6 @@
 
 
     
-        
-    
 
 
 
@@ -13,7 +11,7 @@
 <html>
     <head>
         
-            <title>Intellij Posts - Suraj Deshmukh</title>
+            <title>Git - Suraj Deshmukh</title>
         
 
         <meta charset="utf-8" />
@@ -30,14 +28,14 @@
         
 
         
-        <meta property="og:title" content="Intellij" />
+        <meta property="og:title" content="Git" />
 <meta property="og:description" content="My little hacks" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://suraj.io/categories/intellij/" />
+<meta property="og:url" content="http://suraj.io/tags/git/" />
 
 
 
-<meta property="og:updated_time" content="2017-03-17T14:41:51&#43;05:30"/>
+<meta property="og:updated_time" content="2017-03-14T00:31:57&#43;05:30"/>
 
 
 
@@ -49,7 +47,7 @@
 
 
         
-<meta itemprop="name" content="Intellij">
+<meta itemprop="name" content="Git">
 <meta itemprop="description" content="My little hacks">
 
 
@@ -190,11 +188,11 @@
 
                 
                     <li>
-                        <a href="http://suraj.io/post/intellij-shortcuts/"><p>Intellij Shortcuts</p></a>
+                        <a href="http://suraj.io/post/git-notes/"><p>Git Notes</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/"><p>Packaging &#39;kompose&#39; for centos paas sig</p></a>
+                        <a href="http://suraj.io/post/intellij-shortcuts/"><p>Intellij Shortcuts</p></a>
                     </li>
                 
             </ul>
@@ -206,14 +204,17 @@
 
     
     <div id="main">
-        <h1>Intellij</h1>
         
+        
+            
+        
+
         
             <article class="post">
     <header>
     <div class="title">
         
-            <h2><a href="http://suraj.io/post/intellij-shortcuts/">Intellij Shortcuts</a></h2>
+            <h2><a href="http://suraj.io/post/test-kompose/">Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</a></h2>
         
         
     </div>
@@ -223,11 +224,11 @@
         
 
         <time class="published"
-            datetime='2017-03-17'>
-            March 17, 2017</time>
+            datetime='2017-03-14'>
+            March 14, 2017</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>5 minute read</p>
+            <p>1 minute read</p>
         
         
     </div>
@@ -235,15 +236,17 @@
 
     
 
-    <p>Note: This is a living document and will be updated as I discover new things.
-Shortcuts  Ctrl + Shift + A  Find any action in IDE
- Ctrl + Shift + F  Find in Path
- Alt + 1  Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
- Shift + Insert in Project window  Here you can add new file to the project.</p>
+    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
+Note: All the commands that start with # are inside the container.
+Fedora Spin the fedora test environment, let&rsquo;s say fedora 25, I do it in containers.
+$ docker run -it fedora:25 bash  Once inside the container download the latest package from the testing repo:</p>
+
+<h1 id="dnf-enablerepo-updates-testing-y-install-kompose-note-make-sure-you-download-the-latest-release-there-might-be-conditions-that-you-download-the-old-package">dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you download the latest release, there might be conditions that you download the old package.</h1>
+</p>
 
     <footer>
         <ul class="actions">
-            <li><a href="http://suraj.io/post/intellij-shortcuts/" class="button big">Continue Reading</a></li>
+            <li><a href="http://suraj.io/post/test-kompose/" class="button big">Continue Reading</a></li>
         </ul>
         <ul class="stats">
     
@@ -261,7 +264,7 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
                     
 
                     
-                        Categories
+                        Category
                     
                 
             </li>
@@ -270,9 +273,50 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
 
     
     
-        <li><a href='/categorieside'>ide</a></li>
+        <li><a href='/categoriespackaging'>packaging</a></li>
     
-        <li><a href='/categoriesintellij'>intellij</a></li>
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://suraj.io/post/">Posts</a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-03-21'>
+            March 21, 2017</time>
+        <span class="author"></span>
+        
+            <p>0 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p></p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+
+    
     
 </ul>
 
@@ -284,7 +328,8 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
         
 <ul class="actions pagination">
     
-        <li><a href="#" class="disabled button big previous">Previous Page</a></li>
+        <li><a href="/tags/git/"
+                class="button big previous">Previous Page</a></li>
     
 
     
@@ -307,12 +352,12 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
             
                 <header>
                     <h2>My little hacks</h2>
-                    <p>Things I came across and wanted to document.</p>
+                    <p>containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos</p>
                 </header>
             
             <ul class="icons">
                 
-                    <li><a href="http://suraj.io/categories/intellij/index.xml" type="application/rss+xml"
+                    <li><a href="http://suraj.io/tags/git/index.xml" type="application/rss+xml"
                         target="_blank" title="RSS" class="fa fa-rss"></a></li>
                 
                 
@@ -398,13 +443,13 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/intellij-shortcuts/">Intellij Shortcuts</a></h3>
+                                <h3><a href="http://suraj.io/post/git-notes/">Git Notes</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-17'>
-                                    March 17, 2017</time>
+                                    '2017-03-21'>
+                                    March 21, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -412,13 +457,13 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/">Packaging &#39;kompose&#39; for centos paas sig</a></h3>
+                                <h3><a href="http://suraj.io/post/intellij-shortcuts/">Intellij Shortcuts</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-15'>
-                                    March 15, 2017</time>
+                                    '2017-03-17'>
+                                    March 17, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -465,7 +510,7 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/ide/">ide</a>
+                                <a href="/categories/git/">git</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
@@ -474,7 +519,7 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/intellij/">intellij</a>
+                                <a href="/categories/ide/">ide</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
@@ -500,7 +545,7 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
         <section id="footer">
             <ul class="icons">
                 
-                    <li><a href="http://suraj.io/categories/intellij/index.xml" type="application/rss+xml"
+                    <li><a href="http://suraj.io/tags/git/index.xml" type="application/rss+xml"
                         target="_blank" title="RSS" class="fa fa-rss"></a></li>
                 
                 

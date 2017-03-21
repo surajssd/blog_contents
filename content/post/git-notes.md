@@ -12,13 +12,16 @@ Notes about using `git`.
 
 ## Tips and tricks
 
-- Switch branches
+---
+
+### Switch branches
 
   ```bash
   $ git checkout <branch>
   ```
+---
 
-- `show`
+### show
 
   ```bash
   $ git show
@@ -26,15 +29,18 @@ Notes about using `git`.
 
   Shows log message and diff about the commit you are on.
 
-- `blame`
+---
+
+### blame
 
   To see who wrote the code? For each line of the file what commit edited that line of code will be shown. So now you can use that git commit and pass it to `git show <commit>` to see all the changes.
 
   ```bash
   $ git blame path/to/file
   ```
+---
 
-- `cherry-pick`
+### cherry-pick
 
   To move a commit from one branch to another branch. Situation where: *I committed to master when I meant to commit to my feature branch. I need to move my commit!*
 
@@ -65,8 +71,9 @@ Notes about using `git`.
   ```bash
   $ git cherry-pick --continue
   ```
+---
 
-- `reset`
+### reset
 
   Remove the last commit.
 
@@ -74,11 +81,15 @@ Notes about using `git`.
   $ git reset --hard HEAD^
   ```
 
-  - `HEAD`  : *the commit I'm currently sitting on*
-  - `HEAD^` : *this commit's parent*
-  - `HEAD^^`: *this commit's grandparent* and so on
+  `HEAD`  : *the commit I'm currently sitting on*
+  
+  `HEAD^` : *this commit's parent*
+  
+  `HEAD^^`: *this commit's grandparent* and so on
 
-- `rebase`
+---
+
+### rebase
 
   - `rebase` is a command for changing history.
   - Never change history when other people might be using your branch, unless they know you're doing so.
@@ -107,7 +118,9 @@ Notes about using `git`.
   $ git status
   $ git rebase --continue
   ```
-- Squashing commits
+---
+  
+### Squashing commits
 
   - Amending the commit
 
@@ -126,7 +139,9 @@ Notes about using `git`.
 
   Once in editor, you can select which ones to squash into previous one and ones to pick as it is. Now type new commit message to squashed commits.
 
-- Splitting commits
+---
+
+### Splitting commits
 
   ```bash
   $ git rebase --i HEAD~3
@@ -142,8 +157,9 @@ Notes about using `git`.
   ```bash
   $ git rebase --continue
   ```
+---
 
-- `bisect`
+### bisect
 
   *The feature's broken? But it was working fine 2 months ago... what changes?* Bisect will help you find the commit that introduced the problem.
 
@@ -156,9 +172,9 @@ Notes about using `git`.
   $ git checkout working-commit
   $ git bisect good
   ```
+---
 
-
-- Git merge from someone else's fork
+### Git merge from someone else's fork
 
   Add their github fork repo as a remote to a clone of your own repo:
 
@@ -186,7 +202,9 @@ Notes about using `git`.
   Resolve conflicts, commit the resolutions and voila.
   Quick Ref: [http://stackoverflow.com/a/5606062](http://stackoverflow.com/a/5606062)
 
-- How to pull remote branch from somebody else's repo
+---
+
+### How to pull remote branch from somebody else's repo
 
   ```bash
   $ git remote add coworker git://path/to/coworkers/repo.git
@@ -203,6 +221,7 @@ Notes about using `git`.
 
   Quick Ref: [http://stackoverflow.com/a/5884825](http://stackoverflow.com/a/5884825)
 
+---
 
 ## Ref:
 

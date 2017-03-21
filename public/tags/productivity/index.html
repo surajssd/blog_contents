@@ -188,11 +188,11 @@
 
                 
                     <li>
-                        <a href="http://suraj.io/post/intellij-shortcuts/"><p>Intellij Shortcuts</p></a>
+                        <a href="http://suraj.io/post/git-notes/"><p>Git Notes</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/"><p>Packaging &#39;kompose&#39; for centos paas sig</p></a>
+                        <a href="http://suraj.io/post/intellij-shortcuts/"><p>Intellij Shortcuts</p></a>
                     </li>
                 
             </ul>
@@ -214,8 +214,79 @@
     <header>
     <div class="title">
         
+            <h2><a href="http://suraj.io/post/git-notes/">Git Notes</a></h2>
+        
+        
+            <p>Contains notes about using git</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-03-21'>
+            March 21, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>4 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Notes about using git.
+Tips and tricks Switch branches $ git checkout &lt;branch&gt;  show $ git show  Shows log message and diff about the commit you are on.
+blame To see who wrote the code? For each line of the file what commit edited that line of code will be shown. So now you can use that git commit and pass it to git show &lt;commit&gt; to see all the changes.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/git-notes/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesgit'>git</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
             <h2><a href="http://suraj.io/post/intellij-shortcuts/">Intellij Shortcuts</a></h2>
         
+        
+            <p>Shortcuts of intellij and also some short notes</p>
         
     </div>
     <div class="meta">
@@ -316,77 +387,6 @@ The page where builds were listed: <a href="https://cbs.centos.org/koji/taskinfo
     <footer>
         <ul class="actions">
             <li><a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriespackaging'>packaging</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/test-kompose/">Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-14'>
-            March 14, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
-Note: All the commands that start with # are inside the container.
-Fedora Spin the fedora test environment, let&rsquo;s say fedora 25, I do it in containers.
-$ docker run -it fedora:25 bash  Once inside the container download the latest package from the testing repo:</p>
-
-<h1 id="dnf-enablerepo-updates-testing-y-install-kompose-note-make-sure-you-download-the-latest-release-there-might-be-conditions-that-you-download-the-old-package">dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you download the latest release, there might be conditions that you download the old package.</h1>
-</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/test-kompose/" class="button big">Continue Reading</a></li>
         </ul>
         <ul class="stats">
     
@@ -540,13 +540,13 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/intellij-shortcuts/">Intellij Shortcuts</a></h3>
+                                <h3><a href="http://suraj.io/post/git-notes/">Git Notes</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-17'>
-                                    March 17, 2017</time>
+                                    '2017-03-21'>
+                                    March 21, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -554,13 +554,13 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/">Packaging &#39;kompose&#39; for centos paas sig</a></h3>
+                                <h3><a href="http://suraj.io/post/intellij-shortcuts/">Intellij Shortcuts</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-15'>
-                                    March 15, 2017</time>
+                                    '2017-03-17'>
+                                    March 17, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -600,6 +600,15 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
                             <header>
                                 <a href="/categories/packaging/">packaging</a>
                                 <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/git/">git</a>
+                                <span style="float:right;">1</span>
                             </header>
                         </article>
                     </li>

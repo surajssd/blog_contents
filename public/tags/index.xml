@@ -28,6 +28,15 @@
     </item>
     
     <item>
+      <title>Git</title>
+      <link>http://suraj.io/tags/git/</link>
+      <pubDate>Tue, 21 Mar 2017 22:03:48 +0530</pubDate>
+      
+      <guid>http://suraj.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Ide</title>
       <link>http://suraj.io/tags/ide/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
@@ -42,6 +51,15 @@
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
       
       <guid>http://suraj.io/tags/intellij/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Notes</title>
+      <link>http://suraj.io/tags/notes/</link>
+      <pubDate>Tue, 21 Mar 2017 22:03:48 +0530</pubDate>
+      
+      <guid>http://suraj.io/tags/notes/</guid>
       <description></description>
     </item>
     
