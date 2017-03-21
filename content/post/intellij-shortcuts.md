@@ -1,6 +1,6 @@
 +++
 linktitle = ""
-description = ""
+description = "Shortcuts of intellij and also some short notes"
 date = "2017-03-17T14:41:51+05:30"
 title = "Intellij Shortcuts"
 featuredalt = ""
@@ -8,9 +8,11 @@ featured = ""
 categories = ["ide"]
 author = "Suraj Deshmukh"
 featuredpath = ""
-tags = ["intellij", "ide", "programming", "productivity"]
+tags = ["intellij", "ide", "programming", "productivity", "notes"]
 
 +++
+
+
 
 **Note**: This is a living document and will be updated as I discover new things.
 
