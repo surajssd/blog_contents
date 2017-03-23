@@ -40,15 +40,28 @@ Spin the CentOS environment in container.
 $ docker run -it centos bash
 ```
 
+### `epel` repo
+
 Install kompose from `epel-testing` repo:
 
 ```bash
 # yum --enablerepo=epel-testing -y install kompose
 ```
 
+### `paas7-openshift-common-el7` repo
+
+For pulling package from testing repo in CentOS PAAS sig.
+
+```bash
+# yum -y install centos-release-openshift-origin
+# yum -y --enablerepo=centos-openshift-origin-testing install kompose
+```
+
+
 And packages needed to run tests:
 
 ```bash
+# yum install -y epel-release
 # yum install -y jq make
 ```
 
@@ -69,3 +82,6 @@ Run tests:
 
 If all tests pass then just give a karma for it on the release page.
 
+## Ref:
+
+- [Original article on Github](https://github.com/surajssd/blog_contents/blob/master/content/post/test-kompose.md)
