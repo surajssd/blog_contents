@@ -227,7 +227,7 @@
             March 15, 2017</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>2 minute read</p>
+            <p>3 minute read</p>
         
         
     </div>
@@ -235,13 +235,10 @@
 
     
 
-    <p>Following are steps to package kompose for CentOS pass SIG.
-Note: This is a living document and will be updated from time to time.
-For release 0.3.0
-Pull sprm
-$ wget <a href="https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm">https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm</a>  Build the rpm on cbs from src.rpm
-$ cbs build paas7-openshift-common-el7 ./kompose-0.3.0-0.1.git135165b.el7.src.rpm  Once build is done successfully goto build page and download the rpm that is built for x86_64
-The page where builds were listed: <a href="https://cbs.centos.org/koji/taskinfo?taskID=169117">https://cbs.centos.org/koji/taskinfo?taskID=169117</a> The page where this particular build happened and where I had download link to rpm: <a href="https://cbs">https://cbs</a>.</p>
+    <p>Note: This is a living document and will be updated from time to time.
+Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
+Building kompose srpm There are two ways to build srpm either build it locally or the ones that is built in koji for epel.
+Build rpms locally Before you begin make sure you have setup the local directory structure:</p>
 
     <footer>
         <ul class="actions">
@@ -298,7 +295,7 @@ The page where builds were listed: <a href="https://cbs.centos.org/koji/taskinfo
             March 14, 2017</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>1 minute read</p>
+            <p>2 minute read</p>
         
         
     </div>

@@ -14,40 +14,111 @@
       <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
       
       <guid>http://suraj.io/post/packaging-kompose-for-centos-paas-sig/</guid>
-      <description>&lt;p&gt;Following are steps to package kompose for CentOS pass SIG.&lt;/p&gt;
+      <description>
 
 &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: This is a living document and will be updated from time to time.&lt;/p&gt;
 
-&lt;p&gt;For release 0.3.0&lt;/p&gt;
+&lt;p&gt;Following are steps to package kompose for &lt;a href=&#34;https://wiki.centos.org/SpecialInterestGroup/PaaS&#34;&gt;CentOS PAAS SIG&lt;/a&gt;. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.&lt;/p&gt;
 
-&lt;p&gt;Pull sprm&lt;/p&gt;
+&lt;h2 id=&#34;building-kompose-srpm&#34;&gt;Building kompose srpm&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;$ wget https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm
+&lt;p&gt;There are two ways to build &lt;code&gt;srpm&lt;/code&gt; either build it locally or the ones that is built in koji for &lt;code&gt;epel&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;build-rpms-locally&#34;&gt;Build rpms locally&lt;/h3&gt;
+
+&lt;p&gt;Before you begin make sure you have setup the local directory structure:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+$ echo &#39;%_topdir %(echo $HOME)/rpmbuild&#39; &amp;gt; ~/.rpmmacros
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Build the rpm on cbs from src.rpm&lt;/p&gt;
+&lt;p&gt;Update the rpm spec and get source code using it.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cbs build paas7-openshift-common-el7 ./kompose-0.3.0-0.1.git135165b.el7.src.rpm
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ spectool -g kompose.spec
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Once build is done successfully goto build page and download the rpm that is built for x86_64&lt;/p&gt;
+&lt;p&gt;Move the source to appropriate location&lt;/p&gt;
 
-&lt;p&gt;The page where builds were listed: &lt;a href=&#34;https://cbs.centos.org/koji/taskinfo?taskID=169117&#34;&gt;https://cbs.centos.org/koji/taskinfo?taskID=169117&lt;/a&gt;
-The page where this particular build happened and where I had download link to rpm: &lt;a href=&#34;https://cbs.centos.org/koji/buildinfo?buildID=16681&#34;&gt;https://cbs.centos.org/koji/buildinfo?buildID=16681&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;wget http://cbs.centos.org/kojifiles/packages/kompose/0.3.0/0.1.git135165b.el7/x86_64/kompose-0.3.0-0.1.git135165b.el7.x86_64.rpm
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cp kompose-4e3300c.tar.gz ~/rpmbuild/SOURCES/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Try to install this rpm and see if it works on CentOS:&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Start local build&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpmbuild -ba kompose.spec --define &amp;quot;dist .el7&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once above exits with status code 0, you can find the &lt;code&gt;RPM&lt;/code&gt;s:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ll ~/rpmbuild/RPMS/x86_64/
+total 9688
+-rw-rw-r--. 1 vagrant vagrant 9917060 Mar 23 09:58 kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;SRPM&lt;/code&gt;s can be found at:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ll ~/rpmbuild/SRPMS/
+total 4664
+-rw-rw-r--. 1 vagrant vagrant 4773755 Mar 23 09:58 kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;See if dependencies are properly set&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpm -qpR ~/rpmbuild/RPMS/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+git
+libc.so.6()(64bit)
+libc.so.6(GLIBC_2.2.5)(64bit)
+libpthread.so.0()(64bit)
+libpthread.so.0(GLIBC_2.2.5)(64bit)
+libpthread.so.0(GLIBC_2.3.2)(64bit)
+rpmlib(CompressedFileNames) &amp;lt;= 3.0.4-1
+rpmlib(FileDigests) &amp;lt;= 4.6.0-1
+rpmlib(PayloadFilesHavePrefix) &amp;lt;= 4.0-1
+rpmlib(PayloadIsXz) &amp;lt;= 5.2-1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Try installing it locally and test it as mentioned in &lt;a href=&#34;http://suraj.io/post/test-kompose/&#34;&gt;http://suraj.io/post/test-kompose/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;pull-sprm&#34;&gt;Pull sprm&lt;/h3&gt;
+
+&lt;p&gt;For release 0.3.0, I pulled SRPM from:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ wget https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;build-the-rpm-on-cbs-from-src-rpm&#34;&gt;Build the rpm on cbs from src.rpm&lt;/h2&gt;
+
+&lt;p&gt;CBS is a community build system for SpecialInterestGroup members. It allows to build packages with Koji against CentOS5, CentOS6 and CentOS7.&lt;/p&gt;
+
+&lt;h3 id=&#34;trying-a-scratch-build-on-cbs&#34;&gt;Trying a scratch build on CBS&lt;/h3&gt;
+
+&lt;p&gt;Do a scratch build on CBS in &lt;code&gt;paas7-openshift-common-release&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can download the rpm built here to test on CentOS machine.&lt;/p&gt;
+
+&lt;h3 id=&#34;making-an-actual-release&#34;&gt;Making an actual release&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs build paas7-openshift-common-el7 ./kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once build is done successfully goto build page and download the rpm that is built for &lt;code&gt;x86_64&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The page where builds were listed: &lt;a href=&#34;https://cbs.centos.org/koji/taskinfo?taskID=171404&#34;&gt;https://cbs.centos.org/koji/taskinfo?taskID=171404&lt;/a&gt;
+The page where this particular build happened and where I had download link to rpm: &lt;a href=&#34;https://cbs.centos.org/koji/buildinfo?buildID=16777&#34;&gt;https://cbs.centos.org/koji/buildinfo?buildID=16777&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Try to install this rpm and see if it works on CentOS:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;yum install -y epel-release
 yum install -y wget jq make
 
-wget http://cbs.centos.org/kojifiles/packages/kompose/0.3.0/0.1.git135165b.el7/x86_64/kompose-0.3.0-0.1.git135165b.el7.x86_64.rpm
+wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
 
-yum install -y kompose-0.3.0-0.1.git135165b.el7.x86_64.rpm
+yum install -y kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
 
 git clone https://github.com/kubernetes-incubator/kompose/
 cd kompose
@@ -57,38 +128,33 @@ make test-cmd
 &lt;p&gt;If everything is okay, Tag it into testing,
 Verify that whatever you built last cbs is the good, the output should be version you wanted, and not the old one.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cbs latest-build paas7-openshift-common-candidate kompose
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs latest-build paas7-openshift-common-candidate kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
-kompose-0.3.0-0.1.git135165b.el7          paas7-openshift-common-candidate  surajd
-
+kompose-0.4.0-0.1.git4e3300c.el7          paas7-openshift-common-candidate  surajd
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Tag the build output of above command to testing&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cbs tag-pkg paas7-openshift-common-testing kompose-0.3.0-0.1.git135165b.el7
-Created task 169130
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs tag-pkg paas7-openshift-common-testing kompose-0.4.0-0.1.git4e3300c.el7
+Created task 171424
 Watching tasks (this may be safely interrupted)...
-169130 tagBuild (noarch): open (x86_64-4.cbs.centos.org)
-169130 tagBuild (noarch): open (x86_64-4.cbs.centos.org) -&amp;gt; closed
-  0 free  0 open  1 done  0 failed
+171424 tagBuild (noarch): closed
 
-169130 tagBuild (noarch) completed successfully
+171424 tagBuild (noarch) completed successfully
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Verify it is in testing&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cbs latest-build paas7-openshift-common-testing kompose
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs latest-build paas7-openshift-common-testing kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
-kompose-0.3.0-0.1.git135165b.el7          paas7-openshift-common-testing  surajd
+kompose-0.4.0-0.1.git4e3300c.el7          paas7-openshift-common-testing  surajd
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Run whatever tests you want to verify that it&amp;rsquo;s a good build.
+&lt;p&gt;Run whatever tests you want to verify that it&amp;rsquo;s a good build.
 It takes anywhere from 5 to 30 minutes for the rpm to make it into testing
-&lt;a href=&#34;http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/&#34;&gt;http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;a href=&#34;http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/&#34;&gt;http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/&lt;/a&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;yum -y install centos-release-openshift-origin
 yum -y --enablerepo=centos-openshift-origin-testing install kompose
@@ -119,6 +185,17 @@ Watching tasks (this may be safely interrupted)...
 
 169131 tagBuild (noarch) completed successfully
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;ref&#34;&gt;Ref:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install the SRPM and then Build from the Specfile &lt;a href=&#34;https://wiki.centos.org/HowTos/RebuildSRPM&#34;&gt;https://wiki.centos.org/HowTos/RebuildSRPM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Set Up an RPM Build Environment under CentOS &lt;a href=&#34;https://wiki.centos.org/HowTos/SetupRpmBuildEnvironment&#34;&gt;https://wiki.centos.org/HowTos/SetupRpmBuildEnvironment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dustymabe/fedpkg-kompose/blob/a3400c73843986693dbdc831de6de7f3a029f783/notes.txt&#34;&gt;Kompose build instructions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CentOS PaaS SIG &lt;a href=&#34;https://wiki.centos.org/SpecialInterestGroup/PaaS&#34;&gt;https://wiki.centos.org/SpecialInterestGroup/PaaS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CentOS SIGs &lt;a href=&#34;https://wiki.centos.org/SpecialInterestGroup&#34;&gt;https://wiki.centos.org/SpecialInterestGroup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CBS &lt;a href=&#34;https://wiki.centos.org/HowTos/CommunityBuildSystem&#34;&gt;https://wiki.centos.org/HowTos/CommunityBuildSystem&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
@@ -160,14 +237,25 @@ Watching tasks (this may be safely interrupted)...
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker run -it centos bash
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;h3 id=&#34;epel-repo&#34;&gt;&lt;code&gt;epel&lt;/code&gt; repo&lt;/h3&gt;
+
 &lt;p&gt;Install kompose from &lt;code&gt;epel-testing&lt;/code&gt; repo:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# yum --enablerepo=epel-testing -y install kompose
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;h3 id=&#34;paas7-openshift-common-el7-repo&#34;&gt;&lt;code&gt;paas7-openshift-common-el7&lt;/code&gt; repo&lt;/h3&gt;
+
+&lt;p&gt;For pulling package from testing repo in CentOS PAAS sig.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# yum -y install centos-release-openshift-origin
+# yum -y --enablerepo=centos-openshift-origin-testing install kompose
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;And packages needed to run tests:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# yum install -y jq make
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# yum install -y epel-release
+# yum install -y jq make
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;functional-tests&#34;&gt;Functional tests&lt;/h2&gt;
@@ -184,6 +272,12 @@ Watching tasks (this may be safely interrupted)...
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;If all tests pass then just give a karma for it on the release page.&lt;/p&gt;
+
+&lt;h2 id=&#34;ref&#34;&gt;Ref:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/surajssd/blog_contents/blob/master/content/post/test-kompose.md&#34;&gt;Original article on Github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

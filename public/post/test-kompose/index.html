@@ -72,7 +72,7 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
 
 
 <meta itemprop="dateModified" content="2017-03-14T00:31:57&#43;05:30" />
-<meta itemprop="wordCount" content="203">
+<meta itemprop="wordCount" content="238">
 
 
 
@@ -311,7 +311,7 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
             March 14, 2017</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>1 minute read</p>
+            <p>2 minute read</p>
         
         
     </div>
@@ -401,14 +401,25 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
 <pre><code class="language-bash">$ docker run -it centos bash
 </code></pre>
 
+<h3 id="epel-repo"><code>epel</code> repo</h3>
+
 <p>Install kompose from <code>epel-testing</code> repo:</p>
 
 <pre><code class="language-bash"># yum --enablerepo=epel-testing -y install kompose
 </code></pre>
 
+<h3 id="paas7-openshift-common-el7-repo"><code>paas7-openshift-common-el7</code> repo</h3>
+
+<p>For pulling package from testing repo in CentOS PAAS sig.</p>
+
+<pre><code class="language-bash"># yum -y install centos-release-openshift-origin
+# yum -y --enablerepo=centos-openshift-origin-testing install kompose
+</code></pre>
+
 <p>And packages needed to run tests:</p>
 
-<pre><code class="language-bash"># yum install -y jq make
+<pre><code class="language-bash"># yum install -y epel-release
+# yum install -y jq make
 </code></pre>
 
 <h2 id="functional-tests">Functional tests</h2>
@@ -425,6 +436,12 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
 </code></pre>
 
 <p>If all tests pass then just give a karma for it on the release page.</p>
+
+<h2 id="ref">Ref:</h2>
+
+<ul>
+<li><a href="https://github.com/surajssd/blog_contents/blob/master/content/post/test-kompose.md">Original article on Github</a></li>
+</ul>
 
     </div>
 
