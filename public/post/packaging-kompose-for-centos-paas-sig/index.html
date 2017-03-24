@@ -69,7 +69,7 @@ Build rpms locally Before you begin make sure you have setup the local directory
 
 
 <meta itemprop="dateModified" content="2017-03-15T14:16:43&#43;05:30" />
-<meta itemprop="wordCount" content="618">
+<meta itemprop="wordCount" content="623">
 
 
 
@@ -217,11 +217,11 @@ Build rpms locally Before you begin make sure you have setup the local directory
 
                 
                     <li>
-                        <a href="http://suraj.io/post/git-notes/"><p>Git Notes</p></a>
+                        <a href="http://suraj.io/post/rpm-notes/"><p>rpm Notes</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://suraj.io/post/intellij-shortcuts/"><p>Intellij Shortcuts</p></a>
+                        <a href="http://suraj.io/post/git-notes/"><p>Git Notes</p></a>
                     </li>
                 
             </ul>
@@ -465,7 +465,7 @@ The page where this particular build happened and where I had download link to r
 
 <p>Try to install this rpm and see if it works on CentOS:</p>
 
-<pre><code>yum install -y epel-release
+<pre><code class="language-bash">yum install -y epel-release
 yum install -y wget jq make
 
 wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
@@ -508,7 +508,7 @@ kompose-0.4.0-0.1.git4e3300c.el7          paas7-openshift-common-testing  surajd
 It takes anywhere from 5 to 30 minutes for the rpm to make it into testing
 <a href="http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/">http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/</a></p>
 
-<pre><code>yum -y install centos-release-openshift-origin
+<pre><code class="language-bash">yum -y install centos-release-openshift-origin
 yum -y --enablerepo=centos-openshift-origin-testing install kompose
 yum install -y epel-release
 yum install -y jq make
@@ -520,7 +520,7 @@ make test-cmd
 
 <p>Check if the package is in testing</p>
 
-<pre><code>$ cbs latest-build paas7-openshift-common-testing kompose
+<pre><code class="language-bash">$ cbs latest-build paas7-openshift-common-testing kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
 kompose-0.3.0-0.1.git135165b.el7          paas7-openshift-common-testing  surajd
@@ -528,7 +528,7 @@ kompose-0.3.0-0.1.git135165b.el7          paas7-openshift-common-testing  surajd
 
 <p>Tag it into release:</p>
 
-<pre><code>$ cbs tag-pkg paas7-openshift-common-release kompose-0.3.0-0.1.git135165b.el7
+<pre><code class="language-bash">$ cbs tag-pkg paas7-openshift-common-release kompose-0.3.0-0.1.git135165b.el7
 Created task 169131
 Watching tasks (this may be safely interrupted)...
 169131 tagBuild (noarch): free
@@ -547,6 +547,7 @@ Watching tasks (this may be safely interrupted)...
 <li>CentOS PaaS SIG <a href="https://wiki.centos.org/SpecialInterestGroup/PaaS">https://wiki.centos.org/SpecialInterestGroup/PaaS</a></li>
 <li>CentOS SIGs <a href="https://wiki.centos.org/SpecialInterestGroup">https://wiki.centos.org/SpecialInterestGroup</a></li>
 <li>CBS <a href="https://wiki.centos.org/HowTos/CommunityBuildSystem">https://wiki.centos.org/HowTos/CommunityBuildSystem</a></li>
+<li><a href="https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm">RPM help from adb-utils repo</a></li>
 </ul>
 
     </div>
@@ -721,13 +722,13 @@ Watching tasks (this may be safely interrupted)...
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/git-notes/">Git Notes</a></h3>
+                                <h3><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-21'>
-                                    March 21, 2017</time>
+                                    '2017-03-24'>
+                                    March 24, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -735,13 +736,13 @@ Watching tasks (this may be safely interrupted)...
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/intellij-shortcuts/">Intellij Shortcuts</a></h3>
+                                <h3><a href="http://suraj.io/post/git-notes/">Git Notes</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-17'>
-                                    March 17, 2017</time>
+                                    '2017-03-21'>
+                                    March 21, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -780,7 +781,7 @@ Watching tasks (this may be safely interrupted)...
                         <article>
                             <header>
                                 <a href="/categories/packaging/">packaging</a>
-                                <span style="float:right;">2</span>
+                                <span style="float:right;">3</span>
                             </header>
                         </article>
                     </li>

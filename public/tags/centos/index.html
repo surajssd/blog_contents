@@ -35,7 +35,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-03-15T14:16:43&#43;05:30"/>
+<meta property="og:updated_time" content="2017-03-24T10:35:54&#43;05:30"/>
 
 
 
@@ -188,11 +188,11 @@
 
                 
                     <li>
-                        <a href="http://suraj.io/post/git-notes/"><p>Git Notes</p></a>
+                        <a href="http://suraj.io/post/rpm-notes/"><p>rpm Notes</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://suraj.io/post/intellij-shortcuts/"><p>Intellij Shortcuts</p></a>
+                        <a href="http://suraj.io/post/git-notes/"><p>Git Notes</p></a>
                     </li>
                 
             </ul>
@@ -208,6 +208,73 @@
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h2>
+        
+        
+            <p>General notes about rpm packaging and references to upstream docs</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-03-24'>
+            March 24, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG  My Notes  Start reading from: Fedora packager&rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros.  $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch   To see all macros on the system:  $ rpm &ndash;showrc   Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package  $ rpm -qip .</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/rpm-notes/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriespackaging'>packaging</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -350,74 +417,6 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/">Packaging &#39;kompose&#39; for centos paas sig</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-15'>
-            March 15, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>3 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Note: This is a living document and will be updated from time to time.
-Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
-Building kompose srpm There are two ways to build srpm either build it locally or the ones that is built in koji for epel.
-Build rpms locally Before you begin make sure you have setup the local directory structure:</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriespackaging'>packaging</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -537,13 +536,13 @@ Build rpms locally Before you begin make sure you have setup the local directory
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/git-notes/">Git Notes</a></h3>
+                                <h3><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-21'>
-                                    March 21, 2017</time>
+                                    '2017-03-24'>
+                                    March 24, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -551,13 +550,13 @@ Build rpms locally Before you begin make sure you have setup the local directory
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/intellij-shortcuts/">Intellij Shortcuts</a></h3>
+                                <h3><a href="http://suraj.io/post/git-notes/">Git Notes</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-17'>
-                                    March 17, 2017</time>
+                                    '2017-03-21'>
+                                    March 21, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -596,7 +595,7 @@ Build rpms locally Before you begin make sure you have setup the local directory
                         <article>
                             <header>
                                 <a href="/categories/packaging/">packaging</a>
-                                <span style="float:right;">2</span>
+                                <span style="float:right;">3</span>
                             </header>
                         </article>
                     </li>

@@ -29,7 +29,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-03-21T22:03:48&#43;05:30"/>
+<meta property="og:updated_time" content="2017-03-24T10:35:54&#43;05:30"/>
 
 
 
@@ -187,11 +187,11 @@
 
                 
                     <li>
-                        <a href="http://suraj.io/post/git-notes/"><p>Git Notes</p></a>
+                        <a href="http://suraj.io/post/rpm-notes/"><p>rpm Notes</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://suraj.io/post/intellij-shortcuts/"><p>Intellij Shortcuts</p></a>
+                        <a href="http://suraj.io/post/git-notes/"><p>Git Notes</p></a>
                     </li>
                 
             </ul>
@@ -208,10 +208,10 @@
     <header>
     <div class="title">
         
-            <h2><a href="http://suraj.io/post/git-notes/">Git Notes</a></h2>
+            <h2><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h2>
         
         
-            <p>Contains notes about using git</p>
+            <p>General notes about rpm packaging and references to upstream docs</p>
         
     </div>
     <div class="meta">
@@ -220,11 +220,11 @@
         
 
         <time class="published"
-            datetime='2017-03-21'>
-            March 21, 2017</time>
+            datetime='2017-03-24'>
+            March 24, 2017</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>4 minute read</p>
+            <p>2 minute read</p>
         
         
     </div>
@@ -236,43 +236,43 @@
             
 
 
-<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f&text=Git%20Notes&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&text=rpm%20Notes&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f&title=Git%20Notes" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&title=rpm%20Notes" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f&title=Git%20Notes" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&title=rpm%20Notes" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f&title=Git%20Notes" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&title=rpm%20Notes" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -284,225 +284,119 @@
     <div id="content">
         
 
-<p>Notes about using <code>git</code>.</p>
+<h2 id="setup-of-the-system-for-building-rpms">Setup of the system for building rpms</h2>
 
-<h2 id="tips-and-tricks">Tips and tricks</h2>
-
-<hr />
-
-<h3 id="switch-branches">Switch branches</h3>
-
-<pre><code class="language-bash">  $ git checkout &lt;branch&gt;
+<pre><code class="language-bash">$ dnf -y install fedora-packager fedora-review
+$ sudo usermod -a -G mock vagrant
+$ fedora-packager-setup
+$ kinit surajd@FEDORAPROJECT.ORG
 </code></pre>
 
-<hr />
-
-<h3 id="show">show</h3>
-
-<pre><code class="language-bash">  $ git show
-</code></pre>
-
-<p>Shows log message and diff about the commit you are on.</p>
-
-<hr />
-
-<h3 id="blame">blame</h3>
-
-<p>To see who wrote the code? For each line of the file what commit edited that line of code will be shown. So now you can use that git commit and pass it to <code>git show &lt;commit&gt;</code> to see all the changes.</p>
-
-<pre><code class="language-bash">  $ git blame path/to/file
-</code></pre>
-
-<hr />
-
-<h3 id="cherry-pick">cherry-pick</h3>
-
-<p>To move a commit from one branch to another branch. Situation where: <em>I committed to master when I meant to commit to my feature branch. I need to move my commit!</em></p>
-
-<p>Get the commit hash</p>
-
-<pre><code class="language-bash">  $ git show
-</code></pre>
-
-<p>Change to the branch you wanted to add that commit</p>
-
-<pre><code class="language-bash">  $ git checkout &lt;feature-branch&gt;
-</code></pre>
-
-<p>Add it to the branch you are on</p>
-
-<pre><code class="language-bash">  $ git cherry-pick &lt;commit hash&gt;
-</code></pre>
-
-<p><code>cherry-pick</code> creates an entirely new commit based off the original, and it does not delete the original commit. So you will have to delete it manually. See below how to do it.</p>
-
-<p>You can also get conflict during <code>cherry-pick</code></p>
-
-<pre><code class="language-bash">  $ git cherry-pick 435bedfa
-</code></pre>
-
-<p>Resolve the conflict and then</p>
-
-<pre><code class="language-bash">  $ git cherry-pick --continue
-</code></pre>
-
-<hr />
-
-<h3 id="reset">reset</h3>
-
-<p>Remove the last commit.</p>
-
-<pre><code class="language-bash">  $ git reset --hard HEAD^
-</code></pre>
-
-<p><code>HEAD</code>  : <em>the commit I&rsquo;m currently sitting on</em></p>
-
-<p><code>HEAD^</code> : <em>this commit&rsquo;s parent</em></p>
-
-<p><code>HEAD^^</code>: <em>this commit&rsquo;s grandparent</em> and so on</p>
-
-<hr />
-
-<h3 id="rebase">rebase</h3>
+<h2 id="my-notes">My Notes</h2>
 
 <ul>
-<li><code>rebase</code> is a command for changing history.</li>
-<li>Never change history when other people might be using your branch, unless they know you&rsquo;re doing so.</li>
-<li>Never change history on <code>master</code>.</li>
-<li>Best practice: only change history for commits that have not yet been pushed.</li>
+<li>Start reading from: <a href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/index.html">Fedora packager&rsquo;s guide</a></li>
+<li>Some macros come from <code>redhat-rpm-config</code> and <code>fedora-rpm-macros</code>.</li>
 </ul>
 
-<pre><code class="language-bash">  $ git checkout master
-  $ git pull --ff upstream master
-  $ git checkout &lt;feature-branch&gt;
-  $ git rebase master -i
-</code></pre>
-
-<p>While pushing need to do force push because there is change of history. Local branch and remote branch have diverged.</p>
-
-<pre><code class="language-bash">  $ git push origin &lt;feature-branch&gt; -f
-</code></pre>
-
-<p>In case of conflicts, find the conflicting file.</p>
-
-<pre><code class="language-bash">  $ git status
-</code></pre>
-
-<p>reolve those conflicts and then continue the rebase</p>
-
-<pre><code class="language-bash">  $ git status
-  $ git rebase --continue
-</code></pre>
-
-<hr />
-
-<h3 id="squashing-commits">Squashing commits</h3>
-
-<ul>
-<li>Amending the commit</li>
-</ul>
-
-<pre><code class="language-bash">  $ git add missing-file
-  $ git commit --amend
+<pre><code class="language-bash">$ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch
 </code></pre>
 
 <ul>
-<li>Squashing</li>
+<li>To see all macros on the system:</li>
 </ul>
 
-<p>Look at last 5 commits. Below command will open the text editor.</p>
-
-<pre><code class="language-bash">  $ git rebase --interactive HEAD~5
+<pre><code class="language-bash">$ rpm --showrc
 </code></pre>
-
-<p>Once in editor, you can select which ones to squash into previous one and ones to pick as it is. Now type new commit message to squashed commits.</p>
-
-<hr />
-
-<h3 id="splitting-commits">Splitting commits</h3>
-
-<pre><code class="language-bash">  $ git rebase --i HEAD~3
-</code></pre>
-
-<p>Now this will open the commit history in editor. The commit you want to split, change it from <code>pick</code> to <code>edit</code>. Save that file. Git will pause in the rebase process and give us time to create new commits.
-  The too-big commit is already present, so let&rsquo;s pop it off, but keep the changes:</p>
-
-<pre><code class="language-bash">  $ git reset HEAD^
-</code></pre>
-
-<p>Not using <code>--hard</code> because we want to have the changes we wanted. Make changes as needed. Now add individual file and commit. And continue rebase.</p>
-
-<pre><code class="language-bash">  $ git rebase --continue
-</code></pre>
-
-<hr />
-
-<h3 id="bisect">bisect</h3>
-
-<p><em>The feature&rsquo;s broken? But it was working fine 2 months ago&hellip; what changes?</em> Bisect will help you find the commit that introduced the problem.</p>
 
 <ul>
-<li>Need commit where it was working, commit where it&rsquo;s broken and a test to verify that.</li>
+<li>Koji - fedora build system</li>
+<li><code>fedora</code> uses <code>fedpkg</code> for doing builds, while <code>rpmbuild</code> is for <code>CentOS</code></li>
+<li>To get general info about the package</li>
 </ul>
 
-<pre><code class="language-bash">  $ git bisect start
-  $ git checkout broken-commit
-  $ git bisect bad
-  $ git checkout working-commit
-  $ git bisect good
+<pre><code class="language-bash">$ rpm -qip ./x86_64/namaskar-1-1.fc25.x86_64.rpm
 </code></pre>
 
-<hr />
+<p>OR</p>
 
-<h3 id="git-merge-from-someone-else-s-fork">Git merge from someone else&rsquo;s fork</h3>
-
-<p>Add their github fork repo as a remote to a clone of your own repo:</p>
-
-<pre><code class="language-bash">  $ git remote add other-guys-repo &lt;url to other guys repo&gt;
+<pre><code class="language-bash">$ less namaskar-1-1.fc25.src.rpm
 </code></pre>
 
-<p>Get their changes:</p>
+<ul>
+<li>To see what are the dependencies of the package</li>
+</ul>
 
-<pre><code class="language-bash">  $ git fetch other-guys-repo
+<pre><code class="language-bash">$ rpm -qp --requires ./noarch/namaskar-1-1.fc25.noarch.rpm
+/bin/bash
+rpmlib(CompressedFileNames) &lt;= 3.0.4-1
+rpmlib(FileDigests) &lt;= 4.6.0-1
+rpmlib(PayloadFilesHavePrefix) &lt;= 4.0-1
+rpmlib(PayloadIsXz) &lt;= 5.2-1
 </code></pre>
 
-<p>Checkout the branch where you want to merge:</p>
+<ul>
+<li>To see what packages include your package as dependency</li>
+</ul>
 
-<pre><code class="language-bash">  $ git checkout my_new_branch
+<pre><code class="language-bash">$ rpm -qp --provides ./noarch/namaskar-1-1.fc25.noarch.rpm
+namaskar = 1-1.fc25
 </code></pre>
 
-<p>Merge their changes in (assuming they did their work on the master branch):</p>
+<ul>
+<li>After you think the spec is ready and before you push it to build</li>
+</ul>
 
-<pre><code class="language-bash">  $ git merge other-guys-repo/master
+<pre><code class="language-bash">$ fedpkg --release f25 lint
 </code></pre>
 
-<p>Resolve conflicts, commit the resolutions and voila.
-  Quick Ref: <a href="http://stackoverflow.com/a/5606062">http://stackoverflow.com/a/5606062</a></p>
+<ul>
+<li>Doing local mock build</li>
+</ul>
 
-<hr />
-
-<h3 id="how-to-pull-remote-branch-from-somebody-else-s-repo">How to pull remote branch from somebody else&rsquo;s repo</h3>
-
-<pre><code class="language-bash">  $ git remote add coworker git://path/to/coworkers/repo.git
-  $ git fetch coworker
-  $ git checkout --track coworker/foo
+<pre><code class="language-bash">$ fedpkg --release f25 mockbuild
 </code></pre>
 
-<p>This will setup a local branch foo, tracking the remote branch coworker/foo. So when your coworker has made some changes, you can easily pull them:</p>
+<ul>
+<li>Doing build in fedora build system, koji</li>
+</ul>
 
-<pre><code class="language-bash">  $ git checkout foo
-  $ git pull
+<pre><code class="language-bash">$ fedpkg --release f25 scratch-build --target f25 --srpm
 </code></pre>
 
-<p>Quick Ref: <a href="http://stackoverflow.com/a/5884825">http://stackoverflow.com/a/5884825</a></p>
+<ul>
+<li>Running fedora-review</li>
+</ul>
 
-<hr />
+<pre><code class="language-bash">$ fedpkg --release f25 srpm
+$ fedora-review -n namaskar
+</code></pre>
+
+<ul>
+<li>Decompress a package, <a href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/sect-Packagers_Guide-Format_of_the_Archived_Files.html">src</a>.</li>
+</ul>
+
+<pre><code class="language-bash">$ rpm2cpio kompose-0.1.0-0.1.git8227684.el7.src.rpm | cpio -ivdm
+</code></pre>
+
+<ul>
+<li>Various ways to query package: <a href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/sect-Packagers_Guide-Querying_Packages.html">src</a>.</li>
+<li>To download source as mentioned in the <code>Source0</code> tag, use:</li>
+</ul>
+
+<pre><code class="language-bash">$ spectool -g kompose.spec
+</code></pre>
 
 <h2 id="ref">Ref:</h2>
 
 <ul>
-<li><a href="https://dont-be-afraid-to-commit.readthedocs.io/en/latest/">Don&rsquo;t be afraid to commit</a></li>
-<li>Advanced Git - David Baumgold - <a href="https://www.youtube.com/watch?v=4EOZvow1mk4">video</a>, <a href="https://speakerdeck.com/singingwolfboy/advanced-git">slides</a></li>
+<li>Yum and RPM Tricks <a href="https://wiki.centos.org/TipsAndTricks/YumAndRPM">https://wiki.centos.org/TipsAndTricks/YumAndRPM</a></li>
+<li>Creating RPM Packages with Fedora <a href="https://fedoraproject.org/wiki/How_to_create_an_RPM_package">https://fedoraproject.org/wiki/How_to_create_an_RPM_package</a></li>
+<li>Inside the Spec File, Directives For the <code>%files</code> list <a href="http://ftp.rpm.org/max-rpm/s1-rpm-inside-files-list-directives.html">http://ftp.rpm.org/max-rpm/s1-rpm-inside-files-list-directives.html</a></li>
+<li>How to get sponsored into the packager group <a href="https://fedoraproject.org/wiki/How_to_get_sponsored_into_the_packager_group">https://fedoraproject.org/wiki/How_to_get_sponsored_into_the_packager_group</a></li>
+<li><a href="https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm">Doing local builds help from adb-utils repo</a></li>
+<li>Using Mock to test package builds <a href="https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds">https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds</a></li>
+<li>Packaging:RPMMacros <a href="https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros">https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros</a></li>
 </ul>
 
     </div>
@@ -533,7 +427,7 @@
 
     
     
-        <li><a href='/categoriesgit'>git</a></li>
+        <li><a href='/categoriespackaging'>packaging</a></li>
     
 </ul>
 
@@ -541,8 +435,8 @@
 </article>
 <ul class="actions pagination">
     
-        <li><a href="http://suraj.io/post/intellij-shortcuts/"
-                class="button big previous">Intellij Shortcuts</a></li>
+        <li><a href="http://suraj.io/post/git-notes/"
+                class="button big previous">Git Notes</a></li>
     
 
     
@@ -555,9 +449,9 @@
             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'suraj-io';
-    var disqus_identifier = 'http:\/\/suraj.io\/post\/git-notes\/';
-    var disqus_title = 'Git Notes';
-    var disqus_url = 'http:\/\/suraj.io\/post\/git-notes\/';
+    var disqus_identifier = 'http:\/\/suraj.io\/post\/rpm-notes\/';
+    var disqus_title = 'rpm Notes';
+    var disqus_url = 'http:\/\/suraj.io\/post\/rpm-notes\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -581,43 +475,43 @@
             
 
 
-<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f&text=Git%20Notes&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&text=rpm%20Notes&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f&title=Git%20Notes" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&title=rpm%20Notes" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f&title=Git%20Notes" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&title=rpm%20Notes" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f&title=Git%20Notes" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&title=rpm%20Notes" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fgit-notes%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -733,13 +627,13 @@
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/git-notes/">Git Notes</a></h3>
+                                <h3><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-21'>
-                                    March 21, 2017</time>
+                                    '2017-03-24'>
+                                    March 24, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -747,13 +641,13 @@
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/intellij-shortcuts/">Intellij Shortcuts</a></h3>
+                                <h3><a href="http://suraj.io/post/git-notes/">Git Notes</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-17'>
-                                    March 17, 2017</time>
+                                    '2017-03-21'>
+                                    March 21, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -792,7 +686,7 @@
                         <article>
                             <header>
                                 <a href="/categories/packaging/">packaging</a>
-                                <span style="float:right;">2</span>
+                                <span style="float:right;">3</span>
                             </header>
                         </article>
                     </li>

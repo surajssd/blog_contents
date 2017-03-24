@@ -9,6 +9,131 @@
     <atom:link href="http://suraj.io/tags/centos/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>rpm Notes</title>
+      <link>http://suraj.io/post/rpm-notes/</link>
+      <pubDate>Fri, 24 Mar 2017 10:35:54 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/rpm-notes/</guid>
+      <description>
+
+&lt;h2 id=&#34;setup-of-the-system-for-building-rpms&#34;&gt;Setup of the system for building rpms&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ dnf -y install fedora-packager fedora-review
+$ sudo usermod -a -G mock vagrant
+$ fedora-packager-setup
+$ kinit surajd@FEDORAPROJECT.ORG
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;my-notes&#34;&gt;My Notes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Start reading from: &lt;a href=&#34;https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/index.html&#34;&gt;Fedora packager&amp;rsquo;s guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Some macros come from &lt;code&gt;redhat-rpm-config&lt;/code&gt; and &lt;code&gt;fedora-rpm-macros&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To see all macros on the system:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpm --showrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Koji - fedora build system&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fedora&lt;/code&gt; uses &lt;code&gt;fedpkg&lt;/code&gt; for doing builds, while &lt;code&gt;rpmbuild&lt;/code&gt; is for &lt;code&gt;CentOS&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;To get general info about the package&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpm -qip ./x86_64/namaskar-1-1.fc25.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ less namaskar-1-1.fc25.src.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To see what are the dependencies of the package&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpm -qp --requires ./noarch/namaskar-1-1.fc25.noarch.rpm
+/bin/bash
+rpmlib(CompressedFileNames) &amp;lt;= 3.0.4-1
+rpmlib(FileDigests) &amp;lt;= 4.6.0-1
+rpmlib(PayloadFilesHavePrefix) &amp;lt;= 4.0-1
+rpmlib(PayloadIsXz) &amp;lt;= 5.2-1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To see what packages include your package as dependency&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpm -qp --provides ./noarch/namaskar-1-1.fc25.noarch.rpm
+namaskar = 1-1.fc25
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;After you think the spec is ready and before you push it to build&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ fedpkg --release f25 lint
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Doing local mock build&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ fedpkg --release f25 mockbuild
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Doing build in fedora build system, koji&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ fedpkg --release f25 scratch-build --target f25 --srpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Running fedora-review&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ fedpkg --release f25 srpm
+$ fedora-review -n namaskar
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Decompress a package, &lt;a href=&#34;https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/sect-Packagers_Guide-Format_of_the_Archived_Files.html&#34;&gt;src&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpm2cpio kompose-0.1.0-0.1.git8227684.el7.src.rpm | cpio -ivdm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Various ways to query package: &lt;a href=&#34;https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/sect-Packagers_Guide-Querying_Packages.html&#34;&gt;src&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;To download source as mentioned in the &lt;code&gt;Source0&lt;/code&gt; tag, use:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ spectool -g kompose.spec
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;ref&#34;&gt;Ref:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Yum and RPM Tricks &lt;a href=&#34;https://wiki.centos.org/TipsAndTricks/YumAndRPM&#34;&gt;https://wiki.centos.org/TipsAndTricks/YumAndRPM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Creating RPM Packages with Fedora &lt;a href=&#34;https://fedoraproject.org/wiki/How_to_create_an_RPM_package&#34;&gt;https://fedoraproject.org/wiki/How_to_create_an_RPM_package&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Inside the Spec File, Directives For the &lt;code&gt;%files&lt;/code&gt; list &lt;a href=&#34;http://ftp.rpm.org/max-rpm/s1-rpm-inside-files-list-directives.html&#34;&gt;http://ftp.rpm.org/max-rpm/s1-rpm-inside-files-list-directives.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;How to get sponsored into the packager group &lt;a href=&#34;https://fedoraproject.org/wiki/How_to_get_sponsored_into_the_packager_group&#34;&gt;https://fedoraproject.org/wiki/How_to_get_sponsored_into_the_packager_group&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm&#34;&gt;Doing local builds help from adb-utils repo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Using Mock to test package builds &lt;a href=&#34;https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds&#34;&gt;https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Packaging:RPMMacros &lt;a href=&#34;https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros&#34;&gt;https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Packaging &#39;kompose&#39; for centos paas sig</title>
       <link>http://suraj.io/post/packaging-kompose-for-centos-paas-sig/</link>
       <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
@@ -113,7 +238,7 @@ The page where this particular build happened and where I had download link to r
 
 &lt;p&gt;Try to install this rpm and see if it works on CentOS:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;yum install -y epel-release
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;yum install -y epel-release
 yum install -y wget jq make
 
 wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
@@ -156,7 +281,7 @@ kompose-0.4.0-0.1.git4e3300c.el7          paas7-openshift-common-testing  surajd
 It takes anywhere from 5 to 30 minutes for the rpm to make it into testing
 &lt;a href=&#34;http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/&#34;&gt;http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;yum -y install centos-release-openshift-origin
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;yum -y install centos-release-openshift-origin
 yum -y --enablerepo=centos-openshift-origin-testing install kompose
 yum install -y epel-release
 yum install -y jq make
@@ -168,7 +293,7 @@ make test-cmd
 
 &lt;p&gt;Check if the package is in testing&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cbs latest-build paas7-openshift-common-testing kompose
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs latest-build paas7-openshift-common-testing kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
 kompose-0.3.0-0.1.git135165b.el7          paas7-openshift-common-testing  surajd
@@ -176,7 +301,7 @@ kompose-0.3.0-0.1.git135165b.el7          paas7-openshift-common-testing  surajd
 
 &lt;p&gt;Tag it into release:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cbs tag-pkg paas7-openshift-common-release kompose-0.3.0-0.1.git135165b.el7
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs tag-pkg paas7-openshift-common-release kompose-0.3.0-0.1.git135165b.el7
 Created task 169131
 Watching tasks (this may be safely interrupted)...
 169131 tagBuild (noarch): free
@@ -195,6 +320,7 @@ Watching tasks (this may be safely interrupted)...
 &lt;li&gt;CentOS PaaS SIG &lt;a href=&#34;https://wiki.centos.org/SpecialInterestGroup/PaaS&#34;&gt;https://wiki.centos.org/SpecialInterestGroup/PaaS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;CentOS SIGs &lt;a href=&#34;https://wiki.centos.org/SpecialInterestGroup&#34;&gt;https://wiki.centos.org/SpecialInterestGroup&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;CBS &lt;a href=&#34;https://wiki.centos.org/HowTos/CommunityBuildSystem&#34;&gt;https://wiki.centos.org/HowTos/CommunityBuildSystem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm&#34;&gt;RPM help from adb-utils repo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

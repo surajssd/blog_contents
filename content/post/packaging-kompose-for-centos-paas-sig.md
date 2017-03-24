@@ -116,7 +116,7 @@ $ wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7
 
 Try to install this rpm and see if it works on CentOS:
 
-```
+```bash
 yum install -y epel-release
 yum install -y wget jq make
 
@@ -164,7 +164,7 @@ Run whatever tests you want to verify that it's a good build.
 It takes anywhere from 5 to 30 minutes for the rpm to make it into testing
 http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/
 
-```
+```bash
 yum -y install centos-release-openshift-origin
 yum -y --enablerepo=centos-openshift-origin-testing install kompose
 yum install -y epel-release
@@ -177,7 +177,7 @@ make test-cmd
 
 Check if the package is in testing
 
-```
+```bash
 $ cbs latest-build paas7-openshift-common-testing kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
@@ -186,7 +186,7 @@ kompose-0.3.0-0.1.git135165b.el7          paas7-openshift-common-testing  surajd
 
 Tag it into release:
 
-```
+```bash
 $ cbs tag-pkg paas7-openshift-common-release kompose-0.3.0-0.1.git135165b.el7
 Created task 169131
 Watching tasks (this may be safely interrupted)...
@@ -206,3 +206,4 @@ Watching tasks (this may be safely interrupted)...
 - CentOS PaaS SIG https://wiki.centos.org/SpecialInterestGroup/PaaS
 - CentOS SIGs https://wiki.centos.org/SpecialInterestGroup
 - CBS https://wiki.centos.org/HowTos/CommunityBuildSystem
+- [RPM help from adb-utils repo](https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm)
