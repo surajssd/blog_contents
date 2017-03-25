@@ -155,12 +155,44 @@ $ fedora-review -n namaskar
 
 &lt;hr /&gt;
 
+&lt;h3 id=&#34;status&#34;&gt;status&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git status -sb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Show status in short format and also give branch info&lt;/p&gt;
+
+&lt;hr /&gt;
+
 &lt;h3 id=&#34;show&#34;&gt;show&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git show
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Shows log message and diff about the commit you are on.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;log&#34;&gt;log&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Get logs on file between line numbers.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git log --graph --abbrev-commit
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Show graph in logs.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;commit&#34;&gt;commit&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git add -p
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Commit only parts of file. Interactively choose chunks of patch.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -254,6 +286,20 @@ $ fedora-review -n namaskar
 
 &lt;hr /&gt;
 
+&lt;h3 id=&#34;use-the-same-commit-message&#34;&gt;Use the same commit message&lt;/h3&gt;
+
+&lt;p&gt;Use the commit message that was generated automatically&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  git merge --no-edit
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;OR&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  git commit --amend --no-edit
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
 &lt;h3 id=&#34;squashing-commits&#34;&gt;Squashing commits&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -312,6 +358,22 @@ $ fedora-review -n namaskar
 
 &lt;hr /&gt;
 
+&lt;h3 id=&#34;auto-correct-mis-types-in-commands&#34;&gt;Auto-correct mis-types in commands&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git config --global help.autocorrect 10
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;edit-git-output-colors&#34;&gt;Edit git output colors&lt;/h3&gt;
+
+&lt;p&gt;Set various colors to the git logs and all the git output&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git config --global color.ui auto
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
 &lt;h3 id=&#34;git-merge-from-someone-else-s-fork&#34;&gt;Git merge from someone else&amp;rsquo;s fork&lt;/h3&gt;
 
 &lt;p&gt;Add their github fork repo as a remote to a clone of your own repo:&lt;/p&gt;
@@ -356,11 +418,88 @@ $ fedora-review -n namaskar
 
 &lt;hr /&gt;
 
+&lt;h2 id=&#34;github&#34;&gt;Github&lt;/h2&gt;
+
+&lt;p&gt;These are tips about using github.com&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;allow edits from maintainers&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This will help so that maintainers can push on your branch. On the PR at bottom right corner there is a check box to enable that.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Compare ranges&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;goto &lt;code&gt;https://github.com/&amp;lt;org&amp;gt;/&amp;lt;project&amp;gt;/compare/&amp;lt;old_version&amp;gt;...&amp;lt;new_version&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;OR&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;goto &lt;code&gt;https://github.com/kubernetes-incubator/kompose/compare/v0.3.0...v0.4.0&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Compare things like branches, releases, etc.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Compare, patch ranges&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;goto &lt;code&gt;https://github.com/&amp;lt;org&amp;gt;/&amp;lt;project&amp;gt;/compare/&amp;lt;branch&amp;gt;...&amp;lt;branch&amp;gt;.patch&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;OR&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;goto &lt;code&gt;https://github.com/kubernetes-incubator/kompose/compare/v0.3.0...v0.4.0.patch&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Anchors on line numbers&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Click on the line number and shift click on another line later to select a block of code.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;References and closing issues/PRs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Also you can add closes while merging the PR.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Code search&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;  repo:kubernetes-incubator/kompose is:pr registry in:title
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;registry&lt;/em&gt; is the string I am searching in the &lt;em&gt;kubernetes-incubator/kompose&lt;/em&gt; repo, which has that string in PR in title.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;OR&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  repo:openshift/origin is:issue ubuntu
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Keyboard Shortcuts&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;?&lt;/code&gt; for all the shortcuts.&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;t&lt;/code&gt; to search for files, fuzzy search, you need only file name not the full file path.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You can use gists as full repos&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Embedding the gist&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Add &lt;code&gt;.pibb&lt;/code&gt; at the end of the gist link, you can use it on github pages and other places.&lt;/p&gt;
+
+&lt;hr /&gt;
+
 &lt;h2 id=&#34;ref&#34;&gt;Ref:&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://dont-be-afraid-to-commit.readthedocs.io/en/latest/&#34;&gt;Don&amp;rsquo;t be afraid to commit&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Advanced Git - David Baumgold - &lt;a href=&#34;https://www.youtube.com/watch?v=4EOZvow1mk4&#34;&gt;video&lt;/a&gt;, &lt;a href=&#34;https://speakerdeck.com/singingwolfboy/advanced-git&#34;&gt;slides&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/searching-github/&#34;&gt;Searching GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Tips &amp;amp; Tricks: Gotta Git Them All - GitHub Universe 2016, &lt;a href=&#34;https://youtu.be/LsxDxL4PYik&#34;&gt;video&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

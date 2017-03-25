@@ -21,6 +21,16 @@ Notes about using `git`.
   ```
 ---
 
+### status
+
+  ```bash
+  $ git status -sb
+  ```
+  
+  Show status in short format and also give branch info
+
+---
+
 ### show
 
   ```bash
@@ -28,6 +38,31 @@ Notes about using `git`.
   ```
 
   Shows log message and diff about the commit you are on.
+
+---
+
+### log
+
+  ```bash
+  $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go
+  ```
+  Get logs on file between line numbers.
+  
+  ```bash
+  $ git log --graph --abbrev-commit
+  ```
+  
+  Show graph in logs.
+
+---
+
+### commit
+
+  ```bash
+  $ git add -p
+  ```
+  
+  Commit only parts of file. Interactively choose chunks of patch.
 
 ---
 
@@ -119,6 +154,22 @@ Notes about using `git`.
   $ git rebase --continue
   ```
 ---
+
+### Use the same commit message
+
+  Use the commit message that was generated automatically
+  
+  ```bash
+  git merge --no-edit
+  ```
+  
+  **OR**
+  
+  ```bash
+  git commit --amend --no-edit
+  ```
+  
+---
   
 ### Squashing commits
 
@@ -174,6 +225,22 @@ Notes about using `git`.
   ```
 ---
 
+### Auto-correct mis-types in commands
+
+  ```bash
+  $ git config --global help.autocorrect 10
+  ```
+---
+
+### Edit git output colors
+
+  Set various colors to the git logs and all the git output
+  
+  ```bash
+  $ git config --global color.ui auto
+  ```
+---
+
 ### Git merge from someone else's fork
 
   Add their github fork repo as a remote to a clone of your own repo:
@@ -223,7 +290,70 @@ Notes about using `git`.
 
 ---
 
+## Github
+
+These are tips about using github.com
+
+- *allow edits from maintainers* 
+
+  This will help so that maintainers can push on your branch. On the PR at bottom right corner there is a check box to enable that.
+
+- Compare ranges
+
+  goto `https://github.com/<org>/<project>/compare/<old_version>...<new_version>`
+
+  **OR**
+
+  goto `https://github.com/kubernetes-incubator/kompose/compare/v0.3.0...v0.4.0`
+
+  Compare things like branches, releases, etc.
+  
+- Compare, patch ranges
+
+  goto `https://github.com/<org>/<project>/compare/<branch>...<branch>.patch`
+
+  **OR**
+
+  goto `https://github.com/kubernetes-incubator/kompose/compare/v0.3.0...v0.4.0.patch`
+
+- Anchors on line numbers
+
+  Click on the line number and shift click on another line later to select a block of code.
+
+- References and closing issues/PRs
+
+  Also you can add closes while merging the PR.
+
+- Code search
+
+  ```
+  repo:kubernetes-incubator/kompose is:pr registry in:title
+  ```
+
+  *registry* is the string I am searching in the *kubernetes-incubator/kompose* repo, which has that string in PR in title.
+
+  **OR**
+
+  ```
+  repo:openshift/origin is:issue ubuntu
+  ```
+
+- Keyboard Shortcuts
+
+  - `?` for all the shortcuts.
+  - Use `t` to search for files, fuzzy search, you need only file name not the full file path.
+
+- You can use gists as full repos
+
+- Embedding the gist
+
+  Add `.pibb` at the end of the gist link, you can use it on github pages and other places.
+
+---
+
 ## Ref:
 
   - [Don't be afraid to commit](https://dont-be-afraid-to-commit.readthedocs.io/en/latest/)
   - Advanced Git - David Baumgold - [video](https://www.youtube.com/watch?v=4EOZvow1mk4), [slides](https://speakerdeck.com/singingwolfboy/advanced-git)
+  - [Searching GitHub](https://help.github.com/articles/searching-github/)
+  - Tips & Tricks: Gotta Git Them All - GitHub Universe 2016, [video](https://youtu.be/LsxDxL4PYik).

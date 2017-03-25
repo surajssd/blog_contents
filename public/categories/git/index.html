@@ -229,7 +229,7 @@
             March 21, 2017</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>4 minute read</p>
+            <p>5 minute read</p>
         
         
     </div>
@@ -238,8 +238,10 @@
     
 
     <p>Notes about using git.
-Tips and tricks Switch branches $ git checkout &lt;branch&gt;  show $ git show  Shows log message and diff about the commit you are on.
-blame To see who wrote the code? For each line of the file what commit edited that line of code will be shown. So now you can use that git commit and pass it to git show &lt;commit&gt; to see all the changes.</p>
+Tips and tricks Switch branches $ git checkout &lt;branch&gt;  status $ git status -sb  Show status in short format and also give branch info
+show $ git show  Shows log message and diff about the commit you are on.
+log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go  Get logs on file between line numbers.
+$ git log &ndash;graph &ndash;abbrev-commit  Show graph in logs.</p>
 
     <footer>
         <ul class="actions">

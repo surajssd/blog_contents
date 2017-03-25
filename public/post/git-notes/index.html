@@ -58,7 +58,7 @@
 
 
 <meta itemprop="dateModified" content="2017-03-21T22:03:48&#43;05:30" />
-<meta itemprop="wordCount" content="701">
+<meta itemprop="wordCount" content="996">
 
 
 
@@ -299,7 +299,7 @@
             March 21, 2017</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>4 minute read</p>
+            <p>5 minute read</p>
         
         
     </div>
@@ -372,12 +372,44 @@
 
 <hr />
 
+<h3 id="status">status</h3>
+
+<pre><code class="language-bash">  $ git status -sb
+</code></pre>
+
+<p>Show status in short format and also give branch info</p>
+
+<hr />
+
 <h3 id="show">show</h3>
 
 <pre><code class="language-bash">  $ git show
 </code></pre>
 
 <p>Shows log message and diff about the commit you are on.</p>
+
+<hr />
+
+<h3 id="log">log</h3>
+
+<pre><code class="language-bash">  $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go
+</code></pre>
+
+<p>Get logs on file between line numbers.</p>
+
+<pre><code class="language-bash">  $ git log --graph --abbrev-commit
+</code></pre>
+
+<p>Show graph in logs.</p>
+
+<hr />
+
+<h3 id="commit">commit</h3>
+
+<pre><code class="language-bash">  $ git add -p
+</code></pre>
+
+<p>Commit only parts of file. Interactively choose chunks of patch.</p>
 
 <hr />
 
@@ -471,6 +503,20 @@
 
 <hr />
 
+<h3 id="use-the-same-commit-message">Use the same commit message</h3>
+
+<p>Use the commit message that was generated automatically</p>
+
+<pre><code class="language-bash">  git merge --no-edit
+</code></pre>
+
+<p><strong>OR</strong></p>
+
+<pre><code class="language-bash">  git commit --amend --no-edit
+</code></pre>
+
+<hr />
+
 <h3 id="squashing-commits">Squashing commits</h3>
 
 <ul>
@@ -529,6 +575,22 @@
 
 <hr />
 
+<h3 id="auto-correct-mis-types-in-commands">Auto-correct mis-types in commands</h3>
+
+<pre><code class="language-bash">  $ git config --global help.autocorrect 10
+</code></pre>
+
+<hr />
+
+<h3 id="edit-git-output-colors">Edit git output colors</h3>
+
+<p>Set various colors to the git logs and all the git output</p>
+
+<pre><code class="language-bash">  $ git config --global color.ui auto
+</code></pre>
+
+<hr />
+
 <h3 id="git-merge-from-someone-else-s-fork">Git merge from someone else&rsquo;s fork</h3>
 
 <p>Add their github fork repo as a remote to a clone of your own repo:</p>
@@ -573,11 +635,88 @@
 
 <hr />
 
+<h2 id="github">Github</h2>
+
+<p>These are tips about using github.com</p>
+
+<ul>
+<li><em>allow edits from maintainers</em></li>
+</ul>
+
+<p>This will help so that maintainers can push on your branch. On the PR at bottom right corner there is a check box to enable that.</p>
+
+<ul>
+<li>Compare ranges</li>
+</ul>
+
+<p>goto <code>https://github.com/&lt;org&gt;/&lt;project&gt;/compare/&lt;old_version&gt;...&lt;new_version&gt;</code></p>
+
+<p><strong>OR</strong></p>
+
+<p>goto <code>https://github.com/kubernetes-incubator/kompose/compare/v0.3.0...v0.4.0</code></p>
+
+<p>Compare things like branches, releases, etc.</p>
+
+<ul>
+<li>Compare, patch ranges</li>
+</ul>
+
+<p>goto <code>https://github.com/&lt;org&gt;/&lt;project&gt;/compare/&lt;branch&gt;...&lt;branch&gt;.patch</code></p>
+
+<p><strong>OR</strong></p>
+
+<p>goto <code>https://github.com/kubernetes-incubator/kompose/compare/v0.3.0...v0.4.0.patch</code></p>
+
+<ul>
+<li>Anchors on line numbers</li>
+</ul>
+
+<p>Click on the line number and shift click on another line later to select a block of code.</p>
+
+<ul>
+<li>References and closing issues/PRs</li>
+</ul>
+
+<p>Also you can add closes while merging the PR.</p>
+
+<ul>
+<li>Code search</li>
+</ul>
+
+<pre><code>  repo:kubernetes-incubator/kompose is:pr registry in:title
+</code></pre>
+
+<p><em>registry</em> is the string I am searching in the <em>kubernetes-incubator/kompose</em> repo, which has that string in PR in title.</p>
+
+<p><strong>OR</strong></p>
+
+<pre><code>  repo:openshift/origin is:issue ubuntu
+</code></pre>
+
+<ul>
+<li><p>Keyboard Shortcuts</p>
+
+<ul>
+<li><code>?</code> for all the shortcuts.</li>
+<li>Use <code>t</code> to search for files, fuzzy search, you need only file name not the full file path.</li>
+</ul></li>
+
+<li><p>You can use gists as full repos</p></li>
+
+<li><p>Embedding the gist</p></li>
+</ul>
+
+<p>Add <code>.pibb</code> at the end of the gist link, you can use it on github pages and other places.</p>
+
+<hr />
+
 <h2 id="ref">Ref:</h2>
 
 <ul>
 <li><a href="https://dont-be-afraid-to-commit.readthedocs.io/en/latest/">Don&rsquo;t be afraid to commit</a></li>
 <li>Advanced Git - David Baumgold - <a href="https://www.youtube.com/watch?v=4EOZvow1mk4">video</a>, <a href="https://speakerdeck.com/singingwolfboy/advanced-git">slides</a></li>
+<li><a href="https://help.github.com/articles/searching-github/">Searching GitHub</a></li>
+<li>Tips &amp; Tricks: Gotta Git Them All - GitHub Universe 2016, <a href="https://youtu.be/LsxDxL4PYik">video</a>.</li>
 </ul>
 
     </div>
