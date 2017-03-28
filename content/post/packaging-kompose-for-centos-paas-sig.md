@@ -181,22 +181,28 @@ Check if the package is in testing
 $ cbs latest-build paas7-openshift-common-testing kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
-kompose-0.3.0-0.1.git135165b.el7          paas7-openshift-common-testing  surajd
+kompose-0.4.0-0.1.git4e3300c.el7          paas7-openshift-common-testing  surajd
 ```
 
 Tag it into release:
 
 ```bash
-$ cbs tag-pkg paas7-openshift-common-release kompose-0.3.0-0.1.git135165b.el7
-Created task 169131
+$ cbs tag-pkg paas7-openshift-common-release kompose-0.4.0-0.1.git4e3300c.el7
+Created task 171654
 Watching tasks (this may be safely interrupted)...
-169131 tagBuild (noarch): free
-169131 tagBuild (noarch): free -> closed
+171654 tagBuild (noarch): open (x86_64-2.cbs.centos.org)
+171654 tagBuild (noarch): open (x86_64-2.cbs.centos.org) -> closed
   0 free  0 open  1 done  0 failed
 
-169131 tagBuild (noarch) completed successfully
+171654 tagBuild (noarch) completed successfully
 ```
 
+Once it is populated, it will show up in the repos, install it as follows:
+
+```bash
+yum install -y centos-release-openshift-origin
+yum install -y kompose
+```
 
 ## Ref:
 

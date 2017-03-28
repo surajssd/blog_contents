@@ -29,7 +29,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-03-24T10:35:54&#43;05:30"/>
+<meta property="og:updated_time" content="2017-03-26T18:19:15&#43;05:30"/>
 
 
 
@@ -187,11 +187,11 @@
 
                 
                     <li>
-                        <a href="http://suraj.io/post/rpm-notes/"><p>rpm Notes</p></a>
+                        <a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/"><p>TODOs for new project</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://suraj.io/post/git-notes/"><p>Git Notes</p></a>
+                        <a href="http://suraj.io/post/rpm-notes/"><p>rpm Notes</p></a>
                     </li>
                 
             </ul>
@@ -208,10 +208,10 @@
     <header>
     <div class="title">
         
-            <h2><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h2>
+            <h2><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h2>
         
         
-            <p>General notes about rpm packaging and references to upstream docs</p>
+            <p>Things to do to make a project successful</p>
         
     </div>
     <div class="meta">
@@ -220,11 +220,11 @@
         
 
         <time class="published"
-            datetime='2017-03-24'>
-            March 24, 2017</time>
+            datetime='2017-03-26'>
+            March 26, 2017</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>2 minute read</p>
+            <p>1 minute read</p>
         
         
     </div>
@@ -236,43 +236,43 @@
             
 
 
-<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&text=rpm%20Notes&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f&text=TODOs%20for%20new%20project&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&title=rpm%20Notes" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f&title=TODOs%20for%20new%20project" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&title=rpm%20Notes" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f&title=TODOs%20for%20new%20project" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&title=rpm%20Notes" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f&title=TODOs%20for%20new%20project" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -284,120 +284,45 @@
     <div id="content">
         
 
-<h2 id="setup-of-the-system-for-building-rpms">Setup of the system for building rpms</h2>
+<p>When starting a new open source project, apart from coding following are the things that need to be done.</p>
 
-<pre><code class="language-bash">$ dnf -y install fedora-packager fedora-review
-$ sudo usermod -a -G mock vagrant
-$ fedora-packager-setup
-$ kinit surajd@FEDORAPROJECT.ORG
-</code></pre>
-
-<h2 id="my-notes">My Notes</h2>
+<h2 id="docs">Docs</h2>
 
 <ul>
-<li>Start reading from: <a href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/index.html">Fedora packager&rsquo;s guide</a></li>
-<li>Some macros come from <code>redhat-rpm-config</code> and <code>fedora-rpm-macros</code>.</li>
+<li>README</li>
+<li>LICENSE</li>
+<li>How to install?</li>
+<li>How to use?</li>
+<li>Code of conduct guidelines</li>
+<li>Copyright</li>
+<li>Issue template like <code>.github</code> in repo.</li>
 </ul>
 
-<pre><code class="language-bash">$ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch
-</code></pre>
+<h2 id="developer-docs">Developer docs</h2>
 
 <ul>
-<li>To see all macros on the system:</li>
+<li>How to install for developer?</li>
+<li>Developer docs</li>
+<li>Contribution guidelines</li>
+<li>Team meetings info</li>
+<li>Team communication channels</li>
+<li>Issue label guidelines</li>
+<li>Coding standards</li>
+<li>Code placement doc, or something that explains the way code is ordered</li>
 </ul>
 
-<pre><code class="language-bash">$ rpm --showrc
-</code></pre>
+<h2 id="development">Development</h2>
 
 <ul>
-<li>Koji - fedora build system</li>
-<li><code>fedora</code> uses <code>fedpkg</code> for doing builds, while <code>rpmbuild</code> is for <code>CentOS</code></li>
-<li>To get general info about the package</li>
+<li><code>Makefile</code></li>
+<li>Unit tests</li>
+<li>Functional tests</li>
+<li>Coverage check</li>
+<li>CI for automatic tests</li>
+<li>Distro based package</li>
 </ul>
 
-<pre><code class="language-bash">$ rpm -qip ./x86_64/namaskar-1-1.fc25.x86_64.rpm
-</code></pre>
-
-<p>OR</p>
-
-<pre><code class="language-bash">$ less namaskar-1-1.fc25.src.rpm
-</code></pre>
-
-<ul>
-<li>To see what are the dependencies of the package</li>
-</ul>
-
-<pre><code class="language-bash">$ rpm -qp --requires ./noarch/namaskar-1-1.fc25.noarch.rpm
-/bin/bash
-rpmlib(CompressedFileNames) &lt;= 3.0.4-1
-rpmlib(FileDigests) &lt;= 4.6.0-1
-rpmlib(PayloadFilesHavePrefix) &lt;= 4.0-1
-rpmlib(PayloadIsXz) &lt;= 5.2-1
-</code></pre>
-
-<ul>
-<li>To see what packages include your package as dependency</li>
-</ul>
-
-<pre><code class="language-bash">$ rpm -qp --provides ./noarch/namaskar-1-1.fc25.noarch.rpm
-namaskar = 1-1.fc25
-</code></pre>
-
-<ul>
-<li>After you think the spec is ready and before you push it to build</li>
-</ul>
-
-<pre><code class="language-bash">$ fedpkg --release f25 lint
-</code></pre>
-
-<ul>
-<li>Doing local mock build</li>
-</ul>
-
-<pre><code class="language-bash">$ fedpkg --release f25 mockbuild
-</code></pre>
-
-<ul>
-<li>Doing build in fedora build system, koji</li>
-</ul>
-
-<pre><code class="language-bash">$ fedpkg --release f25 scratch-build --target f25 --srpm
-</code></pre>
-
-<ul>
-<li>Running fedora-review</li>
-</ul>
-
-<pre><code class="language-bash">$ fedpkg --release f25 srpm
-$ fedora-review -n namaskar
-</code></pre>
-
-<ul>
-<li>Decompress a package, <a href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/sect-Packagers_Guide-Format_of_the_Archived_Files.html">src</a>.</li>
-</ul>
-
-<pre><code class="language-bash">$ rpm2cpio kompose-0.1.0-0.1.git8227684.el7.src.rpm | cpio -ivdm
-</code></pre>
-
-<ul>
-<li>Various ways to query package: <a href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/sect-Packagers_Guide-Querying_Packages.html">src</a>.</li>
-<li>To download source as mentioned in the <code>Source0</code> tag, use:</li>
-</ul>
-
-<pre><code class="language-bash">$ spectool -g kompose.spec
-</code></pre>
-
-<h2 id="ref">Ref:</h2>
-
-<ul>
-<li>Yum and RPM Tricks <a href="https://wiki.centos.org/TipsAndTricks/YumAndRPM">https://wiki.centos.org/TipsAndTricks/YumAndRPM</a></li>
-<li>Creating RPM Packages with Fedora <a href="https://fedoraproject.org/wiki/How_to_create_an_RPM_package">https://fedoraproject.org/wiki/How_to_create_an_RPM_package</a></li>
-<li>Inside the Spec File, Directives For the <code>%files</code> list <a href="http://ftp.rpm.org/max-rpm/s1-rpm-inside-files-list-directives.html">http://ftp.rpm.org/max-rpm/s1-rpm-inside-files-list-directives.html</a></li>
-<li>How to get sponsored into the packager group <a href="https://fedoraproject.org/wiki/How_to_get_sponsored_into_the_packager_group">https://fedoraproject.org/wiki/How_to_get_sponsored_into_the_packager_group</a></li>
-<li><a href="https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm">Doing local builds help from adb-utils repo</a></li>
-<li>Using Mock to test package builds <a href="https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds">https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds</a></li>
-<li>Packaging:RPMMacros <a href="https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros">https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros</a></li>
-</ul>
+<p>This is just few things that I could think of, please suggest if you know more in comments.</p>
 
     </div>
 
@@ -427,7 +352,7 @@ $ fedora-review -n namaskar
 
     
     
-        <li><a href='/categoriespackaging'>packaging</a></li>
+        <li><a href='/categoriesproject-management'>project management</a></li>
     
 </ul>
 
@@ -435,8 +360,8 @@ $ fedora-review -n namaskar
 </article>
 <ul class="actions pagination">
     
-        <li><a href="http://suraj.io/post/git-notes/"
-                class="button big previous">Git Notes</a></li>
+        <li><a href="http://suraj.io/post/rpm-notes/"
+                class="button big previous">rpm Notes</a></li>
     
 
     
@@ -449,9 +374,9 @@ $ fedora-review -n namaskar
             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'suraj-io';
-    var disqus_identifier = 'http:\/\/suraj.io\/post\/rpm-notes\/';
-    var disqus_title = 'rpm Notes';
-    var disqus_url = 'http:\/\/suraj.io\/post\/rpm-notes\/';
+    var disqus_identifier = 'http:\/\/suraj.io\/post\/starting-a-new-opensource-project-requirements\/';
+    var disqus_title = 'TODOs for new project';
+    var disqus_url = 'http:\/\/suraj.io\/post\/starting-a-new-opensource-project-requirements\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -475,43 +400,43 @@ $ fedora-review -n namaskar
             
 
 
-<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&text=rpm%20Notes&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f&text=TODOs%20for%20new%20project&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&title=rpm%20Notes" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f&title=TODOs%20for%20new%20project" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&title=rpm%20Notes" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f&title=TODOs%20for%20new%20project" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f&title=rpm%20Notes" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f&title=TODOs%20for%20new%20project" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2frpm-notes%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fstarting-a-new-opensource-project-requirements%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -530,7 +455,7 @@ $ fedora-review -n namaskar
             
             
                 
-                    <a href="/" class="logo"><img src="https://avatars0.githubusercontent.com/u/5815795?v=3&amp;s=460" alt="Suraj" /></a>
+                    <a href="/" class="logo"><img src="https://github.com/surajssd.png" alt="Suraj" /></a>
                 
             
             
@@ -627,13 +552,13 @@ $ fedora-review -n namaskar
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h3>
+                                <h3><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-24'>
-                                    March 24, 2017</time>
+                                    '2017-03-26'>
+                                    March 26, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -641,13 +566,13 @@ $ fedora-review -n namaskar
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/git-notes/">Git Notes</a></h3>
+                                <h3><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-21'>
-                                    March 21, 2017</time>
+                                    '2017-03-24'>
+                                    March 24, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -704,6 +629,15 @@ $ fedora-review -n namaskar
                         <article>
                             <header>
                                 <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/project-management/">project management</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

@@ -26,7 +26,7 @@ Notes about using `git`.
   ```bash
   $ git status -sb
   ```
-  
+
   Show status in short format and also give branch info
 
 ---
@@ -47,11 +47,11 @@ Notes about using `git`.
   $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go
   ```
   Get logs on file between line numbers.
-  
+
   ```bash
   $ git log --graph --abbrev-commit
   ```
-  
+
   Show graph in logs.
 
 ---
@@ -61,7 +61,7 @@ Notes about using `git`.
   ```bash
   $ git add -p
   ```
-  
+
   Commit only parts of file. Interactively choose chunks of patch.
 
 ---
@@ -117,9 +117,9 @@ Notes about using `git`.
   ```
 
   `HEAD`  : *the commit I'm currently sitting on*
-  
+
   `HEAD^` : *this commit's parent*
-  
+
   `HEAD^^`: *this commit's grandparent* and so on
 
 ---
@@ -158,19 +158,19 @@ Notes about using `git`.
 ### Use the same commit message
 
   Use the commit message that was generated automatically
-  
+
   ```bash
   git merge --no-edit
   ```
-  
+
   **OR**
-  
+
   ```bash
   git commit --amend --no-edit
   ```
-  
+
 ---
-  
+
 ### Squashing commits
 
   - Amending the commit
@@ -235,7 +235,7 @@ Notes about using `git`.
 ### Edit git output colors
 
   Set various colors to the git logs and all the git output
-  
+
   ```bash
   $ git config --global color.ui auto
   ```
@@ -294,9 +294,13 @@ Notes about using `git`.
 
 These are tips about using github.com
 
-- *allow edits from maintainers* 
+- *allow edits from maintainers*
 
   This will help so that maintainers can push on your branch. On the PR at bottom right corner there is a check box to enable that.
+
+- Patch from PR
+
+  If you want a patch/diff of changes in a PR just goto PR and at the end of the url put `.patch` and you will see formatted patch. e.g. goto [PR](https://github.com/kubernetes-incubator/kompose/pull/454) and now the [patch](https://patch-diff.githubusercontent.com/raw/kubernetes-incubator/kompose/pull/454.patch)
 
 - Compare ranges
 
@@ -307,7 +311,7 @@ These are tips about using github.com
   goto `https://github.com/kubernetes-incubator/kompose/compare/v0.3.0...v0.4.0`
 
   Compare things like branches, releases, etc.
-  
+
 - Compare, patch ranges
 
   goto `https://github.com/<org>/<project>/compare/<branch>...<branch>.patch`
@@ -338,16 +342,38 @@ These are tips about using github.com
   repo:openshift/origin is:issue ubuntu
   ```
 
+  When doing things on github you will find queries like these automatically generated.
+
 - Keyboard Shortcuts
 
-  - `?` for all the shortcuts.
-  - Use `t` to search for files, fuzzy search, you need only file name not the full file path.
+  * `?` for all the shortcuts.
+  * Use `t` to search for files, fuzzy search, you need only file name not the full file path.
 
-- You can use gists as full repos
+  Others can be found using `?`.
+
+- Gists as full repos
+
+  gists can act as full repos
 
 - Embedding the gist
 
   Add `.pibb` at the end of the gist link, you can use it on github pages and other places.
+
+- Short link to your github profile pic
+
+  `https://github.com/surajssd.png` **OR** `https://github.com/<github_username>.png`
+
+- Short url with github
+
+  Goto [git.io](https://git.io/) and shorten any github url.
+
+- Blame
+
+  On any file in github, you can click the blame button and see who made what changes. After clicking on some specific commit, you can see the complete change and from the commit message goto PR for seeing all the discussion.
+
+- Global list of issues, PRs
+
+  In the top bar there are buttons for global list of issues and PRs. This can be a good todo list. In issues you can see issues you have created or assigned or mentioned.
 
 ---
 
@@ -357,3 +383,4 @@ These are tips about using github.com
   - Advanced Git - David Baumgold - [video](https://www.youtube.com/watch?v=4EOZvow1mk4), [slides](https://speakerdeck.com/singingwolfboy/advanced-git)
   - [Searching GitHub](https://help.github.com/articles/searching-github/)
   - Tips & Tricks: Gotta Git Them All - GitHub Universe 2016, [video](https://youtu.be/LsxDxL4PYik).
+  - Everything I Wish I Knew When I Started Using GitHub - oscon Portland 2015, [video](https://youtu.be/KDUtjZHIx44).

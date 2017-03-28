@@ -69,11 +69,11 @@ Build rpms locally Before you begin make sure you have setup the local directory
 
 
 <meta itemprop="dateModified" content="2017-03-15T14:16:43&#43;05:30" />
-<meta itemprop="wordCount" content="623">
+<meta itemprop="wordCount" content="648">
 
 
 
-<meta itemprop="keywords" content="git,ide,packaging,centos,fedora,git,ide,intellij,notes,openshift,productivity,programming,rpm," />
+<meta itemprop="keywords" content="git,ide,packaging,project management,centos,fedora,git,github,ide,intellij,notes,open source,openshift,productivity,programming,project,rpm," />
 
         
 
@@ -217,11 +217,11 @@ Build rpms locally Before you begin make sure you have setup the local directory
 
                 
                     <li>
-                        <a href="http://suraj.io/post/rpm-notes/"><p>rpm Notes</p></a>
+                        <a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/"><p>TODOs for new project</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://suraj.io/post/git-notes/"><p>Git Notes</p></a>
+                        <a href="http://suraj.io/post/rpm-notes/"><p>rpm Notes</p></a>
                     </li>
                 
             </ul>
@@ -308,7 +308,7 @@ Build rpms locally Before you begin make sure you have setup the local directory
             March 15, 2017</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>3 minute read</p>
+            <p>4 minute read</p>
         
         
     </div>
@@ -523,19 +523,25 @@ make test-cmd
 <pre><code class="language-bash">$ cbs latest-build paas7-openshift-common-testing kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
-kompose-0.3.0-0.1.git135165b.el7          paas7-openshift-common-testing  surajd
+kompose-0.4.0-0.1.git4e3300c.el7          paas7-openshift-common-testing  surajd
 </code></pre>
 
 <p>Tag it into release:</p>
 
-<pre><code class="language-bash">$ cbs tag-pkg paas7-openshift-common-release kompose-0.3.0-0.1.git135165b.el7
-Created task 169131
+<pre><code class="language-bash">$ cbs tag-pkg paas7-openshift-common-release kompose-0.4.0-0.1.git4e3300c.el7
+Created task 171654
 Watching tasks (this may be safely interrupted)...
-169131 tagBuild (noarch): free
-169131 tagBuild (noarch): free -&gt; closed
+171654 tagBuild (noarch): open (x86_64-2.cbs.centos.org)
+171654 tagBuild (noarch): open (x86_64-2.cbs.centos.org) -&gt; closed
   0 free  0 open  1 done  0 failed
 
-169131 tagBuild (noarch) completed successfully
+171654 tagBuild (noarch) completed successfully
+</code></pre>
+
+<p>Once it is populated, it will show up in the repos, install it as follows:</p>
+
+<pre><code class="language-bash">yum install -y centos-release-openshift-origin
+yum install -y kompose
 </code></pre>
 
 <h2 id="ref">Ref:</h2>
@@ -628,7 +634,7 @@ Watching tasks (this may be safely interrupted)...
             
             
                 
-                    <a href="/" class="logo"><img src="https://avatars0.githubusercontent.com/u/5815795?v=3&amp;s=460" alt="Suraj" /></a>
+                    <a href="/" class="logo"><img src="https://github.com/surajssd.png" alt="Suraj" /></a>
                 
             
             
@@ -722,13 +728,13 @@ Watching tasks (this may be safely interrupted)...
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h3>
+                                <h3><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-24'>
-                                    March 24, 2017</time>
+                                    '2017-03-26'>
+                                    March 26, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -736,13 +742,13 @@ Watching tasks (this may be safely interrupted)...
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/git-notes/">Git Notes</a></h3>
+                                <h3><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-21'>
-                                    March 21, 2017</time>
+                                    '2017-03-24'>
+                                    March 24, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -799,6 +805,15 @@ Watching tasks (this may be safely interrupted)...
                         <article>
                             <header>
                                 <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/project-management/">project management</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

@@ -52,7 +52,8 @@ googleAnalytics = ""
 # This is optional
 [params.intro.pic]
     # src       = "/img/main/logo.jpg"
-    src       = "https://avatars0.githubusercontent.com/u/5815795?v=3&s=460"
+    # src       = "https://avatars0.githubusercontent.com/u/5815795?v=3&s=460"
+    src       = "https://github.com/surajssd.png"
     # modify your picture in the shape of a circle or
     # future imperfect's hexagonal shape
     circle    = false

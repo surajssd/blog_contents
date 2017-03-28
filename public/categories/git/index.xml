@@ -303,6 +303,12 @@
 &lt;p&gt;This will help so that maintainers can push on your branch. On the PR at bottom right corner there is a check box to enable that.&lt;/p&gt;
 
 &lt;ul&gt;
+&lt;li&gt;Patch from PR&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you want a patch/diff of changes in a PR just goto PR and at the end of the url put &lt;code&gt;.patch&lt;/code&gt; and you will see formatted patch. e.g. goto &lt;a href=&#34;https://github.com/kubernetes-incubator/kompose/pull/454&#34;&gt;PR&lt;/a&gt; and now the &lt;a href=&#34;https://patch-diff.githubusercontent.com/raw/kubernetes-incubator/kompose/pull/454.patch&#34;&gt;patch&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
 &lt;li&gt;Compare ranges&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -350,6 +356,8 @@
 &lt;pre&gt;&lt;code&gt;  repo:openshift/origin is:issue ubuntu
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;When doing things on github you will find queries like these automatically generated.&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Keyboard Shortcuts&lt;/p&gt;
 
@@ -357,13 +365,45 @@
 &lt;li&gt;&lt;code&gt;?&lt;/code&gt; for all the shortcuts.&lt;/li&gt;
 &lt;li&gt;Use &lt;code&gt;t&lt;/code&gt; to search for files, fuzzy search, you need only file name not the full file path.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;li&gt;&lt;p&gt;You can use gists as full repos&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;Others can be found using &lt;code&gt;?&lt;/code&gt;.&lt;/p&gt;
 
-&lt;li&gt;&lt;p&gt;Embedding the gist&lt;/p&gt;&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;Gists as full repos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;gists can act as full repos&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Embedding the gist&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Add &lt;code&gt;.pibb&lt;/code&gt; at the end of the gist link, you can use it on github pages and other places.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Short link to your github profile pic&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;https://github.com/surajssd.png&lt;/code&gt; &lt;strong&gt;OR&lt;/strong&gt; &lt;code&gt;https://github.com/&amp;lt;github_username&amp;gt;.png&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Short url with github&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Goto &lt;a href=&#34;https://git.io/&#34;&gt;git.io&lt;/a&gt; and shorten any github url.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Blame&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On any file in github, you can click the blame button and see who made what changes. After clicking on some specific commit, you can see the complete change and from the commit message goto PR for seeing all the discussion.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Global list of issues, PRs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the top bar there are buttons for global list of issues and PRs. This can be a good todo list. In issues you can see issues you have created or assigned or mentioned.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -374,6 +414,7 @@
 &lt;li&gt;Advanced Git - David Baumgold - &lt;a href=&#34;https://www.youtube.com/watch?v=4EOZvow1mk4&#34;&gt;video&lt;/a&gt;, &lt;a href=&#34;https://speakerdeck.com/singingwolfboy/advanced-git&#34;&gt;slides&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/searching-github/&#34;&gt;Searching GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Tips &amp;amp; Tricks: Gotta Git Them All - GitHub Universe 2016, &lt;a href=&#34;https://youtu.be/LsxDxL4PYik&#34;&gt;video&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Everything I Wish I Knew When I Started Using GitHub - oscon Portland 2015, &lt;a href=&#34;https://youtu.be/KDUtjZHIx44&#34;&gt;video&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

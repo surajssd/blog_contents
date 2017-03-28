@@ -6,8 +6,58 @@
     <description>Recent content in Posts on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Mar 2017 10:35:54 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 26 Mar 2017 18:19:15 +0530</lastBuildDate>
     <atom:link href="http://suraj.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>TODOs for new project</title>
+      <link>http://suraj.io/post/starting-a-new-opensource-project-requirements/</link>
+      <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/starting-a-new-opensource-project-requirements/</guid>
+      <description>
+
+&lt;p&gt;When starting a new open source project, apart from coding following are the things that need to be done.&lt;/p&gt;
+
+&lt;h2 id=&#34;docs&#34;&gt;Docs&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;README&lt;/li&gt;
+&lt;li&gt;LICENSE&lt;/li&gt;
+&lt;li&gt;How to install?&lt;/li&gt;
+&lt;li&gt;How to use?&lt;/li&gt;
+&lt;li&gt;Code of conduct guidelines&lt;/li&gt;
+&lt;li&gt;Copyright&lt;/li&gt;
+&lt;li&gt;Issue template like &lt;code&gt;.github&lt;/code&gt; in repo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;developer-docs&#34;&gt;Developer docs&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;How to install for developer?&lt;/li&gt;
+&lt;li&gt;Developer docs&lt;/li&gt;
+&lt;li&gt;Contribution guidelines&lt;/li&gt;
+&lt;li&gt;Team meetings info&lt;/li&gt;
+&lt;li&gt;Team communication channels&lt;/li&gt;
+&lt;li&gt;Issue label guidelines&lt;/li&gt;
+&lt;li&gt;Coding standards&lt;/li&gt;
+&lt;li&gt;Code placement doc, or something that explains the way code is ordered&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;development&#34;&gt;Development&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Makefile&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Unit tests&lt;/li&gt;
+&lt;li&gt;Functional tests&lt;/li&gt;
+&lt;li&gt;Coverage check&lt;/li&gt;
+&lt;li&gt;CI for automatic tests&lt;/li&gt;
+&lt;li&gt;Distro based package&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is just few things that I could think of, please suggest if you know more in comments.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>rpm Notes</title>
@@ -429,6 +479,12 @@ $ fedora-review -n namaskar
 &lt;p&gt;This will help so that maintainers can push on your branch. On the PR at bottom right corner there is a check box to enable that.&lt;/p&gt;
 
 &lt;ul&gt;
+&lt;li&gt;Patch from PR&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you want a patch/diff of changes in a PR just goto PR and at the end of the url put &lt;code&gt;.patch&lt;/code&gt; and you will see formatted patch. e.g. goto &lt;a href=&#34;https://github.com/kubernetes-incubator/kompose/pull/454&#34;&gt;PR&lt;/a&gt; and now the &lt;a href=&#34;https://patch-diff.githubusercontent.com/raw/kubernetes-incubator/kompose/pull/454.patch&#34;&gt;patch&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
 &lt;li&gt;Compare ranges&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -476,6 +532,8 @@ $ fedora-review -n namaskar
 &lt;pre&gt;&lt;code&gt;  repo:openshift/origin is:issue ubuntu
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;When doing things on github you will find queries like these automatically generated.&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Keyboard Shortcuts&lt;/p&gt;
 
@@ -483,13 +541,45 @@ $ fedora-review -n namaskar
 &lt;li&gt;&lt;code&gt;?&lt;/code&gt; for all the shortcuts.&lt;/li&gt;
 &lt;li&gt;Use &lt;code&gt;t&lt;/code&gt; to search for files, fuzzy search, you need only file name not the full file path.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;li&gt;&lt;p&gt;You can use gists as full repos&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;Others can be found using &lt;code&gt;?&lt;/code&gt;.&lt;/p&gt;
 
-&lt;li&gt;&lt;p&gt;Embedding the gist&lt;/p&gt;&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;Gists as full repos&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;gists can act as full repos&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Embedding the gist&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Add &lt;code&gt;.pibb&lt;/code&gt; at the end of the gist link, you can use it on github pages and other places.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Short link to your github profile pic&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;https://github.com/surajssd.png&lt;/code&gt; &lt;strong&gt;OR&lt;/strong&gt; &lt;code&gt;https://github.com/&amp;lt;github_username&amp;gt;.png&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Short url with github&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Goto &lt;a href=&#34;https://git.io/&#34;&gt;git.io&lt;/a&gt; and shorten any github url.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Blame&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On any file in github, you can click the blame button and see who made what changes. After clicking on some specific commit, you can see the complete change and from the commit message goto PR for seeing all the discussion.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Global list of issues, PRs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the top bar there are buttons for global list of issues and PRs. This can be a good todo list. In issues you can see issues you have created or assigned or mentioned.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -500,6 +590,7 @@ $ fedora-review -n namaskar
 &lt;li&gt;Advanced Git - David Baumgold - &lt;a href=&#34;https://www.youtube.com/watch?v=4EOZvow1mk4&#34;&gt;video&lt;/a&gt;, &lt;a href=&#34;https://speakerdeck.com/singingwolfboy/advanced-git&#34;&gt;slides&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/searching-github/&#34;&gt;Searching GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Tips &amp;amp; Tricks: Gotta Git Them All - GitHub Universe 2016, &lt;a href=&#34;https://youtu.be/LsxDxL4PYik&#34;&gt;video&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Everything I Wish I Knew When I Started Using GitHub - oscon Portland 2015, &lt;a href=&#34;https://youtu.be/KDUtjZHIx44&#34;&gt;video&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -959,19 +1050,25 @@ make test-cmd
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs latest-build paas7-openshift-common-testing kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
-kompose-0.3.0-0.1.git135165b.el7          paas7-openshift-common-testing  surajd
+kompose-0.4.0-0.1.git4e3300c.el7          paas7-openshift-common-testing  surajd
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Tag it into release:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs tag-pkg paas7-openshift-common-release kompose-0.3.0-0.1.git135165b.el7
-Created task 169131
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs tag-pkg paas7-openshift-common-release kompose-0.4.0-0.1.git4e3300c.el7
+Created task 171654
 Watching tasks (this may be safely interrupted)...
-169131 tagBuild (noarch): free
-169131 tagBuild (noarch): free -&amp;gt; closed
+171654 tagBuild (noarch): open (x86_64-2.cbs.centos.org)
+171654 tagBuild (noarch): open (x86_64-2.cbs.centos.org) -&amp;gt; closed
   0 free  0 open  1 done  0 failed
 
-169131 tagBuild (noarch) completed successfully
+171654 tagBuild (noarch) completed successfully
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once it is populated, it will show up in the repos, install it as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;yum install -y centos-release-openshift-origin
+yum install -y kompose
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;ref&#34;&gt;Ref:&lt;/h2&gt;
