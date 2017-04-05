@@ -122,6 +122,19 @@ Notes about using `git`.
 
   `HEAD^^`: *this commit's grandparent* and so on
 
+
+  Remove the changes that were accidentally added and not comitted.
+
+  ```bash
+  $ git reset HEAD
+  ```
+
+  If you don't want to have the uncommitted changes.
+
+  ```bash
+  $ git reset --hard HEAD
+  ```
+
 ---
 
 ### rebase
@@ -384,3 +397,4 @@ These are tips about using github.com
   - [Searching GitHub](https://help.github.com/articles/searching-github/)
   - Tips & Tricks: Gotta Git Them All - GitHub Universe 2016, [video](https://youtu.be/LsxDxL4PYik).
   - Everything I Wish I Knew When I Started Using GitHub - oscon Portland 2015, [video](https://youtu.be/KDUtjZHIx44).
+  - [How to revert a “git rm -r .”?](http://stackoverflow.com/a/2125738/3848679)

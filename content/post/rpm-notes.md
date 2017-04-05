@@ -96,6 +96,12 @@ $ fedora-review -n namaskar
 $ rpm2cpio kompose-0.1.0-0.1.git8227684.el7.src.rpm | cpio -ivdm
 ```
 
+**OR**
+
+```bash
+$ rpmdev-extract kompose-0.4.0-0.1.git4e3300c.fc27.x86_64.rpm
+```
+
 - Various ways to query package: [src](https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/sect-Packagers_Guide-Querying_Packages.html).
 - To download source as mentioned in the `Source0` tag, use:
 
@@ -112,3 +118,4 @@ $ spectool -g kompose.spec
 - [Doing local builds help from adb-utils repo](https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm)
 - Using Mock to test package builds https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds
 - Packaging:RPMMacros https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros
+- [Tweet about using `rpmdev-extract`](https://twitter.com/carlwgeorge/status/846892384570916866)

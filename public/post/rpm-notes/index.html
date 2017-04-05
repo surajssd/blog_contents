@@ -58,7 +58,7 @@
 
 
 <meta itemprop="dateModified" content="2017-03-24T10:35:54&#43;05:30" />
-<meta itemprop="wordCount" content="261">
+<meta itemprop="wordCount" content="269">
 
 
 
@@ -454,6 +454,11 @@ $ fedora-review -n namaskar
 <pre><code class="language-bash">$ rpm2cpio kompose-0.1.0-0.1.git8227684.el7.src.rpm | cpio -ivdm
 </code></pre>
 
+<p><strong>OR</strong></p>
+
+<pre><code class="language-bash">$ rpmdev-extract kompose-0.4.0-0.1.git4e3300c.fc27.x86_64.rpm
+</code></pre>
+
 <ul>
 <li>Various ways to query package: <a href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/sect-Packagers_Guide-Querying_Packages.html">src</a>.</li>
 <li>To download source as mentioned in the <code>Source0</code> tag, use:</li>
@@ -472,6 +477,7 @@ $ fedora-review -n namaskar
 <li><a href="https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm">Doing local builds help from adb-utils repo</a></li>
 <li>Using Mock to test package builds <a href="https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds">https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds</a></li>
 <li>Packaging:RPMMacros <a href="https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros">https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros</a></li>
+<li><a href="https://twitter.com/carlwgeorge/status/846892384570916866">Tweet about using <code>rpmdev-extract</code></a></li>
 </ul>
 
     </div>

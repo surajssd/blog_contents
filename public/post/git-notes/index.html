@@ -58,7 +58,7 @@
 
 
 <meta itemprop="dateModified" content="2017-03-21T22:03:48&#43;05:30" />
-<meta itemprop="wordCount" content="1173">
+<meta itemprop="wordCount" content="1209">
 
 
 
@@ -468,6 +468,16 @@
 
 <p><code>HEAD^^</code>: <em>this commit&rsquo;s grandparent</em> and so on</p>
 
+<p>Remove the changes that were accidentally added and not comitted.</p>
+
+<pre><code class="language-bash">  $ git reset HEAD
+</code></pre>
+
+<p>If you don&rsquo;t want to have the uncommitted changes.</p>
+
+<pre><code class="language-bash">  $ git reset --hard HEAD
+</code></pre>
+
 <hr />
 
 <h3 id="rebase">rebase</h3>
@@ -758,6 +768,7 @@
 <li><a href="https://help.github.com/articles/searching-github/">Searching GitHub</a></li>
 <li>Tips &amp; Tricks: Gotta Git Them All - GitHub Universe 2016, <a href="https://youtu.be/LsxDxL4PYik">video</a>.</li>
 <li>Everything I Wish I Knew When I Started Using GitHub - oscon Portland 2015, <a href="https://youtu.be/KDUtjZHIx44">video</a>.</li>
+<li><a href="http://stackoverflow.com/a/2125738/3848679">How to revert a “git rm -r .”?</a></li>
 </ul>
 
     </div>

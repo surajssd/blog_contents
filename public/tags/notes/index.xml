@@ -125,6 +125,16 @@
 
 &lt;p&gt;&lt;code&gt;HEAD^^&lt;/code&gt;: &lt;em&gt;this commit&amp;rsquo;s grandparent&lt;/em&gt; and so on&lt;/p&gt;
 
+&lt;p&gt;Remove the changes that were accidentally added and not comitted.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git reset HEAD
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t want to have the uncommitted changes.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git reset --hard HEAD
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;hr /&gt;
 
 &lt;h3 id=&#34;rebase&#34;&gt;rebase&lt;/h3&gt;
@@ -415,6 +425,7 @@
 &lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/searching-github/&#34;&gt;Searching GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Tips &amp;amp; Tricks: Gotta Git Them All - GitHub Universe 2016, &lt;a href=&#34;https://youtu.be/LsxDxL4PYik&#34;&gt;video&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Everything I Wish I Knew When I Started Using GitHub - oscon Portland 2015, &lt;a href=&#34;https://youtu.be/KDUtjZHIx44&#34;&gt;video&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/a/2125738/3848679&#34;&gt;How to revert a “git rm -r .”?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

@@ -30,6 +30,7 @@ When starting a new open source project, apart from coding following are the thi
   - Issue label guidelines
   - Coding standards
   - Code placement doc, or something that explains the way code is ordered
+  - Design document
 
 ## Development
 

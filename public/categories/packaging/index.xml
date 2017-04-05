@@ -111,6 +111,11 @@ $ fedora-review -n namaskar
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpm2cpio kompose-0.1.0-0.1.git8227684.el7.src.rpm | cpio -ivdm
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;&lt;strong&gt;OR&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpmdev-extract kompose-0.4.0-0.1.git4e3300c.fc27.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;ul&gt;
 &lt;li&gt;Various ways to query package: &lt;a href=&#34;https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/sect-Packagers_Guide-Querying_Packages.html&#34;&gt;src&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;To download source as mentioned in the &lt;code&gt;Source0&lt;/code&gt; tag, use:&lt;/li&gt;
@@ -129,6 +134,7 @@ $ fedora-review -n namaskar
 &lt;li&gt;&lt;a href=&#34;https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm&#34;&gt;Doing local builds help from adb-utils repo&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Using Mock to test package builds &lt;a href=&#34;https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds&#34;&gt;https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Packaging:RPMMacros &lt;a href=&#34;https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros&#34;&gt;https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/carlwgeorge/status/846892384570916866&#34;&gt;Tweet about using &lt;code&gt;rpmdev-extract&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

@@ -42,6 +42,7 @@
 &lt;li&gt;Issue label guidelines&lt;/li&gt;
 &lt;li&gt;Coding standards&lt;/li&gt;
 &lt;li&gt;Code placement doc, or something that explains the way code is ordered&lt;/li&gt;
+&lt;li&gt;Design document&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;development&#34;&gt;Development&lt;/h2&gt;
@@ -162,6 +163,11 @@ $ fedora-review -n namaskar
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpm2cpio kompose-0.1.0-0.1.git8227684.el7.src.rpm | cpio -ivdm
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;&lt;strong&gt;OR&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpmdev-extract kompose-0.4.0-0.1.git4e3300c.fc27.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;ul&gt;
 &lt;li&gt;Various ways to query package: &lt;a href=&#34;https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/sect-Packagers_Guide-Querying_Packages.html&#34;&gt;src&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;To download source as mentioned in the &lt;code&gt;Source0&lt;/code&gt; tag, use:&lt;/li&gt;
@@ -180,6 +186,7 @@ $ fedora-review -n namaskar
 &lt;li&gt;&lt;a href=&#34;https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm&#34;&gt;Doing local builds help from adb-utils repo&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Using Mock to test package builds &lt;a href=&#34;https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds&#34;&gt;https://fedoraproject.org/wiki/Using_Mock_to_test_package_builds&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Packaging:RPMMacros &lt;a href=&#34;https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros&#34;&gt;https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/carlwgeorge/status/846892384570916866&#34;&gt;Tweet about using &lt;code&gt;rpmdev-extract&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -300,6 +307,16 @@ $ fedora-review -n namaskar
 &lt;p&gt;&lt;code&gt;HEAD^&lt;/code&gt; : &lt;em&gt;this commit&amp;rsquo;s parent&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;HEAD^^&lt;/code&gt;: &lt;em&gt;this commit&amp;rsquo;s grandparent&lt;/em&gt; and so on&lt;/p&gt;
+
+&lt;p&gt;Remove the changes that were accidentally added and not comitted.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git reset HEAD
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t want to have the uncommitted changes.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git reset --hard HEAD
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
 
@@ -591,6 +608,7 @@ $ fedora-review -n namaskar
 &lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/searching-github/&#34;&gt;Searching GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Tips &amp;amp; Tricks: Gotta Git Them All - GitHub Universe 2016, &lt;a href=&#34;https://youtu.be/LsxDxL4PYik&#34;&gt;video&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Everything I Wish I Knew When I Started Using GitHub - oscon Portland 2015, &lt;a href=&#34;https://youtu.be/KDUtjZHIx44&#34;&gt;video&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/a/2125738/3848679&#34;&gt;How to revert a “git rm -r .”?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
