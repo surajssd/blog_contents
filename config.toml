@@ -9,7 +9,7 @@ googleAnalytics = ""
 
 [params]
     # Sets the meta tag description, usually reserved for the main page
-    description          = "My little hacks"
+    description          = "Blog"
     # This will appear on the top left of the navigation bar
     navbarTitle          = "Suraj Deshmukh"
     # Social media buttons that appear on the sidebar
@@ -41,7 +41,7 @@ googleAnalytics = ""
 # parms.intro will appear on the sidebar
 # This is optional, but it's suggested to use
 [params.intro]
-    header    = "My little hacks"
+    header    = "Blog"
 
     paragraph = "containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos"
 
