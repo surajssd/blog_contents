@@ -1336,5 +1336,32 @@ cd kompose
 </description>
     </item>
     
+    <item>
+      <title>About me</title>
+      <link>http://suraj.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://suraj.io/about/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/surajssd.png&#34; alt=&#34;Suraj Deshmukh&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I am OpenSource Enthusiast.&lt;/li&gt;
+&lt;li&gt;I contribute to various container related technologies like kompose, OpenCompose, cri-o, OpenShift, etc.&lt;/li&gt;
+&lt;li&gt;A proud Red Hatter.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;contact&#34;&gt;Contact&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IRC, Slack: &lt;code&gt;surajd&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Github: &lt;a href=&#34;https://github.com/surajssd/&#34;&gt;surajssd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Twitter: &lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;@surajd_&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Email: &lt;code&gt;surajd.service@gmail.com&lt;/code&gt; &amp;amp; &lt;code&gt;surajd@redhat.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
