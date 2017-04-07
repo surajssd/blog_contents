@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://suraj.io/post/using-crio-with-k8s-single-node/</loc>
+    <lastmod>2017-04-08T00:11:37+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>http://suraj.io/post/starting-a-new-opensource-project-requirements/</loc>
     <lastmod>2017-03-26T18:19:15+05:30</lastmod>
   </url>
@@ -39,6 +44,12 @@
   <url>
     <loc>http://suraj.io/tags/centos/</loc>
     <lastmod>2017-03-24T10:35:54+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://suraj.io/tags/crio/</loc>
+    <lastmod>2017-04-08T00:11:37+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -85,8 +96,20 @@
   </url>
   
   <url>
+    <loc>http://suraj.io/tags/kubernetes/</loc>
+    <lastmod>2017-04-08T00:11:37+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://suraj.io/categories/notes/</loc>
+    <lastmod>2017-04-08T00:11:37+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://suraj.io/tags/notes/</loc>
-    <lastmod>2017-03-21T22:03:48+05:30</lastmod>
+    <lastmod>2017-04-08T00:11:37+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -110,7 +133,7 @@
   
   <url>
     <loc>http://suraj.io/post/</loc>
-    <lastmod>2017-03-26T18:19:15+05:30</lastmod>
+    <lastmod>2017-04-08T00:11:37+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -146,7 +169,7 @@
   
   <url>
     <loc>http://suraj.io/</loc>
-    <lastmod>2017-03-26T18:19:15+05:30</lastmod>
+    <lastmod>2017-04-08T00:11:37+05:30</lastmod>
     <priority>0</priority>
   </url>
   

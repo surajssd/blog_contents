@@ -35,7 +35,7 @@
 Note: All the commands that start with # are inside the container.
 Fedora Spin the fedora test environment, let&rsquo;s say fedora 25, I do it in containers.
 $ docker run -it fedora:25 bash  Once inside the container download the latest package from the testing repo:
-# dnf --enablerepo updates-testing -y install kompose  Note: Make sure you download the latest release, there might be conditions that you download the old package."/>
+dnf --enablerepo updates-testing -y install kompose  Note: Make sure you download the latest release, there might be conditions that you download the old package."/>
 <meta name="twitter:site" content="@surajd_"/>
 
         <meta property="og:title" content="Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package" />
@@ -43,7 +43,7 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
 Note: All the commands that start with # are inside the container.
 Fedora Spin the fedora test environment, let&rsquo;s say fedora 25, I do it in containers.
 $ docker run -it fedora:25 bash  Once inside the container download the latest package from the testing repo:
-# dnf --enablerepo updates-testing -y install kompose  Note: Make sure you download the latest release, there might be conditions that you download the old package." />
+dnf --enablerepo updates-testing -y install kompose  Note: Make sure you download the latest release, there might be conditions that you download the old package." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://suraj.io/post/test-kompose/" />
 
@@ -68,15 +68,15 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
 Note: All the commands that start with # are inside the container.
 Fedora Spin the fedora test environment, let&rsquo;s say fedora 25, I do it in containers.
 $ docker run -it fedora:25 bash  Once inside the container download the latest package from the testing repo:
-# dnf --enablerepo updates-testing -y install kompose  Note: Make sure you download the latest release, there might be conditions that you download the old package.">
+dnf --enablerepo updates-testing -y install kompose  Note: Make sure you download the latest release, there might be conditions that you download the old package.">
 
 
 <meta itemprop="dateModified" content="2017-03-14T00:31:57&#43;05:30" />
-<meta itemprop="wordCount" content="238">
+<meta itemprop="wordCount" content="231">
 
 
 
-<meta itemprop="keywords" content="git,ide,packaging,project management,centos,fedora,git,github,ide,intellij,notes,open source,openshift,productivity,programming,project,rpm," />
+<meta itemprop="keywords" content="git,ide,notes,packaging,project management,centos,crio,fedora,git,github,ide,intellij,kubernetes,notes,open source,openshift,productivity,programming,project,rpm," />
 
         
 
@@ -220,11 +220,11 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
 
                 
                     <li>
-                        <a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/"><p>TODOs for new project</p></a>
+                        <a href="http://suraj.io/post/using-crio-with-k8s-single-node/"><p>k8s on CRI-O - single node</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://suraj.io/post/rpm-notes/"><p>rpm Notes</p></a>
+                        <a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/"><p>TODOs for new project</p></a>
                     </li>
                 
             </ul>
@@ -384,14 +384,14 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
 
 <p>Once inside the container download the latest package from the testing repo:</p>
 
-<pre><code class="language-bash"># dnf --enablerepo updates-testing -y install kompose
+<pre><code class="language-bash">dnf --enablerepo updates-testing -y install kompose
 </code></pre>
 
 <p><strong>Note</strong>: Make sure you download the latest release, there might be conditions that you download the old package.</p>
 
 <p>Now having the package is not enough, we need to run the functional tests, which is in the source repoistory. But before we clone the repo, we need some dependencies like <code>make</code> and <code>jq</code>. So install them using packages.</p>
 
-<pre><code class="language-bash"># dnf install -y jq make
+<pre><code class="language-bash">dnf install -y jq make
 </code></pre>
 
 <h2 id="centos">CentOS</h2>
@@ -405,34 +405,35 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
 
 <p>Install kompose from <code>epel-testing</code> repo:</p>
 
-<pre><code class="language-bash"># yum --enablerepo=epel-testing -y install kompose
+<pre><code class="language-bash">yum install epel-release
+yum --enablerepo=epel-testing -y install kompose
 </code></pre>
 
 <h3 id="paas7-openshift-common-el7-repo"><code>paas7-openshift-common-el7</code> repo</h3>
 
 <p>For pulling package from testing repo in CentOS PAAS sig.</p>
 
-<pre><code class="language-bash"># yum -y install centos-release-openshift-origin
-# yum -y --enablerepo=centos-openshift-origin-testing install kompose
+<pre><code class="language-bash">yum -y install centos-release-openshift-origin
+yum -y --enablerepo=centos-openshift-origin-testing install kompose
 </code></pre>
 
 <p>And packages needed to run tests:</p>
 
-<pre><code class="language-bash"># yum install -y epel-release
-# yum install -y jq make
+<pre><code class="language-bash">yum install -y epel-release
+yum install -y jq make
 </code></pre>
 
 <h2 id="functional-tests">Functional tests</h2>
 
 <p>Now lets get the functional tests:</p>
 
-<pre><code># git clone https://github.com/kubernetes-incubator/kompose/
-# cd kompose
+<pre><code>git clone https://github.com/kubernetes-incubator/kompose/
+cd kompose
 </code></pre>
 
 <p>Run tests:</p>
 
-<pre><code class="language-bash"># make test-cmd
+<pre><code class="language-bash">make test-cmd
 </code></pre>
 
 <p>If all tests pass then just give a karma for it on the release page.</p>
@@ -612,13 +613,13 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h3>
+                                <h3><a href="http://suraj.io/post/using-crio-with-k8s-single-node/">k8s on CRI-O - single node</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-26'>
-                                    March 26, 2017</time>
+                                    '2017-04-08'>
+                                    April 8, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -626,13 +627,13 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h3>
+                                <h3><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-24'>
-                                    March 24, 2017</time>
+                                    '2017-03-26'>
+                                    March 26, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -689,6 +690,15 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
                         <article>
                             <header>
                                 <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/notes/">notes</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

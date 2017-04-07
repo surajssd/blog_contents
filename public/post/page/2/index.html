@@ -35,7 +35,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-03-17T14:41:51&#43;05:30"/>
+<meta property="og:updated_time" content="2017-03-21T22:03:48&#43;05:30"/>
 
 
 
@@ -188,11 +188,11 @@
 
                 
                     <li>
-                        <a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/"><p>TODOs for new project</p></a>
+                        <a href="http://suraj.io/post/using-crio-with-k8s-single-node/"><p>k8s on CRI-O - single node</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://suraj.io/post/rpm-notes/"><p>rpm Notes</p></a>
+                        <a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/"><p>TODOs for new project</p></a>
                     </li>
                 
             </ul>
@@ -208,6 +208,77 @@
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://suraj.io/post/git-notes/">Git Notes</a></h2>
+        
+        
+            <p>Contains notes about using git</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-03-21'>
+            March 21, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>6 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Notes about using git.
+Tips and tricks Switch branches $ git checkout &lt;branch&gt;  status $ git status -sb  Show status in short format and also give branch info
+show $ git show  Shows log message and diff about the commit you are on.
+log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go  Get logs on file between line numbers.
+$ git log &ndash;graph &ndash;abbrev-commit  Show graph in logs.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/git-notes/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesgit'>git</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -315,77 +386,6 @@ Build rpms locally Before you begin make sure you have setup the local directory
     <footer>
         <ul class="actions">
             <li><a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriespackaging'>packaging</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/test-kompose/">Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-14'>
-            March 14, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
-Note: All the commands that start with # are inside the container.
-Fedora Spin the fedora test environment, let&rsquo;s say fedora 25, I do it in containers.
-$ docker run -it fedora:25 bash  Once inside the container download the latest package from the testing repo:</p>
-
-<h1 id="dnf-enablerepo-updates-testing-y-install-kompose-note-make-sure-you-download-the-latest-release-there-might-be-conditions-that-you-download-the-old-package">dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you download the latest release, there might be conditions that you download the old package.</h1>
-</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/test-kompose/" class="button big">Continue Reading</a></li>
         </ul>
         <ul class="stats">
     
@@ -540,13 +540,13 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h3>
+                                <h3><a href="http://suraj.io/post/using-crio-with-k8s-single-node/">k8s on CRI-O - single node</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-26'>
-                                    March 26, 2017</time>
+                                    '2017-04-08'>
+                                    April 8, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -554,13 +554,13 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h3>
+                                <h3><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-24'>
-                                    March 24, 2017</time>
+                                    '2017-03-26'>
+                                    March 26, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -617,6 +617,15 @@ $ docker run -it fedora:25 bash  Once inside the container download the latest p
                         <article>
                             <header>
                                 <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/notes/">notes</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

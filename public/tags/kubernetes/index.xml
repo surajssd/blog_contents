@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on Suraj Deshmukh</title>
+    <link>http://suraj.io/tags/kubernetes/index.xml</link>
+    <description>Recent content in Kubernetes on Suraj Deshmukh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://suraj.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>k8s on CRI-O - single node</title>
+      <link>http://suraj.io/post/using-crio-with-k8s-single-node/</link>
+      <pubDate>Sat, 08 Apr 2017 00:11:37 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/using-crio-with-k8s-single-node/</guid>
+      <description>
+
+&lt;p&gt;Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.&lt;/p&gt;
+
+&lt;h3 id=&#34;installing-os-dependencies&#34;&gt;Installing OS dependencies&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;dnf -y install \
+  go \
+  git \
+  btrfs-progs-devel \
+  device-mapper-devel \
+  glib2-devel \
+  glibc-devel \
+  glibc-static \
+  gpgme-devel \
+  libassuan-devel \
+  libgpg-error-devel \
+  libseccomp-devel \
+  libselinux-devel \
+  pkgconfig \
+  wget \
+  etcd \
+  iptables
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;creating-go-environment&#34;&gt;Creating go environment&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd ~
+mkdir -p ~/go
+
+export GOPATH=~/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
+
+echo &#39;GOPATH=~/go&#39; &amp;gt;&amp;gt; ~/.bashrc
+echo &#39;GOBIN=$GOPATH/bin&#39; &amp;gt;&amp;gt; ~/.bashrc
+echo &#39;PATH=$PATH:$GOBIN&#39; &amp;gt;&amp;gt; ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;pull-all-the-code-dependencies&#34;&gt;Pull all the code dependencies&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;go get -d k8s.io/kubernetes
+go get -u github.com/cloudflare/cfssl/cmd/...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;install-runc&#34;&gt;Install runc&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;go get -d github.com/opencontainers/runc
+cd $GOPATH/src/github.com/opencontainers/runc
+git reset --hard 47ea5c75ebeb40a317d2cfa95f9c3536c00c1eea
+make BUILDTAGS=&#39;seccomp selinux&#39; &amp;amp;&amp;amp; make install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;build-cri-o&#34;&gt;Build &lt;code&gt;cri-o&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd
+go get -d github.com/kubernetes-incubator/cri-o
+cd $GOPATH/src/github.com/kubernetes-incubator/cri-o
+make install.tools
+make &amp;amp;&amp;amp; make install
+make install.config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;set-up-cni&#34;&gt;Set up CNI&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;go get -d github.com/containernetworking/cni
+cd $GOPATH/src/github.com/containernetworking/cni
+./build.sh
+
+mkdir -p /opt/cni/bin
+cp bin/* /opt/cni/bin/
+
+mkdir -p /etc/cni/net.d/
+cat &amp;gt; /etc/cni/net.d/10-ocid-bridge.conf &amp;lt;&amp;lt;EOF
+{
+    &amp;quot;cniVersion&amp;quot;: &amp;quot;0.2.0&amp;quot;,
+    &amp;quot;name&amp;quot;: &amp;quot;ocid-bridge&amp;quot;,
+    &amp;quot;type&amp;quot;: &amp;quot;bridge&amp;quot;,
+    &amp;quot;bridge&amp;quot;: &amp;quot;cni0&amp;quot;,
+    &amp;quot;isGateway&amp;quot;: true,
+    &amp;quot;ipMasq&amp;quot;: true,
+    &amp;quot;ipam&amp;quot;: {
+        &amp;quot;type&amp;quot;: &amp;quot;host-local&amp;quot;,
+        &amp;quot;subnet&amp;quot;: &amp;quot;10.88.0.0/16&amp;quot;,
+        &amp;quot;routes&amp;quot;: [
+            { &amp;quot;dst&amp;quot;: &amp;quot;0.0.0.0/0&amp;quot; }
+        ]
+    }
+}
+EOF
+
+cat &amp;gt; /etc/cni/net.d/99-loopback.conf &amp;lt;&amp;lt;EOF
+{
+    &amp;quot;cniVersion&amp;quot;: &amp;quot;0.2.0&amp;quot;,
+    &amp;quot;type&amp;quot;: &amp;quot;loopback&amp;quot;
+}
+EOF
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;create-policy-json&#34;&gt;Create &lt;code&gt;policy.json&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkdir -p  /etc/containers
+
+cat &amp;gt; /etc/containers/policy.json &amp;lt;&amp;lt;EOF
+{
+    &amp;quot;default&amp;quot;: [
+        {
+            &amp;quot;type&amp;quot;: &amp;quot;insecureAcceptAnything&amp;quot;
+        }
+    ]
+}
+EOF
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;start-ocid-service&#34;&gt;Start ocid service&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export PATH=$PATH:/usr/local/bin/
+ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;start-k8s-cluster-with-crio&#34;&gt;Start k8s cluster with crio&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd $GOPATH/src/k8s.io/kubernetes/
+CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT=&#39;/var/run/ocid.sock --runtime-request-timeout=15m&#39; ./hack/local-up-cluster.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To use &lt;code&gt;kubectl&lt;/code&gt; (in new terminal)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ref:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bangalore Kubernetes Meetup - April 2017 - &lt;a href=&#34;https://docs.google.com/presentation/d/1tP7b1e1fy-n3_v5bilDLjOAheZGu602B3WK-1kxXkVo/edit?usp=sharing&#34;&gt;Slides&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/runc0m&#34;&gt;runcom&amp;rsquo;s&lt;/a&gt; &lt;a href=&#34;https://gist.github.com/runcom/ba58bf2f64e38d9f5d376d587751a0f9#file-fedora_25&#34;&gt;Setup script&lt;/a&gt; for Fedora.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes-incubator/cri-o&#34;&gt;cri-o project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;cri-o &lt;a href=&#34;https://github.com/kubernetes-incubator/cri-o/blob/master/tutorial.md&#34;&gt;tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes-incubator/cri-o/blob/master/kubernetes.md&#34;&gt;Running cri-o on kubernetes cluster&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;CRI-O: A kubernetes runtime - &lt;a href=&#34;https://www.youtube.com/watch?v=R-p7BXhtodo&#34;&gt;video&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

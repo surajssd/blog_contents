@@ -35,7 +35,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-03-26T18:19:15&#43;05:30"/>
+<meta property="og:updated_time" content="2017-03-14T00:31:57&#43;05:30"/>
 
 
 
@@ -188,11 +188,11 @@
 
                 
                     <li>
-                        <a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/"><p>TODOs for new project</p></a>
+                        <a href="http://suraj.io/post/using-crio-with-k8s-single-node/"><p>k8s on CRI-O - single node</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://suraj.io/post/rpm-notes/"><p>rpm Notes</p></a>
+                        <a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/"><p>TODOs for new project</p></a>
                     </li>
                 
             </ul>
@@ -214,6 +214,75 @@
     <header>
     <div class="title">
         
+            <h2><a href="http://suraj.io/post/test-kompose/">Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-03-14'>
+            March 14, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
+Note: All the commands that start with # are inside the container.
+Fedora Spin the fedora test environment, let&rsquo;s say fedora 25, I do it in containers.
+$ docker run -it fedora:25 bash  Once inside the container download the latest package from the testing repo:
+dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you download the latest release, there might be conditions that you download the old package.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/test-kompose/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriespackaging'>packaging</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
             <h2><a href="http://suraj.io/post/">Posts</a></h2>
         
         
@@ -224,8 +293,8 @@
         
 
         <time class="published"
-            datetime='2017-03-26'>
-            March 26, 2017</time>
+            datetime='2017-04-08'>
+            April 8, 2017</time>
         <span class="author"></span>
         
             <p>0 minute read</p>
@@ -372,13 +441,13 @@
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h3>
+                                <h3><a href="http://suraj.io/post/using-crio-with-k8s-single-node/">k8s on CRI-O - single node</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-26'>
-                                    March 26, 2017</time>
+                                    '2017-04-08'>
+                                    April 8, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -386,13 +455,13 @@
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h3>
+                                <h3><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-24'>
-                                    March 24, 2017</time>
+                                    '2017-03-26'>
+                                    March 26, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -449,6 +518,15 @@
                         <article>
                             <header>
                                 <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/notes/">notes</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

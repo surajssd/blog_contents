@@ -188,11 +188,11 @@
 
                 
                     <li>
-                        <a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/"><p>TODOs for new project</p></a>
+                        <a href="http://suraj.io/post/using-crio-with-k8s-single-node/"><p>k8s on CRI-O - single node</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://suraj.io/post/rpm-notes/"><p>rpm Notes</p></a>
+                        <a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/"><p>TODOs for new project</p></a>
                     </li>
                 
             </ul>
@@ -208,6 +208,74 @@
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://suraj.io/post/using-crio-with-k8s-single-node/">k8s on CRI-O - single node</a></h2>
+        
+        
+            <p>How to make kubernetes use CRI-O as container runtime</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-04-08'>
+            April 8, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
+Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables  Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &lsquo;GOPATH=~/go&rsquo; &gt;&gt; ~/.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/using-crio-with-k8s-single-node/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -345,77 +413,6 @@ Docs  README LICENSE How to install? How to use? Code of conduct guidelines Copy
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/git-notes/">Git Notes</a></h2>
-        
-        
-            <p>Contains notes about using git</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-21'>
-            March 21, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>6 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Notes about using git.
-Tips and tricks Switch branches $ git checkout &lt;branch&gt;  status $ git status -sb  Show status in short format and also give branch info
-show $ git show  Shows log message and diff about the commit you are on.
-log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go  Get logs on file between line numbers.
-$ git log &ndash;graph &ndash;abbrev-commit  Show graph in logs.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/git-notes/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesgit'>git</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -535,13 +532,13 @@ $ git log &ndash;graph &ndash;abbrev-commit  Show graph in logs.</p>
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h3>
+                                <h3><a href="http://suraj.io/post/using-crio-with-k8s-single-node/">k8s on CRI-O - single node</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-26'>
-                                    March 26, 2017</time>
+                                    '2017-04-08'>
+                                    April 8, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -549,13 +546,13 @@ $ git log &ndash;graph &ndash;abbrev-commit  Show graph in logs.</p>
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h3>
+                                <h3><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-03-24'>
-                                    March 24, 2017</time>
+                                    '2017-03-26'>
+                                    March 26, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -612,6 +609,15 @@ $ git log &ndash;graph &ndash;abbrev-commit  Show graph in logs.</p>
                         <article>
                             <header>
                                 <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/notes/">notes</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

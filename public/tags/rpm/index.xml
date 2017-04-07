@@ -358,14 +358,14 @@ yum install -y kompose
 
 &lt;p&gt;Once inside the container download the latest package from the testing repo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# dnf --enablerepo updates-testing -y install kompose
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;dnf --enablerepo updates-testing -y install kompose
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: Make sure you download the latest release, there might be conditions that you download the old package.&lt;/p&gt;
 
 &lt;p&gt;Now having the package is not enough, we need to run the functional tests, which is in the source repoistory. But before we clone the repo, we need some dependencies like &lt;code&gt;make&lt;/code&gt; and &lt;code&gt;jq&lt;/code&gt;. So install them using packages.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# dnf install -y jq make
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;dnf install -y jq make
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;centos&#34;&gt;CentOS&lt;/h2&gt;
@@ -379,34 +379,35 @@ yum install -y kompose
 
 &lt;p&gt;Install kompose from &lt;code&gt;epel-testing&lt;/code&gt; repo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# yum --enablerepo=epel-testing -y install kompose
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;yum install epel-release
+yum --enablerepo=epel-testing -y install kompose
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;paas7-openshift-common-el7-repo&#34;&gt;&lt;code&gt;paas7-openshift-common-el7&lt;/code&gt; repo&lt;/h3&gt;
 
 &lt;p&gt;For pulling package from testing repo in CentOS PAAS sig.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# yum -y install centos-release-openshift-origin
-# yum -y --enablerepo=centos-openshift-origin-testing install kompose
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;yum -y install centos-release-openshift-origin
+yum -y --enablerepo=centos-openshift-origin-testing install kompose
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;And packages needed to run tests:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# yum install -y epel-release
-# yum install -y jq make
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;yum install -y epel-release
+yum install -y jq make
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;functional-tests&#34;&gt;Functional tests&lt;/h2&gt;
 
 &lt;p&gt;Now lets get the functional tests:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;# git clone https://github.com/kubernetes-incubator/kompose/
-# cd kompose
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/kubernetes-incubator/kompose/
+cd kompose
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Run tests:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# make test-cmd
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;make test-cmd
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;If all tests pass then just give a karma for it on the release page.&lt;/p&gt;
