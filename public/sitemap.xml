@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://suraj.io/post/blr-k8s-meetup-april-2017/</loc>
+    <lastmod>2017-04-08T14:31:33+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>http://suraj.io/post/using-crio-with-k8s-single-node/</loc>
     <lastmod>2017-04-08T00:11:37+05:30</lastmod>
   </url>
@@ -58,6 +63,12 @@
   </url>
   
   <url>
+    <loc>http://suraj.io/categories/event-report/</loc>
+    <lastmod>2017-04-08T14:31:33+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://suraj.io/tags/fedora/</loc>
     <lastmod>2017-03-24T10:35:54+05:30</lastmod>
     <priority>0</priority>
@@ -101,7 +112,13 @@
   
   <url>
     <loc>http://suraj.io/tags/kubernetes/</loc>
-    <lastmod>2017-04-08T00:11:37+05:30</lastmod>
+    <lastmod>2017-04-08T14:31:33+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://suraj.io/tags/meetup/</loc>
+    <lastmod>2017-04-08T14:31:33+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -137,7 +154,7 @@
   
   <url>
     <loc>http://suraj.io/post/</loc>
-    <lastmod>2017-04-08T00:11:37+05:30</lastmod>
+    <lastmod>2017-04-08T14:31:33+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -173,7 +190,7 @@
   
   <url>
     <loc>http://suraj.io/</loc>
-    <lastmod>2017-04-08T00:11:37+05:30</lastmod>
+    <lastmod>2017-04-08T14:31:33+05:30</lastmod>
     <priority>0</priority>
   </url>
   

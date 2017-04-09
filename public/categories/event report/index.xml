@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Event report on Suraj Deshmukh</title>
+    <link>http://suraj.io/categories/event-report/index.xml</link>
+    <description>Recent content in Event report on Suraj Deshmukh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://suraj.io/categories/event-report/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Bangalore Kubernetes Meetup April 2017</title>
+      <link>http://suraj.io/post/blr-k8s-meetup-april-2017/</link>
+      <pubDate>Sat, 08 Apr 2017 14:31:33 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/blr-k8s-meetup-april-2017/</guid>
+      <description>&lt;p&gt;Like many Saturday mornings, &lt;a href=&#34;https://www.google.co.in/search?q=red+hat+bangalore&amp;amp;oq=red+ha&amp;amp;aqs=chrome.0.69i59j69i61l3j69i57j69i59.5776j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8#q=red+hat+bangalore&amp;amp;rflfq=1&amp;amp;rlha=0&amp;amp;rllag=12949018,77600064,1885&amp;amp;tbm=lcl&amp;amp;tbs=lf_pqs:EAE,lf:1,lf_ui:3&amp;amp;rldoc=1&amp;amp;rlfi=hd:;si:1155840882052252649;mv:!1m3!1d18064.656204115003!2d77.600064!3d12.949018050000001!2m3!1f0!2f0!3f0!3m2!1i91!2i446!4f13.1;tbs:lf_pqs:EAE,lf:1,lf_ui:3&#34;&gt;Red Hat Bangalore&lt;/a&gt;
+office was once again abuzz with enthusiasm on 8th of April, for hosting yet
+another successful chapter of &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/238335903/&#34;&gt;Bangalore Kubernetes Meetup&lt;/a&gt;.
+The Meetup had a good turnaround of about 40 people who gave up on their
+early morning saturday sleep to attend it despite the sweltering hot
+season and in line were four awesome talks.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;Suraj Deshmukh&lt;/a&gt; set the stage with his opening
+talk, &lt;em&gt;Kubernetes on CRI-O&lt;/em&gt;, wherein he explained different jargons like
+OCI, CRI, etc., introduced CRI-O and it’s architecture. Explaining how it
+glues Kubernetes and OCI compliant runtimes and concluding it with a demo
+showing how Kubernetes uses CRI-O. Link to &lt;a href=&#34;https://docs.google.com/presentation/d/1tP7b1e1fy-n3_v5bilDLjOAheZGu602B3WK-1kxXkVo/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/group.jpg&#34; alt=&#34;Folks listening&#34; title=&#34;Folks listening&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next in queue, was another wonderful talk by &lt;a href=&#34;https://twitter.com/dipakpawar231&#34;&gt;Dipak Pawar&lt;/a&gt;
+about &lt;em&gt;System and integration testing for Kubernetes/OpenShift with
+arquillian-cube and JBoss Forge&lt;/em&gt;, elaborating the usefulness of
+arquillian-cube’s integration for Kubernetes and OpenShift coupled
+with Forge tooling for testing micro-services deployed on OpenShift/Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/dipak.jpg&#34; alt=&#34;Dipak Pawar&#34; title=&#34;Dipak Pawar demoing arquillian-cube&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Following a quick breather, was an informative talk by &lt;a href=&#34;https://twitter.com/budhrg&#34;&gt;Budhram Gurung&lt;/a&gt;
+on &lt;em&gt;Running OpenShift locally using Minishift&lt;/em&gt;, highlighting the inspiration
+for the project and covering components of Minishift with a demo showing
+it&amp;rsquo;s usage. Also, leaving behind a note on how one could reach out to the
+developers and contribute to Minishift. Link to &lt;a href=&#34;https://docs.google.com/presentation/d/1oONy-2ncemEE7dtddoZL0Lcu0KVIUtqADhEX0bB5q5g/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/budhram.jpg&#34; alt=&#34;Budhram Gurung&#34; title=&#34;Budhram demoing Minishift&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Last, but not the least, planned talk was by &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Suraj Narwade&lt;/a&gt;
+on running &lt;em&gt;Docker on ARM/Raspberry PI&lt;/em&gt;, wherein he enjoyed sharing his
+experience of working on his hobby project, and all the problems faced by
+him in trying to get containers running on Raspberry PI. He shared his
+discovery showcasing the incompatibility of the container images built on
+&lt;code&gt;x86_64&lt;/code&gt;, to run on &lt;code&gt;arm&lt;/code&gt;. Link to &lt;a href=&#34;https://docs.google.com/presentation/d/1cJeQyMG_NOn8QDJpIHkAjTT4I0L6AyQ8DxeGbVWn850/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/surajn.jpg&#34; alt=&#34;Suraj Narwade&#34; title=&#34;Suraj Narwade demoing about the Docker&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Finally, an unanticipated lightening talk took the audience by storm where
+a quick 3 minutes demo on &lt;em&gt;Persistent Storage with Kubernetes&lt;/em&gt; by &lt;a href=&#34;https://twitter.com/raghavendra_t&#34;&gt;Raghavendra Talur&lt;/a&gt;
+turned into a good discussion of 30 minutes. He demo-ed, hyper-converged
+storage and dynamic provisioning with gluster and answered a lot of queries
+regarding setting up storage with Kubernetes, finishing on a
+to be continued note in the successive meetup.&lt;/p&gt;
+
+&lt;p&gt;The meetup concluded with discussion over snacks and planning for the next
+chapter of this meetup, which will be a &lt;strong&gt;Kubernetes and OpenShift 101 workshop&lt;/strong&gt;
+for beginners.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/network.jpg&#34; alt=&#34;Folks networking&#34; title=&#34;Folks networking&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks to all the Speakers for sharing their valuable thoughts and learnings,
+&lt;a href=&#34;https://twitter.com/nogenerics&#34;&gt;Baiju&lt;/a&gt; for recording all the sessions,
+&lt;a href=&#34;https://www.linkedin.com/in/hemani-katyal-57900081&#34;&gt;Hemani&lt;/a&gt; for making this post a good read
+and &lt;a href=&#34;https://twitter.com/redhatopen&#34;&gt;Red Hat&lt;/a&gt; for the venue.&lt;/p&gt;
+
+&lt;p&gt;The meetup is also featured on &lt;a href=&#34;http://www.k8sport.org/&#34;&gt;K8sPort&lt;/a&gt;, which
+is community engagement platform for Kubernetes community, courtesy &lt;a href=&#34;https://twitter.com/RSQuackenbush&#34;&gt;Ryan Quackenbush&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
