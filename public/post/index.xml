@@ -26,7 +26,8 @@ season and in line were four awesome talks.&lt;/p&gt;
 talk, &lt;em&gt;Kubernetes on CRI-O&lt;/em&gt;, wherein he explained different jargons like
 OCI, CRI, etc., introduced CRI-O and it’s architecture. Explaining how it
 glues Kubernetes and OCI compliant runtimes and concluding it with a demo
-showing how Kubernetes uses CRI-O. Link to &lt;a href=&#34;https://docs.google.com/presentation/d/1tP7b1e1fy-n3_v5bilDLjOAheZGu602B3WK-1kxXkVo/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;.&lt;/p&gt;
+showing how Kubernetes uses CRI-O. Link to &lt;a href=&#34;https://docs.google.com/presentation/d/1tP7b1e1fy-n3_v5bilDLjOAheZGu602B3WK-1kxXkVo/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;,
+&lt;a href=&#34;https://youtu.be/_E7foB4kVGM&#34;&gt;video&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/group.jpg&#34; alt=&#34;Folks listening&#34; title=&#34;Folks listening&#34; /&gt;&lt;/p&gt;
 
@@ -34,7 +35,8 @@ showing how Kubernetes uses CRI-O. Link to &lt;a href=&#34;https://docs.google.c
 about &lt;em&gt;System and integration testing for Kubernetes/OpenShift with
 arquillian-cube and JBoss Forge&lt;/em&gt;, elaborating the usefulness of
 arquillian-cube’s integration for Kubernetes and OpenShift coupled
-with Forge tooling for testing micro-services deployed on OpenShift/Kubernetes.&lt;/p&gt;
+with Forge tooling for testing micro-services deployed on OpenShift/Kubernetes.
+Link to &lt;a href=&#34;https://youtu.be/f4qIKmlBg34&#34;&gt;video&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/dipak.jpg&#34; alt=&#34;Dipak Pawar&#34; title=&#34;Dipak Pawar demoing arquillian-cube&#34; /&gt;&lt;/p&gt;
 
@@ -42,7 +44,8 @@ with Forge tooling for testing micro-services deployed on OpenShift/Kubernetes.&
 on &lt;em&gt;Running OpenShift locally using Minishift&lt;/em&gt;, highlighting the inspiration
 for the project and covering components of Minishift with a demo showing
 it&amp;rsquo;s usage. Also, leaving behind a note on how one could reach out to the
-developers and contribute to Minishift. Link to &lt;a href=&#34;https://docs.google.com/presentation/d/1oONy-2ncemEE7dtddoZL0Lcu0KVIUtqADhEX0bB5q5g/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;.&lt;/p&gt;
+developers and contribute to Minishift. Link to &lt;a href=&#34;https://docs.google.com/presentation/d/1oONy-2ncemEE7dtddoZL0Lcu0KVIUtqADhEX0bB5q5g/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;,
+&lt;a href=&#34;https://youtu.be/dvYeRbSpxR8&#34;&gt;video&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/budhram.jpg&#34; alt=&#34;Budhram Gurung&#34; title=&#34;Budhram demoing Minishift&#34; /&gt;&lt;/p&gt;
 
@@ -51,7 +54,8 @@ on running &lt;em&gt;Docker on ARM/Raspberry PI&lt;/em&gt;, wherein he enjoyed s
 experience of working on his hobby project, and all the problems faced by
 him in trying to get containers running on Raspberry PI. He shared his
 discovery showcasing the incompatibility of the container images built on
-&lt;code&gt;x86_64&lt;/code&gt;, to run on &lt;code&gt;arm&lt;/code&gt;. Link to &lt;a href=&#34;https://docs.google.com/presentation/d/1cJeQyMG_NOn8QDJpIHkAjTT4I0L6AyQ8DxeGbVWn850/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;.&lt;/p&gt;
+&lt;code&gt;x86_64&lt;/code&gt;, to run on &lt;code&gt;arm&lt;/code&gt;. Link to &lt;a href=&#34;https://docs.google.com/presentation/d/1cJeQyMG_NOn8QDJpIHkAjTT4I0L6AyQ8DxeGbVWn850/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;,
+&lt;a href=&#34;https://youtu.be/8yzPt5MfY8s&#34;&gt;video&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/surajn.jpg&#34; alt=&#34;Suraj Narwade&#34; title=&#34;Suraj Narwade demoing about the Docker&#34; /&gt;&lt;/p&gt;
 

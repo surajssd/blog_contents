@@ -19,7 +19,8 @@ season and in line were four awesome talks.
 talk, *Kubernetes on CRI-O*, wherein he explained different jargons like
 OCI, CRI, etc., introduced CRI-O and it’s architecture. Explaining how it
 glues Kubernetes and OCI compliant runtimes and concluding it with a demo
-showing how Kubernetes uses CRI-O. Link to [slides](https://docs.google.com/presentation/d/1tP7b1e1fy-n3_v5bilDLjOAheZGu602B3WK-1kxXkVo/edit?usp=sharing).
+showing how Kubernetes uses CRI-O. Link to [slides](https://docs.google.com/presentation/d/1tP7b1e1fy-n3_v5bilDLjOAheZGu602B3WK-1kxXkVo/edit?usp=sharing),
+[video](https://youtu.be/_E7foB4kVGM).
 
 ![Folks listening](/images/blr-k8s-meetup-april-2017/group.jpg "Folks listening")
 
@@ -29,6 +30,7 @@ about *System and integration testing for Kubernetes/OpenShift with
 arquillian-cube and JBoss Forge*, elaborating the usefulness of
 arquillian-cube’s integration for Kubernetes and OpenShift coupled
 with Forge tooling for testing micro-services deployed on OpenShift/Kubernetes.
+Link to [video](https://youtu.be/f4qIKmlBg34).
 
 ![Dipak Pawar](/images/blr-k8s-meetup-april-2017/dipak.jpg "Dipak Pawar demoing arquillian-cube")
 
@@ -37,7 +39,8 @@ Following a quick breather, was an informative talk by [Budhram Gurung](https://
 on *Running OpenShift locally using Minishift*, highlighting the inspiration
 for the project and covering components of Minishift with a demo showing
 it's usage. Also, leaving behind a note on how one could reach out to the
-developers and contribute to Minishift. Link to [slides](https://docs.google.com/presentation/d/1oONy-2ncemEE7dtddoZL0Lcu0KVIUtqADhEX0bB5q5g/edit?usp=sharing).
+developers and contribute to Minishift. Link to [slides](https://docs.google.com/presentation/d/1oONy-2ncemEE7dtddoZL0Lcu0KVIUtqADhEX0bB5q5g/edit?usp=sharing),
+[video](https://youtu.be/dvYeRbSpxR8).
 
 ![Budhram Gurung](/images/blr-k8s-meetup-april-2017/budhram.jpg "Budhram demoing Minishift")
 
@@ -47,7 +50,8 @@ on running *Docker on ARM/Raspberry PI*, wherein he enjoyed sharing his
 experience of working on his hobby project, and all the problems faced by
 him in trying to get containers running on Raspberry PI. He shared his
 discovery showcasing the incompatibility of the container images built on
-`x86_64`, to run on `arm`. Link to [slides](https://docs.google.com/presentation/d/1cJeQyMG_NOn8QDJpIHkAjTT4I0L6AyQ8DxeGbVWn850/edit?usp=sharing).
+`x86_64`, to run on `arm`. Link to [slides](https://docs.google.com/presentation/d/1cJeQyMG_NOn8QDJpIHkAjTT4I0L6AyQ8DxeGbVWn850/edit?usp=sharing),
+[video](https://youtu.be/8yzPt5MfY8s).
 
 ![Suraj Narwade](/images/blr-k8s-meetup-april-2017/surajn.jpg "Suraj Narwade demoing about the Docker")
 
@@ -61,7 +65,7 @@ to be continued note in the successive meetup.
 
 The meetup concluded with discussion over snacks and planning for the next
 chapter of this meetup, which will be a **Kubernetes and OpenShift 101 workshop**
-for beginners. 
+for beginners.
 
 ![Folks networking](/images/blr-k8s-meetup-april-2017/network.jpg "Folks networking")
 
