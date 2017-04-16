@@ -379,7 +379,7 @@ yum install -y kompose
 
 &lt;p&gt;Install kompose from &lt;code&gt;epel-testing&lt;/code&gt; repo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;yum install epel-release
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;yum install -y epel-release
 yum --enablerepo=epel-testing -y install kompose
 &lt;/code&gt;&lt;/pre&gt;
 

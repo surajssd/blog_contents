@@ -59,7 +59,7 @@ go get -u github.com/cloudflare/cfssl/cmd/...
 ```bash
 go get -d github.com/opencontainers/runc
 cd $GOPATH/src/github.com/opencontainers/runc
-git reset --hard 47ea5c75ebeb40a317d2cfa95f9c3536c00c1eea
+git reset --hard v1.0.0-rc3
 make BUILDTAGS='seccomp selinux' && make install
 ```
 

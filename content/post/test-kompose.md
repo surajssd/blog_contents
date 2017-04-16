@@ -45,7 +45,7 @@ $ docker run -it centos bash
 Install kompose from `epel-testing` repo:
 
 ```bash
-yum install epel-release
+yum install -y epel-release
 yum --enablerepo=epel-testing -y install kompose
 ```
 
