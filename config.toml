@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "Suraj Deshmukh"
 theme = "hugo-future-imperfect"
 preserveTaxonomyNames = true
-paginate = 3
+paginate = 10
 disqusShortname = "suraj-io"
 googleAnalytics = "UA-97006720-1"
 
@@ -64,7 +64,7 @@ googleAnalytics = "UA-97006720-1"
 # Adjust the amount of recent posts on the sidebar.
 # This is optional. The default value 5 will be used
 [params.postAmount]
-    sidebar = 2
+    sidebar = 5
 
 # Set up your menu items in the navigation bar
 # You can use identifier to prepend a font awesome icon to your text

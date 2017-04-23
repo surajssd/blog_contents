@@ -28,6 +28,15 @@
     </item>
     
     <item>
+      <title>Development</title>
+      <link>http://suraj.io/tags/development/</link>
+      <pubDate>Sun, 23 Apr 2017 15:57:07 +0530</pubDate>
+      
+      <guid>http://suraj.io/tags/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Fedora</title>
       <link>http://suraj.io/tags/fedora/</link>
       <pubDate>Fri, 24 Mar 2017 10:35:54 +0530</pubDate>
@@ -75,7 +84,7 @@
     <item>
       <title>Kubernetes</title>
       <link>http://suraj.io/tags/kubernetes/</link>
-      <pubDate>Sat, 08 Apr 2017 14:31:33 +0530</pubDate>
+      <pubDate>Sun, 23 Apr 2017 15:57:07 +0530</pubDate>
       
       <guid>http://suraj.io/tags/kubernetes/</guid>
       <description></description>
@@ -87,6 +96,15 @@
       <pubDate>Sat, 08 Apr 2017 14:31:33 +0530</pubDate>
       
       <guid>http://suraj.io/tags/meetup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Minikube</title>
+      <link>http://suraj.io/tags/minikube/</link>
+      <pubDate>Sun, 23 Apr 2017 15:57:07 +0530</pubDate>
+      
+      <guid>http://suraj.io/tags/minikube/</guid>
       <description></description>
     </item>
     
@@ -111,7 +129,7 @@
     <item>
       <title>Openshift</title>
       <link>http://suraj.io/tags/openshift/</link>
-      <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
+      <pubDate>Tue, 18 Apr 2017 23:56:15 +0530</pubDate>
       
       <guid>http://suraj.io/tags/openshift/</guid>
       <description></description>
@@ -141,6 +159,15 @@
       <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
       
       <guid>http://suraj.io/tags/project/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pv</title>
+      <link>http://suraj.io/tags/pv/</link>
+      <pubDate>Tue, 18 Apr 2017 23:56:15 +0530</pubDate>
+      
+      <guid>http://suraj.io/tags/pv/</guid>
       <description></description>
     </item>
     

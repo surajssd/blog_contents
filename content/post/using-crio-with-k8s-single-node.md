@@ -127,11 +127,19 @@ cat > /etc/containers/policy.json <<EOF
 EOF
 ```
 
+### Make SELinux happy
+
+```bash
+mkdir -p /var/lib/containers/
+chcon -Rt svirt_sandbox_file_t /var/lib/containers/
+```
+
 ### Start ocid service
 
 ```bash
 export PATH=$PATH:/usr/local/bin/
-ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug
+echo 'PATH=$PATH:/usr/local/bin/' >> ~/.bashrc
+ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug --selinux true
 ```
 
 ### Start k8s cluster with crio
@@ -145,6 +153,7 @@ To use `kubectl` (in new terminal)
 
 ```bash
 alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh
+echo 'alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh'  >> ~/.bashrc
 ```
 
 Ref:

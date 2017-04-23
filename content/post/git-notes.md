@@ -388,6 +388,14 @@ These are tips about using github.com
 
   In the top bar there are buttons for global list of issues and PRs. This can be a good todo list. In issues you can see issues you have created or assigned or mentioned.
 
+- Writing a very huge comment
+
+  ```
+  <details>
+    write whatever here that needs to be hidden
+  </details>
+  ```
+
 ---
 
 ## Ref:
@@ -398,3 +406,5 @@ These are tips about using github.com
   - Tips & Tricks: Gotta Git Them All - GitHub Universe 2016, [video](https://youtu.be/LsxDxL4PYik).
   - Everything I Wish I Knew When I Started Using GitHub - oscon Portland 2015, [video](https://youtu.be/KDUtjZHIx44).
   - [How to revert a “git rm -r .”?](http://stackoverflow.com/a/2125738/3848679)
+  - [How to make “spoiler” text in github wiki pages?](http://stackoverflow.com/a/39920717/3848679)
+

@@ -58,11 +58,11 @@
 
 
 <meta itemprop="dateModified" content="2017-04-08T00:11:37&#43;05:30" />
-<meta itemprop="wordCount" content="268">
+<meta itemprop="wordCount" content="289">
 
 
 
-<meta itemprop="keywords" content="event report,git,ide,notes,packaging,project management,centos,crio,fedora,git,github,ide,intellij,kubernetes,meetup,notes,open source,openshift,productivity,programming,project,rpm," />
+<meta itemprop="keywords" content="event report,git,ide,kubernetes,notes,packaging,project management,centos,crio,development,fedora,git,github,ide,intellij,kubernetes,meetup,minikube,notes,open source,openshift,productivity,programming,project,pv,rpm," />
 
         
 
@@ -216,11 +216,23 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/enabling-local-development-with-k8s/"><p>Enabling local development with Kubernetes</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://suraj.io/post/quick-pv-for-local-k8s/"><p>Quick PV for local Kubernetes cluster</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/blr-k8s-meetup-april-2017/"><p>Bangalore Kubernetes Meetup April 2017</p></a>
                     </li>
                 
                     <li>
                         <a href="http://suraj.io/post/using-crio-with-k8s-single-node/"><p>k8s on CRI-O - single node</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/"><p>TODOs for new project</p></a>
                     </li>
                 
             </ul>
@@ -481,10 +493,17 @@ cat &gt; /etc/containers/policy.json &lt;&lt;EOF
 EOF
 </code></pre>
 
+<h3 id="make-selinux-happy">Make SELinux happy</h3>
+
+<pre><code class="language-bash">mkdir -p /var/lib/containers/
+chcon -Rt svirt_sandbox_file_t /var/lib/containers/
+</code></pre>
+
 <h3 id="start-ocid-service">Start ocid service</h3>
 
 <pre><code class="language-bash">export PATH=$PATH:/usr/local/bin/
-ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug
+echo 'PATH=$PATH:/usr/local/bin/' &gt;&gt; ~/.bashrc
+ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug --selinux true
 </code></pre>
 
 <h3 id="start-k8s-cluster-with-crio">Start k8s cluster with crio</h3>
@@ -496,6 +515,7 @@ CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT='/var/run/ocid.sock --runtim
 <p>To use <code>kubectl</code> (in new terminal)</p>
 
 <pre><code class="language-bash">alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh
+echo 'alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh'  &gt;&gt; ~/.bashrc
 </code></pre>
 
 <p>Ref:</p>
@@ -681,6 +701,34 @@ CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT='/var/run/ocid.sock --runtim
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/enabling-local-development-with-k8s/">Enabling local development with Kubernetes</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-04-23'>
+                                    April 23, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://suraj.io/post/quick-pv-for-local-k8s/">Quick PV for local Kubernetes cluster</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-04-18'>
+                                    April 18, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/blr-k8s-meetup-april-2017/">Bangalore Kubernetes Meetup April 2017</a></h3>
                                 
                                     
@@ -702,6 +750,20 @@ CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT='/var/run/ocid.sock --runtim
                                 <time class="published" datetime=
                                     '2017-04-08'>
                                     April 8, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-03-26'>
+                                    March 26, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -748,6 +810,15 @@ CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT='/var/run/ocid.sock --runtim
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/notes/">notes</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/event-report/">event report</a>
                                 <span style="float:right;">1</span>
                             </header>
@@ -775,7 +846,7 @@ CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT='/var/run/ocid.sock --runtim
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/notes/">notes</a>
+                                <a href="/categories/kubernetes/">kubernetes</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

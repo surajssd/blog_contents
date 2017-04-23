@@ -128,10 +128,17 @@ cat &amp;gt; /etc/containers/policy.json &amp;lt;&amp;lt;EOF
 EOF
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;h3 id=&#34;make-selinux-happy&#34;&gt;Make SELinux happy&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkdir -p /var/lib/containers/
+chcon -Rt svirt_sandbox_file_t /var/lib/containers/
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h3 id=&#34;start-ocid-service&#34;&gt;Start ocid service&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export PATH=$PATH:/usr/local/bin/
-ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug
+echo &#39;PATH=$PATH:/usr/local/bin/&#39; &amp;gt;&amp;gt; ~/.bashrc
+ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug --selinux true
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;start-k8s-cluster-with-crio&#34;&gt;Start k8s cluster with crio&lt;/h3&gt;
@@ -143,6 +150,7 @@ CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT=&#39;/var/run/ocid.sock --ru
 &lt;p&gt;To use &lt;code&gt;kubectl&lt;/code&gt; (in new terminal)&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh
+echo &#39;alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh&#39;  &amp;gt;&amp;gt; ~/.bashrc
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Ref:&lt;/p&gt;
@@ -565,6 +573,15 @@ CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT=&#39;/var/run/ocid.sock --ru
 
 &lt;p&gt;In the top bar there are buttons for global list of issues and PRs. This can be a good todo list. In issues you can see issues you have created or assigned or mentioned.&lt;/p&gt;
 
+&lt;ul&gt;
+&lt;li&gt;Writing a very huge comment&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;lt;details&amp;gt;
+    write whatever here that needs to be hidden
+  &amp;lt;/details&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;hr /&gt;
 
 &lt;h2 id=&#34;ref&#34;&gt;Ref:&lt;/h2&gt;
@@ -576,6 +593,7 @@ CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT=&#39;/var/run/ocid.sock --ru
 &lt;li&gt;Tips &amp;amp; Tricks: Gotta Git Them All - GitHub Universe 2016, &lt;a href=&#34;https://youtu.be/LsxDxL4PYik&#34;&gt;video&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Everything I Wish I Knew When I Started Using GitHub - oscon Portland 2015, &lt;a href=&#34;https://youtu.be/KDUtjZHIx44&#34;&gt;video&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/a/2125738/3848679&#34;&gt;How to revert a “git rm -r .”?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/a/39920717/3848679&#34;&gt;How to make “spoiler” text in github wiki pages?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

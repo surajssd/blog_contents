@@ -35,7 +35,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-03-24T10:35:54&#43;05:30"/>
+<meta property="og:updated_time" content="2017-04-23T15:57:07&#43;05:30"/>
 
 
 
@@ -198,11 +198,23 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/enabling-local-development-with-k8s/"><p>Enabling local development with Kubernetes</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://suraj.io/post/quick-pv-for-local-k8s/"><p>Quick PV for local Kubernetes cluster</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/blr-k8s-meetup-april-2017/"><p>Bangalore Kubernetes Meetup April 2017</p></a>
                     </li>
                 
                     <li>
                         <a href="http://suraj.io/post/using-crio-with-k8s-single-node/"><p>k8s on CRI-O - single node</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/"><p>TODOs for new project</p></a>
                     </li>
                 
             </ul>
@@ -224,10 +236,8 @@ ga('send', 'pageview');
     <header>
     <div class="title">
         
-            <h2><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h2>
+            <h2><a href="http://suraj.io/post/">Posts</a></h2>
         
-        
-            <p>General notes about rpm packaging and references to upstream docs</p>
         
     </div>
     <div class="meta">
@@ -236,78 +246,11 @@ ga('send', 'pageview');
         
 
         <time class="published"
-            datetime='2017-03-24'>
-            March 24, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
+            datetime='2017-04-23'>
+            April 23, 2017</time>
+        <span class="author"></span>
         
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG  My Notes  Start reading from: Fedora packager&rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros.  $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch   To see all macros on the system:  $ rpm &ndash;showrc   Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package  $ rpm -qip .</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/rpm-notes/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriespackaging'>packaging</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/git-notes/">Git Notes</a></h2>
-        
-        
-            <p>Contains notes about using git</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-21'>
-            March 21, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>6 minute read</p>
+            <p>0 minute read</p>
         
         
     </div>
@@ -315,113 +258,16 @@ ga('send', 'pageview');
 
     
 
-    <p>Notes about using git.
-Tips and tricks Switch branches $ git checkout &lt;branch&gt;  status $ git status -sb  Show status in short format and also give branch info
-show $ git show  Shows log message and diff about the commit you are on.
-log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go  Get logs on file between line numbers.
-$ git log &ndash;graph &ndash;abbrev-commit  Show graph in logs.</p>
+    <p></p>
 
     <footer>
         <ul class="actions">
-            <li><a href="http://suraj.io/post/git-notes/" class="button big">Continue Reading</a></li>
+            <li><a href="http://suraj.io/post/" class="button big">Continue Reading</a></li>
         </ul>
         <ul class="stats">
     
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
 
     
-    
-        <li><a href='/categoriesgit'>git</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/intellij-shortcuts/">Intellij Shortcuts</a></h2>
-        
-        
-            <p>Shortcuts of intellij and also some short notes</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-17'>
-            March 17, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>5 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Note: This is a living document and will be updated as I discover new things.
-Shortcuts  Ctrl + Shift + A  Find any action in IDE
- Ctrl + Shift + F  Find in Path
- Alt + 1  Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
- Shift + Insert in Project window  Here you can add new file to the project.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/intellij-shortcuts/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categorieside'>ide</a></li>
     
 </ul>
 
@@ -438,8 +284,7 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
     
 
     
-        <li><a href="/tags/ide/page/3/"
-                class="button big next">Next Page</a></li>
+        <li><a href="#" class="disabled button big next">Next Page</a></li>
     
 </ul>
 
@@ -549,6 +394,34 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/enabling-local-development-with-k8s/">Enabling local development with Kubernetes</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-04-23'>
+                                    April 23, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://suraj.io/post/quick-pv-for-local-k8s/">Quick PV for local Kubernetes cluster</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-04-18'>
+                                    April 18, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/blr-k8s-meetup-april-2017/">Bangalore Kubernetes Meetup April 2017</a></h3>
                                 
                                     
@@ -570,6 +443,20 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
                                 <time class="published" datetime=
                                     '2017-04-08'>
                                     April 8, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-03-26'>
+                                    March 26, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -616,6 +503,15 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/notes/">notes</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/event-report/">event report</a>
                                 <span style="float:right;">1</span>
                             </header>
@@ -643,7 +539,7 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/notes/">notes</a>
+                                <a href="/categories/kubernetes/">kubernetes</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

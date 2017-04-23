@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Minikube on Suraj Deshmukh</title>
+    <link>http://suraj.io/tags/minikube/index.xml</link>
+    <description>Recent content in Minikube on Suraj Deshmukh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://suraj.io/tags/minikube/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Enabling local development with Kubernetes</title>
+      <link>http://suraj.io/post/enabling-local-development-with-k8s/</link>
+      <pubDate>Sun, 23 Apr 2017 15:57:07 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/enabling-local-development-with-k8s/</guid>
+      <description>
+
+&lt;p&gt;I wanna show how you can enable &lt;a href=&#34;https://kubernetes.io/&#34;&gt;Kubernetes&lt;/a&gt; in your day to day development workflow. So that
+you get the feel of production deployment locally from day1.&lt;/p&gt;
+
+&lt;p&gt;I have a &lt;a href=&#34;http://flask.pocoo.org/&#34;&gt;flask application&lt;/a&gt; which I am working on. The basic directory structure looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ll
+total 24
+-rw-rw-r--. 1 foo foo  427 Apr 23 16:23 app.py
+-rw-rw-r--. 1 foo foo  201 Apr 23 16:55 docker-compose.yml
+-rw-rw-r--. 1 foo foo  363 Apr 23 16:21 Dockerfile
+-rwxrwxr-x. 1 foo foo   82 Dec  5 19:41 entrypoint.sh
+-rw-rw-r--. 1 foo foo 3010 Dec  5 19:41 README.adoc
+-rw-rw-r--. 1 foo foo   11 Dec  5 19:41 requirements.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can find all of these files in this &lt;a href=&#34;https://github.com/surajssd/hitcounter&#34;&gt;github repo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For having a local cluster I am using &lt;a href=&#34;https://github.com/kubernetes/minikube&#34;&gt;minikube&lt;/a&gt;. So follow instructions to
+&lt;a href=&#34;https://kubernetes.io/docs/getting-started-guides/minikube/&#34;&gt;setup minikube&lt;/a&gt;. Once you follow the instructions
+you will have a vm running a single node kubernetes cluster and a locally available &lt;code&gt;kubectl&lt;/code&gt; binary.&lt;/p&gt;
+
+&lt;p&gt;Before running this application on the minikube cluster we need configurations that kubernetes understands. Since we
+already have docker-compose file we will generate configs from this file with the help from tool called &lt;a href=&#34;http://kompose.io/&#34;&gt;kompose&lt;/a&gt;.
+Install kompose as per instructions as given on &lt;a href=&#34;https://github.com/kubernetes-incubator/kompose#installation&#34;&gt;docs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Generating configs:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ mkdir configs
+$ kompose convert -o configs/
+WARN Kubernetes provider doesnt support build key - ignoring 
+INFO file &amp;quot;configs/hitcounter-service.yaml&amp;quot; created 
+INFO file &amp;quot;configs/redis-service.yaml&amp;quot; created    
+INFO file &amp;quot;configs/hitcounter-deployment.yaml&amp;quot; created 
+INFO file &amp;quot;configs/redis-deployment.yaml&amp;quot; created 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Before we deploy the app we need to make some changes in the deployment files that have &lt;code&gt;build&lt;/code&gt; docker-compose construct
+in them. In our case only python app &lt;code&gt;hitcounter&lt;/code&gt; is built is being built from &lt;code&gt;Dockerfile&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We will edit file &lt;code&gt;hitcounter-deployment.yaml&lt;/code&gt; in &lt;code&gt;configs&lt;/code&gt; directory, to not pull image but read image from the local docker
+storage. Add a field after &lt;code&gt;image&lt;/code&gt; called &lt;code&gt;imagePullPolicy: IfNotPresent&lt;/code&gt;. Make changes as shown in following diff:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-diff&#34;&gt;$ git diff
+diff --git a/configs/hitcounter-deployment.yaml b/configs/hitcounter-deployment.yaml
+index 7b1116d..0ef35b3 100644
+--- a/configs/hitcounter-deployment.yaml
++++ b/configs/hitcounter-deployment.yaml
+@@ -17,6 +17,7 @@ spec:
+         - name: REDIS_HOST
+           value: redis
+         image: hitcounter
++        imagePullPolicy: IfNotPresent
+         name: hitcounter
+         ports:
+         - containerPort: 5000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we are ready with the configs, but we need to build container image for our app. So here you will need to have
+&lt;code&gt;docker-compose&lt;/code&gt; installed on your machine. For that follow &lt;a href=&#34;https://docs.docker.com/compose/install/&#34;&gt;docs here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Build image in the minikube&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;eval $(minikube docker-env)
+docker-compose build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once the build is complete, we are good to the deployment in kubernetes.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ kubectl create -f configs/
+deployment &amp;quot;hitcounter&amp;quot; created
+service &amp;quot;hitcounter&amp;quot; created
+deployment &amp;quot;redis&amp;quot; created
+service &amp;quot;redis&amp;quot; created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To verify that the app is running, find out the exposed IP Address as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ kubectl get svc
+NAME         CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
+hitcounter   10.0.0.244   &amp;lt;pending&amp;gt;     5000:30476/TCP   6s
+kubernetes   10.0.0.1     &amp;lt;none&amp;gt;        443/TCP          3d
+redis        10.0.0.21    &amp;lt;none&amp;gt;        6379/TCP         6s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now hit the externally exposed port &lt;code&gt;30476&lt;/code&gt; of service &lt;code&gt;hitcounter&lt;/code&gt; as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ curl $(minikube ip):30476
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now everytime you make changes to code do the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-compose build
+kubectl scale deployment hitcounter --replicas=0
+kubectl scale deployment hitcounter --replicas=1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Above we are removing all containers with old image and asking it to use the new image. For OpenShift we can do
+&lt;code&gt;oc deploy hitcounter --latest&lt;/code&gt; and it will trigger the deployment but I could not find anything similar with
+kubernetes.&lt;/p&gt;
+
+&lt;h3 id=&#34;problems-with-minikube&#34;&gt;Problems with minikube&lt;/h3&gt;
+
+&lt;p&gt;If you face problem accessing the docker daemon running inside the minikube VM like one of this&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ eval $(minikube docker-env)
+$ docker ps
+could not read CA certificate &amp;quot;/etc/docker/ca.pem&amp;quot;: open /etc/docker/ca.pem: no such file or directory
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This could be because there is a mismatch in docker client and docker daemon version, so to solve this issue just copy
+the docker client from the minikube VM to the local machine.&lt;/p&gt;
+
+&lt;p&gt;Enter the VM&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;minikube ssh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Copy the binary to host machine&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;scp $(which docker) foo@192.168.122.1:/home/foo/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now put the binary in &lt;code&gt;PATH&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;note&#34;&gt;NOTE&lt;/h3&gt;
+
+&lt;p&gt;The change we did in kubernetes deployment configs has enabled it to not pull image if the image is present in the docker&amp;rsquo;s storage locally.
+If you are running a build pipeline of your own then don&amp;rsquo;t do this, because it might prevent you from pulling the
+latest image. Also this will only work with the setup that is single node like minikube. For multi-node kubernetes
+cluster you should setup a local container image registry that cluster can pull images from. And for every image build
+push that image to registry.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
