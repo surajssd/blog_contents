@@ -2,14 +2,14 @@
 author = "Suraj Deshmukh"
 date = "2017-04-23T15:57:07+05:30"
 title = "Enabling local development with Kubernetes"
-description = "If you are doing development and wanna use kubernetes for it, then here is how you can do it."
-categories = ["kubernetes"]
+description = "If you are doing development and want to use kubernetes for it, then here is how you can do it."
+categories = ["kubernetes", "kompose"]
 tags = ["kubernetes", "minikube", "development"]
 
 +++
 
-I wanna show how you can enable [Kubernetes](https://kubernetes.io/) in your day to day development workflow. So that
-you get the feel of production deployment locally from day1.
+I want to show how you can enable [Kubernetes](https://kubernetes.io/) in your day to day development workflow. So that
+you get the feel of production deployment locally from day 1.
 
 I have a [flask application](http://flask.pocoo.org/) which I am working on. The basic directory structure looks like this:
 
@@ -39,15 +39,15 @@ Generating configs:
 ```bash
 $ mkdir configs
 $ kompose convert -o configs/
-WARN Kubernetes provider doesnt support build key - ignoring 
-INFO file "configs/hitcounter-service.yaml" created 
-INFO file "configs/redis-service.yaml" created    
-INFO file "configs/hitcounter-deployment.yaml" created 
-INFO file "configs/redis-deployment.yaml" created 
+WARN Kubernetes provider doesnt support build key - ignoring
+INFO file "configs/hitcounter-service.yaml" created
+INFO file "configs/redis-service.yaml" created
+INFO file "configs/hitcounter-deployment.yaml" created
+INFO file "configs/redis-deployment.yaml" created
 ```
 
-Before we deploy the app we need to make some changes in the deployment files that have `build` docker-compose construct
-in them. In our case only python app `hitcounter` is built is being built from `Dockerfile`.
+Before we deploy the app we need to make some changes in the deployment files, that were converted from docker-compose service
+having `build` construct in them. In our case only python app `hitcounter` is built is being built from `Dockerfile`.
 
 We will edit file `hitcounter-deployment.yaml` in `configs` directory, to not pull image but read image from the local docker
 storage. Add a field after `image` called `imagePullPolicy: IfNotPresent`. Make changes as shown in following diff:
@@ -114,33 +114,54 @@ Above we are removing all containers with old image and asking it to use the new
 `oc deploy hitcounter --latest` and it will trigger the deployment but I could not find anything similar with
 kubernetes.
 
-### Problems with minikube
+### FAQ
 
-If you face problem accessing the docker daemon running inside the minikube VM like one of this
-```bash
-$ eval $(minikube docker-env)
-$ docker ps
-could not read CA certificate "/etc/docker/ca.pem": open /etc/docker/ca.pem: no such file or directory
-```
+  - **- Why do I need to make changes in the kompose generated configs?**
 
-This could be because there is a mismatch in docker client and docker daemon version, so to solve this issue just copy
-the docker client from the minikube VM to the local machine.
+    Because by the default the config that kompose generates will not set `imagePullPolicy` and hence Kubernetes
+    assumes its value to be `Always`. So if you don't make changes and try to deploy then Kubernetes will try
+    to find the image from docker hub. Which it won't find and then that deployment will fail.
+    So we need to tell Kubernetes to look for the image in local docker storage.
 
-Enter the VM
-```bash
-minikube ssh
-```
+  - **- Can I use the same configs in the production servers as well?**
 
-Copy the binary to host machine
-```bash
-scp $(which docker) foo@192.168.122.1:/home/foo/
-```
-Now put the binary in `PATH`.
+    Yes you can use it just remove the change we did in the `imagePullPolicy: IfNotPresent`. The change is done
+    to enable you to use the locally built images without having to push the image to any container registry.
 
-### NOTE
+  - **- How do I get images when I am deploying in production level cluster?**
 
-The change we did in kubernetes deployment configs has enabled it to not pull image if the image is present in the docker's storage locally.
-If you are running a build pipeline of your own then don't do this, because it might prevent you from pulling the
-latest image. Also this will only work with the setup that is single node like minikube. For multi-node kubernetes
-cluster you should setup a local container image registry that cluster can pull images from. And for every image build
-push that image to registry.
+    Make sure your cluster can pull images from some private container registry. And then set up a build pipeline
+    from your code repo to build container on every change of it's stable branch.
+
+  - **- I have `build` defined in my `docker-compose` service why do I need to mention image name?**
+
+    With docker-compose this is okay. But kompose cannot make up a name on it's own and create deployment. The
+    [issue](https://github.com/kubernetes-incubator/kompose/issues/571) is tracked in kompose. But for now
+    with `build` also provide the `image` name you would expect.
+
+  - **- I get error running docker commands with minikube?**
+
+    If you face problem accessing the docker daemon running inside the minikube VM like one of this
+    ```bash
+    $ eval $(minikube docker-env)
+    $ docker ps
+    could not read CA certificate "/etc/docker/ca.pem": open /etc/docker/ca.pem: no such file or directory
+    ```
+
+    This could be because there is a mismatch in docker client and docker daemon version, so to solve this issue just copy
+    the docker client from the minikube VM to the local machine.
+
+    Enter in the VM
+    ```bash
+    minikube ssh
+    ```
+
+    Copy the binary to host machine
+    ```bash
+    scp $(which docker) foo@192.168.122.1:/home/foo/
+    ```
+    Now put the binary in `PATH`.
+
+
+If you have any other questions please ask it, I would like to add those here in FAQ section.
+

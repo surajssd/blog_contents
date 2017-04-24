@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Development on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/development/index.xml</link>
-    <description>Recent content in Development on Suraj Deshmukh</description>
+    <title>Kompose on Suraj Deshmukh</title>
+    <link>http://suraj.io/categories/kompose/index.xml</link>
+    <description>Recent content in Kompose on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://suraj.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://suraj.io/categories/kompose/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Enabling local development with Kubernetes</title>

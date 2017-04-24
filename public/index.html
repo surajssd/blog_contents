@@ -233,7 +233,7 @@ ga('send', 'pageview');
             <h2><a href="http://suraj.io/post/enabling-local-development-with-k8s/">Enabling local development with Kubernetes</a></h2>
         
         
-            <p>If you are doing development and wanna use kubernetes for it, then here is how you can do it.</p>
+            <p>If you are doing development and want to use kubernetes for it, then here is how you can do it.</p>
         
     </div>
     <div class="meta">
@@ -246,7 +246,7 @@ ga('send', 'pageview');
             April 23, 2017</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>4 minute read</p>
+            <p>5 minute read</p>
         
         
     </div>
@@ -306,8 +306,8 @@ ga('send', 'pageview');
     <div id="content">
         
 
-<p>I wanna show how you can enable <a href="https://kubernetes.io/">Kubernetes</a> in your day to day development workflow. So that
-you get the feel of production deployment locally from day1.</p>
+<p>I want to show how you can enable <a href="https://kubernetes.io/">Kubernetes</a> in your day to day development workflow. So that
+you get the feel of production deployment locally from day 1.</p>
 
 <p>I have a <a href="http://flask.pocoo.org/">flask application</a> which I am working on. The basic directory structure looks like this:</p>
 
@@ -335,15 +335,15 @@ Install kompose as per instructions as given on <a href="https://github.com/kube
 
 <pre><code class="language-bash">$ mkdir configs
 $ kompose convert -o configs/
-WARN Kubernetes provider doesnt support build key - ignoring 
-INFO file &quot;configs/hitcounter-service.yaml&quot; created 
-INFO file &quot;configs/redis-service.yaml&quot; created    
-INFO file &quot;configs/hitcounter-deployment.yaml&quot; created 
-INFO file &quot;configs/redis-deployment.yaml&quot; created 
+WARN Kubernetes provider doesnt support build key - ignoring
+INFO file &quot;configs/hitcounter-service.yaml&quot; created
+INFO file &quot;configs/redis-service.yaml&quot; created
+INFO file &quot;configs/hitcounter-deployment.yaml&quot; created
+INFO file &quot;configs/redis-deployment.yaml&quot; created
 </code></pre>
 
-<p>Before we deploy the app we need to make some changes in the deployment files that have <code>build</code> docker-compose construct
-in them. In our case only python app <code>hitcounter</code> is built is being built from <code>Dockerfile</code>.</p>
+<p>Before we deploy the app we need to make some changes in the deployment files, that were converted from docker-compose service
+having <code>build</code> construct in them. In our case only python app <code>hitcounter</code> is built is being built from <code>Dockerfile</code>.</p>
 
 <p>We will edit file <code>hitcounter-deployment.yaml</code> in <code>configs</code> directory, to not pull image but read image from the local docker
 storage. Add a field after <code>image</code> called <code>imagePullPolicy: IfNotPresent</code>. Make changes as shown in following diff:</p>
@@ -406,7 +406,33 @@ kubectl scale deployment hitcounter --replicas=1
 <code>oc deploy hitcounter --latest</code> and it will trigger the deployment but I could not find anything similar with
 kubernetes.</p>
 
-<h3 id="problems-with-minikube">Problems with minikube</h3>
+<h3 id="faq">FAQ</h3>
+
+<ul>
+<li><p><strong>- Why do I need to make changes in the kompose generated configs?</strong></p>
+
+<p>Because by the default the config that kompose generates will not set <code>imagePullPolicy</code> and hence Kubernetes
+assumes its value to be <code>Always</code>. So if you don&rsquo;t make changes and try to deploy then Kubernetes will try
+to find the image from docker hub. Which it won&rsquo;t find and then that deployment will fail.
+So we need to tell Kubernetes to look for the image in local docker storage.</p></li>
+
+<li><p><strong>- Can I use the same configs in the production servers as well?</strong></p>
+
+<p>Yes you can use it just remove the change we did in the <code>imagePullPolicy: IfNotPresent</code>. The change is done
+to enable you to use the locally built images without having to push the image to any container registry.</p></li>
+
+<li><p><strong>- How do I get images when I am deploying in production level cluster?</strong></p>
+
+<p>Make sure your cluster can pull images from some private container registry. And then set up a build pipeline
+from your code repo to build container on every change of it&rsquo;s stable branch.</p></li>
+
+<li><p><strong>- I have <code>build</code> defined in my <code>docker-compose</code> service why do I need to mention image name?</strong></p>
+
+<p>With docker-compose this is okay. But kompose cannot make up a name on it&rsquo;s own and create deployment. The
+<a href="https://github.com/kubernetes-incubator/kompose/issues/571">issue</a> is tracked in kompose. But for now
+with <code>build</code> also provide the <code>image</code> name you would expect.</p></li>
+
+<li><p><strong>- I get error running docker commands with minikube?</strong></p>
 
 <p>If you face problem accessing the docker daemon running inside the minikube VM like one of this</p>
 
@@ -418,7 +444,7 @@ could not read CA certificate &quot;/etc/docker/ca.pem&quot;: open /etc/docker/c
 <p>This could be because there is a mismatch in docker client and docker daemon version, so to solve this issue just copy
 the docker client from the minikube VM to the local machine.</p>
 
-<p>Enter the VM</p>
+<p>Enter in the VM</p>
 
 <pre><code class="language-bash">minikube ssh
 </code></pre>
@@ -428,15 +454,10 @@ the docker client from the minikube VM to the local machine.</p>
 <pre><code class="language-bash">scp $(which docker) foo@192.168.122.1:/home/foo/
 </code></pre>
 
-<p>Now put the binary in <code>PATH</code>.</p>
+<p>Now put the binary in <code>PATH</code>.</p></li>
+</ul>
 
-<h3 id="note">NOTE</h3>
-
-<p>The change we did in kubernetes deployment configs has enabled it to not pull image if the image is present in the docker&rsquo;s storage locally.
-If you are running a build pipeline of your own then don&rsquo;t do this, because it might prevent you from pulling the
-latest image. Also this will only work with the setup that is single node like minikube. For multi-node kubernetes
-cluster you should setup a local container image registry that cluster can pull images from. And for every image build
-push that image to registry.</p>
+<p>If you have any other questions please ask it, I would like to add those here in FAQ section.</p>
 
     </div>
 
@@ -457,7 +478,7 @@ push that image to registry.</p>
                     
 
                     
-                        Category
+                        Categories
                     
                 
             </li>
@@ -467,6 +488,8 @@ push that image to registry.</p>
     
     
         <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+        <li><a href='/categorieskompose'>kompose</a></li>
     
 </ul>
 
@@ -803,6 +826,15 @@ push that image to registry.</p>
                         <article>
                             <header>
                                 <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kompose/">kompose</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
