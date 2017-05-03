@@ -33,15 +33,15 @@
 <meta name="twitter:title" content="Packaging &#39;kompose&#39; for centos paas sig"/>
 <meta name="twitter:description" content="Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
-Building kompose srpm There are two ways to build srpm either build it locally or the ones that is built in koji for epel.
-Build rpms locally Before you begin make sure you have setup the local directory structure:"/>
+Setup your machine Install packages needed
+sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs"/>
 <meta name="twitter:site" content="@surajd_"/>
 
         <meta property="og:title" content="Packaging &#39;kompose&#39; for centos paas sig" />
 <meta property="og:description" content="Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
-Building kompose srpm There are two ways to build srpm either build it locally or the ones that is built in koji for epel.
-Build rpms locally Before you begin make sure you have setup the local directory structure:" />
+Setup your machine Install packages needed
+sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/" />
 
@@ -64,12 +64,12 @@ Build rpms locally Before you begin make sure you have setup the local directory
 <meta itemprop="name" content="Packaging &#39;kompose&#39; for centos paas sig">
 <meta itemprop="description" content="Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
-Building kompose srpm There are two ways to build srpm either build it locally or the ones that is built in koji for epel.
-Build rpms locally Before you begin make sure you have setup the local directory structure:">
+Setup your machine Install packages needed
+sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs">
 
 
 <meta itemprop="dateModified" content="2017-03-15T14:16:43&#43;05:30" />
-<meta itemprop="wordCount" content="648">
+<meta itemprop="wordCount" content="690">
 
 
 
@@ -394,6 +394,26 @@ ga('send', 'pageview');
 
 <p>Following are steps to package kompose for <a href="https://wiki.centos.org/SpecialInterestGroup/PaaS">CentOS PAAS SIG</a>. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.</p>
 
+<h2 id="setup-your-machine">Setup your machine</h2>
+
+<p>Install packages needed</p>
+
+<pre><code class="language-bash">sudo yum update -y &amp;&amp; \
+sudo yum install -y epel-release &amp;&amp; \
+sudo yum install -y rpm-build go redhat-rpm-config make \
+                    gcc byobu rpmlint rpmdevtools centos-packager
+</code></pre>
+
+<p>Setup certs</p>
+
+<pre><code class="language-bash">centos-cert -u surajd -n
+</code></pre>
+
+<h2 id="make-sure-your-rpmspec-is-error-free">Make sure your rpmspec is error free</h2>
+
+<pre><code class="language-bash">rpmlint kompose.spec
+</code></pre>
+
 <h2 id="building-kompose-srpm">Building kompose srpm</h2>
 
 <p>There are two ways to build <code>srpm</code> either build it locally or the ones that is built in koji for <code>epel</code>.</p>
@@ -402,23 +422,23 @@ ga('send', 'pageview');
 
 <p>Before you begin make sure you have setup the local directory structure:</p>
 
-<pre><code class="language-bash">$ mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-$ echo '%_topdir %(echo $HOME)/rpmbuild' &gt; ~/.rpmmacros
+<pre><code class="language-bash">mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+echo '%_topdir %(echo $HOME)/rpmbuild' &gt; ~/.rpmmacros
 </code></pre>
 
 <p>Update the rpm spec and get source code using it.</p>
 
-<pre><code class="language-bash">$ spectool -g kompose.spec
+<pre><code class="language-bash">spectool -g kompose.spec
 </code></pre>
 
 <p>Move the source to appropriate location</p>
 
-<pre><code class="language-bash">$ cp kompose-4e3300c.tar.gz ~/rpmbuild/SOURCES/
+<pre><code class="language-bash">cp kompose-4e3300c.tar.gz ~/rpmbuild/SOURCES/
 </code></pre>
 
 <p>Start local build</p>
 
-<pre><code class="language-bash">$ rpmbuild -ba kompose.spec --define &quot;dist .el7&quot;
+<pre><code class="language-bash">rpmbuild -ba kompose.spec --define &quot;dist .el7&quot;
 </code></pre>
 
 <p>Once above exits with status code 0, you can find the <code>RPM</code>s:</p>
@@ -456,7 +476,7 @@ rpmlib(PayloadIsXz) &lt;= 5.2-1
 
 <p>For release 0.3.0, I pulled SRPM from:</p>
 
-<pre><code class="language-bash">$ wget https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm
+<pre><code class="language-bash">wget https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm
 </code></pre>
 
 <h2 id="build-the-rpm-on-cbs-from-src-rpm">Build the rpm on cbs from src.rpm</h2>
@@ -467,14 +487,14 @@ rpmlib(PayloadIsXz) &lt;= 5.2-1
 
 <p>Do a scratch build on CBS in <code>paas7-openshift-common-release</code>.</p>
 
-<pre><code class="language-bash">$ cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+<pre><code class="language-bash">cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
 </code></pre>
 
 <p>You can download the rpm built here to test on CentOS machine.</p>
 
 <h3 id="making-an-actual-release">Making an actual release</h3>
 
-<pre><code class="language-bash">$ cbs build paas7-openshift-common-el7 ./kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+<pre><code class="language-bash">cbs build paas7-openshift-common-el7 ./kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
 </code></pre>
 
 <p>Once build is done successfully goto build page and download the rpm that is built for <code>x86_64</code>.</p>
@@ -482,7 +502,7 @@ rpmlib(PayloadIsXz) &lt;= 5.2-1
 <p>The page where builds were listed: <a href="https://cbs.centos.org/koji/taskinfo?taskID=171404">https://cbs.centos.org/koji/taskinfo?taskID=171404</a>
 The page where this particular build happened and where I had download link to rpm: <a href="https://cbs.centos.org/koji/buildinfo?buildID=16777">https://cbs.centos.org/koji/buildinfo?buildID=16777</a></p>
 
-<pre><code class="language-bash">$ wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+<pre><code class="language-bash">wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
 </code></pre>
 
 <p>Try to install this rpm and see if it works on CentOS:</p>
@@ -575,6 +595,7 @@ yum install -y kompose
 <li>CentOS PaaS SIG <a href="https://wiki.centos.org/SpecialInterestGroup/PaaS">https://wiki.centos.org/SpecialInterestGroup/PaaS</a></li>
 <li>CentOS SIGs <a href="https://wiki.centos.org/SpecialInterestGroup">https://wiki.centos.org/SpecialInterestGroup</a></li>
 <li>CBS <a href="https://wiki.centos.org/HowTos/CommunityBuildSystem">https://wiki.centos.org/HowTos/CommunityBuildSystem</a></li>
+<li><a href="https://wiki.centos.org/HowTos/CentosPackager">Building in CBS</a></li>
 <li><a href="https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm">RPM help from adb-utils repo</a></li>
 </ul>
 

@@ -109,6 +109,12 @@ $ rpmdev-extract kompose-0.4.0-0.1.git4e3300c.fc27.x86_64.rpm
 $ spectool -g kompose.spec
 ```
 
+- To validate the rpmspec if it is error free
+
+```bash
+$ rpmlint kompose.spec
+```
+
 ## Ref:
 
 - Yum and RPM Tricks https://wiki.centos.org/TipsAndTricks/YumAndRPM

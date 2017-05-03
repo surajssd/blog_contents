@@ -13,6 +13,29 @@ description = ""
 
 Following are steps to package kompose for [CentOS PAAS SIG](https://wiki.centos.org/SpecialInterestGroup/PaaS). CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
 
+## Setup your machine
+
+Install packages needed
+
+```bash
+sudo yum update -y && \
+sudo yum install -y epel-release && \
+sudo yum install -y rpm-build go redhat-rpm-config make \
+                    gcc byobu rpmlint rpmdevtools centos-packager
+```
+
+Setup certs
+
+```bash
+centos-cert -u surajd -n
+```
+
+## Make sure your rpmspec is error free
+
+```bash
+rpmlint kompose.spec
+```
+
 ## Building kompose srpm
 
 There are two ways to build `srpm` either build it locally or the ones that is built in koji for `epel`.
@@ -22,26 +45,26 @@ There are two ways to build `srpm` either build it locally or the ones that is b
 Before you begin make sure you have setup the local directory structure:
 
 ```bash
-$ mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-$ echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
+mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
 ```
 
 Update the rpm spec and get source code using it.
 
 ```bash
-$ spectool -g kompose.spec
+spectool -g kompose.spec
 ```
 
 Move the source to appropriate location
 
 ```bash
-$ cp kompose-4e3300c.tar.gz ~/rpmbuild/SOURCES/
+cp kompose-4e3300c.tar.gz ~/rpmbuild/SOURCES/
 ```
 
 Start local build
 
 ```bash
-$ rpmbuild -ba kompose.spec --define "dist .el7"
+rpmbuild -ba kompose.spec --define "dist .el7"
 ```
 
 Once above exits with status code 0, you can find the `RPM`s:
@@ -83,7 +106,7 @@ Try installing it locally and test it as mentioned in http://suraj.io/post/test-
 For release 0.3.0, I pulled SRPM from:
 
 ```bash
-$ wget https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm
+wget https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm
 ```
 
 ## Build the rpm on cbs from src.rpm
@@ -95,14 +118,14 @@ CBS is a community build system for SpecialInterestGroup members. It allows to b
 Do a scratch build on CBS in `paas7-openshift-common-release`.
 
 ```bash
-$ cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
 ```
 You can download the rpm built here to test on CentOS machine.
 
 ### Making an actual release
 
 ```bash
-$ cbs build paas7-openshift-common-el7 ./kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+cbs build paas7-openshift-common-el7 ./kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
 ```
 
 Once build is done successfully goto build page and download the rpm that is built for `x86_64`.
@@ -111,7 +134,7 @@ The page where builds were listed: https://cbs.centos.org/koji/taskinfo?taskID=1
 The page where this particular build happened and where I had download link to rpm: https://cbs.centos.org/koji/buildinfo?buildID=16777
 
 ```bash
-$ wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
 ```
 
 Try to install this rpm and see if it works on CentOS:
@@ -212,4 +235,5 @@ yum install -y kompose
 - CentOS PaaS SIG https://wiki.centos.org/SpecialInterestGroup/PaaS
 - CentOS SIGs https://wiki.centos.org/SpecialInterestGroup
 - CBS https://wiki.centos.org/HowTos/CommunityBuildSystem
+- [Building in CBS](https://wiki.centos.org/HowTos/CentosPackager)
 - [RPM help from adb-utils repo](https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm)

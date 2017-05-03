@@ -631,6 +631,13 @@ $ fedora-review -n namaskar
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ spectool -g kompose.spec
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;ul&gt;
+&lt;li&gt;To validate the rpmspec if it is error free&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpmlint kompose.spec
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;ref&#34;&gt;Ref:&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -1382,6 +1389,26 @@ rotates through all the recommendation.&lt;/p&gt;
 
 &lt;p&gt;Following are steps to package kompose for &lt;a href=&#34;https://wiki.centos.org/SpecialInterestGroup/PaaS&#34;&gt;CentOS PAAS SIG&lt;/a&gt;. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.&lt;/p&gt;
 
+&lt;h2 id=&#34;setup-your-machine&#34;&gt;Setup your machine&lt;/h2&gt;
+
+&lt;p&gt;Install packages needed&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo yum update -y &amp;amp;&amp;amp; \
+sudo yum install -y epel-release &amp;amp;&amp;amp; \
+sudo yum install -y rpm-build go redhat-rpm-config make \
+                    gcc byobu rpmlint rpmdevtools centos-packager
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Setup certs&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;centos-cert -u surajd -n
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;make-sure-your-rpmspec-is-error-free&#34;&gt;Make sure your rpmspec is error free&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rpmlint kompose.spec
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;building-kompose-srpm&#34;&gt;Building kompose srpm&lt;/h2&gt;
 
 &lt;p&gt;There are two ways to build &lt;code&gt;srpm&lt;/code&gt; either build it locally or the ones that is built in koji for &lt;code&gt;epel&lt;/code&gt;.&lt;/p&gt;
@@ -1390,23 +1417,23 @@ rotates through all the recommendation.&lt;/p&gt;
 
 &lt;p&gt;Before you begin make sure you have setup the local directory structure:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-$ echo &#39;%_topdir %(echo $HOME)/rpmbuild&#39; &amp;gt; ~/.rpmmacros
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+echo &#39;%_topdir %(echo $HOME)/rpmbuild&#39; &amp;gt; ~/.rpmmacros
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Update the rpm spec and get source code using it.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ spectool -g kompose.spec
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;spectool -g kompose.spec
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Move the source to appropriate location&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cp kompose-4e3300c.tar.gz ~/rpmbuild/SOURCES/
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp kompose-4e3300c.tar.gz ~/rpmbuild/SOURCES/
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Start local build&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpmbuild -ba kompose.spec --define &amp;quot;dist .el7&amp;quot;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rpmbuild -ba kompose.spec --define &amp;quot;dist .el7&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Once above exits with status code 0, you can find the &lt;code&gt;RPM&lt;/code&gt;s:&lt;/p&gt;
@@ -1444,7 +1471,7 @@ rpmlib(PayloadIsXz) &amp;lt;= 5.2-1
 
 &lt;p&gt;For release 0.3.0, I pulled SRPM from:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ wget https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;build-the-rpm-on-cbs-from-src-rpm&#34;&gt;Build the rpm on cbs from src.rpm&lt;/h2&gt;
@@ -1455,14 +1482,14 @@ rpmlib(PayloadIsXz) &amp;lt;= 5.2-1
 
 &lt;p&gt;Do a scratch build on CBS in &lt;code&gt;paas7-openshift-common-release&lt;/code&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;You can download the rpm built here to test on CentOS machine.&lt;/p&gt;
 
 &lt;h3 id=&#34;making-an-actual-release&#34;&gt;Making an actual release&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs build paas7-openshift-common-el7 ./kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cbs build paas7-openshift-common-el7 ./kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Once build is done successfully goto build page and download the rpm that is built for &lt;code&gt;x86_64&lt;/code&gt;.&lt;/p&gt;
@@ -1470,7 +1497,7 @@ rpmlib(PayloadIsXz) &amp;lt;= 5.2-1
 &lt;p&gt;The page where builds were listed: &lt;a href=&#34;https://cbs.centos.org/koji/taskinfo?taskID=171404&#34;&gt;https://cbs.centos.org/koji/taskinfo?taskID=171404&lt;/a&gt;
 The page where this particular build happened and where I had download link to rpm: &lt;a href=&#34;https://cbs.centos.org/koji/buildinfo?buildID=16777&#34;&gt;https://cbs.centos.org/koji/buildinfo?buildID=16777&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Try to install this rpm and see if it works on CentOS:&lt;/p&gt;
@@ -1563,6 +1590,7 @@ yum install -y kompose
 &lt;li&gt;CentOS PaaS SIG &lt;a href=&#34;https://wiki.centos.org/SpecialInterestGroup/PaaS&#34;&gt;https://wiki.centos.org/SpecialInterestGroup/PaaS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;CentOS SIGs &lt;a href=&#34;https://wiki.centos.org/SpecialInterestGroup&#34;&gt;https://wiki.centos.org/SpecialInterestGroup&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;CBS &lt;a href=&#34;https://wiki.centos.org/HowTos/CommunityBuildSystem&#34;&gt;https://wiki.centos.org/HowTos/CommunityBuildSystem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.centos.org/HowTos/CentosPackager&#34;&gt;Building in CBS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm&#34;&gt;RPM help from adb-utils repo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
