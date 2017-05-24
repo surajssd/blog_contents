@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://suraj.io/post/blr-k8s-meetup-may-2017/</loc>
+    <lastmod>2017-05-24T02:21:49+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>http://suraj.io/post/enabling-local-development-with-k8s/</loc>
     <lastmod>2017-04-23T15:57:07+05:30</lastmod>
   </url>
@@ -80,7 +85,7 @@
   
   <url>
     <loc>http://suraj.io/categories/event-report/</loc>
-    <lastmod>2017-04-08T14:31:33+05:30</lastmod>
+    <lastmod>2017-05-24T02:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -134,7 +139,7 @@
   
   <url>
     <loc>http://suraj.io/tags/kubernetes/</loc>
-    <lastmod>2017-04-23T15:57:07+05:30</lastmod>
+    <lastmod>2017-05-24T02:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -146,7 +151,7 @@
   
   <url>
     <loc>http://suraj.io/tags/meetup/</loc>
-    <lastmod>2017-04-08T14:31:33+05:30</lastmod>
+    <lastmod>2017-05-24T02:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -188,7 +193,7 @@
   
   <url>
     <loc>http://suraj.io/post/</loc>
-    <lastmod>2017-04-23T15:57:07+05:30</lastmod>
+    <lastmod>2017-05-24T02:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -230,7 +235,7 @@
   
   <url>
     <loc>http://suraj.io/</loc>
-    <lastmod>2017-04-23T15:57:07+05:30</lastmod>
+    <lastmod>2017-05-24T02:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   

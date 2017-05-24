@@ -1,0 +1,922 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Bangalore Kubernetes Meetup May 2017</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.20-DEV" />
+        
+
+
+        
+            <meta name="author" content="Suraj Deshmukh">
+        
+        
+            <meta name="description" content="Kubernetes and OpenShift 101 hands-on workshop">
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Bangalore Kubernetes Meetup May 2017"/>
+<meta name="twitter:title" content="Bangalore Kubernetes Meetup May 2017"/>
+<meta name="twitter:description" content="Kubernetes and OpenShift 101 hands-on workshop"/>
+<meta name="twitter:site" content="@surajd_"/>
+
+        <meta property="og:title" content="Bangalore Kubernetes Meetup May 2017" />
+<meta property="og:description" content="Kubernetes and OpenShift 101 hands-on workshop" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://suraj.io/post/blr-k8s-meetup-may-2017/" />
+
+
+
+<meta property="article:published_time" content="2017-05-24T02:21:49&#43;05:30"/>
+<meta property="article:modified_time" content="2017-05-24T02:21:49&#43;05:30"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Bangalore Kubernetes Meetup May 2017">
+<meta itemprop="description" content="Kubernetes and OpenShift 101 hands-on workshop">
+
+
+<meta itemprop="dateModified" content="2017-05-24T02:21:49&#43;05:30" />
+<meta itemprop="wordCount" content="576">
+
+
+
+<meta itemprop="keywords" content="event report,git,ide,kompose,kubernetes,notes,packaging,project management,centos,crio,development,fedora,git,github,ide,intellij,kubernetes,meetup,minikube,notes,open source,openshift,productivity,programming,project,pv,rpm," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="/css/google-font.css" />
+            <link rel="stylesheet" href="/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+            <link rel="stylesheet" href="/css/add-on.css" />
+            <link rel="stylesheet" href="/css/monokai-sublime.css">
+        
+
+        
+
+        
+        
+        
+            
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-97006720-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h2><a href="/">Suraj Deshmukh</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories">
+                        Categories
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about">
+                        About
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:http://suraj.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:http://suraj.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            <h3>
+                                
+                                About
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="http://suraj.io/post/blr-k8s-meetup-may-2017/"><p>Bangalore Kubernetes Meetup May 2017</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://suraj.io/post/enabling-local-development-with-k8s/"><p>Enabling local development with Kubernetes</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://suraj.io/post/quick-pv-for-local-k8s/"><p>Quick PV for local Kubernetes cluster</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://suraj.io/post/blr-k8s-meetup-april-2017/"><p>Bangalore Kubernetes Meetup April 2017</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://suraj.io/post/using-crio-with-k8s-single-node/"><p>k8s on CRI-O - single node</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f&text=Bangalore%20Kubernetes%20Meetup%20May%202017&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f&title=Bangalore%20Kubernetes%20Meetup%20May%202017" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f&title=Bangalore%20Kubernetes%20Meetup%20May%202017" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f&title=Bangalore%20Kubernetes%20Meetup%20May%202017" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h1><a href="http://suraj.io/post/blr-k8s-meetup-may-2017/">Bangalore Kubernetes Meetup May 2017</a></h1>
+            
+        
+        
+            <p>Kubernetes and OpenShift 101 hands-on workshop</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-05-24'>
+            May 24, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f&text=Bangalore%20Kubernetes%20Meetup%20May%202017&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f&title=Bangalore%20Kubernetes%20Meetup%20May%202017" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f&title=Bangalore%20Kubernetes%20Meetup%20May%202017" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f&title=Bangalore%20Kubernetes%20Meetup%20May%202017" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fblr-k8s-meetup-may-2017%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+
+    <div id="content">
+        
+
+<p><em>&ldquo;One does not simply deploy containers to production&rdquo;</em></p>
+
+<p><img src="/images/blr-k8s-meetup-may-2017/mordor_meme.jpg" alt="One does not simply deploy containers to production" title="One does not simply deploy containers to production" /></p>
+
+<p>With the rising craze around the container community in Bangalore and relative lack in awareness
+around different container technologies like <a href="http://kubernetesbyexample.com/">Kubernetes</a> and <a href="https://developers.openshift.com/">OpenShift</a>,
+an effort was made in imparting knowledge in this direction.</p>
+
+<p>So, this time around newbies were targeted for the Kubernetes Meetup.</p>
+
+<p>With the above objective, it was decided to have a <a href="https://www.meetup.com/kubernetes-openshift-India-Meetup/events/239381714/">Kubernetes 101 workshop</a>
+ at Red Hat Bangalore office on May 21, 2017 to familiarize people with concepts of Kubernetes and OpenShift and their
+ usage and relevance as container orchestration tools for managing application deployments.</p>
+
+<p>The schedule for the Meetup was as follows:</p>
+
+<ul>
+<li>Kubernetes 101 - Knowing the terms in Kubernetes</li>
+<li>Kubernetes 101 - Hands-on workshop</li>
+<li>OpenShift 101 - What OpenShift adds to Kubernetes?</li>
+<li>OpenShift 101 - Hands-on workshop</li>
+</ul>
+
+<p>As per the schedule, we opened the floor with a talk by <a href="https://www.linkedin.com/in/hemani-katyal-57900081">Hemani Katyal</a>
+ on Kubernetes Basics(<a href="https://docs.google.com/presentation/d/1pUg6eOfIfznSS-2m1-7EEXbyHyH9NPgCRZw6WcX6FG4/edit?usp=sharing">slides</a>),
+ wherein she explained the need for Kubernetes, what it is, it&rsquo;s architecture, why Kubernetes would be better container
+ orchestrator and the constructs of Kubernetes like pods, volumes, labels, replications controllers, services, etc.</p>
+
+<p><img src="/images/blr-k8s-meetup-may-2017/hemani.jpg" alt="Hemani Katyal" title="Hemani Katyal explaining Kubernetes" /></p>
+
+<p>It was good to see people interested in concepts of service and the way it load balances traffic, how the labels
+ construct is helpful in bringing in flexibility with deployments, why Kubernetes is better than other container
+ orchestrators.</p>
+
+<p>Following up with the excitement, <a href="https://twitter.com/surajd_">Suraj Deshmukh</a>, <a href="https://twitter.com/procrypt0">Abhishek Singh</a>,
+ <a href="https://twitter.com/zee_10000">Zeeshan Ahmed</a> and <a href="https://twitter.com/ContainsCafeine">Shubham Minglani</a> happily
+ volunteered to conduct the hands-on workshop. The workshop exercises were taken from <a href="https://www.katacoda.com/courses/kubernetes">Kubernetes section</a>
+ of <a href="https://www.katacoda.com/">katacoda.com</a>.</p>
+
+<p><img src="/images/blr-k8s-meetup-may-2017/mzee.jpg" alt="Zeeshan Ahmed" title="Zeeshan Ahmed explaining Kubernetes Secrets and ConfigMaps" /></p>
+
+<p>It was pleasure to have an excited and responsive audience. Questions like kube-adm functionality on CentOS,
+ installing Kubernetes in an isolated environment without internet, how ingress works and the likes of the same were
+ asked during the hands-on session.</p>
+
+<p><img src="/images/blr-k8s-meetup-may-2017/shubham.jpg" alt="Shubham Minglani" title="Shubham Minglani explaining Kubernetes HealthChecks" /></p>
+
+<p>Post a quick coffee break, <a href="https://twitter.com/procrypt0">Abhishek Singh</a> briefed the audience about OpenShift basics(<a href="https://docs.google.com/presentation/d/1e9dEuNfoFI0kMbtQmPUIgw85zS7s-cvupWB5ogYxdpc/edit?usp=sharing">slides</a>),
+ wherein he explained what OpenShift is and how it is an addon on top of Kubernetes. He touched upon topics like user
+ management, various build features of OpenShift, container image handling in OpenShift, the way deployment fits in with
+ build part, security, running OpenShift locally using <a href="https://github.com/minishift/minishift/">Minishift</a>, to name a few.</p>
+
+<p><img src="/images/blr-k8s-meetup-may-2017/abhi.jpg" alt="Abhishek Singh" title="Abhishek Singh explaining OpenShift" /></p>
+
+<p>Satiating the hunger not just for knowledge but food as well, we broke for lunch.</p>
+
+<p>Post which we continued with OpenShift hand-on exercises, which were again from <a href="https://learn.openshift.com/">OpenShift section</a>
+ of <a href="katacoda.com">katacoda.com</a>. <a href="https://twitter.com/zee_10000">Zeeshan Ahmed</a>, <a href="https://twitter.com/red_suraj">Suraj Narwade</a>
+ and <a href="https://twitter.com/procrypt0">Abhishek Singh</a> helped with the workshop exercises. There seemed to be lot of
+ interest around topics like the <a href="https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/builds_and_image_streams.html#source-build">source to image</a>
+ feature of OpenShift, if <a href="https://docs.openshift.com/enterprise/3.2/dev_guide/routes.html">OpenShift’s router</a> allowed
+ UDP traffic, the difference between ingress and routes.</p>
+
+<p>Red Hat’s latest announcement regarding the <a href="https://blog.openshift.com/aws-and-red-hat-digging-a-little-deeper/">integration of AWS services with OpenShift</a>
+ also generated some curiosity among the audience.</p>
+
+<p><img src="/images/blr-k8s-meetup-may-2017/people.jpg" alt="Folks listening" title="Folks listening" /></p>
+
+<p>The meetup concluded asking for <a href="https://goo.gl/forms/ILSI0Xb3OKuKMKht2">feedback</a> and distributing some swag. In
+ feedback we received, people wanted to see some real world examples, the kind of applications that run on these
+ platforms, and much more which are advanced topics and we would love to take up in normal meetup as opposed to a 101.</p>
+
+<p>I would like to conclude here by thanking all speakers, volunteers for spreading knowledge, <a href="katacoda.com">katacoda.com</a>
+ for awesome workshop material and audience for listening patiently and trying out things and making this meetup
+ successful. And last but not the least, I would like to express my deepest gratitude to Red Hat for sponsoring the event
+ and providing us with the venue and <a href="https://www.linkedin.com/in/hemani-katyal-57900081">Hemani Katyal</a>
+ for making this post an awesome read.</p>
+
+<h2 id="links">Links</h2>
+
+<ul>
+<li>Kubernetes DIY hands-on exercises <a href="https://www.katacoda.com/courses/kubernetes">https://www.katacoda.com/courses/kubernetes</a></li>
+<li>OpenShift DIY hands-on exercises <a href="https://learn.openshift.com/">https://learn.openshift.com/</a></li>
+</ul>
+
+    </div>
+
+    <footer>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesevent-report'>event report</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="http://suraj.io/post/enabling-local-development-with-k8s/"
+                class="button big previous">Enabling local development with Kubernetes</a></li>
+    
+
+    
+</ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'suraj-io';
+    var disqus_identifier = 'http:\/\/suraj.io\/post\/blr-k8s-meetup-may-2017\/';
+    var disqus_title = 'Bangalore Kubernetes Meetup May 2017';
+    var disqus_url = 'http:\/\/suraj.io\/post\/blr-k8s-meetup-may-2017\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="https://github.com/surajssd.png" alt="Suraj" /></a>
+                
+            
+            
+                <header>
+                    <h2>Blog</h2>
+                    <p>containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos</p>
+                </header>
+            
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/surajssd" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" title="WordPress" class="fa fa-wordpress"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://suraj.io/post/blr-k8s-meetup-may-2017/">Bangalore Kubernetes Meetup May 2017</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-05-24'>
+                                    May 24, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://suraj.io/post/enabling-local-development-with-k8s/">Enabling local development with Kubernetes</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-04-23'>
+                                    April 23, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://suraj.io/post/quick-pv-for-local-k8s/">Quick PV for local Kubernetes cluster</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-04-18'>
+                                    April 18, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://suraj.io/post/blr-k8s-meetup-april-2017/">Bangalore Kubernetes Meetup April 2017</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-04-08'>
+                                    April 8, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://suraj.io/post/using-crio-with-k8s-single-node/">k8s on CRI-O - single node</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-04-08'>
+                                    April 8, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                "/post/"
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/packaging/">packaging</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/event-report/">event report</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/notes/">notes</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/git/">git</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kompose/">kompose</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kubernetes/">kubernetes</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/project-management/">project management</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+        <section class="blurb">
+            <h2>About</h2>
+            <p>I am a Software Engineer at Red Hat, working on various tooling around container technology like docker, kubernetes and OpenShift.</p>
+
+            <ul class="actions">
+                <li><a href="/about/" class="button">Learn More</a></li>
+            </ul>
+        </section>
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/surajssd" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" title="WordPress" class="fa fa-wordpress"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Suraj Deshmukh. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/skel.min.js"></script>
+            <script src="/js/util.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/backToTop.js"></script>
+            <script src="/js/highlight.pack.js"></script>
+        
+
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+
