@@ -1025,20 +1025,72 @@ $ fedora-review -n namaskar
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;how-to-pull-remote-branch-from-somebody-else-s-repo&#34;&gt;How to pull remote branch from somebody else&amp;rsquo;s repo&lt;/h3&gt;
+&lt;h3 id=&#34;how-to-pull-remote-branch-from-somebody-else-s-pr&#34;&gt;How to pull remote branch from somebody else&amp;rsquo;s PR&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git remote add coworker git://path/to/coworkers/repo.git
   $ git fetch coworker
   $ git checkout --track coworker/foo
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This will setup a local branch foo, tracking the remote branch coworker/foo. So when your coworker has made some changes, you can easily pull them:&lt;/p&gt;
+&lt;p&gt;This will setup a local branch &lt;code&gt;foo&lt;/code&gt;, tracking the remote branch &lt;code&gt;coworker/foo&lt;/code&gt;. So when your coworker has made some changes, you can easily pull them:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git checkout foo
   $ git pull
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Quick Ref: &lt;a href=&#34;http://stackoverflow.com/a/5884825&#34;&gt;http://stackoverflow.com/a/5884825&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;OR&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Add following code snippet to &lt;code&gt;~/.bashrc&lt;/code&gt;, this will way you have alias to pull any PR.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  function pr() {
+      id=$1
+      if [ -z $id ]; then
+          echo &amp;quot;Need Pull request number as argument&amp;quot;
+          return 1
+      fi
+      git fetch upstream pull/${id}/head:pr_${id}
+      git checkout pr_${id}
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Usage&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  pr &amp;lt;pr_number&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;tips-on-writing-git-commits&#34;&gt;Tips on writing git commits&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://chris.beams.io/posts/git-commit/&#34;&gt;How to Write a Git Commit Message&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://conventionalcommits.org/&#34;&gt;Conventional Commits 1.0.0-beta.1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;tools&#34;&gt;Tools&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://commitizen.github.io/cz-cli/&#34;&gt;Commitizen - Helps in writing commits&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/magicmonty/bash-git-prompt&#34;&gt;Bash Git Prompt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Install using following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  cd &amp;amp;&amp;amp; git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt
+
+  echo &#39;
+  #======================================
+  # bash git prompt
+
+  source ~/.bash-git-prompt/gitprompt.sh
+  GIT_PROMPT_ONLY_IN_REPO=1
+  #======================================
+  &#39; | tee -a ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
 
@@ -1176,6 +1228,7 @@ $ fedora-review -n namaskar
 &lt;li&gt;Everything I Wish I Knew When I Started Using GitHub - oscon Portland 2015, &lt;a href=&#34;https://youtu.be/KDUtjZHIx44&#34;&gt;video&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/a/2125738/3848679&#34;&gt;How to revert a “git rm -r .”?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/a/39920717/3848679&#34;&gt;How to make “spoiler” text in github wiki pages?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://youtu.be/d-T51nhmFhQ&#34;&gt;20 Tricks with Git and Shell, Spencer Krum - Git Merge 2016&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -1797,6 +1850,7 @@ cd kompose
 &lt;li&gt;Github: &lt;a href=&#34;https://github.com/surajssd/&#34;&gt;surajssd&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Twitter: &lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;@surajd_&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Email: &lt;code&gt;surajd.service@gmail.com&lt;/code&gt; &amp;amp; &lt;code&gt;surajd@redhat.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Stackoverflow: &lt;a href=&#34;https://stackoverflow.com/users/3848679/surajd&#34;&gt;surajd&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

@@ -284,7 +284,7 @@ Notes about using `git`.
 
 ---
 
-### How to pull remote branch from somebody else's repo
+### How to pull remote branch from somebody else's PR
 
   ```bash
   $ git remote add coworker git://path/to/coworkers/repo.git
@@ -292,7 +292,7 @@ Notes about using `git`.
   $ git checkout --track coworker/foo
   ```
 
-  This will setup a local branch foo, tracking the remote branch coworker/foo. So when your coworker has made some changes, you can easily pull them:
+  This will setup a local branch `foo`, tracking the remote branch `coworker/foo`. So when your coworker has made some changes, you can easily pull them:
 
   ```bash
   $ git checkout foo
@@ -300,6 +300,57 @@ Notes about using `git`.
   ```
 
   Quick Ref: [http://stackoverflow.com/a/5884825](http://stackoverflow.com/a/5884825)
+
+  **OR**
+
+  Add following code snippet to `~/.bashrc`, this will way you have alias to pull any PR.
+
+  ```bash
+  function pr() {
+      id=$1
+      if [ -z $id ]; then
+          echo "Need Pull request number as argument"
+          return 1
+      fi
+      git fetch upstream pull/${id}/head:pr_${id}
+      git checkout pr_${id}
+  }
+  ```
+
+  Usage
+  ```bash
+  pr <pr_number>
+  ```
+
+
+---
+
+### Tips on writing git commits
+
+- [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
+- [Conventional Commits 1.0.0-beta.1](http://conventionalcommits.org/)
+
+---
+
+### Tools
+
+- [Commitizen - Helps in writing commits](http://commitizen.github.io/cz-cli/)
+- [Bash Git Prompt](https://github.com/magicmonty/bash-git-prompt)
+
+
+  Install using following:
+  ```bash
+  cd && git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt
+
+  echo '
+  #======================================
+  # bash git prompt
+
+  source ~/.bash-git-prompt/gitprompt.sh
+  GIT_PROMPT_ONLY_IN_REPO=1
+  #======================================
+  ' | tee -a ~/.bashrc
+  ```
 
 ---
 
@@ -407,4 +458,5 @@ These are tips about using github.com
   - Everything I Wish I Knew When I Started Using GitHub - oscon Portland 2015, [video](https://youtu.be/KDUtjZHIx44).
   - [How to revert a “git rm -r .”?](http://stackoverflow.com/a/2125738/3848679)
   - [How to make “spoiler” text in github wiki pages?](http://stackoverflow.com/a/39920717/3848679)
+  - [20 Tricks with Git and Shell, Spencer Krum - Git Merge 2016](https://youtu.be/d-T51nhmFhQ)
 

@@ -58,7 +58,7 @@
 
 
 <meta itemprop="dateModified" content="2017-03-21T22:03:48&#43;05:30" />
-<meta itemprop="wordCount" content="1233">
+<meta itemprop="wordCount" content="1343">
 
 
 
@@ -321,7 +321,7 @@ ga('send', 'pageview');
             March 21, 2017</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>6 minute read</p>
+            <p>7 minute read</p>
         
         
     </div>
@@ -650,20 +650,72 @@ ga('send', 'pageview');
 
 <hr />
 
-<h3 id="how-to-pull-remote-branch-from-somebody-else-s-repo">How to pull remote branch from somebody else&rsquo;s repo</h3>
+<h3 id="how-to-pull-remote-branch-from-somebody-else-s-pr">How to pull remote branch from somebody else&rsquo;s PR</h3>
 
 <pre><code class="language-bash">  $ git remote add coworker git://path/to/coworkers/repo.git
   $ git fetch coworker
   $ git checkout --track coworker/foo
 </code></pre>
 
-<p>This will setup a local branch foo, tracking the remote branch coworker/foo. So when your coworker has made some changes, you can easily pull them:</p>
+<p>This will setup a local branch <code>foo</code>, tracking the remote branch <code>coworker/foo</code>. So when your coworker has made some changes, you can easily pull them:</p>
 
 <pre><code class="language-bash">  $ git checkout foo
   $ git pull
 </code></pre>
 
 <p>Quick Ref: <a href="http://stackoverflow.com/a/5884825">http://stackoverflow.com/a/5884825</a></p>
+
+<p><strong>OR</strong></p>
+
+<p>Add following code snippet to <code>~/.bashrc</code>, this will way you have alias to pull any PR.</p>
+
+<pre><code class="language-bash">  function pr() {
+      id=$1
+      if [ -z $id ]; then
+          echo &quot;Need Pull request number as argument&quot;
+          return 1
+      fi
+      git fetch upstream pull/${id}/head:pr_${id}
+      git checkout pr_${id}
+  }
+</code></pre>
+
+<p>Usage</p>
+
+<pre><code class="language-bash">  pr &lt;pr_number&gt;
+</code></pre>
+
+<hr />
+
+<h3 id="tips-on-writing-git-commits">Tips on writing git commits</h3>
+
+<ul>
+<li><a href="https://chris.beams.io/posts/git-commit/">How to Write a Git Commit Message</a></li>
+<li><a href="http://conventionalcommits.org/">Conventional Commits 1.0.0-beta.1</a></li>
+</ul>
+
+<hr />
+
+<h3 id="tools">Tools</h3>
+
+<ul>
+<li><a href="http://commitizen.github.io/cz-cli/">Commitizen - Helps in writing commits</a></li>
+<li><a href="https://github.com/magicmonty/bash-git-prompt">Bash Git Prompt</a></li>
+</ul>
+
+<p>Install using following:</p>
+
+<pre><code class="language-bash">  cd &amp;&amp; git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt
+
+  echo '
+  #======================================
+  # bash git prompt
+
+  source ~/.bash-git-prompt/gitprompt.sh
+  GIT_PROMPT_ONLY_IN_REPO=1
+  #======================================
+  ' | tee -a ~/.bashrc
+</code></pre>
 
 <hr />
 
@@ -801,6 +853,7 @@ ga('send', 'pageview');
 <li>Everything I Wish I Knew When I Started Using GitHub - oscon Portland 2015, <a href="https://youtu.be/KDUtjZHIx44">video</a>.</li>
 <li><a href="http://stackoverflow.com/a/2125738/3848679">How to revert a “git rm -r .”?</a></li>
 <li><a href="http://stackoverflow.com/a/39920717/3848679">How to make “spoiler” text in github wiki pages?</a></li>
+<li><a href="https://youtu.be/d-T51nhmFhQ">20 Tricks with Git and Shell, Spencer Krum - Git Merge 2016</a></li>
 </ul>
 
     </div>
