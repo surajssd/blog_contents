@@ -186,7 +186,8 @@ sudo yum install -y rpm-build go redhat-rpm-config make \
 
 &lt;p&gt;Before you begin make sure you have setup the local directory structure:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rm -rf ~/rpmbuild/
+mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 echo &#39;%_topdir %(echo $HOME)/rpmbuild&#39; &amp;gt; ~/.rpmmacros
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -197,7 +198,7 @@ echo &#39;%_topdir %(echo $HOME)/rpmbuild&#39; &amp;gt; ~/.rpmmacros
 
 &lt;p&gt;Move the source to appropriate location&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp kompose-4e3300c.tar.gz ~/rpmbuild/SOURCES/
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp kompose-* ~/rpmbuild/SOURCES/
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Start local build&lt;/p&gt;
@@ -208,20 +209,20 @@ echo &#39;%_topdir %(echo $HOME)/rpmbuild&#39; &amp;gt; ~/.rpmmacros
 &lt;p&gt;Once above exits with status code 0, you can find the &lt;code&gt;RPM&lt;/code&gt;s:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ll ~/rpmbuild/RPMS/x86_64/
-total 9688
--rw-rw-r--. 1 vagrant vagrant 9917060 Mar 23 09:58 kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+total 9724
+-rw-rw-r--. 1 vagrant vagrant 9956072 May 26 09:37 kompose-0.7.0-0.1.el7.x86_64.rpm
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;SRPM&lt;/code&gt;s can be found at:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ll ~/rpmbuild/SRPMS/
-total 4664
--rw-rw-r--. 1 vagrant vagrant 4773755 Mar 23 09:58 kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+total 4828
+-rw-rw-r--. 1 vagrant vagrant 4941880 May 26 09:37 kompose-0.7.0-0.1.el7.src.rpm
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;See if dependencies are properly set&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpm -qpR ~/rpmbuild/RPMS/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpm -qpR ~/rpmbuild/RPMS/x86_64/kompose-*
 git
 libc.so.6()(64bit)
 libc.so.6(GLIBC_2.2.5)(64bit)
@@ -251,22 +252,22 @@ rpmlib(PayloadIsXz) &amp;lt;= 5.2-1
 
 &lt;p&gt;Do a scratch build on CBS in &lt;code&gt;paas7-openshift-common-release&lt;/code&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-*
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;You can download the rpm built here to test on CentOS machine.&lt;/p&gt;
 
 &lt;h3 id=&#34;making-an-actual-release&#34;&gt;Making an actual release&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cbs build paas7-openshift-common-el7 ./kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cbs build paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-*
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Once build is done successfully goto build page and download the rpm that is built for &lt;code&gt;x86_64&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;The page where builds were listed: &lt;a href=&#34;https://cbs.centos.org/koji/taskinfo?taskID=171404&#34;&gt;https://cbs.centos.org/koji/taskinfo?taskID=171404&lt;/a&gt;
-The page where this particular build happened and where I had download link to rpm: &lt;a href=&#34;https://cbs.centos.org/koji/buildinfo?buildID=16777&#34;&gt;https://cbs.centos.org/koji/buildinfo?buildID=16777&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The page where builds were listed: &lt;a href=&#34;https://cbs.centos.org/koji/taskinfo?taskID=181452&#34;&gt;https://cbs.centos.org/koji/taskinfo?taskID=181452&lt;/a&gt;
+The page where this particular build happened and where I had download link to rpm: &lt;a href=&#34;https://cbs.centos.org/koji/buildinfo?buildID=17249&#34;&gt;https://cbs.centos.org/koji/buildinfo?buildID=17249&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget http://cbs.centos.org/kojifiles/packages/kompose/0.7.0/0.1.el7/x86_64/kompose-0.7.0-0.1.el7.x86_64.rpm
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Try to install this rpm and see if it works on CentOS:&lt;/p&gt;
@@ -274,9 +275,9 @@ The page where this particular build happened and where I had download link to r
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;yum install -y epel-release
 yum install -y wget jq make
 
-wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+wget http://cbs.centos.org/kojifiles/packages/kompose/0.7.0/0.1.el7/x86_64/kompose-0.7.0-0.1.el7.x86_64.rpm
 
-yum install -y kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+yum install -y kompose-0.7.0-0.1.el7.x86_64.rpm
 
 git clone https://github.com/kubernetes-incubator/kompose/
 cd kompose
@@ -289,17 +290,17 @@ Verify that whatever you built last cbs is the good, the output should be versio
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs latest-build paas7-openshift-common-candidate kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
-kompose-0.4.0-0.1.git4e3300c.el7          paas7-openshift-common-candidate  surajd
+kompose-0.7.0-0.1.el7                     paas7-openshift-common-candidate  surajd
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Tag the build output of above command to testing&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs tag-pkg paas7-openshift-common-testing kompose-0.4.0-0.1.git4e3300c.el7
-Created task 171424
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs tag-pkg paas7-openshift-common-testing kompose-0.7.0-0.1.el7
+Created task 181472
 Watching tasks (this may be safely interrupted)...
-171424 tagBuild (noarch): closed
+181472 tagBuild (noarch): closed
 
-171424 tagBuild (noarch) completed successfully
+181472 tagBuild (noarch) completed successfully
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Verify it is in testing&lt;/p&gt;
@@ -307,7 +308,7 @@ Watching tasks (this may be safely interrupted)...
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs latest-build paas7-openshift-common-testing kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
-kompose-0.4.0-0.1.git4e3300c.el7          paas7-openshift-common-testing  surajd
+kompose-0.7.0-0.1.el7                     paas7-openshift-common-testing  surajd
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Run whatever tests you want to verify that it&amp;rsquo;s a good build.
@@ -329,19 +330,19 @@ make test-cmd
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs latest-build paas7-openshift-common-testing kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
-kompose-0.4.0-0.1.git4e3300c.el7          paas7-openshift-common-testing  surajd
+kompose-0.7.0-0.1.el7                     paas7-openshift-common-testing  surajd
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Tag it into release:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs tag-pkg paas7-openshift-common-release kompose-0.4.0-0.1.git4e3300c.el7
-Created task 171654
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs tag-pkg paas7-openshift-common-release kompose-0.7.0-0.1.el7
+Created task 181634
 Watching tasks (this may be safely interrupted)...
-171654 tagBuild (noarch): open (x86_64-2.cbs.centos.org)
-171654 tagBuild (noarch): open (x86_64-2.cbs.centos.org) -&amp;gt; closed
+181634 tagBuild (noarch): free
+181634 tagBuild (noarch): free -&amp;gt; closed
   0 free  0 open  1 done  0 failed
 
-171654 tagBuild (noarch) completed successfully
+181634 tagBuild (noarch) completed successfully
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Once it is populated, it will show up in the repos, install it as follows:&lt;/p&gt;

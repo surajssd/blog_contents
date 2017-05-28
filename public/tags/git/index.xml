@@ -285,17 +285,40 @@
 
 &lt;hr /&gt;
 
+&lt;h3 id=&#34;stash&#34;&gt;stash&lt;/h3&gt;
+
+&lt;p&gt;Save the changes and clean the tree.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  git stash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Use &lt;code&gt;git stash&lt;/code&gt; when you want to record the current state of the working directory and the index, but want to go back to a clean working directory. The command saves your local modifications away and reverts the working directory to match the &lt;code&gt;HEAD&lt;/code&gt; commit.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  git stash --include-untracked
+  git config --global alias.staash &#39;stash --include-untracked&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If the &lt;code&gt;--include-untracked&lt;/code&gt; option is used, all untracked files are also stashed and then cleaned up with git clean, leaving the working directory in a very clean state.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  git stash --all
+  git config --global alias.staaash &#39;stash --all&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If the &lt;code&gt;--all&lt;/code&gt; option is used instead then the ignored files are stashed and cleaned in addition to the untracked files.&lt;/p&gt;
+
+&lt;hr /&gt;
+
 &lt;h3 id=&#34;how-to-pull-remote-branch-from-somebody-else-s-pr&#34;&gt;How to pull remote branch from somebody else&amp;rsquo;s PR&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git remote add coworker git://path/to/coworkers/repo.git
-  $ git fetch coworker
-  $ git checkout --track coworker/foo
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  git remote add coworker git://path/to/coworkers/repo.git
+  git fetch coworker
+  git checkout --track coworker/foo
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;This will setup a local branch &lt;code&gt;foo&lt;/code&gt;, tracking the remote branch &lt;code&gt;coworker/foo&lt;/code&gt;. So when your coworker has made some changes, you can easily pull them:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git checkout foo
-  $ git pull
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  git checkout foo
+  git pull
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Quick Ref: &lt;a href=&#34;http://stackoverflow.com/a/5884825&#34;&gt;http://stackoverflow.com/a/5884825&lt;/a&gt;&lt;/p&gt;
@@ -489,6 +512,7 @@
 &lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/a/2125738/3848679&#34;&gt;How to revert a “git rm -r .”?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/a/39920717/3848679&#34;&gt;How to make “spoiler” text in github wiki pages?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://youtu.be/d-T51nhmFhQ&#34;&gt;20 Tricks with Git and Shell, Spencer Krum - Git Merge 2016&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://youtu.be/3IIaOj1Lhb0&#34;&gt;Git Aliases of the Gods! - Git Merge 2017&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

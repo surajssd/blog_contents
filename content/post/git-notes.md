@@ -284,19 +284,45 @@ Notes about using `git`.
 
 ---
 
+### stash
+
+  Save the changes and clean the tree.
+
+  ```bash
+  git stash
+  ```
+
+  Use `git stash` when you want to record the current state of the working directory and the index, but want to go back to a clean working directory. The command saves your local modifications away and reverts the working directory to match the `HEAD` commit.
+
+  ```bash
+  git stash --include-untracked
+  git config --global alias.staash 'stash --include-untracked'
+  ```
+
+  If the `--include-untracked` option is used, all untracked files are also stashed and then cleaned up with git clean, leaving the working directory in a very clean state.
+
+  ```bash
+  git stash --all
+  git config --global alias.staaash 'stash --all'
+  ```
+
+  If the `--all` option is used instead then the ignored files are stashed and cleaned in addition to the untracked files.
+
+---
+
 ### How to pull remote branch from somebody else's PR
 
   ```bash
-  $ git remote add coworker git://path/to/coworkers/repo.git
-  $ git fetch coworker
-  $ git checkout --track coworker/foo
+  git remote add coworker git://path/to/coworkers/repo.git
+  git fetch coworker
+  git checkout --track coworker/foo
   ```
 
   This will setup a local branch `foo`, tracking the remote branch `coworker/foo`. So when your coworker has made some changes, you can easily pull them:
 
   ```bash
-  $ git checkout foo
-  $ git pull
+  git checkout foo
+  git pull
   ```
 
   Quick Ref: [http://stackoverflow.com/a/5884825](http://stackoverflow.com/a/5884825)
@@ -459,4 +485,4 @@ These are tips about using github.com
   - [How to revert a “git rm -r .”?](http://stackoverflow.com/a/2125738/3848679)
   - [How to make “spoiler” text in github wiki pages?](http://stackoverflow.com/a/39920717/3848679)
   - [20 Tricks with Git and Shell, Spencer Krum - Git Merge 2016](https://youtu.be/d-T51nhmFhQ)
-
+  - [Git Aliases of the Gods! - Git Merge 2017](https://youtu.be/3IIaOj1Lhb0)

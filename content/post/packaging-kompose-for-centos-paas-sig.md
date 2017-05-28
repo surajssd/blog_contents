@@ -45,6 +45,7 @@ There are two ways to build `srpm` either build it locally or the ones that is b
 Before you begin make sure you have setup the local directory structure:
 
 ```bash
+rm -rf ~/rpmbuild/
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
 ```
@@ -58,7 +59,7 @@ spectool -g kompose.spec
 Move the source to appropriate location
 
 ```bash
-cp kompose-4e3300c.tar.gz ~/rpmbuild/SOURCES/
+cp kompose-* ~/rpmbuild/SOURCES/
 ```
 
 Start local build
@@ -71,22 +72,22 @@ Once above exits with status code 0, you can find the `RPM`s:
 
 ```bash
 $ ll ~/rpmbuild/RPMS/x86_64/
-total 9688
--rw-rw-r--. 1 vagrant vagrant 9917060 Mar 23 09:58 kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+total 9724
+-rw-rw-r--. 1 vagrant vagrant 9956072 May 26 09:37 kompose-0.7.0-0.1.el7.x86_64.rpm
 ```
 
 `SRPM`s can be found at:
 
 ```bash
 $ ll ~/rpmbuild/SRPMS/
-total 4664
--rw-rw-r--. 1 vagrant vagrant 4773755 Mar 23 09:58 kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+total 4828
+-rw-rw-r--. 1 vagrant vagrant 4941880 May 26 09:37 kompose-0.7.0-0.1.el7.src.rpm
 ```
 
 See if dependencies are properly set
 
 ```bash
-$ rpm -qpR ~/rpmbuild/RPMS/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+$ rpm -qpR ~/rpmbuild/RPMS/x86_64/kompose-*
 git
 libc.so.6()(64bit)
 libc.so.6(GLIBC_2.2.5)(64bit)
@@ -118,23 +119,23 @@ CBS is a community build system for SpecialInterestGroup members. It allows to b
 Do a scratch build on CBS in `paas7-openshift-common-release`.
 
 ```bash
-cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-*
 ```
 You can download the rpm built here to test on CentOS machine.
 
 ### Making an actual release
 
 ```bash
-cbs build paas7-openshift-common-el7 ./kompose-0.4.0-0.1.git4e3300c.el7.src.rpm
+cbs build paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-*
 ```
 
 Once build is done successfully goto build page and download the rpm that is built for `x86_64`.
 
-The page where builds were listed: https://cbs.centos.org/koji/taskinfo?taskID=171404
-The page where this particular build happened and where I had download link to rpm: https://cbs.centos.org/koji/buildinfo?buildID=16777
+The page where builds were listed: https://cbs.centos.org/koji/taskinfo?taskID=181452
+The page where this particular build happened and where I had download link to rpm: https://cbs.centos.org/koji/buildinfo?buildID=17249
 
 ```bash
-wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+wget http://cbs.centos.org/kojifiles/packages/kompose/0.7.0/0.1.el7/x86_64/kompose-0.7.0-0.1.el7.x86_64.rpm
 ```
 
 Try to install this rpm and see if it works on CentOS:
@@ -143,9 +144,9 @@ Try to install this rpm and see if it works on CentOS:
 yum install -y epel-release
 yum install -y wget jq make
 
-wget http://cbs.centos.org/kojifiles/packages/kompose/0.4.0/0.1.git4e3300c.el7/x86_64/kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+wget http://cbs.centos.org/kojifiles/packages/kompose/0.7.0/0.1.el7/x86_64/kompose-0.7.0-0.1.el7.x86_64.rpm
 
-yum install -y kompose-0.4.0-0.1.git4e3300c.el7.x86_64.rpm
+yum install -y kompose-0.7.0-0.1.el7.x86_64.rpm
 
 git clone https://github.com/kubernetes-incubator/kompose/
 cd kompose
@@ -159,18 +160,18 @@ Verify that whatever you built last cbs is the good, the output should be versio
 $ cbs latest-build paas7-openshift-common-candidate kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
-kompose-0.4.0-0.1.git4e3300c.el7          paas7-openshift-common-candidate  surajd
+kompose-0.7.0-0.1.el7                     paas7-openshift-common-candidate  surajd
 ```
 
 Tag the build output of above command to testing
 
 ```bash
-$ cbs tag-pkg paas7-openshift-common-testing kompose-0.4.0-0.1.git4e3300c.el7
-Created task 171424
+$ cbs tag-pkg paas7-openshift-common-testing kompose-0.7.0-0.1.el7
+Created task 181472
 Watching tasks (this may be safely interrupted)...
-171424 tagBuild (noarch): closed
+181472 tagBuild (noarch): closed
 
-171424 tagBuild (noarch) completed successfully
+181472 tagBuild (noarch) completed successfully
 ```
 
 Verify it is in testing
@@ -179,7 +180,7 @@ Verify it is in testing
 $ cbs latest-build paas7-openshift-common-testing kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
-kompose-0.4.0-0.1.git4e3300c.el7          paas7-openshift-common-testing  surajd
+kompose-0.7.0-0.1.el7                     paas7-openshift-common-testing  surajd
 ```
 
 
@@ -204,20 +205,20 @@ Check if the package is in testing
 $ cbs latest-build paas7-openshift-common-testing kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
-kompose-0.4.0-0.1.git4e3300c.el7          paas7-openshift-common-testing  surajd
+kompose-0.7.0-0.1.el7                     paas7-openshift-common-testing  surajd
 ```
 
 Tag it into release:
 
 ```bash
-$ cbs tag-pkg paas7-openshift-common-release kompose-0.4.0-0.1.git4e3300c.el7
-Created task 171654
+$ cbs tag-pkg paas7-openshift-common-release kompose-0.7.0-0.1.el7
+Created task 181634
 Watching tasks (this may be safely interrupted)...
-171654 tagBuild (noarch): open (x86_64-2.cbs.centos.org)
-171654 tagBuild (noarch): open (x86_64-2.cbs.centos.org) -> closed
+181634 tagBuild (noarch): free
+181634 tagBuild (noarch): free -> closed
   0 free  0 open  1 done  0 failed
 
-171654 tagBuild (noarch) completed successfully
+181634 tagBuild (noarch) completed successfully
 ```
 
 Once it is populated, it will show up in the repos, install it as follows:

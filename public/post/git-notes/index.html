@@ -58,7 +58,7 @@
 
 
 <meta itemprop="dateModified" content="2017-03-21T22:03:48&#43;05:30" />
-<meta itemprop="wordCount" content="1343">
+<meta itemprop="wordCount" content="1469">
 
 
 
@@ -650,17 +650,40 @@ ga('send', 'pageview');
 
 <hr />
 
+<h3 id="stash">stash</h3>
+
+<p>Save the changes and clean the tree.</p>
+
+<pre><code class="language-bash">  git stash
+</code></pre>
+
+<p>Use <code>git stash</code> when you want to record the current state of the working directory and the index, but want to go back to a clean working directory. The command saves your local modifications away and reverts the working directory to match the <code>HEAD</code> commit.</p>
+
+<pre><code class="language-bash">  git stash --include-untracked
+  git config --global alias.staash 'stash --include-untracked'
+</code></pre>
+
+<p>If the <code>--include-untracked</code> option is used, all untracked files are also stashed and then cleaned up with git clean, leaving the working directory in a very clean state.</p>
+
+<pre><code class="language-bash">  git stash --all
+  git config --global alias.staaash 'stash --all'
+</code></pre>
+
+<p>If the <code>--all</code> option is used instead then the ignored files are stashed and cleaned in addition to the untracked files.</p>
+
+<hr />
+
 <h3 id="how-to-pull-remote-branch-from-somebody-else-s-pr">How to pull remote branch from somebody else&rsquo;s PR</h3>
 
-<pre><code class="language-bash">  $ git remote add coworker git://path/to/coworkers/repo.git
-  $ git fetch coworker
-  $ git checkout --track coworker/foo
+<pre><code class="language-bash">  git remote add coworker git://path/to/coworkers/repo.git
+  git fetch coworker
+  git checkout --track coworker/foo
 </code></pre>
 
 <p>This will setup a local branch <code>foo</code>, tracking the remote branch <code>coworker/foo</code>. So when your coworker has made some changes, you can easily pull them:</p>
 
-<pre><code class="language-bash">  $ git checkout foo
-  $ git pull
+<pre><code class="language-bash">  git checkout foo
+  git pull
 </code></pre>
 
 <p>Quick Ref: <a href="http://stackoverflow.com/a/5884825">http://stackoverflow.com/a/5884825</a></p>
@@ -854,6 +877,7 @@ ga('send', 'pageview');
 <li><a href="http://stackoverflow.com/a/2125738/3848679">How to revert a “git rm -r .”?</a></li>
 <li><a href="http://stackoverflow.com/a/39920717/3848679">How to make “spoiler” text in github wiki pages?</a></li>
 <li><a href="https://youtu.be/d-T51nhmFhQ">20 Tricks with Git and Shell, Spencer Krum - Git Merge 2016</a></li>
+<li><a href="https://youtu.be/3IIaOj1Lhb0">Git Aliases of the Gods! - Git Merge 2017</a></li>
 </ul>
 
     </div>
