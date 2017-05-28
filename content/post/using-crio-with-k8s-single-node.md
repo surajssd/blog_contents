@@ -1,6 +1,6 @@
 +++
 title = "k8s on CRI-O - single node"
-categories = ["notes"]
+categories = ["notes", "kubernetes"]
 author = "Suraj Deshmukh"
 date = "2017-04-08T00:11:37+05:30"
 description = "How to make kubernetes use CRI-O as container runtime"

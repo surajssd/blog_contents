@@ -1,5 +1,5 @@
 +++
-categories = ["packaging"]
+categories = ["packaging", "notes"]
 tags = ["centos", "rpm", "fedora"]
 date = "2017-03-24T10:35:54+05:30"
 author = "Suraj Deshmukh"

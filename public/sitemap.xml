@@ -84,7 +84,7 @@
   </url>
   
   <url>
-    <loc>http://suraj.io/categories/event-report/</loc>
+    <loc>http://suraj.io/categories/event_report/</loc>
     <lastmod>2017-05-24T02:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -216,7 +216,7 @@
   </url>
   
   <url>
-    <loc>http://suraj.io/categories/project-management/</loc>
+    <loc>http://suraj.io/categories/project_management/</loc>
     <lastmod>2017-03-26T18:19:15+05:30</lastmod>
     <priority>0</priority>
   </url>

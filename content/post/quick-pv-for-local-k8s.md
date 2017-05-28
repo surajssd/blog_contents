@@ -3,7 +3,7 @@ author = "Suraj Deshmukh"
 date = "2017-04-18T23:56:15+05:30"
 title = "Quick PV for local Kubernetes cluster"
 description = "A hostPath based local PV creation process for using via PVC"
-categories = ["notes"]
+categories = ["notes", "kubernetes"]
 tags = ["kubernetes", "openshift", "pv"]
 
 +++

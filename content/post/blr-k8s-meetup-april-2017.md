@@ -2,7 +2,7 @@
 author = "Suraj Deshmukh"
 date = "2017-04-08T14:31:33+05:30"
 title = "Bangalore Kubernetes Meetup April 2017"
-categories = ["event report"]
+categories = ["event_report"]
 tags = ["kubernetes", "meetup"]
 
 +++

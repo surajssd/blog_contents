@@ -3,7 +3,7 @@ title = "TODOs for new project"
 author = "Suraj Deshmukh"
 date = "2017-03-26T18:19:15+05:30"
 description = "Things to do to make a project successful"
-categories = ["project management"]
+categories = ["project_management"]
 tags = ["open source", "github", "project"]
 
 +++

@@ -3,7 +3,7 @@ author = "Suraj Deshmukh"
 date = "2017-03-15T14:16:43+05:30"
 title = "Packaging 'kompose' for centos paas sig"
 tags = ["centos", "rpm", "openshift", "fedora"]
-categories = ["packaging"]
+categories = ["packaging", "notes", "kompose"]
 description = ""
 
 +++

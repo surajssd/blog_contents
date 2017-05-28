@@ -3,7 +3,7 @@ author = "Suraj Deshmukh"
 title = "Bangalore Kubernetes Meetup May 2017"
 date = "2017-05-24T02:21:49+05:30"
 description = "Kubernetes and OpenShift 101 hands-on workshop"
-categories = ["event report"]
+categories = ["event_report"]
 tags = ["kubernetes", "meetup"]
 
 +++

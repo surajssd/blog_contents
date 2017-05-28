@@ -3,7 +3,7 @@ author = "Suraj Deshmukh"
 title = "Testing 'fedora' and 'CentOS' kompose package"
 date = "2017-03-14T00:31:57+05:30"
 tags = ["centos", "fedora", "rpm"]
-categories = ["packaging"]
+categories = ["packaging", "notes", "kompose"]
 +++
 
 I generally do `kompose` package testing for fedora and CentOS. So here are the steps I follow.
