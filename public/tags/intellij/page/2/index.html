@@ -259,10 +259,12 @@ ga('send', 'pageview');
     
 
     <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
-Note: All the commands that start with # are inside the container.
-Fedora Spin the fedora test environment, let&rsquo;s say fedora 25, I do it in containers.
-$ docker run -it fedora:25 bash  Once inside the container download the latest package from the testing repo:
-dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you download the latest release, there might be conditions that you download the old package.</p>
+Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
+Starting the environment:
+docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
+
+<h1 id="inside-the-container-pull-packages-from-the-testing-repository-dnf-enablerepo-updates-testing-y-install-kompose-check-the-kompose-version-kompose-version-install-the-testing-dependencies-dnf-install-y-jq-make-pull-the-git-repository-to-run-the-functional-tests-git-clone-https-github">Inside the container # Pull packages from the testing repository dnf &ndash;enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone <a href="https://github">https://github</a>.</h1>
+</p>
 
     <footer>
         <ul class="actions">

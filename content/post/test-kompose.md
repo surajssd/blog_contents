@@ -6,79 +6,93 @@ tags = ["centos", "fedora", "rpm"]
 categories = ["packaging", "notes", "kompose"]
 +++
 
-I generally do `kompose` package testing for fedora and CentOS. So here are the steps I follow.
-
-**Note**: All the commands that start with `#` are inside the container.
+I generally do `kompose` package testing for `fedora` and `CentOS`. So here are the steps I follow.
 
 ## Fedora
 
-Spin the fedora test environment, let's say fedora 25, I do it in containers.
+For respective fedora version use the tag respectively for e.g. `25` for `fedora 25`.
+
+Starting the environment:
 
 ```bash
-$ docker run -it fedora:25 bash
+docker run -it registry.fedoraproject.org/fedora:26 bash
 ```
 
-Once inside the container download the latest package from the testing repo:
+Running tests:
 
 ```bash
+# Inside the container
+# Pull packages from the testing repository
 dnf --enablerepo updates-testing -y install kompose
-```
 
-**Note**: Make sure you download the latest release, there might be conditions that you download the old package.
+# Check the kompose version
+kompose version
 
-Now having the package is not enough, we need to run the functional tests, which is in the source repoistory. But before we clone the repo, we need some dependencies like `make` and `jq`. So install them using packages.
-
-```bash
+# Install the testing dependencies
 dnf install -y jq make
+
+# Pull the git repository to run the functional tests
+git clone https://github.com/kubernetes-incubator/kompose/
+cd kompose
+
+# Run cmd tests
+make test-cmd
+
 ```
 
-## CentOS
+## CentOS `epel` repo
 
 Spin the CentOS environment in container.
 
 ```bash
-$ docker run -it centos bash
+docker run -it centos bash
 ```
 
-### `epel` repo
-
-Install kompose from `epel-testing` repo:
+Running tests:
 
 ```bash
+# Install kompose from 'epel-testing' repo
 yum install -y epel-release
 yum --enablerepo=epel-testing -y install kompose
-```
 
-### `paas7-openshift-common-el7` repo
-
-For pulling package from testing repo in CentOS PAAS sig.
-
-```bash
-yum -y install centos-release-openshift-origin
-yum -y --enablerepo=centos-openshift-origin-testing install kompose
-```
-
-
-And packages needed to run tests:
-
-```bash
-yum install -y epel-release
+# Install the testing dependencies
 yum install -y jq make
-```
 
-## Functional tests
-
-Now lets get the functional tests:
-
-```
+# Pull the git repository to run the functional tests
 git clone https://github.com/kubernetes-incubator/kompose/
 cd kompose
+
+# Run cmd tests
+make test-cmd
+
 ```
 
-Run tests:
+## CentOS `paas7-openshift-common-el7` repo
+
+Spin the CentOS environment in container.
 
 ```bash
+docker run -it centos bash
+```
+
+Running tests:
+
+```bash
+# For pulling package from testing repo in CentOS PAAS sig
+yum -y install centos-release-openshift-origin
+yum -y --enablerepo=centos-openshift-origin-testing install kompose
+
+# Install the testing dependencies
+yum install -y epel-release
+yum install -y jq make
+
+# Pull the git repository to run the functional tests
+git clone https://github.com/kubernetes-incubator/kompose/
+cd kompose
+
+# Run cmd tests
 make test-cmd
+
 ```
 
 If all tests pass then just give a karma for it on the release page.
@@ -86,3 +100,5 @@ If all tests pass then just give a karma for it on the release page.
 ## Ref:
 
 - [Original article on Github](https://github.com/surajssd/blog_contents/blob/master/content/post/test-kompose.md)
+- [Getting the latest fedora docker images](https://github.com/fedora-cloud/docker-brew-fedora/issues/44)
+- [Fedora docker hub page](https://hub.docker.com/_/fedora/)
