@@ -35,7 +35,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-05-24T02:21:49&#43;05:30"/>
+<meta property="og:updated_time" content="2017-07-04T22:50:43&#43;05:30"/>
 
 
 
@@ -198,6 +198,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/node-no-sudo/"><p>Clean Node setup</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/blr-k8s-meetup-may-2017/"><p>Bangalore Kubernetes Meetup May 2017</p></a>
                     </li>
                 
@@ -213,10 +217,6 @@ ga('send', 'pageview');
                         <a href="http://suraj.io/post/blr-k8s-meetup-april-2017/"><p>Bangalore Kubernetes Meetup April 2017</p></a>
                     </li>
                 
-                    <li>
-                        <a href="http://suraj.io/post/using-crio-with-k8s-single-node/"><p>k8s on CRI-O - single node</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -230,6 +230,75 @@ ga('send', 'pageview');
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://suraj.io/post/node-no-sudo/">Clean Node setup</a></h2>
+        
+        
+            <p>This will help in intalling node without sudo</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-07-04'>
+            July 4, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>1 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Make sure you have npm installed.
+$ sudo dnf -y install npm Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping. Dependencies resolved. Nothing to do. Complete!  Taken from this post.
+mkdir &quot;${HOME}/.npm-packages&quot; echo &lsquo;prefix=${HOME}/.npm-packages&rsquo; | tee -a ~/.npmrc echo &lsquo; #====================================== # npm related stuff NPM_PACKAGES=&quot;${HOME}/.npm-packages&quot; PATH=&quot;$NPM_PACKAGES/bin:$PATH&quot; # Unset manpath so we can inherit from /etc/manpath via the <code>manpath</code> command unset MANPATH # delete if you already modified MANPATH elsewhere in your config export MANPATH=&quot;$NPM_PACKAGES/share/man:$(manpath)&quot; #====================================== &lsquo; | tee -a ~/.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/node-no-sudo/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -861,78 +930,6 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/">Packaging &#39;kompose&#39; for centos paas sig</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-15'>
-            March 15, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>4 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Note: This is a living document and will be updated from time to time.
-Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
-Setup your machine Install packages needed
-sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriespackaging'>packaging</a></li>
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-        <li><a href='/categorieskompose'>kompose</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1060,6 +1057,20 @@ sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ su
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/node-no-sudo/">Clean Node setup</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-07-04'>
+                                    July 4, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/blr-k8s-meetup-may-2017/">Bangalore Kubernetes Meetup May 2017</a></h3>
                                 
                                     
@@ -1113,20 +1124,6 @@ sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ su
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/using-crio-with-k8s-single-node/">k8s on CRI-O - single node</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2017-04-08'>
-                                    April 8, 2017</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1161,7 +1158,7 @@ sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ su
                         <article>
                             <header>
                                 <a href="/categories/notes/">notes</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>
