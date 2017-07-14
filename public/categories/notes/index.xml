@@ -599,6 +599,12 @@ If you type file name and number seprated by number it will take you to the line
 &lt;p&gt;To have multiple cursors. To get out of this mode just press &lt;code&gt;escape&lt;/code&gt; key.&lt;/p&gt;
 
 &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Shift + F6&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This will select all occurrences of the current word, so you can edit all of them at once. After you are done edition press enter.&lt;/p&gt;
+
+&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;Alt + J&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 

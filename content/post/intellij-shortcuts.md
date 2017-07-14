@@ -136,6 +136,10 @@ To see your clipboard history
 
 To have multiple cursors. To get out of this mode just press `escape` key.
 
+- `Shift + F6`
+
+This will select all occurrences of the current word, so you can edit all of them at once. After you are done edition press enter.
+
 - `Alt + J`
 
 When pressed on a word, it finds the next occurrence of the word and puts a cursor there. So I can edit mutiple occurrences of same word simultaneously.

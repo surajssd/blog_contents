@@ -9,6 +9,137 @@
     <atom:link href="http://suraj.io/categories/event_report/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Bangalore Kubernetes Meetup July 2017</title>
+      <link>http://suraj.io/post/blr-k8s-meetup-july-2017/</link>
+      <pubDate>Thu, 13 Jul 2017 22:46:40 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/blr-k8s-meetup-july-2017/</guid>
+      <description>&lt;p&gt;This &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/240859625/&#34;&gt;edition of meetup&lt;/a&gt;
+was held at Nexus Ventures by folks at &lt;a href=&#34;https://twitter.com/openebs&#34;&gt;OpenEBS&lt;/a&gt;
+on July 8th 2017, which started on a lovely Saturday morning.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/kiranmova&#34;&gt;Kiran Mova&lt;/a&gt; set the floor rolling with his talk
+on &lt;em&gt;Hyperconverged version of OpenEBS with Kubernetes&lt;/em&gt;. Where he talked about
+containerized storage vs traditional storage, instead of building clustering
+into &lt;a href=&#34;https://github.com/openebs/openebs&#34;&gt;OpenEBS&lt;/a&gt; how they are leveraging
+Kubernetes&amp;rsquo;s capabilities to do clustering.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-july-2017/kiran.JPG&#34; alt=&#34;openEBS demo&#34; title=&#34;openEBS demo&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;He also explained difference between various storage providers viz. Portworx,
+StorageOS, Rook, GlusterFS, OpenEBS, etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;
+&lt;iframe width=&#34;595&#34; height=&#34;485&#34; src=&#34;https://www.youtube.com/embed/LRdcah-fs0g&#34;
+frameborder=&#34;0&#34; style=&#34;border:1px solid #CCC; border-width:1px;
+margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
+&lt;a href=&#34;//youtu.be/LRdcah-fs0g&#34;
+title=&#34;Hyperconverged version of OpenEBS with Kubernetes&#34;
+target=&#34;_blank&#34;&gt;Hyperconverged version of OpenEBS with Kubernetes&lt;/a&gt;
+&lt;/strong&gt; by &lt;strong&gt;&lt;a target=&#34;_blank&#34;
+href=&#34;https://twitter.com/kiranmova&#34;&gt;Kiran Mova&lt;/a&gt;&lt;/strong&gt;
+&lt;/div&gt;
+&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;Then was talk by &lt;a href=&#34;https://twitter.com/kamesh_sampath&#34;&gt;Kamesh Sampath&lt;/a&gt; on
+&lt;a href=&#34;https://github.com/istio/istio&#34;&gt;Istio&lt;/a&gt; nameed &lt;em&gt;A sail in the cloud&lt;/em&gt;.
+Specifically tracing, monitoring, service discovery with Istio.&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/fKzj4nGkTEsXnH&#34;
+width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34;
+scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px;
+margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt;
+&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
+&lt;a href=&#34;//www.slideshare.net/kameshsampath/a-sail-in-the-cloud&#34;
+title=&#34;A sail in the cloud&#34; target=&#34;_blank&#34;&gt;A sail in the cloud&lt;/a&gt;
+&lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34;
+href=&#34;https://www.slideshare.net/kameshsampath&#34;&gt;Kamesh Sampath&lt;/a&gt;&lt;/strong&gt;
+&lt;/div&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;He explained the Istio Service Mesh architecture and all components it has.
+How side-car pattern is being used to deploy Istio with the existing apps in
+Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-july-2017/kamesh.JPG&#34; alt=&#34;side-car config&#34; title=&#34;side-car configuration&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;He talked and demoed about Canary deployment, tracing and Circuit breaking with
+Istio. Watch the video recording of talk by Kamesh to learn in detail. Here is
+his &lt;a href=&#34;https://github.com/workspace7/sail-into-cloud&#34;&gt;demo content&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;
+&lt;iframe width=&#34;595&#34; height=&#34;485&#34; src=&#34;https://www.youtube.com/embed/LRdcah-fs0g?start=2020&#34;
+frameborder=&#34;0&#34; style=&#34;border:1px solid #CCC; border-width:1px;
+margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
+&lt;a href=&#34;//youtu.be/LRdcah-fs0g?t=33m40s&#34;
+title=&#34;A sail in the cloud&#34;
+target=&#34;_blank&#34;&gt;A sail in the cloud&lt;/a&gt;
+&lt;/strong&gt; by &lt;strong&gt;&lt;a target=&#34;_blank&#34;
+href=&#34;https://twitter.com/kamesh_sampath&#34;&gt;Kamesh Sampath&lt;/a&gt;&lt;/strong&gt;
+&lt;/div&gt;
+&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;After a snacks break, there was a talk by &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan Ahmed&lt;/a&gt;
+about &lt;em&gt;Dance of container image building&lt;/em&gt;. The main highlight of this highly
+interactive session was on best practices to be followed for building container
+images.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-july-2017/zeeshan.JPG&#34; alt=&#34;buildah in action&#34; title=&#34;buildah in action&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Where he explained why it is not a good idea to bake configs and
+secrets into container image and how one can use use Kubernetes secrets and
+configMaps to get this configs and secrets in the container on the fly, he
+then demoed the tool buildah where you don&amp;rsquo;t need a docker daemon to build
+the container image.&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;
+&lt;iframe width=&#34;595&#34; height=&#34;485&#34; src=&#34;https://www.youtube.com/embed/LRdcah-fs0g?start=5961&#34;
+frameborder=&#34;0&#34; style=&#34;border:1px solid #CCC; border-width:1px;
+margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
+&lt;a href=&#34;//youtu.be/LRdcah-fs0g?t=1h39m21s&#34;
+title=&#34;Dance of container image building&#34;
+target=&#34;_blank&#34;&gt;Dance of container image building&lt;/a&gt;
+&lt;/strong&gt; by &lt;strong&gt;&lt;a target=&#34;_blank&#34;
+href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan Ahmed&lt;/a&gt;&lt;/strong&gt;
+&lt;/div&gt;
+&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;Followed by Zeeshan was talk by &lt;a href=&#34;https://uyirpodiru.blogspot.in/&#34;&gt;Saravanakumar&lt;/a&gt;
+where he talked about &lt;em&gt;Source to Image in OpenShift&lt;/em&gt;, where he explained what
+is s2i, how you can use s2i with the running OpenShift cluster by directly
+providing github url of a project and see it deployed on OpenShift.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-july-2017/saravanakumar.JPG&#34; alt=&#34;s2i demo&#34; title=&#34;s2i demo&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then he demonstrated how you can build your own builder image for OpenShift s2i.
+&lt;a href=&#34;http://goo.gl/xYJnuG&#34;&gt;Link to slides&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;
+&lt;iframe width=&#34;595&#34; height=&#34;485&#34; src=&#34;https://www.youtube.com/embed/LRdcah-fs0g?start=9048&#34;
+frameborder=&#34;0&#34; style=&#34;border:1px solid #CCC; border-width:1px;
+margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
+&lt;a href=&#34;//youtu.be/LRdcah-fs0g?t=2h30m48s&#34;
+title=&#34;Source to Image in OpenShift&#34;
+target=&#34;_blank&#34;&gt;Source to Image in OpenShift&lt;/a&gt;
+&lt;/strong&gt; by &lt;strong&gt;&lt;a target=&#34;_blank&#34;
+href=&#34;https://uyirpodiru.blogspot.in/&#34;&gt;Saravanakumar&lt;/a&gt;&lt;/strong&gt;
+&lt;/div&gt;
+&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;The meetup ended with announcements of &lt;a href=&#34;https://www.meetup.com/Bangalore-Mesos-cncf-User-Group/events/240781879/&#34;&gt;Kubernetes Birthday meetup&lt;/a&gt;
+and awesome burgers from Truffles sponsored by OpenEBS. Thanks all speakers,
+attendees and sponsors for making this meetup a success. Thanks to OpenEBS
+for being a generous sponsors, and specifically &lt;a href=&#34;https://twitter.com/kiranmova&#34;&gt;Kiran&lt;/a&gt;
+and &lt;a href=&#34;https://twitter.com/_nisanta_&#34;&gt;Nisanta&lt;/a&gt; for organizing logistics and
+helping on the day of meetup. Thanks to &lt;a href=&#34;https://www.linkedin.com/in/hemani-katyal-57900081&#34;&gt;Hemani&lt;/a&gt;
+and &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan&lt;/a&gt; for editing this post.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Bangalore Kubernetes Meetup May 2017</title>
       <link>http://suraj.io/post/blr-k8s-meetup-may-2017/</link>
       <pubDate>Wed, 24 May 2017 02:21:49 +0530</pubDate>
