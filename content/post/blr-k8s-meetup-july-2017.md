@@ -39,7 +39,7 @@ href="https://twitter.com/kiranmova">Kiran Mova</a></strong>
 
 
 Then was talk by [Kamesh Sampath](https://twitter.com/kamesh_sampath) on
-[Istio](https://github.com/istio/istio) nameed *A sail in the cloud*.
+[Istio](https://github.com/istio/istio) named *A sail in the cloud*.
 Specifically tracing, monitoring, service discovery with Istio.
 
 <center><iframe src="//www.slideshare.net/slideshow/embed_code/key/fKzj4nGkTEsXnH"
