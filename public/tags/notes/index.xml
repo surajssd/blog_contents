@@ -428,6 +428,19 @@ echo &#39;alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh&#39;  &
 
 &lt;hr /&gt;
 
+&lt;h3 id=&#34;find-no-of-commits-on-your-branch&#34;&gt;Find no. of commits on your branch&lt;/h3&gt;
+
+&lt;p&gt;If you have worked on a branch and have added bunch of commits to it, so how do you find out how many commits you have added?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;  $ git rev-list f28adfba5ec4f1b02153e9dcc0298ace118ca9d9..HEAD
+  5f3693549451429beb7ca17699d83a45f7d8ab49
+  a50cc4d9fe4d6feb3bb150f9762bad643adbacf0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is two commits, you can pipe it to &lt;code&gt;wc&lt;/code&gt; to find out the number.&lt;/p&gt;
+
+&lt;hr /&gt;
+
 &lt;h3 id=&#34;bisect&#34;&gt;bisect&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;The feature&amp;rsquo;s broken? But it was working fine 2 months ago&amp;hellip; what changes?&lt;/em&gt; Bisect will help you find the commit that introduced the problem.&lt;/p&gt;

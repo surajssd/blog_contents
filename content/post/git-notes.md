@@ -223,6 +223,20 @@ Notes about using `git`.
   ```
 ---
 
+### Find no. of commits on your branch
+
+  If you have worked on a branch and have added bunch of commits to it, so how do you find out how many commits you have added?
+
+  ```bash
+  $ git rev-list f28adfba5ec4f1b02153e9dcc0298ace118ca9d9..HEAD
+  5f3693549451429beb7ca17699d83a45f7d8ab49
+  a50cc4d9fe4d6feb3bb150f9762bad643adbacf0
+  ```
+  
+  This is two commits, you can pipe it to `wc` to find out the number.
+
+---
+
 ### bisect
 
   *The feature's broken? But it was working fine 2 months ago... what changes?* Bisect will help you find the commit that introduced the problem.

@@ -58,7 +58,7 @@
 
 
 <meta itemprop="dateModified" content="2017-03-21T22:03:48&#43;05:30" />
-<meta itemprop="wordCount" content="1469">
+<meta itemprop="wordCount" content="1524">
 
 
 
@@ -321,7 +321,7 @@ ga('send', 'pageview');
             March 21, 2017</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>7 minute read</p>
+            <p>8 minute read</p>
         
         
     </div>
@@ -587,6 +587,19 @@ ga('send', 'pageview');
 
 <pre><code class="language-bash">  $ git rebase --continue
 </code></pre>
+
+<hr />
+
+<h3 id="find-no-of-commits-on-your-branch">Find no. of commits on your branch</h3>
+
+<p>If you have worked on a branch and have added bunch of commits to it, so how do you find out how many commits you have added?</p>
+
+<pre><code class="language-bash">  $ git rev-list f28adfba5ec4f1b02153e9dcc0298ace118ca9d9..HEAD
+  5f3693549451429beb7ca17699d83a45f7d8ab49
+  a50cc4d9fe4d6feb3bb150f9762bad643adbacf0
+</code></pre>
+
+<p>This is two commits, you can pipe it to <code>wc</code> to find out the number.</p>
 
 <hr />
 

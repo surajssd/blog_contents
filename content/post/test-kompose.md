@@ -32,7 +32,7 @@ kompose version
 dnf install -y jq make
 
 # Pull the git repository to run the functional tests
-git clone https://github.com/kubernetes-incubator/kompose/
+git clone https://github.com/kubernetes/kompose/
 cd kompose
 
 # Run cmd tests
@@ -59,7 +59,7 @@ yum --enablerepo=epel-testing -y install kompose
 yum install -y jq make
 
 # Pull the git repository to run the functional tests
-git clone https://github.com/kubernetes-incubator/kompose/
+git clone https://github.com/kubernetes/kompose/
 cd kompose
 
 # Run cmd tests
@@ -87,7 +87,7 @@ yum install -y epel-release
 yum install -y jq make
 
 # Pull the git repository to run the functional tests
-git clone https://github.com/kubernetes-incubator/kompose/
+git clone https://github.com/kubernetes/kompose/
 cd kompose
 
 # Run cmd tests
