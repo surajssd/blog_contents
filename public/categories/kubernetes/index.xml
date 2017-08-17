@@ -9,6 +9,31 @@
     <atom:link href="http://suraj.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Kubernetes Learning resources</title>
+      <link>http://suraj.io/post/k8s-learning-resources/</link>
+      <pubDate>Thu, 17 Aug 2017 23:12:18 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/k8s-learning-resources/</guid>
+      <description>&lt;p&gt;Following is the list of all the places you can learn Kubernetes from:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://in.udacity.com/course/scalable-microservices-with-kubernetes--ud615&#34;&gt;Scalable Microservices with Kubernetes&lt;/a&gt; -
+Video tutorial&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.edx.org/course/fundamentals-containers-kubernetes-red-red-hat-do081x#!&#34;&gt;Fundamentals of Containers, Kubernetes, and Red Hat OpenShift&lt;/a&gt; -
+Video tutorial&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kubernetesbyexample.com/&#34;&gt;Kubernetes By Example&lt;/a&gt; - DIY tutorial&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.katacoda.com/courses/kubernetes&#34;&gt;Learn Kubernetes using Interactive Browser-Based Scenarios&lt;/a&gt; -
+DIY tutorial in your own web browser&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.openshift.com/&#34;&gt;Interactive Learning Portal for OpenShift&lt;/a&gt; -
+DIY tutorial in your own web browser&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/home/&#34;&gt;Kubernetes docs&lt;/a&gt; - Textual DIY docs&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/api-reference/v1.6/&#34;&gt;Kubernetes API reference v1.6&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.openshift.org/latest/welcome/index.html&#34;&gt;OpenShift docs&lt;/a&gt; - Textual DIY docs&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Enabling local development with Kubernetes</title>
       <link>http://suraj.io/post/enabling-local-development-with-k8s/</link>
       <pubDate>Sun, 23 Apr 2017 15:57:07 +0530</pubDate>

@@ -500,3 +500,4 @@ These are tips about using github.com
   - [How to make “spoiler” text in github wiki pages?](http://stackoverflow.com/a/39920717/3848679)
   - [20 Tricks with Git and Shell, Spencer Krum - Git Merge 2016](https://youtu.be/d-T51nhmFhQ)
   - [Git Aliases of the Gods! - Git Merge 2017](https://youtu.be/3IIaOj1Lhb0)
+  - [Commits since a certain commit number](https://stackoverflow.com/a/7693298/3848679)
