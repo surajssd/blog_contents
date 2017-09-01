@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://suraj.io/post/add-new-map-to-cs/</loc>
+    <lastmod>2017-09-01T16:03:58+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>http://suraj.io/post/list-all-k8s-meetups/</loc>
     <lastmod>2017-09-01T15:51:16+05:30</lastmod>
   </url>
@@ -116,6 +121,18 @@
   </url>
   
   <url>
+    <loc>http://suraj.io/tags/gaming/</loc>
+    <lastmod>2017-09-01T16:03:58+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://suraj.io/categories/gaming/</loc>
+    <lastmod>2017-09-01T16:03:58+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://suraj.io/tags/git/</loc>
     <lastmod>2017-03-21T22:03:48+05:30</lastmod>
     <priority>0</priority>
@@ -213,7 +230,7 @@
   
   <url>
     <loc>http://suraj.io/post/</loc>
-    <lastmod>2017-09-01T15:51:16+05:30</lastmod>
+    <lastmod>2017-09-01T16:03:58+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -255,7 +272,7 @@
   
   <url>
     <loc>http://suraj.io/</loc>
-    <lastmod>2017-09-01T15:51:16+05:30</lastmod>
+    <lastmod>2017-09-01T16:03:58+05:30</lastmod>
     <priority>0</priority>
   </url>
   
