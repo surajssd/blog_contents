@@ -9,6 +9,25 @@
     <atom:link href="http://suraj.io/tags/meetup/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>List of Kubernetes Bangalore meetup event report</title>
+      <link>http://suraj.io/post/list-all-k8s-meetups/</link>
+      <pubDate>Fri, 01 Sep 2017 15:51:16 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/list-all-k8s-meetups/</guid>
+      <description>&lt;p&gt;List of all the event reports from Kubernetes Bangalore meetup.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://suraj.io/post/blr-k8s-meetup-april-2017/&#34;&gt;April 2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://suraj.io/post/blr-k8s-meetup-may-2017/&#34;&gt;May 2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mohammedzee1000.wordpress.com/2017/06/11/kubernetes-magic-the-gathering-k8sblr-k8sblr-kubernetes-openshift-redhatopen/&#34;&gt;June 2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://suraj.io/post/blr-k8s-meetup-july-2017/&#34;&gt;July 2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloudyuga.guru/blog/kubernetes-2nd-bday/&#34;&gt;Kubernetes 2nd Birthday Celebration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@aditya.konarde/bangalore-kubernetes-meetup-august-2017-686646e0763f&#34;&gt;August 2017&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Bangalore Kubernetes Meetup July 2017</title>
       <link>http://suraj.io/post/blr-k8s-meetup-july-2017/</link>
       <pubDate>Thu, 13 Jul 2017 22:46:40 +0530</pubDate>

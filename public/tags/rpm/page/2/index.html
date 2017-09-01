@@ -35,7 +35,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-03-21T22:03:48&#43;05:30"/>
+<meta property="og:updated_time" content="2017-03-24T10:35:54&#43;05:30"/>
 
 
 
@@ -198,6 +198,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/list-all-k8s-meetups/"><p>List of Kubernetes Bangalore meetup event report</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/k8s-learning-resources/"><p>Kubernetes Learning resources</p></a>
                     </li>
                 
@@ -213,10 +217,6 @@ ga('send', 'pageview');
                         <a href="http://suraj.io/post/blr-k8s-meetup-may-2017/"><p>Bangalore Kubernetes Meetup May 2017</p></a>
                     </li>
                 
-                    <li>
-                        <a href="http://suraj.io/post/enabling-local-development-with-k8s/"><p>Enabling local development with Kubernetes</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -230,6 +230,75 @@ ga('send', 'pageview');
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h2>
+        
+        
+            <p>General notes about rpm packaging and references to upstream docs</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-03-24'>
+            March 24, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG  My Notes  Start reading from: Fedora packager&rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros.  $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch   To see all macros on the system:  $ rpm &ndash;showrc   Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package  $ rpm -qip .</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/rpm-notes/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriespackaging'>packaging</a></li>
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -537,8 +606,8 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
         
 
         <time class="published"
-            datetime='2017-08-17'>
-            August 17, 2017</time>
+            datetime='2017-09-01'>
+            September 1, 2017</time>
         <span class="author"></span>
         
             <p>0 minute read</p>
@@ -693,6 +762,20 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/list-all-k8s-meetups/">List of Kubernetes Bangalore meetup event report</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-09-01'>
+                                    September 1, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/k8s-learning-resources/">Kubernetes Learning resources</a></h3>
                                 
                                     
@@ -746,20 +829,6 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/enabling-local-development-with-k8s/">Enabling local development with Kubernetes</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2017-04-23'>
-                                    April 23, 2017</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -802,7 +871,7 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/kubernetes/">kubernetes</a>
+                                <a href="/categories/event_report/">event_report</a>
                                 <span style="float:right;">4</span>
                             </header>
                         </article>
@@ -811,8 +880,8 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/event_report/">event_report</a>
-                                <span style="float:right;">3</span>
+                                <a href="/categories/kubernetes/">kubernetes</a>
+                                <span style="float:right;">4</span>
                             </header>
                         </article>
                     </li>
