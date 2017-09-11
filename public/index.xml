@@ -1832,7 +1832,7 @@ rotates through all the recommendation.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo yum update -y &amp;amp;&amp;amp; \
 sudo yum install -y epel-release &amp;amp;&amp;amp; \
-sudo yum install -y rpm-build go redhat-rpm-config make \
+sudo yum install -y rpm-build go redhat-rpm-config make koji \
                     gcc byobu rpmlint rpmdevtools centos-packager
 &lt;/code&gt;&lt;/pre&gt;
 

@@ -34,14 +34,14 @@
 <meta name="twitter:description" content="Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
 Setup your machine Install packages needed
-sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs"/>
+sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs"/>
 <meta name="twitter:site" content="@surajd_"/>
 
         <meta property="og:title" content="Packaging &#39;kompose&#39; for centos paas sig" />
 <meta property="og:description" content="Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
 Setup your machine Install packages needed
-sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs" />
+sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/" />
 
@@ -65,11 +65,11 @@ sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ su
 <meta itemprop="description" content="Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
 Setup your machine Install packages needed
-sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs">
+sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs">
 
 
 <meta itemprop="dateModified" content="2017-03-15T14:16:43&#43;05:30" />
-<meta itemprop="wordCount" content="691">
+<meta itemprop="wordCount" content="692">
 
 
 
@@ -400,7 +400,7 @@ ga('send', 'pageview');
 
 <pre><code class="language-bash">sudo yum update -y &amp;&amp; \
 sudo yum install -y epel-release &amp;&amp; \
-sudo yum install -y rpm-build go redhat-rpm-config make \
+sudo yum install -y rpm-build go redhat-rpm-config make koji \
                     gcc byobu rpmlint rpmdevtools centos-packager
 </code></pre>
 

@@ -20,7 +20,7 @@ Install packages needed
 ```bash
 sudo yum update -y && \
 sudo yum install -y epel-release && \
-sudo yum install -y rpm-build go redhat-rpm-config make \
+sudo yum install -y rpm-build go redhat-rpm-config make koji \
                     gcc byobu rpmlint rpmdevtools centos-packager
 ```
 
