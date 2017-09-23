@@ -9,6 +9,114 @@
     <atom:link href="http://suraj.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Static Pods using Kubelet on Fedora</title>
+      <link>http://suraj.io/post/static-pods/</link>
+      <pubDate>Sat, 23 Sep 2017 13:10:14 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/static-pods/</guid>
+      <description>
+
+&lt;p&gt;I wanted to try out &lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial&#34;&gt;&lt;em&gt;Standalone Kubelet Tutorial&lt;/em&gt;&lt;/a&gt;
+of &lt;a href=&#34;https://twitter.com/kelseyhightower&#34;&gt;&lt;strong&gt;Kelsey Hightower&lt;/strong&gt;&lt;/a&gt; by myself but I could not
+follow it as it is, because it was firstly on &lt;a href=&#34;https://cloud.google.com/compute/&#34;&gt;GCE&lt;/a&gt; and
+secondly it uses &lt;a href=&#34;https://en.wikipedia.org/wiki/Container_Linux_by_CoreOS&#34;&gt;CoreOS&lt;/a&gt;,
+but since I am very familiar to &lt;a href=&#34;https://en.wikipedia.org/wiki/Fedora_(operating_system)&#34;&gt;Fedora&lt;/a&gt;
+I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine
+use &lt;a href=&#34;https://en.wikipedia.org/wiki/Vagrant_(software)&#34;&gt;Vagrant&lt;/a&gt;. I have used Vagrantfile
+available &lt;a href=&#34;https://github.com/surajssd/scripts/blob/master/Vagrantfiles/fedora/Vagrantfile&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This blog is only replacement of section &lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial#install-the-standalone-kubelet&#34;&gt;&lt;strong&gt;Install the Standalone Kubelet&lt;/strong&gt;&lt;/a&gt;
+in tutorial.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-packages&#34;&gt;Installing packages&lt;/h2&gt;
+
+&lt;p&gt;Since the tutorial uses CoreOS VM it already has a &lt;a href=&#34;https://kubernetes.io/docs/admin/kubelet/&#34;&gt;Kubelet&lt;/a&gt;
+binary available, on Fedora you can get one using &lt;a href=&#34;https://en.wikipedia.org/wiki/DNF_(software)&#34;&gt;&lt;code&gt;dnf&lt;/code&gt;&lt;/a&gt;.
+In tutorial Kelsey has put in his custom systemd service file, we will also make some
+changes to the default kubelet&amp;rsquo;s service file packaged in Fedora.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo dnf -y install kubernetes-node
+sudo systemctl enable docker --now
+sudo systemctl enable kubelet --now
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Since &lt;code&gt;docker&lt;/code&gt; is a dependency of &lt;code&gt;kubelet&lt;/code&gt; it is also installed, all we need to do is start
+Docker manually alongwith Kubelet.&lt;/p&gt;
+
+&lt;p&gt;Verify if &lt;code&gt;kubelet&lt;/code&gt; and &lt;code&gt;docker&lt;/code&gt; are running&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo systemctl status docker kubelet
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;editing-kubelet-systemd-service-file&#34;&gt;Editing kubelet systemd service file&lt;/h2&gt;
+
+&lt;p&gt;Apply following changes to &lt;code&gt;/etc/kubernetes/config&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-diff&#34;&gt;diff --git a/config b/config
+index 8c0a284..cfccbee 100644
+--- a/config
++++ b/config
+@@ -16,7 +16,7 @@ KUBE_LOGTOSTDERR=&amp;quot;--logtostderr=true&amp;quot;
+ KUBE_LOG_LEVEL=&amp;quot;--v=0&amp;quot;
+ 
+ # Should this cluster be allowed to run privileged docker containers
+-KUBE_ALLOW_PRIV=&amp;quot;--allow-privileged=false&amp;quot;
++KUBE_ALLOW_PRIV=&amp;quot;--allow-privileged=true&amp;quot;
+ 
+ # How the controller-manager, scheduler, and proxy find the apiserver
+ KUBE_MASTER=&amp;quot;--master=http://127.0.0.1:8080&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;By default in Fedora the Kubelet service won&amp;rsquo;t be running privileged pods. Setting flag
+&lt;code&gt;--allow-privileged&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; will allow you to do that. In Kelsey&amp;rsquo;s tutorial you can
+find it &lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial/blob/98b0b5b000cc687cc9c85c54ded7b39f4322d4ba/kubelet.service#L8&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Apply following changes to &lt;code&gt;/etc/kubernetes/kubelet&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-diff&#34;&gt;diff --git a/kubelet b/kubelet
+index cfd5686..07c11ab 100644
+--- a/kubelet
++++ b/kubelet
+@@ -14,4 +14,4 @@ KUBELET_HOSTNAME=&amp;quot;--hostname-override=127.0.0.1&amp;quot;
+ KUBELET_API_SERVER=&amp;quot;--api-servers=http://127.0.0.1:8080&amp;quot;
+ 
+ # Add your own!
+-KUBELET_ARGS=&amp;quot;--cgroup-driver=systemd&amp;quot;
++KUBELET_ARGS=&amp;quot;--cgroup-driver=systemd --pod-manifest-path=/etc/kubernetes/manifests&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To Kubelet we have added one more flag called &lt;code&gt;--pod-manifest-path&lt;/code&gt; which is explained in
+docs as:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Path to the directory containing pod manifest files to run, or the path to a single pod
+manifest file.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Above line can be found in tutorial in &lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial/blob/98b0b5b000cc687cc9c85c54ded7b39f4322d4ba/kubelet.service#L12&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;make-directory-for-pod-manifests&#34;&gt;Make directory for pod manifests&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo mkdir /etc/kubernetes/manifests
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;restart-kubelet-service&#34;&gt;Restart &lt;code&gt;kubelet&lt;/code&gt; service&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo systemctl restart kubelet
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you can follow the rest of the tutorial as it is from section &lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial#static-pods&#34;&gt;&lt;strong&gt;Static Pods&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;References:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/tasks/administer-cluster/static-pod/&#34;&gt;Static Pods&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial&#34;&gt;Standalone Kubelet Tutorial - Kelsey Hightower&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Kubernetes Learning resources</title>
       <link>http://suraj.io/post/k8s-learning-resources/</link>
       <pubDate>Thu, 17 Aug 2017 23:12:18 +0530</pubDate>

@@ -29,7 +29,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-09-18T10:43:46&#43;05:30"/>
+<meta property="og:updated_time" content="2017-09-23T13:10:14&#43;05:30"/>
 
 
 
@@ -197,6 +197,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/static-pods/"><p>Static Pods using Kubelet on Fedora</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/move-vagrant-boxes/"><p>Sharing Vagrant Box offline</p></a>
                     </li>
                 
@@ -210,10 +214,6 @@ ga('send', 'pageview');
                 
                     <li>
                         <a href="http://suraj.io/post/k8s-learning-resources/"><p>Kubernetes Learning resources</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="http://suraj.io/post/blr-k8s-meetup-july-2017/"><p>Bangalore Kubernetes Meetup July 2017</p></a>
                     </li>
                 
             </ul>
@@ -230,10 +230,10 @@ ga('send', 'pageview');
     <header>
     <div class="title">
         
-            <h2><a href="http://suraj.io/post/move-vagrant-boxes/">Sharing Vagrant Box offline</a></h2>
+            <h2><a href="http://suraj.io/post/static-pods/">Static Pods using Kubelet on Fedora</a></h2>
         
         
-            <p>Share Vagrant boxes like you shareed Operating System ISOs</p>
+            <p>Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;</p>
         
     </div>
     <div class="meta">
@@ -242,8 +242,8 @@ ga('send', 'pageview');
         
 
         <time class="published"
-            datetime='2017-09-18'>
-            September 18, 2017</time>
+            datetime='2017-09-23'>
+            September 23, 2017</time>
         <span class="author">Suraj Deshmukh</span>
         
             <p>2 minute read</p>
@@ -258,43 +258,43 @@ ga('send', 'pageview');
             
 
 
-<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f&text=Sharing%20Vagrant%20Box%20offline&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&text=Static%20Pods%20using%20Kubelet%20on%20Fedora&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f&title=Sharing%20Vagrant%20Box%20offline" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&title=Static%20Pods%20using%20Kubelet%20on%20Fedora" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f&title=Sharing%20Vagrant%20Box%20offline" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&title=Static%20Pods%20using%20Kubelet%20on%20Fedora" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f&title=Sharing%20Vagrant%20Box%20offline" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&title=Static%20Pods%20using%20Kubelet%20on%20Fedora" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -304,51 +304,105 @@ ga('send', 'pageview');
     
 
     <div id="content">
-        <p>If you have some box that was downloaded on your machine from <a href="https://app.vagrantup.com/boxes/search">Atlas</a>
-but now you wanna share it on other machines and you don&rsquo;t have internet to download it,
-how do you share it?</p>
+        
 
-<p>You will need to export the box from machine that has it downloaded already. So on machine
-with boxes:</p>
+<p>I wanted to try out <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial"><em>Standalone Kubelet Tutorial</em></a>
+of <a href="https://twitter.com/kelseyhightower"><strong>Kelsey Hightower</strong></a> by myself but I could not
+follow it as it is, because it was firstly on <a href="https://cloud.google.com/compute/">GCE</a> and
+secondly it uses <a href="https://en.wikipedia.org/wiki/Container_Linux_by_CoreOS">CoreOS</a>,
+but since I am very familiar to <a href="https://en.wikipedia.org/wiki/Fedora_(operating_system)">Fedora</a>
+I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine
+use <a href="https://en.wikipedia.org/wiki/Vagrant_(software)">Vagrant</a>. I have used Vagrantfile
+available <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/fedora/Vagrantfile">here</a>.</p>
 
-<pre><code class="language-bash">$ vagrant box list
-centos/7             (libvirt, 1610.01)
-centos/7             (libvirt, 1704.01)
-fedora/25-cloud-base (libvirt, 20161122)
-fedora/26-cloud-base (libvirt, 20170705)
+<p>This blog is only replacement of section <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial#install-the-standalone-kubelet"><strong>Install the Standalone Kubelet</strong></a>
+in tutorial.</p>
+
+<h2 id="installing-packages">Installing packages</h2>
+
+<p>Since the tutorial uses CoreOS VM it already has a <a href="https://kubernetes.io/docs/admin/kubelet/">Kubelet</a>
+binary available, on Fedora you can get one using <a href="https://en.wikipedia.org/wiki/DNF_(software)"><code>dnf</code></a>.
+In tutorial Kelsey has put in his custom systemd service file, we will also make some
+changes to the default kubelet&rsquo;s service file packaged in Fedora.</p>
+
+<pre><code class="language-bash">sudo dnf -y install kubernetes-node
+sudo systemctl enable docker --now
+sudo systemctl enable kubelet --now
 </code></pre>
 
-<p>I wanted to share <code>fedora/26-cloud-base</code> box to another machine. Run the following command:</p>
+<p>Since <code>docker</code> is a dependency of <code>kubelet</code> it is also installed, all we need to do is start
+Docker manually alongwith Kubelet.</p>
 
-<pre><code class="language-bash">$ vagrant box repackage fedora/26-cloud-base libvirt 20170705
+<p>Verify if <code>kubelet</code> and <code>docker</code> are running</p>
+
+<pre><code class="language-bash">sudo systemctl status docker kubelet
 </code></pre>
 
-<p>If you deconstruct the above command you will find that the input to above command is all
-seen in output of command <code>vagrant box list</code>, where <code>fedora/26-cloud-base</code> is the box name &amp;
-<code>libvirt</code> is the provider &amp; <code>20170705</code> is the version.</p>
+<h2 id="editing-kubelet-systemd-service-file">Editing kubelet systemd service file</h2>
 
-<p>Or find more help running:</p>
+<p>Apply following changes to <code>/etc/kubernetes/config</code></p>
 
-<pre><code class="language-bash">$ vagrant box repackage -h
-Usage: vagrant box repackage &lt;name&gt; &lt;provider&gt; &lt;version&gt;
+<pre><code class="language-diff">diff --git a/config b/config
+index 8c0a284..cfccbee 100644
+--- a/config
++++ b/config
+@@ -16,7 +16,7 @@ KUBE_LOGTOSTDERR=&quot;--logtostderr=true&quot;
+ KUBE_LOG_LEVEL=&quot;--v=0&quot;
+ 
+ # Should this cluster be allowed to run privileged docker containers
+-KUBE_ALLOW_PRIV=&quot;--allow-privileged=false&quot;
++KUBE_ALLOW_PRIV=&quot;--allow-privileged=true&quot;
+ 
+ # How the controller-manager, scheduler, and proxy find the apiserver
+ KUBE_MASTER=&quot;--master=http://127.0.0.1:8080&quot;
 </code></pre>
 
-<p>Above command creates the file named <code>package.box</code>.</p>
+<p>By default in Fedora the Kubelet service won&rsquo;t be running privileged pods. Setting flag
+<code>--allow-privileged</code> to <code>true</code> will allow you to do that. In Kelsey&rsquo;s tutorial you can
+find it <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial/blob/98b0b5b000cc687cc9c85c54ded7b39f4322d4ba/kubelet.service#L8">here</a>.</p>
 
-<p>Now transfer this box file to another machine and there you will have to import this box.
-Over there run command:</p>
+<p>Apply following changes to <code>/etc/kubernetes/kubelet</code></p>
 
-<pre><code class="language-bash">$ vagrant box add fedora/26-cloud-base package.box
-==&gt; box: Box file was not detected as metadata. Adding it directly...
-==&gt; box: Adding box 'fedora/26-cloud-base' (v0) for provider: 
-    box: Unpacking necessary files from: file:///home/foobar/package.box
-==&gt; box: Successfully added box 'fedora/26-cloud-base' (v0) for 'libvirt'!
+<pre><code class="language-diff">diff --git a/kubelet b/kubelet
+index cfd5686..07c11ab 100644
+--- a/kubelet
++++ b/kubelet
+@@ -14,4 +14,4 @@ KUBELET_HOSTNAME=&quot;--hostname-override=127.0.0.1&quot;
+ KUBELET_API_SERVER=&quot;--api-servers=http://127.0.0.1:8080&quot;
+ 
+ # Add your own!
+-KUBELET_ARGS=&quot;--cgroup-driver=systemd&quot;
++KUBELET_ARGS=&quot;--cgroup-driver=systemd --pod-manifest-path=/etc/kubernetes/manifests&quot;
 </code></pre>
 
-<p>Now you can list the boxes and use it on this new machine.</p>
+<p>To Kubelet we have added one more flag called <code>--pod-manifest-path</code> which is explained in
+docs as:</p>
 
-<p>Here is a list of <a href="https://github.com/surajssd/scripts/tree/master/Vagrantfiles">Vagrantfiles</a>
-I use for all my local setup.</p>
+<blockquote>
+<p>Path to the directory containing pod manifest files to run, or the path to a single pod
+manifest file.</p>
+</blockquote>
+
+<p>Above line can be found in tutorial in <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial/blob/98b0b5b000cc687cc9c85c54ded7b39f4322d4ba/kubelet.service#L12">here</a>.</p>
+
+<h2 id="make-directory-for-pod-manifests">Make directory for pod manifests</h2>
+
+<pre><code>sudo mkdir /etc/kubernetes/manifests
+</code></pre>
+
+<h2 id="restart-kubelet-service">Restart <code>kubelet</code> service</h2>
+
+<pre><code class="language-bash">sudo systemctl restart kubelet
+</code></pre>
+
+<p>Now you can follow the rest of the tutorial as it is from section <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial#static-pods"><strong>Static Pods</strong></a>.</p>
+
+<p>References:</p>
+
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/administer-cluster/static-pod/">Static Pods</a></li>
+<li><a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial">Standalone Kubelet Tutorial - Kelsey Hightower</a></li>
+</ul>
 
     </div>
 
@@ -378,11 +432,9 @@ I use for all my local setup.</p>
 
     
     
-        <li><a href='/categoriesvagrant'>vagrant</a></li>
+        <li><a href='/categoriesnotes'>notes</a></li>
     
-        <li><a href='/categoriesfedora'>fedora</a></li>
-    
-        <li><a href='/categoriescentos'>centos</a></li>
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
     
 </ul>
 
@@ -390,8 +442,8 @@ I use for all my local setup.</p>
 </article>
 <ul class="actions pagination">
     
-        <li><a href="http://suraj.io/post/add-new-map-to-cs/"
-                class="button big previous">Add new Maps to Counter Strike</a></li>
+        <li><a href="http://suraj.io/post/move-vagrant-boxes/"
+                class="button big previous">Sharing Vagrant Box offline</a></li>
     
 
     
@@ -404,9 +456,9 @@ I use for all my local setup.</p>
             <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'suraj-io';
-    var disqus_identifier = 'http:\/\/suraj.io\/post\/move-vagrant-boxes\/';
-    var disqus_title = 'Sharing Vagrant Box offline';
-    var disqus_url = 'http:\/\/suraj.io\/post\/move-vagrant-boxes\/';
+    var disqus_identifier = 'http:\/\/suraj.io\/post\/static-pods\/';
+    var disqus_title = 'Static Pods using Kubelet on Fedora';
+    var disqus_url = 'http:\/\/suraj.io\/post\/static-pods\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -430,43 +482,43 @@ I use for all my local setup.</p>
             
 
 
-<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f&text=Sharing%20Vagrant%20Box%20offline&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&text=Static%20Pods%20using%20Kubelet%20on%20Fedora&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f&title=Sharing%20Vagrant%20Box%20offline" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&title=Static%20Pods%20using%20Kubelet%20on%20Fedora" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f&title=Sharing%20Vagrant%20Box%20offline" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&title=Static%20Pods%20using%20Kubelet%20on%20Fedora" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f&title=Sharing%20Vagrant%20Box%20offline" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&title=Static%20Pods%20using%20Kubelet%20on%20Fedora" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fmove-vagrant-boxes%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -590,6 +642,20 @@ I use for all my local setup.</p>
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/static-pods/">Static Pods using Kubelet on Fedora</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-09-23'>
+                                    September 23, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/move-vagrant-boxes/">Sharing Vagrant Box offline</a></h3>
                                 
                                     
@@ -643,20 +709,6 @@ I use for all my local setup.</p>
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/blr-k8s-meetup-july-2017/">Bangalore Kubernetes Meetup July 2017</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2017-07-13'>
-                                    July 13, 2017</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -691,16 +743,7 @@ I use for all my local setup.</p>
                         <article>
                             <header>
                                 <a href="/categories/notes/">notes</a>
-                                <span style="float:right;">7</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/event_report/">event_report</a>
-                                <span style="float:right;">4</span>
+                                <span style="float:right;">8</span>
                             </header>
                         </article>
                     </li>
@@ -709,6 +752,15 @@ I use for all my local setup.</p>
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
+                                <span style="float:right;">5</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/event_report/">event_report</a>
                                 <span style="float:right;">4</span>
                             </header>
                         </article>

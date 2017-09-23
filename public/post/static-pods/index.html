@@ -1,17 +1,11 @@
-
-
-
-    
-
-
-
-
 <!DOCTYPE HTML>
 
 <html>
     <head>
         
-            <title>Github - Suraj Deshmukh</title>
+            
+                <title>Static Pods using Kubelet on Fedora</title>
+            
         
 
         <meta charset="utf-8" />
@@ -21,35 +15,54 @@
 
 
         
+            <meta name="author" content="Suraj Deshmukh">
         
-            
-                <meta name="description" content="Blog">
-            
         
-
+            <meta name="description" content="Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;">
         
-        <meta property="og:title" content="Github" />
-<meta property="og:description" content="Blog" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://suraj.io/tags/github/" />
-
-
-
-<meta property="og:updated_time" content="2017-03-26T18:19:15&#43;05:30"/>
-
-
-
-
-
-
-
-
-
 
         
-<meta itemprop="name" content="Github">
-<meta itemprop="description" content="Blog">
 
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:text:title" content="Static Pods using Kubelet on Fedora"/>
+<meta name="twitter:title" content="Static Pods using Kubelet on Fedora"/>
+<meta name="twitter:description" content="Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;"/>
+<meta name="twitter:site" content="@surajd_"/>
+
+        <meta property="og:title" content="Static Pods using Kubelet on Fedora" />
+<meta property="og:description" content="Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://suraj.io/post/static-pods/" />
+
+
+
+<meta property="article:published_time" content="2017-09-23T13:10:14&#43;05:30"/>
+<meta property="article:modified_time" content="2017-09-23T13:10:14&#43;05:30"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Static Pods using Kubelet on Fedora">
+<meta itemprop="description" content="Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;">
+
+
+<meta itemprop="dateModified" content="2017-09-23T13:10:14&#43;05:30" />
+<meta itemprop="wordCount" content="373">
+
+
+
+<meta itemprop="keywords" content="centos,event_report,fedora,gaming,git,ide,kompose,kubernetes,notes,packaging,project_management,vagrant,centos,crio,development,fedora,gaming,git,github,ide,intellij,kubernetes,meetup,minikube,notes,open source,openshift,productivity,programming,project,pv,rpm,vagrant," />
 
         
 
@@ -93,6 +106,7 @@ ga('send', 'pageview');
         <div id="wrapper">
 
     
+    
 <header id="header">
     
         <h2><a href="/">Suraj Deshmukh</i></a></h2>
@@ -124,6 +138,10 @@ ga('send', 'pageview');
     </nav>
     <nav class="main">
         <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
             
             <li class="search">
                 <a class="fa-search" href="#search">Search</a>
@@ -224,19 +242,70 @@ ga('send', 'pageview');
         
 </section>
 
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&text=Static%20Pods%20using%20Kubelet%20on%20Fedora&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&title=Static%20Pods%20using%20Kubelet%20on%20Fedora" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&title=Static%20Pods%20using%20Kubelet%20on%20Fedora" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&title=Static%20Pods%20using%20Kubelet%20on%20Fedora" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
     
     <div id="main">
         
         
-            
-        
-
-        
-            <article class="post">
+        <article class="post">
     <header>
     <div class="title">
         
-            <h2><a href="http://suraj.io/post/static-pods/">Static Pods using Kubelet on Fedora</a></h2>
+            <h1><a href="http://suraj.io/post/static-pods/">Static Pods using Kubelet on Fedora</a></h1>
+            
         
         
             <p>Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;</p>
@@ -258,15 +327,161 @@ ga('send', 'pageview');
     </div>
 </header>
 
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&text=Static%20Pods%20using%20Kubelet%20on%20Fedora&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&title=Static%20Pods%20using%20Kubelet%20on%20Fedora" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&title=Static%20Pods%20using%20Kubelet%20on%20Fedora" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f&title=Static%20Pods%20using%20Kubelet%20on%20Fedora" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fstatic-pods%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
     
 
-    <p>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.
-This blog is only replacement of section Install the Standalone Kubelet in tutorial.</p>
+    <div id="content">
+        
+
+<p>I wanted to try out <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial"><em>Standalone Kubelet Tutorial</em></a>
+of <a href="https://twitter.com/kelseyhightower"><strong>Kelsey Hightower</strong></a> by myself but I could not
+follow it as it is, because it was firstly on <a href="https://cloud.google.com/compute/">GCE</a> and
+secondly it uses <a href="https://en.wikipedia.org/wiki/Container_Linux_by_CoreOS">CoreOS</a>,
+but since I am very familiar to <a href="https://en.wikipedia.org/wiki/Fedora_(operating_system)">Fedora</a>
+I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine
+use <a href="https://en.wikipedia.org/wiki/Vagrant_(software)">Vagrant</a>. I have used Vagrantfile
+available <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/fedora/Vagrantfile">here</a>.</p>
+
+<p>This blog is only replacement of section <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial#install-the-standalone-kubelet"><strong>Install the Standalone Kubelet</strong></a>
+in tutorial.</p>
+
+<h2 id="installing-packages">Installing packages</h2>
+
+<p>Since the tutorial uses CoreOS VM it already has a <a href="https://kubernetes.io/docs/admin/kubelet/">Kubelet</a>
+binary available, on Fedora you can get one using <a href="https://en.wikipedia.org/wiki/DNF_(software)"><code>dnf</code></a>.
+In tutorial Kelsey has put in his custom systemd service file, we will also make some
+changes to the default kubelet&rsquo;s service file packaged in Fedora.</p>
+
+<pre><code class="language-bash">sudo dnf -y install kubernetes-node
+sudo systemctl enable docker --now
+sudo systemctl enable kubelet --now
+</code></pre>
+
+<p>Since <code>docker</code> is a dependency of <code>kubelet</code> it is also installed, all we need to do is start
+Docker manually alongwith Kubelet.</p>
+
+<p>Verify if <code>kubelet</code> and <code>docker</code> are running</p>
+
+<pre><code class="language-bash">sudo systemctl status docker kubelet
+</code></pre>
+
+<h2 id="editing-kubelet-systemd-service-file">Editing kubelet systemd service file</h2>
+
+<p>Apply following changes to <code>/etc/kubernetes/config</code></p>
+
+<pre><code class="language-diff">diff --git a/config b/config
+index 8c0a284..cfccbee 100644
+--- a/config
++++ b/config
+@@ -16,7 +16,7 @@ KUBE_LOGTOSTDERR=&quot;--logtostderr=true&quot;
+ KUBE_LOG_LEVEL=&quot;--v=0&quot;
+ 
+ # Should this cluster be allowed to run privileged docker containers
+-KUBE_ALLOW_PRIV=&quot;--allow-privileged=false&quot;
++KUBE_ALLOW_PRIV=&quot;--allow-privileged=true&quot;
+ 
+ # How the controller-manager, scheduler, and proxy find the apiserver
+ KUBE_MASTER=&quot;--master=http://127.0.0.1:8080&quot;
+</code></pre>
+
+<p>By default in Fedora the Kubelet service won&rsquo;t be running privileged pods. Setting flag
+<code>--allow-privileged</code> to <code>true</code> will allow you to do that. In Kelsey&rsquo;s tutorial you can
+find it <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial/blob/98b0b5b000cc687cc9c85c54ded7b39f4322d4ba/kubelet.service#L8">here</a>.</p>
+
+<p>Apply following changes to <code>/etc/kubernetes/kubelet</code></p>
+
+<pre><code class="language-diff">diff --git a/kubelet b/kubelet
+index cfd5686..07c11ab 100644
+--- a/kubelet
++++ b/kubelet
+@@ -14,4 +14,4 @@ KUBELET_HOSTNAME=&quot;--hostname-override=127.0.0.1&quot;
+ KUBELET_API_SERVER=&quot;--api-servers=http://127.0.0.1:8080&quot;
+ 
+ # Add your own!
+-KUBELET_ARGS=&quot;--cgroup-driver=systemd&quot;
++KUBELET_ARGS=&quot;--cgroup-driver=systemd --pod-manifest-path=/etc/kubernetes/manifests&quot;
+</code></pre>
+
+<p>To Kubelet we have added one more flag called <code>--pod-manifest-path</code> which is explained in
+docs as:</p>
+
+<blockquote>
+<p>Path to the directory containing pod manifest files to run, or the path to a single pod
+manifest file.</p>
+</blockquote>
+
+<p>Above line can be found in tutorial in <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial/blob/98b0b5b000cc687cc9c85c54ded7b39f4322d4ba/kubelet.service#L12">here</a>.</p>
+
+<h2 id="make-directory-for-pod-manifests">Make directory for pod manifests</h2>
+
+<pre><code>sudo mkdir /etc/kubernetes/manifests
+</code></pre>
+
+<h2 id="restart-kubelet-service">Restart <code>kubelet</code> service</h2>
+
+<pre><code class="language-bash">sudo systemctl restart kubelet
+</code></pre>
+
+<p>Now you can follow the rest of the tutorial as it is from section <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial#static-pods"><strong>Static Pods</strong></a>.</p>
+
+<p>References:</p>
+
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/administer-cluster/static-pod/">Static Pods</a></li>
+<li><a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial">Standalone Kubelet Tutorial - Kelsey Hightower</a></li>
+</ul>
+
+    </div>
 
     <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/static-pods/" class="button big">Continue Reading</a></li>
-        </ul>
         <ul class="stats">
     
         
@@ -300,649 +515,37 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
 
     </footer>
 </article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/move-vagrant-boxes/">Sharing Vagrant Box offline</a></h2>
-        
-        
-            <p>Share Vagrant boxes like you shareed Operating System ISOs</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-09-18'>
-            September 18, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don&rsquo;t have internet to download it, how do you share it?
-You will need to export the box from machine that has it downloaded already. So on machine with boxes:
-$ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705)  I wanted to share fedora/26-cloud-base box to another machine.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/move-vagrant-boxes/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesvagrant'>vagrant</a></li>
-    
-        <li><a href='/categoriesfedora'>fedora</a></li>
-    
-        <li><a href='/categoriescentos'>centos</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/add-new-map-to-cs/">Add new Maps to Counter Strike</a></h2>
-        
-        
-            <p>Steps to add new maps to CS</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-09-01'>
-            September 1, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>If you are playing Counter Strike on Steam on linux you might be wondering how do I install new maps in the game. So here are steps to install maps.
-All the game maps for Counter Strike - Condition Zero are stored in following path:
-~/.local/share/Steam/steamapps/common/Half-Life/czero/maps  Format of the map files is .bsp.
-So download the map files from over internet and then put in this location and now you should be able to see the maps in game.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/add-new-map-to-cs/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesgaming'>gaming</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/list-all-k8s-meetups/">List of Kubernetes Bangalore meetup event report</a></h2>
-        
-        
-            <p>List of all the Kubernetes and OpenShift meetup event reports</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-09-01'>
-            September 1, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>List of all the event reports from Kubernetes Bangalore meetup.
- April 2017 May 2017 June 2017 July 2017 Kubernetes 2nd Birthday Celebration August 2017</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/list-all-k8s-meetups/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesevent_report'>event_report</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/k8s-learning-resources/">Kubernetes Learning resources</a></h2>
-        
-        
-            <p>Places you can find learning material for Kubernetes</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-08-17'>
-            August 17, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Following is the list of all the places you can learn Kubernetes from:
- Scalable Microservices with Kubernetes - Video tutorial Fundamentals of Containers, Kubernetes, and Red Hat OpenShift - Video tutorial Kubernetes By Example - DIY tutorial Learn Kubernetes using Interactive Browser-Based Scenarios - DIY tutorial in your own web browser Interactive Learning Portal for OpenShift - DIY tutorial in your own web browser Kubernetes docs - Textual DIY docs Kubernetes API reference v1.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/k8s-learning-resources/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/blr-k8s-meetup-july-2017/">Bangalore Kubernetes Meetup July 2017</a></h2>
-        
-        
-            <p>Kubernetes Meetup presentation and talks</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-07-13'>
-            July 13, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>This edition of meetup was held at Nexus Ventures by folks at OpenEBS on July 8th 2017, which started on a lovely Saturday morning.
-Kiran Mova set the floor rolling with his talk on Hyperconverged version of OpenEBS with Kubernetes. Where he talked about containerized storage vs traditional storage, instead of building clustering into OpenEBS how they are leveraging Kubernetes&rsquo;s capabilities to do clustering.
-He also explained difference between various storage providers viz.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/blr-k8s-meetup-july-2017/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesevent_report'>event_report</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/node-no-sudo/">Clean Node setup</a></h2>
-        
-        
-            <p>This will help in intalling node without sudo</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-07-04'>
-            July 4, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Make sure you have npm installed.
-$ sudo dnf -y install npm Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping. Dependencies resolved. Nothing to do. Complete!  Taken from this post.
-mkdir &quot;${HOME}/.npm-packages&quot; echo &lsquo;prefix=${HOME}/.npm-packages&rsquo; | tee -a ~/.npmrc echo &lsquo; #====================================== # npm related stuff NPM_PACKAGES=&quot;${HOME}/.npm-packages&quot; PATH=&quot;$NPM_PACKAGES/bin:$PATH&quot; # Unset manpath so we can inherit from /etc/manpath via the <code>manpath</code> command unset MANPATH # delete if you already modified MANPATH elsewhere in your config export MANPATH=&quot;$NPM_PACKAGES/share/man:$(manpath)&quot; #====================================== &lsquo; | tee -a ~/.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/node-no-sudo/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/blr-k8s-meetup-may-2017/">Bangalore Kubernetes Meetup May 2017</a></h2>
-        
-        
-            <p>Kubernetes and OpenShift 101 hands-on workshop</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-05-24'>
-            May 24, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>3 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>&ldquo;One does not simply deploy containers to production&rdquo;
-With the rising craze around the container community in Bangalore and relative lack in awareness around different container technologies like Kubernetes and OpenShift, an effort was made in imparting knowledge in this direction.
-So, this time around newbies were targeted for the Kubernetes Meetup.
-With the above objective, it was decided to have a Kubernetes 101 workshop at Red Hat Bangalore office on May 21, 2017 to familiarize people with concepts of Kubernetes and OpenShift and their usage and relevance as container orchestration tools for managing application deployments.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/blr-k8s-meetup-may-2017/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesevent_report'>event_report</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/enabling-local-development-with-k8s/">Enabling local development with Kubernetes</a></h2>
-        
-        
-            <p>If you are doing development and want to use kubernetes for it, then here is how you can do it.</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-04-23'>
-            April 23, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>5 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I want to show how you can enable Kubernetes in your day to day development workflow. So that you get the feel of production deployment locally from day 1.
-I have a flask application which I am working on. The basic directory structure looks like this:
-$ ll total 24 -rw-rw-r&ndash;. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r&ndash;. 1 foo foo 201 Apr 23 16:55 docker-compose.yml -rw-rw-r&ndash;. 1 foo foo 363 Apr 23 16:21 Dockerfile -rwxrwxr-x.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/enabling-local-development-with-k8s/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-        <li><a href='/categorieskompose'>kompose</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/quick-pv-for-local-k8s/">Quick PV for local Kubernetes cluster</a></h2>
-        
-        
-            <p>A hostPath based local PV creation process for using via PVC</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-04-18'>
-            April 18, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
-Enter into the machine running k8s If using minikube you can do
-minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001  If you are on a machine that has SELinux enabled do the following</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/quick-pv-for-local-k8s/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-
-        
 <ul class="actions pagination">
     
-        <li><a href="#" class="disabled button big previous">Previous Page</a></li>
+        <li><a href="http://suraj.io/post/move-vagrant-boxes/"
+                class="button big previous">Sharing Vagrant Box offline</a></li>
     
 
     
-        <li><a href="/tags/github/page/2/"
-                class="button big next">Next Page</a></li>
-    
 </ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'suraj-io';
+    var disqus_identifier = 'http:\/\/suraj.io\/post\/static-pods\/';
+    var disqus_title = 'Static Pods using Kubelet on Fedora';
+    var disqus_url = 'http:\/\/suraj.io\/post\/static-pods\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
 
     </div>
     
@@ -963,9 +566,6 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
                 </header>
             
             <ul class="icons">
-                
-                    <li><a href="http://suraj.io/tags/github/index.xml" type="application/rss+xml"
-                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
                 
                 
                     
@@ -1282,9 +882,6 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
     
         <section id="footer">
             <ul class="icons">
-                
-                    <li><a href="http://suraj.io/tags/github/index.xml" type="application/rss+xml"
-                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
                 
                 
                     
