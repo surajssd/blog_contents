@@ -18,6 +18,15 @@
     </item>
     
     <item>
+      <title>Container</title>
+      <link>http://suraj.io/categories/container/</link>
+      <pubDate>Fri, 06 Oct 2017 19:32:33 +0530</pubDate>
+      
+      <guid>http://suraj.io/categories/container/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Event_report</title>
       <link>http://suraj.io/categories/event_report/</link>
       <pubDate>Fri, 01 Sep 2017 15:51:16 +0530</pubDate>
@@ -74,9 +83,18 @@
     <item>
       <title>Kubernetes</title>
       <link>http://suraj.io/categories/kubernetes/</link>
-      <pubDate>Sat, 23 Sep 2017 13:10:14 +0530</pubDate>
+      <pubDate>Fri, 06 Oct 2017 19:32:33 +0530</pubDate>
       
       <guid>http://suraj.io/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Minikube</title>
+      <link>http://suraj.io/categories/minikube/</link>
+      <pubDate>Fri, 06 Oct 2017 19:32:33 +0530</pubDate>
+      
+      <guid>http://suraj.io/categories/minikube/</guid>
       <description></description>
     </item>
     

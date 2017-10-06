@@ -198,6 +198,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/private-registry-from-minikube/"><p>Using private container registries from minikube</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/static-pods/"><p>Static Pods using Kubelet on Fedora</p></a>
                     </li>
                 
@@ -213,10 +217,6 @@ ga('send', 'pageview');
                         <a href="http://suraj.io/post/list-all-k8s-meetups/"><p>List of Kubernetes Bangalore meetup event report</p></a>
                     </li>
                 
-                    <li>
-                        <a href="http://suraj.io/post/k8s-learning-resources/"><p>Kubernetes Learning resources</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -230,6 +230,78 @@ ga('send', 'pageview');
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://suraj.io/post/private-registry-from-minikube/">Using private container registries from minikube</a></h2>
+        
+        
+            <p>A guide to how would you download image from private container registry in minikube</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-10-06'>
+            October 6, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
+On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/private-registry-from-minikube/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+        <li><a href='/categoriesminikube'>minikube</a></li>
+    
+        <li><a href='/categoriescontainer'>container</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -860,77 +932,6 @@ $ ll total 24 -rw-rw-r&ndash;. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r&ndash;
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/quick-pv-for-local-k8s/">Quick PV for local Kubernetes cluster</a></h2>
-        
-        
-            <p>A hostPath based local PV creation process for using via PVC</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-04-18'>
-            April 18, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
-Enter into the machine running k8s If using minikube you can do
-minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001  If you are on a machine that has SELinux enabled do the following</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/quick-pv-for-local-k8s/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1058,6 +1059,20 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/private-registry-from-minikube/">Using private container registries from minikube</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-10-06'>
+                                    October 6, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/static-pods/">Static Pods using Kubelet on Fedora</a></h3>
                                 
                                     
@@ -1111,20 +1126,6 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/k8s-learning-resources/">Kubernetes Learning resources</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2017-08-17'>
-                                    August 17, 2017</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1168,7 +1169,7 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">5</span>
+                                <span style="float:right;">6</span>
                             </header>
                         </article>
                     </li>
@@ -1212,6 +1213,15 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/container/">container</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/fedora/">fedora</a>
                                 <span style="float:right;">1</span>
                             </header>
@@ -1240,6 +1250,15 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
                         <article>
                             <header>
                                 <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/minikube/">minikube</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

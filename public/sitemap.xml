@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://suraj.io/post/private-registry-from-minikube/</loc>
+    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>http://suraj.io/post/static-pods/</loc>
     <lastmod>2017-09-23T13:10:14+05:30</lastmod>
   </url>
@@ -113,6 +118,18 @@
   </url>
   
   <url>
+    <loc>http://suraj.io/tags/container/</loc>
+    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://suraj.io/categories/container/</loc>
+    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://suraj.io/tags/crio/</loc>
     <lastmod>2017-04-08T00:11:37+05:30</lastmod>
     <priority>0</priority>
@@ -198,13 +215,13 @@
   
   <url>
     <loc>http://suraj.io/tags/kubernetes/</loc>
-    <lastmod>2017-09-23T13:10:14+05:30</lastmod>
+    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://suraj.io/categories/kubernetes/</loc>
-    <lastmod>2017-09-23T13:10:14+05:30</lastmod>
+    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -216,7 +233,13 @@
   
   <url>
     <loc>http://suraj.io/tags/minikube/</loc>
-    <lastmod>2017-04-23T15:57:07+05:30</lastmod>
+    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://suraj.io/categories/minikube/</loc>
+    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -252,7 +275,7 @@
   
   <url>
     <loc>http://suraj.io/post/</loc>
-    <lastmod>2017-09-23T13:10:14+05:30</lastmod>
+    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -294,7 +317,7 @@
   
   <url>
     <loc>http://suraj.io/</loc>
-    <lastmod>2017-09-23T13:10:14+05:30</lastmod>
+    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Container on Suraj Deshmukh</title>
+    <link>http://suraj.io/categories/container/index.xml</link>
+    <description>Recent content in Container on Suraj Deshmukh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://suraj.io/categories/container/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Using private container registries from minikube</title>
+      <link>http://suraj.io/post/private-registry-from-minikube/</link>
+      <pubDate>Fri, 06 Oct 2017 19:32:33 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/private-registry-from-minikube/</guid>
+      <description>&lt;p&gt;I am doing Kubernetes native development using minikube. And for doing that I had to
+download a Container image that is available in internally hosted private container registry.&lt;/p&gt;
+
+&lt;p&gt;On the configuration side of doing that you will need to create Kubernetes Secret of type
+&lt;code&gt;docker-registry&lt;/code&gt;. And now refer that secret you just created in your Pod manifest under
+&lt;code&gt;pod.spec.imagePullSecrets&lt;/code&gt;. For more info follow the tutorial in Kubernetes docs on
+&lt;strong&gt;&lt;a href=&#34;https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/&#34;&gt;Pull an Image from a Private Registry&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;But this did not help me in pulling image from the private registry, I was getting error as
+follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ kubectl get events -w
+LASTSEEN                        FIRSTSEEN                       COUNT     NAME          KIND      SUBOBJECT                                TYPE      REASON                  SOURCE           MESSAGE
+...
+2017-10-06 18:46:11 +0530 IST   2017-10-06 18:40:17 +0530 IST   30        private-reg   Pod                 Warning   FailedSync   kubelet, minikube   Error syncing pod
+2017-10-06 18:46:23 +0530 IST   2017-10-06 18:40:17 +0530 IST   31        private-reg   Pod                 Warning   FailedSync   kubelet, minikube   Error syncing pod
+2017-10-06 18:46:23 +0530 IST   2017-10-06 18:40:18 +0530 IST   24        private-reg   Pod       spec.containers{private-reg-container}   Normal    BackOff   kubelet, minikube   Back-off pulling image &amp;quot;my-cool-registry.com/surajd-images/busybox:1.26.2&amp;quot;
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here &lt;code&gt;private-reg&lt;/code&gt; is the pod name and &lt;code&gt;my-cool-registry.com/surajd-images/busybox:1.26.2&lt;/code&gt;
+is the image name.&lt;/p&gt;
+
+&lt;p&gt;The registry uses an identity certificate that is issued by company&amp;rsquo;s internal root CA.
+Your minikube VM needs to trust this root CA in order to work properly with the internal
+registry. This is where I realized that I had to download the CA cert.&lt;/p&gt;
+
+&lt;p&gt;So download the cert and dump it inside the VM, running following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ certificatefile=&amp;lt;your-ca-crt-file&amp;gt;
+$ registryserver=&amp;lt;your-registry-server&amp;gt;
+
+$ cat $certificatefile | minikube ssh &amp;quot;sudo mkdir -p /etc/docker/certs.d/$registryserver &amp;amp;&amp;amp; sudo tee /etc/docker/certs.d/$registryserver/ca.crt&amp;quot;
+^C
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: You will have to press &lt;code&gt;Ctrl + C&lt;/code&gt;, it should have done writing!&lt;/p&gt;
+
+&lt;p&gt;Now you are fully ready to pull the image from this private registry. Happy Hacking!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
