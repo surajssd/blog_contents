@@ -69,7 +69,7 @@ sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ su
 
 
 <meta itemprop="dateModified" content="2017-03-15T14:16:43&#43;05:30" />
-<meta itemprop="wordCount" content="692">
+<meta itemprop="wordCount" content="722">
 
 
 
@@ -517,6 +517,7 @@ yum install -y kompose-0.7.0-0.1.el7.x86_64.rpm
 
 git clone https://github.com/kubernetes-incubator/kompose/
 cd kompose
+git reset --hard $(kompose version | cut -d &quot;(&quot; -f2 | cut -d &quot;)&quot; -f1)
 make test-cmd
 </code></pre>
 
@@ -558,6 +559,7 @@ yum install -y jq make
 
 git clone https://github.com/kubernetes-incubator/kompose/
 cd kompose
+git reset --hard $(kompose version | cut -d &quot;(&quot; -f2 | cut -d &quot;)&quot; -f1)
 make test-cmd
 </code></pre>
 

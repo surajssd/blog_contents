@@ -335,6 +335,7 @@ yum install -y kompose-0.7.0-0.1.el7.x86_64.rpm
 
 git clone https://github.com/kubernetes-incubator/kompose/
 cd kompose
+git reset --hard $(kompose version | cut -d &amp;quot;(&amp;quot; -f2 | cut -d &amp;quot;)&amp;quot; -f1)
 make test-cmd
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -376,6 +377,7 @@ yum install -y jq make
 
 git clone https://github.com/kubernetes-incubator/kompose/
 cd kompose
+git reset --hard $(kompose version | cut -d &amp;quot;(&amp;quot; -f2 | cut -d &amp;quot;)&amp;quot; -f1)
 make test-cmd
 &lt;/code&gt;&lt;/pre&gt;
 
