@@ -72,7 +72,7 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:
 
 
 <meta itemprop="dateModified" content="2017-03-14T00:31:57&#43;05:30" />
-<meta itemprop="wordCount" content="260">
+<meta itemprop="wordCount" content="305">
 
 
 
@@ -419,6 +419,7 @@ dnf install -y jq make
 # Pull the git repository to run the functional tests
 git clone https://github.com/kubernetes/kompose/
 cd kompose
+git reset --hard $(kompose version | cut -d &quot;(&quot; -f2 | cut -d &quot;)&quot; -f1)
 
 # Run cmd tests
 make test-cmd
@@ -444,6 +445,7 @@ yum install -y jq make
 # Pull the git repository to run the functional tests
 git clone https://github.com/kubernetes/kompose/
 cd kompose
+git reset --hard $(kompose version | cut -d &quot;(&quot; -f2 | cut -d &quot;)&quot; -f1)
 
 # Run cmd tests
 make test-cmd
@@ -470,6 +472,7 @@ yum install -y jq make
 # Pull the git repository to run the functional tests
 git clone https://github.com/kubernetes/kompose/
 cd kompose
+git reset --hard $(kompose version | cut -d &quot;(&quot; -f2 | cut -d &quot;)&quot; -f1)
 
 # Run cmd tests
 make test-cmd

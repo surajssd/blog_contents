@@ -34,6 +34,7 @@ dnf install -y jq make
 # Pull the git repository to run the functional tests
 git clone https://github.com/kubernetes/kompose/
 cd kompose
+git reset --hard $(kompose version | cut -d "(" -f2 | cut -d ")" -f1)
 
 # Run cmd tests
 make test-cmd
@@ -61,6 +62,7 @@ yum install -y jq make
 # Pull the git repository to run the functional tests
 git clone https://github.com/kubernetes/kompose/
 cd kompose
+git reset --hard $(kompose version | cut -d "(" -f2 | cut -d ")" -f1)
 
 # Run cmd tests
 make test-cmd
@@ -89,6 +91,7 @@ yum install -y jq make
 # Pull the git repository to run the functional tests
 git clone https://github.com/kubernetes/kompose/
 cd kompose
+git reset --hard $(kompose version | cut -d "(" -f2 | cut -d ")" -f1)
 
 # Run cmd tests
 make test-cmd
