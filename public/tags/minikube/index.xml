@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Minikube on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/minikube/index.xml</link>
+    <link>http://suraj.io/tags/minikube/</link>
     <description>Recent content in Minikube on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://suraj.io/tags/minikube/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Oct 2017 19:32:33 +0530</lastBuildDate>
+    
+	<atom:link href="http://suraj.io/tags/minikube/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Using private container registries from minikube</title>
@@ -14,46 +17,8 @@
       <pubDate>Fri, 06 Oct 2017 19:32:33 +0530</pubDate>
       
       <guid>http://suraj.io/post/private-registry-from-minikube/</guid>
-      <description>&lt;p&gt;I am doing Kubernetes native development using minikube. And for doing that I had to
-download a Container image that is available in internally hosted private container registry.&lt;/p&gt;
-
-&lt;p&gt;On the configuration side of doing that you will need to create Kubernetes Secret of type
-&lt;code&gt;docker-registry&lt;/code&gt;. And now refer that secret you just created in your Pod manifest under
-&lt;code&gt;pod.spec.imagePullSecrets&lt;/code&gt;. For more info follow the tutorial in Kubernetes docs on
-&lt;strong&gt;&lt;a href=&#34;https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/&#34;&gt;Pull an Image from a Private Registry&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;But this did not help me in pulling image from the private registry, I was getting error as
-follows:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ kubectl get events -w
-LASTSEEN                        FIRSTSEEN                       COUNT     NAME          KIND      SUBOBJECT                                TYPE      REASON                  SOURCE           MESSAGE
-...
-2017-10-06 18:46:11 +0530 IST   2017-10-06 18:40:17 +0530 IST   30        private-reg   Pod                 Warning   FailedSync   kubelet, minikube   Error syncing pod
-2017-10-06 18:46:23 +0530 IST   2017-10-06 18:40:17 +0530 IST   31        private-reg   Pod                 Warning   FailedSync   kubelet, minikube   Error syncing pod
-2017-10-06 18:46:23 +0530 IST   2017-10-06 18:40:18 +0530 IST   24        private-reg   Pod       spec.containers{private-reg-container}   Normal    BackOff   kubelet, minikube   Back-off pulling image &amp;quot;my-cool-registry.com/surajd-images/busybox:1.26.2&amp;quot;
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here &lt;code&gt;private-reg&lt;/code&gt; is the pod name and &lt;code&gt;my-cool-registry.com/surajd-images/busybox:1.26.2&lt;/code&gt;
-is the image name.&lt;/p&gt;
-
-&lt;p&gt;The registry uses an identity certificate that is issued by company&amp;rsquo;s internal root CA.
-Your minikube VM needs to trust this root CA in order to work properly with the internal
-registry. This is where I realized that I had to download the CA cert.&lt;/p&gt;
-
-&lt;p&gt;So download the cert and dump it inside the VM, running following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ certificatefile=&amp;lt;your-ca-crt-file&amp;gt;
-$ registryserver=&amp;lt;your-registry-server&amp;gt;
-
-$ cat $certificatefile | minikube ssh &amp;quot;sudo mkdir -p /etc/docker/certs.d/$registryserver &amp;amp;&amp;amp; sudo tee /etc/docker/certs.d/$registryserver/ca.crt&amp;quot;
-^C
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: You will have to press &lt;code&gt;Ctrl + C&lt;/code&gt;, it should have done writing!&lt;/p&gt;
-
-&lt;p&gt;Now you are fully ready to pull the image from this private registry. Happy Hacking!&lt;/p&gt;
-</description>
+      <description>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
+On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.</description>
     </item>
     
     <item>
@@ -62,161 +27,9 @@ $ cat $certificatefile | minikube ssh &amp;quot;sudo mkdir -p /etc/docker/certs.
       <pubDate>Sun, 23 Apr 2017 15:57:07 +0530</pubDate>
       
       <guid>http://suraj.io/post/enabling-local-development-with-k8s/</guid>
-      <description>
-
-&lt;p&gt;I want to show how you can enable &lt;a href=&#34;https://kubernetes.io/&#34;&gt;Kubernetes&lt;/a&gt; in your day to day development workflow. So that
-you get the feel of production deployment locally from day 1.&lt;/p&gt;
-
-&lt;p&gt;I have a &lt;a href=&#34;http://flask.pocoo.org/&#34;&gt;flask application&lt;/a&gt; which I am working on. The basic directory structure looks like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ll
-total 24
--rw-rw-r--. 1 foo foo  427 Apr 23 16:23 app.py
--rw-rw-r--. 1 foo foo  201 Apr 23 16:55 docker-compose.yml
--rw-rw-r--. 1 foo foo  363 Apr 23 16:21 Dockerfile
--rwxrwxr-x. 1 foo foo   82 Dec  5 19:41 entrypoint.sh
--rw-rw-r--. 1 foo foo 3010 Dec  5 19:41 README.adoc
--rw-rw-r--. 1 foo foo   11 Dec  5 19:41 requirements.txt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You can find all of these files in this &lt;a href=&#34;https://github.com/surajssd/hitcounter&#34;&gt;github repo&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;For having a local cluster I am using &lt;a href=&#34;https://github.com/kubernetes/minikube&#34;&gt;minikube&lt;/a&gt;. So follow instructions to
-&lt;a href=&#34;https://kubernetes.io/docs/getting-started-guides/minikube/&#34;&gt;setup minikube&lt;/a&gt;. Once you follow the instructions
-you will have a vm running a single node kubernetes cluster and a locally available &lt;code&gt;kubectl&lt;/code&gt; binary.&lt;/p&gt;
-
-&lt;p&gt;Before running this application on the minikube cluster we need configurations that kubernetes understands. Since we
-already have docker-compose file we will generate configs from this file with the help from tool called &lt;a href=&#34;http://kompose.io/&#34;&gt;kompose&lt;/a&gt;.
-Install kompose as per instructions as given on &lt;a href=&#34;https://github.com/kubernetes-incubator/kompose#installation&#34;&gt;docs&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Generating configs:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ mkdir configs
-$ kompose convert -o configs/
-WARN Kubernetes provider doesnt support build key - ignoring
-INFO file &amp;quot;configs/hitcounter-service.yaml&amp;quot; created
-INFO file &amp;quot;configs/redis-service.yaml&amp;quot; created
-INFO file &amp;quot;configs/hitcounter-deployment.yaml&amp;quot; created
-INFO file &amp;quot;configs/redis-deployment.yaml&amp;quot; created
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Before we deploy the app we need to make some changes in the deployment files, that were converted from docker-compose service
-having &lt;code&gt;build&lt;/code&gt; construct in them. In our case only python app &lt;code&gt;hitcounter&lt;/code&gt; is built is being built from &lt;code&gt;Dockerfile&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;We will edit file &lt;code&gt;hitcounter-deployment.yaml&lt;/code&gt; in &lt;code&gt;configs&lt;/code&gt; directory, to not pull image but read image from the local docker
-storage. Add a field after &lt;code&gt;image&lt;/code&gt; called &lt;code&gt;imagePullPolicy: IfNotPresent&lt;/code&gt;. Make changes as shown in following diff:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-diff&#34;&gt;$ git diff
-diff --git a/configs/hitcounter-deployment.yaml b/configs/hitcounter-deployment.yaml
-index 7b1116d..0ef35b3 100644
---- a/configs/hitcounter-deployment.yaml
-+++ b/configs/hitcounter-deployment.yaml
-@@ -17,6 +17,7 @@ spec:
-         - name: REDIS_HOST
-           value: redis
-         image: hitcounter
-+        imagePullPolicy: IfNotPresent
-         name: hitcounter
-         ports:
-         - containerPort: 5000
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now we are ready with the configs, but we need to build container image for our app. So here you will need to have
-&lt;code&gt;docker-compose&lt;/code&gt; installed on your machine. For that follow &lt;a href=&#34;https://docs.docker.com/compose/install/&#34;&gt;docs here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Build image in the minikube&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;eval $(minikube docker-env)
-docker-compose build
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Once the build is complete, we are good to the deployment in kubernetes.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ kubectl create -f configs/
-deployment &amp;quot;hitcounter&amp;quot; created
-service &amp;quot;hitcounter&amp;quot; created
-deployment &amp;quot;redis&amp;quot; created
-service &amp;quot;redis&amp;quot; created
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To verify that the app is running, find out the exposed IP Address as follows:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ kubectl get svc
-NAME         CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
-hitcounter   10.0.0.244   &amp;lt;pending&amp;gt;     5000:30476/TCP   6s
-kubernetes   10.0.0.1     &amp;lt;none&amp;gt;        443/TCP          3d
-redis        10.0.0.21    &amp;lt;none&amp;gt;        6379/TCP         6s
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now hit the externally exposed port &lt;code&gt;30476&lt;/code&gt; of service &lt;code&gt;hitcounter&lt;/code&gt; as:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ curl $(minikube ip):30476
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now everytime you make changes to code do the following:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker-compose build
-kubectl scale deployment hitcounter --replicas=0
-kubectl scale deployment hitcounter --replicas=1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Above we are removing all containers with old image and asking it to use the new image. For OpenShift we can do
-&lt;code&gt;oc deploy hitcounter --latest&lt;/code&gt; and it will trigger the deployment but I could not find anything similar with
-kubernetes.&lt;/p&gt;
-
-&lt;h3 id=&#34;faq&#34;&gt;FAQ&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;- Why do I need to make changes in the kompose generated configs?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Because by the default the config that kompose generates will not set &lt;code&gt;imagePullPolicy&lt;/code&gt; and hence Kubernetes
-assumes its value to be &lt;code&gt;Always&lt;/code&gt;. So if you don&amp;rsquo;t make changes and try to deploy then Kubernetes will try
-to find the image from docker hub. Which it won&amp;rsquo;t find and then that deployment will fail.
-So we need to tell Kubernetes to look for the image in local docker storage.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;- Can I use the same configs in the production servers as well?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Yes you can use it just remove the change we did in the &lt;code&gt;imagePullPolicy: IfNotPresent&lt;/code&gt;. The change is done
-to enable you to use the locally built images without having to push the image to any container registry.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;- How do I get images when I am deploying in production level cluster?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Make sure your cluster can pull images from some private container registry. And then set up a build pipeline
-from your code repo to build container on every change of it&amp;rsquo;s stable branch.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;- I have &lt;code&gt;build&lt;/code&gt; defined in my &lt;code&gt;docker-compose&lt;/code&gt; service why do I need to mention image name?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;With docker-compose this is okay. But kompose cannot make up a name on it&amp;rsquo;s own and create deployment. The
-&lt;a href=&#34;https://github.com/kubernetes-incubator/kompose/issues/571&#34;&gt;issue&lt;/a&gt; is tracked in kompose. But for now
-with &lt;code&gt;build&lt;/code&gt; also provide the &lt;code&gt;image&lt;/code&gt; name you would expect.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;- I get error running docker commands with minikube?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;If you face problem accessing the docker daemon running inside the minikube VM like one of this&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ eval $(minikube docker-env)
-$ docker ps
-could not read CA certificate &amp;quot;/etc/docker/ca.pem&amp;quot;: open /etc/docker/ca.pem: no such file or directory
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This could be because there is a mismatch in docker client and docker daemon version, so to solve this issue just copy
-the docker client from the minikube VM to the local machine.&lt;/p&gt;
-
-&lt;p&gt;Enter in the VM&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;minikube ssh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Copy the binary to host machine&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;scp $(which docker) foo@192.168.122.1:/home/foo/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now put the binary in &lt;code&gt;PATH&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you have any other questions please ask it, I would like to add those here in FAQ section.&lt;/p&gt;
-</description>
+      <description>I want to show how you can enable Kubernetes in your day to day development workflow. So that you get the feel of production deployment locally from day 1.
+I have a flask application which I am working on. The basic directory structure looks like this:
+$ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo foo 201 Apr 23 16:55 docker-compose.yml -rw-rw-r--. 1 foo foo 363 Apr 23 16:21 Dockerfile -rwxrwxr-x.</description>
     </item>
     
   </channel>

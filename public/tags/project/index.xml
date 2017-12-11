@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Project on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/project/index.xml</link>
+    <link>http://suraj.io/tags/project/</link>
     <description>Recent content in Project on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://suraj.io/tags/project/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Mar 2017 18:19:15 +0530</lastBuildDate>
+    
+	<atom:link href="http://suraj.io/tags/project/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>TODOs for new project</title>
@@ -14,49 +17,8 @@
       <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
       
       <guid>http://suraj.io/post/starting-a-new-opensource-project-requirements/</guid>
-      <description>
-
-&lt;p&gt;When starting a new open source project, apart from coding following are the things that need to be done.&lt;/p&gt;
-
-&lt;h2 id=&#34;docs&#34;&gt;Docs&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;README&lt;/li&gt;
-&lt;li&gt;LICENSE&lt;/li&gt;
-&lt;li&gt;How to install?&lt;/li&gt;
-&lt;li&gt;How to use?&lt;/li&gt;
-&lt;li&gt;Code of conduct guidelines&lt;/li&gt;
-&lt;li&gt;Copyright&lt;/li&gt;
-&lt;li&gt;Issue template like &lt;code&gt;.github&lt;/code&gt; in repo.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;developer-docs&#34;&gt;Developer docs&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;How to install for developer?&lt;/li&gt;
-&lt;li&gt;Developer docs&lt;/li&gt;
-&lt;li&gt;Contribution guidelines&lt;/li&gt;
-&lt;li&gt;Team meetings info&lt;/li&gt;
-&lt;li&gt;Team communication channels&lt;/li&gt;
-&lt;li&gt;Issue label guidelines&lt;/li&gt;
-&lt;li&gt;Coding standards&lt;/li&gt;
-&lt;li&gt;Code placement doc, or something that explains the way code is ordered&lt;/li&gt;
-&lt;li&gt;Design document&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;development&#34;&gt;Development&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Makefile&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Unit tests&lt;/li&gt;
-&lt;li&gt;Functional tests&lt;/li&gt;
-&lt;li&gt;Coverage check&lt;/li&gt;
-&lt;li&gt;CI for automatic tests&lt;/li&gt;
-&lt;li&gt;Distro based package&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This is just few things that I could think of, please suggest if you know more in comments.&lt;/p&gt;
-</description>
+      <description>When starting a new open source project, apart from coding following are the things that need to be done.
+Docs  README LICENSE How to install? How to use? Code of conduct guidelines Copyright Issue template like .github in repo.  Developer docs  How to install for developer? Developer docs Contribution guidelines Team meetings info Team communication channels Issue label guidelines Coding standards Code placement doc, or something that explains the way code is ordered Design document  Development  Makefile Unit tests Functional tests Coverage check CI for automatic tests Distro based package  This is just few things that I could think of, please suggest if you know more in comments.</description>
     </item>
     
   </channel>

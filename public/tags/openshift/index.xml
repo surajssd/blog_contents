@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Openshift on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/openshift/index.xml</link>
+    <link>http://suraj.io/tags/openshift/</link>
     <description>Recent content in Openshift on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://suraj.io/tags/openshift/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Sep 2017 13:10:14 +0530</lastBuildDate>
+    
+	<atom:link href="http://suraj.io/tags/openshift/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Static Pods using Kubelet on Fedora</title>
@@ -14,106 +17,8 @@
       <pubDate>Sat, 23 Sep 2017 13:10:14 +0530</pubDate>
       
       <guid>http://suraj.io/post/static-pods/</guid>
-      <description>
-
-&lt;p&gt;I wanted to try out &lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial&#34;&gt;&lt;em&gt;Standalone Kubelet Tutorial&lt;/em&gt;&lt;/a&gt;
-of &lt;a href=&#34;https://twitter.com/kelseyhightower&#34;&gt;&lt;strong&gt;Kelsey Hightower&lt;/strong&gt;&lt;/a&gt; by myself but I could not
-follow it as it is, because it was firstly on &lt;a href=&#34;https://cloud.google.com/compute/&#34;&gt;GCE&lt;/a&gt; and
-secondly it uses &lt;a href=&#34;https://en.wikipedia.org/wiki/Container_Linux_by_CoreOS&#34;&gt;CoreOS&lt;/a&gt;,
-but since I am very familiar to &lt;a href=&#34;https://en.wikipedia.org/wiki/Fedora_(operating_system)&#34;&gt;Fedora&lt;/a&gt;
-I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine
-use &lt;a href=&#34;https://en.wikipedia.org/wiki/Vagrant_(software)&#34;&gt;Vagrant&lt;/a&gt;. I have used Vagrantfile
-available &lt;a href=&#34;https://github.com/surajssd/scripts/blob/master/Vagrantfiles/fedora/Vagrantfile&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;This blog is only replacement of section &lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial#install-the-standalone-kubelet&#34;&gt;&lt;strong&gt;Install the Standalone Kubelet&lt;/strong&gt;&lt;/a&gt;
-in tutorial.&lt;/p&gt;
-
-&lt;h2 id=&#34;installing-packages&#34;&gt;Installing packages&lt;/h2&gt;
-
-&lt;p&gt;Since the tutorial uses CoreOS VM it already has a &lt;a href=&#34;https://kubernetes.io/docs/admin/kubelet/&#34;&gt;Kubelet&lt;/a&gt;
-binary available, on Fedora you can get one using &lt;a href=&#34;https://en.wikipedia.org/wiki/DNF_(software)&#34;&gt;&lt;code&gt;dnf&lt;/code&gt;&lt;/a&gt;.
-In tutorial Kelsey has put in his custom systemd service file, we will also make some
-changes to the default kubelet&amp;rsquo;s service file packaged in Fedora.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo dnf -y install kubernetes-node
-sudo systemctl enable docker --now
-sudo systemctl enable kubelet --now
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Since &lt;code&gt;docker&lt;/code&gt; is a dependency of &lt;code&gt;kubelet&lt;/code&gt; it is also installed, all we need to do is start
-Docker manually alongwith Kubelet.&lt;/p&gt;
-
-&lt;p&gt;Verify if &lt;code&gt;kubelet&lt;/code&gt; and &lt;code&gt;docker&lt;/code&gt; are running&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo systemctl status docker kubelet
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;editing-kubelet-systemd-service-file&#34;&gt;Editing kubelet systemd service file&lt;/h2&gt;
-
-&lt;p&gt;Apply following changes to &lt;code&gt;/etc/kubernetes/config&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-diff&#34;&gt;diff --git a/config b/config
-index 8c0a284..cfccbee 100644
---- a/config
-+++ b/config
-@@ -16,7 +16,7 @@ KUBE_LOGTOSTDERR=&amp;quot;--logtostderr=true&amp;quot;
- KUBE_LOG_LEVEL=&amp;quot;--v=0&amp;quot;
- 
- # Should this cluster be allowed to run privileged docker containers
--KUBE_ALLOW_PRIV=&amp;quot;--allow-privileged=false&amp;quot;
-+KUBE_ALLOW_PRIV=&amp;quot;--allow-privileged=true&amp;quot;
- 
- # How the controller-manager, scheduler, and proxy find the apiserver
- KUBE_MASTER=&amp;quot;--master=http://127.0.0.1:8080&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;By default in Fedora the Kubelet service won&amp;rsquo;t be running privileged pods. Setting flag
-&lt;code&gt;--allow-privileged&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; will allow you to do that. In Kelsey&amp;rsquo;s tutorial you can
-find it &lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial/blob/98b0b5b000cc687cc9c85c54ded7b39f4322d4ba/kubelet.service#L8&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Apply following changes to &lt;code&gt;/etc/kubernetes/kubelet&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-diff&#34;&gt;diff --git a/kubelet b/kubelet
-index cfd5686..07c11ab 100644
---- a/kubelet
-+++ b/kubelet
-@@ -14,4 +14,4 @@ KUBELET_HOSTNAME=&amp;quot;--hostname-override=127.0.0.1&amp;quot;
- KUBELET_API_SERVER=&amp;quot;--api-servers=http://127.0.0.1:8080&amp;quot;
- 
- # Add your own!
--KUBELET_ARGS=&amp;quot;--cgroup-driver=systemd&amp;quot;
-+KUBELET_ARGS=&amp;quot;--cgroup-driver=systemd --pod-manifest-path=/etc/kubernetes/manifests&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To Kubelet we have added one more flag called &lt;code&gt;--pod-manifest-path&lt;/code&gt; which is explained in
-docs as:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Path to the directory containing pod manifest files to run, or the path to a single pod
-manifest file.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Above line can be found in tutorial in &lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial/blob/98b0b5b000cc687cc9c85c54ded7b39f4322d4ba/kubelet.service#L12&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;make-directory-for-pod-manifests&#34;&gt;Make directory for pod manifests&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo mkdir /etc/kubernetes/manifests
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;restart-kubelet-service&#34;&gt;Restart &lt;code&gt;kubelet&lt;/code&gt; service&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo systemctl restart kubelet
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now you can follow the rest of the tutorial as it is from section &lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial#static-pods&#34;&gt;&lt;strong&gt;Static Pods&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;References:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/tasks/administer-cluster/static-pod/&#34;&gt;Static Pods&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial&#34;&gt;Standalone Kubelet Tutorial - Kelsey Hightower&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.
+This blog is only replacement of section Install the Standalone Kubelet in tutorial.</description>
     </item>
     
     <item>
@@ -122,23 +27,8 @@ manifest file.&lt;/p&gt;
       <pubDate>Thu, 17 Aug 2017 23:12:18 +0530</pubDate>
       
       <guid>http://suraj.io/post/k8s-learning-resources/</guid>
-      <description>&lt;p&gt;Following is the list of all the places you can learn Kubernetes from:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://in.udacity.com/course/scalable-microservices-with-kubernetes--ud615&#34;&gt;Scalable Microservices with Kubernetes&lt;/a&gt; -
-Video tutorial&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.edx.org/course/fundamentals-containers-kubernetes-red-red-hat-do081x#!&#34;&gt;Fundamentals of Containers, Kubernetes, and Red Hat OpenShift&lt;/a&gt; -
-Video tutorial&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://kubernetesbyexample.com/&#34;&gt;Kubernetes By Example&lt;/a&gt; - DIY tutorial&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.katacoda.com/courses/kubernetes&#34;&gt;Learn Kubernetes using Interactive Browser-Based Scenarios&lt;/a&gt; -
-DIY tutorial in your own web browser&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://learn.openshift.com/&#34;&gt;Interactive Learning Portal for OpenShift&lt;/a&gt; -
-DIY tutorial in your own web browser&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/home/&#34;&gt;Kubernetes docs&lt;/a&gt; - Textual DIY docs&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/api-reference/v1.6/&#34;&gt;Kubernetes API reference v1.6&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.openshift.org/latest/welcome/index.html&#34;&gt;OpenShift docs&lt;/a&gt; - Textual DIY docs&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Following is the list of all the places you can learn Kubernetes from:
+ Scalable Microservices with Kubernetes - Video tutorial Fundamentals of Containers, Kubernetes, and Red Hat OpenShift - Video tutorial Kubernetes By Example - DIY tutorial Learn Kubernetes using Interactive Browser-Based Scenarios - DIY tutorial in your own web browser Interactive Learning Portal for OpenShift - DIY tutorial in your own web browser Kubernetes docs - Textual DIY docs Kubernetes API reference v1.</description>
     </item>
     
     <item>
@@ -147,129 +37,9 @@ DIY tutorial in your own web browser&lt;/li&gt;
       <pubDate>Thu, 13 Jul 2017 22:46:40 +0530</pubDate>
       
       <guid>http://suraj.io/post/blr-k8s-meetup-july-2017/</guid>
-      <description>&lt;p&gt;This &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/240859625/&#34;&gt;edition of meetup&lt;/a&gt;
-was held at Nexus Ventures by folks at &lt;a href=&#34;https://twitter.com/openebs&#34;&gt;OpenEBS&lt;/a&gt;
-on July 8th 2017, which started on a lovely Saturday morning.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/kiranmova&#34;&gt;Kiran Mova&lt;/a&gt; set the floor rolling with his talk
-on &lt;em&gt;Hyperconverged version of OpenEBS with Kubernetes&lt;/em&gt;. Where he talked about
-containerized storage vs traditional storage, instead of building clustering
-into &lt;a href=&#34;https://github.com/openebs/openebs&#34;&gt;OpenEBS&lt;/a&gt; how they are leveraging
-Kubernetes&amp;rsquo;s capabilities to do clustering.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-july-2017/kiran.JPG&#34; alt=&#34;openEBS demo&#34; title=&#34;openEBS demo&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;He also explained difference between various storage providers viz. Portworx,
-StorageOS, Rook, GlusterFS, OpenEBS, etc.&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;
-&lt;iframe width=&#34;595&#34; height=&#34;485&#34; src=&#34;https://www.youtube.com/embed/LRdcah-fs0g&#34;
-frameborder=&#34;0&#34; style=&#34;border:1px solid #CCC; border-width:1px;
-margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
-&lt;a href=&#34;//youtu.be/LRdcah-fs0g&#34;
-title=&#34;Hyperconverged version of OpenEBS with Kubernetes&#34;
-target=&#34;_blank&#34;&gt;Hyperconverged version of OpenEBS with Kubernetes&lt;/a&gt;
-&lt;/strong&gt; by &lt;strong&gt;&lt;a target=&#34;_blank&#34;
-href=&#34;https://twitter.com/kiranmova&#34;&gt;Kiran Mova&lt;/a&gt;&lt;/strong&gt;
-&lt;/div&gt;
-&lt;/center&gt;&lt;/p&gt;
-
-&lt;p&gt;Then was talk by &lt;a href=&#34;https://twitter.com/kamesh_sampath&#34;&gt;Kamesh Sampath&lt;/a&gt; on
-&lt;a href=&#34;https://github.com/istio/istio&#34;&gt;Istio&lt;/a&gt; named &lt;em&gt;A sail in the cloud&lt;/em&gt;.
-Specifically tracing, monitoring, service discovery with Istio.&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/fKzj4nGkTEsXnH&#34;
-width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34;
-scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px;
-margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt;
-&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
-&lt;a href=&#34;//www.slideshare.net/kameshsampath/a-sail-in-the-cloud&#34;
-title=&#34;A sail in the cloud&#34; target=&#34;_blank&#34;&gt;A sail in the cloud&lt;/a&gt;
-&lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34;
-href=&#34;https://www.slideshare.net/kameshsampath&#34;&gt;Kamesh Sampath&lt;/a&gt;&lt;/strong&gt;
-&lt;/div&gt;&lt;/center&gt;&lt;/p&gt;
-
-&lt;p&gt;He explained the Istio Service Mesh architecture and all components it has.
-How side-car pattern is being used to deploy Istio with the existing apps in
-Kubernetes.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-july-2017/kamesh.JPG&#34; alt=&#34;side-car config&#34; title=&#34;side-car configuration&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;He talked and demoed about Canary deployment, tracing and Circuit breaking with
-Istio. Watch the video recording of talk by Kamesh to learn in detail. Here is
-his &lt;a href=&#34;https://github.com/workspace7/sail-into-cloud&#34;&gt;demo content&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;
-&lt;iframe width=&#34;595&#34; height=&#34;485&#34; src=&#34;https://www.youtube.com/embed/LRdcah-fs0g?start=2020&#34;
-frameborder=&#34;0&#34; style=&#34;border:1px solid #CCC; border-width:1px;
-margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
-&lt;a href=&#34;//youtu.be/LRdcah-fs0g?t=33m40s&#34;
-title=&#34;A sail in the cloud&#34;
-target=&#34;_blank&#34;&gt;A sail in the cloud&lt;/a&gt;
-&lt;/strong&gt; by &lt;strong&gt;&lt;a target=&#34;_blank&#34;
-href=&#34;https://twitter.com/kamesh_sampath&#34;&gt;Kamesh Sampath&lt;/a&gt;&lt;/strong&gt;
-&lt;/div&gt;
-&lt;/center&gt;&lt;/p&gt;
-
-&lt;p&gt;After a snacks break, there was a talk by &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan Ahmed&lt;/a&gt;
-about &lt;em&gt;Dance of container image building&lt;/em&gt;. The main highlight of this highly
-interactive session was on best practices to be followed for building container
-images.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-july-2017/zeeshan.JPG&#34; alt=&#34;buildah in action&#34; title=&#34;buildah in action&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Where he explained why it is not a good idea to bake configs and
-secrets into container image and how one can use use Kubernetes secrets and
-configMaps to get this configs and secrets in the container on the fly, he
-then demoed the tool buildah where you don&amp;rsquo;t need a docker daemon to build
-the container image.&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;
-&lt;iframe width=&#34;595&#34; height=&#34;485&#34; src=&#34;https://www.youtube.com/embed/LRdcah-fs0g?start=5961&#34;
-frameborder=&#34;0&#34; style=&#34;border:1px solid #CCC; border-width:1px;
-margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
-&lt;a href=&#34;//youtu.be/LRdcah-fs0g?t=1h39m21s&#34;
-title=&#34;Dance of container image building&#34;
-target=&#34;_blank&#34;&gt;Dance of container image building&lt;/a&gt;
-&lt;/strong&gt; by &lt;strong&gt;&lt;a target=&#34;_blank&#34;
-href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan Ahmed&lt;/a&gt;&lt;/strong&gt;
-&lt;/div&gt;
-&lt;/center&gt;&lt;/p&gt;
-
-&lt;p&gt;Followed by Zeeshan was talk by &lt;a href=&#34;https://uyirpodiru.blogspot.in/&#34;&gt;Saravanakumar&lt;/a&gt;
-where he talked about &lt;em&gt;Source to Image in OpenShift&lt;/em&gt;, where he explained what
-is s2i, how you can use s2i with the running OpenShift cluster by directly
-providing github url of a project and see it deployed on OpenShift.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-july-2017/saravanakumar.JPG&#34; alt=&#34;s2i demo&#34; title=&#34;s2i demo&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Then he demonstrated how you can build your own builder image for OpenShift s2i.
-&lt;a href=&#34;http://goo.gl/xYJnuG&#34;&gt;Link to slides&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;
-&lt;iframe width=&#34;595&#34; height=&#34;485&#34; src=&#34;https://www.youtube.com/embed/LRdcah-fs0g?start=9048&#34;
-frameborder=&#34;0&#34; style=&#34;border:1px solid #CCC; border-width:1px;
-margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
-&lt;a href=&#34;//youtu.be/LRdcah-fs0g?t=2h30m48s&#34;
-title=&#34;Source to Image in OpenShift&#34;
-target=&#34;_blank&#34;&gt;Source to Image in OpenShift&lt;/a&gt;
-&lt;/strong&gt; by &lt;strong&gt;&lt;a target=&#34;_blank&#34;
-href=&#34;https://uyirpodiru.blogspot.in/&#34;&gt;Saravanakumar&lt;/a&gt;&lt;/strong&gt;
-&lt;/div&gt;
-&lt;/center&gt;&lt;/p&gt;
-
-&lt;p&gt;The meetup ended with announcements of &lt;a href=&#34;https://www.meetup.com/Bangalore-Mesos-cncf-User-Group/events/240781879/&#34;&gt;Kubernetes Birthday meetup&lt;/a&gt;
-and awesome burgers from Truffles sponsored by OpenEBS. Thanks all speakers,
-attendees and sponsors for making this meetup a success. Thanks to OpenEBS
-for being a generous sponsors, and specifically &lt;a href=&#34;https://twitter.com/kiranmova&#34;&gt;Kiran&lt;/a&gt;
-and &lt;a href=&#34;https://twitter.com/_nisanta_&#34;&gt;Nisanta&lt;/a&gt; for organizing logistics and
-helping on the day of meetup. Thanks to &lt;a href=&#34;https://www.linkedin.com/in/hemani-katyal-57900081&#34;&gt;Hemani&lt;/a&gt;
-and &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan&lt;/a&gt; for editing this post.&lt;/p&gt;
-</description>
+      <description>This edition of meetup was held at Nexus Ventures by folks at OpenEBS on July 8th 2017, which started on a lovely Saturday morning.
+Kiran Mova set the floor rolling with his talk on Hyperconverged version of OpenEBS with Kubernetes. Where he talked about containerized storage vs traditional storage, instead of building clustering into OpenEBS how they are leveraging Kubernetes&amp;rsquo;s capabilities to do clustering.
+He also explained difference between various storage providers viz.</description>
     </item>
     
     <item>
@@ -278,59 +48,9 @@ and &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan&lt;/a&gt; for 
       <pubDate>Tue, 18 Apr 2017 23:56:15 +0530</pubDate>
       
       <guid>http://suraj.io/post/quick-pv-for-local-k8s/</guid>
-      <description>
-
-&lt;p&gt;I do lot of &lt;a href=&#34;https://kubernetes.io/&#34;&gt;Kubernetes&lt;/a&gt; related work either on &lt;a href=&#34;https://kubernetes.io/docs/getting-started-guides/minikube/&#34;&gt;minikube&lt;/a&gt; or local &lt;a href=&#34;https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md#overview&#34;&gt;OpenShift cluster&lt;/a&gt; setup in a VM. Often I need to create a &lt;code&gt;PersistentVolumeClaim&lt;/code&gt; a.k.a. &lt;code&gt;pvc&lt;/code&gt;. But to use &lt;code&gt;pvc&lt;/code&gt; you have to have a &lt;code&gt;PersistentVolume&lt;/code&gt; or &lt;code&gt;pv&lt;/code&gt; defined.&lt;/p&gt;
-
-&lt;h3 id=&#34;enter-into-the-machine-running-k8s&#34;&gt;Enter into the machine running k8s&lt;/h3&gt;
-
-&lt;p&gt;If using minikube you can do&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;minikube ssh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;create-a-local-directory-for-storage&#34;&gt;Create a local directory for storage&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkdir /tmp/pv0001
-chmod 777 /tmp/pv0001
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you are on a machine that has &lt;code&gt;SELinux&lt;/code&gt; enabled do the following&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo chcon -R -t svirt_sandbox_file_t /tmp/pv0001
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;creating-pv&#34;&gt;Creating &lt;code&gt;pv&lt;/code&gt;&lt;/h3&gt;
-
-&lt;p&gt;Create file with following content&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cat pv.yaml
-apiVersion: &amp;quot;v1&amp;quot;
-kind: &amp;quot;PersistentVolume&amp;quot;
-metadata:
-  name: &amp;quot;pv0001&amp;quot;
-spec:
-  capacity:
-    storage: &amp;quot;5Gi&amp;quot;
-  accessModes:
-    - &amp;quot;ReadWriteOnce&amp;quot;
-  persistentVolumeReclaimPolicy: Recycle
-  hostPath:
-    path: /tmp/pv0001
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Get to the terminal from where you can run &lt;code&gt;kubectl&lt;/code&gt; commands.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;kubectl create -f pv.yaml
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you are doing it for OpenShift cluster then run following command with privileged access.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;oc create -f pv.yaml
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;There you have a &lt;code&gt;pv&lt;/code&gt; now you can create &lt;code&gt;pvc&lt;/code&gt;&amp;rsquo;s to use it.&lt;/p&gt;
-</description>
+      <description>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
+Enter into the machine running k8s If using minikube you can do
+minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001  If you are on a machine that has SELinux enabled do the following</description>
     </item>
     
     <item>
@@ -339,220 +59,10 @@ spec:
       <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
       
       <guid>http://suraj.io/post/packaging-kompose-for-centos-paas-sig/</guid>
-      <description>
-
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: This is a living document and will be updated from time to time.&lt;/p&gt;
-
-&lt;p&gt;Following are steps to package kompose for &lt;a href=&#34;https://wiki.centos.org/SpecialInterestGroup/PaaS&#34;&gt;CentOS PAAS SIG&lt;/a&gt;. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.&lt;/p&gt;
-
-&lt;h2 id=&#34;setup-your-machine&#34;&gt;Setup your machine&lt;/h2&gt;
-
-&lt;p&gt;Install packages needed&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo yum update -y &amp;amp;&amp;amp; \
-sudo yum install -y epel-release &amp;amp;&amp;amp; \
-sudo yum install -y rpm-build go redhat-rpm-config make koji \
-                    gcc byobu rpmlint rpmdevtools centos-packager
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Setup certs&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;centos-cert -u surajd -n
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;make-sure-your-rpmspec-is-error-free&#34;&gt;Make sure your rpmspec is error free&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rpmlint kompose.spec
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;building-kompose-srpm&#34;&gt;Building kompose srpm&lt;/h2&gt;
-
-&lt;p&gt;There are two ways to build &lt;code&gt;srpm&lt;/code&gt; either build it locally or the ones that is built in koji for &lt;code&gt;epel&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;build-rpms-locally&#34;&gt;Build rpms locally&lt;/h3&gt;
-
-&lt;p&gt;Before you begin make sure you have setup the local directory structure:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rm -rf ~/rpmbuild/
-mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-echo &#39;%_topdir %(echo $HOME)/rpmbuild&#39; &amp;gt; ~/.rpmmacros
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Update the rpm spec and get source code using it.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;spectool -g kompose.spec
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Move the source to appropriate location&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp kompose-* ~/rpmbuild/SOURCES/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Start local build&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;rpmbuild -ba kompose.spec --define &amp;quot;dist .el7&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Once above exits with status code 0, you can find the &lt;code&gt;RPM&lt;/code&gt;s:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ll ~/rpmbuild/RPMS/x86_64/
-total 9724
--rw-rw-r--. 1 vagrant vagrant 9956072 May 26 09:37 kompose-0.7.0-0.1.el7.x86_64.rpm
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;SRPM&lt;/code&gt;s can be found at:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ ll ~/rpmbuild/SRPMS/
-total 4828
--rw-rw-r--. 1 vagrant vagrant 4941880 May 26 09:37 kompose-0.7.0-0.1.el7.src.rpm
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;See if dependencies are properly set&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rpm -qpR ~/rpmbuild/RPMS/x86_64/kompose-*
-git
-libc.so.6()(64bit)
-libc.so.6(GLIBC_2.2.5)(64bit)
-libpthread.so.0()(64bit)
-libpthread.so.0(GLIBC_2.2.5)(64bit)
-libpthread.so.0(GLIBC_2.3.2)(64bit)
-rpmlib(CompressedFileNames) &amp;lt;= 3.0.4-1
-rpmlib(FileDigests) &amp;lt;= 4.6.0-1
-rpmlib(PayloadFilesHavePrefix) &amp;lt;= 4.0-1
-rpmlib(PayloadIsXz) &amp;lt;= 5.2-1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Try installing it locally and test it as mentioned in &lt;a href=&#34;http://suraj.io/post/test-kompose/&#34;&gt;http://suraj.io/post/test-kompose/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;pull-sprm&#34;&gt;Pull sprm&lt;/h3&gt;
-
-&lt;p&gt;For release 0.3.0, I pulled SRPM from:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;build-the-rpm-on-cbs-from-src-rpm&#34;&gt;Build the rpm on cbs from src.rpm&lt;/h2&gt;
-
-&lt;p&gt;CBS is a community build system for SpecialInterestGroup members. It allows to build packages with Koji against CentOS5, CentOS6 and CentOS7.&lt;/p&gt;
-
-&lt;h3 id=&#34;trying-a-scratch-build-on-cbs&#34;&gt;Trying a scratch build on CBS&lt;/h3&gt;
-
-&lt;p&gt;Do a scratch build on CBS in &lt;code&gt;paas7-openshift-common-release&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-*
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You can download the rpm built here to test on CentOS machine.&lt;/p&gt;
-
-&lt;h3 id=&#34;making-an-actual-release&#34;&gt;Making an actual release&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cbs build paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-*
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Once build is done successfully goto build page and download the rpm that is built for &lt;code&gt;x86_64&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The page where builds were listed: &lt;a href=&#34;https://cbs.centos.org/koji/taskinfo?taskID=181452&#34;&gt;https://cbs.centos.org/koji/taskinfo?taskID=181452&lt;/a&gt;
-The page where this particular build happened and where I had download link to rpm: &lt;a href=&#34;https://cbs.centos.org/koji/buildinfo?buildID=17249&#34;&gt;https://cbs.centos.org/koji/buildinfo?buildID=17249&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget http://cbs.centos.org/kojifiles/packages/kompose/0.7.0/0.1.el7/x86_64/kompose-0.7.0-0.1.el7.x86_64.rpm
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Try to install this rpm and see if it works on CentOS:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;yum install -y epel-release
-yum install -y wget jq make
-
-wget http://cbs.centos.org/kojifiles/packages/kompose/0.7.0/0.1.el7/x86_64/kompose-0.7.0-0.1.el7.x86_64.rpm
-
-yum install -y kompose-0.7.0-0.1.el7.x86_64.rpm
-
-git clone https://github.com/kubernetes-incubator/kompose/
-cd kompose
-git reset --hard $(kompose version | cut -d &amp;quot;(&amp;quot; -f2 | cut -d &amp;quot;)&amp;quot; -f1)
-make test-cmd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If everything is okay, Tag it into testing,
-Verify that whatever you built last cbs is the good, the output should be version you wanted, and not the old one.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs latest-build paas7-openshift-common-candidate kompose
-Build                                     Tag                   Built by
-----------------------------------------  --------------------  ----------------
-kompose-0.7.0-0.1.el7                     paas7-openshift-common-candidate  surajd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Tag the build output of above command to testing&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs tag-pkg paas7-openshift-common-testing kompose-0.7.0-0.1.el7
-Created task 181472
-Watching tasks (this may be safely interrupted)...
-181472 tagBuild (noarch): closed
-
-181472 tagBuild (noarch) completed successfully
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Verify it is in testing&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs latest-build paas7-openshift-common-testing kompose
-Build                                     Tag                   Built by
-----------------------------------------  --------------------  ----------------
-kompose-0.7.0-0.1.el7                     paas7-openshift-common-testing  surajd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Run whatever tests you want to verify that it&amp;rsquo;s a good build.
-It takes anywhere from 5 to 30 minutes for the rpm to make it into testing
-&lt;a href=&#34;http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/&#34;&gt;http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;yum -y install centos-release-openshift-origin
-yum -y --enablerepo=centos-openshift-origin-testing install kompose
-yum install -y epel-release
-yum install -y jq make
-
-git clone https://github.com/kubernetes-incubator/kompose/
-cd kompose
-git reset --hard $(kompose version | cut -d &amp;quot;(&amp;quot; -f2 | cut -d &amp;quot;)&amp;quot; -f1)
-make test-cmd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Check if the package is in testing&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs latest-build paas7-openshift-common-testing kompose
-Build                                     Tag                   Built by
-----------------------------------------  --------------------  ----------------
-kompose-0.7.0-0.1.el7                     paas7-openshift-common-testing  surajd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Tag it into release:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cbs tag-pkg paas7-openshift-common-release kompose-0.7.0-0.1.el7
-Created task 181634
-Watching tasks (this may be safely interrupted)...
-181634 tagBuild (noarch): free
-181634 tagBuild (noarch): free -&amp;gt; closed
-  0 free  0 open  1 done  0 failed
-
-181634 tagBuild (noarch) completed successfully
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Once it is populated, it will show up in the repos, install it as follows:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;yum install -y centos-release-openshift-origin
-yum install -y kompose
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;ref&#34;&gt;Ref:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Install the SRPM and then Build from the Specfile &lt;a href=&#34;https://wiki.centos.org/HowTos/RebuildSRPM&#34;&gt;https://wiki.centos.org/HowTos/RebuildSRPM&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Set Up an RPM Build Environment under CentOS &lt;a href=&#34;https://wiki.centos.org/HowTos/SetupRpmBuildEnvironment&#34;&gt;https://wiki.centos.org/HowTos/SetupRpmBuildEnvironment&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/dustymabe/fedpkg-kompose/blob/a3400c73843986693dbdc831de6de7f3a029f783/notes.txt&#34;&gt;Kompose build instructions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;CentOS PaaS SIG &lt;a href=&#34;https://wiki.centos.org/SpecialInterestGroup/PaaS&#34;&gt;https://wiki.centos.org/SpecialInterestGroup/PaaS&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;CentOS SIGs &lt;a href=&#34;https://wiki.centos.org/SpecialInterestGroup&#34;&gt;https://wiki.centos.org/SpecialInterestGroup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;CBS &lt;a href=&#34;https://wiki.centos.org/HowTos/CommunityBuildSystem&#34;&gt;https://wiki.centos.org/HowTos/CommunityBuildSystem&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://wiki.centos.org/HowTos/CentosPackager&#34;&gt;Building in CBS&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/projectatomic/adb-utils/blob/master/README.adoc#steps-to-build-the-src-rpm&#34;&gt;RPM help from adb-utils repo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Note: This is a living document and will be updated from time to time.
+Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
+Setup your machine Install packages needed
+sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs</description>
     </item>
     
   </channel>

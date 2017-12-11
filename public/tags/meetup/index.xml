@@ -2,11 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Meetup on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/meetup/index.xml</link>
+    <link>http://suraj.io/tags/meetup/</link>
     <description>Recent content in Meetup on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://suraj.io/tags/meetup/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Sep 2017 15:51:16 +0530</lastBuildDate>
+    
+	<atom:link href="http://suraj.io/tags/meetup/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>List of Kubernetes Bangalore meetup event report</title>
@@ -14,19 +17,8 @@
       <pubDate>Fri, 01 Sep 2017 15:51:16 +0530</pubDate>
       
       <guid>http://suraj.io/post/list-all-k8s-meetups/</guid>
-      <description>&lt;p&gt;List of all the event reports from Kubernetes Bangalore meetup.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://suraj.io/post/blr-k8s-meetup-april-2017/&#34;&gt;April 2017&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://suraj.io/post/blr-k8s-meetup-may-2017/&#34;&gt;May 2017&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://mohammedzee1000.wordpress.com/2017/06/11/kubernetes-magic-the-gathering-k8sblr-k8sblr-kubernetes-openshift-redhatopen/&#34;&gt;June 2017&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://suraj.io/post/blr-k8s-meetup-july-2017/&#34;&gt;July 2017&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://cloudyuga.guru/blog/kubernetes-2nd-bday/&#34;&gt;Kubernetes 2nd Birthday Celebration&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://medium.com/@aditya.konarde/bangalore-kubernetes-meetup-august-2017-686646e0763f&#34;&gt;August 2017&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://medium.com/@aditya.konarde/bangalore-kubernetes-and-openshift-meetup-september-2017-9dd1a48a6fde&#34;&gt;September 2017&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://developers.redhat.com/blog/2017/10/20/kubernetes-openshift-meetup-7th-october/&#34;&gt;October 2017&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>List of all the event reports from Kubernetes Bangalore meetup.
+ April 2017 May 2017 June 2017 July 2017 Kubernetes 2nd Birthday Celebration August 2017 September 2017 October 2017 November 2017  </description>
     </item>
     
     <item>
@@ -35,129 +27,9 @@
       <pubDate>Thu, 13 Jul 2017 22:46:40 +0530</pubDate>
       
       <guid>http://suraj.io/post/blr-k8s-meetup-july-2017/</guid>
-      <description>&lt;p&gt;This &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/240859625/&#34;&gt;edition of meetup&lt;/a&gt;
-was held at Nexus Ventures by folks at &lt;a href=&#34;https://twitter.com/openebs&#34;&gt;OpenEBS&lt;/a&gt;
-on July 8th 2017, which started on a lovely Saturday morning.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/kiranmova&#34;&gt;Kiran Mova&lt;/a&gt; set the floor rolling with his talk
-on &lt;em&gt;Hyperconverged version of OpenEBS with Kubernetes&lt;/em&gt;. Where he talked about
-containerized storage vs traditional storage, instead of building clustering
-into &lt;a href=&#34;https://github.com/openebs/openebs&#34;&gt;OpenEBS&lt;/a&gt; how they are leveraging
-Kubernetes&amp;rsquo;s capabilities to do clustering.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-july-2017/kiran.JPG&#34; alt=&#34;openEBS demo&#34; title=&#34;openEBS demo&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;He also explained difference between various storage providers viz. Portworx,
-StorageOS, Rook, GlusterFS, OpenEBS, etc.&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;
-&lt;iframe width=&#34;595&#34; height=&#34;485&#34; src=&#34;https://www.youtube.com/embed/LRdcah-fs0g&#34;
-frameborder=&#34;0&#34; style=&#34;border:1px solid #CCC; border-width:1px;
-margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
-&lt;a href=&#34;//youtu.be/LRdcah-fs0g&#34;
-title=&#34;Hyperconverged version of OpenEBS with Kubernetes&#34;
-target=&#34;_blank&#34;&gt;Hyperconverged version of OpenEBS with Kubernetes&lt;/a&gt;
-&lt;/strong&gt; by &lt;strong&gt;&lt;a target=&#34;_blank&#34;
-href=&#34;https://twitter.com/kiranmova&#34;&gt;Kiran Mova&lt;/a&gt;&lt;/strong&gt;
-&lt;/div&gt;
-&lt;/center&gt;&lt;/p&gt;
-
-&lt;p&gt;Then was talk by &lt;a href=&#34;https://twitter.com/kamesh_sampath&#34;&gt;Kamesh Sampath&lt;/a&gt; on
-&lt;a href=&#34;https://github.com/istio/istio&#34;&gt;Istio&lt;/a&gt; named &lt;em&gt;A sail in the cloud&lt;/em&gt;.
-Specifically tracing, monitoring, service discovery with Istio.&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/fKzj4nGkTEsXnH&#34;
-width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34;
-scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px;
-margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt;
-&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
-&lt;a href=&#34;//www.slideshare.net/kameshsampath/a-sail-in-the-cloud&#34;
-title=&#34;A sail in the cloud&#34; target=&#34;_blank&#34;&gt;A sail in the cloud&lt;/a&gt;
-&lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34;
-href=&#34;https://www.slideshare.net/kameshsampath&#34;&gt;Kamesh Sampath&lt;/a&gt;&lt;/strong&gt;
-&lt;/div&gt;&lt;/center&gt;&lt;/p&gt;
-
-&lt;p&gt;He explained the Istio Service Mesh architecture and all components it has.
-How side-car pattern is being used to deploy Istio with the existing apps in
-Kubernetes.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-july-2017/kamesh.JPG&#34; alt=&#34;side-car config&#34; title=&#34;side-car configuration&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;He talked and demoed about Canary deployment, tracing and Circuit breaking with
-Istio. Watch the video recording of talk by Kamesh to learn in detail. Here is
-his &lt;a href=&#34;https://github.com/workspace7/sail-into-cloud&#34;&gt;demo content&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;
-&lt;iframe width=&#34;595&#34; height=&#34;485&#34; src=&#34;https://www.youtube.com/embed/LRdcah-fs0g?start=2020&#34;
-frameborder=&#34;0&#34; style=&#34;border:1px solid #CCC; border-width:1px;
-margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
-&lt;a href=&#34;//youtu.be/LRdcah-fs0g?t=33m40s&#34;
-title=&#34;A sail in the cloud&#34;
-target=&#34;_blank&#34;&gt;A sail in the cloud&lt;/a&gt;
-&lt;/strong&gt; by &lt;strong&gt;&lt;a target=&#34;_blank&#34;
-href=&#34;https://twitter.com/kamesh_sampath&#34;&gt;Kamesh Sampath&lt;/a&gt;&lt;/strong&gt;
-&lt;/div&gt;
-&lt;/center&gt;&lt;/p&gt;
-
-&lt;p&gt;After a snacks break, there was a talk by &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan Ahmed&lt;/a&gt;
-about &lt;em&gt;Dance of container image building&lt;/em&gt;. The main highlight of this highly
-interactive session was on best practices to be followed for building container
-images.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-july-2017/zeeshan.JPG&#34; alt=&#34;buildah in action&#34; title=&#34;buildah in action&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Where he explained why it is not a good idea to bake configs and
-secrets into container image and how one can use use Kubernetes secrets and
-configMaps to get this configs and secrets in the container on the fly, he
-then demoed the tool buildah where you don&amp;rsquo;t need a docker daemon to build
-the container image.&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;
-&lt;iframe width=&#34;595&#34; height=&#34;485&#34; src=&#34;https://www.youtube.com/embed/LRdcah-fs0g?start=5961&#34;
-frameborder=&#34;0&#34; style=&#34;border:1px solid #CCC; border-width:1px;
-margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
-&lt;a href=&#34;//youtu.be/LRdcah-fs0g?t=1h39m21s&#34;
-title=&#34;Dance of container image building&#34;
-target=&#34;_blank&#34;&gt;Dance of container image building&lt;/a&gt;
-&lt;/strong&gt; by &lt;strong&gt;&lt;a target=&#34;_blank&#34;
-href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan Ahmed&lt;/a&gt;&lt;/strong&gt;
-&lt;/div&gt;
-&lt;/center&gt;&lt;/p&gt;
-
-&lt;p&gt;Followed by Zeeshan was talk by &lt;a href=&#34;https://uyirpodiru.blogspot.in/&#34;&gt;Saravanakumar&lt;/a&gt;
-where he talked about &lt;em&gt;Source to Image in OpenShift&lt;/em&gt;, where he explained what
-is s2i, how you can use s2i with the running OpenShift cluster by directly
-providing github url of a project and see it deployed on OpenShift.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-july-2017/saravanakumar.JPG&#34; alt=&#34;s2i demo&#34; title=&#34;s2i demo&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Then he demonstrated how you can build your own builder image for OpenShift s2i.
-&lt;a href=&#34;http://goo.gl/xYJnuG&#34;&gt;Link to slides&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;center&gt;
-&lt;iframe width=&#34;595&#34; height=&#34;485&#34; src=&#34;https://www.youtube.com/embed/LRdcah-fs0g?start=9048&#34;
-frameborder=&#34;0&#34; style=&#34;border:1px solid #CCC; border-width:1px;
-margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt;
-&lt;a href=&#34;//youtu.be/LRdcah-fs0g?t=2h30m48s&#34;
-title=&#34;Source to Image in OpenShift&#34;
-target=&#34;_blank&#34;&gt;Source to Image in OpenShift&lt;/a&gt;
-&lt;/strong&gt; by &lt;strong&gt;&lt;a target=&#34;_blank&#34;
-href=&#34;https://uyirpodiru.blogspot.in/&#34;&gt;Saravanakumar&lt;/a&gt;&lt;/strong&gt;
-&lt;/div&gt;
-&lt;/center&gt;&lt;/p&gt;
-
-&lt;p&gt;The meetup ended with announcements of &lt;a href=&#34;https://www.meetup.com/Bangalore-Mesos-cncf-User-Group/events/240781879/&#34;&gt;Kubernetes Birthday meetup&lt;/a&gt;
-and awesome burgers from Truffles sponsored by OpenEBS. Thanks all speakers,
-attendees and sponsors for making this meetup a success. Thanks to OpenEBS
-for being a generous sponsors, and specifically &lt;a href=&#34;https://twitter.com/kiranmova&#34;&gt;Kiran&lt;/a&gt;
-and &lt;a href=&#34;https://twitter.com/_nisanta_&#34;&gt;Nisanta&lt;/a&gt; for organizing logistics and
-helping on the day of meetup. Thanks to &lt;a href=&#34;https://www.linkedin.com/in/hemani-katyal-57900081&#34;&gt;Hemani&lt;/a&gt;
-and &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan&lt;/a&gt; for editing this post.&lt;/p&gt;
-</description>
+      <description>This edition of meetup was held at Nexus Ventures by folks at OpenEBS on July 8th 2017, which started on a lovely Saturday morning.
+Kiran Mova set the floor rolling with his talk on Hyperconverged version of OpenEBS with Kubernetes. Where he talked about containerized storage vs traditional storage, instead of building clustering into OpenEBS how they are leveraging Kubernetes&amp;rsquo;s capabilities to do clustering.
+He also explained difference between various storage providers viz.</description>
     </item>
     
     <item>
@@ -166,93 +38,10 @@ and &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan&lt;/a&gt; for 
       <pubDate>Wed, 24 May 2017 02:21:49 +0530</pubDate>
       
       <guid>http://suraj.io/post/blr-k8s-meetup-may-2017/</guid>
-      <description>
-
-&lt;p&gt;&lt;em&gt;&amp;ldquo;One does not simply deploy containers to production&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-may-2017/mordor_meme.jpg&#34; alt=&#34;One does not simply deploy containers to production&#34; title=&#34;One does not simply deploy containers to production&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;With the rising craze around the container community in Bangalore and relative lack in awareness
-around different container technologies like &lt;a href=&#34;http://kubernetesbyexample.com/&#34;&gt;Kubernetes&lt;/a&gt; and &lt;a href=&#34;https://developers.openshift.com/&#34;&gt;OpenShift&lt;/a&gt;,
-an effort was made in imparting knowledge in this direction.&lt;/p&gt;
-
-&lt;p&gt;So, this time around newbies were targeted for the Kubernetes Meetup.&lt;/p&gt;
-
-&lt;p&gt;With the above objective, it was decided to have a &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/239381714/&#34;&gt;Kubernetes 101 workshop&lt;/a&gt;
- at Red Hat Bangalore office on May 21, 2017 to familiarize people with concepts of Kubernetes and OpenShift and their
- usage and relevance as container orchestration tools for managing application deployments.&lt;/p&gt;
-
-&lt;p&gt;The schedule for the Meetup was as follows:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Kubernetes 101 - Knowing the terms in Kubernetes&lt;/li&gt;
-&lt;li&gt;Kubernetes 101 - Hands-on workshop&lt;/li&gt;
-&lt;li&gt;OpenShift 101 - What OpenShift adds to Kubernetes?&lt;/li&gt;
-&lt;li&gt;OpenShift 101 - Hands-on workshop&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As per the schedule, we opened the floor with a talk by &lt;a href=&#34;https://www.linkedin.com/in/hemani-katyal-57900081&#34;&gt;Hemani Katyal&lt;/a&gt;
- on Kubernetes Basics(&lt;a href=&#34;https://docs.google.com/presentation/d/1pUg6eOfIfznSS-2m1-7EEXbyHyH9NPgCRZw6WcX6FG4/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;),
- wherein she explained the need for Kubernetes, what it is, it&amp;rsquo;s architecture, why Kubernetes would be better container
- orchestrator and the constructs of Kubernetes like pods, volumes, labels, replications controllers, services, etc.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-may-2017/hemani.jpg&#34; alt=&#34;Hemani Katyal&#34; title=&#34;Hemani Katyal explaining Kubernetes&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;It was good to see people interested in concepts of service and the way it load balances traffic, how the labels
- construct is helpful in bringing in flexibility with deployments, why Kubernetes is better than other container
- orchestrators.&lt;/p&gt;
-
-&lt;p&gt;Following up with the excitement, &lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;Suraj Deshmukh&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/procrypt0&#34;&gt;Abhishek Singh&lt;/a&gt;,
- &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan Ahmed&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/ContainsCafeine&#34;&gt;Shubham Minglani&lt;/a&gt; happily
- volunteered to conduct the hands-on workshop. The workshop exercises were taken from &lt;a href=&#34;https://www.katacoda.com/courses/kubernetes&#34;&gt;Kubernetes section&lt;/a&gt;
- of &lt;a href=&#34;https://www.katacoda.com/&#34;&gt;katacoda.com&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-may-2017/mzee.jpg&#34; alt=&#34;Zeeshan Ahmed&#34; title=&#34;Zeeshan Ahmed explaining Kubernetes Secrets and ConfigMaps&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;It was pleasure to have an excited and responsive audience. Questions like kube-adm functionality on CentOS,
- installing Kubernetes in an isolated environment without internet, how ingress works and the likes of the same were
- asked during the hands-on session.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-may-2017/shubham.jpg&#34; alt=&#34;Shubham Minglani&#34; title=&#34;Shubham Minglani explaining Kubernetes HealthChecks&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Post a quick coffee break, &lt;a href=&#34;https://twitter.com/procrypt0&#34;&gt;Abhishek Singh&lt;/a&gt; briefed the audience about OpenShift basics(&lt;a href=&#34;https://docs.google.com/presentation/d/1e9dEuNfoFI0kMbtQmPUIgw85zS7s-cvupWB5ogYxdpc/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;),
- wherein he explained what OpenShift is and how it is an addon on top of Kubernetes. He touched upon topics like user
- management, various build features of OpenShift, container image handling in OpenShift, the way deployment fits in with
- build part, security, running OpenShift locally using &lt;a href=&#34;https://github.com/minishift/minishift/&#34;&gt;Minishift&lt;/a&gt;, to name a few.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-may-2017/abhi.jpg&#34; alt=&#34;Abhishek Singh&#34; title=&#34;Abhishek Singh explaining OpenShift&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Satiating the hunger not just for knowledge but food as well, we broke for lunch.&lt;/p&gt;
-
-&lt;p&gt;Post which we continued with OpenShift hand-on exercises, which were again from &lt;a href=&#34;https://learn.openshift.com/&#34;&gt;OpenShift section&lt;/a&gt;
- of &lt;a href=&#34;katacoda.com&#34;&gt;katacoda.com&lt;/a&gt;. &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan Ahmed&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Suraj Narwade&lt;/a&gt;
- and &lt;a href=&#34;https://twitter.com/procrypt0&#34;&gt;Abhishek Singh&lt;/a&gt; helped with the workshop exercises. There seemed to be lot of
- interest around topics like the &lt;a href=&#34;https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/builds_and_image_streams.html#source-build&#34;&gt;source to image&lt;/a&gt;
- feature of OpenShift, if &lt;a href=&#34;https://docs.openshift.com/enterprise/3.2/dev_guide/routes.html&#34;&gt;OpenShift’s router&lt;/a&gt; allowed
- UDP traffic, the difference between ingress and routes.&lt;/p&gt;
-
-&lt;p&gt;Red Hat’s latest announcement regarding the &lt;a href=&#34;https://blog.openshift.com/aws-and-red-hat-digging-a-little-deeper/&#34;&gt;integration of AWS services with OpenShift&lt;/a&gt;
- also generated some curiosity among the audience.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-may-2017/people.jpg&#34; alt=&#34;Folks listening&#34; title=&#34;Folks listening&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The meetup concluded asking for &lt;a href=&#34;https://goo.gl/forms/ILSI0Xb3OKuKMKht2&#34;&gt;feedback&lt;/a&gt; and distributing some swag. In
- feedback we received, people wanted to see some real world examples, the kind of applications that run on these
- platforms, and much more which are advanced topics and we would love to take up in normal meetup as opposed to a 101.&lt;/p&gt;
-
-&lt;p&gt;I would like to conclude here by thanking all speakers, volunteers for spreading knowledge, &lt;a href=&#34;katacoda.com&#34;&gt;katacoda.com&lt;/a&gt;
- for awesome workshop material and audience for listening patiently and trying out things and making this meetup
- successful. And last but not the least, I would like to express my deepest gratitude to Red Hat for sponsoring the event
- and providing us with the venue and &lt;a href=&#34;https://www.linkedin.com/in/hemani-katyal-57900081&#34;&gt;Hemani Katyal&lt;/a&gt;
- for making this post an awesome read.&lt;/p&gt;
-
-&lt;h2 id=&#34;links&#34;&gt;Links&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Kubernetes DIY hands-on exercises &lt;a href=&#34;https://www.katacoda.com/courses/kubernetes&#34;&gt;https://www.katacoda.com/courses/kubernetes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;OpenShift DIY hands-on exercises &lt;a href=&#34;https://learn.openshift.com/&#34;&gt;https://learn.openshift.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>&amp;ldquo;One does not simply deploy containers to production&amp;rdquo;
+With the rising craze around the container community in Bangalore and relative lack in awareness around different container technologies like Kubernetes and OpenShift, an effort was made in imparting knowledge in this direction.
+So, this time around newbies were targeted for the Kubernetes Meetup.
+With the above objective, it was decided to have a Kubernetes 101 workshop at Red Hat Bangalore office on May 21, 2017 to familiarize people with concepts of Kubernetes and OpenShift and their usage and relevance as container orchestration tools for managing application deployments.</description>
     </item>
     
     <item>
@@ -261,71 +50,8 @@ an effort was made in imparting knowledge in this direction.&lt;/p&gt;
       <pubDate>Sat, 08 Apr 2017 14:31:33 +0530</pubDate>
       
       <guid>http://suraj.io/post/blr-k8s-meetup-april-2017/</guid>
-      <description>&lt;p&gt;Like many Saturday mornings, &lt;a href=&#34;https://www.google.co.in/search?q=red+hat+bangalore&amp;amp;oq=red+ha&amp;amp;aqs=chrome.0.69i59j69i61l3j69i57j69i59.5776j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8#q=red+hat+bangalore&amp;amp;rflfq=1&amp;amp;rlha=0&amp;amp;rllag=12949018,77600064,1885&amp;amp;tbm=lcl&amp;amp;tbs=lf_pqs:EAE,lf:1,lf_ui:3&amp;amp;rldoc=1&amp;amp;rlfi=hd:;si:1155840882052252649;mv:!1m3!1d18064.656204115003!2d77.600064!3d12.949018050000001!2m3!1f0!2f0!3f0!3m2!1i91!2i446!4f13.1;tbs:lf_pqs:EAE,lf:1,lf_ui:3&#34;&gt;Red Hat Bangalore&lt;/a&gt;
-office was once again abuzz with enthusiasm on 8th of April, for hosting yet
-another successful chapter of &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/238335903/&#34;&gt;Bangalore Kubernetes Meetup&lt;/a&gt;.
-The Meetup had a good turnaround of about 40 people who gave up on their
-early morning saturday sleep to attend it despite the sweltering hot
-season and in line were four awesome talks.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;Suraj Deshmukh&lt;/a&gt; set the stage with his opening
-talk, &lt;em&gt;Kubernetes on CRI-O&lt;/em&gt;, wherein he explained different jargons like
-OCI, CRI, etc., introduced CRI-O and it’s architecture. Explaining how it
-glues Kubernetes and OCI compliant runtimes and concluding it with a demo
-showing how Kubernetes uses CRI-O. Link to &lt;a href=&#34;https://docs.google.com/presentation/d/1tP7b1e1fy-n3_v5bilDLjOAheZGu602B3WK-1kxXkVo/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;,
-&lt;a href=&#34;https://youtu.be/_E7foB4kVGM&#34;&gt;video&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/group.jpg&#34; alt=&#34;Folks listening&#34; title=&#34;Folks listening&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Next in queue, was another wonderful talk by &lt;a href=&#34;https://twitter.com/dipakpawar231&#34;&gt;Dipak Pawar&lt;/a&gt;
-about &lt;em&gt;System and integration testing for Kubernetes/OpenShift with
-arquillian-cube and JBoss Forge&lt;/em&gt;, elaborating the usefulness of
-arquillian-cube’s integration for Kubernetes and OpenShift coupled
-with Forge tooling for testing micro-services deployed on OpenShift/Kubernetes.
-Link to &lt;a href=&#34;https://youtu.be/f4qIKmlBg34&#34;&gt;video&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/dipak.jpg&#34; alt=&#34;Dipak Pawar&#34; title=&#34;Dipak Pawar demoing arquillian-cube&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Following a quick breather, was an informative talk by &lt;a href=&#34;https://twitter.com/budhrg&#34;&gt;Budhram Gurung&lt;/a&gt;
-on &lt;em&gt;Running OpenShift locally using Minishift&lt;/em&gt;, highlighting the inspiration
-for the project and covering components of Minishift with a demo showing
-it&amp;rsquo;s usage. Also, leaving behind a note on how one could reach out to the
-developers and contribute to Minishift. Link to &lt;a href=&#34;https://docs.google.com/presentation/d/1oONy-2ncemEE7dtddoZL0Lcu0KVIUtqADhEX0bB5q5g/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;,
-&lt;a href=&#34;https://youtu.be/dvYeRbSpxR8&#34;&gt;video&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/budhram.jpg&#34; alt=&#34;Budhram Gurung&#34; title=&#34;Budhram demoing Minishift&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Last, but not the least, planned talk was by &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Suraj Narwade&lt;/a&gt;
-on running &lt;em&gt;Docker on ARM/Raspberry PI&lt;/em&gt;, wherein he enjoyed sharing his
-experience of working on his hobby project, and all the problems faced by
-him in trying to get containers running on Raspberry PI. He shared his
-discovery showcasing the incompatibility of the container images built on
-&lt;code&gt;x86_64&lt;/code&gt;, to run on &lt;code&gt;arm&lt;/code&gt;. Link to &lt;a href=&#34;https://docs.google.com/presentation/d/1cJeQyMG_NOn8QDJpIHkAjTT4I0L6AyQ8DxeGbVWn850/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;,
-&lt;a href=&#34;https://youtu.be/8yzPt5MfY8s&#34;&gt;video&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/surajn.jpg&#34; alt=&#34;Suraj Narwade&#34; title=&#34;Suraj Narwade demoing about the Docker&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Finally, an unanticipated lightening talk took the audience by storm where
-a quick 3 minutes demo on &lt;em&gt;Persistent Storage with Kubernetes&lt;/em&gt; by &lt;a href=&#34;https://twitter.com/raghavendra_t&#34;&gt;Raghavendra Talur&lt;/a&gt;
-turned into a good discussion of 30 minutes. He demo-ed, hyper-converged
-storage and dynamic provisioning with gluster and answered a lot of queries
-regarding setting up storage with Kubernetes, finishing on a
-to be continued note in the successive meetup.&lt;/p&gt;
-
-&lt;p&gt;The meetup concluded with discussion over snacks and planning for the next
-chapter of this meetup, which will be a &lt;strong&gt;Kubernetes and OpenShift 101 workshop&lt;/strong&gt;
-for beginners.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.io/images/blr-k8s-meetup-april-2017/network.jpg&#34; alt=&#34;Folks networking&#34; title=&#34;Folks networking&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Thanks to all the Speakers for sharing their valuable thoughts and learnings,
-&lt;a href=&#34;https://twitter.com/nogenerics&#34;&gt;Baiju&lt;/a&gt; for recording all the sessions,
-&lt;a href=&#34;https://www.linkedin.com/in/hemani-katyal-57900081&#34;&gt;Hemani&lt;/a&gt; for making this post a good read
-and &lt;a href=&#34;https://twitter.com/redhatopen&#34;&gt;Red Hat&lt;/a&gt; for the venue.&lt;/p&gt;
-
-&lt;p&gt;The meetup is also featured on &lt;a href=&#34;http://www.k8sport.org/&#34;&gt;K8sPort&lt;/a&gt;, which
-is community engagement platform for Kubernetes community, courtesy &lt;a href=&#34;https://twitter.com/RSQuackenbush&#34;&gt;Ryan Quackenbush&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>Like many Saturday mornings, Red Hat Bangalore office was once again abuzz with enthusiasm on 8th of April, for hosting yet another successful chapter of Bangalore Kubernetes Meetup. The Meetup had a good turnaround of about 40 people who gave up on their early morning saturday sleep to attend it despite the sweltering hot season and in line were four awesome talks.
+Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc.</description>
     </item>
     
   </channel>

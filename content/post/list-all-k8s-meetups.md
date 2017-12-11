@@ -17,4 +17,4 @@ List of all the event reports from Kubernetes Bangalore meetup.
 - [August 2017](https://medium.com/@aditya.konarde/bangalore-kubernetes-meetup-august-2017-686646e0763f)
 - [September 2017](https://medium.com/@aditya.konarde/bangalore-kubernetes-and-openshift-meetup-september-2017-9dd1a48a6fde)
 - [October 2017](https://developers.redhat.com/blog/2017/10/20/kubernetes-openshift-meetup-7th-october/)
-
+- [November 2017](https://piyush1594.github.io/2017/12/kubernetes-bangalore-meetup-november-2017/)
