@@ -16,7 +16,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.20-DEV" />
+        <meta name="generator" content="Hugo 0.37-DEV" />
         
 
 
@@ -27,7 +27,11 @@
             
         
 
-        
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Github"/>
+<meta name="twitter:description" content="Blog"/>
+<meta name="twitter:site" content="@surajd_"/>
+
         <meta property="og:title" content="Github" />
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
@@ -35,7 +39,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-03-15T14:16:43&#43;05:30"/>
+<meta property="og:updated_time" content="2017-10-06T19:32:33&#43;05:30"/>
 
 
 
@@ -198,11 +202,23 @@ ga('send', 'pageview');
 
                 
                     <li>
-                        <a href="http://suraj.io/post/blr-k8s-meetup-april-2017/"><p>Bangalore Kubernetes Meetup April 2017</p></a>
+                        <a href="http://suraj.io/post/private-registry-from-minikube/"><p>Using private container registries from minikube</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://suraj.io/post/using-crio-with-k8s-single-node/"><p>k8s on CRI-O - single node</p></a>
+                        <a href="http://suraj.io/post/static-pods/"><p>Static Pods using Kubelet on Fedora</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://suraj.io/post/move-vagrant-boxes/"><p>Sharing Vagrant Box offline</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://suraj.io/post/add-new-map-to-cs/"><p>Add new Maps to Counter Strike</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://suraj.io/post/list-all-k8s-meetups/"><p>List of Kubernetes Bangalore meetup event report</p></a>
                     </li>
                 
             </ul>
@@ -224,143 +240,6 @@ ga('send', 'pageview');
     <header>
     <div class="title">
         
-            <h2><a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/">Packaging &#39;kompose&#39; for centos paas sig</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-15'>
-            March 15, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>4 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Note: This is a living document and will be updated from time to time.
-Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
-Building kompose srpm There are two ways to build srpm either build it locally or the ones that is built in koji for epel.
-Build rpms locally Before you begin make sure you have setup the local directory structure:</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriespackaging'>packaging</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/test-kompose/">Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-14'>
-            March 14, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
-Note: All the commands that start with # are inside the container.
-Fedora Spin the fedora test environment, let&rsquo;s say fedora 25, I do it in containers.
-$ docker run -it fedora:25 bash  Once inside the container download the latest package from the testing repo:
-dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you download the latest release, there might be conditions that you download the old package.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/test-kompose/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriespackaging'>packaging</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
             <h2><a href="http://suraj.io/post/">Posts</a></h2>
         
         
@@ -371,8 +250,8 @@ dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you do
         
 
         <time class="published"
-            datetime='2017-04-08'>
-            April 8, 2017</time>
+            datetime='2017-10-06'>
+            October 6, 2017</time>
         <span class="author"></span>
         
             <p>0 minute read</p>
@@ -460,6 +339,8 @@ dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you do
 
 
 
+<li><a href="//youtube.com/surajssd009005" target="_blank" title="YouTube" class="fa fa-youtube"></a></li>
+
 
 
 
@@ -476,9 +357,15 @@ dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you do
 
 
 
+<li><a href="//linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
 
 
 
+<li><a href="//slideshare.com/surajssd009005" target="_blank" title="SlideShare" class="fa fa-slideshare"></a></li>
+
+
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" title="Stack Overflow" class="fa fa-stack-overflow"></a></li>
 
 
 
@@ -519,13 +406,13 @@ dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you do
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/blr-k8s-meetup-april-2017/">Bangalore Kubernetes Meetup April 2017</a></h3>
+                                <h3><a href="http://suraj.io/post/private-registry-from-minikube/">Using private container registries from minikube</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-04-08'>
-                                    April 8, 2017</time>
+                                    '2017-10-06'>
+                                    October 6, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -533,13 +420,55 @@ dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you do
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://suraj.io/post/using-crio-with-k8s-single-node/">k8s on CRI-O - single node</a></h3>
+                                <h3><a href="http://suraj.io/post/static-pods/">Static Pods using Kubelet on Fedora</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2017-04-08'>
-                                    April 8, 2017</time>
+                                    '2017-09-23'>
+                                    September 23, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://suraj.io/post/move-vagrant-boxes/">Sharing Vagrant Box offline</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-09-18'>
+                                    September 18, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://suraj.io/post/add-new-map-to-cs/">Add new Maps to Counter Strike</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-09-01'>
+                                    September 1, 2017</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://suraj.io/post/list-all-k8s-meetups/">List of Kubernetes Bangalore meetup event report</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2017-09-01'>
+                                    September 1, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -577,6 +506,42 @@ dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you do
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/notes/">notes</a>
+                                <span style="float:right;">9</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kubernetes/">kubernetes</a>
+                                <span style="float:right;">6</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/event_report/">event_report</a>
+                                <span style="float:right;">4</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kompose/">kompose</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/packaging/">packaging</a>
                                 <span style="float:right;">3</span>
                             </header>
@@ -586,7 +551,43 @@ dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you do
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/event-report/">event report</a>
+                                <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/centos/">centos</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/container/">container</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/fedora/">fedora</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/gaming/">gaming</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
@@ -604,7 +605,7 @@ dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you do
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/ide/">ide</a>
+                                <a href="/categories/minikube/">minikube</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
@@ -613,7 +614,7 @@ dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you do
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/notes/">notes</a>
+                                <a href="/categories/project_management/">project_management</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
@@ -622,7 +623,7 @@ dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you do
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/project-management/">project management</a>
+                                <a href="/categories/vagrant/">vagrant</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
@@ -675,6 +676,8 @@ dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you do
 
 
 
+<li><a href="//youtube.com/surajssd009005" target="_blank" title="YouTube" class="fa fa-youtube"></a></li>
+
 
 
 
@@ -691,9 +694,15 @@ dnf &ndash;enablerepo updates-testing -y install kompose  Note: Make sure you do
 
 
 
+<li><a href="//linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
 
 
 
+<li><a href="//slideshare.com/surajssd009005" target="_blank" title="SlideShare" class="fa fa-slideshare"></a></li>
+
+
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" title="Stack Overflow" class="fa fa-stack-overflow"></a></li>
 
 
 
