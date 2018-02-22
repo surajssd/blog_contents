@@ -1,13 +1,9 @@
 +++
 author = "Suraj Deshmukh"
-categories = ["ide", "notes"]
 description = "Shortcuts for vscode and some notes"
-linktitle = ""
-featured = ""
-featuredpath = ""
-featuredalt = ""
-title = "vscode Sortcuts"
-date = "2018-02-22T22:00:51+05:30"
+date = "2018-02-22T08:00:51+05:30"
+title = "vscode Shortcuts"
+categories = ["ide", "notes"]
 tags = ["vscode", "editor", "programming", "productivity", "notes"]
 +++
 

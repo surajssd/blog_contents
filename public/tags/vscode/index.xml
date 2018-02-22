@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vscode on Suraj Deshmukh</title>
+    <link>http://suraj.io/tags/vscode/</link>
+    <description>Recent content in Vscode on Suraj Deshmukh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 22 Feb 2018 08:00:51 +0530</lastBuildDate>
+    
+	<atom:link href="http://suraj.io/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>vscode Shortcuts</title>
+      <link>http://suraj.io/post/vscode-shortcuts/</link>
+      <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/vscode-shortcuts/</guid>
+      <description>This post has shortcuts that are generic and golang specific as well.
+Shortcuts  Toggle side bar  Ctrl + B
+ Project explorer in side bar  Ctrl + Shift + E
+ Project wide search in side bar  Ctrl + Shift + F
+ Source control in side bar  Ctrl + Shift + G
+ Copy entire line  Ctrl + C (without any selection)</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,10 +6,24 @@
     <description>Recent content on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Oct 2017 19:32:33 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 22 Feb 2018 08:00:51 +0530</lastBuildDate>
     
 	<atom:link href="http://suraj.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>vscode Shortcuts</title>
+      <link>http://suraj.io/post/vscode-shortcuts/</link>
+      <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/vscode-shortcuts/</guid>
+      <description>This post has shortcuts that are generic and golang specific as well.
+Shortcuts  Toggle side bar  Ctrl + B
+ Project explorer in side bar  Ctrl + Shift + E
+ Project wide search in side bar  Ctrl + Shift + F
+ Source control in side bar  Ctrl + Shift + G
+ Copy entire line  Ctrl + C (without any selection)</description>
+    </item>
     
     <item>
       <title>Using private container registries from minikube</title>
