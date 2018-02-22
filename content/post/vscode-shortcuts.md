@@ -7,7 +7,7 @@ categories = ["ide", "notes"]
 tags = ["vscode", "editor", "programming", "productivity", "notes"]
 +++
 
-This post has shortcuts that are generic and golang specific as well.
+This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
 
 ## Shortcuts
 
