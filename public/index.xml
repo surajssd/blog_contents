@@ -6,10 +6,22 @@
     <description>Recent content on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Feb 2018 08:00:51 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 23 Feb 2018 08:00:51 +0530</lastBuildDate>
     
 	<atom:link href="http://suraj.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Methods that satisfy interfaces in golang</title>
+      <link>http://suraj.io/post/golang-methods-interfaces/</link>
+      <pubDate>Fri, 23 Feb 2018 08:00:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/golang-methods-interfaces/</guid>
+      <description>Pointer receiver For a struct User with a method Work with pointer receiver.
+type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &amp;quot;has worked for&amp;quot;, u.Period, &amp;quot;hrs.&amp;quot;) } func main() { uval := User{&amp;quot;UserVal&amp;quot;, 5} uval.Work() pval := &amp;amp;User{&amp;quot;UserPtr&amp;quot;, 6} pval.Work() }  See on go playground.
+output:
+UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</description>
+    </item>
     
     <item>
       <title>vscode Shortcuts</title>

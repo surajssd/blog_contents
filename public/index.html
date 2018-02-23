@@ -33,7 +33,7 @@
 
 
 
-<meta property="og:updated_time" content="2018-02-22T08:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-02-23T08:00:51&#43;05:30"/>
 
 
 
@@ -201,6 +201,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/golang-methods-interfaces/"><p>Methods that satisfy interfaces in golang</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/vscode-shortcuts/"><p>vscode Shortcuts</p></a>
                     </li>
                 
@@ -214,10 +218,6 @@ ga('send', 'pageview');
                 
                     <li>
                         <a href="http://suraj.io/post/move-vagrant-boxes/"><p>Sharing Vagrant Box offline</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="http://suraj.io/post/add-new-map-to-cs/"><p>Add new Maps to Counter Strike</p></a>
                     </li>
                 
             </ul>
@@ -234,10 +234,10 @@ ga('send', 'pageview');
     <header>
     <div class="title">
         
-            <h2><a href="http://suraj.io/post/vscode-shortcuts/">vscode Shortcuts</a></h2>
+            <h2><a href="http://suraj.io/post/golang-methods-interfaces/">Methods that satisfy interfaces in golang</a></h2>
         
         
-            <p>Shortcuts for vscode and some notes</p>
+            <p>What receiver type methods satisfy which interface, can be understood here.</p>
         
     </div>
     <div class="meta">
@@ -246,8 +246,8 @@ ga('send', 'pageview');
         
 
         <time class="published"
-            datetime='2018-02-22'>
-            February 22, 2018</time>
+            datetime='2018-02-23'>
+            February 23, 2018</time>
         <span class="author">Suraj Deshmukh</span>
         
             <p>3 minute read</p>
@@ -262,43 +262,43 @@ ga('send', 'pageview');
             
 
 
-<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f&text=vscode%20Shortcuts&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f&text=Methods%20that%20satisfy%20interfaces%20in%20golang&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f&title=vscode%20Shortcuts" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f&title=Methods%20that%20satisfy%20interfaces%20in%20golang" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f&title=vscode%20Shortcuts" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f&title=Methods%20that%20satisfy%20interfaces%20in%20golang" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f&title=vscode%20Shortcuts" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f&title=Methods%20that%20satisfy%20interfaces%20in%20golang" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -310,240 +310,219 @@ ga('send', 'pageview');
     <div id="content">
         
 
-<p>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.</p>
+<h2 id="pointer-receiver">Pointer receiver</h2>
 
-<h2 id="shortcuts">Shortcuts</h2>
+<p>For a struct <code>User</code> with a method <code>Work</code> with pointer receiver.</p>
 
-<ul>
-<li>Toggle side bar</li>
-</ul>
+<pre><code class="language-go">type User struct {
+    Name   string
+    Period int
+}
 
-<p><code>Ctrl + B</code></p>
+func (u *User) Work() {
+    fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;)
+}
 
-<ul>
-<li>Project explorer in side bar</li>
-</ul>
+func main() {
+    uval := User{&quot;UserVal&quot;, 5}
+    uval.Work()
 
-<p><code>Ctrl + Shift + E</code></p>
-
-<ul>
-<li>Project wide search in side bar</li>
-</ul>
-
-<p><code>Ctrl + Shift + F</code></p>
-
-<ul>
-<li>Source control in side bar</li>
-</ul>
-
-<p><code>Ctrl + Shift + G</code></p>
-
-<ul>
-<li>Copy entire line</li>
-</ul>
-
-<p><code>Ctrl + C</code> (without any selection)</p>
-
-<ul>
-<li>Delete entire line</li>
-</ul>
-
-<p><code>Ctrl + Shift + K</code></p>
-
-<ul>
-<li>Toggle terminal</li>
-</ul>
-
-<p><code>Ctrl + `</code></p>
-
-<ul>
-<li>Toggle problems/errors in current project</li>
-</ul>
-
-<p><code>Ctrl + Shift + M</code></p>
-
-<ul>
-<li>Select entire line</li>
-</ul>
-
-<p><code>Ctrl + I</code> keep pressing <code>I</code> and then next line gets selected</p>
-
-<ul>
-<li>Move line or selected block up/down</li>
-</ul>
-
-<p><code>Alt + up</code> <strong>OR</strong> <code>Alt + down</code></p>
-
-<ul>
-<li>Insert line below</li>
-</ul>
-
-<p><code>Ctrl + Enter</code></p>
-
-<ul>
-<li>Insert line below</li>
-</ul>
-
-<p><code>Ctrl + Shift + Enter</code></p>
-
-<ul>
-<li>Multiple cursors at random place</li>
-</ul>
-
-<p><code>Alt + Mouse click</code></p>
-
-<ul>
-<li>Multiple line cursor</li>
-</ul>
-
-<p><code>Shift + Alt + up/down</code></p>
-
-<ul>
-<li>Get cursor on multiple occurrences of string</li>
-</ul>
-
-<p><code>Ctrl + Shift + L</code></p>
-
-<ul>
-<li>Comment line or selected block</li>
-</ul>
-
-<p><code>Ctrl + /</code></p>
-
-<ul>
-<li>Reformat code</li>
-</ul>
-
-<p><code>Ctrl + Shift + I</code></p>
-
-<ul>
-<li>Fold code block</li>
-</ul>
-
-<p><code>Ctrl + Shift + [</code></p>
-
-<ul>
-<li>Unfold code block</li>
-</ul>
-
-<p><code>Ctrl + Shift + ]</code></p>
-
-<ul>
-<li>Fold all sections</li>
-</ul>
-
-<p><code>Ctrl + K and Ctrl + 0</code></p>
-
-<ul>
-<li>Unfold all sections</li>
-</ul>
-
-<p><code>Ctrl + K and Ctrl + J</code></p>
-
-<ul>
-<li>Navigate through all errors in file</li>
-</ul>
-
-<p><code>F8</code></p>
-
-<ul>
-<li>Open command pallette</li>
-</ul>
-
-<p><code>F1</code> <strong>OR</strong> <code>Ctrl + Shift + P</code></p>
-
-<ul>
-<li>Fuzzy search &amp; open a file</li>
-</ul>
-
-<p><code>Ctrl + P</code></p>
-
-<ul>
-<li>Zen mode</li>
-</ul>
-
-<p><code>Ctrl + K and Z</code></p>
-
-<ul>
-<li>Trigger Intellisense</li>
-</ul>
-
-<p><code>Ctrl + Space</code></p>
-
-<ul>
-<li>Go back to last where you were in file</li>
-</ul>
-
-<p><code>Ctrl + Alt + -</code></p>
-
-<ul>
-<li>Go forward</li>
-</ul>
-
-<p><code>Ctrl + Shift + -</code></p>
-
-<ul>
-<li>Vertically split editor</li>
-</ul>
-
-<p><code>Ctrl + \</code></p>
-
-<ul>
-<li>Vertically split editor</li>
-</ul>
-
-<p>From project bar just select file and press <code>Ctrl + Enter</code></p>
-
-<ul>
-<li>Switch among splits</li>
-</ul>
-
-<p><code>Ctrl + 1</code> <strong>OR</strong> <code>Ctrl + 2</code></p>
-
-<ul>
-<li>Navigate by symbols in a file</li>
-</ul>
-
-<p><code>Ctrl + Shift + O</code></p>
-
-<ul>
-<li>Goto line number</li>
-</ul>
-
-<p><code>Ctrl + G</code> now enter line number</p>
-
-<ul>
-<li>Undo last cursor operation</li>
-</ul>
-
-<p><code>Ctrl + U</code></p>
-
-<h2 id="tricks">Tricks</h2>
-
-<ul>
-<li>Use vscode as diff tool</li>
-</ul>
-
-<pre><code class="language-bash">code --diff &lt;file1&gt; &lt;file2&gt;
+    pval := &amp;User{&quot;UserPtr&quot;, 6}
+    pval.Work()
+}
 </code></pre>
 
+<p>See on <a href="https://play.golang.org/p/PDsMlrd3QXV">go playground</a>.</p>
+
+<p>output:</p>
+
+<pre><code class="language-bash">UserVal has worked for 5 hrs.
+UserPtr has worked for 6 hrs.
+</code></pre>
+
+<p>If we call this method on <strong>value</strong> type object <code>uval</code> it works, and obviously it works with <strong>pointer</strong> type object <code>pval</code>.</p>
+
+<h2 id="value-receiver">Value receiver</h2>
+
+<p>Now we change the method receiver from pointer to value.</p>
+
+<pre><code class="language-go">type User struct {
+    Name   string
+    Period int
+}
+
+func (u User) Work() {
+    fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;)
+}
+
+func main() {
+    uval := User{&quot;UserVal&quot;, 5}
+    uval.Work()
+
+    pval := &amp;User{&quot;UserPtr&quot;, 6}
+    pval.Work()
+}
+</code></pre>
+
+<p>See on <a href="https://play.golang.org/p/z7Q-B9PuzV2">go playground</a>.</p>
+
+<p>output:</p>
+
+<pre><code class="language-bash">UserVal has worked for 5 hrs.
+UserPtr has worked for 6 hrs.
+</code></pre>
+
+<p>So this also worked on both <strong>value</strong> type object <code>uval</code> and with <strong>pointer</strong> type object <code>pval</code>.</p>
+
+<h2 id="interface-and-pointer-receiver">Interface and pointer receiver</h2>
+
+<p>Lets try to add interface in the mix and see what happens, so adding interface <code>Worker</code> to pointer receiver method:</p>
+
+<pre><code class="language-go">type User struct {
+    Name   string
+    Period int
+}
+
+type Worker interface {
+    Work()
+}
+
+func (u *User) Work() {
+    fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;)
+}
+
+func main() {
+    uval := User{&quot;UserVal&quot;, 5}
+    DoWork(uval)
+
+    pval := &amp;User{&quot;UserPtr&quot;, 6}
+    DoWork(pval)
+}
+
+func DoWork(w Worker) {
+    w.Work()
+}
+</code></pre>
+
+<p>See on <a href="https://play.golang.org/p/shQ4PT66VaY">go playground</a>.</p>
+
+<p>output:</p>
+
+<pre><code class="language-bash"># command-line-arguments
+tmp/main.go:20:8: cannot use uval (type User) as type Worker in argument to DoWork:
+        User does not implement Worker (Work method has pointer receiver)
+</code></pre>
+
+<p>So <strong>pointer</strong> type object <code>pval</code> implements interface <code>Worker</code>, but <strong>value</strong> type object <code>uval</code> does not. Since the error clearly says</p>
+
+<pre><code class="language-bash">User does not implement Worker (Work method has pointer receiver)
+</code></pre>
+
+<p>To understand why this above code fails, you need to understand the concept of method sets. <a href="https://golang.org/ref/spec#Method_sets">Golang spec</a> defines <strong>Method sets</strong> as:</p>
+
+<blockquote>
+<p>The method set of any other type T consists of all methods declared with receiver type T.</p>
+</blockquote>
+
+<p>and</p>
+
+<blockquote>
+<p>The method set of the corresponding pointer type *T is the set of all methods declared with receiver *T or T (that is, it also contains the method set of T).</p>
+</blockquote>
+
+<p>finally</p>
+
+<blockquote>
+<p>The method set of a type determines the interfaces that the type implements and the methods that can be called using a receiver of that type.</p>
+</blockquote>
+
+<p>In above example the method with pointer receiver is not in method set of <strong>value</strong> type object <code>uval</code>.</p>
+
+<h2 id="interface-and-value-receiver">Interface and value receiver</h2>
+
+<p>Now lets try the same inteface but this time with value receiver:</p>
+
+<pre><code class="language-go">type User struct {
+    Name   string
+    Period int
+}
+
+type Worker interface {
+    Work()
+}
+
+func (u User) Work() {
+    fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;)
+}
+
+func main() {
+    uval := User{&quot;UserVal&quot;, 5}
+    DoWork(uval)
+
+    pval := &amp;User{&quot;UserPtr&quot;, 6}
+    DoWork(pval)
+}
+
+func DoWork(w Worker) {
+    w.Work()
+}
+</code></pre>
+
+<p>See on <a href="https://play.golang.org/p/aW6kXdeNaqN">go playground</a>.</p>
+
+<p>output:</p>
+
+<pre><code class="language-bash">UserVal has worked for 5 hrs.
+UserPtr has worked for 6 hrs.
+</code></pre>
+
+<p>Meanwhile the method with value receiver worked for both type of objects <strong>pointer</strong> type object <code>pval</code> and <strong>value</strong> type object <code>uval</code>.</p>
+
+<p>So here is a table which charts this behavior:</p>
+
+<table>
+<thead>
+<tr>
+<th>scenario</th>
+<th>object value</th>
+<th>object pointer</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>pointer method</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+
+<tr>
+<td>value method</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+
+<tr>
+<td>interface pointer method</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+
+<tr>
+<td>interface value method</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+
+<p>More on the case of why code compilation fails or compiler complains about <strong>value</strong> type object <code>uval</code> not implementing the interface <code>Worker</code>.</p>
+
+<h2 id="references">References</h2>
+
 <ul>
-<li>Code Snippets</li>
-</ul>
-
-<p>This is small code templates or snippets which can help getting started boiler plate code.</p>
-
-<p>For e.g. in golang file just type <code>fmain</code> and <code>TAB</code> you should see recommendation for main
-function. To see all snippets and what their short syntax is search for <code>insert snippet</code> in
-command palette. You can also add custom snippets.</p>
-
-<h2 id="reference">Reference</h2>
-
-<ul>
-<li><a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf">Linux Shortcuts cheatsheet</a></li>
-<li><a href="https://www.youtube.com/watch?v=cVGMldhVRxU">VSCode: 10 Most Useful Tips And Tricks</a>.
-This video also shows how to configure task runner and then setup a custom key binding.</li>
-<li><a href="https://youtu.be/GQ9nr3d5fUk">Best of Visual Studio Code - Tips and Tricks</a></li>
+<li><a href="https://golang.org/ref/spec#Method_sets">Method sets in golang spec</a></li>
+<li><a href="https://www.ardanlabs.com/blog/2014/05/methods-interfaces-and-embedded-types.html">Methods, Interfaces and Embedded Types in Go</a></li>
 </ul>
 
     </div>
@@ -574,9 +553,9 @@ This video also shows how to configure task runner and then setup a custom key b
 
     
     
-        <li><a href='/categorieside'>ide</a></li>
+        <li><a href='/categoriesgolang'>golang</a></li>
     
-        <li><a href='/categoriesnotes'>notes</a></li>
+        <li><a href='/categoriesprogramming'>programming</a></li>
     
 </ul>
 
@@ -584,8 +563,8 @@ This video also shows how to configure task runner and then setup a custom key b
 </article>
 <ul class="actions pagination">
     
-        <li><a href="http://suraj.io/post/private-registry-from-minikube/"
-                class="button big previous">Using private container registries from minikube</a></li>
+        <li><a href="http://suraj.io/post/vscode-shortcuts/"
+                class="button big previous">vscode Shortcuts</a></li>
     
 
     
@@ -629,43 +608,43 @@ This video also shows how to configure task runner and then setup a custom key b
             
 
 
-<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f&text=vscode%20Shortcuts&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f&text=Methods%20that%20satisfy%20interfaces%20in%20golang&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f&title=vscode%20Shortcuts" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f&title=Methods%20that%20satisfy%20interfaces%20in%20golang" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f&title=vscode%20Shortcuts" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f&title=Methods%20that%20satisfy%20interfaces%20in%20golang" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f&title=vscode%20Shortcuts" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f&title=Methods%20that%20satisfy%20interfaces%20in%20golang" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fvscode-shortcuts%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fgolang-methods-interfaces%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -789,6 +768,20 @@ This video also shows how to configure task runner and then setup a custom key b
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/golang-methods-interfaces/">Methods that satisfy interfaces in golang</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-02-23'>
+                                    February 23, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/vscode-shortcuts/">vscode Shortcuts</a></h3>
                                 
                                     
@@ -838,20 +831,6 @@ This video also shows how to configure task runner and then setup a custom key b
                                 <time class="published" datetime=
                                     '2017-09-18'>
                                     September 18, 2017</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/add-new-map-to-cs/">Add new Maps to Counter Strike</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2017-09-01'>
-                                    September 1, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -988,7 +967,25 @@ This video also shows how to configure task runner and then setup a custom key b
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/golang/">golang</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/minikube/">minikube</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/programming/">programming</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
