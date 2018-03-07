@@ -1,19 +1,11 @@
-
-
-
-    
-        
-    
-
-
-
-
 <!DOCTYPE HTML>
 
 <html>
     <head>
         
-            <title>Minikube Posts - Suraj Deshmukh</title>
+            
+                <title>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</title>
+            
         
 
         <meta charset="utf-8" />
@@ -23,25 +15,28 @@
 
 
         
+            <meta name="author" content="Suraj Deshmukh">
         
-            
-                <meta name="description" content="Blog">
-            
+        
+            <meta name="description" content="This talk has really great takeaways which are worth considering while writing your tests">
         
 
         <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Minikube"/>
-<meta name="twitter:description" content="Blog"/>
+<meta name="twitter:title" content="Notes on talk - Advanced testing in golang by Mitchell Hashimoto"/>
+<meta name="twitter:description" content="This talk has really great takeaways which are worth considering while writing your tests"/>
 <meta name="twitter:site" content="@surajd_"/>
 
-        <meta property="og:title" content="Minikube" />
-<meta property="og:description" content="Blog" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://suraj.io/categories/minikube/" />
+        <meta property="og:title" content="Notes on talk - Advanced testing in golang by Mitchell Hashimoto" />
+<meta property="og:description" content="This talk has really great takeaways which are worth considering while writing your tests" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/" />
 
 
 
-<meta property="og:updated_time" content="2017-10-06T19:32:33&#43;05:30"/>
+<meta property="article:published_time" content="2018-03-07T02:21:49&#43;05:30"/>
+
+<meta property="article:modified_time" content="2018-03-07T02:21:49&#43;05:30"/>
+
 
 
 
@@ -53,9 +48,17 @@
 
 
         
-<meta itemprop="name" content="Minikube">
-<meta itemprop="description" content="Blog">
+<meta itemprop="name" content="Notes on talk - Advanced testing in golang by Mitchell Hashimoto">
+<meta itemprop="description" content="This talk has really great takeaways which are worth considering while writing your tests">
 
+
+<meta itemprop="datePublished" content="2018-03-07T02:21:49&#43;05:30" />
+<meta itemprop="dateModified" content="2018-03-07T02:21:49&#43;05:30" />
+<meta itemprop="wordCount" content="90">
+
+
+
+<meta itemprop="keywords" content="golang,programming," />
 
         
 
@@ -99,6 +102,7 @@ ga('send', 'pageview');
         <div id="wrapper">
 
     
+    
 <header id="header">
     
         <h2><a href="/">Suraj Deshmukh</i></a></h2>
@@ -130,6 +134,10 @@ ga('send', 'pageview');
     </nav>
     <nav class="main">
         <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
             
             <li class="search">
                 <a class="fa-search" href="#search">Search</a>
@@ -230,19 +238,73 @@ ga('send', 'pageview');
         
 </section>
 
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f&text=Notes%20on%20talk%20-%20Advanced%20testing%20in%20golang%20by%20Mitchell%20Hashimoto&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f&title=Notes%20on%20talk%20-%20Advanced%20testing%20in%20golang%20by%20Mitchell%20Hashimoto" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f&title=Notes%20on%20talk%20-%20Advanced%20testing%20in%20golang%20by%20Mitchell%20Hashimoto" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f&title=Notes%20on%20talk%20-%20Advanced%20testing%20in%20golang%20by%20Mitchell%20Hashimoto" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
     
     <div id="main">
-        <h1>Minikube</h1>
         
         
-            <article class="post">
+        <article class="post">
     <header>
     <div class="title">
         
-            <h2><a href="http://suraj.io/post/private-registry-from-minikube/">Using private container registries from minikube</a></h2>
+            <h1><a href="http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/">Notes on talk - Advanced testing in golang by Mitchell Hashimoto</a></h1>
+            
         
         
-            <p>A guide to how would you download image from private container registry in minikube</p>
+            <p>This talk has really great takeaways which are worth considering while writing your tests</p>
         
     </div>
     <div class="meta">
@@ -251,25 +313,114 @@ ga('send', 'pageview');
         
 
         <time class="published"
-            datetime='2017-10-06'>
-            October 6, 2017</time>
+            datetime='2018-03-07'>
+            March 7, 2018</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>2 minute read</p>
+            <p>1 minute read</p>
         
         
     </div>
 </header>
 
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f&text=Notes%20on%20talk%20-%20Advanced%20testing%20in%20golang%20by%20Mitchell%20Hashimoto&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f&title=Notes%20on%20talk%20-%20Advanced%20testing%20in%20golang%20by%20Mitchell%20Hashimoto" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f&title=Notes%20on%20talk%20-%20Advanced%20testing%20in%20golang%20by%20Mitchell%20Hashimoto" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f&title=Notes%20on%20talk%20-%20Advanced%20testing%20in%20golang%20by%20Mitchell%20Hashimoto" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fadvanced-golang-testing-mitchellh-talk-notes%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
     
 
-    <p>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
-On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.</p>
+    <div id="content">
+        
+
+<h2 id="test-fixtures">Test Fixtures</h2>
+
+<ul>
+<li>&ldquo;go test&rdquo; sets pwd as package directory</li>
+</ul>
+
+<h2 id="test-helpers">Test Helpers</h2>
+
+<ul>
+<li>should never return an error they should access to the <code>*testing.T</code> object</li>
+<li>call <code>t.Helper()</code> in the beginning (works only for go1.9+)</li>
+<li>for things reqiuiring clean up return closures</li>
+</ul>
+
+<h2 id="configurability">Configurability</h2>
+
+<ul>
+<li>Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths.</li>
+<li>Over-parameterize structs to allow tests to fine-tune their behavior</li>
+<li>It&rsquo;s ok to make these configs unexported so only tests can set them.</li>
+</ul>
+
+<h2 id="slides">Slides</h2>
+
+<script async class="speakerdeck-embed" data-id="02b292ed8f7f4edca8b616cba2dc7cd4" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
+
+<h2 id="video">Video</h2>
+
+<p><center>
+<iframe width="595" height="485" src="https://www.youtube.com/embed/8hQG7QlcLBk"
+frameborder="0" style="border:1px solid #CCC; border-width:1px;
+margin-bottom:5px; max-width: 100%;" allowfullscreen></iframe>
+<div style="margin-bottom:5px"> <strong>
+<a href="//youtu.be/8hQG7QlcLBk"
+title="GopherCon 2017: Mitchell Hashimoto - Advanced Testing with Go"
+target="_blank">GopherCon 2017: Mitchell Hashimoto - Advanced Testing with Go</a>
+</strong> by <strong><a target="_blank"
+href="https://twitter.com/mitchellh">Mitchell Hashimoto</a></strong>
+</div>
+</center></p>
+
+    </div>
 
     <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/private-registry-from-minikube/" class="button big">Continue Reading</a></li>
-        </ul>
         <ul class="stats">
     
         
@@ -295,29 +446,50 @@ On the configuration side of doing that you will need to create Kubernetes Secre
 
     
     
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+        <li><a href='/categoriesgolang'>golang</a></li>
     
-        <li><a href='/categoriesminikube'>minikube</a></li>
-    
-        <li><a href='/categoriescontainer'>container</a></li>
+        <li><a href='/categoriesprogramming'>programming</a></li>
     
 </ul>
 
     </footer>
 </article>
-
-        
-
-        
 <ul class="actions pagination">
     
-        <li><a href="#" class="disabled button big previous">Previous Page</a></li>
+        <li><a href="http://suraj.io/post/golang-methods-interfaces/"
+                class="button big previous">Methods that satisfy interfaces in golang</a></li>
     
 
     
-        <li><a href="#" class="disabled button big next">Next Page</a></li>
-    
 </ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
 
     </div>
     
@@ -338,9 +510,6 @@ On the configuration side of doing that you will need to create Kubernetes Secre
                 </header>
             
             <ul class="icons">
-                
-                    <li><a href="http://suraj.io/categories/minikube/index.xml" type="application/rss+xml"
-                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
                 
                 
                     
@@ -693,9 +862,6 @@ On the configuration side of doing that you will need to create Kubernetes Secre
     
         <section id="footer">
             <ul class="icons">
-                
-                    <li><a href="http://suraj.io/categories/minikube/index.xml" type="application/rss+xml"
-                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
                 
                 
                     

@@ -6,10 +6,19 @@
     <description>Recent content in Programming on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 23 Feb 2018 08:00:51 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 07 Mar 2018 02:21:49 +0530</lastBuildDate>
     
 	<atom:link href="http://suraj.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</title>
+      <link>http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</link>
+      <pubDate>Wed, 07 Mar 2018 02:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</guid>
+      <description>Test Fixtures  &amp;ldquo;go test&amp;rdquo; sets pwd as package directory  Test Helpers  should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures  Configurability  Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It&amp;rsquo;s ok to make these configs unexported so only tests can set them.</description>
+    </item>
     
     <item>
       <title>Methods that satisfy interfaces in golang</title>

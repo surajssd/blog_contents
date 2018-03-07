@@ -41,7 +41,7 @@
 
 
 
-<meta property="og:updated_time" content="2018-02-23T08:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-03-07T02:21:49&#43;05:30"/>
 
 
 
@@ -204,6 +204,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/"><p>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/golang-methods-interfaces/"><p>Methods that satisfy interfaces in golang</p></a>
                     </li>
                 
@@ -219,10 +223,6 @@ ga('send', 'pageview');
                         <a href="http://suraj.io/post/static-pods/"><p>Static Pods using Kubelet on Fedora</p></a>
                     </li>
                 
-                    <li>
-                        <a href="http://suraj.io/post/move-vagrant-boxes/"><p>Sharing Vagrant Box offline</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -234,6 +234,75 @@ ga('send', 'pageview');
     <div id="main">
         <h1>Golang</h1>
         
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/">Notes on talk - Advanced testing in golang by Mitchell Hashimoto</a></h2>
+        
+        
+            <p>This talk has really great takeaways which are worth considering while writing your tests</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-03-07'>
+            March 7, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>1 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Test Fixtures  &ldquo;go test&rdquo; sets pwd as package directory  Test Helpers  should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures  Configurability  Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It&rsquo;s ok to make these configs unexported so only tests can set them.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesgolang'>golang</a></li>
+    
+        <li><a href='/categoriesprogramming'>programming</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
         
             <article class="post">
     <header>
@@ -433,6 +502,20 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/">Notes on talk - Advanced testing in golang by Mitchell Hashimoto</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-03-07'>
+                                    March 7, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/golang-methods-interfaces/">Methods that satisfy interfaces in golang</a></h3>
                                 
                                     
@@ -482,20 +565,6 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                                 <time class="published" datetime=
                                     '2017-09-23'>
                                     September 23, 2017</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/move-vagrant-boxes/">Sharing Vagrant Box offline</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2017-09-18'>
-                                    September 18, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -578,7 +647,25 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/golang/">golang</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/programming/">programming</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>
@@ -632,25 +719,7 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/golang/">golang</a>
-                                <span style="float:right;">1</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
                                 <a href="/categories/minikube/">minikube</a>
-                                <span style="float:right;">1</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/programming/">programming</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
