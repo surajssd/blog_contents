@@ -6,10 +6,21 @@
     <description>Recent content in Notes on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Feb 2018 08:00:51 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 04 Apr 2018 08:00:51 +0530</lastBuildDate>
     
 	<atom:link href="http://suraj.io/tags/notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Prometheus with existing application on OpenShift</title>
+      <link>http://suraj.io/post/using-prometheus/</link>
+      <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/using-prometheus/</guid>
+      <description>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.
+Requirements Setting up cluster I have done it using the oc cluster up, read about how to do this here. You could also setup a local OpenShift cluster by running minishift, read about setting up minishift here.
+Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge.</description>
+    </item>
     
     <item>
       <title>vscode Shortcuts</title>

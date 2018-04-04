@@ -110,6 +110,15 @@
     </item>
     
     <item>
+      <title>Monitoring</title>
+      <link>http://suraj.io/categories/monitoring/</link>
+      <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/categories/monitoring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Notes</title>
       <link>http://suraj.io/categories/notes/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
@@ -142,6 +151,15 @@
       <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
       
       <guid>http://suraj.io/categories/project_management/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Prometheus</title>
+      <link>http://suraj.io/categories/prometheus/</link>
+      <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/categories/prometheus/</guid>
       <description></description>
     </item>
     

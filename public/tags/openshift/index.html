@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-09-23T13:10:14&#43;05:30"/>
+<meta property="og:updated_time" content="2018-04-04T08:00:51&#43;05:30"/>
 
 
 
@@ -202,6 +202,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/using-prometheus/"><p>Prometheus with existing application on OpenShift</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/"><p>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</p></a>
                     </li>
                 
@@ -217,10 +221,6 @@ ga('send', 'pageview');
                         <a href="http://suraj.io/post/private-registry-from-minikube/"><p>Using private container registries from minikube</p></a>
                     </li>
                 
-                    <li>
-                        <a href="http://suraj.io/post/static-pods/"><p>Static Pods using Kubelet on Fedora</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -234,6 +234,77 @@ ga('send', 'pageview');
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://suraj.io/post/using-prometheus/">Prometheus with existing application on OpenShift</a></h2>
+        
+        
+            <p>Setting up Prometheus with any application</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-04-04'>
+            April 4, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.
+Requirements Setting up cluster I have done it using the oc cluster up, read about how to do this here. You could also setup a local OpenShift cluster by running minishift, read about setting up minishift here.
+Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/using-prometheus/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesmonitoring'>monitoring</a></li>
+    
+        <li><a href='/categoriesprometheus'>prometheus</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -872,75 +943,6 @@ So download the map files from over internet and then put in this location and n
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/blr-k8s-meetup-july-2017/">Bangalore Kubernetes Meetup July 2017</a></h2>
-        
-        
-            <p>Kubernetes Meetup presentation and talks</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-07-13'>
-            July 13, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>This edition of meetup was held at Nexus Ventures by folks at OpenEBS on July 8th 2017, which started on a lovely Saturday morning.
-Kiran Mova set the floor rolling with his talk on Hyperconverged version of OpenEBS with Kubernetes. Where he talked about containerized storage vs traditional storage, instead of building clustering into OpenEBS how they are leveraging Kubernetes&rsquo;s capabilities to do clustering.
-He also explained difference between various storage providers viz.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/blr-k8s-meetup-july-2017/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesevent_report'>event_report</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1068,6 +1070,20 @@ He also explained difference between various storage providers viz.</p>
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/using-prometheus/">Prometheus with existing application on OpenShift</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-04-04'>
+                                    April 4, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/">Notes on talk - Advanced testing in golang by Mitchell Hashimoto</a></h3>
                                 
                                     
@@ -1117,20 +1133,6 @@ He also explained difference between various storage providers viz.</p>
                                 <time class="published" datetime=
                                     '2017-10-06'>
                                     October 6, 2017</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/static-pods/">Static Pods using Kubelet on Fedora</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2017-09-23'>
-                                    September 23, 2017</time>
                             </header>
                         </article>
                     </li>
@@ -1294,7 +1296,25 @@ He also explained difference between various storage providers viz.</p>
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/monitoring/">monitoring</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/project_management/">project_management</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/prometheus/">prometheus</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
