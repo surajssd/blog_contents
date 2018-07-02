@@ -223,6 +223,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/changing-k8s-ns/"><p>Change namespaces in Kubernetes</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/using-prometheus/"><p>Prometheus with existing application on OpenShift</p></a>
                     </li>
                 
@@ -236,10 +240,6 @@ ga('send', 'pageview');
                 
                     <li>
                         <a href="http://suraj.io/post/vscode-shortcuts/"><p>vscode Shortcuts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="http://suraj.io/post/private-registry-from-minikube/"><p>Using private container registries from minikube</p></a>
                     </li>
                 
             </ul>
@@ -511,7 +511,7 @@ wget http://cbs.centos.org/kojifiles/packages/kompose/0.7.0/0.1.el7/x86_64/kompo
 
 yum install -y kompose-0.7.0-0.1.el7.x86_64.rpm
 
-git clone https://github.com/kubernetes-incubator/kompose/
+git clone https://github.com/kubernetes/kompose/
 cd kompose
 git reset --hard $(kompose version | cut -d &quot;(&quot; -f2 | cut -d &quot;)&quot; -f1)
 make test-cmd
@@ -553,7 +553,7 @@ yum -y --enablerepo=centos-openshift-origin-testing install kompose
 yum install -y epel-release
 yum install -y jq make
 
-git clone https://github.com/kubernetes-incubator/kompose/
+git clone https://github.com/kubernetes/kompose/
 cd kompose
 git reset --hard $(kompose version | cut -d &quot;(&quot; -f2 | cut -d &quot;)&quot; -f1)
 make test-cmd
@@ -787,6 +787,20 @@ yum install -y kompose
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/changing-k8s-ns/">Change namespaces in Kubernetes</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-07-02'>
+                                    July 2, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/using-prometheus/">Prometheus with existing application on OpenShift</a></h3>
                                 
                                     
@@ -840,20 +854,6 @@ yum install -y kompose
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/private-registry-from-minikube/">Using private container registries from minikube</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2017-10-06'>
-                                    October 6, 2017</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -897,7 +897,7 @@ yum install -y kompose
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>
@@ -960,6 +960,15 @@ yum install -y kompose
                         <article>
                             <header>
                                 <a href="/categories/centos/">centos</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/cmd-line/">cmd-line</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

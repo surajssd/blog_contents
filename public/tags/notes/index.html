@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:updated_time" content="2018-04-04T08:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-07-02T08:00:51&#43;05:30"/>
 
 
 
@@ -202,6 +202,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/changing-k8s-ns/"><p>Change namespaces in Kubernetes</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/using-prometheus/"><p>Prometheus with existing application on OpenShift</p></a>
                     </li>
                 
@@ -217,10 +221,6 @@ ga('send', 'pageview');
                         <a href="http://suraj.io/post/vscode-shortcuts/"><p>vscode Shortcuts</p></a>
                     </li>
                 
-                    <li>
-                        <a href="http://suraj.io/post/private-registry-from-minikube/"><p>Using private container registries from minikube</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -234,6 +234,76 @@ ga('send', 'pageview');
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://suraj.io/post/changing-k8s-ns/">Change namespaces in Kubernetes</a></h2>
+        
+        
+            <p>Easy way to change namespace in Kubernetes</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-07-02'>
+            July 2, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>There is no easy way to change namespace in Kubernetes using kubectl command line utility. But here are some commands that you can alias in your bashrc file so that it&rsquo;s just a single command that you can use to change the namespace in the Kubernetes cluster.
+Change namespace Let&rsquo;s see step by step what goes in to change the namespace. So the first step is to find the context.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/changing-k8s-ns/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriescmd-line'>cmd-line</a></li>
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -875,74 +945,6 @@ So download the map files from over internet and then put in this location and n
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/k8s-learning-resources/">Kubernetes Learning resources</a></h2>
-        
-        
-            <p>Places you can find learning material for Kubernetes</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-08-17'>
-            August 17, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Following is the list of all the places you can learn Kubernetes from:
- Scalable Microservices with Kubernetes - Video tutorial Fundamentals of Containers, Kubernetes, and Red Hat OpenShift - Video tutorial Kubernetes By Example - DIY tutorial Learn Kubernetes using Interactive Browser-Based Scenarios - DIY tutorial in your own web browser Interactive Learning Portal for OpenShift - DIY tutorial in your own web browser Kubernetes docs - Textual DIY docs Kubernetes API reference v1.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/k8s-learning-resources/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1070,6 +1072,20 @@ So download the map files from over internet and then put in this location and n
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/changing-k8s-ns/">Change namespaces in Kubernetes</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-07-02'>
+                                    July 2, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/using-prometheus/">Prometheus with existing application on OpenShift</a></h3>
                                 
                                     
@@ -1123,20 +1139,6 @@ So download the map files from over internet and then put in this location and n
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/private-registry-from-minikube/">Using private container registries from minikube</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2017-10-06'>
-                                    October 6, 2017</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1180,7 +1182,7 @@ So download the map files from over internet and then put in this location and n
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>
@@ -1243,6 +1245,15 @@ So download the map files from over internet and then put in this location and n
                         <article>
                             <header>
                                 <a href="/categories/centos/">centos</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/cmd-line/">cmd-line</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

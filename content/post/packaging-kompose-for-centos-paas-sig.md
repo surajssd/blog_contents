@@ -148,7 +148,7 @@ wget http://cbs.centos.org/kojifiles/packages/kompose/0.7.0/0.1.el7/x86_64/kompo
 
 yum install -y kompose-0.7.0-0.1.el7.x86_64.rpm
 
-git clone https://github.com/kubernetes-incubator/kompose/
+git clone https://github.com/kubernetes/kompose/
 cd kompose
 git reset --hard $(kompose version | cut -d "(" -f2 | cut -d ")" -f1)
 make test-cmd
@@ -195,7 +195,7 @@ yum -y --enablerepo=centos-openshift-origin-testing install kompose
 yum install -y epel-release
 yum install -y jq make
 
-git clone https://github.com/kubernetes-incubator/kompose/
+git clone https://github.com/kubernetes/kompose/
 cd kompose
 git reset --hard $(kompose version | cut -d "(" -f2 | cut -d ")" -f1)
 make test-cmd

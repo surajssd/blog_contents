@@ -33,7 +33,7 @@
 
 
 
-<meta property="og:updated_time" content="2018-04-04T08:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-07-02T08:00:51&#43;05:30"/>
 
 
 
@@ -201,6 +201,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/changing-k8s-ns/"><p>Change namespaces in Kubernetes</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/using-prometheus/"><p>Prometheus with existing application on OpenShift</p></a>
                     </li>
                 
@@ -214,10 +218,6 @@ ga('send', 'pageview');
                 
                     <li>
                         <a href="http://suraj.io/post/vscode-shortcuts/"><p>vscode Shortcuts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="http://suraj.io/post/private-registry-from-minikube/"><p>Using private container registries from minikube</p></a>
                     </li>
                 
             </ul>
@@ -234,10 +234,10 @@ ga('send', 'pageview');
     <header>
     <div class="title">
         
-            <h2><a href="http://suraj.io/post/using-prometheus/">Prometheus with existing application on OpenShift</a></h2>
+            <h2><a href="http://suraj.io/post/changing-k8s-ns/">Change namespaces in Kubernetes</a></h2>
         
         
-            <p>Setting up Prometheus with any application</p>
+            <p>Easy way to change namespace in Kubernetes</p>
         
     </div>
     <div class="meta">
@@ -246,11 +246,11 @@ ga('send', 'pageview');
         
 
         <time class="published"
-            datetime='2018-04-04'>
-            April 4, 2018</time>
+            datetime='2018-07-02'>
+            July 2, 2018</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>2 minute read</p>
+            <p>3 minute read</p>
         
         
     </div>
@@ -262,43 +262,43 @@ ga('send', 'pageview');
             
 
 
-<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f&text=Prometheus%20with%20existing%20application%20on%20OpenShift&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f&text=Change%20namespaces%20in%20Kubernetes&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f&title=Prometheus%20with%20existing%20application%20on%20OpenShift" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f&title=Change%20namespaces%20in%20Kubernetes" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f&title=Prometheus%20with%20existing%20application%20on%20OpenShift" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f&title=Change%20namespaces%20in%20Kubernetes" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f&title=Prometheus%20with%20existing%20application%20on%20OpenShift" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f&title=Change%20namespaces%20in%20Kubernetes" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -310,83 +310,81 @@ ga('send', 'pageview');
     <div id="content">
         
 
-<p>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.</p>
+<p>There is no easy way to change namespace in Kubernetes using <code>kubectl</code> command line utility. But here are some commands that you can alias in your <a href="https://www.lifewire.com/bashrc-file-4101947"><code>bashrc</code></a> file so that it&rsquo;s just a single command that you can use to change the namespace in the Kubernetes cluster.</p>
 
-<p><img src="/images/using-prometheus/prometheus_logo.png" alt="Prometheus" title="Prometheus" /></p>
+<h2 id="change-namespace">Change namespace</h2>
 
-<h2 id="requirements">Requirements</h2>
+<p>Let&rsquo;s see step by step what goes in to change the namespace. So the first step is to find the context.</p>
 
-<h4 id="setting-up-cluster">Setting up cluster</h4>
+<blockquote>
+<p>A context element in a kubeconfig file is used to group access parameters under a convenient name. Each context has three parameters: cluster, namespace, and user. By default, the <code>kubectl</code> command-line tool uses parameters from the current context to communicate with the cluster.  <a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#context">Read more</a>.</p>
+</blockquote>
 
-<p>I have done it using the <code>oc cluster up</code>, read about how to do this <a href="https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md">here</a>. You could also setup a local OpenShift cluster by running <a href="https://www.openshift.org/minishift/">minishift</a>, read about setting up minishift <a href="https://docs.openshift.org/latest/minishift/getting-started/installing.html">here</a>.</p>
-
-<h4 id="downloading-kedge">Downloading Kedge</h4>
-
-<p>The configurations defined for setting up this cluster is written in a format that is understood by a tool called <a href="http://kedgeproject.org/">Kedge</a>. This makes configuration easier to understand and edit. So for using this setup download Kedge and put it in your path as explained <a href="http://kedgeproject.org/installation/">here</a>.</p>
-
-<p><img src="/images/using-prometheus/openshift-origin-logo.png" alt="OpenShift Origin" title="OpenShift Origin" /></p>
-
-<h2 id="following-the-setup">Following the setup</h2>
-
-<p>Make sure you have a running OpenShift cluster</p>
-
-<pre><code class="language-bash">oc new-project monitor
+<pre><code class="language-bash">$ kubectl config current-context 
+minikube
 </code></pre>
 
-<p>Now if your metrics exporting service if it is backed by <code>https</code> then set this flag otherwise the default is <code>http</code>.</p>
+<p>Now I have a namespace which I have created and want to switch to it.</p>
 
-<pre><code class="language-bash">export APP_SCHEME=https
+<pre><code class="language-bash">$ kubectl create ns mywebapp
+namespace &quot;mywebapp&quot; created
 </code></pre>
 
-<p>Give your application name</p>
+<p>Now we have two needed information to change the current default namespace, context and namespace name.</p>
 
-<pre><code>export APP_NAME=wit
+<pre><code class="language-bash">$ kubectl config set-context minikube --namespace mywebapp
+Context &quot;minikube&quot; modified.
 </code></pre>
 
-<p>This one is important, here I have put in the link to the cluster which is exposing metrics, you can put yours.</p>
+<p>Notice that we have put the context here as <code>minikube</code> and namespace name as we have created, <code>mywebapp</code>.</p>
 
-<pre><code class="language-bash">export APP_URL=api.prod-preview.openshift.io
+<p>So this can be put in one command and used conveniently. Just copy following bash function into your <code>bashrc</code> file and you will have <code>change-ns</code> as a command available.</p>
+
+<pre><code class="language-bash">function change-ns() {
+    namespace=$1
+    if [ -z $namespace ]; then
+        echo &quot;Please provide the namespace name: 'change-ns mywebapp'&quot;
+        return 1
+    fi
+
+    kubectl config set-context $(kubectl config current-context) --namespace $namespace
+}
 </code></pre>
 
-<p>Download the latest Prometheus Kedge file <a href="https://github.com/surajssd/deploylocal/blob/master/prometheus/prometheus.yml">prometheus.yml</a>. Or you can also download the <a href="https://github.com/surajssd/deploylocal/blob/a9bdf24d9ba527e3a6d63a4d79af2c333dfaa654/prometheus/prometheus.yml">prometheus.yml</a> which was created as of this writing.</p>
+<h2 id="verify-change-of-namespace">Verify change of namespace</h2>
 
-<pre><code class="language-bash">kedge apply -f prometheus.yml
+<p>How do you verify that the namespace is changed? How do you find what is the current namespace? Run following command:</p>
+
+<pre><code class="language-bash">kubectl get sa default -o jsonpath='{.metadata.namespace}'
 </code></pre>
 
-<p>Finally visit this URL to start seeing your prometheus dashboard.</p>
+<p>Let&rsquo;s deconstruct that. Every namespace that is created has a <code>ServiceAccount</code> created by default with name <code>default</code> (<a href="https://coreos.com/tectonic/docs/latest/users/creating-service-accounts.html#default-service-accounts">Read more</a>).</p>
 
-<pre><code class="language-bash">echo http://$(oc get routes | grep prometheus | awk '{print $2}')
+<p>For any object/artifact in Kubernetes there is a field called <code>namespace</code> inside it&rsquo;s <code>metadata</code> field. Which tells you about what namespace a particular object is part of. If you don&rsquo;t set it while creating, Kubernetes will set it to the current default <code>namespace</code>. So this is a source of knowing what current <code>namespace</code> is.</p>
+
+<p>Look at following pod object definition, the namespace for pod <code>storage-provisioner</code> is <code>kube-system</code>.</p>
+
+<pre><code class="language-bash">$ kubectl get pod storage-provisioner -o yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: 2018-06-10T09:56:24Z
+  name: storage-provisioner
+  namespace: kube-system
+...
 </code></pre>
 
-<h2 id="how-it-looks">How it looks?</h2>
+<p>Now you can use the flag <code>-o</code> with <code>jsonpath</code> type of input to tell what specific object you would like to fetch information about, in our case we want <code>metadata.namespace</code>.</p>
 
-<pre><code class="language-console">$ oc new-project monitor
-Already on project &quot;monitor&quot; on server &quot;https://192.168.122.1:8443&quot;.
+<p>The above command can also be converted to one command, just add following snippet to <code>bashrc</code> and you will have a command <code>current-ns</code>.</p>
 
-You can add applications to this project with the 'new-app' command. For example, try:
-
-    oc new-app centos/ruby-22-centos7~https://github.com/openshift/ruby-ex.git
-
-to build a new example application in Ruby.
-
-$ export APP_SCHEME=https
-$ export APP_NAME=wit
-$ export APP_URL=api.prod-preview.openshift.io
-
-$ kedge apply -f prometheus.yml
-persistentvolumeclaim &quot;prometheus-storage&quot; created
-service &quot;prometheus&quot; created
-route &quot;prometheus&quot; created
-configmap &quot;prometheus-config&quot; created
-deployment &quot;prometheus&quot; created
-
-$ echo http://$(oc get routes | grep prometheus | awk '{print $2}')
-http://prometheus-monitor.192.168.122.1.nip.io
+<pre><code class="language-bash">function current-ns() {
+	kubectl get sa default -o jsonpath='{.metadata.namespace}'
+	echo
+}
 </code></pre>
 
-<p><img src="/images/using-prometheus/promgraph.png" alt="Prometheus dashboard" title="Prometheus dashboard showing goroutines" /></p>
-
-<p>Happy monitoring!</p>
+<p>Hope that helps, you with being productive with Kubernetes. Happy hacking!</p>
 
     </div>
 
@@ -416,9 +414,9 @@ http://prometheus-monitor.192.168.122.1.nip.io
 
     
     
-        <li><a href='/categoriesmonitoring'>monitoring</a></li>
+        <li><a href='/categoriescmd-line'>cmd-line</a></li>
     
-        <li><a href='/categoriesprometheus'>prometheus</a></li>
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
     
 </ul>
 
@@ -426,8 +424,8 @@ http://prometheus-monitor.192.168.122.1.nip.io
 </article>
 <ul class="actions pagination">
     
-        <li><a href="http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/"
-                class="button big previous">Notes on talk - Advanced testing in golang by Mitchell Hashimoto</a></li>
+        <li><a href="http://suraj.io/post/using-prometheus/"
+                class="button big previous">Prometheus with existing application on OpenShift</a></li>
     
 
     
@@ -471,43 +469,43 @@ http://prometheus-monitor.192.168.122.1.nip.io
             
 
 
-<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f&text=Prometheus%20with%20existing%20application%20on%20OpenShift&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f&text=Change%20namespaces%20in%20Kubernetes&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f&title=Prometheus%20with%20existing%20application%20on%20OpenShift" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f&title=Change%20namespaces%20in%20Kubernetes" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f&title=Prometheus%20with%20existing%20application%20on%20OpenShift" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f&title=Change%20namespaces%20in%20Kubernetes" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f&title=Prometheus%20with%20existing%20application%20on%20OpenShift" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f&title=Change%20namespaces%20in%20Kubernetes" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fusing-prometheus%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fchanging-k8s-ns%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -631,6 +629,20 @@ http://prometheus-monitor.192.168.122.1.nip.io
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/changing-k8s-ns/">Change namespaces in Kubernetes</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-07-02'>
+                                    July 2, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/using-prometheus/">Prometheus with existing application on OpenShift</a></h3>
                                 
                                     
@@ -684,20 +696,6 @@ http://prometheus-monitor.192.168.122.1.nip.io
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/private-registry-from-minikube/">Using private container registries from minikube</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2017-10-06'>
-                                    October 6, 2017</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -741,7 +739,7 @@ http://prometheus-monitor.192.168.122.1.nip.io
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>
@@ -804,6 +802,15 @@ http://prometheus-monitor.192.168.122.1.nip.io
                         <article>
                             <header>
                                 <a href="/categories/centos/">centos</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/cmd-line/">cmd-line</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

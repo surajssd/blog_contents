@@ -41,7 +41,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-10-06T19:32:33&#43;05:30"/>
+<meta property="og:updated_time" content="2018-07-02T08:00:51&#43;05:30"/>
 
 
 
@@ -204,6 +204,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/changing-k8s-ns/"><p>Change namespaces in Kubernetes</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/using-prometheus/"><p>Prometheus with existing application on OpenShift</p></a>
                     </li>
                 
@@ -219,10 +223,6 @@ ga('send', 'pageview');
                         <a href="http://suraj.io/post/vscode-shortcuts/"><p>vscode Shortcuts</p></a>
                     </li>
                 
-                    <li>
-                        <a href="http://suraj.io/post/private-registry-from-minikube/"><p>Using private container registries from minikube</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -234,6 +234,76 @@ ga('send', 'pageview');
     <div id="main">
         <h1>Kubernetes</h1>
         
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://suraj.io/post/changing-k8s-ns/">Change namespaces in Kubernetes</a></h2>
+        
+        
+            <p>Easy way to change namespace in Kubernetes</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-07-02'>
+            July 2, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>There is no easy way to change namespace in Kubernetes using kubectl command line utility. But here are some commands that you can alias in your bashrc file so that it&rsquo;s just a single command that you can use to change the namespace in the Kubernetes cluster.
+Change namespace Let&rsquo;s see step by step what goes in to change the namespace. So the first step is to find the context.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/changing-k8s-ns/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriescmd-line'>cmd-line</a></li>
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
         
             <article class="post">
     <header>
@@ -783,6 +853,20 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/changing-k8s-ns/">Change namespaces in Kubernetes</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-07-02'>
+                                    July 2, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/using-prometheus/">Prometheus with existing application on OpenShift</a></h3>
                                 
                                     
@@ -836,20 +920,6 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/private-registry-from-minikube/">Using private container registries from minikube</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2017-10-06'>
-                                    October 6, 2017</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -893,7 +963,7 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>
@@ -956,6 +1026,15 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/centos/">centos</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/cmd-line/">cmd-line</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

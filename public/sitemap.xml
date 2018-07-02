@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://suraj.io/post/changing-k8s-ns/</loc>
+    <lastmod>2018-07-02T08:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>http://suraj.io/post/using-prometheus/</loc>
     <lastmod>2018-04-04T08:00:51+05:30</lastmod>
   </url>
@@ -127,25 +132,31 @@
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/centos/</loc>
-    <lastmod>2017-09-18T10:43:46+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://suraj.io/categories/centos/</loc>
     <lastmod>2017-09-18T10:43:46+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/container/</loc>
-    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
+    <loc>http://suraj.io/tags/centos/</loc>
+    <lastmod>2017-09-18T10:43:46+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://suraj.io/categories/cmd-line/</loc>
+    <lastmod>2018-07-02T08:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://suraj.io/categories/container/</loc>
+    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://suraj.io/tags/container/</loc>
     <lastmod>2017-10-06T19:32:33+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -175,20 +186,14 @@
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/fedora/</loc>
-    <lastmod>2017-09-18T10:43:46+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://suraj.io/categories/fedora/</loc>
     <lastmod>2017-09-18T10:43:46+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/gaming/</loc>
-    <lastmod>2017-09-01T16:03:58+05:30</lastmod>
+    <loc>http://suraj.io/tags/fedora/</loc>
+    <lastmod>2017-09-18T10:43:46+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -199,13 +204,19 @@
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/git/</loc>
-    <lastmod>2017-03-21T22:03:48+05:30</lastmod>
+    <loc>http://suraj.io/tags/gaming/</loc>
+    <lastmod>2017-09-01T16:03:58+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://suraj.io/categories/git/</loc>
+    <lastmod>2017-03-21T22:03:48+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://suraj.io/tags/git/</loc>
     <lastmod>2017-03-21T22:03:48+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -217,26 +228,26 @@
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/golang/</loc>
-    <lastmod>2018-03-07T02:21:49+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://suraj.io/categories/golang/</loc>
     <lastmod>2018-03-07T02:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/ide/</loc>
-    <lastmod>2017-03-17T14:41:51+05:30</lastmod>
+    <loc>http://suraj.io/tags/golang/</loc>
+    <lastmod>2018-03-07T02:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://suraj.io/categories/ide/</loc>
     <lastmod>2018-02-22T08:00:51+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://suraj.io/tags/ide/</loc>
+    <lastmod>2017-03-17T14:41:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -253,14 +264,14 @@
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/kubernetes/</loc>
-    <lastmod>2018-04-04T08:00:51+05:30</lastmod>
+    <loc>http://suraj.io/categories/kubernetes/</loc>
+    <lastmod>2018-07-02T08:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://suraj.io/categories/kubernetes/</loc>
-    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
+    <loc>http://suraj.io/tags/kubernetes/</loc>
+    <lastmod>2018-07-02T08:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -271,20 +282,14 @@
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/minikube/</loc>
-    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://suraj.io/categories/minikube/</loc>
     <lastmod>2017-10-06T19:32:33+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/monitoring/</loc>
-    <lastmod>2018-04-04T08:00:51+05:30</lastmod>
+    <loc>http://suraj.io/tags/minikube/</loc>
+    <lastmod>2017-10-06T19:32:33+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -295,7 +300,7 @@
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/notes/</loc>
+    <loc>http://suraj.io/tags/monitoring/</loc>
     <lastmod>2018-04-04T08:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -307,6 +312,12 @@
   </url>
   
   <url>
+    <loc>http://suraj.io/tags/notes/</loc>
+    <lastmod>2018-07-02T08:00:51+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://suraj.io/tags/open-source/</loc>
     <lastmod>2017-03-26T18:19:15+05:30</lastmod>
     <priority>0</priority>
@@ -314,7 +325,7 @@
   
   <url>
     <loc>http://suraj.io/tags/openshift/</loc>
-    <lastmod>2018-04-04T08:00:51+05:30</lastmod>
+    <lastmod>2018-07-02T08:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -326,7 +337,7 @@
   
   <url>
     <loc>http://suraj.io/post/</loc>
-    <lastmod>2018-04-04T08:00:51+05:30</lastmod>
+    <lastmod>2018-07-02T08:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -337,13 +348,13 @@
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/programming/</loc>
+    <loc>http://suraj.io/categories/programming/</loc>
     <lastmod>2018-03-07T02:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://suraj.io/categories/programming/</loc>
+    <loc>http://suraj.io/tags/programming/</loc>
     <lastmod>2018-03-07T02:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -361,13 +372,13 @@
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/prometheus/</loc>
+    <loc>http://suraj.io/categories/prometheus/</loc>
     <lastmod>2018-04-04T08:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://suraj.io/categories/prometheus/</loc>
+    <loc>http://suraj.io/tags/prometheus/</loc>
     <lastmod>2018-04-04T08:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -386,7 +397,7 @@
   
   <url>
     <loc>http://suraj.io/</loc>
-    <lastmod>2018-04-04T08:00:51+05:30</lastmod>
+    <lastmod>2018-07-02T08:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -397,13 +408,13 @@
   </url>
   
   <url>
-    <loc>http://suraj.io/tags/vagrant/</loc>
+    <loc>http://suraj.io/categories/vagrant/</loc>
     <lastmod>2017-09-18T10:43:46+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://suraj.io/categories/vagrant/</loc>
+    <loc>http://suraj.io/tags/vagrant/</loc>
     <lastmod>2017-09-18T10:43:46+05:30</lastmod>
     <priority>0</priority>
   </url>

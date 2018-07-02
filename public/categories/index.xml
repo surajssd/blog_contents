@@ -20,6 +20,15 @@
     </item>
     
     <item>
+      <title>Cmd-line</title>
+      <link>http://suraj.io/categories/cmd-line/</link>
+      <pubDate>Mon, 02 Jul 2018 08:00:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/categories/cmd-line/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Container</title>
       <link>http://suraj.io/categories/container/</link>
       <pubDate>Fri, 06 Oct 2017 19:32:33 +0530</pubDate>
@@ -94,7 +103,7 @@
     <item>
       <title>Kubernetes</title>
       <link>http://suraj.io/categories/kubernetes/</link>
-      <pubDate>Fri, 06 Oct 2017 19:32:33 +0530</pubDate>
+      <pubDate>Mon, 02 Jul 2018 08:00:51 +0530</pubDate>
       
       <guid>http://suraj.io/categories/kubernetes/</guid>
       <description></description>
