@@ -38,6 +38,15 @@
     </item>
     
     <item>
+      <title>Etcd</title>
+      <link>http://suraj.io/categories/etcd/</link>
+      <pubDate>Wed, 11 Jul 2018 01:00:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/categories/etcd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Event_report</title>
       <link>http://suraj.io/categories/event_report/</link>
       <pubDate>Fri, 01 Sep 2017 15:51:16 +0530</pubDate>
@@ -133,6 +142,15 @@
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
       
       <guid>http://suraj.io/categories/notes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Openshift</title>
+      <link>http://suraj.io/categories/openshift/</link>
+      <pubDate>Wed, 11 Jul 2018 01:00:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/categories/openshift/</guid>
       <description></description>
     </item>
     

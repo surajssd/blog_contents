@@ -202,6 +202,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/accessing-oc-cluster-up-etcd/"><p>Access etcd in OpenShift origin</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/changing-k8s-ns/"><p>Change namespaces in Kubernetes</p></a>
                     </li>
                 
@@ -217,10 +221,6 @@ ga('send', 'pageview');
                         <a href="http://suraj.io/post/golang-methods-interfaces/"><p>Methods that satisfy interfaces in golang</p></a>
                     </li>
                 
-                    <li>
-                        <a href="http://suraj.io/post/vscode-shortcuts/"><p>vscode Shortcuts</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -234,6 +234,78 @@ ga('send', 'pageview');
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://suraj.io/post/accessing-oc-cluster-up-etcd/">Access etcd in OpenShift origin</a></h2>
+        
+        
+            <p>Access the etcd in OpenShift started by oc cluster up</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-07-11'>
+            July 11, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>1 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
+If you are using minishift then get docker environment access of the minishift VM by running following commands.
+eval $(minishift docker-env) &amp;&amp; eval $(minishift oc-env)  Exec into the container named origin that runs OpenShift and all the needed services.
+$ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/accessing-oc-cluster-up-etcd/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesopenshift'>openshift</a></li>
+    
+        <li><a href='/categoriesetcd'>etcd</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -877,74 +949,6 @@ So download the map files from over internet and then put in this location and n
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/list-all-k8s-meetups/">List of Kubernetes Bangalore meetup event report</a></h2>
-        
-        
-            <p>List of all the Kubernetes and OpenShift meetup event reports</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-09-01'>
-            September 1, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>List of all the event reports from Kubernetes Bangalore meetup.
- April 2017 May 2017 June 2017 July 2017 Kubernetes 2nd Birthday Celebration August 2017 September 2017 October 2017 November 2017</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/list-all-k8s-meetups/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesevent_report'>event_report</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1072,6 +1076,20 @@ So download the map files from over internet and then put in this location and n
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/accessing-oc-cluster-up-etcd/">Access etcd in OpenShift origin</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-07-11'>
+                                    July 11, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/changing-k8s-ns/">Change namespaces in Kubernetes</a></h3>
                                 
                                     
@@ -1121,20 +1139,6 @@ So download the map files from over internet and then put in this location and n
                                 <time class="published" datetime=
                                     '2018-02-23'>
                                     February 23, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/vscode-shortcuts/">vscode Shortcuts</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-02-22'>
-                                    February 22, 2018</time>
                             </header>
                         </article>
                     </li>
@@ -1271,6 +1275,15 @@ So download the map files from over internet and then put in this location and n
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/etcd/">etcd</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/fedora/">fedora</a>
                                 <span style="float:right;">1</span>
                             </header>
@@ -1308,6 +1321,15 @@ So download the map files from over internet and then put in this location and n
                         <article>
                             <header>
                                 <a href="/categories/monitoring/">monitoring</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/openshift/">openshift</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
