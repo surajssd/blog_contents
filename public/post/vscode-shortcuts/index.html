@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.37-DEV" />
+        <meta name="generator" content="Hugo 0.47-DEV" />
         
 
 
@@ -54,7 +54,7 @@
 
 <meta itemprop="datePublished" content="2018-02-22T08:00:51&#43;05:30" />
 <meta itemprop="dateModified" content="2018-02-22T08:00:51&#43;05:30" />
-<meta itemprop="wordCount" content="432">
+<meta itemprop="wordCount" content="459">
 
 
 
@@ -84,14 +84,17 @@
         
         
             
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-97006720-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-97006720-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
         
@@ -212,6 +215,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/golang-struct-tags-space/"><p>Golang struct tags gotchas</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/accessing-oc-cluster-up-etcd/"><p>Access etcd in OpenShift origin</p></a>
                     </li>
                 
@@ -225,10 +232,6 @@ ga('send', 'pageview');
                 
                     <li>
                         <a href="http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/"><p>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="http://suraj.io/post/golang-methods-interfaces/"><p>Methods that satisfy interfaces in golang</p></a>
                     </li>
                 
             </ul>
@@ -421,177 +424,121 @@ ga('send', 'pageview');
 <li>Toggle terminal</li>
 </ul>
 
-<p><code>Ctrl + `</code></p>
+<pre><code class="language-Ctrl">
+- Toggle problems/errors in current project
 
-<ul>
-<li>Toggle problems/errors in current project</li>
-</ul>
+`Ctrl + Shift + M`
 
-<p><code>Ctrl + Shift + M</code></p>
+- Select entire line
 
-<ul>
-<li>Select entire line</li>
-</ul>
+`Ctrl + I` keep pressing `I` and then next line gets selected
 
-<p><code>Ctrl + I</code> keep pressing <code>I</code> and then next line gets selected</p>
+- Move line or selected block up/down
 
-<ul>
-<li>Move line or selected block up/down</li>
-</ul>
+`Alt + up` **OR** `Alt + down`
 
-<p><code>Alt + up</code> <strong>OR</strong> <code>Alt + down</code></p>
+- Insert line below
 
-<ul>
-<li>Insert line below</li>
-</ul>
+`Ctrl + Enter`
 
-<p><code>Ctrl + Enter</code></p>
+- Insert line below
 
-<ul>
-<li>Insert line below</li>
-</ul>
+`Ctrl + Shift + Enter`
 
-<p><code>Ctrl + Shift + Enter</code></p>
+- Multiple cursors at random place
 
-<ul>
-<li>Multiple cursors at random place</li>
-</ul>
+`Alt + Mouse click`
 
-<p><code>Alt + Mouse click</code></p>
+- Multiple line cursor
 
-<ul>
-<li>Multiple line cursor</li>
-</ul>
+`Shift + Alt + up/down`
 
-<p><code>Shift + Alt + up/down</code></p>
+- Get cursor on multiple occurrences of string
 
-<ul>
-<li>Get cursor on multiple occurrences of string</li>
-</ul>
+`Ctrl + Shift + L`
 
-<p><code>Ctrl + Shift + L</code></p>
+- Comment line or selected block
 
-<ul>
-<li>Comment line or selected block</li>
-</ul>
+`Ctrl + /`
 
-<p><code>Ctrl + /</code></p>
+- Reformat code
 
-<ul>
-<li>Reformat code</li>
-</ul>
+`Ctrl + Shift + I`
 
-<p><code>Ctrl + Shift + I</code></p>
+- Fold code block
 
-<ul>
-<li>Fold code block</li>
-</ul>
+`Ctrl + Shift + [`
 
-<p><code>Ctrl + Shift + [</code></p>
+- Unfold code block
 
-<ul>
-<li>Unfold code block</li>
-</ul>
+`Ctrl + Shift + ]`
 
-<p><code>Ctrl + Shift + ]</code></p>
+- Fold all sections
 
-<ul>
-<li>Fold all sections</li>
-</ul>
+`Ctrl + K and Ctrl + 0`
 
-<p><code>Ctrl + K and Ctrl + 0</code></p>
+- Unfold all sections
 
-<ul>
-<li>Unfold all sections</li>
-</ul>
+`Ctrl + K and Ctrl + J`
 
-<p><code>Ctrl + K and Ctrl + J</code></p>
+- Navigate through all errors in file
 
-<ul>
-<li>Navigate through all errors in file</li>
-</ul>
+`F8`
 
-<p><code>F8</code></p>
+- Open command pallette
 
-<ul>
-<li>Open command pallette</li>
-</ul>
+`F1` **OR** `Ctrl + Shift + P`
 
-<p><code>F1</code> <strong>OR</strong> <code>Ctrl + Shift + P</code></p>
+- Fuzzy search &amp; open a file
 
-<ul>
-<li>Fuzzy search &amp; open a file</li>
-</ul>
+`Ctrl + P`
 
-<p><code>Ctrl + P</code></p>
+- Zen mode
 
-<ul>
-<li>Zen mode</li>
-</ul>
+`Ctrl + K and Z`
 
-<p><code>Ctrl + K and Z</code></p>
+- Trigger Intellisense
 
-<ul>
-<li>Trigger Intellisense</li>
-</ul>
+`Ctrl + Space`
 
-<p><code>Ctrl + Space</code></p>
+- Go back to last where you were in file
 
-<ul>
-<li>Go back to last where you were in file</li>
-</ul>
+`Ctrl + Alt + -`
 
-<p><code>Ctrl + Alt + -</code></p>
+- Go forward
 
-<ul>
-<li>Go forward</li>
-</ul>
+`Ctrl + Shift + -`
 
-<p><code>Ctrl + Shift + -</code></p>
+- Vertically split editor
 
-<ul>
-<li>Vertically split editor</li>
-</ul>
+`Ctrl + \`
 
-<p><code>Ctrl + \</code></p>
+- Vertically split editor 
 
-<ul>
-<li>Vertically split editor</li>
-</ul>
+From project bar just select file and press `Ctrl + Enter`
 
-<p>From project bar just select file and press <code>Ctrl + Enter</code></p>
+- Switch among splits
 
-<ul>
-<li>Switch among splits</li>
-</ul>
+`Ctrl + 1` **OR** `Ctrl + 2`
 
-<p><code>Ctrl + 1</code> <strong>OR</strong> <code>Ctrl + 2</code></p>
+- Navigate by symbols in a file
 
-<ul>
-<li>Navigate by symbols in a file</li>
-</ul>
+`Ctrl + Shift + O`
 
-<p><code>Ctrl + Shift + O</code></p>
+- Goto line number
 
-<ul>
-<li>Goto line number</li>
-</ul>
+`Ctrl + G` now enter line number
 
-<p><code>Ctrl + G</code> now enter line number</p>
+- Undo last cursor operation
 
-<ul>
-<li>Undo last cursor operation</li>
-</ul>
+`Ctrl + U`
 
-<p><code>Ctrl + U</code></p>
+## Tricks
 
-<h2 id="tricks">Tricks</h2>
+- Use vscode as diff tool
 
-<ul>
-<li>Use vscode as diff tool</li>
-</ul>
-
-<pre><code class="language-bash">code --diff &lt;file1&gt; &lt;file2&gt;
+```bash
+code --diff &lt;file1&gt; &lt;file2&gt;
 </code></pre>
 
 <ul>
@@ -666,7 +613,7 @@ This video also shows how to configure task runner and then setup a custom key b
     
         <article class="post">
             <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -800,6 +747,20 @@ This video also shows how to configure task runner and then setup a custom key b
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/golang-struct-tags-space/">Golang struct tags gotchas</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-08-12'>
+                                    August 12, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/accessing-oc-cluster-up-etcd/">Access etcd in OpenShift origin</a></h3>
                                 
                                     
@@ -849,20 +810,6 @@ This video also shows how to configure task runner and then setup a custom key b
                                 <time class="published" datetime=
                                     '2018-03-07'>
                                     March 7, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/golang-methods-interfaces/">Methods that satisfy interfaces in golang</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-02-23'>
-                                    February 23, 2018</time>
                             </header>
                         </article>
                     </li>
@@ -927,6 +874,15 @@ This video also shows how to configure task runner and then setup a custom key b
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/golang/">golang</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/kompose/">kompose</a>
                                 <span style="float:right;">3</span>
                             </header>
@@ -938,15 +894,6 @@ This video also shows how to configure task runner and then setup a custom key b
                             <header>
                                 <a href="/categories/packaging/">packaging</a>
                                 <span style="float:right;">3</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/golang/">golang</a>
-                                <span style="float:right;">2</span>
                             </header>
                         </article>
                     </li>

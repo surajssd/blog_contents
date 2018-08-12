@@ -1,17 +1,11 @@
-
-
-
-    
-
-
-
-
 <!DOCTYPE HTML>
 
 <html>
     <head>
         
-            <title>Intellij - Suraj Deshmukh</title>
+            
+                <title>Golang struct tags gotchas</title>
+            
         
 
         <meta charset="utf-8" />
@@ -21,25 +15,28 @@
 
 
         
+            <meta name="author" content="Suraj Deshmukh">
         
-            
-                <meta name="description" content="Blog">
-            
+        
+            <meta name="description" content="Struct tags can give you problems you didn&#39;t see coming ;-)">
         
 
         <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Intellij"/>
-<meta name="twitter:description" content="Blog"/>
+<meta name="twitter:title" content="Golang struct tags gotchas"/>
+<meta name="twitter:description" content="Struct tags can give you problems you didn&#39;t see coming ;-)"/>
 <meta name="twitter:site" content="@surajd_"/>
 
-        <meta property="og:title" content="Intellij" />
-<meta property="og:description" content="Blog" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://suraj.io/tags/intellij/" />
+        <meta property="og:title" content="Golang struct tags gotchas" />
+<meta property="og:description" content="Struct tags can give you problems you didn&#39;t see coming ;-)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://suraj.io/post/golang-struct-tags-space/" />
 
 
 
-<meta property="og:updated_time" content="2017-03-26T18:19:15&#43;05:30"/>
+<meta property="article:published_time" content="2018-08-12T01:00:51&#43;05:30"/>
+
+<meta property="article:modified_time" content="2018-08-12T01:00:51&#43;05:30"/>
+
 
 
 
@@ -51,9 +48,17 @@
 
 
         
-<meta itemprop="name" content="Intellij">
-<meta itemprop="description" content="Blog">
+<meta itemprop="name" content="Golang struct tags gotchas">
+<meta itemprop="description" content="Struct tags can give you problems you didn&#39;t see coming ;-)">
 
+
+<meta itemprop="datePublished" content="2018-08-12T01:00:51&#43;05:30" />
+<meta itemprop="dateModified" content="2018-08-12T01:00:51&#43;05:30" />
+<meta itemprop="wordCount" content="146">
+
+
+
+<meta itemprop="keywords" content="golang,notes," />
 
         
 
@@ -100,6 +105,7 @@ if (!doNotTrack) {
         <div id="wrapper">
 
     
+    
 <header id="header">
     
         <h2><a href="/">Suraj Deshmukh</i></a></h2>
@@ -131,6 +137,10 @@ if (!doNotTrack) {
     </nav>
     <nav class="main">
         <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
             
             <li class="search">
                 <a class="fa-search" href="#search">Search</a>
@@ -231,448 +241,73 @@ if (!doNotTrack) {
         
 </section>
 
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f&text=Golang%20struct%20tags%20gotchas&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f&title=Golang%20struct%20tags%20gotchas" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f&title=Golang%20struct%20tags%20gotchas" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f&title=Golang%20struct%20tags%20gotchas" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
     
     <div id="main">
         
         
-            
-        
-
-        
-            <article class="post">
+        <article class="post">
     <header>
     <div class="title">
         
-            <h2><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/">TODOs for new project</a></h2>
-        
-        
-            <p>Things to do to make a project successful</p>
-        
-    </div>
-    <div class="meta">
-        
+            <h1><a href="http://suraj.io/post/golang-struct-tags-space/">Golang struct tags gotchas</a></h1>
             
         
-
-        <time class="published"
-            datetime='2017-03-26'>
-            March 26, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
         
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>When starting a new open source project, apart from coding following are the things that need to be done.
-Docs  README LICENSE How to install? How to use? Code of conduct guidelines Copyright Issue template like .github in repo.  Developer docs  How to install for developer? Developer docs Contribution guidelines Team meetings info Team communication channels Issue label guidelines Coding standards Code placement doc, or something that explains the way code is ordered Design document  Development  Makefile Unit tests Functional tests Coverage check CI for automatic tests Distro based package  This is just few things that I could think of, please suggest if you know more in comments.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/starting-a-new-opensource-project-requirements/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesproject_management'>project_management</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/rpm-notes/">rpm Notes</a></h2>
-        
-        
-            <p>General notes about rpm packaging and references to upstream docs</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-24'>
-            March 24, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG  My Notes  Start reading from: Fedora packager&rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros.  $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch   To see all macros on the system:  $ rpm &ndash;showrc   Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package  $ rpm -qip .</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/rpm-notes/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriespackaging'>packaging</a></li>
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/git-notes/">Git Notes</a></h2>
-        
-        
-            <p>Contains notes about using git</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-21'>
-            March 21, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>8 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Notes about using git.
-Tips and tricks Switch branches $ git checkout &lt;branch&gt;  status $ git status -sb  Show status in short format and also give branch info
-show $ git show  Shows log message and diff about the commit you are on.
-log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go  Get logs on file between line numbers.
-$ git log &ndash;graph &ndash;abbrev-commit  Show graph in logs.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/git-notes/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesgit'>git</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/intellij-shortcuts/">Intellij Shortcuts</a></h2>
-        
-        
-            <p>Shortcuts of intellij and also some short notes</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-17'>
-            March 17, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>5 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Note: This is a living document and will be updated as I discover new things.
-Shortcuts  Ctrl + Shift + A  Find any action in IDE
- Ctrl + Shift + F  Find in Path
- Alt + 1  Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
- Shift + Insert in Project window  Here you can add new file to the project.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/intellij-shortcuts/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categorieside'>ide</a></li>
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/">Packaging &#39;kompose&#39; for centos paas sig</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-15'>
-            March 15, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>4 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Note: This is a living document and will be updated from time to time.
-Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
-Setup your machine Install packages needed
-sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/packaging-kompose-for-centos-paas-sig/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriespackaging'>packaging</a></li>
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-        <li><a href='/categorieskompose'>kompose</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/test-kompose/">Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-14'>
-            March 14, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
-Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
-Starting the environment:
-docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
-
-<h1 id="inside-the-container-pull-packages-from-the-testing-repository-dnf-enablerepo-updates-testing-y-install-kompose-check-the-kompose-version-kompose-version-install-the-testing-dependencies-dnf-install-y-jq-make-pull-the-git-repository-to-run-the-functional-tests-git-clone-https-github">Inside the container # Pull packages from the testing repository dnf &ndash;enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone <a href="https://github">https://github</a>.</h1>
-</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/test-kompose/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriespackaging'>packaging</a></li>
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-        <li><a href='/categorieskompose'>kompose</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/">Posts</a></h2>
-        
+            <p>Struct tags can give you problems you didn&#39;t see coming ;-)</p>
         
     </div>
     <div class="meta">
@@ -683,45 +318,167 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
         <time class="published"
             datetime='2018-08-12'>
             August 12, 2018</time>
-        <span class="author"></span>
+        <span class="author">Suraj Deshmukh</span>
         
-            <p>0 minute read</p>
+            <p>1 minute read</p>
         
         
     </div>
 </header>
 
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f&text=Golang%20struct%20tags%20gotchas&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f&title=Golang%20struct%20tags%20gotchas" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f&title=Golang%20struct%20tags%20gotchas" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f&title=Golang%20struct%20tags%20gotchas" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=http%3a%2f%2fsuraj.io%2fpost%2fgolang-struct-tags-space%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
     
 
-    <p></p>
+    <div id="content">
+        <p>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.</p>
+
+<pre><code class="language-go">type PodStatus struct {
+	Status string `json: &quot;,status&quot;`
+}
+</code></pre>
+
+<p>If you run <a href="https://golang.org/cmd/vet/"><code>go vet</code></a> on this piece of code you will get following error:</p>
+
+<pre><code class="language-bash">$ go vet types.go 
+# command-line-arguments
+./types.go:28: struct field tag `json: &quot;,status&quot;` 
+not compatible with reflect.StructTag.Get: bad syntax for struct tag value
+</code></pre>
+
+<p>Now this does not tell us what is wrong with the struct tag, <code>json: &quot;,status&quot;</code>. The problem with this struct tag is that the extra space can be interpreted as delimiter so provide key-value pair without space.</p>
+
+<p>So if the struct changes from:</p>
+
+<pre><code class="language-go">`json: &quot;,status&quot;`
+</code></pre>
+
+<p>to</p>
+
+<pre><code class="language-go">`json:&quot;,status&quot;`
+</code></pre>
+
+<p>So the change is just the space after <code>json:</code>, now we don&rsquo;t see the error.</p>
+
+<p>More information about the struct tags can be found in this elaborated blog post named: <a href="https://medium.com/golangspec/tags-in-golang-3e5db0b8ef3e"><em>Tags in Golang</em></a>.</p>
+
+    </div>
 
     <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/" class="button big">Continue Reading</a></li>
-        </ul>
         <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
     
 
     
+    
+        <li><a href='/categoriesgolang'>golang</a></li>
     
 </ul>
 
     </footer>
 </article>
-
-        
-
-        
 <ul class="actions pagination">
     
-        <li><a href="/tags/intellij/page/2/"
-                class="button big previous">Previous Page</a></li>
+        <li><a href="http://suraj.io/post/accessing-oc-cluster-up-etcd/"
+                class="button big previous">Access etcd in OpenShift origin</a></li>
     
 
     
-        <li><a href="#" class="disabled button big next">Next Page</a></li>
-    
 </ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
 
     </div>
     
@@ -742,9 +499,6 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                 </header>
             
             <ul class="icons">
-                
-                    <li><a href="http://suraj.io/tags/intellij/index.xml" type="application/rss+xml"
-                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
                 
                 
                     
@@ -1142,9 +896,6 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
     
         <section id="footer">
             <ul class="icons">
-                
-                    <li><a href="http://suraj.io/tags/intellij/index.xml" type="application/rss+xml"
-                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
                 
                 
                     

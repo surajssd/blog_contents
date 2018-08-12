@@ -6,10 +6,21 @@
     <description>Recent content in Golang on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Mar 2018 02:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 12 Aug 2018 01:00:51 +0530</lastBuildDate>
     
 	<atom:link href="http://suraj.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang struct tags gotchas</title>
+      <link>http://suraj.io/post/golang-struct-tags-space/</link>
+      <pubDate>Sun, 12 Aug 2018 01:00:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/golang-struct-tags-space/</guid>
+      <description>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
+type PodStatus struct { Status string `json: &amp;quot;,status&amp;quot;` }  If you run go vet on this piece of code you will get following error:
+$ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &amp;quot;,status&amp;quot;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value  Now this does not tell us what is wrong with the struct tag, json: &amp;quot;,status&amp;quot;.</description>
+    </item>
     
     <item>
       <title>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</title>

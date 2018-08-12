@@ -16,7 +16,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.37-DEV" />
+        <meta name="generator" content="Hugo 0.47-DEV" />
         
 
 
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:updated_time" content="2018-07-11T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-08-12T01:00:51&#43;05:30"/>
 
 
 
@@ -79,14 +79,17 @@
         
         
             
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-97006720-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-97006720-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
         
@@ -202,6 +205,10 @@ ga('send', 'pageview');
 
                 
                     <li>
+                        <a href="http://suraj.io/post/golang-struct-tags-space/"><p>Golang struct tags gotchas</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://suraj.io/post/accessing-oc-cluster-up-etcd/"><p>Access etcd in OpenShift origin</p></a>
                     </li>
                 
@@ -217,10 +224,6 @@ ga('send', 'pageview');
                         <a href="http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/"><p>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</p></a>
                     </li>
                 
-                    <li>
-                        <a href="http://suraj.io/post/golang-methods-interfaces/"><p>Methods that satisfy interfaces in golang</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -234,6 +237,75 @@ ga('send', 'pageview');
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://suraj.io/post/golang-struct-tags-space/">Golang struct tags gotchas</a></h2>
+        
+        
+            <p>Struct tags can give you problems you didn&#39;t see coming ;-)</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-08-12'>
+            August 12, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>1 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
+type PodStatus struct { Status string <code>json: &amp;quot;,status&amp;quot;</code> }  If you run go vet on this piece of code you will get following error:
+$ go vet types.go # command-line-arguments ./types.go:28: struct field tag <code>json: &amp;quot;,status&amp;quot;</code> not compatible with reflect.StructTag.Get: bad syntax for struct tag value  Now this does not tell us what is wrong with the struct tag, json: &quot;,status&quot;.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://suraj.io/post/golang-struct-tags-space/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesgolang'>golang</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -879,76 +951,6 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://suraj.io/post/add-new-map-to-cs/">Add new Maps to Counter Strike</a></h2>
-        
-        
-            <p>Steps to add new maps to CS</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-09-01'>
-            September 1, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>If you are playing Counter Strike on Steam on linux you might be wondering how do I install new maps in the game. So here are steps to install maps.
-All the game maps for Counter Strike - Condition Zero are stored in following path:
-~/.local/share/Steam/steamapps/common/Half-Life/czero/maps  Format of the map files is .bsp.
-So download the map files from over internet and then put in this location and now you should be able to see the maps in game.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://suraj.io/post/add-new-map-to-cs/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesgaming'>gaming</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1076,6 +1078,20 @@ So download the map files from over internet and then put in this location and n
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://suraj.io/post/golang-struct-tags-space/">Golang struct tags gotchas</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-08-12'>
+                                    August 12, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://suraj.io/post/accessing-oc-cluster-up-etcd/">Access etcd in OpenShift origin</a></h3>
                                 
                                     
@@ -1125,20 +1141,6 @@ So download the map files from over internet and then put in this location and n
                                 <time class="published" datetime=
                                     '2018-03-07'>
                                     March 7, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://suraj.io/post/golang-methods-interfaces/">Methods that satisfy interfaces in golang</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-02-23'>
-                                    February 23, 2018</time>
                             </header>
                         </article>
                     </li>
@@ -1203,6 +1205,15 @@ So download the map files from over internet and then put in this location and n
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/golang/">golang</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/kompose/">kompose</a>
                                 <span style="float:right;">3</span>
                             </header>
@@ -1214,15 +1225,6 @@ So download the map files from over internet and then put in this location and n
                             <header>
                                 <a href="/categories/packaging/">packaging</a>
                                 <span style="float:right;">3</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/golang/">golang</a>
-                                <span style="float:right;">2</span>
                             </header>
                         </article>
                     </li>
