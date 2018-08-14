@@ -6,10 +6,21 @@
     <description>Recent content on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Aug 2018 01:00:51 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 14 Aug 2018 01:00:51 +0530</lastBuildDate>
     
 	<atom:link href="http://suraj.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HTTPS during development using &#39;mkcert&#39;</title>
+      <link>http://suraj.io/post/mkcert-using-python-http-server/</link>
+      <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
+      
+      <guid>http://suraj.io/post/mkcert-using-python-http-server/</guid>
+      <description>It&amp;rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
+Once installed just run:
+$ mkcert -install Created a new local CA at &amp;quot;/home/hummer/.local/share/mkcert&amp;quot; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</description>
+    </item>
     
     <item>
       <title>Golang struct tags gotchas</title>
