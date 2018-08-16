@@ -37,7 +37,7 @@ This post has shortcuts that are generic and golang specific as well. This post 
 
 - Toggle terminal
 
-```Ctrl + ` ```
+`Ctrl + ~ `
 
 - Toggle problems/errors in current project
 
