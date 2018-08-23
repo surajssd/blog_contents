@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gaming on Suraj Deshmukh</title>
-    <link>http://suraj.io/categories/gaming/</link>
+    <link>https://suraj.io/categories/gaming/</link>
     <description>Recent content in Gaming on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 01 Sep 2017 16:03:58 +0530</lastBuildDate>
     
-	<atom:link href="http://suraj.io/categories/gaming/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suraj.io/categories/gaming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Add new Maps to Counter Strike</title>
-      <link>http://suraj.io/post/add-new-map-to-cs/</link>
+      <link>https://suraj.io/post/add-new-map-to-cs/</link>
       <pubDate>Fri, 01 Sep 2017 16:03:58 +0530</pubDate>
       
-      <guid>http://suraj.io/post/add-new-map-to-cs/</guid>
+      <guid>https://suraj.io/post/add-new-map-to-cs/</guid>
       <description>If you are playing Counter Strike on Steam on linux you might be wondering how do I install new maps in the game. So here are steps to install maps.
 All the game maps for Counter Strike - Condition Zero are stored in following path:
 ~/.local/share/Steam/steamapps/common/Half-Life/czero/maps  Format of the map files is .bsp.

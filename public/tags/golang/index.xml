@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/golang/</link>
+    <link>https://suraj.io/tags/golang/</link>
     <description>Recent content in Golang on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 12 Aug 2018 01:00:51 +0530</lastBuildDate>
     
-	<atom:link href="http://suraj.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suraj.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Golang struct tags gotchas</title>
-      <link>http://suraj.io/post/golang-struct-tags-space/</link>
+      <link>https://suraj.io/post/golang-struct-tags-space/</link>
       <pubDate>Sun, 12 Aug 2018 01:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/golang-struct-tags-space/</guid>
+      <guid>https://suraj.io/post/golang-struct-tags-space/</guid>
       <description>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
 type PodStatus struct { Status string `json: &amp;quot;,status&amp;quot;` }  If you run go vet on this piece of code you will get following error:
 $ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &amp;quot;,status&amp;quot;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value  Now this does not tell us what is wrong with the struct tag, json: &amp;quot;,status&amp;quot;.</description>
@@ -24,19 +24,19 @@ $ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json
     
     <item>
       <title>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</title>
-      <link>http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</link>
+      <link>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</link>
       <pubDate>Wed, 07 Mar 2018 02:21:49 +0530</pubDate>
       
-      <guid>http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</guid>
+      <guid>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</guid>
       <description>Test Fixtures  &amp;ldquo;go test&amp;rdquo; sets pwd as package directory  Test Helpers  should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures  Configurability  Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It&amp;rsquo;s ok to make these configs unexported so only tests can set them.</description>
     </item>
     
     <item>
       <title>Methods that satisfy interfaces in golang</title>
-      <link>http://suraj.io/post/golang-methods-interfaces/</link>
+      <link>https://suraj.io/post/golang-methods-interfaces/</link>
       <pubDate>Fri, 23 Feb 2018 08:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/golang-methods-interfaces/</guid>
+      <guid>https://suraj.io/post/golang-methods-interfaces/</guid>
       <description>Pointer receiver For a struct User with a method Work with pointer receiver.
 type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &amp;quot;has worked for&amp;quot;, u.Period, &amp;quot;hrs.&amp;quot;) } func main() { uval := User{&amp;quot;UserVal&amp;quot;, 5} uval.Work() pval := &amp;amp;User{&amp;quot;UserPtr&amp;quot;, 6} pval.Work() }  See on go playground.
 output:

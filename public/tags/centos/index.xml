@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Centos on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/centos/</link>
+    <link>https://suraj.io/tags/centos/</link>
     <description>Recent content in Centos on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 18 Sep 2017 10:43:46 +0530</lastBuildDate>
     
-	<atom:link href="http://suraj.io/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suraj.io/tags/centos/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Sharing Vagrant Box offline</title>
-      <link>http://suraj.io/post/move-vagrant-boxes/</link>
+      <link>https://suraj.io/post/move-vagrant-boxes/</link>
       <pubDate>Mon, 18 Sep 2017 10:43:46 +0530</pubDate>
       
-      <guid>http://suraj.io/post/move-vagrant-boxes/</guid>
+      <guid>https://suraj.io/post/move-vagrant-boxes/</guid>
       <description>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don&amp;rsquo;t have internet to download it, how do you share it?
 You will need to export the box from machine that has it downloaded already. So on machine with boxes:
 $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705)  I wanted to share fedora/26-cloud-base box to another machine.</description>
@@ -24,19 +24,19 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
     
     <item>
       <title>rpm Notes</title>
-      <link>http://suraj.io/post/rpm-notes/</link>
+      <link>https://suraj.io/post/rpm-notes/</link>
       <pubDate>Fri, 24 Mar 2017 10:35:54 +0530</pubDate>
       
-      <guid>http://suraj.io/post/rpm-notes/</guid>
+      <guid>https://suraj.io/post/rpm-notes/</guid>
       <description>Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG  My Notes  Start reading from: Fedora packager&amp;rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros.  $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch   To see all macros on the system:  $ rpm --showrc   Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package  $ rpm -qip .</description>
     </item>
     
     <item>
       <title>Packaging &#39;kompose&#39; for centos paas sig</title>
-      <link>http://suraj.io/post/packaging-kompose-for-centos-paas-sig/</link>
+      <link>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</link>
       <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
       
-      <guid>http://suraj.io/post/packaging-kompose-for-centos-paas-sig/</guid>
+      <guid>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</guid>
       <description>Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
 Setup your machine Install packages needed
@@ -45,10 +45,10 @@ sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;am
     
     <item>
       <title>Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</title>
-      <link>http://suraj.io/post/test-kompose/</link>
+      <link>https://suraj.io/post/test-kompose/</link>
       <pubDate>Tue, 14 Mar 2017 00:31:57 +0530</pubDate>
       
-      <guid>http://suraj.io/post/test-kompose/</guid>
+      <guid>https://suraj.io/post/test-kompose/</guid>
       <description>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
 Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
 Starting the environment:

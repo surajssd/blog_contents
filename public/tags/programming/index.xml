@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/programming/</link>
+    <link>https://suraj.io/tags/programming/</link>
     <description>Recent content in Programming on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 07 Mar 2018 02:21:49 +0530</lastBuildDate>
     
-	<atom:link href="http://suraj.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suraj.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</title>
-      <link>http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</link>
+      <link>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</link>
       <pubDate>Wed, 07 Mar 2018 02:21:49 +0530</pubDate>
       
-      <guid>http://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</guid>
+      <guid>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</guid>
       <description>Test Fixtures  &amp;ldquo;go test&amp;rdquo; sets pwd as package directory  Test Helpers  should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures  Configurability  Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It&amp;rsquo;s ok to make these configs unexported so only tests can set them.</description>
     </item>
     
     <item>
       <title>Methods that satisfy interfaces in golang</title>
-      <link>http://suraj.io/post/golang-methods-interfaces/</link>
+      <link>https://suraj.io/post/golang-methods-interfaces/</link>
       <pubDate>Fri, 23 Feb 2018 08:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/golang-methods-interfaces/</guid>
+      <guid>https://suraj.io/post/golang-methods-interfaces/</guid>
       <description>Pointer receiver For a struct User with a method Work with pointer receiver.
 type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &amp;quot;has worked for&amp;quot;, u.Period, &amp;quot;hrs.&amp;quot;) } func main() { uval := User{&amp;quot;UserVal&amp;quot;, 5} uval.Work() pval := &amp;amp;User{&amp;quot;UserPtr&amp;quot;, 6} pval.Work() }  See on go playground.
 output:
@@ -34,10 +34,10 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
     
     <item>
       <title>vscode Shortcuts</title>
-      <link>http://suraj.io/post/vscode-shortcuts/</link>
+      <link>https://suraj.io/post/vscode-shortcuts/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/vscode-shortcuts/</guid>
+      <guid>https://suraj.io/post/vscode-shortcuts/</guid>
       <description>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
 Shortcuts  Toggle side bar  Ctrl + B
  Project explorer in side bar  Ctrl + Shift + E
@@ -48,10 +48,10 @@ Shortcuts  Toggle side bar  Ctrl + B
     
     <item>
       <title>Intellij Shortcuts</title>
-      <link>http://suraj.io/post/intellij-shortcuts/</link>
+      <link>https://suraj.io/post/intellij-shortcuts/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/intellij-shortcuts/</guid>
+      <guid>https://suraj.io/post/intellij-shortcuts/</guid>
       <description>Note: This is a living document and will be updated as I discover new things.
 Shortcuts  Ctrl + Shift + A  Find any action in IDE
  Ctrl + Shift + F  Find in Path

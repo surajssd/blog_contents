@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fedora on Suraj Deshmukh</title>
-    <link>http://suraj.io/categories/fedora/</link>
+    <link>https://suraj.io/categories/fedora/</link>
     <description>Recent content in Fedora on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 18 Sep 2017 10:43:46 +0530</lastBuildDate>
     
-	<atom:link href="http://suraj.io/categories/fedora/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suraj.io/categories/fedora/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Sharing Vagrant Box offline</title>
-      <link>http://suraj.io/post/move-vagrant-boxes/</link>
+      <link>https://suraj.io/post/move-vagrant-boxes/</link>
       <pubDate>Mon, 18 Sep 2017 10:43:46 +0530</pubDate>
       
-      <guid>http://suraj.io/post/move-vagrant-boxes/</guid>
+      <guid>https://suraj.io/post/move-vagrant-boxes/</guid>
       <description>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don&amp;rsquo;t have internet to download it, how do you share it?
 You will need to export the box from machine that has it downloaded already. So on machine with boxes:
 $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705)  I wanted to share fedora/26-cloud-base box to another machine.</description>

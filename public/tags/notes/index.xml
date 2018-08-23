@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Notes on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/notes/</link>
+    <link>https://suraj.io/tags/notes/</link>
     <description>Recent content in Notes on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 12 Aug 2018 01:00:51 +0530</lastBuildDate>
     
-	<atom:link href="http://suraj.io/tags/notes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suraj.io/tags/notes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Golang struct tags gotchas</title>
-      <link>http://suraj.io/post/golang-struct-tags-space/</link>
+      <link>https://suraj.io/post/golang-struct-tags-space/</link>
       <pubDate>Sun, 12 Aug 2018 01:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/golang-struct-tags-space/</guid>
+      <guid>https://suraj.io/post/golang-struct-tags-space/</guid>
       <description>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
 type PodStatus struct { Status string `json: &amp;quot;,status&amp;quot;` }  If you run go vet on this piece of code you will get following error:
 $ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &amp;quot;,status&amp;quot;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value  Now this does not tell us what is wrong with the struct tag, json: &amp;quot;,status&amp;quot;.</description>
@@ -24,10 +24,10 @@ $ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json
     
     <item>
       <title>Access etcd in OpenShift origin</title>
-      <link>http://suraj.io/post/accessing-oc-cluster-up-etcd/</link>
+      <link>https://suraj.io/post/accessing-oc-cluster-up-etcd/</link>
       <pubDate>Wed, 11 Jul 2018 01:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
+      <guid>https://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
       <description>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
 If you are using minishift then get docker environment access of the minishift VM by running following commands.
 eval $(minishift docker-env) &amp;amp;&amp;amp; eval $(minishift oc-env)  Exec into the container named origin that runs OpenShift and all the needed services.
@@ -36,20 +36,20 @@ $ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.
     
     <item>
       <title>Change namespaces in Kubernetes</title>
-      <link>http://suraj.io/post/changing-k8s-ns/</link>
+      <link>https://suraj.io/post/changing-k8s-ns/</link>
       <pubDate>Mon, 02 Jul 2018 08:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/changing-k8s-ns/</guid>
+      <guid>https://suraj.io/post/changing-k8s-ns/</guid>
       <description>There is no easy way to change namespace in Kubernetes using kubectl command line utility. But here are some commands that you can alias in your bashrc file so that it&amp;rsquo;s just a single command that you can use to change the namespace in the Kubernetes cluster.
 Change namespace Let&amp;rsquo;s see step by step what goes in to change the namespace. So the first step is to find the context.</description>
     </item>
     
     <item>
       <title>Prometheus with existing application on OpenShift</title>
-      <link>http://suraj.io/post/using-prometheus/</link>
+      <link>https://suraj.io/post/using-prometheus/</link>
       <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/using-prometheus/</guid>
+      <guid>https://suraj.io/post/using-prometheus/</guid>
       <description>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.
 Requirements Setting up cluster I have done it using the oc cluster up, read about how to do this here. You could also setup a local OpenShift cluster by running minishift, read about setting up minishift here.
 Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge.</description>
@@ -57,10 +57,10 @@ Downloading Kedge The configurations defined for setting up this cluster is writ
     
     <item>
       <title>vscode Shortcuts</title>
-      <link>http://suraj.io/post/vscode-shortcuts/</link>
+      <link>https://suraj.io/post/vscode-shortcuts/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/vscode-shortcuts/</guid>
+      <guid>https://suraj.io/post/vscode-shortcuts/</guid>
       <description>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
 Shortcuts  Toggle side bar  Ctrl + B
  Project explorer in side bar  Ctrl + Shift + E
@@ -71,10 +71,10 @@ Shortcuts  Toggle side bar  Ctrl + B
     
     <item>
       <title>Clean Node setup</title>
-      <link>http://suraj.io/post/node-no-sudo/</link>
+      <link>https://suraj.io/post/node-no-sudo/</link>
       <pubDate>Tue, 04 Jul 2017 22:50:43 +0530</pubDate>
       
-      <guid>http://suraj.io/post/node-no-sudo/</guid>
+      <guid>https://suraj.io/post/node-no-sudo/</guid>
       <description>Make sure you have npm installed.
 $ sudo dnf -y install npm Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping. Dependencies resolved. Nothing to do. Complete!  Taken from this post.
 mkdir &amp;quot;${HOME}/.npm-packages&amp;quot; echo &#39;prefix=${HOME}/.npm-packages&#39; | tee -a ~/.npmrc echo &#39; #====================================== # npm related stuff NPM_PACKAGES=&amp;quot;${HOME}/.npm-packages&amp;quot; PATH=&amp;quot;$NPM_PACKAGES/bin:$PATH&amp;quot; # Unset manpath so we can inherit from /etc/manpath via the `manpath` command unset MANPATH # delete if you already modified MANPATH elsewhere in your config export MANPATH=&amp;quot;$NPM_PACKAGES/share/man:$(manpath)&amp;quot; #====================================== &#39; | tee -a ~/.</description>
@@ -82,20 +82,20 @@ mkdir &amp;quot;${HOME}/.npm-packages&amp;quot; echo &#39;prefix=${HOME}/.npm-pa
     
     <item>
       <title>k8s on CRI-O - single node</title>
-      <link>http://suraj.io/post/using-crio-with-k8s-single-node/</link>
+      <link>https://suraj.io/post/using-crio-with-k8s-single-node/</link>
       <pubDate>Sat, 08 Apr 2017 00:11:37 +0530</pubDate>
       
-      <guid>http://suraj.io/post/using-crio-with-k8s-single-node/</guid>
+      <guid>https://suraj.io/post/using-crio-with-k8s-single-node/</guid>
       <description>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
 Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables  Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &#39;GOPATH=~/go&#39; &amp;gt;&amp;gt; ~/.</description>
     </item>
     
     <item>
       <title>Git Notes</title>
-      <link>http://suraj.io/post/git-notes/</link>
+      <link>https://suraj.io/post/git-notes/</link>
       <pubDate>Tue, 21 Mar 2017 22:03:48 +0530</pubDate>
       
-      <guid>http://suraj.io/post/git-notes/</guid>
+      <guid>https://suraj.io/post/git-notes/</guid>
       <description>Notes about using git.
 Tips and tricks Switch branches $ git checkout &amp;lt;branch&amp;gt;  status $ git status -sb  Show status in short format and also give branch info
 show $ git show  Shows log message and diff about the commit you are on.
@@ -105,10 +105,10 @@ $ git log --graph --abbrev-commit  Show graph in logs.</description>
     
     <item>
       <title>Intellij Shortcuts</title>
-      <link>http://suraj.io/post/intellij-shortcuts/</link>
+      <link>https://suraj.io/post/intellij-shortcuts/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/intellij-shortcuts/</guid>
+      <guid>https://suraj.io/post/intellij-shortcuts/</guid>
       <description>Note: This is a living document and will be updated as I discover new things.
 Shortcuts  Ctrl + Shift + A  Find any action in IDE
  Ctrl + Shift + F  Find in Path

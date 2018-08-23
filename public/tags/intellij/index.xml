@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Intellij on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/intellij/</link>
+    <link>https://suraj.io/tags/intellij/</link>
     <description>Recent content in Intellij on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Mar 2017 14:41:51 +0530</lastBuildDate>
     
-	<atom:link href="http://suraj.io/tags/intellij/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suraj.io/tags/intellij/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Intellij Shortcuts</title>
-      <link>http://suraj.io/post/intellij-shortcuts/</link>
+      <link>https://suraj.io/post/intellij-shortcuts/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/intellij-shortcuts/</guid>
+      <guid>https://suraj.io/post/intellij-shortcuts/</guid>
       <description>Note: This is a living document and will be updated as I discover new things.
 Shortcuts  Ctrl + Shift + A  Find any action in IDE
  Ctrl + Shift + F  Find in Path

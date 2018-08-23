@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Openshift on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/openshift/</link>
+    <link>https://suraj.io/tags/openshift/</link>
     <description>Recent content in Openshift on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 11 Jul 2018 01:00:51 +0530</lastBuildDate>
     
-	<atom:link href="http://suraj.io/tags/openshift/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suraj.io/tags/openshift/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Access etcd in OpenShift origin</title>
-      <link>http://suraj.io/post/accessing-oc-cluster-up-etcd/</link>
+      <link>https://suraj.io/post/accessing-oc-cluster-up-etcd/</link>
       <pubDate>Wed, 11 Jul 2018 01:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
+      <guid>https://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
       <description>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
 If you are using minishift then get docker environment access of the minishift VM by running following commands.
 eval $(minishift docker-env) &amp;amp;&amp;amp; eval $(minishift oc-env)  Exec into the container named origin that runs OpenShift and all the needed services.
@@ -25,20 +25,20 @@ $ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.
     
     <item>
       <title>Change namespaces in Kubernetes</title>
-      <link>http://suraj.io/post/changing-k8s-ns/</link>
+      <link>https://suraj.io/post/changing-k8s-ns/</link>
       <pubDate>Mon, 02 Jul 2018 08:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/changing-k8s-ns/</guid>
+      <guid>https://suraj.io/post/changing-k8s-ns/</guid>
       <description>There is no easy way to change namespace in Kubernetes using kubectl command line utility. But here are some commands that you can alias in your bashrc file so that it&amp;rsquo;s just a single command that you can use to change the namespace in the Kubernetes cluster.
 Change namespace Let&amp;rsquo;s see step by step what goes in to change the namespace. So the first step is to find the context.</description>
     </item>
     
     <item>
       <title>Prometheus with existing application on OpenShift</title>
-      <link>http://suraj.io/post/using-prometheus/</link>
+      <link>https://suraj.io/post/using-prometheus/</link>
       <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/using-prometheus/</guid>
+      <guid>https://suraj.io/post/using-prometheus/</guid>
       <description>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.
 Requirements Setting up cluster I have done it using the oc cluster up, read about how to do this here. You could also setup a local OpenShift cluster by running minishift, read about setting up minishift here.
 Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge.</description>
@@ -46,30 +46,30 @@ Downloading Kedge The configurations defined for setting up this cluster is writ
     
     <item>
       <title>Static Pods using Kubelet on Fedora</title>
-      <link>http://suraj.io/post/static-pods/</link>
+      <link>https://suraj.io/post/static-pods/</link>
       <pubDate>Sat, 23 Sep 2017 13:10:14 +0530</pubDate>
       
-      <guid>http://suraj.io/post/static-pods/</guid>
+      <guid>https://suraj.io/post/static-pods/</guid>
       <description>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.
 This blog is only replacement of section Install the Standalone Kubelet in tutorial.</description>
     </item>
     
     <item>
       <title>Kubernetes Learning resources</title>
-      <link>http://suraj.io/post/k8s-learning-resources/</link>
+      <link>https://suraj.io/post/k8s-learning-resources/</link>
       <pubDate>Thu, 17 Aug 2017 23:12:18 +0530</pubDate>
       
-      <guid>http://suraj.io/post/k8s-learning-resources/</guid>
+      <guid>https://suraj.io/post/k8s-learning-resources/</guid>
       <description>Following is the list of all the places you can learn Kubernetes from:
  Scalable Microservices with Kubernetes - Video tutorial Fundamentals of Containers, Kubernetes, and Red Hat OpenShift - Video tutorial Kubernetes By Example - DIY tutorial Learn Kubernetes using Interactive Browser-Based Scenarios - DIY tutorial in your own web browser Interactive Learning Portal for OpenShift - DIY tutorial in your own web browser Kubernetes docs - Textual DIY docs Kubernetes API reference v1.</description>
     </item>
     
     <item>
       <title>Bangalore Kubernetes Meetup July 2017</title>
-      <link>http://suraj.io/post/blr-k8s-meetup-july-2017/</link>
+      <link>https://suraj.io/post/blr-k8s-meetup-july-2017/</link>
       <pubDate>Thu, 13 Jul 2017 22:46:40 +0530</pubDate>
       
-      <guid>http://suraj.io/post/blr-k8s-meetup-july-2017/</guid>
+      <guid>https://suraj.io/post/blr-k8s-meetup-july-2017/</guid>
       <description>This edition of meetup was held at Nexus Ventures by folks at OpenEBS on July 8th 2017, which started on a lovely Saturday morning.
 Kiran Mova set the floor rolling with his talk on Hyperconverged version of OpenEBS with Kubernetes. Where he talked about containerized storage vs traditional storage, instead of building clustering into OpenEBS how they are leveraging Kubernetes&amp;rsquo;s capabilities to do clustering.
 He also explained difference between various storage providers viz.</description>
@@ -77,10 +77,10 @@ He also explained difference between various storage providers viz.</description
     
     <item>
       <title>Quick PV for local Kubernetes cluster</title>
-      <link>http://suraj.io/post/quick-pv-for-local-k8s/</link>
+      <link>https://suraj.io/post/quick-pv-for-local-k8s/</link>
       <pubDate>Tue, 18 Apr 2017 23:56:15 +0530</pubDate>
       
-      <guid>http://suraj.io/post/quick-pv-for-local-k8s/</guid>
+      <guid>https://suraj.io/post/quick-pv-for-local-k8s/</guid>
       <description>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
 Enter into the machine running k8s If using minikube you can do
 minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001  If you are on a machine that has SELinux enabled do the following</description>
@@ -88,10 +88,10 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
     
     <item>
       <title>Packaging &#39;kompose&#39; for centos paas sig</title>
-      <link>http://suraj.io/post/packaging-kompose-for-centos-paas-sig/</link>
+      <link>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</link>
       <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
       
-      <guid>http://suraj.io/post/packaging-kompose-for-centos-paas-sig/</guid>
+      <guid>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</guid>
       <description>Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
 Setup your machine Install packages needed

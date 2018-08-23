@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Etcd on Suraj Deshmukh</title>
-    <link>http://suraj.io/categories/etcd/</link>
+    <link>https://suraj.io/categories/etcd/</link>
     <description>Recent content in Etcd on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 11 Jul 2018 01:00:51 +0530</lastBuildDate>
     
-	<atom:link href="http://suraj.io/categories/etcd/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suraj.io/categories/etcd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Access etcd in OpenShift origin</title>
-      <link>http://suraj.io/post/accessing-oc-cluster-up-etcd/</link>
+      <link>https://suraj.io/post/accessing-oc-cluster-up-etcd/</link>
       <pubDate>Wed, 11 Jul 2018 01:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
+      <guid>https://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
       <description>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
 If you are using minishift then get docker environment access of the minishift VM by running following commands.
 eval $(minishift docker-env) &amp;amp;&amp;amp; eval $(minishift oc-env)  Exec into the container named origin that runs OpenShift and all the needed services.

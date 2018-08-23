@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Container on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/container/</link>
+    <link>https://suraj.io/tags/container/</link>
     <description>Recent content in Container on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 06 Oct 2017 19:32:33 +0530</lastBuildDate>
     
-	<atom:link href="http://suraj.io/tags/container/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suraj.io/tags/container/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using private container registries from minikube</title>
-      <link>http://suraj.io/post/private-registry-from-minikube/</link>
+      <link>https://suraj.io/post/private-registry-from-minikube/</link>
       <pubDate>Fri, 06 Oct 2017 19:32:33 +0530</pubDate>
       
-      <guid>http://suraj.io/post/private-registry-from-minikube/</guid>
+      <guid>https://suraj.io/post/private-registry-from-minikube/</guid>
       <description>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
 On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.</description>
     </item>

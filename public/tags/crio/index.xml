@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Crio on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/crio/</link>
+    <link>https://suraj.io/tags/crio/</link>
     <description>Recent content in Crio on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 08 Apr 2017 00:11:37 +0530</lastBuildDate>
     
-	<atom:link href="http://suraj.io/tags/crio/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suraj.io/tags/crio/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>k8s on CRI-O - single node</title>
-      <link>http://suraj.io/post/using-crio-with-k8s-single-node/</link>
+      <link>https://suraj.io/post/using-crio-with-k8s-single-node/</link>
       <pubDate>Sat, 08 Apr 2017 00:11:37 +0530</pubDate>
       
-      <guid>http://suraj.io/post/using-crio-with-k8s-single-node/</guid>
+      <guid>https://suraj.io/post/using-crio-with-k8s-single-node/</guid>
       <description>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
 Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables  Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &#39;GOPATH=~/go&#39; &amp;gt;&amp;gt; ~/.</description>
     </item>

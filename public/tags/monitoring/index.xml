@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Monitoring on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/monitoring/</link>
+    <link>https://suraj.io/tags/monitoring/</link>
     <description>Recent content in Monitoring on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 04 Apr 2018 08:00:51 +0530</lastBuildDate>
     
-	<atom:link href="http://suraj.io/tags/monitoring/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suraj.io/tags/monitoring/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Prometheus with existing application on OpenShift</title>
-      <link>http://suraj.io/post/using-prometheus/</link>
+      <link>https://suraj.io/post/using-prometheus/</link>
       <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
       
-      <guid>http://suraj.io/post/using-prometheus/</guid>
+      <guid>https://suraj.io/post/using-prometheus/</guid>
       <description>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.
 Requirements Setting up cluster I have done it using the oc cluster up, read about how to do this here. You could also setup a local OpenShift cluster by running minishift, read about setting up minishift here.
 Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge.</description>

@@ -1,4 +1,4 @@
-baseurl = "http://suraj.io/"
+baseurl = "https://suraj.io/"
 languageCode = "en-us"
 title = "Suraj Deshmukh"
 theme = "hugo-future-imperfect"

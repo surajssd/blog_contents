@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pv on Suraj Deshmukh</title>
-    <link>http://suraj.io/tags/pv/</link>
+    <link>https://suraj.io/tags/pv/</link>
     <description>Recent content in Pv on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 18 Apr 2017 23:56:15 +0530</lastBuildDate>
     
-	<atom:link href="http://suraj.io/tags/pv/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suraj.io/tags/pv/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Quick PV for local Kubernetes cluster</title>
-      <link>http://suraj.io/post/quick-pv-for-local-k8s/</link>
+      <link>https://suraj.io/post/quick-pv-for-local-k8s/</link>
       <pubDate>Tue, 18 Apr 2017 23:56:15 +0530</pubDate>
       
-      <guid>http://suraj.io/post/quick-pv-for-local-k8s/</guid>
+      <guid>https://suraj.io/post/quick-pv-for-local-k8s/</guid>
       <description>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
 Enter into the machine running k8s If using minikube you can do
 minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001  If you are on a machine that has SELinux enabled do the following</description>
