@@ -316,7 +316,7 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://suraj.io/about/</guid>
-      <description>  I am OpenSource Enthusiast. I contribute to various container related technologies like kompose, OpenCompose, cri-o, OpenShift, etc. A proud Red Hatter.  Contact  IRC, Slack: surajd Github: surajssd Twitter: @surajd_ Email: surajd.service@gmail.com &amp;amp; surajd@redhat.com Stackoverflow: surajd  </description>
+      <description>  I am OpenSource Enthusiast. I contribute to various container &amp;amp; Kubernetes related technologies like Kedge, Kompose, cri-o, etc. I works for kinvolk &amp;amp; am ex-Red Hatter.  Contact  IRC, Slack: surajd Github: surajssd Twitter: @surajd_ Email: surajd.service@gmail.com &amp;amp; suraj@kinvolk.com Stackoverflow: surajd  </description>
     </item>
     
   </channel>
