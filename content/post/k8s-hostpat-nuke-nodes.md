@@ -131,7 +131,7 @@ deployment.extensions "web" deleted
 # Stopping this attack using PodSecurityPolicy
 
 
-Now as a cluster admin how can you prevent this from happening? You can create something called as [`PodSecurityPolicy`](https://kubernetes.io/docs/concepts/policy/pod-security-policy/). This let's you define what kind of pods be created. Or what permissions pod can request.
+Now as a cluster admin how can you prevent this from happening? You can create something called as [`PodSecurityPolicy`](https://kubernetes.io/docs/concepts/policy/pod-security-policy/). This let's you define what kind of pods be created. Or what permissions pod can request. Enable admission controller for this, read about it [here](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podsecuritypolicy).
 
 Here is an example `PodSecurityPolicy`:
 
@@ -318,3 +318,11 @@ touch: cannot touch 'file.txt': Read-only file system
 ```
 
 So this is really good feature you can use to stop someone from nuking your cluster.
+
+
+## References
+
+- [Pod Security Policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)
+- [Securing a Cluster](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/#controlling-what-privileges-containers-run-with)
+- [hostPath volumes](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
+- [Enabling Admission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podsecuritypolicy)

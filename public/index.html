@@ -426,7 +426,7 @@ deployment.extensions &quot;web&quot; deleted
 
 <h1 id="stopping-this-attack-using-podsecuritypolicy">Stopping this attack using PodSecurityPolicy</h1>
 
-<p>Now as a cluster admin how can you prevent this from happening? You can create something called as <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/"><code>PodSecurityPolicy</code></a>. This let&rsquo;s you define what kind of pods be created. Or what permissions pod can request.</p>
+<p>Now as a cluster admin how can you prevent this from happening? You can create something called as <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/"><code>PodSecurityPolicy</code></a>. This let&rsquo;s you define what kind of pods be created. Or what permissions pod can request. Enable admission controller for this, read about it <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podsecuritypolicy">here</a>.</p>
 
 <p>Here is an example <code>PodSecurityPolicy</code>:</p>
 
@@ -599,6 +599,15 @@ touch: cannot touch 'file.txt': Read-only file system
 </code></pre>
 
 <p>So this is really good feature you can use to stop someone from nuking your cluster.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/">Pod Security Policies</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/#controlling-what-privileges-containers-run-with">Securing a Cluster</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath">hostPath volumes</a></li>
+<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podsecuritypolicy">Enabling Admission controller</a></li>
+</ul>
 
     </div>
 
