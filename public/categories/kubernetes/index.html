@@ -41,7 +41,7 @@
 
 
 
-<meta property="og:updated_time" content="2018-07-02T08:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-09-10T01:00:51&#43;05:30"/>
 
 
 
@@ -207,6 +207,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"><p>HostPath volumes and it&#39;s problems</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/mkcert-using-python-http-server/"><p>HTTPS during development using &#39;mkcert&#39;</p></a>
                     </li>
                 
@@ -222,10 +226,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/changing-k8s-ns/"><p>Change namespaces in Kubernetes</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/using-prometheus/"><p>Prometheus with existing application on OpenShift</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -237,6 +237,77 @@ if (!doNotTrack) {
     <div id="main">
         <h1>Kubernetes</h1>
         
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h2>
+        
+        
+            <p>Kubernetes HostPath volume good way to nuke your Kubernetes Nodes</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-09-10'>
+            September 10, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>6 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>This post will demonstrate how Kubernetes HostPath volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.
+I have a 3-master and 3-node cluster and setup using this script, running in a Vagrant environment.
+All the nodes are in ready state:</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+        <li><a href='/categoriesopenshift'>openshift</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
         
             <article class="post">
     <header>
@@ -856,6 +927,20 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-09-10'>
+                                    September 10, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/mkcert-using-python-http-server/">HTTPS during development using &#39;mkcert&#39;</a></h3>
                                 
                                     
@@ -909,20 +994,6 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/using-prometheus/">Prometheus with existing application on OpenShift</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-04-04'>
-                                    April 4, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -966,7 +1037,7 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">7</span>
+                                <span style="float:right;">8</span>
                             </header>
                         </article>
                     </li>
@@ -1011,6 +1082,15 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/openshift/">openshift</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>
@@ -1119,15 +1199,6 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/monitoring/">monitoring</a>
-                                <span style="float:right;">1</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/openshift/">openshift</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

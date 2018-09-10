@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-09-18T10:43:46&#43;05:30"/>
+<meta property="og:updated_time" content="2017-09-23T13:10:14&#43;05:30"/>
 
 
 
@@ -205,6 +205,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"><p>HostPath volumes and it&#39;s problems</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/mkcert-using-python-http-server/"><p>HTTPS during development using &#39;mkcert&#39;</p></a>
                     </li>
                 
@@ -220,10 +224,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/changing-k8s-ns/"><p>Change namespaces in Kubernetes</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/using-prometheus/"><p>Prometheus with existing application on OpenShift</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -237,6 +237,76 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/static-pods/">Static Pods using Kubelet on Fedora</a></h2>
+        
+        
+            <p>Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-09-23'>
+            September 23, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.
+This blog is only replacement of section Install the Standalone Kubelet in tutorial.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/static-pods/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -868,72 +938,6 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/blr-k8s-meetup-april-2017/">Bangalore Kubernetes Meetup April 2017</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-04-08'>
-            April 8, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Like many Saturday mornings, Red Hat Bangalore office was once again abuzz with enthusiasm on 8th of April, for hosting yet another successful chapter of Bangalore Kubernetes Meetup. The Meetup had a good turnaround of about 40 people who gave up on their early morning saturday sleep to attend it despite the sweltering hot season and in line were four awesome talks.
-Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/blr-k8s-meetup-april-2017/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesevent_report'>event_report</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1062,6 +1066,20 @@ Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-09-10'>
+                                    September 10, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/mkcert-using-python-http-server/">HTTPS during development using &#39;mkcert&#39;</a></h3>
                                 
                                     
@@ -1115,20 +1133,6 @@ Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/using-prometheus/">Prometheus with existing application on OpenShift</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-04-04'>
-                                    April 4, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1172,7 +1176,7 @@ Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">7</span>
+                                <span style="float:right;">8</span>
                             </header>
                         </article>
                     </li>
@@ -1217,6 +1221,15 @@ Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein
                         <article>
                             <header>
                                 <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/openshift/">openshift</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>
@@ -1325,15 +1338,6 @@ Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein
                         <article>
                             <header>
                                 <a href="/categories/monitoring/">monitoring</a>
-                                <span style="float:right;">1</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/openshift/">openshift</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
