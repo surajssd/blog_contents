@@ -354,7 +354,7 @@ web-66cdf67bbc-t9n7m   1/1       Running   0          28s
 Getting into the machine:
 
 ```bash
-# kubectl exec -it web-66cdf67bbc-t9n7m bash
+$ kubectl exec -it web-66cdf67bbc-t9n7m bash
 [root@web-66cdf67bbc-t9n7m /]#
 [root@web-66cdf67bbc-t9n7m /]# cd /web/
 [root@web-66cdf67bbc-t9n7m web]# ls
@@ -374,7 +374,7 @@ type=AVC msg=audit(1536648114.522:985): avc:  denied  { write } for  pid=15775 c
 
 Here simple SELinux has stopped the container from writing into places it shouldn't. Compared to `PodSecurityPolicy` (which is a beta feature in k8s 1.11), SELinux can help you right away if you are using older Kubernetes cluster and are on CentOS or RHEL.
 
-## References
+# References
 
 - [Multi node Kubernetes setup used here](https://github.com/kinvolk/kubernetes-the-hard-way-vagrant)
 - [Pod Security Policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)
