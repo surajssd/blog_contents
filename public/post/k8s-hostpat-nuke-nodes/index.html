@@ -54,7 +54,7 @@
 
 <meta itemprop="datePublished" content="2018-09-10T01:00:51&#43;05:30" />
 <meta itemprop="dateModified" content="2018-09-10T01:00:51&#43;05:30" />
-<meta itemprop="wordCount" content="1272">
+<meta itemprop="wordCount" content="1572">
 
 
 
@@ -320,7 +320,7 @@ if (!doNotTrack) {
             September 10, 2018</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>6 minute read</p>
+            <p>8 minute read</p>
         
         
     </div>
@@ -667,13 +667,65 @@ touch: cannot touch 'file.txt': Read-only file system
 
 <p>So this is really good feature you can use to stop someone from nuking your cluster.</p>
 
+<h1 id="stopping-this-attack-using-selinux">Stopping this attack using SELinux</h1>
+
+<p>Above setup of the Kubernetes cluster had a Ubuntu based machines, now I have a Kubernetes cluster that is setup on Fedora which supports <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/deployment_guide/ch-selinux">SELinux</a>.</p>
+
+<p>You can setup this cluster following steps in this <a href="https://suraj.io/post/single-node-k8s-fedora-selinux/">post</a>.</p>
+
+<p><strong>Note</strong>: This is a simple cluster setup without <code>PodSecurityPolicy</code>.</p>
+
+<p>Once you have the cluster running:</p>
+
+<pre><code class="language-bash">$ kubectl get nodes -o wide
+NAME      STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                    KERNEL-VERSION           CONTAINER-RUNTIME
+fedora    Ready     master    23m       v1.11.2   10.0.2.15     &lt;none&gt;        Fedora 28 (Cloud Edition)   4.16.3-301.fc28.x86_64   docker://1.13.1
+</code></pre>
+
+<p>Lets follow the same set of steps of creating the deployment:</p>
+
+<pre><code class="language-bash">$ kubectl apply -f deployment.yaml 
+deployment.apps/web created
+</code></pre>
+
+<p>The pod is created:</p>
+
+<pre><code class="language-bash">$ kubectl get pods
+NAME                   READY     STATUS    RESTARTS   AGE
+web-66cdf67bbc-t9n7m   1/1       Running   0          28s
+</code></pre>
+
+<p>Getting into the machine:</p>
+
+<pre><code class="language-bash"># kubectl exec -it web-66cdf67bbc-t9n7m bash
+[root@web-66cdf67bbc-t9n7m /]#
+[root@web-66cdf67bbc-t9n7m /]# cd /web/
+[root@web-66cdf67bbc-t9n7m web]# ls
+bin  boot  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  vagrant  var
+[root@web-66cdf67bbc-t9n7m web]# touch file.txt
+touch: cannot touch 'file.txt': Permission denied
+</code></pre>
+
+<p>As you can see if you go to the root of host which is mounted at <code>/web</code> and try to create new file, it fails. This event will be logged into the SELinux audit logs. On host if you run following you will see logs:</p>
+
+<pre><code class="language-bash"># ausearch -m avc
+----
+time-&gt;Tue Sep 11 06:41:54 2018
+type=AVC msg=audit(1536648114.522:985): avc:  denied  { write } for  pid=15775 comm=&quot;touch&quot; name=&quot;/&quot; dev=&quot;sda1&quot; ino=2 scontext=system_u:system_r:container_t:s0:c230,c784 tcontext=system_u:object_r:root_t:s0 tclass=dir permissive=0
+</code></pre>
+
+<p>Here simple SELinux has stopped the container from writing into places it shouldn&rsquo;t. Compared to <code>PodSecurityPolicy</code> (which is a beta feature in k8s 1.11), SELinux can help you right away if you are using older Kubernetes cluster and are on CentOS or RHEL.</p>
+
 <h2 id="references">References</h2>
 
 <ul>
+<li><a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant">Multi node Kubernetes setup used here</a></li>
 <li><a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/">Pod Security Policies</a></li>
 <li><a href="https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/#controlling-what-privileges-containers-run-with">Securing a Cluster</a></li>
 <li><a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath">hostPath volumes</a></li>
 <li><a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podsecuritypolicy">Enabling Admission controller</a></li>
+<li><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/security-enhanced_linux/sect-security-enhanced_linux-fixing_problems-searching_for_and_viewing_denials">SELinux denials</a></li>
+<li><a href="https://suraj.io/post/single-node-k8s-fedora-selinux/">Single node cluster with SELinux used here</a></li>
 </ul>
 
     </div>

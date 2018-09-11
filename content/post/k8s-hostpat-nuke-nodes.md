@@ -320,9 +320,66 @@ touch: cannot touch 'file.txt': Read-only file system
 So this is really good feature you can use to stop someone from nuking your cluster.
 
 
+# Stopping this attack using SELinux
+
+Above setup of the Kubernetes cluster had a Ubuntu based machines, now I have a Kubernetes cluster that is setup on Fedora which supports [SELinux](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/deployment_guide/ch-selinux).
+
+You can setup this cluster following steps in this [post](https://suraj.io/post/single-node-k8s-fedora-selinux/).
+
+**Note**: This is a simple cluster setup without `PodSecurityPolicy`.
+
+Once you have the cluster running:
+
+```bash
+$ kubectl get nodes -o wide
+NAME      STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                    KERNEL-VERSION           CONTAINER-RUNTIME
+fedora    Ready     master    23m       v1.11.2   10.0.2.15     <none>        Fedora 28 (Cloud Edition)   4.16.3-301.fc28.x86_64   docker://1.13.1
+```
+
+Lets follow the same set of steps of creating the deployment:
+
+```bash
+$ kubectl apply -f deployment.yaml 
+deployment.apps/web created
+```
+
+The pod is created:
+
+```bash
+$ kubectl get pods
+NAME                   READY     STATUS    RESTARTS   AGE
+web-66cdf67bbc-t9n7m   1/1       Running   0          28s
+```
+
+Getting into the machine:
+
+```bash
+# kubectl exec -it web-66cdf67bbc-t9n7m bash
+[root@web-66cdf67bbc-t9n7m /]#
+[root@web-66cdf67bbc-t9n7m /]# cd /web/
+[root@web-66cdf67bbc-t9n7m web]# ls
+bin  boot  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  vagrant  var
+[root@web-66cdf67bbc-t9n7m web]# touch file.txt
+touch: cannot touch 'file.txt': Permission denied
+```
+
+As you can see if you go to the root of host which is mounted at `/web` and try to create new file, it fails. This event will be logged into the SELinux audit logs. On host if you run following you will see logs:
+
+```bash
+# ausearch -m avc
+----
+time->Tue Sep 11 06:41:54 2018
+type=AVC msg=audit(1536648114.522:985): avc:  denied  { write } for  pid=15775 comm="touch" name="/" dev="sda1" ino=2 scontext=system_u:system_r:container_t:s0:c230,c784 tcontext=system_u:object_r:root_t:s0 tclass=dir permissive=0
+```
+
+Here simple SELinux has stopped the container from writing into places it shouldn't. Compared to `PodSecurityPolicy` (which is a beta feature in k8s 1.11), SELinux can help you right away if you are using older Kubernetes cluster and are on CentOS or RHEL.
+
 ## References
 
+- [Multi node Kubernetes setup used here](https://github.com/kinvolk/kubernetes-the-hard-way-vagrant)
 - [Pod Security Policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)
 - [Securing a Cluster](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/#controlling-what-privileges-containers-run-with)
 - [hostPath volumes](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath)
 - [Enabling Admission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podsecuritypolicy)
+- [SELinux denials](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/security-enhanced_linux/sect-security-enhanced_linux-fixing_problems-searching_for_and_viewing_denials)
+- [Single node cluster with SELinux used here](https://suraj.io/post/single-node-k8s-fedora-selinux/)
