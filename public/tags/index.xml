@@ -68,7 +68,7 @@
     <item>
       <title>Fedora</title>
       <link>https://suraj.io/tags/fedora/</link>
-      <pubDate>Mon, 18 Sep 2017 10:43:46 +0530</pubDate>
+      <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/tags/fedora/</guid>
       <description></description>
@@ -149,7 +149,7 @@
     <item>
       <title>Kubernetes</title>
       <link>https://suraj.io/tags/kubernetes/</link>
-      <pubDate>Mon, 10 Sep 2018 01:00:51 +0530</pubDate>
+      <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/tags/kubernetes/</guid>
       <description></description>
@@ -203,7 +203,7 @@
     <item>
       <title>Openshift</title>
       <link>https://suraj.io/tags/openshift/</link>
-      <pubDate>Mon, 10 Sep 2018 01:00:51 +0530</pubDate>
+      <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/tags/openshift/</guid>
       <description></description>
@@ -275,9 +275,18 @@
     <item>
       <title>Security</title>
       <link>https://suraj.io/tags/security/</link>
-      <pubDate>Mon, 10 Sep 2018 01:00:51 +0530</pubDate>
+      <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/tags/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Selinux</title>
+      <link>https://suraj.io/tags/selinux/</link>
+      <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/selinux/</guid>
       <description></description>
     </item>
     

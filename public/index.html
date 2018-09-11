@@ -33,7 +33,7 @@
 
 
 
-<meta property="og:updated_time" content="2018-09-10T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-09-11T01:00:51&#43;05:30"/>
 
 
 
@@ -204,6 +204,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/single-node-k8s-fedora-selinux/"><p>Single node Kubernetes Cluster on Fedora with SELinux enabled</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"><p>HostPath volumes and it&#39;s problems</p></a>
                     </li>
                 
@@ -217,10 +221,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/accessing-oc-cluster-up-etcd/"><p>Access etcd in OpenShift origin</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/changing-k8s-ns/"><p>Change namespaces in Kubernetes</p></a>
                     </li>
                 
             </ul>
@@ -237,10 +237,10 @@ if (!doNotTrack) {
     <header>
     <div class="title">
         
-            <h2><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h2>
+            <h2><a href="https://suraj.io/post/single-node-k8s-fedora-selinux/">Single node Kubernetes Cluster on Fedora with SELinux enabled</a></h2>
         
         
-            <p>Kubernetes HostPath volume good way to nuke your Kubernetes Nodes</p>
+            <p>Kubeadm to install Single Node K8S with SELinux</p>
         
     </div>
     <div class="meta">
@@ -249,11 +249,11 @@ if (!doNotTrack) {
         
 
         <time class="published"
-            datetime='2018-09-10'>
-            September 10, 2018</time>
+            datetime='2018-09-11'>
+            September 11, 2018</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>6 minute read</p>
+            <p>2 minute read</p>
         
         
     </div>
@@ -265,43 +265,43 @@ if (!doNotTrack) {
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f&text=HostPath%20volumes%20and%20it%27s%20problems&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&text=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f&title=HostPath%20volumes%20and%20it%27s%20problems" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&title=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f&title=HostPath%20volumes%20and%20it%27s%20problems" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&title=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f&title=HostPath%20volumes%20and%20it%27s%20problems" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&title=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -313,300 +313,119 @@ if (!doNotTrack) {
     <div id="content">
         
 
-<p>This post will demonstrate how Kubernetes <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"><code>HostPath</code></a> volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.</p>
+<p>Start a single node fedora machine, using whatever method but I have used <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/fedora/Vagrantfile">this Vagrantfile</a> to do it:</p>
 
-<p>I have a 3-master and 3-node cluster and setup using <a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant/blob/master/scripts/setup">this script</a>, running in a Vagrant environment.</p>
+<pre><code class="language-ruby"># -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure(&quot;2&quot;) do |config|
 
-<p>All the nodes are in ready state:</p>
+  config.vm.define &quot;fedora&quot; do |fedora|
+    fedora.vm.box = &quot;fedora/28-cloud-base&quot;
+    config.vm.hostname = &quot;fedora&quot;
+  end
 
-<pre><code class="language-bash">$ kubectl get nodes -o wide
-NAME       STATUS    ROLES     AGE       VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
-worker-0   Ready     &lt;none&gt;    24m       v1.11.2   192.168.199.20   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
-worker-1   Ready     &lt;none&gt;    23m       v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
-worker-2   Ready     &lt;none&gt;    21m       v1.11.2   192.168.199.22   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
+  config.vm.provider &quot;virtualbox&quot; do |virtualbox, override|
+    virtualbox.memory = 4096
+    virtualbox.cpus = 4
+  end
+
+  config.vm.provision &quot;shell&quot;, privileged: false, inline: &lt;&lt;-SHELL
+    echo '127.0.0.1 localhost' | cat - /etc/hosts &gt; temp &amp;&amp; sudo mv temp /etc/hosts
+  SHELL
+end
 </code></pre>
 
-<p>The deployment looks like this:</p>
+<p>Now start it and ssh into it:</p>
 
-<pre><code class="language-yaml">$ cat deployment.yaml 
-apiVersion: apps/v1beta1
-kind: Deployment
-metadata:
-  labels:
-    run: web
-  name: web
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      run: web
-  template:
-    metadata:
-      labels:
-        run: web
-    spec:
-      containers:
-      - image: centos/httpd
-        name: web
-        volumeMounts:
-        - mountPath: /web
-          name: test-volume
-      volumes:
-      - name: test-volume
-        hostPath:
-          path: /
+<pre><code class="language-bash">vagrant up
+vagrant ssh
 </code></pre>
 
-<p>Above you can see we are mounting <code>/</code> of the host inside pod at <code>/web</code>. This is our gateway to host&rsquo;s file system. Let&rsquo;s deploy this:</p>
+<p>Once inside the machine, become root user and run <a href="https://github.com/surajssd/scripts/blob/master/shell/k8s-install-single-node/install.sh">this script</a>:</p>
 
-<pre><code class="language-bash">$ kubectl apply -f deployment.yaml
-deployment.apps/web created
+<pre><code class="language-bash">sudo -i
+curl https://raw.githubusercontent.com/surajssd/scripts/master/shell/k8s-install-single-node/install.sh | sh
 </code></pre>
 
-<p>And now that pod has started:</p>
+<p>And you should have a running Kubernetes cluster.</p>
 
-<pre><code class="language-bash">$ kubectl get pods -o wide
-NAME                   READY     STATUS    RESTARTS   AGE       IP          NODE       NOMINATED NODE
-web-66cdf67bbc-44zhj   1/1       Running   0          4m        10.38.0.1   worker-2   &lt;none&gt;
+<h1 id="understanding-steps">Understanding steps</h1>
+
+<p>Install and start <code>docker</code>:</p>
+
+<pre><code class="language-bash">yum install -y docker
+systemctl enable docker &amp;&amp; systemctl start docker
 </code></pre>
 
-<p>Getting inside the pod and checking out the mounted directory:</p>
+<p>Install <code>kubelet</code> and start it:</p>
 
-<pre><code class="language-bash">$ kubectl exec -it web-66cdf67bbc-44zhj bash
-[root@web-66cdf67bbc-44zhj /]# cd /web
-[root@web-66cdf67bbc-44zhj web]# ls
-bin  boot  dev  etc  home  initrd.img  initrd.img.old  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  snap  srv  sys  tmp  usr  vagrant  var  vmlinuz  vmlinuz.old
+<pre><code class="language-bash">echo &quot;
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kube*
+&quot; | tee /etc/yum.repos.d/kubernetes.repo
+
+yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+systemctl enable kubelet &amp;&amp; systemctl start kubelet
 </code></pre>
 
-<p>Now we can either <code>chroot</code> into this and see the output of <code>ps</code>.</p>
+<p>Set SELinux contexts:</p>
 
-<pre><code class="language-bash">[root@web-66cdf67bbc-44zhj ~]# chroot /web
-# ps aufx
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root         2  0.0  0.0      0     0 ?        S    05:15   0:00 [kthreadd]
-root         4  0.0  0.0      0     0 ?        I&lt;   05:15   0:00  \_ [kworker/0:0H]
-root         6  0.0  0.0      0     0 ?        I&lt;   05:15   0:00  \_ [mm_percpu_wq]
-root         7  0.0  0.0      0     0 ?        S    05:15   0:00  \_ [ksoftirqd/0]
-root         8  0.0  0.0      0     0 ?        I    05:15   0:00  \_ [rcu_sched]
-root         9  0.0  0.0      0     0 ?        I    05:15   0:00  \_ [rcu_bh]
-root        10  0.0  0.0      0     0 ?        S    05:15   0:00  \_ [migration/0]
-root        11  0.0  0.0      0     0 ?        S    05:15   0:00  \_ [watchdog/0]
-root        12  0.0  0.0      0     0 ?        S    05:15   0:00  \_ [cpuhp/0]
+<pre><code class="language-bash"># for kubernetes files
+mkdir -p /etc/kubernetes/
+chcon -R -t svirt_sandbox_file_t /etc/kubernetes/
+
+# for etcd files
+mkdir -p /var/lib/etcd
+chcon -R -t svirt_sandbox_file_t /var/lib/etcd
 </code></pre>
 
-<p>Or you can just delete the entire <code>root</code>, a.k.a. nuking the node.</p>
+<p>Start <code>kubeadm</code>:</p>
 
-<pre><code class="language-bash"># rm -rf --no-preserve-root /
+<pre><code class="language-bash">kubeadm config images pull
+kubeadm init
 </code></pre>
 
-<p>Now if you look at the nodes:</p>
+<p>Set the <code>kubectl</code> context:</p>
 
-<pre><code class="language-bash">$ kubectl get nodes -o wide
-NAME       STATUS     ROLES     AGE       VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
-worker-0   Ready      &lt;none&gt;    30m       v1.11.2   192.168.199.20   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
-worker-1   Ready      &lt;none&gt;    29m       v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
-worker-2   NotReady   &lt;none&gt;    27m       v1.11.2   192.168.199.22   &lt;none&gt;        Unknown              4.15.0-33-generic   cri-o://Unknown
+<pre><code class="language-bash">mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
 </code></pre>
 
-<p>The last node <code>worker-2</code> is in <code>NotReady</code> state. We have successfully made one node unusable. Now that one node is gone your pod will be scheduled on another node, where you can do similar stuff.</p>
+<p>Install network, this step can be varied depending on which networking provider you want to install, here I have installed weave net. For other providers see <a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#pod-network">here</a>.</p>
 
-<pre><code class="language-bash">$ kubectl get pods -o wide
-NAME                   READY     STATUS    RESTARTS   AGE       IP          NODE       NOMINATED NODE
-web-66cdf67bbc-44zhj   0/1       Unknown   0          20m       10.38.0.1   worker-2   &lt;none&gt;
-web-66cdf67bbc-b22xn   1/1       Running   0          8m        10.32.0.2   worker-0   &lt;none&gt;
+<pre><code class="language-bash">kubectl apply -f &quot;https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')&quot;
 </code></pre>
 
-<p>As you can see above the pod is re-scheduled on node <code>worker-0</code>. And we can do same set of steps to make <code>worker-0</code> unusable.</p>
+<p>Also use <code>master</code> node as <code>worker</code> node.</p>
 
-<p>Deleting the deployment to cleanup.</p>
-
-<pre><code class="language-bash">$ kubectl delete deployment web
-deployment.extensions &quot;web&quot; deleted
+<pre><code class="language-bash">kubectl taint nodes --all node-role.kubernetes.io/master-
 </code></pre>
 
-<h1 id="stopping-this-attack-using-podsecuritypolicy">Stopping this attack using PodSecurityPolicy</h1>
+<p>Finally list nodes or wait until node is ready.</p>
 
-<p>Now as a cluster admin how can you prevent this from happening? You can create something called as <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/"><code>PodSecurityPolicy</code></a>. This let&rsquo;s you define what kind of pods be created. Or what permissions pod can request. Enable admission controller for this, read about it <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podsecuritypolicy">here</a>.</p>
-
-<p>Here is an example <code>PodSecurityPolicy</code>:</p>
-
-<pre><code class="language-yaml">$ cat podsecuritypolicy.yaml 
-apiVersion: policy/v1beta1
-kind: PodSecurityPolicy
-metadata:
-  name: example
-spec:
-  seLinux:
-    rule: RunAsAny
-  supplementalGroups:
-    rule: RunAsAny
-  runAsUser:
-    rule: RunAsAny
-  fsGroup:
-    rule: RunAsAny
-  volumes:
-  - '*'
-  privileged: false  # Don't allow privileged pods!
-  allowedHostPaths:
-  - pathPrefix: /foo
-    readOnly: true
+<pre><code class="language-bash">kubectl get nodes
 </code></pre>
 
-<p>In above example, we are restricting access to <code>hostPath</code> a pod can request. Here the path that is allowed is <code>/foo</code> and has <code>readOnly</code> access to the underlying file system.</p>
-
-<p>Create <code>PodSecurityPolicy</code> using above file:</p>
-
-<pre><code class="language-bash">$ kubectl apply -f podsecuritypolicy.yaml 
-podsecuritypolicy.policy/example created
-</code></pre>
-
-<p>To enable this policy we need to create few more objects, a <code>Role</code> and <code>RoleBinding</code>.</p>
-
-<p><code>Role</code>:</p>
-
-<pre><code class="language-yaml">$ cat role.yaml 
-kind: Role
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: authorize-hostpath
-rules:
-- apiGroups: ['policy']
-  resources: ['podsecuritypolicies']
-  verbs:     ['use']
-  resourceNames:
-  - example
-</code></pre>
-
-<p>This <code>Role</code> will allow usage of policy that we created above.</p>
-
-<p>Create <code>Role</code>:</p>
-
-<pre><code class="language-bash">$ kubectl apply -f role.yaml 
-role.rbac.authorization.k8s.io/authorize-hostpath created
-</code></pre>
-
-<p><code>RoleBinding</code>:</p>
-
-<pre><code class="language-yaml">$ cat rolebinding.yaml 
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: auth-hostpath
-roleRef:
-  kind: Role
-  name: authorize-hostpath
-  apiGroup: rbac.authorization.k8s.io
-subjects:
-
-# Authorize all service accounts in a namespace:
-- kind: Group
-  apiGroup: rbac.authorization.k8s.io
-  name: system:serviceaccounts
-</code></pre>
-
-<p>This <code>RoleBinding</code> will bind the <code>Role</code> above and all the <code>ServiceAccounts</code> in current namespace.</p>
-
-<p>Create <code>RoleBinding</code>:</p>
-
-<pre><code class="language-bash">$ kubectl create -f rolebinding.yaml 
-rolebinding.rbac.authorization.k8s.io/auth-hostpath created
-</code></pre>
-
-<p>Now that we have required permissions in place, try to re-create the <code>deployment</code>:</p>
-
-<pre><code class="language-bash">$ kubectl apply -f deployment.yaml 
-deployment.apps/web created
-</code></pre>
-
-<p>The pod is not created and in events you can see an error as <code>Error creating: pods &quot;web-66cdf67bbc-&quot; is forbidden: unable to validate against any pod security policy: [spec.volumes[0].hostPath.pathPrefix: Invalid value: &quot;/&quot;: is not allowed to be used]</code>:</p>
-
-<pre><code class="language-bash">$ kubectl get events 
-LAST SEEN   FIRST SEEN   COUNT     NAME                              KIND         SUBOBJECT   TYPE      REASON                    SOURCE                  MESSAGE
-...
-6s          17s          12        web-66cdf67bbc.15530e83fd4f8592   ReplicaSet               Warning   FailedCreate              replicaset-controller   Error creating: pods &quot;web-66cdf67bbc-&quot; is forbidden: unable to validate against any pod security policy: [spec.volumes[0].hostPath.pathPrefix: Invalid value: &quot;/&quot;: is not allowed to be used]
-</code></pre>
-
-<p>This error is due to the fact that we have allowed <code>hostPath</code> to be only under <code>/foo</code> and in the original file it is set to <code>/</code>.</p>
-
-<p>Now change in <code>deployment.yaml</code> file at path <code>deployment.spec.template.spec.volumes[0].hostPath.path</code> from <code>/</code> to <code>/foo</code> and apply again:</p>
-
-<pre><code class="language-bash">$ kubectl apply -f deployment.yaml 
-deployment.apps/web configured
-</code></pre>
-
-<p>You can see another error <code>Error creating: pods &quot;web-85cb548b47-&quot; is forbidden: unable to validate against any pod security policy: [spec.containers[0].volumeMounts[0].readOnly: Invalid value: false: must be read-only]</code>:</p>
-
-<pre><code class="language-bash">$ kubectl get events 
-LAST SEEN   FIRST SEEN   COUNT     NAME                              KIND         SUBOBJECT   TYPE      REASON                    SOURCE                  MESSAGE
-...
-5s          15s          12        web-85cb548b47.15530eb0c27c6122   ReplicaSet               Warning   FailedCreate              replicaset-controller   Error creating: pods &quot;web-85cb548b47-&quot; is forbidden: unable to validate against any pod security policy: [spec.containers[0].volumeMounts[0].readOnly: Invalid value: false: must be read-only]
-</code></pre>
-
-<p>This is because in the <code>volumeMount</code>&rsquo;s <code>readOnly</code> we have used in container has no value defined, which means it defaults to <code>false</code> and in <code>PodSecurityPolicy</code> we have defaulted the <code>hostPath</code> to be <code>readOnly</code>.</p>
-
-<p>So change <code>deployment.spec.template.spec.containers[0].volumeMounts[0].readOnly</code> to <code>true</code>. And manifest should look like following:</p>
-
-<pre><code class="language-yaml">$ cat deployment.yaml 
-apiVersion: apps/v1beta1
-kind: Deployment
-metadata:
-  labels:
-    run: web
-  name: web
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      run: web
-  template:
-    metadata:
-      labels:
-        run: web
-    spec:
-      containers:
-      - image: centos/httpd
-        name: web
-        volumeMounts:
-        - mountPath: /web
-          name: test-volume
-          readOnly: true
-      volumes:
-      - name: test-volume
-        hostPath:
-          path: /foo
-</code></pre>
-
-<p>Now if you re-deploy the app:</p>
-
-<pre><code class="language-bash">$ kubectl apply -f deployment.yaml 
-deployment.apps/web configured
-</code></pre>
-
-<p>The pod is scheduled and created:</p>
-
-<pre><code class="language-bash">$ kubectl get pods
-NAME                   READY     STATUS    RESTARTS   AGE
-web-7b77459d6b-kbqm8   1/1       Running   0          7s
-</code></pre>
-
-<p>Now if you exec into this pod and try to do something, you can see nothing happens:</p>
-
-<pre><code class="language-bash">$ kubectl exec -it web-7b77459d6b-kbqm8 bash
-[root@web-7b77459d6b-kbqm8 /]# cd /web/
-[root@web-7b77459d6b-kbqm8 web]# ls
-[root@web-7b77459d6b-kbqm8 web]# touch file.txt
-touch: cannot touch 'file.txt': Read-only file system
-</code></pre>
-
-<p>So this is really good feature you can use to stop someone from nuking your cluster.</p>
-
-<h2 id="references">References</h2>
+<h1 id="debugging-the-setup">Debugging the setup</h1>
 
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/">Pod Security Policies</a></li>
-<li><a href="https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/#controlling-what-privileges-containers-run-with">Securing a Cluster</a></li>
-<li><a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath">hostPath volumes</a></li>
-<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podsecuritypolicy">Enabling Admission controller</a></li>
+<li>You can see logs of <code>kubelet</code> by running <code>journalctl -f -u kubelet</code></li>
+<li>You can also see if there are any failing control plain containers by running <code>docker ps -a</code> and then check the logs of failed containers.</li>
+</ul>
+
+<h1 id="references">References</h1>
+
+<ul>
+<li><a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/">Install Kubeadm</a></li>
+<li><a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/">Start Kubeadm cluster</a></li>
+<li><a href="https://github.com/surajssd/scripts/blob/master/shell/k8s-install-single-node/install.sh">Installation script</a></li>
 </ul>
 
     </div>
@@ -639,7 +458,7 @@ touch: cannot touch 'file.txt': Read-only file system
     
         <li><a href='/categorieskubernetes'>kubernetes</a></li>
     
-        <li><a href='/categoriesopenshift'>openshift</a></li>
+        <li><a href='/categoriesselinux'>selinux</a></li>
     
 </ul>
 
@@ -647,8 +466,8 @@ touch: cannot touch 'file.txt': Read-only file system
 </article>
 <ul class="actions pagination">
     
-        <li><a href="https://suraj.io/post/mkcert-using-python-http-server/"
-                class="button big previous">HTTPS during development using &#39;mkcert&#39;</a></li>
+        <li><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"
+                class="button big previous">HostPath volumes and it&#39;s problems</a></li>
     
 
     
@@ -692,43 +511,43 @@ touch: cannot touch 'file.txt': Read-only file system
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f&text=HostPath%20volumes%20and%20it%27s%20problems&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&text=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f&title=HostPath%20volumes%20and%20it%27s%20problems" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&title=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f&title=HostPath%20volumes%20and%20it%27s%20problems" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&title=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f&title=HostPath%20volumes%20and%20it%27s%20problems" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&title=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fk8s-hostpat-nuke-nodes%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -852,6 +671,20 @@ touch: cannot touch 'file.txt': Read-only file system
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/single-node-k8s-fedora-selinux/">Single node Kubernetes Cluster on Fedora with SELinux enabled</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-09-11'>
+                                    September 11, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h3>
                                 
                                     
@@ -905,20 +738,6 @@ touch: cannot touch 'file.txt': Read-only file system
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/changing-k8s-ns/">Change namespaces in Kubernetes</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-07-02'>
-                                    July 2, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -952,7 +771,7 @@ touch: cannot touch 'file.txt': Read-only file system
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/notes/">notes</a>
+                                <a href="/categories/kubernetes/">kubernetes</a>
                                 <span style="float:right;">9</span>
                             </header>
                         </article>
@@ -961,8 +780,8 @@ touch: cannot touch 'file.txt': Read-only file system
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">8</span>
+                                <a href="/categories/notes/">notes</a>
+                                <span style="float:right;">9</span>
                             </header>
                         </article>
                     </li>
@@ -1142,6 +961,15 @@ touch: cannot touch 'file.txt': Read-only file system
                         <article>
                             <header>
                                 <a href="/categories/prometheus/">prometheus</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/selinux/">selinux</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

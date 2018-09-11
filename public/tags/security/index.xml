@@ -6,10 +6,20 @@
     <description>Recent content in Security on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Sep 2018 01:00:51 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 11 Sep 2018 01:00:51 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Single node Kubernetes Cluster on Fedora with SELinux enabled</title>
+      <link>https://suraj.io/post/single-node-k8s-fedora-selinux/</link>
+      <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/single-node-k8s-fedora-selinux/</guid>
+      <description>Start a single node fedora machine, using whatever method but I have used this Vagrantfile to do it:
+# -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(&amp;quot;2&amp;quot;) do |config| config.vm.define &amp;quot;fedora&amp;quot; do |fedora| fedora.vm.box = &amp;quot;fedora/28-cloud-base&amp;quot; config.vm.hostname = &amp;quot;fedora&amp;quot; end config.vm.provider &amp;quot;virtualbox&amp;quot; do |virtualbox, override| virtualbox.memory = 4096 virtualbox.cpus = 4 end config.vm.provision &amp;quot;shell&amp;quot;, privileged: false, inline: &amp;lt;&amp;lt;-SHELL echo &#39;127.0.0.1 localhost&#39; | cat - /etc/hosts &amp;gt; temp &amp;amp;&amp;amp; sudo mv temp /etc/hosts SHELL end  Now start it and ssh into it:</description>
+    </item>
     
     <item>
       <title>HostPath volumes and it&#39;s problems</title>
