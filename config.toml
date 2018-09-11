@@ -45,7 +45,7 @@ googleAnalytics = "UA-97006720-1"
 
     paragraph = "containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos"
 
-    about     = "I am a Software Engineer at Red Hat, working on various tooling around container technology like docker, kubernetes and OpenShift."
+    about     = "I am a Software Engineer at Kinvolk, working on various tooling around container technology like Docker, Kubernetes"
 
 # This will also appear on the sidebar.
 # A width of less than 100px is recommended
