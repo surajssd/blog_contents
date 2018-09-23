@@ -355,9 +355,9 @@ end
 
 <p>Let&rsquo;s go through this script and let me try to explain what each step does.</p>
 
-<p>You can skip <a href="https://github.com/surajssd/scripts/blob/c7f5688e94b62e68c46719508badc911ee8ba518/shell/add-node-to-k8s/add-node.sh#L50-L76">the part</a> where we are downloading tools, if you all the required binaries available, viz. <code>kubelet</code>, <code>kube-proxy</code>, <code>kubectl</code>, <code>cfssl</code>, <code>cni</code>, <code>runc</code>, etc.</p>
+<p>You can skip <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L50-L76">the part</a> where we are downloading tools, if you all the required binaries available, viz. <code>kubelet</code>, <code>kube-proxy</code>, <code>kubectl</code>, <code>cfssl</code>, <code>cni</code>, <code>runc</code>, etc.</p>
 
-<p>Once you all the tools available install them following <a href="https://github.com/surajssd/scripts/blob/c7f5688e94b62e68c46719508badc911ee8ba518/shell/add-node-to-k8s/add-node.sh#L78-L106">this section</a>:</p>
+<p>Once you all the tools available install them following <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L78-L106">this section</a>:</p>
 
 <pre><code class="language-bash"># install those tools
 mkdir -p \
@@ -402,7 +402,7 @@ mv -v cfssljson_linux-amd64 /usr/local/bin/cfssljson
 <li><code>/etc/systemd/system/kube-proxy.service</code></li>
 </ul>
 
-<p>Following steps here help you re-create them if you can&rsquo;t access those from other nodes, follow them from <a href="https://github.com/surajssd/scripts/blob/c7f5688e94b62e68c46719508badc911ee8ba518/shell/add-node-to-k8s/add-node.sh#L114-L186">here</a>:</p>
+<p>Following steps here help you re-create them if you can&rsquo;t access those from other nodes, follow them from <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L114-L186">here</a>:</p>
 
 <pre><code class="language-bash"># generate the 99-loopback.conf common for all the workers, can be copied
 cat &gt; 99-loopback.conf &lt;&lt;EOF

@@ -52,9 +52,9 @@ Now you can setup the node in one shot by running [this script](https://github.c
 
 Let's go through this script and let me try to explain what each step does.
 
-You can skip [the part](https://github.com/surajssd/scripts/blob/c7f5688e94b62e68c46719508badc911ee8ba518/shell/add-node-to-k8s/add-node.sh#L50-L76) where we are downloading tools, if you all the required binaries available, viz. `kubelet`, `kube-proxy`, `kubectl`, `cfssl`, `cni`, `runc`, etc.
+You can skip [the part](https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L50-L76) where we are downloading tools, if you all the required binaries available, viz. `kubelet`, `kube-proxy`, `kubectl`, `cfssl`, `cni`, `runc`, etc.
 
-Once you all the tools available install them following [this section](https://github.com/surajssd/scripts/blob/c7f5688e94b62e68c46719508badc911ee8ba518/shell/add-node-to-k8s/add-node.sh#L78-L106):
+Once you all the tools available install them following [this section](https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L78-L106):
 
 ```bash
 # install those tools
@@ -98,7 +98,7 @@ Some of the configuration are same as other nodes which can be copied from other
 - `/var/lib/kube-proxy/kubeconfig`
 - `/etc/systemd/system/kube-proxy.service`
 
-Following steps here help you re-create them if you can't access those from other nodes, follow them from [here](https://github.com/surajssd/scripts/blob/c7f5688e94b62e68c46719508badc911ee8ba518/shell/add-node-to-k8s/add-node.sh#L114-L186):
+Following steps here help you re-create them if you can't access those from other nodes, follow them from [here](https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L114-L186):
 
 ```bash
 # generate the 99-loopback.conf common for all the workers, can be copied
