@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suraj.io/post/add-new-k8s-node-manually/</loc>
+    <lastmod>2018-09-23T01:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suraj.io/post/single-node-k8s-fedora-selinux/</loc>
     <lastmod>2018-09-11T01:00:51+05:30</lastmod>
   </url>
@@ -326,13 +331,13 @@
   
   <url>
     <loc>https://suraj.io/tags/kubernetes/</loc>
-    <lastmod>2018-09-11T01:00:51+05:30</lastmod>
+    <lastmod>2018-09-23T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/kubernetes/</loc>
-    <lastmod>2018-09-11T01:00:51+05:30</lastmod>
+    <lastmod>2018-09-23T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -368,7 +373,7 @@
   
   <url>
     <loc>https://suraj.io/tags/notes/</loc>
-    <lastmod>2018-08-12T01:00:51+05:30</lastmod>
+    <lastmod>2018-09-23T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -386,13 +391,13 @@
   
   <url>
     <loc>https://suraj.io/tags/openshift/</loc>
-    <lastmod>2018-09-11T01:00:51+05:30</lastmod>
+    <lastmod>2018-09-23T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/openshift/</loc>
-    <lastmod>2018-09-10T01:00:51+05:30</lastmod>
+    <lastmod>2018-09-23T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -404,7 +409,7 @@
   
   <url>
     <loc>https://suraj.io/post/</loc>
-    <lastmod>2018-09-11T01:00:51+05:30</lastmod>
+    <lastmod>2018-09-23T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -488,7 +493,7 @@
   
   <url>
     <loc>https://suraj.io/</loc>
-    <lastmod>2018-09-11T01:00:51+05:30</lastmod>
+    <lastmod>2018-09-23T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   

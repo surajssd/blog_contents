@@ -1,0 +1,1339 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Adding new worker to existing Kubernetes cluster</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.47-DEV" />
+        
+
+
+        
+            <meta name="author" content="Suraj Deshmukh">
+        
+        
+            <meta name="description" content="Step by step guide to add new node">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Adding new worker to existing Kubernetes cluster"/>
+<meta name="twitter:description" content="Step by step guide to add new node"/>
+<meta name="twitter:site" content="@surajd_"/>
+
+        <meta property="og:title" content="Adding new worker to existing Kubernetes cluster" />
+<meta property="og:description" content="Step by step guide to add new node" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suraj.io/post/add-new-k8s-node-manually/" />
+
+
+
+<meta property="article:published_time" content="2018-09-23T01:00:51&#43;05:30"/>
+
+<meta property="article:modified_time" content="2018-09-23T01:00:51&#43;05:30"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Adding new worker to existing Kubernetes cluster">
+<meta itemprop="description" content="Step by step guide to add new node">
+
+
+<meta itemprop="datePublished" content="2018-09-23T01:00:51&#43;05:30" />
+<meta itemprop="dateModified" content="2018-09-23T01:00:51&#43;05:30" />
+<meta itemprop="wordCount" content="1004">
+
+
+
+<meta itemprop="keywords" content="kubernetes,openshift,notes," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="/css/google-font.css" />
+            <link rel="stylesheet" href="/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+            <link rel="stylesheet" href="/css/add-on.css" />
+            <link rel="stylesheet" href="/css/monokai-sublime.css">
+        
+
+        
+
+        
+        
+        
+            
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-97006720-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h2><a href="/">Suraj Deshmukh</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories">
+                        Categories
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about">
+                        About
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:https://suraj.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:https://suraj.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            <h3>
+                                
+                                About
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="https://suraj.io/post/add-new-k8s-node-manually/"><p>Adding new worker to existing Kubernetes cluster</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/single-node-k8s-fedora-selinux/"><p>Single node Kubernetes Cluster on Fedora with SELinux enabled</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"><p>HostPath volumes and it&#39;s problems</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/mkcert-using-python-http-server/"><p>HTTPS during development using &#39;mkcert&#39;</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/golang-struct-tags-space/"><p>Golang struct tags gotchas</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&text=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h1><a href="https://suraj.io/post/add-new-k8s-node-manually/">Adding new worker to existing Kubernetes cluster</a></h1>
+            
+        
+        
+            <p>Step by step guide to add new node</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-09-23'>
+            September 23, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>5 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&text=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+
+    <div id="content">
+        
+
+<p>To setup a multi-node Kubernetes cluster just run <a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant#single-script">this script</a> and you will have a cluster with 3 masters and 3 workers.</p>
+
+<pre><code class="language-bash">$ kubectl get nodes -o wide
+NAME       STATUS    ROLES     AGE       VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+worker-0   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.20   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
+worker-1   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
+worker-2   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.22   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
+</code></pre>
+
+<p>Now to add a new node to this cluster you will need to bring up a VM, for this just use following <code>Vagrantfile</code>.</p>
+
+<pre><code class="language-bash">$ cat Vagrantfile 
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure(&quot;2&quot;) do |config|
+
+  config.vm.define &quot;ubuntu&quot; do |ubuntu|
+    ubuntu.vm.box = &quot;ubuntu/bionic64&quot;
+    config.vm.hostname = &quot;ubuntu&quot;
+    ubuntu.vm.network &quot;private_network&quot;, ip: &quot;192.168.199.23&quot;
+  end
+
+  config.vm.provider &quot;virtualbox&quot; do |virtualbox, override|
+    virtualbox.memory = 3000
+    virtualbox.cpus = 3
+  end
+end
+</code></pre>
+
+<p><strong>Note</strong>: This machine I have given IP address which is in the same subnet as other workers.</p>
+
+<p>Bring up this machine using:</p>
+
+<pre><code class="language-bash">vagrant up
+</code></pre>
+
+<p>Now you can setup the node in one shot by running <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh">this script</a>.</p>
+
+<h1 id="download-and-install-binaries">Download and install binaries</h1>
+
+<p>Let&rsquo;s go through this script and let me try to explain what each step does.</p>
+
+<p>You can skip <a href="https://github.com/surajssd/scripts/blob/c7f5688e94b62e68c46719508badc911ee8ba518/shell/add-node-to-k8s/add-node.sh#L50-L76">the part</a> where we are downloading tools, if you all the required binaries available, viz. <code>kubelet</code>, <code>kube-proxy</code>, <code>kubectl</code>, <code>cfssl</code>, <code>cni</code>, <code>runc</code>, etc.</p>
+
+<p>Once you all the tools available install them following <a href="https://github.com/surajssd/scripts/blob/c7f5688e94b62e68c46719508badc911ee8ba518/shell/add-node-to-k8s/add-node.sh#L78-L106">this section</a>:</p>
+
+<pre><code class="language-bash"># install those tools
+mkdir -p \
+  /etc/containers \
+  /etc/cni/net.d \
+  /etc/crio \
+  /opt/cni/bin \
+  /usr/local/libexec/crio \
+  /var/lib/kubelet \
+  /var/lib/kube-proxy \
+  /var/lib/kubernetes \
+  /var/run/kubernetes
+
+tar -xvf cni-plugins-amd64-v0.6.0.tgz -C /opt/cni/bin/
+
+cp runc /usr/local/bin/
+cp {crio,kube-proxy,kubelet,kubectl} /usr/local/bin/
+cp {conmon,pause} /usr/local/libexec/crio/
+cp {crio.conf,seccomp.json} /etc/crio/
+cp policy.json /etc/containers/
+
+curl -sSL \
+  -O &quot;https://pkg.cfssl.org/${cfssl_version}/cfssl_linux-amd64&quot; \
+  -O &quot;https://pkg.cfssl.org/${cfssl_version}/cfssljson_linux-amd64&quot;
+
+chmod +x cfssl_linux-amd64 cfssljson_linux-amd64
+mv -v cfssl_linux-amd64 /usr/local/bin/cfssl
+mv -v cfssljson_linux-amd64 /usr/local/bin/cfssljson
+</code></pre>
+
+<h1 id="generating-configurations">Generating configurations</h1>
+
+<p>Now that all the required tools are installed. Let&rsquo;s create the configuration that we need to make sure these tools work fine. But before that you will need the <code>ca.pem</code>, <code>ca-key.pem</code> &amp; <code>ca-config.json</code> used for createing configs for <code>master</code> nodes.</p>
+
+<h3 id="configuration-shared-by-all-workers">Configuration shared by all workers</h3>
+
+<p>Some of the configuration are same as other nodes which can be copied from other nodes. This includes following:</p>
+
+<ul>
+<li><code>/etc/cni/net.d/99-loopback.conf</code></li>
+<li><code>/var/lib/kube-proxy/kubeconfig</code></li>
+<li><code>/etc/systemd/system/kube-proxy.service</code></li>
+</ul>
+
+<p>Following steps here help you re-create them if you can&rsquo;t access those from other nodes, follow them from <a href="https://github.com/surajssd/scripts/blob/c7f5688e94b62e68c46719508badc911ee8ba518/shell/add-node-to-k8s/add-node.sh#L114-L186">here</a>:</p>
+
+<pre><code class="language-bash"># generate the 99-loopback.conf common for all the workers, can be copied
+cat &gt; 99-loopback.conf &lt;&lt;EOF
+{
+    &quot;cniVersion&quot;: &quot;0.3.1&quot;,
+    &quot;type&quot;: &quot;loopback&quot;
+}
+EOF
+
+# generate the kube-proxy cert common for all the workers, can be copied
+cat &gt; kube-proxy-csr.json &lt;&lt;EOF
+{
+  &quot;CN&quot;: &quot;system:kube-proxy&quot;,
+  &quot;key&quot;: {
+    &quot;algo&quot;: &quot;rsa&quot;,
+    &quot;size&quot;: 2048
+  },
+  &quot;names&quot;: [
+    {
+      &quot;C&quot;: &quot;US&quot;,
+      &quot;L&quot;: &quot;Portland&quot;,
+      &quot;O&quot;: &quot;system:node-proxier&quot;,
+      &quot;OU&quot;: &quot;Kubernetes The Hard Way&quot;,
+      &quot;ST&quot;: &quot;Oregon&quot;
+    }
+  ]
+}
+EOF
+
+
+cfssl gencert \
+  -ca=${capem} \
+  -ca-key=${cakeypem} \
+  -config=${caconfig} \
+  -profile=kubernetes \
+  kube-proxy-csr.json | cfssljson -bare kube-proxy
+
+
+kubectl config set-cluster kubernetes-the-hard-way \
+  --certificate-authority=${capem} \
+  --embed-certs=true \
+  --server=https://192.168.199.10:6443 \
+  --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
+
+
+kubectl config set-credentials kube-proxy \
+  --client-certificate=&quot;kube-proxy.pem&quot; \
+  --client-key=&quot;kube-proxy-key.pem&quot; \
+  --embed-certs=true \
+  --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
+
+
+kubectl config set-context default \
+  --cluster=kubernetes-the-hard-way \
+  --user=kube-proxy \
+  --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
+
+
+kubectl config use-context default --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
+
+
+# generate the kube-proxy.service common for all the workers, can be copied
+cat &gt; kube-proxy.service &lt;&lt;EOF
+[Unit]
+Description=Kubernetes Kube Proxy
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+
+[Service]
+ExecStart=/usr/local/bin/kube-proxy \\
+  --cluster-cidr=10.200.0.0/16 \\
+  --kubeconfig=/var/lib/kube-proxy/kubeconfig \\
+  --proxy-mode=iptables \\
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre>
+
+<h3 id="configuration-specific-to-workers">Configuration specific to workers</h3>
+
+<ul>
+<li>The <code>cri-o</code> daemon&rsquo;s systemd service file.</li>
+</ul>
+
+<pre><code class="language-bash"># generate the service file for the crio daemon, specific to node
+cat &gt; ${hostname}-crio.service &lt;&lt;EOF
+[Unit]
+Description=CRI-O daemon
+Documentation=https://github.com/kubernetes-incubator/cri-o
+
+[Service]
+ExecStart=/usr/local/bin/crio --stream-address ${ipaddr} --runtime /usr/local/bin/runc --registry docker.io
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre>
+
+<p>Here IP address the daemon should bing to is to be specified and the only change.</p>
+
+<ul>
+<li>Generating <code>csr</code> file:</li>
+</ul>
+
+<pre><code class="language-bash"># generate the worker certs, specific to node
+cat &gt; ${hostname}-csr.json &lt;&lt;EOF
+{
+  &quot;CN&quot;: &quot;system:node:${hostname}&quot;,
+  &quot;key&quot;: {
+    &quot;algo&quot;: &quot;rsa&quot;,
+    &quot;size&quot;: 2048
+  },
+  &quot;names&quot;: [
+    {
+      &quot;C&quot;: &quot;US&quot;,
+      &quot;L&quot;: &quot;Portland&quot;,
+      &quot;O&quot;: &quot;system:nodes&quot;,
+      &quot;OU&quot;: &quot;Kubernetes The Hard Way&quot;,
+      &quot;ST&quot;: &quot;Oregon&quot;
+    }
+  ]
+}
+EOF
+</code></pre>
+
+<p>Make sure that the <code>CN</code> field in <code>csr</code> is of the format <code>system:node:&lt;hostname&gt;</code>, because this is used to register the name of the <code>worker</code> with <code>master</code>. This is the only changed field from other <code>worker</code> nodes.</p>
+
+<ul>
+<li>Generate <code>certs</code> and <code>kubeconfig</code>:</li>
+</ul>
+
+<pre><code class="language-bash">cfssl gencert \
+  -ca=${capem} \
+  -ca-key=${cakeypem} \
+  -config=${caconfig} \
+  -hostname=&quot;${hostname},${ipaddr}&quot; \
+  -profile=kubernetes \
+  &quot;${hostname}-csr.json&quot; | cfssljson -bare &quot;${hostname}&quot;
+
+# generate kubeconfig specific to the node
+kubectl config set-cluster kubernetes-the-hard-way \
+  --certificate-authority=${capem} \
+  --embed-certs=true \
+  --server=https://192.168.199.40:6443 \
+  --kubeconfig=&quot;${hostname}.kubeconfig&quot;
+
+
+kubectl config set-credentials system:node:${hostname} \
+  --client-certificate=&quot;${hostname}.pem&quot; \
+  --client-key=&quot;${hostname}-key.pem&quot; \
+  --embed-certs=true \
+  --kubeconfig=&quot;${hostname}.kubeconfig&quot;
+
+
+kubectl config set-context default \
+  --cluster=kubernetes-the-hard-way \
+  --user=system:node:${hostname} \
+  --kubeconfig=&quot;${hostname}.kubeconfig&quot;
+
+
+kubectl config use-context default --kubeconfig=&quot;${hostname}.kubeconfig&quot;
+</code></pre>
+
+<ul>
+<li>Now create <code>kubelet</code> systemd service file:</li>
+</ul>
+
+<pre><code class="language-bash">cat &gt; ${hostname}-kubelet.service &lt;&lt;EOF
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=crio.service
+Requires=crio.service
+
+[Service]
+ExecStart=/usr/local/bin/kubelet \\
+  --anonymous-auth=false \\
+  --authorization-mode=Webhook \\
+  --client-ca-file=/var/lib/kubernetes/ca.pem \\
+  --allow-privileged=true \\
+  --cluster-dns=10.32.0.10 \\
+  --cluster-domain=cluster.local \\
+  --container-runtime=remote \\
+  --container-runtime-endpoint=unix:///var/run/crio/crio.sock \\
+  --image-pull-progress-deadline=2m \\
+  --image-service-endpoint=unix:///var/run/crio/crio.sock \\
+  --kubeconfig=/var/lib/kubelet/kubeconfig \\
+  --network-plugin=cni \\
+  --register-node=true \\
+  --runtime-request-timeout=10m \\
+  --tls-cert-file=/var/lib/kubelet/${hostname}.pem \\
+  --tls-private-key-file=/var/lib/kubelet/${hostname}-key.pem \\
+  --node-ip=${ipaddr} \\
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre>
+
+<p>In above service file the things that changes are two flags: <code>--tls-cert-file</code> and <code>--tls-private-key-file</code>. And another flag value that is different from other nodes is <code>--node-ip</code>. Rest everything is same with other nodes. So just change the path to point to the right cert file and key file.</p>
+
+<h1 id="install-configurations">Install configurations</h1>
+
+<p>Once all those configs are generated, copy all those to the appropriate location.</p>
+
+<pre><code class="language-bash"># install above generated config
+cp 99-loopback.conf /etc/cni/net.d
+cp kube-proxy.kubeconfig /var/lib/kube-proxy/kubeconfig
+cp kube-proxy.service /etc/systemd/system/
+
+cp &quot;${hostname}-crio.service&quot; /etc/systemd/system/crio.service
+cp ${capem} /var/lib/kubernetes/
+cp &quot;${hostname}.pem&quot; &quot;${hostname}-key.pem&quot; /var/lib/kubelet
+cp &quot;${hostname}.kubeconfig&quot; /var/lib/kubelet/kubeconfig
+cp &quot;${hostname}-kubelet.service&quot; /etc/systemd/system/kubelet.service
+</code></pre>
+
+<h1 id="start-processes">Start processes</h1>
+
+<p>Now that all binaries and configs are in place, just restart the processes:</p>
+
+<pre><code class="language-bash">systemctl daemon-reload
+systemctl enable crio kubelet kube-proxy
+systemctl start crio kubelet kube-proxy
+</code></pre>
+
+<h1 id="check-nodes">Check nodes</h1>
+
+<pre><code class="language-bash">$ kubectl get nodes -o wide
+NAME       STATUS    ROLES     AGE       VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+ubuntu     Ready     &lt;none&gt;    5m        v1.11.2   192.168.199.23   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
+worker-0   Ready     &lt;none&gt;    40m       v1.11.2   192.168.199.20   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
+worker-1   Ready     &lt;none&gt;    39m       v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
+worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
+</code></pre>
+
+<p>Node has been added successfully.</p>
+
+    </div>
+
+    <footer>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+        <li><a href='/categoriesopenshift'>openshift</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="https://suraj.io/post/single-node-k8s-fedora-selinux/"
+                class="button big previous">Single node Kubernetes Cluster on Fedora with SELinux enabled</a></li>
+    
+
+    
+</ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="https://github.com/surajssd.png" alt="Suraj" /></a>
+                
+            
+            
+                <header>
+                    <h2>Blog</h2>
+                    <p>containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos</p>
+                </header>
+            
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/surajssd" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" title="YouTube" class="fa fa-youtube"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" title="WordPress" class="fa fa-wordpress"></a></li>
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" title="SlideShare" class="fa fa-slideshare"></a></li>
+
+
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" title="Stack Overflow" class="fa fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/add-new-k8s-node-manually/">Adding new worker to existing Kubernetes cluster</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-09-23'>
+                                    September 23, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/single-node-k8s-fedora-selinux/">Single node Kubernetes Cluster on Fedora with SELinux enabled</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-09-11'>
+                                    September 11, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-09-10'>
+                                    September 10, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/mkcert-using-python-http-server/">HTTPS during development using &#39;mkcert&#39;</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-08-14'>
+                                    August 14, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/golang-struct-tags-space/">Golang struct tags gotchas</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-08-12'>
+                                    August 12, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                "/post/"
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kubernetes/">kubernetes</a>
+                                <span style="float:right;">10</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/notes/">notes</a>
+                                <span style="float:right;">9</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/event_report/">event_report</a>
+                                <span style="float:right;">4</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/golang/">golang</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kompose/">kompose</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/openshift/">openshift</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/packaging/">packaging</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/programming/">programming</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/centos/">centos</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/certs/">certs</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/cmd-line/">cmd-line</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/container/">container</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/etcd/">etcd</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/fedora/">fedora</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/gaming/">gaming</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/git/">git</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/https/">https</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/minikube/">minikube</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/monitoring/">monitoring</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/project_management/">project_management</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/prometheus/">prometheus</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/selinux/">selinux</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/vagrant/">vagrant</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+        <section class="blurb">
+            <h2>About</h2>
+            <p>I am a Software Engineer at Kinvolk, working on various tooling around container technology like Docker, Kubernetes</p>
+
+            <ul class="actions">
+                <li><a href="/about/" class="button">Learn More</a></li>
+            </ul>
+        </section>
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/surajssd" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" title="YouTube" class="fa fa-youtube"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" title="WordPress" class="fa fa-wordpress"></a></li>
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" title="SlideShare" class="fa fa-slideshare"></a></li>
+
+
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" title="Stack Overflow" class="fa fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Suraj Deshmukh. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/skel.min.js"></script>
+            <script src="/js/util.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/backToTop.js"></script>
+            <script src="/js/highlight.pack.js"></script>
+        
+
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

@@ -33,7 +33,7 @@
 
 
 
-<meta property="og:updated_time" content="2018-09-11T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-09-23T01:00:51&#43;05:30"/>
 
 
 
@@ -204,6 +204,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/add-new-k8s-node-manually/"><p>Adding new worker to existing Kubernetes cluster</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/single-node-k8s-fedora-selinux/"><p>Single node Kubernetes Cluster on Fedora with SELinux enabled</p></a>
                     </li>
                 
@@ -217,10 +221,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/golang-struct-tags-space/"><p>Golang struct tags gotchas</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/accessing-oc-cluster-up-etcd/"><p>Access etcd in OpenShift origin</p></a>
                     </li>
                 
             </ul>
@@ -237,10 +237,10 @@ if (!doNotTrack) {
     <header>
     <div class="title">
         
-            <h2><a href="https://suraj.io/post/single-node-k8s-fedora-selinux/">Single node Kubernetes Cluster on Fedora with SELinux enabled</a></h2>
+            <h2><a href="https://suraj.io/post/add-new-k8s-node-manually/">Adding new worker to existing Kubernetes cluster</a></h2>
         
         
-            <p>Kubeadm to install Single Node K8S with SELinux</p>
+            <p>Step by step guide to add new node</p>
         
     </div>
     <div class="meta">
@@ -249,11 +249,11 @@ if (!doNotTrack) {
         
 
         <time class="published"
-            datetime='2018-09-11'>
-            September 11, 2018</time>
+            datetime='2018-09-23'>
+            September 23, 2018</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>2 minute read</p>
+            <p>5 minute read</p>
         
         
     </div>
@@ -265,43 +265,43 @@ if (!doNotTrack) {
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&text=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&text=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&title=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&title=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&title=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -313,120 +313,341 @@ if (!doNotTrack) {
     <div id="content">
         
 
-<p>Start a single node fedora machine, using whatever method but I have used <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/fedora/Vagrantfile">this Vagrantfile</a> to do it:</p>
+<p>To setup a multi-node Kubernetes cluster just run <a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant#single-script">this script</a> and you will have a cluster with 3 masters and 3 workers.</p>
 
-<pre><code class="language-ruby"># -*- mode: ruby -*-
+<pre><code class="language-bash">$ kubectl get nodes -o wide
+NAME       STATUS    ROLES     AGE       VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+worker-0   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.20   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
+worker-1   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
+worker-2   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.22   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
+</code></pre>
+
+<p>Now to add a new node to this cluster you will need to bring up a VM, for this just use following <code>Vagrantfile</code>.</p>
+
+<pre><code class="language-bash">$ cat Vagrantfile 
+# -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant.configure(&quot;2&quot;) do |config|
 
-  config.vm.define &quot;fedora&quot; do |fedora|
-    fedora.vm.box = &quot;fedora/28-cloud-base&quot;
-    config.vm.hostname = &quot;fedora&quot;
+  config.vm.define &quot;ubuntu&quot; do |ubuntu|
+    ubuntu.vm.box = &quot;ubuntu/bionic64&quot;
+    config.vm.hostname = &quot;ubuntu&quot;
+    ubuntu.vm.network &quot;private_network&quot;, ip: &quot;192.168.199.23&quot;
   end
 
   config.vm.provider &quot;virtualbox&quot; do |virtualbox, override|
-    virtualbox.memory = 4096
-    virtualbox.cpus = 4
+    virtualbox.memory = 3000
+    virtualbox.cpus = 3
   end
-
-  config.vm.provision &quot;shell&quot;, privileged: false, inline: &lt;&lt;-SHELL
-    echo '127.0.0.1 localhost' | cat - /etc/hosts &gt; temp &amp;&amp; sudo mv temp /etc/hosts
-  SHELL
 end
 </code></pre>
 
-<p>Now start it and ssh into it:</p>
+<p><strong>Note</strong>: This machine I have given IP address which is in the same subnet as other workers.</p>
+
+<p>Bring up this machine using:</p>
 
 <pre><code class="language-bash">vagrant up
-vagrant ssh
 </code></pre>
 
-<p>Once inside the machine, become root user and run <a href="https://github.com/surajssd/scripts/blob/master/shell/k8s-install-single-node/install.sh">this script</a>:</p>
+<p>Now you can setup the node in one shot by running <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh">this script</a>.</p>
 
-<pre><code class="language-bash">sudo -i
-curl https://raw.githubusercontent.com/surajssd/scripts/master/shell/k8s-install-single-node/install.sh | sh
+<h1 id="download-and-install-binaries">Download and install binaries</h1>
+
+<p>Let&rsquo;s go through this script and let me try to explain what each step does.</p>
+
+<p>You can skip <a href="https://github.com/surajssd/scripts/blob/c7f5688e94b62e68c46719508badc911ee8ba518/shell/add-node-to-k8s/add-node.sh#L50-L76">the part</a> where we are downloading tools, if you all the required binaries available, viz. <code>kubelet</code>, <code>kube-proxy</code>, <code>kubectl</code>, <code>cfssl</code>, <code>cni</code>, <code>runc</code>, etc.</p>
+
+<p>Once you all the tools available install them following <a href="https://github.com/surajssd/scripts/blob/c7f5688e94b62e68c46719508badc911ee8ba518/shell/add-node-to-k8s/add-node.sh#L78-L106">this section</a>:</p>
+
+<pre><code class="language-bash"># install those tools
+mkdir -p \
+  /etc/containers \
+  /etc/cni/net.d \
+  /etc/crio \
+  /opt/cni/bin \
+  /usr/local/libexec/crio \
+  /var/lib/kubelet \
+  /var/lib/kube-proxy \
+  /var/lib/kubernetes \
+  /var/run/kubernetes
+
+tar -xvf cni-plugins-amd64-v0.6.0.tgz -C /opt/cni/bin/
+
+cp runc /usr/local/bin/
+cp {crio,kube-proxy,kubelet,kubectl} /usr/local/bin/
+cp {conmon,pause} /usr/local/libexec/crio/
+cp {crio.conf,seccomp.json} /etc/crio/
+cp policy.json /etc/containers/
+
+curl -sSL \
+  -O &quot;https://pkg.cfssl.org/${cfssl_version}/cfssl_linux-amd64&quot; \
+  -O &quot;https://pkg.cfssl.org/${cfssl_version}/cfssljson_linux-amd64&quot;
+
+chmod +x cfssl_linux-amd64 cfssljson_linux-amd64
+mv -v cfssl_linux-amd64 /usr/local/bin/cfssl
+mv -v cfssljson_linux-amd64 /usr/local/bin/cfssljson
 </code></pre>
 
-<p>And you should have a running Kubernetes cluster.</p>
+<h1 id="generating-configurations">Generating configurations</h1>
 
-<h1 id="understanding-steps">Understanding steps</h1>
+<p>Now that all the required tools are installed. Let&rsquo;s create the configuration that we need to make sure these tools work fine. But before that you will need the <code>ca.pem</code>, <code>ca-key.pem</code> &amp; <code>ca-config.json</code> used for createing configs for <code>master</code> nodes.</p>
 
-<p>Install and start <code>docker</code>:</p>
+<h3 id="configuration-shared-by-all-workers">Configuration shared by all workers</h3>
 
-<pre><code class="language-bash">yum install -y docker
-systemctl enable docker &amp;&amp; systemctl start docker
-</code></pre>
-
-<p>Install <code>kubelet</code> and start it:</p>
-
-<pre><code class="language-bash">echo &quot;
-[kubernetes]
-name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
-enabled=1
-gpgcheck=1
-repo_gpgcheck=1
-gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-exclude=kube*
-&quot; | tee /etc/yum.repos.d/kubernetes.repo
-
-yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
-systemctl enable kubelet &amp;&amp; systemctl start kubelet
-</code></pre>
-
-<p>Set SELinux contexts:</p>
-
-<pre><code class="language-bash"># for kubernetes files
-mkdir -p /etc/kubernetes/
-chcon -R -t svirt_sandbox_file_t /etc/kubernetes/
-
-# for etcd files
-mkdir -p /var/lib/etcd
-chcon -R -t svirt_sandbox_file_t /var/lib/etcd
-</code></pre>
-
-<p>Start <code>kubeadm</code>:</p>
-
-<pre><code class="language-bash">kubeadm config images pull
-kubeadm init
-</code></pre>
-
-<p>Set the <code>kubectl</code> context:</p>
-
-<pre><code class="language-bash">mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-</code></pre>
-
-<p>Install network, this step can be varied depending on which networking provider you want to install, here I have installed weave net. For other providers see <a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#pod-network">here</a>.</p>
-
-<pre><code class="language-bash">kubectl apply -f &quot;https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')&quot;
-</code></pre>
-
-<p>Also use <code>master</code> node as <code>worker</code> node.</p>
-
-<pre><code class="language-bash">kubectl taint nodes --all node-role.kubernetes.io/master-
-</code></pre>
-
-<p>Finally list nodes or wait until node is ready.</p>
-
-<pre><code class="language-bash">kubectl get nodes
-</code></pre>
-
-<h1 id="debugging-the-setup">Debugging the setup</h1>
+<p>Some of the configuration are same as other nodes which can be copied from other nodes. This includes following:</p>
 
 <ul>
-<li>You can see logs of <code>kubelet</code> by running <code>journalctl -f -u kubelet</code></li>
-<li>You can also see if there are any failing control plain containers by running <code>docker ps -a</code> and then check the logs of failed containers.</li>
+<li><code>/etc/cni/net.d/99-loopback.conf</code></li>
+<li><code>/var/lib/kube-proxy/kubeconfig</code></li>
+<li><code>/etc/systemd/system/kube-proxy.service</code></li>
 </ul>
 
-<h1 id="references">References</h1>
+<p>Following steps here help you re-create them if you can&rsquo;t access those from other nodes, follow them from <a href="https://github.com/surajssd/scripts/blob/c7f5688e94b62e68c46719508badc911ee8ba518/shell/add-node-to-k8s/add-node.sh#L114-L186">here</a>:</p>
+
+<pre><code class="language-bash"># generate the 99-loopback.conf common for all the workers, can be copied
+cat &gt; 99-loopback.conf &lt;&lt;EOF
+{
+    &quot;cniVersion&quot;: &quot;0.3.1&quot;,
+    &quot;type&quot;: &quot;loopback&quot;
+}
+EOF
+
+# generate the kube-proxy cert common for all the workers, can be copied
+cat &gt; kube-proxy-csr.json &lt;&lt;EOF
+{
+  &quot;CN&quot;: &quot;system:kube-proxy&quot;,
+  &quot;key&quot;: {
+    &quot;algo&quot;: &quot;rsa&quot;,
+    &quot;size&quot;: 2048
+  },
+  &quot;names&quot;: [
+    {
+      &quot;C&quot;: &quot;US&quot;,
+      &quot;L&quot;: &quot;Portland&quot;,
+      &quot;O&quot;: &quot;system:node-proxier&quot;,
+      &quot;OU&quot;: &quot;Kubernetes The Hard Way&quot;,
+      &quot;ST&quot;: &quot;Oregon&quot;
+    }
+  ]
+}
+EOF
+
+
+cfssl gencert \
+  -ca=${capem} \
+  -ca-key=${cakeypem} \
+  -config=${caconfig} \
+  -profile=kubernetes \
+  kube-proxy-csr.json | cfssljson -bare kube-proxy
+
+
+kubectl config set-cluster kubernetes-the-hard-way \
+  --certificate-authority=${capem} \
+  --embed-certs=true \
+  --server=https://192.168.199.10:6443 \
+  --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
+
+
+kubectl config set-credentials kube-proxy \
+  --client-certificate=&quot;kube-proxy.pem&quot; \
+  --client-key=&quot;kube-proxy-key.pem&quot; \
+  --embed-certs=true \
+  --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
+
+
+kubectl config set-context default \
+  --cluster=kubernetes-the-hard-way \
+  --user=kube-proxy \
+  --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
+
+
+kubectl config use-context default --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
+
+
+# generate the kube-proxy.service common for all the workers, can be copied
+cat &gt; kube-proxy.service &lt;&lt;EOF
+[Unit]
+Description=Kubernetes Kube Proxy
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+
+[Service]
+ExecStart=/usr/local/bin/kube-proxy \\
+  --cluster-cidr=10.200.0.0/16 \\
+  --kubeconfig=/var/lib/kube-proxy/kubeconfig \\
+  --proxy-mode=iptables \\
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre>
+
+<h3 id="configuration-specific-to-workers">Configuration specific to workers</h3>
 
 <ul>
-<li><a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/">Install Kubeadm</a></li>
-<li><a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/">Start Kubeadm cluster</a></li>
-<li><a href="https://github.com/surajssd/scripts/blob/master/shell/k8s-install-single-node/install.sh">Installation script</a></li>
+<li>The <code>cri-o</code> daemon&rsquo;s systemd service file.</li>
 </ul>
+
+<pre><code class="language-bash"># generate the service file for the crio daemon, specific to node
+cat &gt; ${hostname}-crio.service &lt;&lt;EOF
+[Unit]
+Description=CRI-O daemon
+Documentation=https://github.com/kubernetes-incubator/cri-o
+
+[Service]
+ExecStart=/usr/local/bin/crio --stream-address ${ipaddr} --runtime /usr/local/bin/runc --registry docker.io
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre>
+
+<p>Here IP address the daemon should bing to is to be specified and the only change.</p>
+
+<ul>
+<li>Generating <code>csr</code> file:</li>
+</ul>
+
+<pre><code class="language-bash"># generate the worker certs, specific to node
+cat &gt; ${hostname}-csr.json &lt;&lt;EOF
+{
+  &quot;CN&quot;: &quot;system:node:${hostname}&quot;,
+  &quot;key&quot;: {
+    &quot;algo&quot;: &quot;rsa&quot;,
+    &quot;size&quot;: 2048
+  },
+  &quot;names&quot;: [
+    {
+      &quot;C&quot;: &quot;US&quot;,
+      &quot;L&quot;: &quot;Portland&quot;,
+      &quot;O&quot;: &quot;system:nodes&quot;,
+      &quot;OU&quot;: &quot;Kubernetes The Hard Way&quot;,
+      &quot;ST&quot;: &quot;Oregon&quot;
+    }
+  ]
+}
+EOF
+</code></pre>
+
+<p>Make sure that the <code>CN</code> field in <code>csr</code> is of the format <code>system:node:&lt;hostname&gt;</code>, because this is used to register the name of the <code>worker</code> with <code>master</code>. This is the only changed field from other <code>worker</code> nodes.</p>
+
+<ul>
+<li>Generate <code>certs</code> and <code>kubeconfig</code>:</li>
+</ul>
+
+<pre><code class="language-bash">cfssl gencert \
+  -ca=${capem} \
+  -ca-key=${cakeypem} \
+  -config=${caconfig} \
+  -hostname=&quot;${hostname},${ipaddr}&quot; \
+  -profile=kubernetes \
+  &quot;${hostname}-csr.json&quot; | cfssljson -bare &quot;${hostname}&quot;
+
+# generate kubeconfig specific to the node
+kubectl config set-cluster kubernetes-the-hard-way \
+  --certificate-authority=${capem} \
+  --embed-certs=true \
+  --server=https://192.168.199.40:6443 \
+  --kubeconfig=&quot;${hostname}.kubeconfig&quot;
+
+
+kubectl config set-credentials system:node:${hostname} \
+  --client-certificate=&quot;${hostname}.pem&quot; \
+  --client-key=&quot;${hostname}-key.pem&quot; \
+  --embed-certs=true \
+  --kubeconfig=&quot;${hostname}.kubeconfig&quot;
+
+
+kubectl config set-context default \
+  --cluster=kubernetes-the-hard-way \
+  --user=system:node:${hostname} \
+  --kubeconfig=&quot;${hostname}.kubeconfig&quot;
+
+
+kubectl config use-context default --kubeconfig=&quot;${hostname}.kubeconfig&quot;
+</code></pre>
+
+<ul>
+<li>Now create <code>kubelet</code> systemd service file:</li>
+</ul>
+
+<pre><code class="language-bash">cat &gt; ${hostname}-kubelet.service &lt;&lt;EOF
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=crio.service
+Requires=crio.service
+
+[Service]
+ExecStart=/usr/local/bin/kubelet \\
+  --anonymous-auth=false \\
+  --authorization-mode=Webhook \\
+  --client-ca-file=/var/lib/kubernetes/ca.pem \\
+  --allow-privileged=true \\
+  --cluster-dns=10.32.0.10 \\
+  --cluster-domain=cluster.local \\
+  --container-runtime=remote \\
+  --container-runtime-endpoint=unix:///var/run/crio/crio.sock \\
+  --image-pull-progress-deadline=2m \\
+  --image-service-endpoint=unix:///var/run/crio/crio.sock \\
+  --kubeconfig=/var/lib/kubelet/kubeconfig \\
+  --network-plugin=cni \\
+  --register-node=true \\
+  --runtime-request-timeout=10m \\
+  --tls-cert-file=/var/lib/kubelet/${hostname}.pem \\
+  --tls-private-key-file=/var/lib/kubelet/${hostname}-key.pem \\
+  --node-ip=${ipaddr} \\
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre>
+
+<p>In above service file the things that changes are two flags: <code>--tls-cert-file</code> and <code>--tls-private-key-file</code>. And another flag value that is different from other nodes is <code>--node-ip</code>. Rest everything is same with other nodes. So just change the path to point to the right cert file and key file.</p>
+
+<h1 id="install-configurations">Install configurations</h1>
+
+<p>Once all those configs are generated, copy all those to the appropriate location.</p>
+
+<pre><code class="language-bash"># install above generated config
+cp 99-loopback.conf /etc/cni/net.d
+cp kube-proxy.kubeconfig /var/lib/kube-proxy/kubeconfig
+cp kube-proxy.service /etc/systemd/system/
+
+cp &quot;${hostname}-crio.service&quot; /etc/systemd/system/crio.service
+cp ${capem} /var/lib/kubernetes/
+cp &quot;${hostname}.pem&quot; &quot;${hostname}-key.pem&quot; /var/lib/kubelet
+cp &quot;${hostname}.kubeconfig&quot; /var/lib/kubelet/kubeconfig
+cp &quot;${hostname}-kubelet.service&quot; /etc/systemd/system/kubelet.service
+</code></pre>
+
+<h1 id="start-processes">Start processes</h1>
+
+<p>Now that all binaries and configs are in place, just restart the processes:</p>
+
+<pre><code class="language-bash">systemctl daemon-reload
+systemctl enable crio kubelet kube-proxy
+systemctl start crio kubelet kube-proxy
+</code></pre>
+
+<h1 id="check-nodes">Check nodes</h1>
+
+<pre><code class="language-bash">$ kubectl get nodes -o wide
+NAME       STATUS    ROLES     AGE       VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+ubuntu     Ready     &lt;none&gt;    5m        v1.11.2   192.168.199.23   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
+worker-0   Ready     &lt;none&gt;    40m       v1.11.2   192.168.199.20   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
+worker-1   Ready     &lt;none&gt;    39m       v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
+worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
+</code></pre>
+
+<p>Node has been added successfully.</p>
 
     </div>
 
@@ -458,7 +679,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
     
         <li><a href='/categorieskubernetes'>kubernetes</a></li>
     
-        <li><a href='/categoriesselinux'>selinux</a></li>
+        <li><a href='/categoriesopenshift'>openshift</a></li>
     
 </ul>
 
@@ -466,8 +687,8 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 </article>
 <ul class="actions pagination">
     
-        <li><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"
-                class="button big previous">HostPath volumes and it&#39;s problems</a></li>
+        <li><a href="https://suraj.io/post/single-node-k8s-fedora-selinux/"
+                class="button big previous">Single node Kubernetes Cluster on Fedora with SELinux enabled</a></li>
     
 
     
@@ -511,43 +732,43 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&text=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&text=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&title=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&title=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f&title=Single%20node%20Kubernetes%20Cluster%20on%20Fedora%20with%20SELinux%20enabled" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fsingle-node-k8s-fedora-selinux%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -671,6 +892,20 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/add-new-k8s-node-manually/">Adding new worker to existing Kubernetes cluster</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-09-23'>
+                                    September 23, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/single-node-k8s-fedora-selinux/">Single node Kubernetes Cluster on Fedora with SELinux enabled</a></h3>
                                 
                                     
@@ -724,20 +959,6 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/accessing-oc-cluster-up-etcd/">Access etcd in OpenShift origin</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-07-11'>
-                                    July 11, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -772,7 +993,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">9</span>
+                                <span style="float:right;">10</span>
                             </header>
                         </article>
                     </li>
@@ -816,6 +1037,15 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/openshift/">openshift</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/packaging/">packaging</a>
                                 <span style="float:right;">3</span>
                             </header>
@@ -826,15 +1056,6 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
                         <article>
                             <header>
                                 <a href="/categories/ide/">ide</a>
-                                <span style="float:right;">2</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/openshift/">openshift</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>

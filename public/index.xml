@@ -6,10 +6,20 @@
     <description>Recent content on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Sep 2018 01:00:51 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 23 Sep 2018 01:00:51 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Adding new worker to existing Kubernetes cluster</title>
+      <link>https://suraj.io/post/add-new-k8s-node-manually/</link>
+      <pubDate>Sun, 23 Sep 2018 01:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/add-new-k8s-node-manually/</guid>
+      <description>To setup a multi-node Kubernetes cluster just run this script and you will have a cluster with 3 masters and 3 workers.
+$ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.20 &amp;lt;none&amp;gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.21 &amp;lt;none&amp;gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.22 &amp;lt;none&amp;gt; Ubuntu 18.</description>
+    </item>
     
     <item>
       <title>Single node Kubernetes Cluster on Fedora with SELinux enabled</title>
