@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.47-DEV" />
+        <meta name="generator" content="Hugo 0.50-DEV" />
         
 
 
@@ -30,19 +30,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/" />
-
-
-
-<meta property="og:updated_time" content="2018-09-23T01:00:51&#43;05:30"/>
-
-
-
-
-
-
-
-
-
+<meta property="og:updated_time" content="2018-10-16T01:00:51&#43;05:30"/>
 
         
 <meta itemprop="name" content="Suraj Deshmukh">
@@ -204,6 +192,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/"><p>Add new Node to k8s cluster with cert rotation</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/add-new-k8s-node-manually/"><p>Adding new worker to existing Kubernetes cluster</p></a>
                     </li>
                 
@@ -217,10 +209,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/mkcert-using-python-http-server/"><p>HTTPS during development using &#39;mkcert&#39;</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/golang-struct-tags-space/"><p>Golang struct tags gotchas</p></a>
                     </li>
                 
             </ul>
@@ -237,10 +225,10 @@ if (!doNotTrack) {
     <header>
     <div class="title">
         
-            <h2><a href="https://suraj.io/post/add-new-k8s-node-manually/">Adding new worker to existing Kubernetes cluster</a></h2>
+            <h2><a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">Add new Node to k8s cluster with cert rotation</a></h2>
         
         
-            <p>Step by step guide to add new node</p>
+            <p>Use this technique to add node to the cluster without providing any certificates</p>
         
     </div>
     <div class="meta">
@@ -249,11 +237,11 @@ if (!doNotTrack) {
         
 
         <time class="published"
-            datetime='2018-09-23'>
-            September 23, 2018</time>
+            datetime='2018-10-16'>
+            October 16, 2018</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>5 minute read</p>
+            <p>3 minute read</p>
         
         
     </div>
@@ -265,43 +253,43 @@ if (!doNotTrack) {
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&text=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f&text=Add%20new%20Node%20to%20k8s%20cluster%20with%20cert%20rotation&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f&title=Add%20new%20Node%20to%20k8s%20cluster%20with%20cert%20rotation" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f&title=Add%20new%20Node%20to%20k8s%20cluster%20with%20cert%20rotation" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f&title=Add%20new%20Node%20to%20k8s%20cluster%20with%20cert%20rotation" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -313,341 +301,208 @@ if (!doNotTrack) {
     <div id="content">
         
 
-<p>To setup a multi-node Kubernetes cluster just run <a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant#single-script">this script</a> and you will have a cluster with 3 masters and 3 workers.</p>
+<p>The setup here is created by following <a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/"><em>Kubernetes the Hard Way</em></a> by <a href="https://twitter.com/kelseyhightower"><strong>Kelsey Hightower</strong></a>. So if you are following along in this then do all the setup till the step <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/09-bootstrapping-kubernetes-workers.md"><em>Bootstrapping the Kubernetes Worker Nodes</em></a>. In this just don&rsquo;t start the <code>kubelet</code>, start other services like <code>containerd</code> and <code>kube-proxy</code>.</p>
 
-<pre><code class="language-bash">$ kubectl get nodes -o wide
-NAME       STATUS    ROLES     AGE       VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
-worker-0   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.20   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
-worker-1   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
-worker-2   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.22   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
+<h2 id="master-node">master node</h2>
+
+<p>Following the docs of <a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/"><em>TLS Bootstrapping</em></a>, let&rsquo;s first create the token authentication file. Create a file with following content:</p>
+
+<pre><code class="language-bash">$ cat tokenfile 
+02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,&quot;system:bootstrappers&quot;
 </code></pre>
 
-<p>Now to add a new node to this cluster you will need to bring up a VM, for this just use following <code>Vagrantfile</code>.</p>
+<p>You should create the token which is as random as possible by running following command:</p>
 
-<pre><code class="language-bash">$ cat Vagrantfile 
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-Vagrant.configure(&quot;2&quot;) do |config|
-
-  config.vm.define &quot;ubuntu&quot; do |ubuntu|
-    ubuntu.vm.box = &quot;ubuntu/bionic64&quot;
-    config.vm.hostname = &quot;ubuntu&quot;
-    ubuntu.vm.network &quot;private_network&quot;, ip: &quot;192.168.199.23&quot;
-  end
-
-  config.vm.provider &quot;virtualbox&quot; do |virtualbox, override|
-    virtualbox.memory = 3000
-    virtualbox.cpus = 3
-  end
-end
+<pre><code class="language-bash">head -c 16 /dev/urandom | od -An -t x | tr -d ' '
 </code></pre>
 
-<p><strong>Note</strong>: This machine I have given IP address which is in the same subnet as other workers.</p>
+<p>Now we need to tell the <code>kube apiserver</code> about this file. So add following flag to the <code>kube-apiserver</code> service file, with the path to above token file.</p>
 
-<p>Bring up this machine using:</p>
-
-<pre><code class="language-bash">vagrant up
+<pre><code class="language-bash">--token-auth-file=/home/vagrant/tokenfile
 </code></pre>
 
-<p>Now you can setup the node in one shot by running <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh">this script</a>.</p>
+<p>So my <code>kube-apiserver</code> service file looks like following:</p>
 
-<h1 id="download-and-install-binaries">Download and install binaries</h1>
-
-<p>Let&rsquo;s go through this script and let me try to explain what each step does.</p>
-
-<p>You can skip <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L50-L76">the part</a> where we are downloading tools, if you all the required binaries available, viz. <code>kubelet</code>, <code>kube-proxy</code>, <code>kubectl</code>, <code>cfssl</code>, <code>cni</code>, <code>runc</code>, etc.</p>
-
-<p>Once you all the tools available install them following <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L78-L106">this section</a>:</p>
-
-<pre><code class="language-bash"># install those tools
-mkdir -p \
-  /etc/containers \
-  /etc/cni/net.d \
-  /etc/crio \
-  /opt/cni/bin \
-  /usr/local/libexec/crio \
-  /var/lib/kubelet \
-  /var/lib/kube-proxy \
-  /var/lib/kubernetes \
-  /var/run/kubernetes
-
-tar -xvf cni-plugins-amd64-v0.6.0.tgz -C /opt/cni/bin/
-
-cp runc /usr/local/bin/
-cp {crio,kube-proxy,kubelet,kubectl} /usr/local/bin/
-cp {conmon,pause} /usr/local/libexec/crio/
-cp {crio.conf,seccomp.json} /etc/crio/
-cp policy.json /etc/containers/
-
-curl -sSL \
-  -O &quot;https://pkg.cfssl.org/${cfssl_version}/cfssl_linux-amd64&quot; \
-  -O &quot;https://pkg.cfssl.org/${cfssl_version}/cfssljson_linux-amd64&quot;
-
-chmod +x cfssl_linux-amd64 cfssljson_linux-amd64
-mv -v cfssl_linux-amd64 /usr/local/bin/cfssl
-mv -v cfssljson_linux-amd64 /usr/local/bin/cfssljson
-</code></pre>
-
-<h1 id="generating-configurations">Generating configurations</h1>
-
-<p>Now that all the required tools are installed. Let&rsquo;s create the configuration that we need to make sure these tools work fine. But before that you will need the <code>ca.pem</code>, <code>ca-key.pem</code> &amp; <code>ca-config.json</code> used for createing configs for <code>master</code> nodes.</p>
-
-<h3 id="configuration-shared-by-all-workers">Configuration shared by all workers</h3>
-
-<p>Some of the configuration are same as other nodes which can be copied from other nodes. This includes following:</p>
-
-<ul>
-<li><code>/etc/cni/net.d/99-loopback.conf</code></li>
-<li><code>/var/lib/kube-proxy/kubeconfig</code></li>
-<li><code>/etc/systemd/system/kube-proxy.service</code></li>
-</ul>
-
-<p>Following steps here help you re-create them if you can&rsquo;t access those from other nodes, follow them from <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L114-L186">here</a>:</p>
-
-<pre><code class="language-bash"># generate the 99-loopback.conf common for all the workers, can be copied
-cat &gt; 99-loopback.conf &lt;&lt;EOF
-{
-    &quot;cniVersion&quot;: &quot;0.3.1&quot;,
-    &quot;type&quot;: &quot;loopback&quot;
-}
-EOF
-
-# generate the kube-proxy cert common for all the workers, can be copied
-cat &gt; kube-proxy-csr.json &lt;&lt;EOF
-{
-  &quot;CN&quot;: &quot;system:kube-proxy&quot;,
-  &quot;key&quot;: {
-    &quot;algo&quot;: &quot;rsa&quot;,
-    &quot;size&quot;: 2048
-  },
-  &quot;names&quot;: [
-    {
-      &quot;C&quot;: &quot;US&quot;,
-      &quot;L&quot;: &quot;Portland&quot;,
-      &quot;O&quot;: &quot;system:node-proxier&quot;,
-      &quot;OU&quot;: &quot;Kubernetes The Hard Way&quot;,
-      &quot;ST&quot;: &quot;Oregon&quot;
-    }
-  ]
-}
-EOF
-
-
-cfssl gencert \
-  -ca=${capem} \
-  -ca-key=${cakeypem} \
-  -config=${caconfig} \
-  -profile=kubernetes \
-  kube-proxy-csr.json | cfssljson -bare kube-proxy
-
-
-kubectl config set-cluster kubernetes-the-hard-way \
-  --certificate-authority=${capem} \
-  --embed-certs=true \
-  --server=https://192.168.199.10:6443 \
-  --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
-
-
-kubectl config set-credentials kube-proxy \
-  --client-certificate=&quot;kube-proxy.pem&quot; \
-  --client-key=&quot;kube-proxy-key.pem&quot; \
-  --embed-certs=true \
-  --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
-
-
-kubectl config set-context default \
-  --cluster=kubernetes-the-hard-way \
-  --user=kube-proxy \
-  --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
-
-
-kubectl config use-context default --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
-
-
-# generate the kube-proxy.service common for all the workers, can be copied
-cat &gt; kube-proxy.service &lt;&lt;EOF
+<pre><code class="language-bash">$ cat /etc/systemd/system/kube-apiserver.service
 [Unit]
-Description=Kubernetes Kube Proxy
-Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+Description=Kubernetes API Server
+Documentation=https://github.com/kubernetes/kubernetes
 
 [Service]
-ExecStart=/usr/local/bin/kube-proxy \\
-  --cluster-cidr=10.200.0.0/16 \\
-  --kubeconfig=/var/lib/kube-proxy/kubeconfig \\
-  --proxy-mode=iptables \\
+ExecStart=/usr/local/bin/kube-apiserver \
+  --advertise-address=192.168.50.10 \
+  --allow-privileged=true \
+  --apiserver-count=3 \
+  --audit-log-maxage=30 \
+  --audit-log-maxbackup=3 \
+  --audit-log-maxsize=100 \
+  --audit-log-path=/var/log/audit.log \
+  --authorization-mode=Node,RBAC \
+  --bind-address=0.0.0.0 \
+  --client-ca-file=/var/lib/kubernetes/ca.pem \
+  --enable-admission-plugins=Initializers,NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota \
+  --enable-swagger-ui=true \
+  --etcd-cafile=/var/lib/kubernetes/ca.pem \
+  --etcd-certfile=/var/lib/kubernetes/kubernetes.pem \
+  --etcd-keyfile=/var/lib/kubernetes/kubernetes-key.pem \
+  --etcd-servers=https://192.168.50.10:2379 \
+  --event-ttl=1h \
+  --experimental-encryption-provider-config=/var/lib/kubernetes/encryption-config.yaml \
+  --kubelet-certificate-authority=/var/lib/kubernetes/ca.pem \
+  --kubelet-client-certificate=/var/lib/kubernetes/kubernetes.pem \
+  --kubelet-client-key=/var/lib/kubernetes/kubernetes-key.pem \
+  --kubelet-https=true \
+  --runtime-config=api/all \
+  --service-account-key-file=/var/lib/kubernetes/service-account.pem \
+  --service-cluster-ip-range=10.32.0.0/24 \
+  --service-node-port-range=30000-32767 \
+  --tls-cert-file=/var/lib/kubernetes/kubernetes.pem \
+  --tls-private-key-file=/var/lib/kubernetes/kubernetes-key.pem \
+  --token-auth-file=/home/vagrant/tokenfile \
   --v=2
 Restart=on-failure
 RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
-EOF
 </code></pre>
 
-<h3 id="configuration-specific-to-workers">Configuration specific to workers</h3>
+<p>Once this is done, just run following commands to restart the apiserver:</p>
 
-<ul>
-<li>The <code>cri-o</code> daemon&rsquo;s systemd service file.</li>
-</ul>
-
-<pre><code class="language-bash"># generate the service file for the crio daemon, specific to node
-cat &gt; ${hostname}-crio.service &lt;&lt;EOF
-[Unit]
-Description=CRI-O daemon
-Documentation=https://github.com/kubernetes-incubator/cri-o
-
-[Service]
-ExecStart=/usr/local/bin/crio --stream-address ${ipaddr} --runtime /usr/local/bin/runc --registry docker.io
-Restart=always
-RestartSec=10s
-
-[Install]
-WantedBy=multi-user.target
-EOF
+<pre><code class="language-bash">sudo systemctl daemon-reload
+sudo systemctl restart kube-apiserver
+sudo systemctl status kube-apiserver
 </code></pre>
 
-<p>Here IP address the daemon should bing to is to be specified and the only change.</p>
+<p>Now that api-server has restart we need to give permissions so that our worker node can ask for certs automatically, for that run following commands:</p>
 
-<ul>
-<li>Generating <code>csr</code> file:</li>
-</ul>
+<pre><code class="language-bash">kubectl create clusterrolebinding kubelet-bootstrap \
+    --clusterrole=system:node-bootstrapper \
+    --user=kubelet-bootstrap
 
-<pre><code class="language-bash"># generate the worker certs, specific to node
-cat &gt; ${hostname}-csr.json &lt;&lt;EOF
-{
-  &quot;CN&quot;: &quot;system:node:${hostname}&quot;,
-  &quot;key&quot;: {
-    &quot;algo&quot;: &quot;rsa&quot;,
-    &quot;size&quot;: 2048
-  },
-  &quot;names&quot;: [
-    {
-      &quot;C&quot;: &quot;US&quot;,
-      &quot;L&quot;: &quot;Portland&quot;,
-      &quot;O&quot;: &quot;system:nodes&quot;,
-      &quot;OU&quot;: &quot;Kubernetes The Hard Way&quot;,
-      &quot;ST&quot;: &quot;Oregon&quot;
-    }
-  ]
-}
-EOF
+kubectl create clusterrolebinding node-client-auto-approve-csr \
+    --clusterrole=system:certificates.k8s.io:certificatesigningrequests:nodeclient \
+    --group=system:node-bootstrappers
+
+kubectl create clusterrolebinding node-client-auto-renew-crt \
+    --clusterrole=system:certificates.k8s.io:certificatesigningrequests:selfnodeclient \
+    --group=system:nodes
 </code></pre>
 
-<p>Make sure that the <code>CN</code> field in <code>csr</code> is of the format <code>system:node:&lt;hostname&gt;</code>, because this is used to register the name of the <code>worker</code> with <code>master</code>. This is the only changed field from other <code>worker</code> nodes.</p>
+<h2 id="worker-node">worker node</h2>
 
-<ul>
-<li>Generate <code>certs</code> and <code>kubeconfig</code>:</li>
-</ul>
+<p>First create a bootstrap kubeconfig file that will be used by <code>kubelet</code>. Run following commands to create it.</p>
 
-<pre><code class="language-bash">cfssl gencert \
-  -ca=${capem} \
-  -ca-key=${cakeypem} \
-  -config=${caconfig} \
-  -hostname=&quot;${hostname},${ipaddr}&quot; \
-  -profile=kubernetes \
-  &quot;${hostname}-csr.json&quot; | cfssljson -bare &quot;${hostname}&quot;
-
-# generate kubeconfig specific to the node
-kubectl config set-cluster kubernetes-the-hard-way \
-  --certificate-authority=${capem} \
+<pre><code># I have used the ip address of my api-server use yours
+kubectl config set-cluster kthw \
+  --certificate-authority=ca.pem \
   --embed-certs=true \
-  --server=https://192.168.199.40:6443 \
-  --kubeconfig=&quot;${hostname}.kubeconfig&quot;
+  --server=https://192.168.50.10:6443 \
+  --kubeconfig=bootstrap.kubeconfig
 
-
-kubectl config set-credentials system:node:${hostname} \
-  --client-certificate=&quot;${hostname}.pem&quot; \
-  --client-key=&quot;${hostname}-key.pem&quot; \
-  --embed-certs=true \
-  --kubeconfig=&quot;${hostname}.kubeconfig&quot;
-
+# this token is above generated
+kubectl config set-credentials kubelet-bootstrap \
+  --token=02b50b05283e98dd0fd71db496ef01e8 \
+  --kubeconfig=bootstrap.kubeconfig
 
 kubectl config set-context default \
-  --cluster=kubernetes-the-hard-way \
-  --user=system:node:${hostname} \
-  --kubeconfig=&quot;${hostname}.kubeconfig&quot;
+  --cluster=kthw \
+  --user kubelet-bootstrap \
+  --kubeconfig=bootstrap.kubeconfig
 
-
-kubectl config use-context default --kubeconfig=&quot;${hostname}.kubeconfig&quot;
+kubectl config use-context default \
+  --kubeconfig=bootstrap.kubeconfig 
 </code></pre>
 
-<ul>
-<li>Now create <code>kubelet</code> systemd service file:</li>
-</ul>
+<p>Now that we have this file, add following flags to the <code>kubelet</code> systemd service file.</p>
 
-<pre><code class="language-bash">cat &gt; ${hostname}-kubelet.service &lt;&lt;EOF
+<pre><code class="language-bash">--bootstrap-kubeconfig=/home/vagrant/bootstrap.kubeconfig
+--kubeconfig=/home/vagrant/kubeconfig
+--rotate-certificates=true
+--rotate-server-certificates=true
+</code></pre>
+
+<p>Provide path to the <code>bootstrap.kubeconfig</code> you have generated just before. And even if you don&rsquo;t have <code>kubeconfig</code> still provide some path where <code>kubelet</code> has permission to write. <code>kubelet</code> will create this file for you.</p>
+
+<p>So my <code>kubelet</code>, systemd file looks like following:</p>
+
+<pre><code class="language-bash">$ cat /etc/systemd/system/kubelet.service
 [Unit]
 Description=Kubernetes Kubelet
-Documentation=https://github.com/GoogleCloudPlatform/kubernetes
-After=crio.service
-Requires=crio.service
+Documentation=https://github.com/kubernetes/kubernetes
+After=containerd.service
+Requires=containerd.service
 
 [Service]
-ExecStart=/usr/local/bin/kubelet \\
-  --anonymous-auth=false \\
-  --authorization-mode=Webhook \\
-  --client-ca-file=/var/lib/kubernetes/ca.pem \\
-  --allow-privileged=true \\
-  --cluster-dns=10.32.0.10 \\
-  --cluster-domain=cluster.local \\
-  --container-runtime=remote \\
-  --container-runtime-endpoint=unix:///var/run/crio/crio.sock \\
-  --image-pull-progress-deadline=2m \\
-  --image-service-endpoint=unix:///var/run/crio/crio.sock \\
-  --kubeconfig=/var/lib/kubelet/kubeconfig \\
-  --network-plugin=cni \\
-  --register-node=true \\
-  --runtime-request-timeout=10m \\
-  --tls-cert-file=/var/lib/kubelet/${hostname}.pem \\
-  --tls-private-key-file=/var/lib/kubelet/${hostname}-key.pem \\
-  --node-ip=${ipaddr} \\
+ExecStart=/usr/local/bin/kubelet \
+  --bootstrap-kubeconfig=/home/vagrant/bootstrap.kubeconfig \
+  --config=/var/lib/kubelet/kubelet-config.yaml \
+  --container-runtime=remote \
+  --container-runtime-endpoint=unix:///var/run/containerd/containerd.sock \
+  --image-pull-progress-deadline=2m \
+  --kubeconfig=/home/vagrant/kubeconfig \
+  --network-plugin=cni \
+  --register-node=true \
+  --rotate-certificates=true \
+  --rotate-server-certificates=true \
   --v=2
 Restart=on-failure
 RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
-EOF
 </code></pre>
 
-<p>In above service file the things that changes are two flags: <code>--tls-cert-file</code> and <code>--tls-private-key-file</code>. And another flag value that is different from other nodes is <code>--node-ip</code>. Rest everything is same with other nodes. So just change the path to point to the right cert file and key file.</p>
+<p>And <code>KubeletConfiguration</code> looks like this:</p>
 
-<h1 id="install-configurations">Install configurations</h1>
-
-<p>Once all those configs are generated, copy all those to the appropriate location.</p>
-
-<pre><code class="language-bash"># install above generated config
-cp 99-loopback.conf /etc/cni/net.d
-cp kube-proxy.kubeconfig /var/lib/kube-proxy/kubeconfig
-cp kube-proxy.service /etc/systemd/system/
-
-cp &quot;${hostname}-crio.service&quot; /etc/systemd/system/crio.service
-cp ${capem} /var/lib/kubernetes/
-cp &quot;${hostname}.pem&quot; &quot;${hostname}-key.pem&quot; /var/lib/kubelet
-cp &quot;${hostname}.kubeconfig&quot; /var/lib/kubelet/kubeconfig
-cp &quot;${hostname}-kubelet.service&quot; /etc/systemd/system/kubelet.service
+<pre><code class="language-bash">$ cat /var/lib/kubelet/kubelet-config.yaml
+kind: KubeletConfiguration
+apiVersion: kubelet.config.k8s.io/v1beta1
+authentication:
+  anonymous:
+    enabled: false
+  webhook:
+    enabled: true
+  x509:
+    clientCAFile: &quot;/var/lib/kubernetes/ca.pem&quot;
+authorization:
+  mode: Webhook
+clusterDomain: &quot;cluster.local&quot;
+clusterDNS:
+  - &quot;10.32.0.10&quot;
+podCIDR: &quot;10.200.0.0/24&quot;
+resolvConf: &quot;/run/systemd/resolve/resolv.conf&quot;
+runtimeRequestTimeout: &quot;15m&quot;
 </code></pre>
 
-<h1 id="start-processes">Start processes</h1>
+<p>Once this is done, just run following commands to restart the kubelet:</p>
 
-<p>Now that all binaries and configs are in place, just restart the processes:</p>
-
-<pre><code class="language-bash">systemctl daemon-reload
-systemctl enable crio kubelet kube-proxy
-systemctl start crio kubelet kube-proxy
+<pre><code class="language-bash">sudo systemctl daemon-reload
+sudo systemctl restart kubelet
+sudo systemctl status kubelet
 </code></pre>
 
-<h1 id="check-nodes">Check nodes</h1>
+<h2 id="master-node-1">master node</h2>
 
-<pre><code class="language-bash">$ kubectl get nodes -o wide
-NAME       STATUS    ROLES     AGE       VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
-ubuntu     Ready     &lt;none&gt;    5m        v1.11.2   192.168.199.23   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
-worker-0   Ready     &lt;none&gt;    40m       v1.11.2   192.168.199.20   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
-worker-1   Ready     &lt;none&gt;    39m       v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
-worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
+<p>List the request that node has made:</p>
+
+<pre><code class="language-bash">$ kubectl get csr
+NAME                                                   AGE   REQUESTOR           CONDITION
+node-csr-WXnon3AEhdxgZ1FZ2reqKRQmWS-pwP3x263YbwUAH9k   11m   kubelet-bootstrap   Pending
 </code></pre>
 
-<p>Node has been added successfully.</p>
+<p>Approve that request:</p>
+
+<pre><code class="language-bash">$ kubectl certificate approve node-csr-WXnon3AEhdxgZ1FZ2reqKRQmWS-pwP3x263YbwUAH9k
+certificatesigningrequest.certificates.k8s.io/node-csr-WXnon3AEhdxgZ1FZ2reqKRQmWS-pwP3x263YbwUAH9k approved
+</code></pre>
+
+<p>Now you can see that the node has been created and you can list by running:</p>
+
+<pre><code class="language-bash">$ kubectl get nodes
+NAME   STATUS   ROLES    AGE   VERSION
+node   Ready    &lt;none&gt;   27s   v1.12.0
+</code></pre>
 
     </div>
 
@@ -668,7 +523,7 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
                     
 
                     
-                        Categories
+                        Category
                     
                 
             </li>
@@ -679,16 +534,14 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
     
         <li><a href='/categorieskubernetes'>kubernetes</a></li>
     
-        <li><a href='/categoriesopenshift'>openshift</a></li>
-    
 </ul>
 
     </footer>
 </article>
 <ul class="actions pagination">
     
-        <li><a href="https://suraj.io/post/single-node-k8s-fedora-selinux/"
-                class="button big previous">Single node Kubernetes Cluster on Fedora with SELinux enabled</a></li>
+        <li><a href="https://suraj.io/post/add-new-k8s-node-manually/"
+                class="button big previous">Adding new worker to existing Kubernetes cluster</a></li>
     
 
     
@@ -732,43 +585,43 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&text=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f&text=Add%20new%20Node%20to%20k8s%20cluster%20with%20cert%20rotation&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f&title=Add%20new%20Node%20to%20k8s%20cluster%20with%20cert%20rotation" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f&title=Add%20new%20Node%20to%20k8s%20cluster%20with%20cert%20rotation" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f&title=Add%20new%20Node%20to%20k8s%20cluster%20with%20cert%20rotation" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-cert-rotate%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -892,6 +745,20 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">Add new Node to k8s cluster with cert rotation</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-10-16'>
+                                    October 16, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/add-new-k8s-node-manually/">Adding new worker to existing Kubernetes cluster</a></h3>
                                 
                                     
@@ -945,20 +812,6 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/golang-struct-tags-space/">Golang struct tags gotchas</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-08-12'>
-                                    August 12, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -993,7 +846,7 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">10</span>
+                                <span style="float:right;">11</span>
                             </header>
                         </article>
                     </li>

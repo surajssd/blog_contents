@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.47-DEV" />
+        <meta name="generator" content="Hugo 0.50-DEV" />
         
 
 
@@ -39,23 +39,8 @@ Starting the environment:
 docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:
 # Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/test-kompose/" />
-
-
-
-<meta property="article:published_time" content="2017-03-14T00:31:57&#43;05:30"/>
-
+<meta property="og:url" content="https://suraj.io/post/test-kompose/" /><meta property="article:published_time" content="2017-03-14T00:31:57&#43;05:30"/>
 <meta property="article:modified_time" content="2017-03-14T00:31:57&#43;05:30"/>
-
-
-
-
-
-
-
-
-
-
 
         
 <meta itemprop="name" content="Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package">
@@ -229,6 +214,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/"><p>Add new Node to k8s cluster with cert rotation</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/add-new-k8s-node-manually/"><p>Adding new worker to existing Kubernetes cluster</p></a>
                     </li>
                 
@@ -242,10 +231,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/mkcert-using-python-http-server/"><p>HTTPS during development using &#39;mkcert&#39;</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/golang-struct-tags-space/"><p>Golang struct tags gotchas</p></a>
                     </li>
                 
             </ul>
@@ -674,6 +659,20 @@ make test-cmd
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">Add new Node to k8s cluster with cert rotation</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-10-16'>
+                                    October 16, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/add-new-k8s-node-manually/">Adding new worker to existing Kubernetes cluster</a></h3>
                                 
                                     
@@ -727,20 +726,6 @@ make test-cmd
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/golang-struct-tags-space/">Golang struct tags gotchas</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-08-12'>
-                                    August 12, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -775,7 +760,7 @@ make test-cmd
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">10</span>
+                                <span style="float:right;">11</span>
                             </header>
                         </article>
                     </li>

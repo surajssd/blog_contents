@@ -11,12 +11,12 @@
 <html>
     <head>
         
-            <title>Minikube - Suraj Deshmukh</title>
+            <title>minikube - Suraj Deshmukh</title>
         
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.47-DEV" />
+        <meta name="generator" content="Hugo 0.50-DEV" />
         
 
 
@@ -28,30 +28,18 @@
         
 
         <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Minikube"/>
+<meta name="twitter:title" content="minikube"/>
 <meta name="twitter:description" content="Blog"/>
 <meta name="twitter:site" content="@surajd_"/>
 
-        <meta property="og:title" content="Minikube" />
+        <meta property="og:title" content="minikube" />
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/minikube/" />
-
-
-
 <meta property="og:updated_time" content="2017-10-06T19:32:33&#43;05:30"/>
 
-
-
-
-
-
-
-
-
-
         
-<meta itemprop="name" content="Minikube">
+<meta itemprop="name" content="minikube">
 <meta itemprop="description" content="Blog">
 
 
@@ -205,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/"><p>Add new Node to k8s cluster with cert rotation</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/add-new-k8s-node-manually/"><p>Adding new worker to existing Kubernetes cluster</p></a>
                     </li>
                 
@@ -220,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/mkcert-using-python-http-server/"><p>HTTPS during development using &#39;mkcert&#39;</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/golang-struct-tags-space/"><p>Golang struct tags gotchas</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -237,6 +225,74 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">Add new Node to k8s cluster with cert rotation</a></h2>
+        
+        
+            <p>Use this technique to add node to the cluster without providing any certificates</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-10-16'>
+            October 16, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>The setup here is created by following Kubernetes the Hard Way by Kelsey Hightower. So if you are following along in this then do all the setup till the step Bootstrapping the Kubernetes Worker Nodes. In this just don&rsquo;t start the kubelet, start other services like containerd and kube-proxy.
+master node Following the docs of TLS Bootstrapping, let&rsquo;s first create the token authentication file. Create a file with following content:</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -874,78 +930,6 @@ Downloading Kedge The configurations defined for setting up this cluster is writ
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/golang-methods-interfaces/">Methods that satisfy interfaces in golang</a></h2>
-        
-        
-            <p>What receiver type methods satisfy which interface, can be understood here.</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2018-02-23'>
-            February 23, 2018</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>3 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Pointer receiver For a struct User with a method Work with pointer receiver.
-type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;) } func main() { uval := User{&quot;UserVal&quot;, 5} uval.Work() pval := &amp;User{&quot;UserPtr&quot;, 6} pval.Work() }  See on go playground.
-output:
-UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/golang-methods-interfaces/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesgolang'>golang</a></li>
-    
-        <li><a href='/categoriesprogramming'>programming</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1073,6 +1057,20 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">Add new Node to k8s cluster with cert rotation</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-10-16'>
+                                    October 16, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/add-new-k8s-node-manually/">Adding new worker to existing Kubernetes cluster</a></h3>
                                 
                                     
@@ -1126,20 +1124,6 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/golang-struct-tags-space/">Golang struct tags gotchas</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-08-12'>
-                                    August 12, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1174,7 +1158,7 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">10</span>
+                                <span style="float:right;">11</span>
                             </header>
                         </article>
                     </li>

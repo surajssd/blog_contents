@@ -11,12 +11,12 @@
 <html>
     <head>
         
-            <title>Programming - Suraj Deshmukh</title>
+            <title>programming - Suraj Deshmukh</title>
         
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.47-DEV" />
+        <meta name="generator" content="Hugo 0.50-DEV" />
         
 
 
@@ -28,30 +28,18 @@
         
 
         <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Programming"/>
+<meta name="twitter:title" content="programming"/>
 <meta name="twitter:description" content="Blog"/>
 <meta name="twitter:site" content="@surajd_"/>
 
-        <meta property="og:title" content="Programming" />
+        <meta property="og:title" content="programming" />
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/programming/" />
-
-
-
-<meta property="og:updated_time" content="2018-02-22T08:00:51&#43;05:30"/>
-
-
-
-
-
-
-
-
-
+<meta property="og:updated_time" content="2018-02-23T08:00:51&#43;05:30"/>
 
         
-<meta itemprop="name" content="Programming">
+<meta itemprop="name" content="programming">
 <meta itemprop="description" content="Blog">
 
 
@@ -205,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/"><p>Add new Node to k8s cluster with cert rotation</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/add-new-k8s-node-manually/"><p>Adding new worker to existing Kubernetes cluster</p></a>
                     </li>
                 
@@ -220,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/mkcert-using-python-http-server/"><p>HTTPS during development using &#39;mkcert&#39;</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/golang-struct-tags-space/"><p>Golang struct tags gotchas</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -237,6 +225,78 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/golang-methods-interfaces/">Methods that satisfy interfaces in golang</a></h2>
+        
+        
+            <p>What receiver type methods satisfy which interface, can be understood here.</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-02-23'>
+            February 23, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Pointer receiver For a struct User with a method Work with pointer receiver.
+type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;) } func main() { uval := User{&quot;UserVal&quot;, 5} uval.Work() pval := &amp;User{&quot;UserPtr&quot;, 6} pval.Work() }  See on go playground.
+output:
+UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/golang-methods-interfaces/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesgolang'>golang</a></li>
+    
+        <li><a href='/categoriesprogramming'>programming</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -872,76 +932,6 @@ mkdir &quot;${HOME}/.npm-packages&quot; echo &lsquo;prefix=${HOME}/.npm-packages
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/blr-k8s-meetup-may-2017/">Bangalore Kubernetes Meetup May 2017</a></h2>
-        
-        
-            <p>Kubernetes and OpenShift 101 hands-on workshop</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-05-24'>
-            May 24, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>3 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>&ldquo;One does not simply deploy containers to production&rdquo;
-With the rising craze around the container community in Bangalore and relative lack in awareness around different container technologies like Kubernetes and OpenShift, an effort was made in imparting knowledge in this direction.
-So, this time around newbies were targeted for the Kubernetes Meetup.
-With the above objective, it was decided to have a Kubernetes 101 workshop at Red Hat Bangalore office on May 21, 2017 to familiarize people with concepts of Kubernetes and OpenShift and their usage and relevance as container orchestration tools for managing application deployments.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/blr-k8s-meetup-may-2017/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesevent_report'>event_report</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1070,6 +1060,20 @@ With the above objective, it was decided to have a Kubernetes 101 workshop at Re
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">Add new Node to k8s cluster with cert rotation</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-10-16'>
+                                    October 16, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/add-new-k8s-node-manually/">Adding new worker to existing Kubernetes cluster</a></h3>
                                 
                                     
@@ -1123,20 +1127,6 @@ With the above objective, it was decided to have a Kubernetes 101 workshop at Re
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/golang-struct-tags-space/">Golang struct tags gotchas</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-08-12'>
-                                    August 12, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1171,7 +1161,7 @@ With the above objective, it was decided to have a Kubernetes 101 workshop at Re
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">10</span>
+                                <span style="float:right;">11</span>
                             </header>
                         </article>
                     </li>
