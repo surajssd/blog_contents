@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>desktop on Suraj Deshmukh</title>
+    <link>https://suraj.io/tags/desktop/</link>
+    <description>Recent content in desktop on Suraj Deshmukh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Oct 2018 22:00:51 +0530</lastBuildDate>
+    
+	<atom:link href="https://suraj.io/tags/desktop/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Disable your Ctrl &#43; W keybinding</title>
+      <link>https://suraj.io/post/disable-ctrl-w/</link>
+      <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/disable-ctrl-w/</guid>
+      <description>I am about to attempt the CKA exam and it has a browser based terminal. And I am used to this terminal shortcut Ctrl + W which deletes a word. But the same shortcut in browser can close a tab. Since this exam is combination of both I am afraid I might close my exam tab while deleting a word in terminal. Now the only solution to this is disabling the shortcut in chrome.</description>
+    </item>
+    
+  </channel>
+</rss>

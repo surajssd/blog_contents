@@ -67,7 +67,7 @@
     <item>
       <title>fedora</title>
       <link>https://suraj.io/categories/fedora/</link>
-      <pubDate>Mon, 18 Sep 2017 10:43:46 +0530</pubDate>
+      <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/categories/fedora/</guid>
       <description></description>
@@ -88,6 +88,15 @@
       <pubDate>Tue, 21 Mar 2017 22:03:48 +0530</pubDate>
       
       <guid>https://suraj.io/categories/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gnome</title>
+      <link>https://suraj.io/categories/gnome/</link>
+      <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/gnome/</guid>
       <description></description>
     </item>
     

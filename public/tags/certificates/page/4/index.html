@@ -36,7 +36,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/certificates/" />
-<meta property="og:updated_time" content="2017-03-14T00:31:57&#43;05:30"/>
+<meta property="og:updated_time" content="2017-03-15T14:16:43&#43;05:30"/>
 
         
 <meta itemprop="name" content="certificates">
@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/disable-ctrl-w/"><p>Disable your Ctrl &#43; W keybinding</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/"><p>Add new Node to k8s cluster with cert rotation</p></a>
                     </li>
                 
@@ -208,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"><p>HostPath volumes and it&#39;s problems</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/mkcert-using-python-http-server/"><p>HTTPS during development using &#39;mkcert&#39;</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,78 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/packaging-kompose-for-centos-paas-sig/">Packaging &#39;kompose&#39; for centos paas sig</a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-03-15'>
+            March 15, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>4 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Note: This is a living document and will be updated from time to time.
+Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
+Setup your machine Install packages needed
+sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/packaging-kompose-for-centos-paas-sig/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriespackaging'>packaging</a></li>
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
+    
+        <li><a href='/categorieskompose'>kompose</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -472,6 +544,20 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/disable-ctrl-w/">Disable your Ctrl &#43; W keybinding</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-10-16'>
+                                    October 16, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">Add new Node to k8s cluster with cert rotation</a></h3>
                                 
                                     
@@ -521,20 +607,6 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                                 <time class="published" datetime=
                                     '2018-09-10'>
                                     September 10, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/mkcert-using-python-http-server/">HTTPS during development using &#39;mkcert&#39;</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-08-14'>
-                                    August 14, 2018</time>
                             </header>
                         </article>
                     </li>
@@ -635,6 +707,15 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/fedora/">fedora</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/ide/">ide</a>
                                 <span style="float:right;">2</span>
                             </header>
@@ -698,15 +779,6 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/fedora/">fedora</a>
-                                <span style="float:right;">1</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
                                 <a href="/categories/gaming/">gaming</a>
                                 <span style="float:right;">1</span>
                             </header>
@@ -717,6 +789,15 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                         <article>
                             <header>
                                 <a href="/categories/git/">git</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/gnome/">gnome</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
