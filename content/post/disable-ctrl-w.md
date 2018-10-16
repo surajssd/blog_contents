@@ -1,6 +1,6 @@
 +++
 author = "Suraj Deshmukh"
-title = "Disable your Ctrl + W keybinding"
+title = "How to disable your Chrome Ctrl + W keybinding"
 description = "Learn how to disable the shortcut Ctrl + W altogether on your GNOME"
 date = "2018-10-16T22:00:51+05:30"
 categories = ["fedora", "gnome"]
