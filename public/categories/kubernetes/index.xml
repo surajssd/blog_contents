@@ -6,10 +6,21 @@
     <description>Recent content in kubernetes on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Oct 2018 01:00:51 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 21 Oct 2018 00:00:51 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Road to CKA</title>
+      <link>https://suraj.io/post/road-to-cka/</link>
+      <pubDate>Sun, 21 Oct 2018 00:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/road-to-cka/</guid>
+      <description>I passed CKA exam with 92% marks on 19th October 2018.
+A lot of folks are curious about how to prepare and what resources to follow. Here is my list of things to do and list of resources that might help you on successful CKA exam.
+The duration of exam is three hours, which is enough time if you do good practice. The exam is pretty straight forward and tests your Kubernetes hands-on knowledge, so whatever you read please try to do it on a real cluster.</description>
+    </item>
     
     <item>
       <title>Add new Node to k8s cluster with cert rotation</title>

@@ -38,7 +38,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/categories/kubernetes/" />
-<meta property="og:updated_time" content="2018-10-16T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-10-21T00:00:51&#43;05:30"/>
 
         
 <meta itemprop="name" content="kubernetes">
@@ -195,6 +195,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/road-to-cka/"><p>Road to CKA</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/disable-ctrl-w/"><p>How to disable your Chrome Ctrl &#43; W keybinding</p></a>
                     </li>
                 
@@ -210,10 +214,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/single-node-k8s-fedora-selinux/"><p>Single node Kubernetes Cluster on Fedora with SELinux enabled</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"><p>HostPath volumes and it&#39;s problems</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,77 @@ if (!doNotTrack) {
     <div id="main">
         <h1>kubernetes</h1>
         
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/road-to-cka/">Road to CKA</a></h2>
+        
+        
+            <p>My experience with CKA exam preparation</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-10-21'>
+            October 21, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>4 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>I passed CKA exam with 92% marks on 19th October 2018.
+A lot of folks are curious about how to prepare and what resources to follow. Here is my list of things to do and list of resources that might help you on successful CKA exam.
+The duration of exam is three hours, which is enough time if you do good practice. The exam is pretty straight forward and tests your Kubernetes hands-on knowledge, so whatever you read please try to do it on a real cluster.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/road-to-cka/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+        <li><a href='/categoriescka'>cka</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
         
             <article class="post">
     <header>
@@ -858,77 +929,6 @@ $ ll total 24 -rw-rw-r&ndash;. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r&ndash;
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/quick-pv-for-local-k8s/">Quick PV for local Kubernetes cluster</a></h2>
-        
-        
-            <p>A hostPath based local PV creation process for using via PVC</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-04-18'>
-            April 18, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
-Enter into the machine running k8s If using minikube you can do
-minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001  If you are on a machine that has SELinux enabled do the following</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/quick-pv-for-local-k8s/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1056,6 +1056,20 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/road-to-cka/">Road to CKA</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-10-21'>
+                                    October 21, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/disable-ctrl-w/">How to disable your Chrome Ctrl &#43; W keybinding</a></h3>
                                 
                                     
@@ -1109,20 +1123,6 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-09-10'>
-                                    September 10, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1157,7 +1157,7 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">11</span>
+                                <span style="float:right;">12</span>
                             </header>
                         </article>
                     </li>
@@ -1256,6 +1256,15 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
                         <article>
                             <header>
                                 <a href="/categories/certs/">certs</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/cka/">cka</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
