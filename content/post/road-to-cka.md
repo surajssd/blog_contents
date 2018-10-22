@@ -52,7 +52,7 @@ For me the go-to place for a cluster has always been either Katacoda's [Kubernet
 
 - Learn to generate resouces on the fly with `kubectl create ...`. This will help you in not having to write entire kubernetes resouce yaml file by hand, which can be tedious and erroneous task. Whenever you are running those commands and are confused about it's usage `kubectl create -h` gives you examples of various usages of the command.
 
-- You don't need to remeber the location of systemd service files, the trick I use to find the location of service file is just try to see the status of service by running `systemctl status <service name>` and in there you will see the location to service file that is loaded.
+- You don't need to remember the location of systemd service files, the trick I use to find the location of service file is just try to see the status of service by running `systemctl status <service name>` and in there you will see the location to service file that is loaded.
 
 
 ## During exam
@@ -67,4 +67,4 @@ For me the go-to place for a cluster has always been either Katacoda's [Kubernet
 
 ---
 
-With all that said, I will try to keep this document alive by adding things if I remeber any, otherwise always feel free to reach out to me on twitter [@surajd_](https://twitter.com/surajd_). Also join the [Kubernauts community](https://kubernauts-slack-join.herokuapp.com/) where people are really helpful with your queries.
+With all that said, I will try to keep this document alive by adding things if I remember any, otherwise always feel free to reach out to me on twitter [@surajd_](https://twitter.com/surajd_). Also join the [Kubernauts community](https://kubernauts-slack-join.herokuapp.com/) where people are really helpful with your queries.
