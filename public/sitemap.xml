@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suraj.io/post/psp-on-existing-cluster/</loc>
+    <lastmod>2018-10-23T00:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suraj.io/post/road-to-cka/</loc>
     <lastmod>2018-10-21T00:00:51+05:30</lastmod>
   </url>
@@ -178,13 +183,13 @@
   
   <url>
     <loc>https://suraj.io/post/</loc>
-    <lastmod>2018-10-21T00:00:51+05:30</lastmod>
+    <lastmod>2018-10-23T00:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://suraj.io/</loc>
-    <lastmod>2018-10-21T00:00:51+05:30</lastmod>
+    <lastmod>2018-10-23T00:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -393,13 +398,13 @@
   
   <url>
     <loc>https://suraj.io/tags/kubernetes/</loc>
-    <lastmod>2018-10-21T00:00:51+05:30</lastmod>
+    <lastmod>2018-10-23T00:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/kubernetes/</loc>
-    <lastmod>2018-10-21T00:00:51+05:30</lastmod>
+    <lastmod>2018-10-23T00:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -531,7 +536,13 @@
   
   <url>
     <loc>https://suraj.io/tags/security/</loc>
-    <lastmod>2018-10-16T01:00:51+05:30</lastmod>
+    <lastmod>2018-10-23T00:00:51+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/security/</loc>
+    <lastmod>2018-10-23T00:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   

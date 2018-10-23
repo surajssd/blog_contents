@@ -38,7 +38,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/categories/kubernetes/" />
-<meta property="og:updated_time" content="2018-10-21T00:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-10-23T00:00:51&#43;05:30"/>
 
         
 <meta itemprop="name" content="kubernetes">
@@ -195,6 +195,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/psp-on-existing-cluster/"><p>PodSecurityPolicy on existing Kubernetes clusters</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/road-to-cka/"><p>Road to CKA</p></a>
                     </li>
                 
@@ -210,10 +214,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/add-new-k8s-node-manually/"><p>Adding new worker to existing Kubernetes cluster</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/single-node-k8s-fedora-selinux/"><p>Single node Kubernetes Cluster on Fedora with SELinux enabled</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,77 @@ if (!doNotTrack) {
     <div id="main">
         <h1>kubernetes</h1>
         
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/psp-on-existing-cluster/">PodSecurityPolicy on existing Kubernetes clusters</a></h2>
+        
+        
+            <p>Burnt by enabling PSPs on existing Kubernetes and wondering why everything still works</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-10-23'>
+            October 23, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>I enabled PodSecurityPolicy on a minikube cluster by appending PodSecurityPolicy to the apiserver flag in minikube like this:
+&ndash;extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\ LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\ NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\ ResourceQuota,PodSecurityPolicy  Ideally when you have PSP enabled and if you don&rsquo;t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.
+$ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v <sup>1</sup>&frasl;<sub>1</sub> Running 4 5d11h etcd-minikube <sup>1</sup>&frasl;<sub>1</sub> Running 2 5d11h heapster-bn5xp <sup>1</sup>&frasl;<sub>1</sub> Running 2 5d11h influxdb-grafana-qzpv4 <sup>2</sup>&frasl;<sub>2</sub> Running 4 5d11h kube-addon-manager-minikube <sup>1</sup>&frasl;<sub>1</sub> Running 2 5d11h kube-controller-manager-minikube <sup>1</sup>&frasl;<sub>1</sub> Running 1 4d20h kube-scheduler-minikube <sup>1</sup>&frasl;<sub>1</sub> Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 <sup>1</sup>&frasl;<sub>1</sub> Running 8 5d11h storage-provisioner <sup>1</sup>&frasl;<sub>1</sub> Running 7 5d11h  Which got me thinking what is wrong with the way PSPs work.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/psp-on-existing-cluster/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+        <li><a href='/categoriessecurity'>security</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
         
             <article class="post">
     <header>
@@ -858,77 +929,6 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/enabling-local-development-with-k8s/">Enabling local development with Kubernetes</a></h2>
-        
-        
-            <p>If you are doing development and want to use kubernetes for it, then here is how you can do it.</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-04-23'>
-            April 23, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>5 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I want to show how you can enable Kubernetes in your day to day development workflow. So that you get the feel of production deployment locally from day 1.
-I have a flask application which I am working on. The basic directory structure looks like this:
-$ ll total 24 -rw-rw-r&ndash;. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r&ndash;. 1 foo foo 201 Apr 23 16:55 docker-compose.yml -rw-rw-r&ndash;. 1 foo foo 363 Apr 23 16:21 Dockerfile -rwxrwxr-x.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/enabling-local-development-with-k8s/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-        <li><a href='/categorieskompose'>kompose</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1056,6 +1056,20 @@ $ ll total 24 -rw-rw-r&ndash;. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r&ndash;
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/psp-on-existing-cluster/">PodSecurityPolicy on existing Kubernetes clusters</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2018-10-23'>
+                                    October 23, 2018</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/road-to-cka/">Road to CKA</a></h3>
                                 
                                     
@@ -1109,20 +1123,6 @@ $ ll total 24 -rw-rw-r&ndash;. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r&ndash;
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/single-node-k8s-fedora-selinux/">Single node Kubernetes Cluster on Fedora with SELinux enabled</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-09-11'>
-                                    September 11, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1157,7 +1157,7 @@ $ ll total 24 -rw-rw-r&ndash;. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r&ndash;
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">12</span>
+                                <span style="float:right;">13</span>
                             </header>
                         </article>
                     </li>
@@ -1364,6 +1364,15 @@ $ ll total 24 -rw-rw-r&ndash;. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r&ndash;
                         <article>
                             <header>
                                 <a href="/categories/prometheus/">prometheus</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/security/">security</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
