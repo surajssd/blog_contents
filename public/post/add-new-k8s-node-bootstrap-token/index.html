@@ -1,19 +1,11 @@
-
-
-
-    
-        
-    
-
-
-
-
 <!DOCTYPE HTML>
 
 <html>
     <head>
         
-            <title>openshift Posts - Suraj Deshmukh</title>
+            
+                <title>Add new Node to k8s cluster with Bootstrap token</title>
+            
         
 
         <meta charset="utf-8" />
@@ -23,27 +15,35 @@
 
 
         
+            <meta name="author" content="Suraj Deshmukh">
         
-            
-                <meta name="description" content="Blog">
-            
+        
+            <meta name="description" content="Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver">
         
 
         <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="openshift"/>
-<meta name="twitter:description" content="Blog"/>
+<meta name="twitter:title" content="Add new Node to k8s cluster with Bootstrap token"/>
+<meta name="twitter:description" content="Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver"/>
 <meta name="twitter:site" content="@surajd_"/>
 
-        <meta property="og:title" content="openshift" />
-<meta property="og:description" content="Blog" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://suraj.io/categories/openshift/" />
-<meta property="og:updated_time" content="2018-09-23T01:00:51&#43;05:30"/>
+        <meta property="og:title" content="Add new Node to k8s cluster with Bootstrap token" />
+<meta property="og:description" content="Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suraj.io/post/add-new-k8s-node-bootstrap-token/" /><meta property="article:published_time" content="2018-10-24T01:00:51&#43;05:30"/>
+<meta property="article:modified_time" content="2018-10-24T01:00:51&#43;05:30"/>
 
         
-<meta itemprop="name" content="openshift">
-<meta itemprop="description" content="Blog">
+<meta itemprop="name" content="Add new Node to k8s cluster with Bootstrap token">
+<meta itemprop="description" content="Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver">
 
+
+<meta itemprop="datePublished" content="2018-10-24T01:00:51&#43;05:30" />
+<meta itemprop="dateModified" content="2018-10-24T01:00:51&#43;05:30" />
+<meta itemprop="wordCount" content="742">
+
+
+
+<meta itemprop="keywords" content="kubernetes,security," />
 
         
 
@@ -90,6 +90,7 @@ if (!doNotTrack) {
         <div id="wrapper">
 
     
+    
 <header id="header">
     
         <h2><a href="/">Suraj Deshmukh</i></a></h2>
@@ -121,6 +122,10 @@ if (!doNotTrack) {
     </nav>
     <nav class="main">
         <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
             
             <li class="search">
                 <a class="fa-search" href="#search">Search</a>
@@ -221,19 +226,73 @@ if (!doNotTrack) {
         
 </section>
 
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f&text=Add%20new%20Node%20to%20k8s%20cluster%20with%20Bootstrap%20token&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f&title=Add%20new%20Node%20to%20k8s%20cluster%20with%20Bootstrap%20token" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f&title=Add%20new%20Node%20to%20k8s%20cluster%20with%20Bootstrap%20token" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f&title=Add%20new%20Node%20to%20k8s%20cluster%20with%20Bootstrap%20token" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
     
     <div id="main">
-        <h1>openshift</h1>
         
         
-            <article class="post">
+        <article class="post">
     <header>
     <div class="title">
         
-            <h2><a href="https://suraj.io/post/add-new-k8s-node-manually/">Adding new worker to existing Kubernetes cluster</a></h2>
+            <h1><a href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/">Add new Node to k8s cluster with Bootstrap token</a></h1>
+            
         
         
-            <p>Step by step guide to add new node</p>
+            <p>Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver</p>
         
     </div>
     <div class="meta">
@@ -242,25 +301,300 @@ if (!doNotTrack) {
         
 
         <time class="published"
-            datetime='2018-09-23'>
-            September 23, 2018</time>
+            datetime='2018-10-24'>
+            October 24, 2018</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>5 minute read</p>
+            <p>4 minute read</p>
         
         
     </div>
 </header>
 
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f&text=Add%20new%20Node%20to%20k8s%20cluster%20with%20Bootstrap%20token&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f&title=Add%20new%20Node%20to%20k8s%20cluster%20with%20Bootstrap%20token" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f&title=Add%20new%20Node%20to%20k8s%20cluster%20with%20Bootstrap%20token" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f&title=Add%20new%20Node%20to%20k8s%20cluster%20with%20Bootstrap%20token" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-bootstrap-token%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
     
 
-    <p>To setup a multi-node Kubernetes cluster just run this script and you will have a cluster with 3 masters and 3 workers.
-$ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &lt;none&gt; 1h v1.11.2 192.168.199.20 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &lt;none&gt; 1h v1.11.2 192.168.199.21 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &lt;none&gt; 1h v1.11.2 192.168.199.22 &lt;none&gt; Ubuntu 18.</p>
+    <div id="content">
+        
+
+<p>Few days back I wrote a blog about <a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">adding new node to the cluster</a> using the static token file. The problem with that approach is that you need to restart <code>kube-apiserver</code> providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like <code>secrets</code>.</p>
+
+<p>So if you are following <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way/">Kubernetes the Hard Way</a> to set up the cluster here are the changes you should do to adapt it to run with bootstrap token.</p>
+
+<h1 id="master-node-changes">Master Node changes</h1>
+
+<h2 id="kube-apiserver">kube-apiserver</h2>
+
+<p>Add this flag <code>--enable-bootstrap-token-auth=true</code> to your <code>kube-apiserver</code> service file. In the end your service file should look like following:</p>
+
+<pre><code class="language-bash">cat &lt;&lt;EOF | sudo tee /etc/systemd/system/kube-apiserver.service
+[Unit]
+Description=Kubernetes API Server
+Documentation=https://github.com/kubernetes/kubernetes
+
+[Service]
+ExecStart=/usr/local/bin/kube-apiserver \\
+  --advertise-address=${INTERNAL_IP} \\
+  --allow-privileged=true \\
+  --apiserver-count=3 \\
+  --audit-log-maxage=30 \\
+  --audit-log-maxbackup=3 \\
+  --audit-log-maxsize=100 \\
+  --audit-log-path=/var/log/audit.log \\
+  --authorization-mode=Node,RBAC \\
+  --bind-address=0.0.0.0 \\
+  --client-ca-file=/var/lib/kubernetes/ca.pem \\
+  --enable-admission-plugins=Initializers,NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota \\
+  --enable-bootstrap-token-auth=true \\
+  --enable-swagger-ui=true \\
+  --etcd-cafile=/var/lib/kubernetes/ca.pem \\
+  --etcd-certfile=/var/lib/kubernetes/kubernetes.pem \\
+  --etcd-keyfile=/var/lib/kubernetes/kubernetes-key.pem \\
+  --etcd-servers=https://192.168.50.10:2379 \\
+  --event-ttl=1h \\
+  --experimental-encryption-provider-config=/var/lib/kubernetes/encryption-config.yaml \\
+  --kubelet-certificate-authority=/var/lib/kubernetes/ca.pem \\
+  --kubelet-client-certificate=/var/lib/kubernetes/kubernetes.pem \\
+  --kubelet-client-key=/var/lib/kubernetes/kubernetes-key.pem \\
+  --kubelet-https=true \\
+  --runtime-config=api/all \\
+  --service-account-key-file=/var/lib/kubernetes/service-account.pem \\
+  --service-cluster-ip-range=10.32.0.0/24 \\
+  --service-node-port-range=30000-32767 \\
+  --tls-cert-file=/var/lib/kubernetes/kubernetes.pem \\
+  --tls-private-key-file=/var/lib/kubernetes/kubernetes-key.pem \\
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre>
+
+<h2 id="kube-controller-manager">kube-controller-manager</h2>
+
+<p>Add following flag <code>--controllers=*,bootstrapsigner,tokencleaner</code> to the controller manager service file. So service file should look like following:</p>
+
+<pre><code class="language-bash">cat &lt;&lt;EOF | sudo tee /etc/systemd/system/kube-controller-manager.service
+[Unit]
+Description=Kubernetes Controller Manager
+Documentation=https://github.com/kubernetes/kubernetes
+
+[Service]
+ExecStart=/usr/local/bin/kube-controller-manager \\
+  --address=0.0.0.0 \\
+  --cluster-cidr=10.200.0.0/16 \\
+  --cluster-name=kubernetes \\
+  --cluster-signing-cert-file=/var/lib/kubernetes/ca.pem \\
+  --cluster-signing-key-file=/var/lib/kubernetes/ca-key.pem \\
+  --controllers=*,bootstrapsigner,tokencleaner \\
+  --kubeconfig=/var/lib/kubernetes/kube-controller-manager.kubeconfig \\
+  --leader-elect=true \\
+  --root-ca-file=/var/lib/kubernetes/ca.pem \\
+  --service-account-private-key-file=/var/lib/kubernetes/service-account-key.pem \\
+  --service-cluster-ip-range=10.32.0.0/24 \\
+  --use-service-account-credentials=true \\
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre>
+
+<h2 id="bootstrap-secret">Bootstrap secret</h2>
+
+<p>The bootstrap token that we are using to setup is <code>07401b.f395accd246ae52d</code>(You can generate one of yourself). This token has two parts <code>07401b</code> which is public id and private part <code>f395accd246ae52d</code> a secret. Read more about the token, what is allowed and what it should look like <a href="https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/#enabling-bootstrap-token-authentication">here</a>. And about the bootstrap token secret format <a href="https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/#bootstrap-token-secret-format">here</a>.</p>
+
+<p>Create following secret which has certain requirements. The name of the secret should of the format <code>bootstrap-token-&lt;token public id&gt;</code> and should be available in <code>kube-system</code> namespace.</p>
+
+<pre><code class="language-bash">cat &lt;&lt;EOF | kubectl apply --kubeconfig admin.kubeconfig -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  # Name MUST be of form &quot;bootstrap-token-&lt;token id&gt;&quot;
+  name: bootstrap-token-07401b
+  namespace: kube-system
+
+# Type MUST be 'bootstrap.kubernetes.io/token'
+type: bootstrap.kubernetes.io/token
+stringData:
+  # Human readable description. Optional.
+  description: &quot;Created for Kubernetes the Hard Way&quot;
+
+  # Token ID and secret. Required.
+  token-id: 07401b
+  token-secret: f395accd246ae52d
+
+  # Allowed usages.
+  usage-bootstrap-authentication: &quot;true&quot;
+  usage-bootstrap-signing: &quot;true&quot;
+EOF
+</code></pre>
+
+<h2 id="rbac-policies-to-enable-bootstrapping">RBAC policies to enable bootstrapping</h2>
+
+<p>The user authenticated by that token belongs to the group <code>system:bootstrappers</code>, that is why following permissions are given to that group.</p>
+
+<pre><code class="language-bash">kubectl create clusterrolebinding kubelet-bootstrap \
+  --clusterrole=system:node-bootstrapper \
+  --group=system:bootstrappers
+
+kubectl create clusterrolebinding node-autoapprove-bootstrap \
+  --clusterrole=system:certificates.k8s.io:certificatesigningrequests:nodeclient \
+  --group=system:bootstrappers
+
+kubectl create clusterrolebinding node-autoapprove-certificate-rotation \
+  --clusterrole=system:certificates.k8s.io:certificatesigningrequests:selfnodeclient \
+  --group=system:nodes
+</code></pre>
+
+<h1 id="worker-node-changes">Worker node changes</h1>
+
+<h2 id="kubelet">Kubelet</h2>
+
+<p>Add this flag <code>--bootstrap-kubeconfig</code>, it is a path to kubeconfig which we will generate shortly, it contains bootstrap token and information to talk to the <code>kube-apiserver</code>. And also you don&rsquo;t need to provide <code>--kubeconfig</code> but provide a path to it, this will be auto-generated and saved at that path.</p>
+
+<p>Your kubelet service file should look like following:</p>
+
+<pre><code class="language-bash">cat &lt;&lt;EOF | sudo tee /etc/systemd/system/kubelet.service
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/kubernetes/kubernetes
+After=containerd.service
+Requires=containerd.service
+
+[Service]
+ExecStart=/usr/local/bin/kubelet \\
+  --bootstrap-kubeconfig=/home/vagrant/bootstrap.kubeconfig \\
+  --config=/var/lib/kubelet/kubelet-config.yaml \\
+  --container-runtime=remote \\
+  --container-runtime-endpoint=unix:///var/run/containerd/containerd.sock \\
+  --image-pull-progress-deadline=2m \\
+  --kubeconfig=/home/vagrant/kubeconfig \\
+  --network-plugin=cni \\
+  --register-node=true \\
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre>
+
+<p>Now changes in kubelet configuration file</p>
+
+<pre><code class="language-bash">cat &lt;&lt;EOF | sudo tee /var/lib/kubelet/kubelet-config.yaml
+kind: KubeletConfiguration
+apiVersion: kubelet.config.k8s.io/v1beta1
+authentication:
+  anonymous:
+    enabled: false
+  webhook:
+    enabled: true
+  x509:
+    clientCAFile: &quot;/home/vagrant/ca.pem&quot;
+authorization:
+  mode: Webhook
+clusterDomain: &quot;cluster.local&quot;
+clusterDNS:
+  - &quot;10.32.0.10&quot;
+podCIDR: &quot;${POD_CIDR}&quot;
+rotateCertificates: true
+runtimeRequestTimeout: &quot;15m&quot;
+serverTLSBootstrap: true
+EOF
+</code></pre>
+
+<p>Provide appropriate path to <code>clientCAFile</code>. And add two more fields <code>rotateCertificates: true</code> &amp; <code>serverTLSBootstrap: true</code>, this will enable cert rotation.</p>
+
+<h2 id="create-bootstrap-kubeconfig">Create bootstrap kubeconfig</h2>
+
+<pre><code class="language-bash"># I have used the ip address of my kube kube-apiserver use yours
+kubectl config set-cluster kthwkinvolk \
+  --certificate-authority=ca.pem \
+  --embed-certs=true \
+  --server=https://192.168.50.10:6443 \
+  --kubeconfig=/home/vagrant/bootstrap.kubeconfig
+
+# this token is above generated
+kubectl config set-credentials kubelet-bootstrap \
+  --token=07401b.f395accd246ae52d \
+  --kubeconfig=/home/vagrant/bootstrap.kubeconfig
+
+kubectl config set-context default \
+  --cluster=kthwkinvolk \
+  --user=kubelet-bootstrap \
+  --kubeconfig=/home/vagrant/bootstrap.kubeconfig
+
+kubectl config use-context default \
+  --kubeconfig=/home/vagrant/bootstrap.kubeconfig
+</code></pre>
+
+<p>This is the bootstrap config file which we referred earlier in kubelet service file.</p>
+
+<p>Now once you start <code>kubelet</code> service it will use the bootstrap token in the initial request and fetch the certificates.</p>
+
+<h1 id="trying-it-all-in-one-go">Trying it all in one go</h1>
+
+<p>Here is the <a href="https://gist.github.com/surajssd/71892b7a9c5c2cb175fd050cee45d495">link to the gist</a> where you can start a master and a node using Vagrant and create cluster using above setup.</p>
+
+<p>Hope that helps. Happy Hacking.</p>
+
+    </div>
 
     <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/add-new-k8s-node-manually/" class="button big">Continue Reading</a></li>
-        </ul>
         <ul class="stats">
     
         
@@ -277,7 +611,7 @@ $ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-I
                     
 
                     
-                        Categories
+                        Category
                     
                 
             </li>
@@ -288,168 +622,46 @@ $ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-I
     
         <li><a href='/categorieskubernetes'>kubernetes</a></li>
     
-        <li><a href='/categoriesopenshift'>openshift</a></li>
-    
 </ul>
 
     </footer>
 </article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h2>
-        
-        
-            <p>Kubernetes HostPath volume good way to nuke your Kubernetes Nodes</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2018-09-10'>
-            September 10, 2018</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>8 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>This post will demonstrate how Kubernetes HostPath volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.
-I have a 3-master and 3-node cluster and setup using this script, running in a Vagrant environment.
-All the nodes are in ready state:</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-        <li><a href='/categoriesopenshift'>openshift</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/accessing-oc-cluster-up-etcd/">Access etcd in OpenShift origin</a></h2>
-        
-        
-            <p>Access the etcd in OpenShift started by oc cluster up</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2018-07-11'>
-            July 11, 2018</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
-If you are using minishift then get docker environment access of the minishift VM by running following commands.
-eval $(minishift docker-env) &amp;&amp; eval $(minishift oc-env)  Exec into the container named origin that runs OpenShift and all the needed services.
-$ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/accessing-oc-cluster-up-etcd/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesopenshift'>openshift</a></li>
-    
-        <li><a href='/categoriesetcd'>etcd</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-
-        
 <ul class="actions pagination">
     
-        <li><a href="#" class="disabled button big previous">Previous Page</a></li>
+        <li><a href="https://suraj.io/post/psp-on-existing-cluster/"
+                class="button big previous">PodSecurityPolicy on existing Kubernetes clusters</a></li>
     
 
     
-        <li><a href="#" class="disabled button big next">Next Page</a></li>
-    
 </ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
 
     </div>
     
@@ -470,9 +682,6 @@ $ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.
                 </header>
             
             <ul class="icons">
-                
-                    <li><a href="https://suraj.io/categories/openshift/index.xml" type="application/rss+xml"
-                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
                 
                 
                     
@@ -924,9 +1133,6 @@ $ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.
     
         <section id="footer">
             <ul class="icons">
-                
-                    <li><a href="https://suraj.io/categories/openshift/index.xml" type="application/rss+xml"
-                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
                 
                 
                     
