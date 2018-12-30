@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suraj.io/post/old-laptop-setup/</loc>
+    <lastmod>2018-12-30T01:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suraj.io/post/add-new-k8s-node-bootstrap-token/</loc>
     <lastmod>2018-10-24T01:00:51+05:30</lastmod>
   </url>
@@ -188,13 +193,13 @@
   
   <url>
     <loc>https://suraj.io/post/</loc>
-    <lastmod>2018-10-24T01:00:51+05:30</lastmod>
+    <lastmod>2018-12-30T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://suraj.io/</loc>
-    <lastmod>2018-10-24T01:00:51+05:30</lastmod>
+    <lastmod>2018-12-30T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -260,6 +265,12 @@
   <url>
     <loc>https://suraj.io/tags/crio/</loc>
     <lastmod>2017-04-08T00:11:37+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/dell/</loc>
+    <lastmod>2018-12-30T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -414,6 +425,12 @@
   </url>
   
   <url>
+    <loc>https://suraj.io/tags/laptop/</loc>
+    <lastmod>2018-12-30T01:00:51+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://suraj.io/tags/meetup/</loc>
     <lastmod>2017-09-01T15:51:16+05:30</lastmod>
     <priority>0</priority>
@@ -451,7 +468,7 @@
   
   <url>
     <loc>https://suraj.io/categories/notes/</loc>
-    <lastmod>2018-02-22T08:00:51+05:30</lastmod>
+    <lastmod>2018-12-30T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
