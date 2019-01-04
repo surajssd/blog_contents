@@ -36,7 +36,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/golang/" />
-<meta property="og:updated_time" content="2018-08-12T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2019-01-04T01:00:51&#43;05:30"/>
 
         
 <meta itemprop="name" content="golang">
@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/cobra-persistent-flag/"><p>Cobra and Persistentflags gotchas</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/old-laptop-setup/"><p>Old laptop setup reference</p></a>
                     </li>
                 
@@ -208,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/road-to-cka/"><p>Road to CKA</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/disable-ctrl-w/"><p>How to disable your Chrome Ctrl &#43; W keybinding</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,74 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/cobra-persistent-flag/">Cobra and Persistentflags gotchas</a></h2>
+        
+        
+            <p>How wrong usage of persistent flags can burn you</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2019-01-04'>
+            January 4, 2019</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>If you are using cobra cmd line library for golang applications and it&rsquo;s PersistentFlags and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.
+All the code referenced here can be found here <a href="https://github">https://github</a>.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/cobra-persistent-flag/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesgolang'>golang</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -856,77 +924,6 @@ All the nodes are in ready state:</p>
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/mkcert-using-python-http-server/">HTTPS during development using &#39;mkcert&#39;</a></h2>
-        
-        
-            <p>Use https even during your development</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2018-08-14'>
-            August 14, 2018</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>It&rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
-Once installed just run:
-$ mkcert -install Created a new local CA at &quot;/home/hummer/.local/share/mkcert&quot; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/mkcert-using-python-http-server/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriescerts'>certs</a></li>
-    
-        <li><a href='/categorieshttps'>https</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1054,6 +1051,20 @@ $ mkcert -install Created a new local CA at &quot;/home/hummer/.local/share/mkce
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/cobra-persistent-flag/">Cobra and Persistentflags gotchas</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-01-04'>
+                                    January 4, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/old-laptop-setup/">Old laptop setup reference</a></h3>
                                 
                                     
@@ -1103,20 +1114,6 @@ $ mkcert -install Created a new local CA at &quot;/home/hummer/.local/share/mkce
                                 <time class="published" datetime=
                                     '2018-10-21'>
                                     October 21, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/disable-ctrl-w/">How to disable your Chrome Ctrl &#43; W keybinding</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-10-16'>
-                                    October 16, 2018</time>
                             </header>
                         </article>
                     </li>
@@ -1182,7 +1179,7 @@ $ mkcert -install Created a new local CA at &quot;/home/hummer/.local/share/mkce
                         <article>
                             <header>
                                 <a href="/categories/golang/">golang</a>
-                                <span style="float:right;">3</span>
+                                <span style="float:right;">4</span>
                             </header>
                         </article>
                     </li>

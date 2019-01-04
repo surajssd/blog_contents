@@ -36,7 +36,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/secure/" />
-<meta property="og:updated_time" content="2018-08-12T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-08-14T01:00:51&#43;05:30"/>
 
         
 <meta itemprop="name" content="secure">
@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/cobra-persistent-flag/"><p>Cobra and Persistentflags gotchas</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/old-laptop-setup/"><p>Old laptop setup reference</p></a>
                     </li>
                 
@@ -208,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/road-to-cka/"><p>Road to CKA</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/disable-ctrl-w/"><p>How to disable your Chrome Ctrl &#43; W keybinding</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,77 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/mkcert-using-python-http-server/">HTTPS during development using &#39;mkcert&#39;</a></h2>
+        
+        
+            <p>Use https even during your development</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-08-14'>
+            August 14, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>It&rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
+Once installed just run:
+$ mkcert -install Created a new local CA at &quot;/home/hummer/.local/share/mkcert&quot; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/mkcert-using-python-http-server/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriescerts'>certs</a></li>
+    
+        <li><a href='/categorieshttps'>https</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -866,79 +937,6 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/move-vagrant-boxes/">Sharing Vagrant Box offline</a></h2>
-        
-        
-            <p>Share Vagrant boxes like you shareed Operating System ISOs</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-09-18'>
-            September 18, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don&rsquo;t have internet to download it, how do you share it?
-You will need to export the box from machine that has it downloaded already. So on machine with boxes:
-$ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705)  I wanted to share fedora/26-cloud-base box to another machine.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/move-vagrant-boxes/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesvagrant'>vagrant</a></li>
-    
-        <li><a href='/categoriesfedora'>fedora</a></li>
-    
-        <li><a href='/categoriescentos'>centos</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1067,6 +1065,20 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/cobra-persistent-flag/">Cobra and Persistentflags gotchas</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-01-04'>
+                                    January 4, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/old-laptop-setup/">Old laptop setup reference</a></h3>
                                 
                                     
@@ -1116,20 +1128,6 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
                                 <time class="published" datetime=
                                     '2018-10-21'>
                                     October 21, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/disable-ctrl-w/">How to disable your Chrome Ctrl &#43; W keybinding</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-10-16'>
-                                    October 16, 2018</time>
                             </header>
                         </article>
                     </li>
@@ -1195,7 +1193,7 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
                         <article>
                             <header>
                                 <a href="/categories/golang/">golang</a>
-                                <span style="float:right;">3</span>
+                                <span style="float:right;">4</span>
                             </header>
                         </article>
                     </li>
