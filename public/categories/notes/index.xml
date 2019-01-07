@@ -23,6 +23,17 @@ export FIRMWARE_INSTALL_DIR=&amp;quot;/lib/firmware&amp;quot; wget http://mirror
     </item>
     
     <item>
+      <title>HTTPS during development using &#39;mkcert&#39;</title>
+      <link>https://suraj.io/post/mkcert-using-python-http-server/</link>
+      <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/mkcert-using-python-http-server/</guid>
+      <description>It&amp;rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
+Once installed just run:
+$ mkcert -install Created a new local CA at &amp;quot;/home/hummer/.local/share/mkcert&amp;quot; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</description>
+    </item>
+    
+    <item>
       <title>vscode Shortcuts</title>
       <link>https://suraj.io/post/vscode-shortcuts/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>

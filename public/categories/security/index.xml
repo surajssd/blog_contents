@@ -22,5 +22,16 @@
 $ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h  Which got me thinking what is wrong with the way PSPs work.</description>
     </item>
     
+    <item>
+      <title>HTTPS during development using &#39;mkcert&#39;</title>
+      <link>https://suraj.io/post/mkcert-using-python-http-server/</link>
+      <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/mkcert-using-python-http-server/</guid>
+      <description>It&amp;rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
+Once installed just run:
+$ mkcert -install Created a new local CA at &amp;quot;/home/hummer/.local/share/mkcert&amp;quot; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</description>
+    </item>
+    
   </channel>
 </rss>

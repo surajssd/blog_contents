@@ -3,7 +3,7 @@ author = "Suraj Deshmukh"
 title = "HTTPS during development using 'mkcert'"
 description = "Use https even during your development"
 date = "2018-08-14T01:00:51+05:30"
-categories = ["certs", "https"]
+categories = ["certs", "https", "security", "notes"]
 tags = ["development", "https", "certificates", "secure"]
 +++
 

@@ -299,6 +299,81 @@ export FIRMWARE_INSTALL_DIR=&quot;/lib/firmware&quot; wget <a href="http://mirro
     <header>
     <div class="title">
         
+            <h2><a href="https://suraj.io/post/mkcert-using-python-http-server/">HTTPS during development using &#39;mkcert&#39;</a></h2>
+        
+        
+            <p>Use https even during your development</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-08-14'>
+            August 14, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>It&rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
+Once installed just run:
+$ mkcert -install Created a new local CA at &quot;/home/hummer/.local/share/mkcert&quot; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/mkcert-using-python-http-server/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriescerts'>certs</a></li>
+    
+        <li><a href='/categorieshttps'>https</a></li>
+    
+        <li><a href='/categoriessecurity'>security</a></li>
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
             <h2><a href="https://suraj.io/post/vscode-shortcuts/">vscode Shortcuts</a></h2>
         
         
@@ -863,81 +938,6 @@ sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ su
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/test-kompose/">Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-03-14'>
-            March 14, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
-Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
-Starting the environment:
-docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
-
-<h1 id="inside-the-container-pull-packages-from-the-testing-repository-dnf-enablerepo-updates-testing-y-install-kompose-check-the-kompose-version-kompose-version-install-the-testing-dependencies-dnf-install-y-jq-make-pull-the-git-repository-to-run-the-functional-tests-git-clone-https-github">Inside the container # Pull packages from the testing repository dnf &ndash;enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone <a href="https://github">https://github</a>.</h1>
-</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/test-kompose/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriespackaging'>packaging</a></li>
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-        <li><a href='/categorieskompose'>kompose</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -946,7 +946,8 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
     
 
     
-        <li><a href="#" class="disabled button big next">Next Page</a></li>
+        <li><a href="/categories/notes/page/2/"
+                class="button big next">Next Page</a></li>
     
 </ul>
 
@@ -1174,7 +1175,7 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                         <article>
                             <header>
                                 <a href="/categories/notes/">notes</a>
-                                <span style="float:right;">10</span>
+                                <span style="float:right;">11</span>
                             </header>
                         </article>
                     </li>
@@ -1246,6 +1247,15 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                         <article>
                             <header>
                                 <a href="/categories/programming/">programming</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/security/">security</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>
@@ -1372,15 +1382,6 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                         <article>
                             <header>
                                 <a href="/categories/prometheus/">prometheus</a>
-                                <span style="float:right;">1</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/security/">security</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
