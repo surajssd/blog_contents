@@ -65,6 +65,15 @@
     </item>
     
     <item>
+      <title>cve</title>
+      <link>https://suraj.io/tags/cve/</link>
+      <pubDate>Mon, 14 Jan 2019 01:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/cve/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>dell</title>
       <link>https://suraj.io/tags/dell/</link>
       <pubDate>Sun, 30 Dec 2018 01:00:51 +0530</pubDate>
@@ -193,7 +202,7 @@
     <item>
       <title>kubernetes</title>
       <link>https://suraj.io/tags/kubernetes/</link>
-      <pubDate>Wed, 24 Oct 2018 01:00:51 +0530</pubDate>
+      <pubDate>Mon, 14 Jan 2019 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/tags/kubernetes/</guid>
       <description></description>
@@ -328,7 +337,7 @@
     <item>
       <title>security</title>
       <link>https://suraj.io/tags/security/</link>
-      <pubDate>Wed, 24 Oct 2018 01:00:51 +0530</pubDate>
+      <pubDate>Mon, 14 Jan 2019 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/tags/security/</guid>
       <description></description>

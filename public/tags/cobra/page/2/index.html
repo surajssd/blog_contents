@@ -36,7 +36,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/cobra/" />
-<meta property="og:updated_time" content="2018-08-14T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-09-10T01:00:51&#43;05:30"/>
 
         
 <meta itemprop="name" content="cobra">
@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"><p>Recreate Kubernetes CVE-2017-1002101</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/cobra-persistent-flag/"><p>Cobra and Persistentflags gotchas</p></a>
                     </li>
                 
@@ -208,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/psp-on-existing-cluster/"><p>PodSecurityPolicy on existing Kubernetes clusters</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/road-to-cka/"><p>Road to CKA</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,77 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h2>
+        
+        
+            <p>Kubernetes HostPath volume good way to nuke your Kubernetes Nodes</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-09-10'>
+            September 10, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>8 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>This post will demonstrate how Kubernetes HostPath volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.
+I have a 3-master and 3-node cluster and setup using this script, running in a Vagrant environment.
+All the nodes are in ready state:</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+        <li><a href='/categoriesopenshift'>openshift</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -871,76 +942,6 @@ On the configuration side of doing that you will need to create Kubernetes Secre
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/static-pods/">Static Pods using Kubelet on Fedora</a></h2>
-        
-        
-            <p>Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-09-23'>
-            September 23, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.
-This blog is only replacement of section Install the Standalone Kubelet in tutorial.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/static-pods/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1069,6 +1070,20 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-01-14'>
+                                    January 14, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/cobra-persistent-flag/">Cobra and Persistentflags gotchas</a></h3>
                                 
                                     
@@ -1122,20 +1137,6 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/road-to-cka/">Road to CKA</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-10-21'>
-                                    October 21, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1170,7 +1171,7 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">14</span>
+                                <span style="float:right;">15</span>
                             </header>
                         </article>
                     </li>
@@ -1179,7 +1180,7 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
                         <article>
                             <header>
                                 <a href="/categories/notes/">notes</a>
-                                <span style="float:right;">11</span>
+                                <span style="float:right;">12</span>
                             </header>
                         </article>
                     </li>
@@ -1232,6 +1233,15 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/security/">security</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/fedora/">fedora</a>
                                 <span style="float:right;">2</span>
                             </header>
@@ -1251,15 +1261,6 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
                         <article>
                             <header>
                                 <a href="/categories/programming/">programming</a>
-                                <span style="float:right;">2</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/security/">security</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>

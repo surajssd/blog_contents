@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"><p>Recreate Kubernetes CVE-2017-1002101</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/cobra-persistent-flag/"><p>Cobra and Persistentflags gotchas</p></a>
                     </li>
                 
@@ -208,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/psp-on-existing-cluster/"><p>PodSecurityPolicy on existing Kubernetes clusters</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/road-to-cka/"><p>Road to CKA</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,78 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h2>
+        
+        
+            <p>Subpath Volume Mount could give you access to node</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2019-01-14'>
+            January 14, 2019</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using emptyDir volume mount using subpath. The official description goes as follows:
+ In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host&rsquo;s filesystem.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+        <li><a href='/categoriessecurity'>security</a></li>
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -853,77 +925,6 @@ $ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-I
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h2>
-        
-        
-            <p>Kubernetes HostPath volume good way to nuke your Kubernetes Nodes</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2018-09-10'>
-            September 10, 2018</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>8 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>This post will demonstrate how Kubernetes HostPath volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.
-I have a 3-master and 3-node cluster and setup using this script, running in a Vagrant environment.
-All the nodes are in ready state:</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-        <li><a href='/categoriesopenshift'>openshift</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1051,6 +1052,20 @@ All the nodes are in ready state:</p>
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-01-14'>
+                                    January 14, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/cobra-persistent-flag/">Cobra and Persistentflags gotchas</a></h3>
                                 
                                     
@@ -1104,20 +1119,6 @@ All the nodes are in ready state:</p>
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/road-to-cka/">Road to CKA</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-10-21'>
-                                    October 21, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1152,7 +1153,7 @@ All the nodes are in ready state:</p>
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">14</span>
+                                <span style="float:right;">15</span>
                             </header>
                         </article>
                     </li>
@@ -1161,7 +1162,7 @@ All the nodes are in ready state:</p>
                         <article>
                             <header>
                                 <a href="/categories/notes/">notes</a>
-                                <span style="float:right;">11</span>
+                                <span style="float:right;">12</span>
                             </header>
                         </article>
                     </li>
@@ -1214,6 +1215,15 @@ All the nodes are in ready state:</p>
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/security/">security</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/fedora/">fedora</a>
                                 <span style="float:right;">2</span>
                             </header>
@@ -1233,15 +1243,6 @@ All the nodes are in ready state:</p>
                         <article>
                             <header>
                                 <a href="/categories/programming/">programming</a>
-                                <span style="float:right;">2</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/security/">security</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>

@@ -38,7 +38,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/categories/kubernetes/" />
-<meta property="og:updated_time" content="2017-08-17T23:12:18&#43;05:30"/>
+<meta property="og:updated_time" content="2017-09-23T13:10:14&#43;05:30"/>
 
         
 <meta itemprop="name" content="kubernetes">
@@ -195,6 +195,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"><p>Recreate Kubernetes CVE-2017-1002101</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/cobra-persistent-flag/"><p>Cobra and Persistentflags gotchas</p></a>
                     </li>
                 
@@ -210,10 +214,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/psp-on-existing-cluster/"><p>PodSecurityPolicy on existing Kubernetes clusters</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/road-to-cka/"><p>Road to CKA</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,76 @@ if (!doNotTrack) {
     <div id="main">
         <h1>kubernetes</h1>
         
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/static-pods/">Static Pods using Kubelet on Fedora</a></h2>
+        
+        
+            <p>Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-09-23'>
+            September 23, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.
+This blog is only replacement of section Install the Standalone Kubelet in tutorial.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/static-pods/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
         
             <article class="post">
     <header>
@@ -633,6 +703,20 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-01-14'>
+                                    January 14, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/cobra-persistent-flag/">Cobra and Persistentflags gotchas</a></h3>
                                 
                                     
@@ -686,20 +770,6 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/road-to-cka/">Road to CKA</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-10-21'>
-                                    October 21, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -734,7 +804,7 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">14</span>
+                                <span style="float:right;">15</span>
                             </header>
                         </article>
                     </li>
@@ -743,7 +813,7 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/notes/">notes</a>
-                                <span style="float:right;">11</span>
+                                <span style="float:right;">12</span>
                             </header>
                         </article>
                     </li>
@@ -796,6 +866,15 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/security/">security</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/fedora/">fedora</a>
                                 <span style="float:right;">2</span>
                             </header>
@@ -815,15 +894,6 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/programming/">programming</a>
-                                <span style="float:right;">2</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/security/">security</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>
