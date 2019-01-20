@@ -241,7 +241,7 @@ if (!doNotTrack) {
             January 20, 2019</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>2 minute read</p>
+            <p>3 minute read</p>
         
         
     </div>
@@ -309,6 +309,8 @@ if (!doNotTrack) {
 <p>So this is a no brainer when doing it for flags whose value can be given right away. But what if you want to provide value which is a file. How do you provide path of file to a flag. Since this apiserver runs as a container inside minikube. How do you make the file available to that process?</p>
 
 <p>So thankfully the api-server pod mounts minikube&rsquo;s <code>/var/lib/minikube/certs/</code> dir inside the pod at the location <code>/var/lib/minikube/certs/</code> inside the pod. So somehow make this file available at this location. But this is not straight forward.</p>
+
+<p>To make this step easier I have filed an issue in minikube upstream <a href="https://github.com/kubernetes/minikube/issues/3559">kubernetes/minikube/3559</a>.</p>
 
 <p>Follow this tutorial on how to do this. In this tutorial I want to make the <code>EncryptionConfiguration</code> file available for apiserver to enable encryption of secret data at rest. This is the first step to the tasks from kubernetes docs as mentioned <a href="https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#configuration-and-determining-whether-encryption-at-rest-is-already-enabled">here</a>.</p>
 

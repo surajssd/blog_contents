@@ -17,6 +17,8 @@ So this is a no brainer when doing it for flags whose value can be given right a
 
 So thankfully the api-server pod mounts minikube's `/var/lib/minikube/certs/` dir inside the pod at the location `/var/lib/minikube/certs/` inside the pod. So somehow make this file available at this location. But this is not straight forward.
 
+To make this step easier I have filed an issue in minikube upstream [kubernetes/minikube/3559](https://github.com/kubernetes/minikube/issues/3559).
+
 Follow this tutorial on how to do this. In this tutorial I want to make the `EncryptionConfiguration` file available for apiserver to enable encryption of secret data at rest. This is the first step to the tasks from kubernetes docs as mentioned [here](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#configuration-and-determining-whether-encryption-at-rest-is-already-enabled).
 
 ---
