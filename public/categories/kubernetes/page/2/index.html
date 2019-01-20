@@ -38,7 +38,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/categories/kubernetes/" />
-<meta property="og:updated_time" content="2017-09-23T13:10:14&#43;05:30"/>
+<meta property="og:updated_time" content="2017-10-06T19:32:33&#43;05:30"/>
 
         
 <meta itemprop="name" content="kubernetes">
@@ -195,6 +195,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/apiserver-in-minikube-static-configs/"><p>Make static configs available for apiserver in minikube</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"><p>Recreate Kubernetes CVE-2017-1002101</p></a>
                     </li>
                 
@@ -210,10 +214,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/"><p>Add new Node to k8s cluster with Bootstrap token</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/psp-on-existing-cluster/"><p>PodSecurityPolicy on existing Kubernetes clusters</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,78 @@ if (!doNotTrack) {
     <div id="main">
         <h1>kubernetes</h1>
         
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/private-registry-from-minikube/">Using private container registries from minikube</a></h2>
+        
+        
+            <p>A guide to how would you download image from private container registry in minikube</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-10-06'>
+            October 6, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
+On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/private-registry-from-minikube/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+        <li><a href='/categoriesminikube'>minikube</a></li>
+    
+        <li><a href='/categoriescontainer'>container</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
         
             <article class="post">
     <header>
@@ -703,6 +775,20 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/apiserver-in-minikube-static-configs/">Make static configs available for apiserver in minikube</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-01-20'>
+                                    January 20, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h3>
                                 
                                     
@@ -756,20 +842,6 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/psp-on-existing-cluster/">PodSecurityPolicy on existing Kubernetes clusters</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-10-23'>
-                                    October 23, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -804,7 +876,7 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">15</span>
+                                <span style="float:right;">16</span>
                             </header>
                         </article>
                     </li>
@@ -813,7 +885,7 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/notes/">notes</a>
-                                <span style="float:right;">12</span>
+                                <span style="float:right;">13</span>
                             </header>
                         </article>
                     </li>
@@ -885,6 +957,15 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/minikube/">minikube</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>
@@ -984,15 +1065,6 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/https/">https</a>
-                                <span style="float:right;">1</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/minikube/">minikube</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

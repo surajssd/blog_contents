@@ -30,7 +30,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/" />
-<meta property="og:updated_time" content="2019-01-14T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2019-01-20T01:00:51&#43;05:30"/>
 
         
 <meta itemprop="name" content="Suraj Deshmukh">
@@ -192,6 +192,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/apiserver-in-minikube-static-configs/"><p>Make static configs available for apiserver in minikube</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"><p>Recreate Kubernetes CVE-2017-1002101</p></a>
                     </li>
                 
@@ -205,10 +209,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/"><p>Add new Node to k8s cluster with Bootstrap token</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/psp-on-existing-cluster/"><p>PodSecurityPolicy on existing Kubernetes clusters</p></a>
                     </li>
                 
             </ul>
@@ -225,10 +225,10 @@ if (!doNotTrack) {
     <header>
     <div class="title">
         
-            <h2><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h2>
+            <h2><a href="https://suraj.io/post/apiserver-in-minikube-static-configs/">Make static configs available for apiserver in minikube</a></h2>
         
         
-            <p>Subpath Volume Mount could give you access to node</p>
+            <p>Dealing with apiserver in minikube can be tricky</p>
         
     </div>
     <div class="meta">
@@ -237,8 +237,8 @@ if (!doNotTrack) {
         
 
         <time class="published"
-            datetime='2019-01-14'>
-            January 14, 2019</time>
+            datetime='2019-01-20'>
+            January 20, 2019</time>
         <span class="author">Suraj Deshmukh</span>
         
             <p>2 minute read</p>
@@ -253,43 +253,43 @@ if (!doNotTrack) {
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f&text=Recreate%20Kubernetes%20CVE-2017-1002101&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&text=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f&title=Recreate%20Kubernetes%20CVE-2017-1002101" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&title=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f&title=Recreate%20Kubernetes%20CVE-2017-1002101" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&title=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f&title=Recreate%20Kubernetes%20CVE-2017-1002101" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&title=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -299,91 +299,79 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using <code>emptyDir</code> volume mount using subpath. The official description goes as follows:</p>
+        
 
-<blockquote>
-<p>In Kubernetes versions <code>1.3.x</code>, <code>1.4.x</code>, <code>1.5.x</code>, <code>1.6.x</code> and prior to versions <code>1.7.14</code>, <code>1.8.9</code> and <code>1.9.4</code> containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host&rsquo;s filesystem.</p>
-</blockquote>
+<p>If you want to provide extra flags to the <code>kube-apiserver</code> that runs inside minikube how do you do it? You can use the minikube&rsquo;s <code>--extra-config</code> flag with <code>apiserver.&lt;apiserver flag&gt;=&lt;value&gt;</code>, for e.g. if you want to enable <code>RBAC</code> authorization mode you do it as follows:</p>
 
-<p>Source: <a href="https://nvd.nist.gov/vuln/detail/CVE-2017-1002101">https://nvd.nist.gov/vuln/detail/CVE-2017-1002101</a></p>
+<pre><code class="language-bash">--extra-config=apiserver.authorization-mode=RBAC
+</code></pre>
 
-<p>To understand the problem and re-create the CVE follow the steps in following video:</p>
+<p>So this is a no brainer when doing it for flags whose value can be given right away. But what if you want to provide value which is a file. How do you provide path of file to a flag. Since this apiserver runs as a container inside minikube. How do you make the file available to that process?</p>
 
-<p><center>
-<iframe width="950" height="485" src="https://www.youtube.com/embed/o8hQ4WFd75U"
-frameborder="0" style="border:1px solid #CCC; border-width:1px;
-margin-bottom:5px; max-width: 100%;" allowfullscreen></iframe>
-<div style="margin-bottom:5px"> <strong>
-<a href="//youtu.be/o8hQ4WFd75U"
-title="How Symlinks Pwned Kubernetes (And How We Fixed It) - Michelle Au, Google & Jan Šafránek, Red Hat"
-target="_blank">How Symlinks Pwned Kubernetes (And How We Fixed It) - Michelle Au, Google &amp; Jan Šafránek, Red Hat</a>
-</strong><strong><a target="_blank"
-href=""></a></strong>
-</div>
-</center></p>
+<p>So thankfully the api-server pod mounts minikube&rsquo;s <code>/var/lib/minikube/certs/</code> dir inside the pod at the location <code>/var/lib/minikube/certs/</code> inside the pod. So somehow make this file available at this location. But this is not straight forward.</p>
 
-<p>To create an older Kubernetes setup run following. You need to start older cluster on minikube(version of minikube does not matter) and need older kubectl for compatiblility reasons.</p>
+<p>Follow this tutorial on how to do this. In this tutorial I want to make the <code>EncryptionConfiguration</code> file available for apiserver to enable encryption of secret data at rest. This is the first step to the tasks from kubernetes docs as mentioned <a href="https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#configuration-and-determining-whether-encryption-at-rest-is-already-enabled">here</a>.</p>
 
-<pre><code class="language-bash">curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.9.0/bin/linux/amd64/kubectl
-chmod +x ./kubectl
+<hr />
+
+<h3 id="start-minikube-normally">Start minikube normally</h3>
+
+<p>To make the file needed available in the machine start minikube normally. For that run following command:</p>
+
+<pre><code class="language-bash">minikube start \
+--vm-driver kvm2 \
+--kubernetes-version v1.13.2 \
+--cpus 3 --memory 3000  \
+--extra-config=apiserver.authorization-mode=RBAC \
+--v 10
+</code></pre>
+
+<p>You can make required changes to the above commmand lke change the <code>--vm-driver</code> or <code>--cpus</code> or <code>--memory</code>, as per your needs.</p>
+
+<h3 id="make-file-available-inside-minikube">Make file available inside minikube</h3>
+
+<p>Run following command to go into machine</p>
+
+<pre><code class="language-bash">minikube ssh
+</code></pre>
+
+<p>Once inside machine become root by running <code>sudo -i</code>. And then create the config file needed that will be passed to the apiserver. For my needs I wanted to create a <code>EncryptionConfiguration</code>.</p>
+
+<p>Run following command to make the config file available.</p>
+
+<pre><code class="language-bash">echo &quot;
+kind: EncryptionConfiguration
+apiVersion: apiserver.config.k8s.io/v1
+resources:
+  - resources:
+    - secrets
+    providers:
+    - aescbc:
+        keys:
+        - name: key1
+          secret: fPLrjJNkbuLmh2aqOsCR5sZV+/Wqhi8CdMrgceaKR3E=
+    - identity: {}
+&quot; | tee /var/lib/minikube/certs/encryptionconfig.yaml
+</code></pre>
+
+<p>See the location of the file it is in <code>/var/lib/minikube/certs</code>. In above command you can change it to the config you would want to make available for apiserver.</p>
+
+<h3 id="restart-minikube">Restart minikube</h3>
+
+<p>Exit out of the minikube vm and get to your host machine and run following:</p>
+
+<pre><code class="language-bash">minikube stop
 
 minikube start \
 --vm-driver kvm2 \
---kubernetes-version v1.9.0 \
+--kubernetes-version v1.13.2 \
 --cpus 3 --memory 3000  \
---extra-config=apiserver.authorization-mode=RBAC
+--extra-config=apiserver.authorization-mode=RBAC \
+--extra-config=apiserver.encryption-provider-config=/var/lib/minikube/certs/encryptionconfig.yaml \
+--v 10
 </code></pre>
 
-<p>Verify the cluster version:</p>
-
-<pre><code class="language-bash">$ ./kubectl get nodes
-NAME       STATUS    ROLES     AGE       VERSION
-minikube   Ready     master    9m        v1.9.0
-</code></pre>
-
-<p>This is the pod manifest used in the video:</p>
-
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  creationTimestamp: null
-  labels:
-    run: testpod
-  name: testpod
-spec:
-  initContainers:
-  - name: init
-    image: busybox
-    command: [&quot;ln&quot;, &quot;-s&quot;, &quot;/&quot;, &quot;/mnt/my-volume/data1&quot;]
-    volumeMounts:
-    - name: my-volume
-      mountPath: /mnt/my-volume
-  containers:
-  - image: busybox
-    imagePullPolicy: IfNotPresent
-    name: testpod
-    command: [&quot;sleep&quot;, &quot;999999&quot;]
-    volumeMounts:
-    - name: my-volume
-      mountPath: /mnt/my-volume
-    - name: my-volume
-      mountPath: /mnt/data
-      subPath: data1
-  volumes:
-  - name: my-volume
-    emptyDir:
-      medium: Memory
-  dnsPolicy: ClusterFirst
-</code></pre>
-
-<p>With above setup I could re-create the CVE successfully.</p>
-
-<p>When tried on the <code>v1.13.2</code> cluster the pod goes into <code>Pending</code> phase with status being <code>CreateContainerConfigError</code> and also lists the message as <code>failed to prepare subPath for volumeMount &quot;my-volume&quot; of container &quot;testpod&quot;</code>.</p>
-
-<pre><code class="language-bash">$ kubectl get pods -o wide
-NAME      READY   STATUS                       RESTARTS   AGE   IP          NODE   NOMINATED NODE   READINESS GATES
-testpod   0/1     CreateContainerConfigError   0          24m   10.38.0.2   w1     &lt;none&gt;           &lt;none&gt;
-</code></pre>
+<p>Again make changes to the apiserver flag and file name if needed according to your needs. Now you should have apiserver started without problems.</p>
 
     </div>
 
@@ -415,7 +403,7 @@ testpod   0/1     CreateContainerConfigError   0          24m   10.38.0.2   w1  
     
         <li><a href='/categorieskubernetes'>kubernetes</a></li>
     
-        <li><a href='/categoriessecurity'>security</a></li>
+        <li><a href='/categoriesminikube'>minikube</a></li>
     
         <li><a href='/categoriesnotes'>notes</a></li>
     
@@ -425,8 +413,8 @@ testpod   0/1     CreateContainerConfigError   0          24m   10.38.0.2   w1  
 </article>
 <ul class="actions pagination">
     
-        <li><a href="https://suraj.io/post/cobra-persistent-flag/"
-                class="button big previous">Cobra and Persistentflags gotchas</a></li>
+        <li><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"
+                class="button big previous">Recreate Kubernetes CVE-2017-1002101</a></li>
     
 
     
@@ -470,43 +458,43 @@ testpod   0/1     CreateContainerConfigError   0          24m   10.38.0.2   w1  
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f&text=Recreate%20Kubernetes%20CVE-2017-1002101&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&text=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f&title=Recreate%20Kubernetes%20CVE-2017-1002101" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&title=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f&title=Recreate%20Kubernetes%20CVE-2017-1002101" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&title=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f&title=Recreate%20Kubernetes%20CVE-2017-1002101" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&title=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fcve-2017-1002101-subpath-volume-mount-recreate%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -630,6 +618,20 @@ testpod   0/1     CreateContainerConfigError   0          24m   10.38.0.2   w1  
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/apiserver-in-minikube-static-configs/">Make static configs available for apiserver in minikube</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-01-20'>
+                                    January 20, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h3>
                                 
                                     
@@ -683,20 +685,6 @@ testpod   0/1     CreateContainerConfigError   0          24m   10.38.0.2   w1  
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/psp-on-existing-cluster/">PodSecurityPolicy on existing Kubernetes clusters</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-10-23'>
-                                    October 23, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -731,7 +719,7 @@ testpod   0/1     CreateContainerConfigError   0          24m   10.38.0.2   w1  
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">15</span>
+                                <span style="float:right;">16</span>
                             </header>
                         </article>
                     </li>
@@ -740,7 +728,7 @@ testpod   0/1     CreateContainerConfigError   0          24m   10.38.0.2   w1  
                         <article>
                             <header>
                                 <a href="/categories/notes/">notes</a>
-                                <span style="float:right;">12</span>
+                                <span style="float:right;">13</span>
                             </header>
                         </article>
                     </li>
@@ -812,6 +800,15 @@ testpod   0/1     CreateContainerConfigError   0          24m   10.38.0.2   w1  
                         <article>
                             <header>
                                 <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/minikube/">minikube</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>
@@ -911,15 +908,6 @@ testpod   0/1     CreateContainerConfigError   0          24m   10.38.0.2   w1  
                         <article>
                             <header>
                                 <a href="/categories/https/">https</a>
-                                <span style="float:right;">1</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/minikube/">minikube</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

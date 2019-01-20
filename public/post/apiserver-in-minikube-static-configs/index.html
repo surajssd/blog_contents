@@ -4,7 +4,7 @@
     <head>
         
             
-                <title>k8s on CRI-O - single node</title>
+                <title>Make static configs available for apiserver in minikube</title>
             
         
 
@@ -18,32 +18,32 @@
             <meta name="author" content="Suraj Deshmukh">
         
         
-            <meta name="description" content="How to make kubernetes use CRI-O as container runtime">
+            <meta name="description" content="Dealing with apiserver in minikube can be tricky">
         
 
         <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="k8s on CRI-O - single node"/>
-<meta name="twitter:description" content="How to make kubernetes use CRI-O as container runtime"/>
+<meta name="twitter:title" content="Make static configs available for apiserver in minikube"/>
+<meta name="twitter:description" content="Dealing with apiserver in minikube can be tricky"/>
 <meta name="twitter:site" content="@surajd_"/>
 
-        <meta property="og:title" content="k8s on CRI-O - single node" />
-<meta property="og:description" content="How to make kubernetes use CRI-O as container runtime" />
+        <meta property="og:title" content="Make static configs available for apiserver in minikube" />
+<meta property="og:description" content="Dealing with apiserver in minikube can be tricky" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/using-crio-with-k8s-single-node/" /><meta property="article:published_time" content="2017-04-08T00:11:37&#43;05:30"/>
-<meta property="article:modified_time" content="2017-04-08T00:11:37&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/apiserver-in-minikube-static-configs/" /><meta property="article:published_time" content="2019-01-20T01:00:51&#43;05:30"/>
+<meta property="article:modified_time" content="2019-01-20T01:00:51&#43;05:30"/>
 
         
-<meta itemprop="name" content="k8s on CRI-O - single node">
-<meta itemprop="description" content="How to make kubernetes use CRI-O as container runtime">
+<meta itemprop="name" content="Make static configs available for apiserver in minikube">
+<meta itemprop="description" content="Dealing with apiserver in minikube can be tricky">
 
 
-<meta itemprop="datePublished" content="2017-04-08T00:11:37&#43;05:30" />
-<meta itemprop="dateModified" content="2017-04-08T00:11:37&#43;05:30" />
-<meta itemprop="wordCount" content="289">
+<meta itemprop="datePublished" content="2019-01-20T01:00:51&#43;05:30" />
+<meta itemprop="dateModified" content="2019-01-20T01:00:51&#43;05:30" />
+<meta itemprop="wordCount" content="413">
 
 
 
-<meta itemprop="keywords" content="kubernetes,notes,crio," />
+<meta itemprop="keywords" content="kubernetes,minikube," />
 
         
 
@@ -235,43 +235,43 @@ if (!doNotTrack) {
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f&text=k8s%20on%20CRI-O%20-%20single%20node&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&text=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f&title=k8s%20on%20CRI-O%20-%20single%20node" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&title=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f&title=k8s%20on%20CRI-O%20-%20single%20node" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&title=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f&title=k8s%20on%20CRI-O%20-%20single%20node" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&title=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -288,11 +288,11 @@ if (!doNotTrack) {
     <header>
     <div class="title">
         
-            <h1><a href="https://suraj.io/post/using-crio-with-k8s-single-node/">k8s on CRI-O - single node</a></h1>
+            <h1><a href="https://suraj.io/post/apiserver-in-minikube-static-configs/">Make static configs available for apiserver in minikube</a></h1>
             
         
         
-            <p>How to make kubernetes use CRI-O as container runtime</p>
+            <p>Dealing with apiserver in minikube can be tricky</p>
         
     </div>
     <div class="meta">
@@ -301,8 +301,8 @@ if (!doNotTrack) {
         
 
         <time class="published"
-            datetime='2017-04-08'>
-            April 8, 2017</time>
+            datetime='2019-01-20'>
+            January 20, 2019</time>
         <span class="author">Suraj Deshmukh</span>
         
             <p>2 minute read</p>
@@ -317,43 +317,43 @@ if (!doNotTrack) {
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f&text=k8s%20on%20CRI-O%20-%20single%20node&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&text=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f&title=k8s%20on%20CRI-O%20-%20single%20node" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&title=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f&title=k8s%20on%20CRI-O%20-%20single%20node" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&title=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f&title=k8s%20on%20CRI-O%20-%20single%20node" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f&title=Make%20static%20configs%20available%20for%20apiserver%20in%20minikube" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fusing-crio-with-k8s-single-node%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fapiserver-in-minikube-static-configs%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -365,153 +365,77 @@ if (!doNotTrack) {
     <div id="content">
         
 
-<p>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.</p>
+<p>If you want to provide extra flags to the <code>kube-apiserver</code> that runs inside minikube how do you do it? You can use the minikube&rsquo;s <code>--extra-config</code> flag with <code>apiserver.&lt;apiserver flag&gt;=&lt;value&gt;</code>, for e.g. if you want to enable <code>RBAC</code> authorization mode you do it as follows:</p>
 
-<h3 id="installing-os-dependencies">Installing OS dependencies</h3>
-
-<pre><code class="language-bash">dnf -y install \
-  go \
-  git \
-  btrfs-progs-devel \
-  device-mapper-devel \
-  glib2-devel \
-  glibc-devel \
-  glibc-static \
-  gpgme-devel \
-  libassuan-devel \
-  libgpg-error-devel \
-  libseccomp-devel \
-  libselinux-devel \
-  pkgconfig \
-  wget \
-  etcd \
-  iptables
+<pre><code class="language-bash">--extra-config=apiserver.authorization-mode=RBAC
 </code></pre>
 
-<h3 id="creating-go-environment">Creating go environment</h3>
+<p>So this is a no brainer when doing it for flags whose value can be given right away. But what if you want to provide value which is a file. How do you provide path of file to a flag. Since this apiserver runs as a container inside minikube. How do you make the file available to that process?</p>
 
-<pre><code class="language-bash">cd ~
-mkdir -p ~/go
+<p>So thankfully the api-server pod mounts minikube&rsquo;s <code>/var/lib/minikube/certs/</code> dir inside the pod at the location <code>/var/lib/minikube/certs/</code> inside the pod. So somehow make this file available at this location. But this is not straight forward.</p>
 
-export GOPATH=~/go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN
+<p>Follow this tutorial on how to do this. In this tutorial I want to make the <code>EncryptionConfiguration</code> file available for apiserver to enable encryption of secret data at rest. This is the first step to the tasks from kubernetes docs as mentioned <a href="https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#configuration-and-determining-whether-encryption-at-rest-is-already-enabled">here</a>.</p>
 
-echo 'GOPATH=~/go' &gt;&gt; ~/.bashrc
-echo 'GOBIN=$GOPATH/bin' &gt;&gt; ~/.bashrc
-echo 'PATH=$PATH:$GOBIN' &gt;&gt; ~/.bashrc
+<hr />
+
+<h3 id="start-minikube-normally">Start minikube normally</h3>
+
+<p>To make the file needed available in the machine start minikube normally. For that run following command:</p>
+
+<pre><code class="language-bash">minikube start \
+--vm-driver kvm2 \
+--kubernetes-version v1.13.2 \
+--cpus 3 --memory 3000  \
+--extra-config=apiserver.authorization-mode=RBAC \
+--v 10
 </code></pre>
 
-<h3 id="pull-all-the-code-dependencies">Pull all the code dependencies</h3>
+<p>You can make required changes to the above commmand lke change the <code>--vm-driver</code> or <code>--cpus</code> or <code>--memory</code>, as per your needs.</p>
 
-<pre><code class="language-bash">go get -d k8s.io/kubernetes
-go get -u github.com/cloudflare/cfssl/cmd/...
+<h3 id="make-file-available-inside-minikube">Make file available inside minikube</h3>
+
+<p>Run following command to go into machine</p>
+
+<pre><code class="language-bash">minikube ssh
 </code></pre>
 
-<h3 id="install-runc">Install runc</h3>
+<p>Once inside machine become root by running <code>sudo -i</code>. And then create the config file needed that will be passed to the apiserver. For my needs I wanted to create a <code>EncryptionConfiguration</code>.</p>
 
-<pre><code class="language-bash">go get -d github.com/opencontainers/runc
-cd $GOPATH/src/github.com/opencontainers/runc
-git reset --hard v1.0.0-rc3
-make BUILDTAGS='seccomp selinux' &amp;&amp; make install
+<p>Run following command to make the config file available.</p>
+
+<pre><code class="language-bash">echo &quot;
+kind: EncryptionConfiguration
+apiVersion: apiserver.config.k8s.io/v1
+resources:
+  - resources:
+    - secrets
+    providers:
+    - aescbc:
+        keys:
+        - name: key1
+          secret: fPLrjJNkbuLmh2aqOsCR5sZV+/Wqhi8CdMrgceaKR3E=
+    - identity: {}
+&quot; | tee /var/lib/minikube/certs/encryptionconfig.yaml
 </code></pre>
 
-<h3 id="build-cri-o">Build <code>cri-o</code></h3>
+<p>See the location of the file it is in <code>/var/lib/minikube/certs</code>. In above command you can change it to the config you would want to make available for apiserver.</p>
 
-<pre><code class="language-bash">cd
-go get -d github.com/kubernetes-incubator/cri-o
-cd $GOPATH/src/github.com/kubernetes-incubator/cri-o
-make install.tools
-make &amp;&amp; make install
-make install.config
+<h3 id="restart-minikube">Restart minikube</h3>
+
+<p>Exit out of the minikube vm and get to your host machine and run following:</p>
+
+<pre><code class="language-bash">minikube stop
+
+minikube start \
+--vm-driver kvm2 \
+--kubernetes-version v1.13.2 \
+--cpus 3 --memory 3000  \
+--extra-config=apiserver.authorization-mode=RBAC \
+--extra-config=apiserver.encryption-provider-config=/var/lib/minikube/certs/encryptionconfig.yaml \
+--v 10
 </code></pre>
 
-<h3 id="set-up-cni">Set up CNI</h3>
-
-<pre><code class="language-bash">go get -d github.com/containernetworking/cni
-cd $GOPATH/src/github.com/containernetworking/cni
-./build.sh
-
-mkdir -p /opt/cni/bin
-cp bin/* /opt/cni/bin/
-
-mkdir -p /etc/cni/net.d/
-cat &gt; /etc/cni/net.d/10-ocid-bridge.conf &lt;&lt;EOF
-{
-    &quot;cniVersion&quot;: &quot;0.2.0&quot;,
-    &quot;name&quot;: &quot;ocid-bridge&quot;,
-    &quot;type&quot;: &quot;bridge&quot;,
-    &quot;bridge&quot;: &quot;cni0&quot;,
-    &quot;isGateway&quot;: true,
-    &quot;ipMasq&quot;: true,
-    &quot;ipam&quot;: {
-        &quot;type&quot;: &quot;host-local&quot;,
-        &quot;subnet&quot;: &quot;10.88.0.0/16&quot;,
-        &quot;routes&quot;: [
-            { &quot;dst&quot;: &quot;0.0.0.0/0&quot; }
-        ]
-    }
-}
-EOF
-
-cat &gt; /etc/cni/net.d/99-loopback.conf &lt;&lt;EOF
-{
-    &quot;cniVersion&quot;: &quot;0.2.0&quot;,
-    &quot;type&quot;: &quot;loopback&quot;
-}
-EOF
-</code></pre>
-
-<h3 id="create-policy-json">Create <code>policy.json</code></h3>
-
-<pre><code class="language-bash">mkdir -p  /etc/containers
-
-cat &gt; /etc/containers/policy.json &lt;&lt;EOF
-{
-    &quot;default&quot;: [
-        {
-            &quot;type&quot;: &quot;insecureAcceptAnything&quot;
-        }
-    ]
-}
-EOF
-</code></pre>
-
-<h3 id="make-selinux-happy">Make SELinux happy</h3>
-
-<pre><code class="language-bash">mkdir -p /var/lib/containers/
-chcon -Rt svirt_sandbox_file_t /var/lib/containers/
-</code></pre>
-
-<h3 id="start-ocid-service">Start ocid service</h3>
-
-<pre><code class="language-bash">export PATH=$PATH:/usr/local/bin/
-echo 'PATH=$PATH:/usr/local/bin/' &gt;&gt; ~/.bashrc
-ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug --selinux true
-</code></pre>
-
-<h3 id="start-k8s-cluster-with-crio">Start k8s cluster with crio</h3>
-
-<pre><code class="language-bash">cd $GOPATH/src/k8s.io/kubernetes/
-CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT='/var/run/ocid.sock --runtime-request-timeout=15m' ./hack/local-up-cluster.sh
-</code></pre>
-
-<p>To use <code>kubectl</code> (in new terminal)</p>
-
-<pre><code class="language-bash">alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh
-echo 'alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh'  &gt;&gt; ~/.bashrc
-</code></pre>
-
-<p>Ref:</p>
-
-<ul>
-<li>Bangalore Kubernetes Meetup - April 2017 - <a href="https://docs.google.com/presentation/d/1tP7b1e1fy-n3_v5bilDLjOAheZGu602B3WK-1kxXkVo/edit?usp=sharing">Slides</a>.</li>
-<li><a href="https://twitter.com/runc0m">runcom&rsquo;s</a> <a href="https://gist.github.com/runcom/ba58bf2f64e38d9f5d376d587751a0f9#file-fedora_25">Setup script</a> for Fedora.</li>
-<li><a href="https://github.com/kubernetes-incubator/cri-o">cri-o project</a></li>
-<li>cri-o <a href="https://github.com/kubernetes-incubator/cri-o/blob/master/tutorial.md">tutorial</a></li>
-<li><a href="https://github.com/kubernetes-incubator/cri-o/blob/master/kubernetes.md">Running cri-o on kubernetes cluster</a></li>
-<li>CRI-O: A kubernetes runtime - <a href="https://www.youtube.com/watch?v=R-p7BXhtodo">video</a></li>
-</ul>
+<p>Again make changes to the apiserver flag and file name if needed according to your needs. Now you should have apiserver started without problems.</p>
 
     </div>
 
@@ -541,9 +465,11 @@ echo 'alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh'  &gt;&gt; 
 
     
     
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
         <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+        <li><a href='/categoriesminikube'>minikube</a></li>
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
     
 </ul>
 
@@ -551,13 +477,10 @@ echo 'alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh'  &gt;&gt; 
 </article>
 <ul class="actions pagination">
     
-        <li><a href="https://suraj.io/post/starting-a-new-opensource-project-requirements/"
-                class="button big previous">TODOs for new project</a></li>
+        <li><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"
+                class="button big previous">Recreate Kubernetes CVE-2017-1002101</a></li>
     
 
-    
-        <li><a href="https://suraj.io/post/blr-k8s-meetup-april-2017/"
-                class="button big next">Bangalore Kubernetes Meetup April 2017</a></li>
     
 </ul>
 
