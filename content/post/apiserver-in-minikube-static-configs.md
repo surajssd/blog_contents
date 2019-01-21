@@ -13,9 +13,9 @@ If you want to provide extra flags to the `kube-apiserver` that runs inside mini
 --extra-config=apiserver.authorization-mode=RBAC
 ```
 
-So this is a no brainer when doing it for flags whose value can be given right away. But what if you want to provide value which is a file. How do you provide path of file to a flag. Since this apiserver runs as a container inside minikube. How do you make the file available to that process?
+So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path. Because you will have to make that file available for apiserver. And this apiserver runs as a static pod inside minikube. How do you make the file available to that process inside pod inside minikube?
 
-So thankfully the api-server pod mounts minikube's `/var/lib/minikube/certs/` dir inside the pod at the location `/var/lib/minikube/certs/` inside the pod. So somehow make this file available at this location. But this is not straight forward.
+The solution is little tricky and not very straight forward. The api-server pod mounts minikube's `/var/lib/minikube/certs/` directory in the pod at location `/var/lib/minikube/certs/`. Make the file available at this location. When enabling that flag for apiserver provide file location of this directory.
 
 To make this step easier I have filed an issue in minikube upstream [kubernetes/minikube/3559](https://github.com/kubernetes/minikube/issues/3559).
 
