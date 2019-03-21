@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suraj.io/post/k8s-blr-event-report-2019-03-16/</loc>
+    <lastmod>2019-03-21T01:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suraj.io/post/apiserver-in-minikube-static-configs/</loc>
     <lastmod>2019-01-20T01:00:51+05:30</lastmod>
   </url>
@@ -208,13 +213,13 @@
   
   <url>
     <loc>https://suraj.io/post/</loc>
-    <lastmod>2019-01-20T01:00:51+05:30</lastmod>
+    <lastmod>2019-03-21T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://suraj.io/</loc>
-    <lastmod>2019-01-20T01:00:51+05:30</lastmod>
+    <lastmod>2019-03-21T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -327,7 +332,7 @@
   
   <url>
     <loc>https://suraj.io/categories/event_report/</loc>
-    <lastmod>2017-09-01T15:51:16+05:30</lastmod>
+    <lastmod>2019-03-21T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -441,7 +446,7 @@
   
   <url>
     <loc>https://suraj.io/tags/kubernetes/</loc>
-    <lastmod>2019-01-20T01:00:51+05:30</lastmod>
+    <lastmod>2019-03-21T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -459,7 +464,7 @@
   
   <url>
     <loc>https://suraj.io/tags/meetup/</loc>
-    <lastmod>2017-09-01T15:51:16+05:30</lastmod>
+    <lastmod>2019-03-21T01:00:51+05:30</lastmod>
     <priority>0</priority>
   </url>
   
