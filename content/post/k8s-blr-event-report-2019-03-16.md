@@ -30,6 +30,9 @@ Here is the link to meetup recording:
 
 {{< youtube ccmYsFyN5dI >}}
 
+
 Photos from the meetup can be found [here](https://photos.app.goo.gl/zh866w473bjMvCcc8).
 
 See you in the next meetup.
+
+Also this event report was auto-generated using the project [blog-generator](https://github.com/surajssd/blog-generator), all kinds of contribution are most welcome.
