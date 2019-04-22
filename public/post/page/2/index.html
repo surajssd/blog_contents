@@ -36,7 +36,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/post/" />
-<meta property="og:updated_time" content="2018-09-23T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-10-16T01:00:51&#43;05:30"/>
 
         
 <meta itemprop="name" content="Posts">
@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/surajd-talks-links/"><p>Suraj Deshmukh&#39;s talks at conferences</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/"><p>Kubernetes Bangalore March 2019 Event Report</p></a>
                     </li>
                 
@@ -208,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/cobra-persistent-flag/"><p>Cobra and Persistentflags gotchas</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/old-laptop-setup/"><p>Old laptop setup reference</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,74 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">Add new Node to k8s cluster with cert rotation</a></h2>
+        
+        
+            <p>Use this technique to add node to the cluster without providing any certificates</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-10-16'>
+            October 16, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>The setup here is created by following Kubernetes the Hard Way by Kelsey Hightower. So if you are following along in this then do all the setup till the step Bootstrapping the Kubernetes Worker Nodes. In this just don&rsquo;t start the kubelet, start other services like containerd and kube-proxy.
+master node Following the docs of TLS Bootstrapping, let&rsquo;s first create the token authentication file. Create a file with following content:</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -866,78 +934,6 @@ Downloading Kedge The configurations defined for setting up this cluster is writ
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/golang-methods-interfaces/">Methods that satisfy interfaces in golang</a></h2>
-        
-        
-            <p>What receiver type methods satisfy which interface, can be understood here.</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2018-02-23'>
-            February 23, 2018</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>3 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Pointer receiver For a struct User with a method Work with pointer receiver.
-type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;) } func main() { uval := User{&quot;UserVal&quot;, 5} uval.Work() pval := &amp;User{&quot;UserPtr&quot;, 6} pval.Work() }  See on go playground.
-output:
-UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/golang-methods-interfaces/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesgolang'>golang</a></li>
-    
-        <li><a href='/categoriesprogramming'>programming</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1066,6 +1062,20 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/surajd-talks-links/">Suraj Deshmukh&#39;s talks at conferences</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-04-22'>
+                                    April 22, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/">Kubernetes Bangalore March 2019 Event Report</a></h3>
                                 
                                     
@@ -1119,20 +1129,6 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/old-laptop-setup/">Old laptop setup reference</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-12-30'>
-                                    December 30, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1176,7 +1172,7 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                         <article>
                             <header>
                                 <a href="/categories/notes/">notes</a>
-                                <span style="float:right;">13</span>
+                                <span style="float:right;">14</span>
                             </header>
                         </article>
                     </li>
@@ -1392,6 +1388,15 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                         <article>
                             <header>
                                 <a href="/categories/selinux/">selinux</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/talks/">talks</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

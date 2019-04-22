@@ -6,10 +6,20 @@
     <description>Recent content in meetup on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 Mar 2019 01:00:51 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 22 Apr 2019 01:00:51 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/tags/meetup/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Suraj Deshmukh&#39;s talks at conferences</title>
+      <link>https://suraj.io/post/surajd-talks-links/</link>
+      <pubDate>Mon, 22 Apr 2019 01:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/surajd-talks-links/</guid>
+      <description> State of Kubernetes Meetups - DevOpsDays India 2017   Making Kubernetes Simple For Developers - Rootconf 2017   Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s
+  </description>
+    </item>
     
     <item>
       <title>Kubernetes Bangalore March 2019 Event Report</title>

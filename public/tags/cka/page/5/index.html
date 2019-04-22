@@ -36,7 +36,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/cka/" />
-<meta property="og:updated_time" content="2019-03-21T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2017-03-14T00:31:57&#43;05:30"/>
 
         
 <meta itemprop="name" content="cka">
@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/surajd-talks-links/"><p>Suraj Deshmukh&#39;s talks at conferences</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/"><p>Kubernetes Bangalore March 2019 Event Report</p></a>
                     </li>
                 
@@ -206,10 +210,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/cobra-persistent-flag/"><p>Cobra and Persistentflags gotchas</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/old-laptop-setup/"><p>Old laptop setup reference</p></a>
                     </li>
                 
             </ul>
@@ -231,6 +231,81 @@ if (!doNotTrack) {
     <header>
     <div class="title">
         
+            <h2><a href="https://suraj.io/post/test-kompose/">Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-03-14'>
+            March 14, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
+Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
+Starting the environment:
+docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
+
+<h1 id="inside-the-container-pull-packages-from-the-testing-repository-dnf-enablerepo-updates-testing-y-install-kompose-check-the-kompose-version-kompose-version-install-the-testing-dependencies-dnf-install-y-jq-make-pull-the-git-repository-to-run-the-functional-tests-git-clone-https-github">Inside the container # Pull packages from the testing repository dnf &ndash;enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone <a href="https://github">https://github</a>.</h1>
+</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/test-kompose/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriespackaging'>packaging</a></li>
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
+    
+        <li><a href='/categorieskompose'>kompose</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
             <h2><a href="https://suraj.io/post/">Posts</a></h2>
         
         
@@ -241,8 +316,8 @@ if (!doNotTrack) {
         
 
         <time class="published"
-            datetime='2019-03-21'>
-            March 21, 2019</time>
+            datetime='2019-04-22'>
+            April 22, 2019</time>
         <span class="author"></span>
         
             <p>0 minute read</p>
@@ -397,6 +472,20 @@ if (!doNotTrack) {
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/surajd-talks-links/">Suraj Deshmukh&#39;s talks at conferences</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-04-22'>
+                                    April 22, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/">Kubernetes Bangalore March 2019 Event Report</a></h3>
                                 
                                     
@@ -450,20 +539,6 @@ if (!doNotTrack) {
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/old-laptop-setup/">Old laptop setup reference</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2018-12-30'>
-                                    December 30, 2018</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -507,7 +582,7 @@ if (!doNotTrack) {
                         <article>
                             <header>
                                 <a href="/categories/notes/">notes</a>
-                                <span style="float:right;">13</span>
+                                <span style="float:right;">14</span>
                             </header>
                         </article>
                     </li>
@@ -723,6 +798,15 @@ if (!doNotTrack) {
                         <article>
                             <header>
                                 <a href="/categories/selinux/">selinux</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/talks/">talks</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

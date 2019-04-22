@@ -175,7 +175,7 @@
     <item>
       <title>notes</title>
       <link>https://suraj.io/categories/notes/</link>
-      <pubDate>Sun, 20 Jan 2019 01:00:51 +0530</pubDate>
+      <pubDate>Mon, 22 Apr 2019 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/categories/notes/</guid>
       <description></description>
@@ -241,6 +241,15 @@
       <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/categories/selinux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>talks</title>
+      <link>https://suraj.io/categories/talks/</link>
+      <pubDate>Mon, 22 Apr 2019 01:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/talks/</guid>
       <description></description>
     </item>
     
