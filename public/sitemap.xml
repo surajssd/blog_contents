@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suraj.io/post/docker-seccomp-manual/</loc>
+    <lastmod>2019-06-10T11:57:07+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suraj.io/post/surajd-talks-links/</loc>
     <lastmod>2019-04-22T01:00:51+05:30</lastmod>
   </url>
@@ -218,13 +223,13 @@
   
   <url>
     <loc>https://suraj.io/post/</loc>
-    <lastmod>2019-04-22T01:00:51+05:30</lastmod>
+    <lastmod>2019-06-10T11:57:07+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://suraj.io/</loc>
-    <lastmod>2019-04-22T01:00:51+05:30</lastmod>
+    <lastmod>2019-06-10T11:57:07+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -320,6 +325,18 @@
   <url>
     <loc>https://suraj.io/tags/development/</loc>
     <lastmod>2018-08-14T01:00:51+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/docker/</loc>
+    <lastmod>2019-06-10T11:57:07+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/docker/</loc>
+    <lastmod>2019-06-10T11:57:07+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -588,6 +605,12 @@
   </url>
   
   <url>
+    <loc>https://suraj.io/tags/seccomp/</loc>
+    <lastmod>2019-06-10T11:57:07+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://suraj.io/tags/secure/</loc>
     <lastmod>2018-08-14T01:00:51+05:30</lastmod>
     <priority>0</priority>
@@ -595,13 +618,13 @@
   
   <url>
     <loc>https://suraj.io/tags/security/</loc>
-    <lastmod>2019-01-14T01:00:51+05:30</lastmod>
+    <lastmod>2019-06-10T11:57:07+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/security/</loc>
-    <lastmod>2019-01-14T01:00:51+05:30</lastmod>
+    <lastmod>2019-06-10T11:57:07+05:30</lastmod>
     <priority>0</priority>
   </url>
   

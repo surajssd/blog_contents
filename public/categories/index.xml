@@ -56,6 +56,15 @@
     </item>
     
     <item>
+      <title>docker</title>
+      <link>https://suraj.io/categories/docker/</link>
+      <pubDate>Mon, 10 Jun 2019 11:57:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>etcd</title>
       <link>https://suraj.io/categories/etcd/</link>
       <pubDate>Wed, 11 Jul 2018 01:00:51 +0530</pubDate>
@@ -229,7 +238,7 @@
     <item>
       <title>security</title>
       <link>https://suraj.io/categories/security/</link>
-      <pubDate>Mon, 14 Jan 2019 01:00:51 +0530</pubDate>
+      <pubDate>Mon, 10 Jun 2019 11:57:07 +0530</pubDate>
       
       <guid>https://suraj.io/categories/security/</guid>
       <description></description>

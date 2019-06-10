@@ -36,7 +36,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/" />
-<meta property="og:updated_time" content="2017-03-14T00:31:57&#43;05:30"/>
+<meta property="og:updated_time" content="2017-03-15T14:16:43&#43;05:30"/>
 
         
 <meta itemprop="name" content="Tags">
@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/surajd-talks-links/"><p>Suraj Deshmukh&#39;s talks at conferences</p></a>
                     </li>
                 
@@ -208,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"><p>Recreate Kubernetes CVE-2017-1002101</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/cobra-persistent-flag/"><p>Cobra and Persistentflags gotchas</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,78 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/packaging-kompose-for-centos-paas-sig/">Packaging &#39;kompose&#39; for centos paas sig</a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-03-15'>
+            March 15, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>4 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Note: This is a living document and will be updated from time to time.
+Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
+Setup your machine Install packages needed
+sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/packaging-kompose-for-centos-paas-sig/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriespackaging'>packaging</a></li>
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
+    
+        <li><a href='/categorieskompose'>kompose</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -316,8 +388,8 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
         
 
         <time class="published"
-            datetime='2019-04-22'>
-            April 22, 2019</time>
+            datetime='2019-06-10'>
+            June 10, 2019</time>
         <span class="author"></span>
         
             <p>0 minute read</p>
@@ -472,6 +544,20 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-06-10'>
+                                    June 10, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/surajd-talks-links/">Suraj Deshmukh&#39;s talks at conferences</a></h3>
                                 
                                     
@@ -521,20 +607,6 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                                 <time class="published" datetime=
                                     '2019-01-14'>
                                     January 14, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/cobra-persistent-flag/">Cobra and Persistentflags gotchas</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-01-04'>
-                                    January 4, 2019</time>
                             </header>
                         </article>
                     </li>
@@ -608,6 +680,15 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/security/">security</a>
+                                <span style="float:right;">4</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/kompose/">kompose</a>
                                 <span style="float:right;">3</span>
                             </header>
@@ -627,15 +708,6 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                         <article>
                             <header>
                                 <a href="/categories/packaging/">packaging</a>
-                                <span style="float:right;">3</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/security/">security</a>
                                 <span style="float:right;">3</span>
                             </header>
                         </article>
@@ -717,6 +789,15 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                         <article>
                             <header>
                                 <a href="/categories/container/">container</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/docker/">docker</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

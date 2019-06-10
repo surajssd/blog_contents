@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/surajd-talks-links/"><p>Suraj Deshmukh&#39;s talks at conferences</p></a>
                     </li>
                 
@@ -208,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"><p>Recreate Kubernetes CVE-2017-1002101</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/cobra-persistent-flag/"><p>Cobra and Persistentflags gotchas</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,75 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h2>
+        
+        
+            <p>Understanding the seccomp profile json format</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2019-06-10'>
+            June 10, 2019</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>What is Seccomp?  A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/docker-seccomp-manual/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesdocker'>docker</a></li>
+    
+        <li><a href='/categoriessecurity'>security</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -859,75 +928,6 @@ The duration of exam is three hours, which is enough time if you do good practic
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/disable-ctrl-w/">How to disable your Chrome Ctrl &#43; W keybinding</a></h2>
-        
-        
-            <p>Learn how to disable the shortcut Ctrl &#43; W altogether on your GNOME</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2018-10-16'>
-            October 16, 2018</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I am about to attempt the CKA exam and it has a browser based terminal. And I am used to this terminal shortcut Ctrl + W which deletes a word. But the same shortcut in browser can close a tab. Since this exam is combination of both I am afraid I might close my exam tab while deleting a word in terminal. Now the only solution to this is disabling the shortcut in chrome.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/disable-ctrl-w/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesfedora'>fedora</a></li>
-    
-        <li><a href='/categoriesgnome'>gnome</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1055,6 +1055,20 @@ The duration of exam is three hours, which is enough time if you do good practic
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-06-10'>
+                                    June 10, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/surajd-talks-links/">Suraj Deshmukh&#39;s talks at conferences</a></h3>
                                 
                                     
@@ -1104,20 +1118,6 @@ The duration of exam is three hours, which is enough time if you do good practic
                                 <time class="published" datetime=
                                     '2019-01-14'>
                                     January 14, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/cobra-persistent-flag/">Cobra and Persistentflags gotchas</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-01-04'>
-                                    January 4, 2019</time>
                             </header>
                         </article>
                     </li>
@@ -1191,6 +1191,15 @@ The duration of exam is three hours, which is enough time if you do good practic
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/security/">security</a>
+                                <span style="float:right;">4</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/kompose/">kompose</a>
                                 <span style="float:right;">3</span>
                             </header>
@@ -1210,15 +1219,6 @@ The duration of exam is three hours, which is enough time if you do good practic
                         <article>
                             <header>
                                 <a href="/categories/packaging/">packaging</a>
-                                <span style="float:right;">3</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/security/">security</a>
                                 <span style="float:right;">3</span>
                             </header>
                         </article>
@@ -1300,6 +1300,15 @@ The duration of exam is three hours, which is enough time if you do good practic
                         <article>
                             <header>
                                 <a href="/categories/container/">container</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/docker/">docker</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
