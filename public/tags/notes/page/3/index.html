@@ -36,7 +36,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/notes/" />
-<meta property="og:updated_time" content="2018-03-07T02:21:49&#43;05:30"/>
+<meta property="og:updated_time" content="2018-04-04T08:00:51&#43;05:30"/>
 
         
 <meta itemprop="name" content="notes">
@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
@@ -208,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/apiserver-in-minikube-static-configs/"><p>Make static configs available for apiserver in minikube</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"><p>Recreate Kubernetes CVE-2017-1002101</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,77 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/using-prometheus/">Prometheus with existing application on OpenShift</a></h2>
+        
+        
+            <p>Setting up Prometheus with any application</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-04-04'>
+            April 4, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.
+Requirements Setting up cluster I have done it using the oc cluster up, read about how to do this here. You could also setup a local OpenShift cluster by running minishift, read about setting up minishift here.
+Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/using-prometheus/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesmonitoring'>monitoring</a></li>
+    
+        <li><a href='/categoriesprometheus'>prometheus</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -863,75 +934,6 @@ So download the map files from over internet and then put in this location and n
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/blr-k8s-meetup-july-2017/">Bangalore Kubernetes Meetup July 2017</a></h2>
-        
-        
-            <p>Kubernetes Meetup presentation and talks</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-07-13'>
-            July 13, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>This edition of meetup was held at Nexus Ventures by folks at OpenEBS on July 8th 2017, which started on a lovely Saturday morning.
-Kiran Mova set the floor rolling with his talk on Hyperconverged version of OpenEBS with Kubernetes. Where he talked about containerized storage vs traditional storage, instead of building clustering into OpenEBS how they are leveraging Kubernetes&rsquo;s capabilities to do clustering.
-He also explained difference between various storage providers viz.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/blr-k8s-meetup-july-2017/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesevent_report'>event_report</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1060,6 +1062,20 @@ He also explained difference between various storage providers viz.</p>
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-06-21'>
+                                    June 21, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
                                 
                                     
@@ -1109,20 +1125,6 @@ He also explained difference between various storage providers viz.</p>
                                 <time class="published" datetime=
                                     '2019-01-20'>
                                     January 20, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-01-14'>
-                                    January 14, 2019</time>
                             </header>
                         </article>
                     </li>
@@ -1232,6 +1234,15 @@ He also explained difference between various storage providers viz.</p>
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/docker/">docker</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/fedora/">fedora</a>
                                 <span style="float:right;">2</span>
                             </header>
@@ -1313,7 +1324,7 @@ He also explained difference between various storage providers viz.</p>
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/docker/">docker</a>
+                                <a href="/categories/containers/">containers</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
@@ -1350,6 +1361,15 @@ He also explained difference between various storage providers viz.</p>
                         <article>
                             <header>
                                 <a href="/categories/gnome/">gnome</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/host/">host</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

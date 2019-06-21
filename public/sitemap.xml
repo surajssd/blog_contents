@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suraj.io/post/copy-to-container-without-docker-cp/</loc>
+    <lastmod>2019-06-21T11:57:07+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suraj.io/post/docker-seccomp-manual/</loc>
     <lastmod>2019-06-10T11:57:07+05:30</lastmod>
   </url>
@@ -223,13 +228,13 @@
   
   <url>
     <loc>https://suraj.io/post/</loc>
-    <lastmod>2019-06-10T11:57:07+05:30</lastmod>
+    <lastmod>2019-06-21T11:57:07+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://suraj.io/</loc>
-    <lastmod>2019-06-10T11:57:07+05:30</lastmod>
+    <lastmod>2019-06-21T11:57:07+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -299,6 +304,18 @@
   </url>
   
   <url>
+    <loc>https://suraj.io/tags/containers/</loc>
+    <lastmod>2019-06-21T11:57:07+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/containers/</loc>
+    <lastmod>2019-06-21T11:57:07+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://suraj.io/tags/crio/</loc>
     <lastmod>2017-04-08T00:11:37+05:30</lastmod>
     <priority>0</priority>
@@ -330,13 +347,13 @@
   
   <url>
     <loc>https://suraj.io/tags/docker/</loc>
-    <lastmod>2019-06-10T11:57:07+05:30</lastmod>
+    <lastmod>2019-06-21T11:57:07+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/docker/</loc>
-    <lastmod>2019-06-10T11:57:07+05:30</lastmod>
+    <lastmod>2019-06-21T11:57:07+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -421,6 +438,18 @@
   <url>
     <loc>https://suraj.io/categories/golang/</loc>
     <lastmod>2019-01-04T01:00:51+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/host/</loc>
+    <lastmod>2019-06-21T11:57:07+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/host/</loc>
+    <lastmod>2019-06-21T11:57:07+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -547,6 +576,12 @@
   <url>
     <loc>https://suraj.io/categories/packaging/</loc>
     <lastmod>2017-03-24T10:35:54+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/proc/</loc>
+    <lastmod>2019-06-21T11:57:07+05:30</lastmod>
     <priority>0</priority>
   </url>
   

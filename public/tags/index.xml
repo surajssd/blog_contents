@@ -56,6 +56,15 @@
     </item>
     
     <item>
+      <title>containers</title>
+      <link>https://suraj.io/tags/containers/</link>
+      <pubDate>Fri, 21 Jun 2019 11:57:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/containers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>crio</title>
       <link>https://suraj.io/tags/crio/</link>
       <pubDate>Sat, 08 Apr 2017 00:11:37 +0530</pubDate>
@@ -103,7 +112,7 @@
     <item>
       <title>docker</title>
       <link>https://suraj.io/tags/docker/</link>
-      <pubDate>Mon, 10 Jun 2019 11:57:07 +0530</pubDate>
+      <pubDate>Fri, 21 Jun 2019 11:57:07 +0530</pubDate>
       
       <guid>https://suraj.io/tags/docker/</guid>
       <description></description>
@@ -169,6 +178,15 @@
       <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>host</title>
+      <link>https://suraj.io/tags/host/</link>
+      <pubDate>Fri, 21 Jun 2019 11:57:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/host/</guid>
       <description></description>
     </item>
     
@@ -277,6 +295,15 @@
       <pubDate>Sun, 23 Sep 2018 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/tags/openshift/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>proc</title>
+      <link>https://suraj.io/tags/proc/</link>
+      <pubDate>Fri, 21 Jun 2019 11:57:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/proc/</guid>
       <description></description>
     </item>
     

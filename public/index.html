@@ -30,7 +30,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/" />
-<meta property="og:updated_time" content="2019-06-10T11:57:07&#43;05:30"/>
+<meta property="og:updated_time" content="2019-06-21T11:57:07&#43;05:30"/>
 
         
 <meta itemprop="name" content="Suraj Deshmukh">
@@ -192,6 +192,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
@@ -205,10 +209,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/apiserver-in-minikube-static-configs/"><p>Make static configs available for apiserver in minikube</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"><p>Recreate Kubernetes CVE-2017-1002101</p></a>
                     </li>
                 
             </ul>
@@ -225,10 +225,10 @@ if (!doNotTrack) {
     <header>
     <div class="title">
         
-            <h2><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h2>
+            <h2><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h2>
         
         
-            <p>Understanding the seccomp profile json format</p>
+            <p>No docker cp needed to copy files from host to your container</p>
         
     </div>
     <div class="meta">
@@ -237,11 +237,11 @@ if (!doNotTrack) {
         
 
         <time class="published"
-            datetime='2019-06-10'>
-            June 10, 2019</time>
+            datetime='2019-06-21'>
+            June 21, 2019</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>3 minute read</p>
+            <p>2 minute read</p>
         
         
     </div>
@@ -253,43 +253,43 @@ if (!doNotTrack) {
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f&text=Writing%20your%20own%20Seccomp%20profiles%20for%20Docker&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f&text=Copying%20files%20to%20container%20the%20generic%20way&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f&title=Writing%20your%20own%20Seccomp%20profiles%20for%20Docker" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f&title=Copying%20files%20to%20container%20the%20generic%20way" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f&title=Writing%20your%20own%20Seccomp%20profiles%20for%20Docker" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f&title=Copying%20files%20to%20container%20the%20generic%20way" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f&title=Writing%20your%20own%20Seccomp%20profiles%20for%20Docker" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f&title=Copying%20files%20to%20container%20the%20generic%20way" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -301,155 +301,113 @@ if (!doNotTrack) {
     <div id="content">
         
 
-<h2 id="what-is-seccomp">What is Seccomp?</h2>
+<p>This blog shows you how you can copy stuff from your host machine to the running container without the <code>docker cp</code> command that we usually use.</p>
 
-<blockquote>
-<p>A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</p>
-</blockquote>
+<h1 id="steps-in-text">Steps in text</h1>
 
-<p>source: <a href="https://www.kernel.org/doc/Documentation/prctl/seccomp_filter.txt">Kernel Docs</a></p>
+<p>Here I have a script on the host, which looks following:</p>
 
-<h2 id="seccomp-with-docker">Seccomp with Docker</h2>
+<pre><code class="language-bash">#!/bin/bash
 
-<p>Seccomp profile is attached with docker container by <a href="https://github.com/moby/moby/blob/master/profiles/seccomp/default.json">default</a>. But understanding the profile can be hard if you are new to it.</p>
+tput bold
+echo &quot;OS Information:&quot;
+tput sgr0
+echo
 
-<p>Here is the snippet of syscalls allowed from the default profile:</p>
-
-<pre><code class="language-json">{
-  &quot;names&quot;: [
-    &quot;bpf&quot;,
-    &quot;clone&quot;,
-    &quot;fanotify_init&quot;,
-    &quot;lookup_dcookie&quot;,
-    &quot;mount&quot;,
-    &quot;name_to_handle_at&quot;,
-    &quot;perf_event_open&quot;,
-    &quot;quotactl&quot;,
-    &quot;setdomainname&quot;,
-    &quot;sethostname&quot;,
-    &quot;setns&quot;,
-    &quot;syslog&quot;,
-    &quot;umount&quot;,
-    &quot;umount2&quot;,
-    &quot;unshare&quot;
-  ],
-  &quot;action&quot;: &quot;SCMP_ACT_ALLOW&quot;,
-  &quot;args&quot;: [],
-  &quot;comment&quot;: &quot;&quot;,
-  &quot;includes&quot;: {
-    &quot;caps&quot;: [
-        &quot;CAP_SYS_ADMIN&quot;
-    ]
-  },
-  &quot;excludes&quot;: {}
-},
+cat /etc/os-release
 </code></pre>
 
-<p>Here the syscalls mentioned in the <code>names</code> list are allowed for container only if the container starting has the capability <code>CAP_SYS_ADMIN</code> included when starting it, using the flag <code>--cap-add=SYS_ADMIN</code>.</p>
+<p>After running which looks like following:</p>
 
-<h2 id="experiment">Experiment</h2>
+<pre><code class="language-bash">$ ls
+script.sh
 
-<p>I have done my own experiment where I am tying the <code>chmod</code> syscall to the capability <code>CAP_WAKE_ALARM</code> (There is no serious thinking put behind tying <code>chmod</code> to this capability <code>CAP_WAKE_ALARM</code>, I chose it because this capability did not seem to be doing much important hence I picked it up).</p>
+$ ./script.sh
+OS Information:
 
-<p>To try this out I have created a config of my own by changing the default config which looks like following diff:</p>
-
-<pre><code class="language-diff">--- default.json                2019-06-10 14:23:11.688170627 +0530
-+++ chmod-wake-alarm.json       2019-06-10 14:19:25.706274172 +0530
-@@ -62,7 +62,6 @@
-                                &quot;capget&quot;,
-                                &quot;capset&quot;,
-                                &quot;chdir&quot;,
--                               &quot;chmod&quot;,
-                                &quot;chown&quot;,
-                                &quot;chown32&quot;,
-                                &quot;clock_getres&quot;,
-@@ -94,8 +93,6 @@
-                                &quot;fallocate&quot;,
-                                &quot;fanotify_mark&quot;,
-                                &quot;fchdir&quot;,
--                               &quot;fchmod&quot;,
--                               &quot;fchmodat&quot;,
-                                &quot;fchown&quot;,
-                                &quot;fchown32&quot;,
-                                &quot;fchownat&quot;,
-@@ -381,6 +378,22 @@
-                },
-                {
-                        &quot;names&quot;: [
-+                               &quot;chmod&quot;,
-+                               &quot;fchmod&quot;,
-+                               &quot;fchmodat&quot;
-+                       ],
-+                       &quot;action&quot;: &quot;SCMP_ACT_ALLOW&quot;,
-+                       &quot;args&quot;: [],
-+                       &quot;comment&quot;: &quot;&quot;,
-+                       &quot;includes&quot;: {
-+                               &quot;caps&quot;: [
-+                                       &quot;CAP_WAKE_ALARM&quot;
-+                               ]
-+                       },
-+                       &quot;excludes&quot;: {}
-+               },
-+               {
-+                       &quot;names&quot;: [
-                                &quot;personality&quot;
-                        ],
-                        &quot;action&quot;: &quot;SCMP_ACT_ALLOW&quot;,
-@@ -791,4 +804,4 @@
-                        &quot;excludes&quot;: {}
-                }
-        ]
--}
-\ No newline at end of file
-+}
+NAME=&quot;Flatcar Linux by Kinvolk&quot;
+ID=flatcar
+ID_LIKE=coreos
+VERSION=2079.6.0
+VERSION_ID=2079.6.0
+BUILD_ID=2019-06-18-0855
+PRETTY_NAME=&quot;Flatcar Linux by Kinvolk 2079.6.0 (Rhyolite)&quot;
+ANSI_COLOR=&quot;38;5;75&quot;
+HOME_URL=&quot;https://flatcar-linux.org/&quot;
+BUG_REPORT_URL=&quot;https://issues.flatcar-linux.org&quot;
+FLATCAR_BOARD=&quot;amd64-usr&quot;
 </code></pre>
 
-<p>To understand what has changed I first removed all the references to the <code>chmod</code> and then added following snippet to tie the <code>chmod</code> to <code>CAP_WAKE_ALARM</code>.</p>
+<p>And here is the running container in another tab to which I want to copy the file.</p>
 
-<pre><code class="language-json">{
-    &quot;names&quot;: [
-        &quot;chmod&quot;,
-        &quot;fchmod&quot;,
-        &quot;fchmodat&quot;
-    ],
-    &quot;action&quot;: &quot;SCMP_ACT_ALLOW&quot;,
-    &quot;args&quot;: [],
-    &quot;comment&quot;: &quot;&quot;,
-    &quot;includes&quot;: {
-        &quot;caps&quot;: [
-            &quot;CAP_WAKE_ALARM&quot;
-        ]
-    },
-    &quot;excludes&quot;: {}
-},
+<pre><code class="language-bash">$ docker run -it fedora bash
+[root@0d6d865626ff /]#
 </code></pre>
 
-<p>Now let&rsquo;s try this if it works:</p>
+<p><strong>Note</strong>: All the console with shell prompt <code>[root@0d6d865626ff /]#</code> means that the command is run inside the container.</p>
 
-<pre><code class="language-bash">$ docker container run --rm -it --security-opt seccomp=chmod-wake-alarm.json alpine sh
-/ # touch foo.sh
-/ # chmod +x foo.sh
-chmod: foo.sh: Operation not permitted
+<p>I can always run the <code>docker cp</code> command like following to copy file:</p>
+
+<pre><code class="language-bash">$ docker ps
+CONTAINER ID        IMAGE                                     COMMAND                  CREATED              STATUS              PORTS               NAMES
+0d6d865626ff        fedora                                    &quot;bash&quot;                   About a minute ago   Up About a minute                       hardcore_roentgen
+$ docker cp script.sh hardcore_roentgen:/
 </code></pre>
 
-<p>If you see with the newly created profile the container did not allow <code>chmod</code> to run.</p>
+<p>Now if I check it from the container:</p>
 
-<pre><code class="language-bash">$ docker container run --cap-add=WAKE_ALARM --rm -it --security-opt seccomp=chmod-wake-alarm.json alpine sh
-/ # touch foo.sh
-/ # chmod +x foo.sh
+<pre><code class="language-bash">[root@0d6d865626ff /]# ls / | grep script
+script.sh
 </code></pre>
 
-<p>But in the above command I explicitly permitted this container to run with capability <code>CAP_WAKE_ALARM</code>, and now the container allows <code>chmod</code>. In this way you can create your own profile and tie it up with any capability you want.</p>
+<p>Let&rsquo;s clean up the file and use another easier and container runtime agnostic method to do the same.</p>
 
-<h2 id="reference">Reference</h2>
+<pre><code class="language-bash">[root@0d6d865626ff /]# rm script.sh
+rm: remove regular file 'script.sh'? y
+[root@0d6d865626ff /]# ls /
+bin  boot  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+</code></pre>
 
-<ul>
-<li><a href="https://docs.docker.com/engine/security/seccomp/">Docker Seccomp</a></li>
-<li><a href="https://gist.github.com/surajssd/2744e92e7da5892a85a6ec089a26042a">Configs used in this experiment</a></li>
-<li><a href="http://man7.org/linux/man-pages/man7/capabilities.7.html">Capabilities man page</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Seccomp">What is seccomp?</a></li>
-<li><a href="https://github.com/docker/labs/tree/master/security/seccomp">Seccomp docker labs</a></li>
-</ul>
+<p>To figure out the file system root of the container process let&rsquo;s start a <code>sleep</code> process.</p>
+
+<pre><code class="language-bash">[root@0d6d865626ff /]# sleep 3000
+
+</code></pre>
+
+<p>Now the <code>sleep</code> process will help us identify the PID of this process on the host.</p>
+
+<pre><code class="language-bash">$ ps aufx | grep sleep
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root      1668  0.0  0.0   5252   692 pts/0    S+   16:47   0:00          \_ sleep 3000
+</code></pre>
+
+<p>Since we figured out the PID of the process to be <code>1668</code>, now let&rsquo;s copy the file to the root of the container by running following command. Down here I have used the PID that I got output of above, replace it with the PID you get for your process.</p>
+
+<pre><code class="language-bash">$ sudo cp -v ./script.sh /proc/1668/root/
+'./script.sh' -&gt; '/proc/1668/root/script.sh'
+</code></pre>
+
+<p>Now we can stop the sleep process we started earlier in the container see in the root that the file has been copied successfully.</p>
+
+<pre><code class="language-bash">[root@0d6d865626ff /]# sleep 3000
+^C
+[root@0d6d865626ff /]# ls / | grep script
+script.sh
+</code></pre>
+
+<hr />
+
+<h1 id="video-of-above-steps">Video of above steps</h1>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/dVUhpFjEyEE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<hr />
+
+<p>I learnt this trick while pair coding/learning things about container security with my colleague Alban, thanks <a href="https://twitter.com/albcr">Alban</a>!.</p>
 
     </div>
 
@@ -481,7 +439,9 @@ chmod: foo.sh: Operation not permitted
     
         <li><a href='/categoriesdocker'>docker</a></li>
     
-        <li><a href='/categoriessecurity'>security</a></li>
+        <li><a href='/categorieshost'>host</a></li>
+    
+        <li><a href='/categoriescontainers'>containers</a></li>
     
 </ul>
 
@@ -489,8 +449,8 @@ chmod: foo.sh: Operation not permitted
 </article>
 <ul class="actions pagination">
     
-        <li><a href="https://suraj.io/post/surajd-talks-links/"
-                class="button big previous">Suraj Deshmukh&#39;s talks at conferences</a></li>
+        <li><a href="https://suraj.io/post/docker-seccomp-manual/"
+                class="button big previous">Writing your own Seccomp profiles for Docker</a></li>
     
 
     
@@ -534,43 +494,43 @@ chmod: foo.sh: Operation not permitted
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f&text=Writing%20your%20own%20Seccomp%20profiles%20for%20Docker&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f&text=Copying%20files%20to%20container%20the%20generic%20way&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f&title=Writing%20your%20own%20Seccomp%20profiles%20for%20Docker" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f&title=Copying%20files%20to%20container%20the%20generic%20way" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f&title=Writing%20your%20own%20Seccomp%20profiles%20for%20Docker" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f&title=Copying%20files%20to%20container%20the%20generic%20way" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f&title=Writing%20your%20own%20Seccomp%20profiles%20for%20Docker" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f&title=Copying%20files%20to%20container%20the%20generic%20way" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fdocker-seccomp-manual%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fcopy-to-container-without-docker-cp%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -694,6 +654,20 @@ chmod: foo.sh: Operation not permitted
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-06-21'>
+                                    June 21, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
                                 
                                     
@@ -743,20 +717,6 @@ chmod: foo.sh: Operation not permitted
                                 <time class="published" datetime=
                                     '2019-01-20'>
                                     January 20, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-01-14'>
-                                    January 14, 2019</time>
                             </header>
                         </article>
                     </li>
@@ -866,6 +826,15 @@ chmod: foo.sh: Operation not permitted
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/docker/">docker</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/fedora/">fedora</a>
                                 <span style="float:right;">2</span>
                             </header>
@@ -947,7 +916,7 @@ chmod: foo.sh: Operation not permitted
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/docker/">docker</a>
+                                <a href="/categories/containers/">containers</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
@@ -984,6 +953,15 @@ chmod: foo.sh: Operation not permitted
                         <article>
                             <header>
                                 <a href="/categories/gnome/">gnome</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/host/">host</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
