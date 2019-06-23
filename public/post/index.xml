@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Jun 2019 11:57:07 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 23 Jun 2019 11:57:07 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Project specific scripts</title>
+      <link>https://suraj.io/post/project-specific-scripts/</link>
+      <pubDate>Sun, 23 Jun 2019 11:57:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/project-specific-scripts/</guid>
+      <description>There are always scripts that you write to automate some mundane tasks. And then you put that script in a directory that is in your PATH. But what this does is that it pollutes your system global PATH and shows up in places you wouldn&amp;rsquo;t want it to be in.
+I was struggling with this issue for a while and struggling to get a proper solution. But there is a very simple and clever trick to solve this problem.</description>
+    </item>
     
     <item>
       <title>Copying files to container the generic way</title>

@@ -36,7 +36,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/cobra/" />
-<meta property="og:updated_time" content="2018-10-21T00:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-10-23T00:00:51&#43;05:30"/>
 
         
 <meta itemprop="name" content="cobra">
@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
                     </li>
                 
@@ -208,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/"><p>Kubernetes Bangalore March 2019 Event Report</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/apiserver-in-minikube-static-configs/"><p>Make static configs available for apiserver in minikube</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,77 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/psp-on-existing-cluster/">PodSecurityPolicy on existing Kubernetes clusters</a></h2>
+        
+        
+            <p>Burnt by enabling PSPs on existing Kubernetes and wondering why everything still works</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-10-23'>
+            October 23, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>I enabled PodSecurityPolicy on a minikube cluster by appending PodSecurityPolicy to the apiserver flag in minikube like this:
+&ndash;extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\ LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\ NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\ ResourceQuota,PodSecurityPolicy  Ideally when you have PSP enabled and if you don&rsquo;t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.
+$ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v <sup>1</sup>&frasl;<sub>1</sub> Running 4 5d11h etcd-minikube <sup>1</sup>&frasl;<sub>1</sub> Running 2 5d11h heapster-bn5xp <sup>1</sup>&frasl;<sub>1</sub> Running 2 5d11h influxdb-grafana-qzpv4 <sup>2</sup>&frasl;<sub>2</sub> Running 4 5d11h kube-addon-manager-minikube <sup>1</sup>&frasl;<sub>1</sub> Running 2 5d11h kube-controller-manager-minikube <sup>1</sup>&frasl;<sub>1</sub> Running 1 4d20h kube-scheduler-minikube <sup>1</sup>&frasl;<sub>1</sub> Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 <sup>1</sup>&frasl;<sub>1</sub> Running 8 5d11h storage-provisioner <sup>1</sup>&frasl;<sub>1</sub> Running 7 5d11h  Which got me thinking what is wrong with the way PSPs work.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/psp-on-existing-cluster/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+        <li><a href='/categoriessecurity'>security</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -864,76 +935,6 @@ $ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/changing-k8s-ns/">Change namespaces in Kubernetes</a></h2>
-        
-        
-            <p>Easy way to change namespace in Kubernetes</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2018-07-02'>
-            July 2, 2018</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>3 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>There is no easy way to change namespace in Kubernetes using kubectl command line utility. But here are some commands that you can alias in your bashrc file so that it&rsquo;s just a single command that you can use to change the namespace in the Kubernetes cluster.
-Change namespace Let&rsquo;s see step by step what goes in to change the namespace. So the first step is to find the context.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/changing-k8s-ns/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriescmd-line'>cmd-line</a></li>
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1062,6 +1063,20 @@ Change namespace Let&rsquo;s see step by step what goes in to change the namespa
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/project-specific-scripts/">Project specific scripts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-06-23'>
+                                    June 23, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
                                 
                                     
@@ -1111,20 +1126,6 @@ Change namespace Let&rsquo;s see step by step what goes in to change the namespa
                                 <time class="published" datetime=
                                     '2019-03-21'>
                                     March 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/apiserver-in-minikube-static-configs/">Make static configs available for apiserver in minikube</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-01-20'>
-                                    January 20, 2019</time>
                             </header>
                         </article>
                     </li>
@@ -1252,6 +1253,15 @@ Change namespace Let&rsquo;s see step by step what goes in to change the namespa
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/host/">host</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/ide/">ide</a>
                                 <span style="float:right;">2</span>
                             </header>
@@ -1333,6 +1343,15 @@ Change namespace Let&rsquo;s see step by step what goes in to change the namespa
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/desktop/">desktop</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/etcd/">etcd</a>
                                 <span style="float:right;">1</span>
                             </header>
@@ -1369,7 +1388,7 @@ Change namespace Let&rsquo;s see step by step what goes in to change the namespa
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/host/">host</a>
+                                <a href="/categories/https/">https</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
@@ -1378,7 +1397,7 @@ Change namespace Let&rsquo;s see step by step what goes in to change the namespa
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/https/">https</a>
+                                <a href="/categories/linux/">linux</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

@@ -65,6 +65,15 @@
     </item>
     
     <item>
+      <title>desktop</title>
+      <link>https://suraj.io/categories/desktop/</link>
+      <pubDate>Sun, 23 Jun 2019 11:57:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/desktop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>docker</title>
       <link>https://suraj.io/categories/docker/</link>
       <pubDate>Fri, 21 Jun 2019 11:57:07 +0530</pubDate>
@@ -139,7 +148,7 @@
     <item>
       <title>host</title>
       <link>https://suraj.io/categories/host/</link>
-      <pubDate>Fri, 21 Jun 2019 11:57:07 +0530</pubDate>
+      <pubDate>Sun, 23 Jun 2019 11:57:07 +0530</pubDate>
       
       <guid>https://suraj.io/categories/host/</guid>
       <description></description>
@@ -178,6 +187,15 @@
       <pubDate>Sun, 20 Jan 2019 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://suraj.io/categories/linux/</link>
+      <pubDate>Sun, 23 Jun 2019 11:57:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/linux/</guid>
       <description></description>
     </item>
     
