@@ -9,6 +9,12 @@ tags = ["kubernetes", "meetup"]
 
 ---
 
+## Hardening Kubernetes by Securing Pods - Rootconf 2019
+
+{{< youtube Z-1WApK4OKw >}}
+
+---
+
 ## State of Kubernetes Meetups - DevOpsDays India 2017
 
 {{< youtube UoOndZuWdHo >}}
