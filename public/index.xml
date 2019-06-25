@@ -6,10 +6,22 @@
     <description>Recent content on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Jun 2019 11:57:07 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 25 Jun 2019 15:15:07 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Capabilities on executables</title>
+      <link>https://suraj.io/post/linux-cap-note/</link>
+      <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/linux-cap-note/</guid>
+      <description>File capabilities allow users to execute programs with higher privileges. Best example is network utility ping.
+A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn&amp;rsquo;t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.
+$ getcap `which ping` /usr/bin/ping = cap_net_admin,cap_net_raw+p  Which normally works as follows:
+$ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1.</description>
+    </item>
     
     <item>
       <title>Root user inside container is root on the host</title>

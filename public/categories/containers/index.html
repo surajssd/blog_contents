@@ -38,7 +38,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/categories/containers/" />
-<meta property="og:updated_time" content="2019-06-25T11:57:07&#43;05:30"/>
+<meta property="og:updated_time" content="2019-06-25T15:15:07&#43;05:30"/>
 
         
 <meta itemprop="name" content="containers">
@@ -195,6 +195,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/root-in-container-root-on-host/"><p>Root user inside container is root on the host</p></a>
                     </li>
                 
@@ -210,10 +214,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/surajd-talks-links/"><p>Suraj Deshmukh&#39;s talks at conferences</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,82 @@ if (!doNotTrack) {
     <div id="main">
         <h1>containers</h1>
         
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h2>
+        
+        
+            <p>Note on Linux Kernel capabilities</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2019-06-25'>
+            June 25, 2019</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>1 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>File capabilities allow users to execute programs with higher privileges. Best example is network utility ping.
+A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn&rsquo;t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.
+$ getcap <code>which ping</code> /usr/bin/ping = cap_net_admin,cap_net_raw+p  Which normally works as follows:
+$ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/linux-cap-note/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesdocker'>docker</a></li>
+    
+        <li><a href='/categorieshost'>host</a></li>
+    
+        <li><a href='/categoriescontainers'>containers</a></li>
+    
+        <li><a href='/categoriessecurity'>security</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
         
             <article class="post">
     <header>
@@ -292,6 +368,8 @@ $ docker run -d &ndash;rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7
         <li><a href='/categorieshost'>host</a></li>
     
         <li><a href='/categoriescontainers'>containers</a></li>
+    
+        <li><a href='/categoriessecurity'>security</a></li>
     
 </ul>
 
@@ -499,6 +577,20 @@ $ ls script.sh $ ./script.sh OS Information: NAME=&quot;Flatcar Linux by Kinvolk
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-06-25'>
+                                    June 25, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/root-in-container-root-on-host/">Root user inside container is root on the host</a></h3>
                                 
                                     
@@ -548,20 +640,6 @@ $ ls script.sh $ ./script.sh OS Information: NAME=&quot;Flatcar Linux by Kinvolk
                                 <time class="published" datetime=
                                     '2019-06-10'>
                                     June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/surajd-talks-links/">Suraj Deshmukh&#39;s talks at conferences</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-04-22'>
-                                    April 22, 2019</time>
                             </header>
                         </article>
                     </li>
@@ -617,8 +695,26 @@ $ ls script.sh $ ./script.sh OS Information: NAME=&quot;Flatcar Linux by Kinvolk
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/security/">security</a>
+                                <span style="float:right;">6</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/event_report/">event_report</a>
                                 <span style="float:right;">5</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/docker/">docker</a>
+                                <span style="float:right;">4</span>
                             </header>
                         </article>
                     </li>
@@ -635,7 +731,7 @@ $ ls script.sh $ ./script.sh OS Information: NAME=&quot;Flatcar Linux by Kinvolk
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/security/">security</a>
+                                <a href="/categories/host/">host</a>
                                 <span style="float:right;">4</span>
                             </header>
                         </article>
@@ -644,16 +740,7 @@ $ ls script.sh $ ./script.sh OS Information: NAME=&quot;Flatcar Linux by Kinvolk
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/docker/">docker</a>
-                                <span style="float:right;">3</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/host/">host</a>
+                                <a href="/categories/containers/">containers</a>
                                 <span style="float:right;">3</span>
                             </header>
                         </article>
@@ -682,15 +769,6 @@ $ ls script.sh $ ./script.sh OS Information: NAME=&quot;Flatcar Linux by Kinvolk
                             <header>
                                 <a href="/categories/packaging/">packaging</a>
                                 <span style="float:right;">3</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/containers/">containers</a>
-                                <span style="float:right;">2</span>
                             </header>
                         </article>
                     </li>

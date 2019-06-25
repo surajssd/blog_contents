@@ -36,7 +36,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/containers/" />
-<meta property="og:updated_time" content="2018-07-11T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-08-12T01:00:51&#43;05:30"/>
 
         
 <meta itemprop="name" content="containers">
@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/root-in-container-root-on-host/"><p>Root user inside container is root on the host</p></a>
                     </li>
                 
@@ -208,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/surajd-talks-links/"><p>Suraj Deshmukh&#39;s talks at conferences</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,75 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/golang-struct-tags-space/">Golang struct tags gotchas</a></h2>
+        
+        
+            <p>Struct tags can give you problems you didn&#39;t see coming ;-)</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-08-12'>
+            August 12, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>1 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
+type PodStatus struct { Status string <code>json: &amp;quot;,status&amp;quot;</code> }  If you run go vet on this piece of code you will get following error:
+$ go vet types.go # command-line-arguments ./types.go:28: struct field tag <code>json: &amp;quot;,status&amp;quot;</code> not compatible with reflect.StructTag.Get: bad syntax for struct tag value  Now this does not tell us what is wrong with the struct tag, json: &quot;,status&quot;.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/golang-struct-tags-space/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesgolang'>golang</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -870,76 +939,6 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/add-new-map-to-cs/">Add new Maps to Counter Strike</a></h2>
-        
-        
-            <p>Steps to add new maps to CS</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-09-01'>
-            September 1, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>If you are playing Counter Strike on Steam on linux you might be wondering how do I install new maps in the game. So here are steps to install maps.
-All the game maps for Counter Strike - Condition Zero are stored in following path:
-~/.local/share/Steam/steamapps/common/Half-Life/czero/maps  Format of the map files is .bsp.
-So download the map files from over internet and then put in this location and now you should be able to see the maps in game.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/add-new-map-to-cs/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesgaming'>gaming</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1068,6 +1067,20 @@ So download the map files from over internet and then put in this location and n
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-06-25'>
+                                    June 25, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/root-in-container-root-on-host/">Root user inside container is root on the host</a></h3>
                                 
                                     
@@ -1117,20 +1130,6 @@ So download the map files from over internet and then put in this location and n
                                 <time class="published" datetime=
                                     '2019-06-10'>
                                     June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/surajd-talks-links/">Suraj Deshmukh&#39;s talks at conferences</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-04-22'>
-                                    April 22, 2019</time>
                             </header>
                         </article>
                     </li>
@@ -1186,8 +1185,26 @@ So download the map files from over internet and then put in this location and n
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/security/">security</a>
+                                <span style="float:right;">6</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/event_report/">event_report</a>
                                 <span style="float:right;">5</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/docker/">docker</a>
+                                <span style="float:right;">4</span>
                             </header>
                         </article>
                     </li>
@@ -1204,7 +1221,7 @@ So download the map files from over internet and then put in this location and n
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/security/">security</a>
+                                <a href="/categories/host/">host</a>
                                 <span style="float:right;">4</span>
                             </header>
                         </article>
@@ -1213,16 +1230,7 @@ So download the map files from over internet and then put in this location and n
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/docker/">docker</a>
-                                <span style="float:right;">3</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/host/">host</a>
+                                <a href="/categories/containers/">containers</a>
                                 <span style="float:right;">3</span>
                             </header>
                         </article>
@@ -1251,15 +1259,6 @@ So download the map files from over internet and then put in this location and n
                             <header>
                                 <a href="/categories/packaging/">packaging</a>
                                 <span style="float:right;">3</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/containers/">containers</a>
-                                <span style="float:right;">2</span>
                             </header>
                         </article>
                     </li>

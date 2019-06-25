@@ -3,8 +3,8 @@ author = "Suraj Deshmukh"
 date = "2019-06-25T11:57:07+05:30"
 title = "Root user inside container is root on the host"
 description = "The easiest way to prove that root inside the container is also root on the host"
-categories = ["docker", "host", "containers"]
-tags = ["proc", "docker", "host", "containers"]
+categories = ["docker", "host", "containers", "security"]
+tags = ["proc", "docker", "host", "containers", "security"]
 +++
 
 Here are simple steps that you can follow to prove that the `root` user inside container is also `root` on the host. And how to mitigate this.
