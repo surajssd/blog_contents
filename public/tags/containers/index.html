@@ -36,7 +36,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/containers/" />
-<meta property="og:updated_time" content="2019-06-21T11:57:07&#43;05:30"/>
+<meta property="og:updated_time" content="2019-06-25T11:57:07&#43;05:30"/>
 
         
 <meta itemprop="name" content="containers">
@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/root-in-container-root-on-host/"><p>Root user inside container is root on the host</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
                     </li>
                 
@@ -208,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/surajd-talks-links/"><p>Suraj Deshmukh&#39;s talks at conferences</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/"><p>Kubernetes Bangalore March 2019 Event Report</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,79 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/root-in-container-root-on-host/">Root user inside container is root on the host</a></h2>
+        
+        
+            <p>The easiest way to prove that root inside the container is also root on the host</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2019-06-25'>
+            June 25, 2019</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>4 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Here are simple steps that you can follow to prove that the root user inside container is also root on the host. And how to mitigate this.
+Root in container, root on host I have a host with docker daemon running on it. I start a normal container on it with sleep process as PID1. See in the following output that the container clever_lalande started with sleep process.
+$ docker run -d &ndash;rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &quot;sleep 9999&quot; 12 seconds ago Up 11 seconds clever_lalande  Now let&rsquo;s find out the process sleep on the host.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/root-in-container-root-on-host/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesdocker'>docker</a></li>
+    
+        <li><a href='/categorieshost'>host</a></li>
+    
+        <li><a href='/categoriescontainers'>containers</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -470,7 +543,7 @@ $ ls script.sh $ ./script.sh OS Information: NAME=&quot;Flatcar Linux by Kinvolk
 
     
 
-    <p>State of Kubernetes Meetups - DevOpsDays India 2017   Making Kubernetes Simple For Developers - Rootconf 2017   Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s</p>
+    <p>Hardening Kubernetes by Securing Pods - Rootconf 2019   State of Kubernetes Meetups - DevOpsDays India 2017   Making Kubernetes Simple For Developers - Rootconf 2017   Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s</p>
 
     <footer>
         <ul class="actions">
@@ -864,74 +937,6 @@ export FIRMWARE_INSTALL_DIR=&quot;/lib/firmware&quot; wget <a href="http://mirro
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/">Add new Node to k8s cluster with Bootstrap token</a></h2>
-        
-        
-            <p>Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2018-10-24'>
-            October 24, 2018</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>4 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Few days back I wrote a blog about adding new node to the cluster using the static token file. The problem with that approach is that you need to restart kube-apiserver providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like secrets.
-So if you are following Kubernetes the Hard Way to set up the cluster here are the changes you should do to adapt it to run with bootstrap token.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1059,6 +1064,20 @@ So if you are following Kubernetes the Hard Way to set up the cluster here are t
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/root-in-container-root-on-host/">Root user inside container is root on the host</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-06-25'>
+                                    June 25, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/project-specific-scripts/">Project specific scripts</a></h3>
                                 
                                     
@@ -1108,20 +1127,6 @@ So if you are following Kubernetes the Hard Way to set up the cluster here are t
                                 <time class="published" datetime=
                                     '2019-04-22'>
                                     April 22, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/">Kubernetes Bangalore March 2019 Event Report</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-03-21'>
-                                    March 21, 2019</time>
                             </header>
                         </article>
                     </li>
@@ -1204,6 +1209,24 @@ So if you are following Kubernetes the Hard Way to set up the cluster here are t
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/docker/">docker</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/host/">host</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/kompose/">kompose</a>
                                 <span style="float:right;">3</span>
                             </header>
@@ -1231,7 +1254,7 @@ So if you are following Kubernetes the Hard Way to set up the cluster here are t
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/docker/">docker</a>
+                                <a href="/categories/containers/">containers</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>
@@ -1241,15 +1264,6 @@ So if you are following Kubernetes the Hard Way to set up the cluster here are t
                         <article>
                             <header>
                                 <a href="/categories/fedora/">fedora</a>
-                                <span style="float:right;">2</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/host/">host</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>
@@ -1322,15 +1336,6 @@ So if you are following Kubernetes the Hard Way to set up the cluster here are t
                         <article>
                             <header>
                                 <a href="/categories/container/">container</a>
-                                <span style="float:right;">1</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/containers/">containers</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>

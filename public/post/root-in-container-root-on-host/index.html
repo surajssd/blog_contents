@@ -1,0 +1,1201 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Root user inside container is root on the host</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.50-DEV" />
+        
+
+
+        
+            <meta name="author" content="Suraj Deshmukh">
+        
+        
+            <meta name="description" content="The easiest way to prove that root inside the container is also root on the host">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Root user inside container is root on the host"/>
+<meta name="twitter:description" content="The easiest way to prove that root inside the container is also root on the host"/>
+<meta name="twitter:site" content="@surajd_"/>
+
+        <meta property="og:title" content="Root user inside container is root on the host" />
+<meta property="og:description" content="The easiest way to prove that root inside the container is also root on the host" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suraj.io/post/root-in-container-root-on-host/" /><meta property="article:published_time" content="2019-06-25T11:57:07&#43;05:30"/>
+<meta property="article:modified_time" content="2019-06-25T11:57:07&#43;05:30"/>
+
+        
+<meta itemprop="name" content="Root user inside container is root on the host">
+<meta itemprop="description" content="The easiest way to prove that root inside the container is also root on the host">
+
+
+<meta itemprop="datePublished" content="2019-06-25T11:57:07&#43;05:30" />
+<meta itemprop="dateModified" content="2019-06-25T11:57:07&#43;05:30" />
+<meta itemprop="wordCount" content="793">
+
+
+
+<meta itemprop="keywords" content="proc,docker,host,containers," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="/css/google-font.css" />
+            <link rel="stylesheet" href="/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+            <link rel="stylesheet" href="/css/add-on.css" />
+            <link rel="stylesheet" href="/css/monokai-sublime.css">
+        
+
+        
+
+        
+        
+        
+            
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-97006720-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h2><a href="/">Suraj Deshmukh</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories">
+                        Categories
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about">
+                        About
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:https://suraj.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:https://suraj.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            <h3>
+                                
+                                About
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="https://suraj.io/post/root-in-container-root-on-host/"><p>Root user inside container is root on the host</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/surajd-talks-links/"><p>Suraj Deshmukh&#39;s talks at conferences</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f&text=Root%20user%20inside%20container%20is%20root%20on%20the%20host&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f&title=Root%20user%20inside%20container%20is%20root%20on%20the%20host" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f&title=Root%20user%20inside%20container%20is%20root%20on%20the%20host" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f&title=Root%20user%20inside%20container%20is%20root%20on%20the%20host" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h1><a href="https://suraj.io/post/root-in-container-root-on-host/">Root user inside container is root on the host</a></h1>
+            
+        
+        
+            <p>The easiest way to prove that root inside the container is also root on the host</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2019-06-25'>
+            June 25, 2019</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>4 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f&text=Root%20user%20inside%20container%20is%20root%20on%20the%20host&via=surajd_" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f&title=Root%20user%20inside%20container%20is%20root%20on%20the%20host" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f&title=Root%20user%20inside%20container%20is%20root%20on%20the%20host" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f&title=Root%20user%20inside%20container%20is%20root%20on%20the%20host" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2froot-in-container-root-on-host%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+
+    <div id="content">
+        
+
+<p>Here are simple steps that you can follow to prove that the <code>root</code> user inside container is also <code>root</code> on the host. And how to mitigate this.</p>
+
+<h2 id="root-in-container-root-on-host">Root in container, root on host</h2>
+
+<p>I have a host with docker daemon running on it. I start a normal container on it with <code>sleep</code> process as PID1. See in the following output that the container <code>clever_lalande</code> started with <code>sleep</code> process.</p>
+
+<pre><code class="language-bash">$ docker run -d --rm alpine sleep 9999
+6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b
+
+$ docker ps
+CONTAINER ID    IMAGE      COMMAND         CREATED             STATUS           PORTS   NAMES
+6c541cf8f7b3    alpine     &quot;sleep 9999&quot;    12 seconds ago      Up 11 seconds            clever_lalande
+</code></pre>
+
+<p>Now let&rsquo;s find out the process <code>sleep</code> on the host. Here in the following output you can see that the process sleep is running as user <code>root</code>.</p>
+
+<pre><code class="language-bash">$ ps aufx | grep sleep
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root      4826  0.3  0.0   1552     4 ?        Ss   07:34   0:00      \_ sleep 9999
+core      4864  0.0  0.0   6864   964 pts/0    S+   07:34   0:00          \_ grep --colour=auto sleep
+</code></pre>
+
+<p>Also the sleep process is root inside the container.</p>
+
+<pre><code class="language-bash">$ docker exec -it clever_lalande id
+uid=0(root) gid=0(root)
+</code></pre>
+
+<h2 id="non-root-inside-the-container-non-root-on-host">Non-root inside the container, non-root on host</h2>
+
+<p>The user I am logged into this machine is called <code>core</code> with user id 500.</p>
+
+<pre><code class="language-bash">$ whoami
+core
+
+$ id
+uid=500(core) gid=500(core) groups=500(core),10(wheel),233(docker),248(systemd-journal),250(portage),251(rkt) context=system_u:system_r:kernel_t:s0
+</code></pre>
+
+<p>Let&rsquo;s start the container in the same way but with additional flag <code>--user</code>. Here I started a new container and forced it to run under the security context of the user <code>core</code>. Here I specify the UID same as the UID on the host. The documentation of the flag says that:</p>
+
+<blockquote>
+<p>-u, &ndash;user=&ldquo;&rdquo;.</p>
+
+<p>Sets the username or UID used and optionally the groupname or GID for the specified command.</p>
+</blockquote>
+
+<p>Here is the container that is started with <code>sleep</code> process named <code>wonderful_proskuriakova</code>.</p>
+
+<pre><code class="language-bash">$ docker run -d --rm --user ${UID}:${UID} alpine sleep 9999
+1cdc11a449e4e62a9557a4d7b586aa320f5512f2746f4a8e1cac7b9e6d2e1225
+
+$ docker ps
+CONTAINER ID    IMAGE     COMMAND        CREATED            STATUS          PORTS     NAMES
+1cdc11a449e4    alpine    &quot;sleep 9999&quot;   25 seconds ago     Up 25 seconds             wonderful_proskuriakova
+</code></pre>
+
+<p>If I try to find the same process on the host here you can clearly see that the process is not running as <code>root</code> but as user <code>core</code>.</p>
+
+<pre><code class="language-bash">$ ps aufx | grep sleep
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+core      4607  0.0  0.0   1552     4 ?        Ss   07:30   0:00      \_ sleep 9999
+core      4648  0.0  0.0   6864   900 pts/0    S+   07:30   0:00          \_ grep --colour=auto sleep
+</code></pre>
+
+<p>Also inside the container I am running as UID <code>500</code>.</p>
+
+<pre><code class="language-bash">$ docker exec -it wonderful_proskuriakova id
+uid=500 gid=500
+</code></pre>
+
+<p>This is just one way to mitigate the user to be non-root. You should also drop all the capabilities and whitelist the capabilities that are absolutely needed. Also provide a seccomp profile that is locked down which only allows the syscalls that are needed by your application. There are many times where you want to run as root inside the container in such situations you should use user namespaces, which is what we are looking in the next section.</p>
+
+<h2 id="root-inside-container-non-root-on-host">Root inside container, non-root on host</h2>
+
+<p>Now I have docker daemon which is started with docker user namespace enabled. Look at the flag <code>--userns-remap=default</code> being used to start the docker daemon with user namespace. To know more about enabling user namespace, follow docs <a href="https://docs.docker.com/engine/security/userns-remap/">here</a>.</p>
+
+<pre><code class="language-bash">$ systemctl status docker-userns
+● docker-userns.service - Docker Application Container Engine
+   Loaded: loaded (/etc/systemd/system/docker-userns.service; disabled; vendor preset: disabled)
+   Active: active (running) since Tue 2019-06-25 07:07:37 UTC; 1h 11min ago
+     Docs: http://docs.docker.com
+ Main PID: 4011 (dockerd)
+    Tasks: 10
+   Memory: 61.8M
+   CGroup: /system.slice/docker-userns.service
+           └─4011 /run/torcx/bin/dockerd --host=fd:// --host=tcp://127.0.0.1:2376 --containerd=/var/run/docker/libcontainerd/docker-containerd.sock --userns-remap=default --pidfile /var/run/docker-userns.pid --selinux-enabled=true
+...
+</code></pre>
+
+<p>Now start the container like we did for the first time without any <code>--user</code> flag. In the following output you can see that the container started with name <code>sad_pasteur</code>.</p>
+
+<pre><code class="language-bash">$ docker run --rm -d alpine sleep 9999
+05290a7088b3e7c0e4e80cbb3a63c0d63a49627b8d31ec9f75f44b9a57b717f4
+
+$ docker ps
+CONTAINER ID    IMAGE     COMMAND         CREATED            STATUS        PORTS    NAMES
+05290a7088b3    alpine    &quot;sleep 9999&quot;    2 seconds ago      Up 1 second            sad_pasteur
+</code></pre>
+
+<p>Now if we see the <code>sleep</code> process on host, the process has started with different user <code>100000</code> on host.</p>
+
+<pre><code class="language-bash">$ ps aufx | grep sleep
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+100000    5467  0.2  0.0   1552     4 ?        Ss   08:16   0:00      \_ sleep 9999
+core      5511  0.0  0.0   6864   988 pts/0    S+   08:16   0:00          \_ grep --colour=auto sleep
+</code></pre>
+
+<p>But inside the container the user is still <code>root</code>.</p>
+
+<pre><code class="language-bash">$ docker exec -it sad_pasteur id
+uid=0(root) gid=0(root)
+</code></pre>
+
+<p>This is because of the user namespace enabled on the docker daemon that we see user <code>100000</code> on host. This mapping of the user id on host and inside the container can be found in the following files:</p>
+
+<pre><code>$ cat /etc/subuid
+dockremap:100000:65536
+
+$ cat /etc/subgid
+dockremap:100000:65536
+</code></pre>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://github.com/docker/labs/blob/master/security/userns/README.md">Docker Lab: User Namespaces</a></li>
+<li><a href="https://docs.docker.com/engine/security/userns-remap/">Isolate containers with a user namespace</a></li>
+</ul>
+
+    </div>
+
+    <footer>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesdocker'>docker</a></li>
+    
+        <li><a href='/categorieshost'>host</a></li>
+    
+        <li><a href='/categoriescontainers'>containers</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="https://suraj.io/post/project-specific-scripts/"
+                class="button big previous">Project specific scripts</a></li>
+    
+
+    
+</ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="https://github.com/surajssd.png" alt="Suraj" /></a>
+                
+            
+            
+                <header>
+                    <h2>Blog</h2>
+                    <p>containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos</p>
+                </header>
+            
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/surajssd" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" title="YouTube" class="fa fa-youtube"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" title="WordPress" class="fa fa-wordpress"></a></li>
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" title="SlideShare" class="fa fa-slideshare"></a></li>
+
+
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" title="Stack Overflow" class="fa fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/root-in-container-root-on-host/">Root user inside container is root on the host</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-06-25'>
+                                    June 25, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/project-specific-scripts/">Project specific scripts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-06-23'>
+                                    June 23, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-06-21'>
+                                    June 21, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-06-10'>
+                                    June 10, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/surajd-talks-links/">Suraj Deshmukh&#39;s talks at conferences</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-04-22'>
+                                    April 22, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                "/post/"
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kubernetes/">kubernetes</a>
+                                <span style="float:right;">16</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/notes/">notes</a>
+                                <span style="float:right;">14</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/event_report/">event_report</a>
+                                <span style="float:right;">5</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/golang/">golang</a>
+                                <span style="float:right;">4</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/security/">security</a>
+                                <span style="float:right;">4</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/docker/">docker</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/host/">host</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kompose/">kompose</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/openshift/">openshift</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/packaging/">packaging</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/containers/">containers</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/fedora/">fedora</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/ide/">ide</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/minikube/">minikube</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/programming/">programming</a>
+                                <span style="float:right;">2</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/centos/">centos</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/certs/">certs</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/cka/">cka</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/cmd-line/">cmd-line</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/container/">container</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/desktop/">desktop</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/etcd/">etcd</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/gaming/">gaming</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/git/">git</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/gnome/">gnome</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/https/">https</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/linux/">linux</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/monitoring/">monitoring</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/project_management/">project_management</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/prometheus/">prometheus</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/selinux/">selinux</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/talks/">talks</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/vagrant/">vagrant</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+        <section class="blurb">
+            <h2>About</h2>
+            <p>I am a Software Engineer at Kinvolk, working on various tooling around container technology like Docker, Kubernetes</p>
+
+            <ul class="actions">
+                <li><a href="/about/" class="button">Learn More</a></li>
+            </ul>
+        </section>
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/surajssd" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" title="YouTube" class="fa fa-youtube"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" title="WordPress" class="fa fa-wordpress"></a></li>
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" title="SlideShare" class="fa fa-slideshare"></a></li>
+
+
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" title="Stack Overflow" class="fa fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Suraj Deshmukh. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/skel.min.js"></script>
+            <script src="/js/util.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/backToTop.js"></script>
+            <script src="/js/highlight.pack.js"></script>
+        
+
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

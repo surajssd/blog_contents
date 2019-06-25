@@ -36,7 +36,7 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/intellij/" />
-<meta property="og:updated_time" content="2018-10-23T00:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2018-10-24T01:00:51&#43;05:30"/>
 
         
 <meta itemprop="name" content="intellij">
@@ -193,6 +193,10 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/root-in-container-root-on-host/"><p>Root user inside container is root on the host</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
                     </li>
                 
@@ -208,10 +212,6 @@ if (!doNotTrack) {
                         <a href="https://suraj.io/post/surajd-talks-links/"><p>Suraj Deshmukh&#39;s talks at conferences</p></a>
                     </li>
                 
-                    <li>
-                        <a href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/"><p>Kubernetes Bangalore March 2019 Event Report</p></a>
-                    </li>
-                
             </ul>
         </section>
 
@@ -225,6 +225,74 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/">Add new Node to k8s cluster with Bootstrap token</a></h2>
+        
+        
+            <p>Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-10-24'>
+            October 24, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>4 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Few days back I wrote a blog about adding new node to the cluster using the static token file. The problem with that approach is that you need to restart kube-apiserver providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like secrets.
+So if you are following Kubernetes the Hard Way to set up the cluster here are the changes you should do to adapt it to run with bootstrap token.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -863,78 +931,6 @@ $ go vet types.go # command-line-arguments ./types.go:28: struct field tag <code
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/accessing-oc-cluster-up-etcd/">Access etcd in OpenShift origin</a></h2>
-        
-        
-            <p>Access the etcd in OpenShift started by oc cluster up</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2018-07-11'>
-            July 11, 2018</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
-If you are using minishift then get docker environment access of the minishift VM by running following commands.
-eval $(minishift docker-env) &amp;&amp; eval $(minishift oc-env)  Exec into the container named origin that runs OpenShift and all the needed services.
-$ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/accessing-oc-cluster-up-etcd/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesopenshift'>openshift</a></li>
-    
-        <li><a href='/categoriesetcd'>etcd</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -1063,6 +1059,20 @@ $ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/root-in-container-root-on-host/">Root user inside container is root on the host</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2019-06-25'>
+                                    June 25, 2019</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/project-specific-scripts/">Project specific scripts</a></h3>
                                 
                                     
@@ -1112,20 +1122,6 @@ $ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.
                                 <time class="published" datetime=
                                     '2019-04-22'>
                                     April 22, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/">Kubernetes Bangalore March 2019 Event Report</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-03-21'>
-                                    March 21, 2019</time>
                             </header>
                         </article>
                     </li>
@@ -1208,6 +1204,24 @@ $ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.
                     <li>
                         <article>
                             <header>
+                                <a href="/categories/docker/">docker</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/host/">host</a>
+                                <span style="float:right;">3</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <a href="/categories/kompose/">kompose</a>
                                 <span style="float:right;">3</span>
                             </header>
@@ -1235,7 +1249,7 @@ $ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/docker/">docker</a>
+                                <a href="/categories/containers/">containers</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>
@@ -1245,15 +1259,6 @@ $ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.
                         <article>
                             <header>
                                 <a href="/categories/fedora/">fedora</a>
-                                <span style="float:right;">2</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/host/">host</a>
                                 <span style="float:right;">2</span>
                             </header>
                         </article>
@@ -1326,15 +1331,6 @@ $ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.
                         <article>
                             <header>
                                 <a href="/categories/container/">container</a>
-                                <span style="float:right;">1</span>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <a href="/categories/containers/">containers</a>
                                 <span style="float:right;">1</span>
                             </header>
                         </article>
