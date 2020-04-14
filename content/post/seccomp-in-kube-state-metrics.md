@@ -72,3 +72,7 @@ cat /proc/self/status | grep Seccomp:
 ```
 
 If the output is `Seccomp:	2` then `seccomp` is enabled. If it is `Seccomp:	0` then `seccomp` is disabled.
+
+## Reference
+
+Read more in depth about Kubernetes and Seccomp in [this blog post](https://itnext.io/seccomp-in-kubernetes-part-i-7-things-you-should-know-before-you-even-start-97502ad6b6d6).

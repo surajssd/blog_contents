@@ -37,7 +37,7 @@
 <meta itemprop="description" content="This post shows how you can enable seccomp on all the Pods that are deployed with Prometheus Operator">
 <meta itemprop="datePublished" content="2020-04-14T11:57:07&#43;05:30" />
 <meta itemprop="dateModified" content="2020-04-14T11:57:07&#43;05:30" />
-<meta itemprop="wordCount" content="471">
+<meta itemprop="wordCount" content="484">
 
 
 
@@ -396,6 +396,8 @@ if (!doNotTrack) {
 <p>To verify if the <code>seccomp</code> is enabled on a pod, you <code>kubectl exec</code> into the pod and run following command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /proc/self/status | grep Seccomp:
 </code></pre></div><p>If the output is <code>Seccomp:	2</code> then <code>seccomp</code> is enabled. If it is <code>Seccomp:	0</code> then <code>seccomp</code> is disabled.</p>
+<h2 id="reference">Reference</h2>
+<p>Read more in depth about Kubernetes and Seccomp in <a href="https://itnext.io/seccomp-in-kubernetes-part-i-7-things-you-should-know-before-you-even-start-97502ad6b6d6">this blog post</a>.</p>
 
     </div>
 
