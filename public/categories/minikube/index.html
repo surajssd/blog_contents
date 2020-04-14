@@ -18,7 +18,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -38,13 +38,10 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/categories/minikube/" />
-<meta property="og:updated_time" content="2019-01-20T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2019-01-20T01:00:51+05:30" />
 
-        
-<meta itemprop="name" content="minikube">
+        <meta itemprop="name" content="minikube">
 <meta itemprop="description" content="Blog">
-
-
         
 
         
@@ -195,6 +192,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -204,14 +209,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -254,8 +251,8 @@ if (!doNotTrack) {
 
     
 
-    <p>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube&rsquo;s &ndash;extra-config flag with apiserver.&lt;apiserver flag&gt;=&lt;value&gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
-&ndash;extra-config=apiserver.authorization-mode=RBAC  So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</p>
+    <p>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube’s &ndash;extra-config flag with apiserver.&lt;apiserver flag&gt;=&lt;value&gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
+&ndash;extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</p>
 
     <footer>
         <ul class="actions">
@@ -496,6 +493,34 @@ On the configuration side of doing that you will need to create Kubernetes Secre
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -535,34 +560,6 @@ On the configuration side of doing that you will need to create Kubernetes Secre
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -597,7 +594,7 @@ On the configuration side of doing that you will need to create Kubernetes Secre
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -615,7 +612,7 @@ On the configuration side of doing that you will need to create Kubernetes Secre
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

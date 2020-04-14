@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Root user inside container is root on the host" />
 <meta property="og:description" content="The easiest way to prove that root inside the container is also root on the host" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/root-in-container-root-on-host/" /><meta property="article:published_time" content="2019-06-25T11:57:07&#43;05:30"/>
-<meta property="article:modified_time" content="2019-06-25T11:57:07&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/root-in-container-root-on-host/" />
+<meta property="article:published_time" content="2019-06-25T11:57:07+05:30" />
+<meta property="article:modified_time" content="2019-06-25T11:57:07+05:30" />
 
-        
-<meta itemprop="name" content="Root user inside container is root on the host">
+        <meta itemprop="name" content="Root user inside container is root on the host">
 <meta itemprop="description" content="The easiest way to prove that root inside the container is also root on the host">
-
-
 <meta itemprop="datePublished" content="2019-06-25T11:57:07&#43;05:30" />
 <meta itemprop="dateModified" content="2019-06-25T11:57:07&#43;05:30" />
 <meta itemprop="wordCount" content="793">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="proc,docker,host,containers,security," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,133 +360,86 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>Here are simple steps that you can follow to prove that the <code>root</code> user inside container is also <code>root</code> on the host. And how to mitigate this.</p>
-
+        <p>Here are simple steps that you can follow to prove that the <code>root</code> user inside container is also <code>root</code> on the host. And how to mitigate this.</p>
 <h2 id="root-in-container-root-on-host">Root in container, root on host</h2>
-
 <p>I have a host with docker daemon running on it. I start a normal container on it with <code>sleep</code> process as PID1. See in the following output that the container <code>clever_lalande</code> started with <code>sleep</code> process.</p>
-
-<pre><code class="language-bash">$ docker run -d --rm alpine sleep 9999
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker run -d --rm alpine sleep <span style="color:#ae81ff">9999</span>
 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b
 
 $ docker ps
 CONTAINER ID    IMAGE      COMMAND         CREATED             STATUS           PORTS   NAMES
-6c541cf8f7b3    alpine     &quot;sleep 9999&quot;    12 seconds ago      Up 11 seconds            clever_lalande
-</code></pre>
-
-<p>Now let&rsquo;s find out the process <code>sleep</code> on the host. Here in the following output you can see that the process sleep is running as user <code>root</code>.</p>
-
-<pre><code class="language-bash">$ ps aufx | grep sleep
+6c541cf8f7b3    alpine     <span style="color:#e6db74">&#34;sleep 9999&#34;</span>    <span style="color:#ae81ff">12</span> seconds ago      Up <span style="color:#ae81ff">11</span> seconds            clever_lalande
+</code></pre></div><p>Now let&rsquo;s find out the process <code>sleep</code> on the host. Here in the following output you can see that the process sleep is running as user <code>root</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ps aufx | grep sleep
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root      4826  0.3  0.0   1552     4 ?        Ss   07:34   0:00      \_ sleep 9999
-core      4864  0.0  0.0   6864   964 pts/0    S+   07:34   0:00          \_ grep --colour=auto sleep
-</code></pre>
-
-<p>Also the sleep process is root inside the container.</p>
-
-<pre><code class="language-bash">$ docker exec -it clever_lalande id
-uid=0(root) gid=0(root)
-</code></pre>
-
-<h2 id="non-root-inside-the-container-non-root-on-host">Non-root inside the container, non-root on host</h2>
-
+root      <span style="color:#ae81ff">4826</span>  0.3  0.0   <span style="color:#ae81ff">1552</span>     <span style="color:#ae81ff">4</span> ?        Ss   07:34   0:00      <span style="color:#ae81ff">\_</span> sleep <span style="color:#ae81ff">9999</span>
+core      <span style="color:#ae81ff">4864</span>  0.0  0.0   <span style="color:#ae81ff">6864</span>   <span style="color:#ae81ff">964</span> pts/0    S+   07:34   0:00          <span style="color:#ae81ff">\_</span> grep --colour<span style="color:#f92672">=</span>auto sleep
+</code></pre></div><p>Also the sleep process is root inside the container.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker exec -it clever_lalande id
+uid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span>
+</code></pre></div><h2 id="non-root-inside-the-container-non-root-on-host">Non-root inside the container, non-root on host</h2>
 <p>The user I am logged into this machine is called <code>core</code> with user id 500.</p>
-
-<pre><code class="language-bash">$ whoami
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ whoami
 core
 
 $ id
-uid=500(core) gid=500(core) groups=500(core),10(wheel),233(docker),248(systemd-journal),250(portage),251(rkt) context=system_u:system_r:kernel_t:s0
-</code></pre>
-
-<p>Let&rsquo;s start the container in the same way but with additional flag <code>--user</code>. Here I started a new container and forced it to run under the security context of the user <code>core</code>. Here I specify the UID same as the UID on the host. The documentation of the flag says that:</p>
-
+uid<span style="color:#f92672">=</span>500<span style="color:#f92672">(</span>core<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>500<span style="color:#f92672">(</span>core<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>500<span style="color:#f92672">(</span>core<span style="color:#f92672">)</span>,10<span style="color:#f92672">(</span>wheel<span style="color:#f92672">)</span>,233<span style="color:#f92672">(</span>docker<span style="color:#f92672">)</span>,248<span style="color:#f92672">(</span>systemd-journal<span style="color:#f92672">)</span>,250<span style="color:#f92672">(</span>portage<span style="color:#f92672">)</span>,251<span style="color:#f92672">(</span>rkt<span style="color:#f92672">)</span> context<span style="color:#f92672">=</span>system_u:system_r:kernel_t:s0
+</code></pre></div><p>Let&rsquo;s start the container in the same way but with additional flag <code>--user</code>. Here I started a new container and forced it to run under the security context of the user <code>core</code>. Here I specify the UID same as the UID on the host. The documentation of the flag says that:</p>
 <blockquote>
-<p>-u, &ndash;user=&ldquo;&rdquo;.</p>
-
+<p>-u, &ndash;user=&rdquo;&quot;.</p>
 <p>Sets the username or UID used and optionally the groupname or GID for the specified command.</p>
 </blockquote>
-
 <p>Here is the container that is started with <code>sleep</code> process named <code>wonderful_proskuriakova</code>.</p>
-
-<pre><code class="language-bash">$ docker run -d --rm --user ${UID}:${UID} alpine sleep 9999
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker run -d --rm --user <span style="color:#e6db74">${</span>UID<span style="color:#e6db74">}</span>:<span style="color:#e6db74">${</span>UID<span style="color:#e6db74">}</span> alpine sleep <span style="color:#ae81ff">9999</span>
 1cdc11a449e4e62a9557a4d7b586aa320f5512f2746f4a8e1cac7b9e6d2e1225
 
 $ docker ps
 CONTAINER ID    IMAGE     COMMAND        CREATED            STATUS          PORTS     NAMES
-1cdc11a449e4    alpine    &quot;sleep 9999&quot;   25 seconds ago     Up 25 seconds             wonderful_proskuriakova
-</code></pre>
-
-<p>If I try to find the same process on the host here you can clearly see that the process is not running as <code>root</code> but as user <code>core</code>.</p>
-
-<pre><code class="language-bash">$ ps aufx | grep sleep
+1cdc11a449e4    alpine    <span style="color:#e6db74">&#34;sleep 9999&#34;</span>   <span style="color:#ae81ff">25</span> seconds ago     Up <span style="color:#ae81ff">25</span> seconds             wonderful_proskuriakova
+</code></pre></div><p>If I try to find the same process on the host here you can clearly see that the process is not running as <code>root</code> but as user <code>core</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ps aufx | grep sleep
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-core      4607  0.0  0.0   1552     4 ?        Ss   07:30   0:00      \_ sleep 9999
-core      4648  0.0  0.0   6864   900 pts/0    S+   07:30   0:00          \_ grep --colour=auto sleep
-</code></pre>
-
-<p>Also inside the container I am running as UID <code>500</code>.</p>
-
-<pre><code class="language-bash">$ docker exec -it wonderful_proskuriakova id
-uid=500 gid=500
-</code></pre>
-
-<p>This is just one way to mitigate the user to be non-root. You should also drop all the capabilities and whitelist the capabilities that are absolutely needed. Also provide a seccomp profile that is locked down which only allows the syscalls that are needed by your application. There are many times where you want to run as root inside the container in such situations you should use user namespaces, which is what we are looking in the next section.</p>
-
+core      <span style="color:#ae81ff">4607</span>  0.0  0.0   <span style="color:#ae81ff">1552</span>     <span style="color:#ae81ff">4</span> ?        Ss   07:30   0:00      <span style="color:#ae81ff">\_</span> sleep <span style="color:#ae81ff">9999</span>
+core      <span style="color:#ae81ff">4648</span>  0.0  0.0   <span style="color:#ae81ff">6864</span>   <span style="color:#ae81ff">900</span> pts/0    S+   07:30   0:00          <span style="color:#ae81ff">\_</span> grep --colour<span style="color:#f92672">=</span>auto sleep
+</code></pre></div><p>Also inside the container I am running as UID <code>500</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker exec -it wonderful_proskuriakova id
+uid<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span> gid<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>
+</code></pre></div><p>This is just one way to mitigate the user to be non-root. You should also drop all the capabilities and whitelist the capabilities that are absolutely needed. Also provide a seccomp profile that is locked down which only allows the syscalls that are needed by your application. There are many times where you want to run as root inside the container in such situations you should use user namespaces, which is what we are looking in the next section.</p>
 <h2 id="root-inside-container-non-root-on-host">Root inside container, non-root on host</h2>
-
 <p>Now I have docker daemon which is started with docker user namespace enabled. Look at the flag <code>--userns-remap=default</code> being used to start the docker daemon with user namespace. To know more about enabling user namespace, follow docs <a href="https://docs.docker.com/engine/security/userns-remap/">here</a>.</p>
-
-<pre><code class="language-bash">$ systemctl status docker-userns
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ systemctl status docker-userns
 ● docker-userns.service - Docker Application Container Engine
-   Loaded: loaded (/etc/systemd/system/docker-userns.service; disabled; vendor preset: disabled)
-   Active: active (running) since Tue 2019-06-25 07:07:37 UTC; 1h 11min ago
+   Loaded: loaded <span style="color:#f92672">(</span>/etc/systemd/system/docker-userns.service; disabled; vendor preset: disabled<span style="color:#f92672">)</span>
+   Active: active <span style="color:#f92672">(</span>running<span style="color:#f92672">)</span> since Tue 2019-06-25 07:07:37 UTC; 1h 11min ago
      Docs: http://docs.docker.com
- Main PID: 4011 (dockerd)
-    Tasks: 10
+ Main PID: <span style="color:#ae81ff">4011</span> <span style="color:#f92672">(</span>dockerd<span style="color:#f92672">)</span>
+    Tasks: <span style="color:#ae81ff">10</span>
    Memory: 61.8M
    CGroup: /system.slice/docker-userns.service
-           └─4011 /run/torcx/bin/dockerd --host=fd:// --host=tcp://127.0.0.1:2376 --containerd=/var/run/docker/libcontainerd/docker-containerd.sock --userns-remap=default --pidfile /var/run/docker-userns.pid --selinux-enabled=true
+           └─4011 /run/torcx/bin/dockerd --host<span style="color:#f92672">=</span>fd:// --host<span style="color:#f92672">=</span>tcp://127.0.0.1:2376 --containerd<span style="color:#f92672">=</span>/var/run/docker/libcontainerd/docker-containerd.sock --userns-remap<span style="color:#f92672">=</span>default --pidfile /var/run/docker-userns.pid --selinux-enabled<span style="color:#f92672">=</span>true
 ...
-</code></pre>
-
-<p>Now start the container like we did for the first time without any <code>--user</code> flag. In the following output you can see that the container started with name <code>sad_pasteur</code>.</p>
-
-<pre><code class="language-bash">$ docker run --rm -d alpine sleep 9999
+</code></pre></div><p>Now start the container like we did for the first time without any <code>--user</code> flag. In the following output you can see that the container started with name <code>sad_pasteur</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker run --rm -d alpine sleep <span style="color:#ae81ff">9999</span>
 05290a7088b3e7c0e4e80cbb3a63c0d63a49627b8d31ec9f75f44b9a57b717f4
 
 $ docker ps
 CONTAINER ID    IMAGE     COMMAND         CREATED            STATUS        PORTS    NAMES
-05290a7088b3    alpine    &quot;sleep 9999&quot;    2 seconds ago      Up 1 second            sad_pasteur
-</code></pre>
-
-<p>Now if we see the <code>sleep</code> process on host, the process has started with different user <code>100000</code> on host.</p>
-
-<pre><code class="language-bash">$ ps aufx | grep sleep
+05290a7088b3    alpine    <span style="color:#e6db74">&#34;sleep 9999&#34;</span>    <span style="color:#ae81ff">2</span> seconds ago      Up <span style="color:#ae81ff">1</span> second            sad_pasteur
+</code></pre></div><p>Now if we see the <code>sleep</code> process on host, the process has started with different user <code>100000</code> on host.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ps aufx | grep sleep
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-100000    5467  0.2  0.0   1552     4 ?        Ss   08:16   0:00      \_ sleep 9999
-core      5511  0.0  0.0   6864   988 pts/0    S+   08:16   0:00          \_ grep --colour=auto sleep
-</code></pre>
-
-<p>But inside the container the user is still <code>root</code>.</p>
-
-<pre><code class="language-bash">$ docker exec -it sad_pasteur id
-uid=0(root) gid=0(root)
-</code></pre>
-
-<p>This is because of the user namespace enabled on the docker daemon that we see user <code>100000</code> on host. This mapping of the user id on host and inside the container can be found in the following files:</p>
-
+<span style="color:#ae81ff">100000</span>    <span style="color:#ae81ff">5467</span>  0.2  0.0   <span style="color:#ae81ff">1552</span>     <span style="color:#ae81ff">4</span> ?        Ss   08:16   0:00      <span style="color:#ae81ff">\_</span> sleep <span style="color:#ae81ff">9999</span>
+core      <span style="color:#ae81ff">5511</span>  0.0  0.0   <span style="color:#ae81ff">6864</span>   <span style="color:#ae81ff">988</span> pts/0    S+   08:16   0:00          <span style="color:#ae81ff">\_</span> grep --colour<span style="color:#f92672">=</span>auto sleep
+</code></pre></div><p>But inside the container the user is still <code>root</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker exec -it sad_pasteur id
+uid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span>
+</code></pre></div><p>This is because of the user namespace enabled on the docker daemon that we see user <code>100000</code> on host. This mapping of the user id on host and inside the container can be found in the following files:</p>
 <pre><code>$ cat /etc/subuid
 dockremap:100000:65536
 
 $ cat /etc/subgid
 dockremap:100000:65536
-</code></pre>
-
-<h2 id="references">References</h2>
-
+</code></pre><h2 id="references">References</h2>
 <ul>
 <li><a href="https://github.com/docker/labs/blob/master/security/userns/README.md">Docker Lab: User Namespaces</a></li>
 <li><a href="https://docs.docker.com/engine/security/userns-remap/">Isolate containers with a user namespace</a></li>
@@ -686,6 +636,34 @@ dockremap:100000:65536
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -725,34 +703,6 @@ dockremap:100000:65536
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -787,7 +737,7 @@ dockremap:100000:65536
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -805,7 +755,7 @@ dockremap:100000:65536
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

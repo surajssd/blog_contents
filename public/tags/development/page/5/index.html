@@ -16,7 +16,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -36,13 +36,10 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/development/" />
-<meta property="og:updated_time" content="2017-03-26T18:19:15&#43;05:30"/>
+<meta property="og:updated_time" content="2018-08-14T01:00:51+05:30" />
 
-        
-<meta itemprop="name" content="development">
+        <meta itemprop="name" content="development">
 <meta itemprop="description" content="Blog">
-
-
         
 
         
@@ -193,6 +190,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -202,14 +207,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -225,6 +222,142 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/blr-k8s-meetup-april-2017/">Bangalore Kubernetes Meetup April 2017</a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-04-08'>
+            April 8, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Like many Saturday mornings, Red Hat Bangalore office was once again abuzz with enthusiasm on 8th of April, for hosting yet another successful chapter of Bangalore Kubernetes Meetup. The Meetup had a good turnaround of about 40 people who gave up on their early morning saturday sleep to attend it despite the sweltering hot season and in line were four awesome talks.
+Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/blr-k8s-meetup-april-2017/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Category
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesevent_report'>event_report</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/using-crio-with-k8s-single-node/">k8s on CRI-O - single node</a></h2>
+        
+        
+            <p>How to make kubernetes use CRI-O as container runtime</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-04-08'>
+            April 8, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
+Installing OS dependencies dnf -y install \  go \  git \  btrfs-progs-devel \  device-mapper-devel \  glib2-devel \  glibc-devel \  glibc-static \  gpgme-devel \  libassuan-devel \  libgpg-error-devel \  libseccomp-devel \  libselinux-devel \  pkgconfig \  wget \  etcd \  iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo 'GOPATH=~/go' &gt;&gt; ~/.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/using-crio-with-k8s-single-node/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -323,7 +456,7 @@ Docs  README LICENSE How to install? How to use? Code of conduct guidelines Copy
 
     
 
-    <p>Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG  My Notes  Start reading from: Fedora packager&rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros.  $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch   To see all macros on the system:  $ rpm &ndash;showrc   Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package  $ rpm -qip .</p>
+    <p>Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit <a href="mailto:surajd@FEDORAPROJECT.ORG">surajd@FEDORAPROJECT.ORG</a> My Notes  Start reading from: Fedora packager’s guide Some macros come from redhat-rpm-config and fedora-rpm-macros.  $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch  To see all macros on the system:  $ rpm &ndash;showrc  Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package  $ rpm -qip .</p>
 
     <footer>
         <ul class="actions">
@@ -393,10 +526,11 @@ Docs  README LICENSE How to install? How to use? Code of conduct guidelines Copy
     
 
     <p>Notes about using git.
-Tips and tricks Switch branches $ git checkout &lt;branch&gt;  status $ git status -sb  Show status in short format and also give branch info
-show $ git show  Shows log message and diff about the commit you are on.
-log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go  Get logs on file between line numbers.
-$ git log &ndash;graph &ndash;abbrev-commit  Show graph in logs.</p>
+Tips and tricks  Switch branches $ git checkout &lt;branch&gt;  status $ git status -sb Show status in short format and also give branch info
+show $ git show Shows log message and diff about the commit you are on.
+log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go Get logs on file between line numbers.
+$ git log &ndash;graph &ndash;abbrev-commit Show graph in logs.
+commit $ git add -p Commit only parts of file.</p>
 
     <footer>
         <ul class="actions">
@@ -465,9 +599,9 @@ $ git log &ndash;graph &ndash;abbrev-commit  Show graph in logs.</p>
 
     <p>Note: This is a living document and will be updated as I discover new things.
 Shortcuts  Ctrl + Shift + A  Find any action in IDE
- Ctrl + Shift + F  Find in Path
- Alt + 1  Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
- Shift + Insert in Project window  Here you can add new file to the project.</p>
+Ctrl + Shift + F  Find in Path
+Alt + 1  Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
+Shift + Insert in Project window  Here you can add new file to the project.</p>
 
     <footer>
         <ul class="actions">
@@ -537,7 +671,7 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
     <p>Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
 Setup your machine Install packages needed
-sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs</p>
+sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \  gcc byobu rpmlint rpmdevtools centos-packager Setup certs</p>
 
     <footer>
         <ul class="actions">
@@ -606,12 +740,11 @@ sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ su
 
     
 
-    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
+    <p><p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
 Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
 Starting the environment:
-docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
-
-<h1 id="inside-the-container-pull-packages-from-the-testing-repository-dnf-enablerepo-updates-testing-y-install-kompose-check-the-kompose-version-kompose-version-install-the-testing-dependencies-dnf-install-y-jq-make-pull-the-git-repository-to-run-the-functional-tests-git-clone-https-github">Inside the container # Pull packages from the testing repository dnf &ndash;enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone <a href="https://github">https://github</a>.</h1>
+docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:</p>
+<h1 id="inside-the-container--pull-packages-from-the-testing-repository-dnf---enablerepo-updates-testing--y-install-kompose--check-the-kompose-version-kompose-version--install-the-testing-dependencies-dnf-install--y-jq-make--pull-the-git-repository-to-run-the-functional-tests-git-clone-httpsgithub">Inside the container # Pull packages from the testing repository dnf &ndash;enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.</h1>
 </p>
 
     <footer>
@@ -648,49 +781,6 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
         <li><a href='/categoriesnotes'>notes</a></li>
     
         <li><a href='/categorieskompose'>kompose</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/">Posts</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2019-06-25'>
-            June 25, 2019</time>
-        <span class="author"></span>
-        
-            <p>0 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p></p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-
-    
     
 </ul>
 
@@ -825,6 +915,34 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -864,34 +982,6 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -926,7 +1016,7 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -944,7 +1034,7 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

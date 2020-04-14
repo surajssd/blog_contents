@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Quick PV for local Kubernetes cluster" />
 <meta property="og:description" content="A hostPath based local PV creation process for using via PVC" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/quick-pv-for-local-k8s/" /><meta property="article:published_time" content="2017-04-18T23:56:15&#43;05:30"/>
-<meta property="article:modified_time" content="2017-04-18T23:56:15&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/quick-pv-for-local-k8s/" />
+<meta property="article:published_time" content="2017-04-18T23:56:15+05:30" />
+<meta property="article:modified_time" content="2017-04-18T23:56:15+05:30" />
 
-        
-<meta itemprop="name" content="Quick PV for local Kubernetes cluster">
+        <meta itemprop="name" content="Quick PV for local Kubernetes cluster">
 <meta itemprop="description" content="A hostPath based local PV creation process for using via PVC">
-
-
 <meta itemprop="datePublished" content="2017-04-18T23:56:15&#43;05:30" />
 <meta itemprop="dateModified" content="2017-04-18T23:56:15&#43;05:30" />
 <meta itemprop="wordCount" content="160">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="kubernetes,openshift,pv," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,32 +360,17 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>I do lot of <a href="https://kubernetes.io/">Kubernetes</a> related work either on <a href="https://kubernetes.io/docs/getting-started-guides/minikube/">minikube</a> or local <a href="https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md#overview">OpenShift cluster</a> setup in a VM. Often I need to create a <code>PersistentVolumeClaim</code> a.k.a. <code>pvc</code>. But to use <code>pvc</code> you have to have a <code>PersistentVolume</code> or <code>pv</code> defined.</p>
-
+        <p>I do lot of <a href="https://kubernetes.io/">Kubernetes</a> related work either on <a href="https://kubernetes.io/docs/getting-started-guides/minikube/">minikube</a> or local <a href="https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md#overview">OpenShift cluster</a> setup in a VM. Often I need to create a <code>PersistentVolumeClaim</code> a.k.a. <code>pvc</code>. But to use <code>pvc</code> you have to have a <code>PersistentVolume</code> or <code>pv</code> defined.</p>
 <h3 id="enter-into-the-machine-running-k8s">Enter into the machine running k8s</h3>
-
 <p>If using minikube you can do</p>
-
-<pre><code class="language-bash">minikube ssh
-</code></pre>
-
-<h3 id="create-a-local-directory-for-storage">Create a local directory for storage</h3>
-
-<pre><code class="language-bash">mkdir /tmp/pv0001
-chmod 777 /tmp/pv0001
-</code></pre>
-
-<p>If you are on a machine that has <code>SELinux</code> enabled do the following</p>
-
-<pre><code class="language-bash">sudo chcon -R -t svirt_sandbox_file_t /tmp/pv0001
-</code></pre>
-
-<h3 id="creating-pv">Creating <code>pv</code></h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">minikube ssh
+</code></pre></div><h3 id="create-a-local-directory-for-storage">Create a local directory for storage</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir /tmp/pv0001
+chmod <span style="color:#ae81ff">777</span> /tmp/pv0001
+</code></pre></div><p>If you are on a machine that has <code>SELinux</code> enabled do the following</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo chcon -R -t svirt_sandbox_file_t /tmp/pv0001
+</code></pre></div><h3 id="creating-pv">Creating <code>pv</code></h3>
 <p>Create file with following content</p>
-
 <pre><code>$ cat pv.yaml
 apiVersion: &quot;v1&quot;
 kind: &quot;PersistentVolume&quot;
@@ -402,19 +384,11 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   hostPath:
     path: /tmp/pv0001
-</code></pre>
-
-<p>Get to the terminal from where you can run <code>kubectl</code> commands.</p>
-
-<pre><code class="language-bash">kubectl create -f pv.yaml
-</code></pre>
-
-<p>If you are doing it for OpenShift cluster then run following command with privileged access.</p>
-
-<pre><code class="language-bash">oc create -f pv.yaml
-</code></pre>
-
-<p>There you have a <code>pv</code> now you can create <code>pvc</code>&rsquo;s to use it.</p>
+</code></pre><p>Get to the terminal from where you can run <code>kubectl</code> commands.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f pv.yaml
+</code></pre></div><p>If you are doing it for OpenShift cluster then run following command with privileged access.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc create -f pv.yaml
+</code></pre></div><p>There you have a <code>pv</code> now you can create <code>pvc</code>'s to use it.</p>
 
     </div>
 
@@ -603,6 +577,34 @@ spec:
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -642,34 +644,6 @@ spec:
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -704,7 +678,7 @@ spec:
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -722,7 +696,7 @@ spec:
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

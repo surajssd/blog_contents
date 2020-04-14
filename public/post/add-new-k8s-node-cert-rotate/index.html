@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Add new Node to k8s cluster with cert rotation" />
 <meta property="og:description" content="Use this technique to add node to the cluster without providing any certificates" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/add-new-k8s-node-cert-rotate/" /><meta property="article:published_time" content="2018-10-16T01:00:51&#43;05:30"/>
-<meta property="article:modified_time" content="2018-10-16T01:00:51&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/add-new-k8s-node-cert-rotate/" />
+<meta property="article:published_time" content="2018-10-16T01:00:51+05:30" />
+<meta property="article:modified_time" content="2018-10-16T01:00:51+05:30" />
 
-        
-<meta itemprop="name" content="Add new Node to k8s cluster with cert rotation">
+        <meta itemprop="name" content="Add new Node to k8s cluster with cert rotation">
 <meta itemprop="description" content="Use this technique to add node to the cluster without providing any certificates">
-
-
 <meta itemprop="datePublished" content="2018-10-16T01:00:51&#43;05:30" />
 <meta itemprop="dateModified" content="2018-10-16T01:00:51&#43;05:30" />
 <meta itemprop="wordCount" content="578">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="kubernetes,security," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,100 +360,76 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>The setup here is created by following <a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/"><em>Kubernetes the Hard Way</em></a> by <a href="https://twitter.com/kelseyhightower"><strong>Kelsey Hightower</strong></a>. So if you are following along in this then do all the setup till the step <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/09-bootstrapping-kubernetes-workers.md"><em>Bootstrapping the Kubernetes Worker Nodes</em></a>. In this just don&rsquo;t start the <code>kubelet</code>, start other services like <code>containerd</code> and <code>kube-proxy</code>.</p>
-
+        <p>The setup here is created by following <a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/"><em>Kubernetes the Hard Way</em></a> by <a href="https://twitter.com/kelseyhightower"><strong>Kelsey Hightower</strong></a>. So if you are following along in this then do all the setup till the step <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/09-bootstrapping-kubernetes-workers.md"><em>Bootstrapping the Kubernetes Worker Nodes</em></a>. In this just don&rsquo;t start the <code>kubelet</code>, start other services like <code>containerd</code> and <code>kube-proxy</code>.</p>
 <h2 id="master-node">master node</h2>
-
 <p>Following the docs of <a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/"><em>TLS Bootstrapping</em></a>, let&rsquo;s first create the token authentication file. Create a file with following content:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat tokenfile 
+02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,<span style="color:#e6db74">&#34;system:bootstrappers&#34;</span>
+</code></pre></div><p>You should create the token which is as random as possible by running following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">head -c <span style="color:#ae81ff">16</span> /dev/urandom | od -An -t x | tr -d <span style="color:#e6db74">&#39; &#39;</span>
+</code></pre></div><p>Now we need to tell the <code>kube apiserver</code> about this file. So add following flag to the <code>kube-apiserver</code> service file, with the path to above token file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">--token-auth-file<span style="color:#f92672">=</span>/home/vagrant/tokenfile
+</code></pre></div><p>So my <code>kube-apiserver</code> service file looks like following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat /etc/systemd/system/kube-apiserver.service
+<span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
+Description<span style="color:#f92672">=</span>Kubernetes API Server
+Documentation<span style="color:#f92672">=</span>https://github.com/kubernetes/kubernetes
 
-<pre><code class="language-bash">$ cat tokenfile 
-02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,&quot;system:bootstrappers&quot;
-</code></pre>
+<span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+ExecStart<span style="color:#f92672">=</span>/usr/local/bin/kube-apiserver <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --advertise-address<span style="color:#f92672">=</span>192.168.50.10 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --allow-privileged<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --apiserver-count<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --audit-log-maxage<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --audit-log-maxbackup<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --audit-log-maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --audit-log-path<span style="color:#f92672">=</span>/var/log/audit.log <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --authorization-mode<span style="color:#f92672">=</span>Node,RBAC <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --bind-address<span style="color:#f92672">=</span>0.0.0.0 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --client-ca-file<span style="color:#f92672">=</span>/var/lib/kubernetes/ca.pem <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --enable-admission-plugins<span style="color:#f92672">=</span>Initializers,NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --enable-swagger-ui<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --etcd-cafile<span style="color:#f92672">=</span>/var/lib/kubernetes/ca.pem <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --etcd-certfile<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes.pem <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --etcd-keyfile<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes-key.pem <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --etcd-servers<span style="color:#f92672">=</span>https://192.168.50.10:2379 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --event-ttl<span style="color:#f92672">=</span>1h <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --experimental-encryption-provider-config<span style="color:#f92672">=</span>/var/lib/kubernetes/encryption-config.yaml <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --kubelet-certificate-authority<span style="color:#f92672">=</span>/var/lib/kubernetes/ca.pem <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --kubelet-client-certificate<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes.pem <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --kubelet-client-key<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes-key.pem <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --kubelet-https<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --runtime-config<span style="color:#f92672">=</span>api/all <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --service-account-key-file<span style="color:#f92672">=</span>/var/lib/kubernetes/service-account.pem <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --service-cluster-ip-range<span style="color:#f92672">=</span>10.32.0.0/24 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --service-node-port-range<span style="color:#f92672">=</span>30000-32767 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --tls-cert-file<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes.pem <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --tls-private-key-file<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes-key.pem <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --token-auth-file<span style="color:#f92672">=</span>/home/vagrant/tokenfile <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --v<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+Restart<span style="color:#f92672">=</span>on-failure
+RestartSec<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>
 
-<p>You should create the token which is as random as possible by running following command:</p>
-
-<pre><code class="language-bash">head -c 16 /dev/urandom | od -An -t x | tr -d ' '
-</code></pre>
-
-<p>Now we need to tell the <code>kube apiserver</code> about this file. So add following flag to the <code>kube-apiserver</code> service file, with the path to above token file.</p>
-
-<pre><code class="language-bash">--token-auth-file=/home/vagrant/tokenfile
-</code></pre>
-
-<p>So my <code>kube-apiserver</code> service file looks like following:</p>
-
-<pre><code class="language-bash">$ cat /etc/systemd/system/kube-apiserver.service
-[Unit]
-Description=Kubernetes API Server
-Documentation=https://github.com/kubernetes/kubernetes
-
-[Service]
-ExecStart=/usr/local/bin/kube-apiserver \
-  --advertise-address=192.168.50.10 \
-  --allow-privileged=true \
-  --apiserver-count=3 \
-  --audit-log-maxage=30 \
-  --audit-log-maxbackup=3 \
-  --audit-log-maxsize=100 \
-  --audit-log-path=/var/log/audit.log \
-  --authorization-mode=Node,RBAC \
-  --bind-address=0.0.0.0 \
-  --client-ca-file=/var/lib/kubernetes/ca.pem \
-  --enable-admission-plugins=Initializers,NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota \
-  --enable-swagger-ui=true \
-  --etcd-cafile=/var/lib/kubernetes/ca.pem \
-  --etcd-certfile=/var/lib/kubernetes/kubernetes.pem \
-  --etcd-keyfile=/var/lib/kubernetes/kubernetes-key.pem \
-  --etcd-servers=https://192.168.50.10:2379 \
-  --event-ttl=1h \
-  --experimental-encryption-provider-config=/var/lib/kubernetes/encryption-config.yaml \
-  --kubelet-certificate-authority=/var/lib/kubernetes/ca.pem \
-  --kubelet-client-certificate=/var/lib/kubernetes/kubernetes.pem \
-  --kubelet-client-key=/var/lib/kubernetes/kubernetes-key.pem \
-  --kubelet-https=true \
-  --runtime-config=api/all \
-  --service-account-key-file=/var/lib/kubernetes/service-account.pem \
-  --service-cluster-ip-range=10.32.0.0/24 \
-  --service-node-port-range=30000-32767 \
-  --tls-cert-file=/var/lib/kubernetes/kubernetes.pem \
-  --tls-private-key-file=/var/lib/kubernetes/kubernetes-key.pem \
-  --token-auth-file=/home/vagrant/tokenfile \
-  --v=2
-Restart=on-failure
-RestartSec=5
-
-[Install]
-WantedBy=multi-user.target
-</code></pre>
-
-<p>Once this is done, just run following commands to restart the apiserver:</p>
-
-<pre><code class="language-bash">sudo systemctl daemon-reload
+<span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
+WantedBy<span style="color:#f92672">=</span>multi-user.target
+</code></pre></div><p>Once this is done, just run following commands to restart the apiserver:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo systemctl daemon-reload
 sudo systemctl restart kube-apiserver
 sudo systemctl status kube-apiserver
-</code></pre>
+</code></pre></div><p>Now that api-server has restart we need to give permissions so that our worker node can ask for certs automatically, for that run following commands:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create clusterrolebinding kubelet-bootstrap <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --clusterrole<span style="color:#f92672">=</span>system:node-bootstrapper <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --user<span style="color:#f92672">=</span>kubelet-bootstrap
 
-<p>Now that api-server has restart we need to give permissions so that our worker node can ask for certs automatically, for that run following commands:</p>
+kubectl create clusterrolebinding node-client-auto-approve-csr <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --clusterrole<span style="color:#f92672">=</span>system:certificates.k8s.io:certificatesigningrequests:nodeclient <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --group<span style="color:#f92672">=</span>system:node-bootstrappers
 
-<pre><code class="language-bash">kubectl create clusterrolebinding kubelet-bootstrap \
-    --clusterrole=system:node-bootstrapper \
-    --user=kubelet-bootstrap
-
-kubectl create clusterrolebinding node-client-auto-approve-csr \
-    --clusterrole=system:certificates.k8s.io:certificatesigningrequests:nodeclient \
-    --group=system:node-bootstrappers
-
-kubectl create clusterrolebinding node-client-auto-renew-crt \
-    --clusterrole=system:certificates.k8s.io:certificatesigningrequests:selfnodeclient \
-    --group=system:nodes
-</code></pre>
-
-<h2 id="worker-node">worker node</h2>
-
+kubectl create clusterrolebinding node-client-auto-renew-crt <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --clusterrole<span style="color:#f92672">=</span>system:certificates.k8s.io:certificatesigningrequests:selfnodeclient <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --group<span style="color:#f92672">=</span>system:nodes
+</code></pre></div><h2 id="worker-node">worker node</h2>
 <p>First create a bootstrap kubeconfig file that will be used by <code>kubelet</code>. Run following commands to create it.</p>
-
 <pre><code># I have used the ip address of my api-server use yours
 kubectl config set-cluster kthw \
   --certificate-authority=ca.pem \
@@ -476,50 +449,40 @@ kubectl config set-context default \
 
 kubectl config use-context default \
   --kubeconfig=bootstrap.kubeconfig 
-</code></pre>
-
-<p>Now that we have this file, add following flags to the <code>kubelet</code> systemd service file.</p>
-
-<pre><code class="language-bash">--bootstrap-kubeconfig=/home/vagrant/bootstrap.kubeconfig
---kubeconfig=/home/vagrant/kubeconfig
---rotate-certificates=true
---rotate-server-certificates=true
-</code></pre>
-
-<p>Provide path to the <code>bootstrap.kubeconfig</code> you have generated just before. And even if you don&rsquo;t have <code>kubeconfig</code> still provide some path where <code>kubelet</code> has permission to write. <code>kubelet</code> will create this file for you.</p>
-
+</code></pre><p>Now that we have this file, add following flags to the <code>kubelet</code> systemd service file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">--bootstrap-kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig
+--kubeconfig<span style="color:#f92672">=</span>/home/vagrant/kubeconfig
+--rotate-certificates<span style="color:#f92672">=</span>true
+--rotate-server-certificates<span style="color:#f92672">=</span>true
+</code></pre></div><p>Provide path to the <code>bootstrap.kubeconfig</code> you have generated just before. And even if you don&rsquo;t have <code>kubeconfig</code> still provide some path where <code>kubelet</code> has permission to write. <code>kubelet</code> will create this file for you.</p>
 <p>So my <code>kubelet</code>, systemd file looks like following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat /etc/systemd/system/kubelet.service
+<span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
+Description<span style="color:#f92672">=</span>Kubernetes Kubelet
+Documentation<span style="color:#f92672">=</span>https://github.com/kubernetes/kubernetes
+After<span style="color:#f92672">=</span>containerd.service
+Requires<span style="color:#f92672">=</span>containerd.service
 
-<pre><code class="language-bash">$ cat /etc/systemd/system/kubelet.service
-[Unit]
-Description=Kubernetes Kubelet
-Documentation=https://github.com/kubernetes/kubernetes
-After=containerd.service
-Requires=containerd.service
+<span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+ExecStart<span style="color:#f92672">=</span>/usr/local/bin/kubelet <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --bootstrap-kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --config<span style="color:#f92672">=</span>/var/lib/kubelet/kubelet-config.yaml <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --container-runtime<span style="color:#f92672">=</span>remote <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --container-runtime-endpoint<span style="color:#f92672">=</span>unix:///var/run/containerd/containerd.sock <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --image-pull-progress-deadline<span style="color:#f92672">=</span>2m <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span>/home/vagrant/kubeconfig <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --network-plugin<span style="color:#f92672">=</span>cni <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --register-node<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --rotate-certificates<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --rotate-server-certificates<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --v<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+Restart<span style="color:#f92672">=</span>on-failure
+RestartSec<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>
 
-[Service]
-ExecStart=/usr/local/bin/kubelet \
-  --bootstrap-kubeconfig=/home/vagrant/bootstrap.kubeconfig \
-  --config=/var/lib/kubelet/kubelet-config.yaml \
-  --container-runtime=remote \
-  --container-runtime-endpoint=unix:///var/run/containerd/containerd.sock \
-  --image-pull-progress-deadline=2m \
-  --kubeconfig=/home/vagrant/kubeconfig \
-  --network-plugin=cni \
-  --register-node=true \
-  --rotate-certificates=true \
-  --rotate-server-certificates=true \
-  --v=2
-Restart=on-failure
-RestartSec=5
-
-[Install]
-WantedBy=multi-user.target
-</code></pre>
-
-<p>And <code>KubeletConfiguration</code> looks like this:</p>
-
-<pre><code class="language-bash">$ cat /var/lib/kubelet/kubelet-config.yaml
+<span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
+WantedBy<span style="color:#f92672">=</span>multi-user.target
+</code></pre></div><p>And <code>KubeletConfiguration</code> looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat /var/lib/kubelet/kubelet-config.yaml
 kind: KubeletConfiguration
 apiVersion: kubelet.config.k8s.io/v1beta1
 authentication:
@@ -528,46 +491,32 @@ authentication:
   webhook:
     enabled: true
   x509:
-    clientCAFile: &quot;/var/lib/kubernetes/ca.pem&quot;
+    clientCAFile: <span style="color:#e6db74">&#34;/var/lib/kubernetes/ca.pem&#34;</span>
 authorization:
   mode: Webhook
-clusterDomain: &quot;cluster.local&quot;
+clusterDomain: <span style="color:#e6db74">&#34;cluster.local&#34;</span>
 clusterDNS:
-  - &quot;10.32.0.10&quot;
-podCIDR: &quot;10.200.0.0/24&quot;
-resolvConf: &quot;/run/systemd/resolve/resolv.conf&quot;
-runtimeRequestTimeout: &quot;15m&quot;
-</code></pre>
-
-<p>Once this is done, just run following commands to restart the kubelet:</p>
-
-<pre><code class="language-bash">sudo systemctl daemon-reload
+  - <span style="color:#e6db74">&#34;10.32.0.10&#34;</span>
+podCIDR: <span style="color:#e6db74">&#34;10.200.0.0/24&#34;</span>
+resolvConf: <span style="color:#e6db74">&#34;/run/systemd/resolve/resolv.conf&#34;</span>
+runtimeRequestTimeout: <span style="color:#e6db74">&#34;15m&#34;</span>
+</code></pre></div><p>Once this is done, just run following commands to restart the kubelet:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo systemctl daemon-reload
 sudo systemctl restart kubelet
 sudo systemctl status kubelet
-</code></pre>
-
-<h2 id="master-node-1">master node</h2>
-
+</code></pre></div><h2 id="master-node-1">master node</h2>
 <p>List the request that node has made:</p>
-
-<pre><code class="language-bash">$ kubectl get csr
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get csr
 NAME                                                   AGE   REQUESTOR           CONDITION
 node-csr-WXnon3AEhdxgZ1FZ2reqKRQmWS-pwP3x263YbwUAH9k   11m   kubelet-bootstrap   Pending
-</code></pre>
-
-<p>Approve that request:</p>
-
-<pre><code class="language-bash">$ kubectl certificate approve node-csr-WXnon3AEhdxgZ1FZ2reqKRQmWS-pwP3x263YbwUAH9k
+</code></pre></div><p>Approve that request:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl certificate approve node-csr-WXnon3AEhdxgZ1FZ2reqKRQmWS-pwP3x263YbwUAH9k
 certificatesigningrequest.certificates.k8s.io/node-csr-WXnon3AEhdxgZ1FZ2reqKRQmWS-pwP3x263YbwUAH9k approved
-</code></pre>
-
-<p>Now you can see that the node has been created and you can list by running:</p>
-
-<pre><code class="language-bash">$ kubectl get nodes
+</code></pre></div><p>Now you can see that the node has been created and you can list by running:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get nodes
 NAME   STATUS   ROLES    AGE   VERSION
 node   Ready    &lt;none&gt;   27s   v1.12.0
-</code></pre>
-
+</code></pre></div>
     </div>
 
     <footer>
@@ -753,6 +702,34 @@ node   Ready    &lt;none&gt;   27s   v1.12.0
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -792,34 +769,6 @@ node   Ready    &lt;none&gt;   27s   v1.12.0
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -854,7 +803,7 @@ node   Ready    &lt;none&gt;   27s   v1.12.0
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -872,7 +821,7 @@ node   Ready    &lt;none&gt;   27s   v1.12.0
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

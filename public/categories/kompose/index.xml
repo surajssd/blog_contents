@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kompose on Suraj Deshmukh</title>
@@ -31,7 +31,7 @@ $ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo fo
       <description>Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
 Setup your machine Install packages needed
-sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs</description>
+sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \  gcc byobu rpmlint rpmdevtools centos-packager Setup certs</description>
     </item>
     
     <item>
@@ -43,7 +43,7 @@ sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;am
       <description>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
 Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
 Starting the environment:
-docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:
+docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
 # Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.</description>
     </item>
     

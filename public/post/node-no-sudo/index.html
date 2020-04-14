@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Clean Node setup" />
 <meta property="og:description" content="This will help in intalling node without sudo" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/node-no-sudo/" /><meta property="article:published_time" content="2017-07-04T22:50:43&#43;05:30"/>
-<meta property="article:modified_time" content="2017-07-04T22:50:43&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/node-no-sudo/" />
+<meta property="article:published_time" content="2017-07-04T22:50:43+05:30" />
+<meta property="article:modified_time" content="2017-07-04T22:50:43+05:30" />
 
-        
-<meta itemprop="name" content="Clean Node setup">
+        <meta itemprop="name" content="Clean Node setup">
 <meta itemprop="description" content="This will help in intalling node without sudo">
-
-
 <meta itemprop="datePublished" content="2017-07-04T22:50:43&#43;05:30" />
 <meta itemprop="dateModified" content="2017-07-04T22:50:43&#43;05:30" />
 <meta itemprop="wordCount" content="99">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="notes," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,38 +360,29 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>Make sure you have <code>npm</code> installed.</p>
-
-<pre><code class="language-bash">$ sudo dnf -y install npm
+        <p>Make sure you have <code>npm</code> installed.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo dnf -y install npm
 Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping.
 Dependencies resolved.
-Nothing to do.
+Nothing to <span style="color:#66d9ef">do</span>.
 Complete!
-</code></pre>
+</code></pre></div><p>Taken from <a href="https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md">this post</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/.npm-packages&#34;</span>
+echo <span style="color:#e6db74">&#39;prefix=${HOME}/.npm-packages&#39;</span> | tee -a ~/.npmrc
 
-<p>Taken from <a href="https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md">this post</a>.</p>
-
-<pre><code class="language-bash">mkdir &quot;${HOME}/.npm-packages&quot;
-echo 'prefix=${HOME}/.npm-packages' | tee -a ~/.npmrc
-
-echo '
-#======================================
-# npm related stuff
-
-NPM_PACKAGES=&quot;${HOME}/.npm-packages&quot;
-PATH=&quot;$NPM_PACKAGES/bin:$PATH&quot;
-
-# Unset manpath so we can inherit from /etc/manpath via the `manpath` command
-unset MANPATH # delete if you already modified MANPATH elsewhere in your config
-export MANPATH=&quot;$NPM_PACKAGES/share/man:$(manpath)&quot;
-#======================================
-' | tee -a ~/.bashrc
-</code></pre>
-
-<h2 id="ref">Ref:</h2>
-
+echo <span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">#======================================
+</span><span style="color:#e6db74"># npm related stuff
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">NPM_PACKAGES=&#34;${HOME}/.npm-packages&#34;
+</span><span style="color:#e6db74">PATH=&#34;$NPM_PACKAGES/bin:$PATH&#34;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"># Unset manpath so we can inherit from /etc/manpath via the `manpath` command
+</span><span style="color:#e6db74">unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+</span><span style="color:#e6db74">export MANPATH=&#34;$NPM_PACKAGES/share/man:$(manpath)&#34;
+</span><span style="color:#e6db74">#======================================
+</span><span style="color:#e6db74">&#39;</span> | tee -a ~/.bashrc
+</code></pre></div><h2 id="ref">Ref:</h2>
 <ul>
 <li><a href="https://stackoverflow.com/questions/16151018/npm-throws-error-without-sudo/24404451#24404451">npm throws error without sudo</a> - Stack Overflow question</li>
 <li><a href="https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md">Install npm packages globally without sudo on macOS and Linux</a></li>
@@ -585,6 +573,34 @@ export MANPATH=&quot;$NPM_PACKAGES/share/man:$(manpath)&quot;
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -624,34 +640,6 @@ export MANPATH=&quot;$NPM_PACKAGES/share/man:$(manpath)&quot;
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -686,7 +674,7 @@ export MANPATH=&quot;$NPM_PACKAGES/share/man:$(manpath)&quot;
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -704,7 +692,7 @@ export MANPATH=&quot;$NPM_PACKAGES/share/man:$(manpath)&quot;
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

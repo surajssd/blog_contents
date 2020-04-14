@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>crio on Suraj Deshmukh</title>
@@ -18,7 +18,7 @@
       
       <guid>https://suraj.io/post/using-crio-with-k8s-single-node/</guid>
       <description>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
-Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables  Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &#39;GOPATH=~/go&#39; &amp;gt;&amp;gt; ~/.</description>
+Installing OS dependencies dnf -y install \  go \  git \  btrfs-progs-devel \  device-mapper-devel \  glib2-devel \  glibc-devel \  glibc-static \  gpgme-devel \  libassuan-devel \  libgpg-error-devel \  libseccomp-devel \  libselinux-devel \  pkgconfig \  wget \  etcd \  iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &amp;#39;GOPATH=~/go&amp;#39; &amp;gt;&amp;gt; ~/.</description>
     </item>
     
   </channel>

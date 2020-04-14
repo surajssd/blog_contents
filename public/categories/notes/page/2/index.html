@@ -18,7 +18,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -38,13 +38,10 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/categories/notes/" />
-<meta property="og:updated_time" content="2017-03-24T10:35:54&#43;05:30"/>
+<meta property="og:updated_time" content="2019-04-22T01:00:51+05:30" />
 
-        
-<meta itemprop="name" content="notes">
+        <meta itemprop="name" content="notes">
 <meta itemprop="description" content="Blog">
-
-
         
 
         
@@ -195,6 +192,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -204,14 +209,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -254,7 +251,7 @@ if (!doNotTrack) {
 
     
 
-    <p>Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG  My Notes  Start reading from: Fedora packager&rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros.  $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch   To see all macros on the system:  $ rpm &ndash;showrc   Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package  $ rpm -qip .</p>
+    <p>Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit <a href="mailto:surajd@FEDORAPROJECT.ORG">surajd@FEDORAPROJECT.ORG</a> My Notes  Start reading from: Fedora packager’s guide Some macros come from redhat-rpm-config and fedora-rpm-macros.  $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch  To see all macros on the system:  $ rpm &ndash;showrc  Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package  $ rpm -qip .</p>
 
     <footer>
         <ul class="actions">
@@ -325,9 +322,9 @@ if (!doNotTrack) {
 
     <p>Note: This is a living document and will be updated as I discover new things.
 Shortcuts  Ctrl + Shift + A  Find any action in IDE
- Ctrl + Shift + F  Find in Path
- Alt + 1  Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
- Shift + Insert in Project window  Here you can add new file to the project.</p>
+Ctrl + Shift + F  Find in Path
+Alt + 1  Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
+Shift + Insert in Project window  Here you can add new file to the project.</p>
 
     <footer>
         <ul class="actions">
@@ -397,7 +394,7 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
     <p>Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
 Setup your machine Install packages needed
-sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs</p>
+sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \  gcc byobu rpmlint rpmdevtools centos-packager Setup certs</p>
 
     <footer>
         <ul class="actions">
@@ -466,12 +463,11 @@ sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ su
 
     
 
-    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
+    <p><p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
 Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
 Starting the environment:
-docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
-
-<h1 id="inside-the-container-pull-packages-from-the-testing-repository-dnf-enablerepo-updates-testing-y-install-kompose-check-the-kompose-version-kompose-version-install-the-testing-dependencies-dnf-install-y-jq-make-pull-the-git-repository-to-run-the-functional-tests-git-clone-https-github">Inside the container # Pull packages from the testing repository dnf &ndash;enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone <a href="https://github">https://github</a>.</h1>
+docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:</p>
+<h1 id="inside-the-container--pull-packages-from-the-testing-repository-dnf---enablerepo-updates-testing--y-install-kompose--check-the-kompose-version-kompose-version--install-the-testing-dependencies-dnf-install--y-jq-make--pull-the-git-repository-to-run-the-functional-tests-git-clone-httpsgithub">Inside the container # Pull packages from the testing repository dnf &ndash;enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.</h1>
 </p>
 
     <footer>
@@ -642,6 +638,34 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -681,34 +705,6 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -743,7 +739,7 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -761,7 +757,7 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:</p>
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

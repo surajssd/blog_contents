@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>fedora on Suraj Deshmukh</title>
@@ -28,7 +28,7 @@
       <guid>https://suraj.io/post/move-vagrant-boxes/</guid>
       <description>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don&amp;rsquo;t have internet to download it, how do you share it?
 You will need to export the box from machine that has it downloaded already. So on machine with boxes:
-$ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705)  I wanted to share fedora/26-cloud-base box to another machine.</description>
+$ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705) I wanted to share fedora/26-cloud-base box to another machine.</description>
     </item>
     
   </channel>

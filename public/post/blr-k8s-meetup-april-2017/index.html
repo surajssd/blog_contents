@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -33,15 +33,13 @@ Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein
 <meta property="og:description" content="Like many Saturday mornings, Red Hat Bangalore office was once again abuzz with enthusiasm on 8th of April, for hosting yet another successful chapter of Bangalore Kubernetes Meetup. The Meetup had a good turnaround of about 40 people who gave up on their early morning saturday sleep to attend it despite the sweltering hot season and in line were four awesome talks.
 Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/blr-k8s-meetup-april-2017/" /><meta property="article:published_time" content="2017-04-08T14:31:33&#43;05:30"/>
-<meta property="article:modified_time" content="2017-04-08T14:31:33&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/blr-k8s-meetup-april-2017/" />
+<meta property="article:published_time" content="2017-04-08T14:31:33+05:30" />
+<meta property="article:modified_time" content="2017-04-08T14:31:33+05:30" />
 
-        
-<meta itemprop="name" content="Bangalore Kubernetes Meetup April 2017">
+        <meta itemprop="name" content="Bangalore Kubernetes Meetup April 2017">
 <meta itemprop="description" content="Like many Saturday mornings, Red Hat Bangalore office was once again abuzz with enthusiasm on 8th of April, for hosting yet another successful chapter of Bangalore Kubernetes Meetup. The Meetup had a good turnaround of about 40 people who gave up on their early morning saturday sleep to attend it despite the sweltering hot season and in line were four awesome talks.
 Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc.">
-
-
 <meta itemprop="datePublished" content="2017-04-08T14:31:33&#43;05:30" />
 <meta itemprop="dateModified" content="2017-04-08T14:31:33&#43;05:30" />
 <meta itemprop="wordCount" content="421">
@@ -49,7 +47,6 @@ Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein
 
 
 <meta itemprop="keywords" content="kubernetes,meetup," />
-
         
 
         
@@ -205,6 +202,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -214,14 +219,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -372,34 +369,27 @@ another successful chapter of <a href="https://www.meetup.com/kubernetes-openshi
 The Meetup had a good turnaround of about 40 people who gave up on their
 early morning saturday sleep to attend it despite the sweltering hot
 season and in line were four awesome talks.</p>
-
 <p><a href="https://twitter.com/surajd_">Suraj Deshmukh</a> set the stage with his opening
 talk, <em>Kubernetes on CRI-O</em>, wherein he explained different jargons like
 OCI, CRI, etc., introduced CRI-O and it’s architecture. Explaining how it
 glues Kubernetes and OCI compliant runtimes and concluding it with a demo
 showing how Kubernetes uses CRI-O. Link to <a href="https://docs.google.com/presentation/d/1tP7b1e1fy-n3_v5bilDLjOAheZGu602B3WK-1kxXkVo/edit?usp=sharing">slides</a>,
 <a href="https://youtu.be/_E7foB4kVGM">video</a>.</p>
-
-<p><img src="/images/blr-k8s-meetup-april-2017/group.jpg" alt="Folks listening" title="Folks listening" /></p>
-
+<p><img src="/images/blr-k8s-meetup-april-2017/group.jpg" alt="Folks listening" title="Folks listening"></p>
 <p>Next in queue, was another wonderful talk by <a href="https://twitter.com/dipakpawar231">Dipak Pawar</a>
 about <em>System and integration testing for Kubernetes/OpenShift with
 arquillian-cube and JBoss Forge</em>, elaborating the usefulness of
 arquillian-cube’s integration for Kubernetes and OpenShift coupled
 with Forge tooling for testing micro-services deployed on OpenShift/Kubernetes.
 Link to <a href="https://youtu.be/f4qIKmlBg34">video</a>.</p>
-
-<p><img src="/images/blr-k8s-meetup-april-2017/dipak.jpg" alt="Dipak Pawar" title="Dipak Pawar demoing arquillian-cube" /></p>
-
+<p><img src="/images/blr-k8s-meetup-april-2017/dipak.jpg" alt="Dipak Pawar" title="Dipak Pawar demoing arquillian-cube"></p>
 <p>Following a quick breather, was an informative talk by <a href="https://twitter.com/budhrg">Budhram Gurung</a>
 on <em>Running OpenShift locally using Minishift</em>, highlighting the inspiration
 for the project and covering components of Minishift with a demo showing
 it&rsquo;s usage. Also, leaving behind a note on how one could reach out to the
 developers and contribute to Minishift. Link to <a href="https://docs.google.com/presentation/d/1oONy-2ncemEE7dtddoZL0Lcu0KVIUtqADhEX0bB5q5g/edit?usp=sharing">slides</a>,
 <a href="https://youtu.be/dvYeRbSpxR8">video</a>.</p>
-
-<p><img src="/images/blr-k8s-meetup-april-2017/budhram.jpg" alt="Budhram Gurung" title="Budhram demoing Minishift" /></p>
-
+<p><img src="/images/blr-k8s-meetup-april-2017/budhram.jpg" alt="Budhram Gurung" title="Budhram demoing Minishift"></p>
 <p>Last, but not the least, planned talk was by <a href="https://twitter.com/red_suraj">Suraj Narwade</a>
 on running <em>Docker on ARM/Raspberry PI</em>, wherein he enjoyed sharing his
 experience of working on his hobby project, and all the problems faced by
@@ -407,27 +397,21 @@ him in trying to get containers running on Raspberry PI. He shared his
 discovery showcasing the incompatibility of the container images built on
 <code>x86_64</code>, to run on <code>arm</code>. Link to <a href="https://docs.google.com/presentation/d/1cJeQyMG_NOn8QDJpIHkAjTT4I0L6AyQ8DxeGbVWn850/edit?usp=sharing">slides</a>,
 <a href="https://youtu.be/8yzPt5MfY8s">video</a>.</p>
-
-<p><img src="/images/blr-k8s-meetup-april-2017/surajn.jpg" alt="Suraj Narwade" title="Suraj Narwade demoing about the Docker" /></p>
-
+<p><img src="/images/blr-k8s-meetup-april-2017/surajn.jpg" alt="Suraj Narwade" title="Suraj Narwade demoing about the Docker"></p>
 <p>Finally, an unanticipated lightening talk took the audience by storm where
 a quick 3 minutes demo on <em>Persistent Storage with Kubernetes</em> by <a href="https://twitter.com/raghavendra_t">Raghavendra Talur</a>
 turned into a good discussion of 30 minutes. He demo-ed, hyper-converged
 storage and dynamic provisioning with gluster and answered a lot of queries
 regarding setting up storage with Kubernetes, finishing on a
 to be continued note in the successive meetup.</p>
-
 <p>The meetup concluded with discussion over snacks and planning for the next
 chapter of this meetup, which will be a <strong>Kubernetes and OpenShift 101 workshop</strong>
 for beginners.</p>
-
-<p><img src="/images/blr-k8s-meetup-april-2017/network.jpg" alt="Folks networking" title="Folks networking" /></p>
-
+<p><img src="/images/blr-k8s-meetup-april-2017/network.jpg" alt="Folks networking" title="Folks networking"></p>
 <p>Thanks to all the Speakers for sharing their valuable thoughts and learnings,
 <a href="https://twitter.com/nogenerics">Baiju</a> for recording all the sessions,
 <a href="https://www.linkedin.com/in/hemani-katyal-57900081">Hemani</a> for making this post a good read
 and <a href="https://twitter.com/redhatopen">Red Hat</a> for the venue.</p>
-
 <p>The meetup is also featured on <a href="http://www.k8sport.org/">K8sPort</a>, which
 is community engagement platform for Kubernetes community, courtesy <a href="https://twitter.com/RSQuackenbush">Ryan Quackenbush</a>.</p>
 
@@ -616,6 +600,34 @@ is community engagement platform for Kubernetes community, courtesy <a href="htt
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -655,34 +667,6 @@ is community engagement platform for Kubernetes community, courtesy <a href="htt
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -717,7 +701,7 @@ is community engagement platform for Kubernetes community, courtesy <a href="htt
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -735,7 +719,7 @@ is community engagement platform for Kubernetes community, courtesy <a href="htt
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Old laptop setup reference" />
 <meta property="og:description" content="Links and things to do while setting up older Dell Inspiron 1525" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/old-laptop-setup/" /><meta property="article:published_time" content="2018-12-30T01:00:51&#43;05:30"/>
-<meta property="article:modified_time" content="2018-12-30T01:00:51&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/old-laptop-setup/" />
+<meta property="article:published_time" content="2018-12-30T01:00:51+05:30" />
+<meta property="article:modified_time" content="2018-12-30T01:00:51+05:30" />
 
-        
-<meta itemprop="name" content="Old laptop setup reference">
+        <meta itemprop="name" content="Old laptop setup reference">
 <meta itemprop="description" content="Links and things to do while setting up older Dell Inspiron 1525">
-
-
 <meta itemprop="datePublished" content="2018-12-30T01:00:51&#43;05:30" />
 <meta itemprop="dateModified" content="2018-12-30T01:00:51&#43;05:30" />
 <meta itemprop="wordCount" content="157">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="laptop,dell," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,45 +360,28 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>I have this old PC Dell Inspiron 1525 with 2GB RAM and 32 bit dual core processor and I wanted to install fedora on it, but I cam accross few problems which I am documenting for further reference.</p>
-
+        <p>I have this old PC Dell Inspiron 1525 with 2GB RAM and 32 bit dual core processor and I wanted to install fedora on it, but I cam accross few problems which I am documenting for further reference.</p>
 <h2 id="wifi-device-not-detected">Wifi device not detected</h2>
-
 <p>The wifi drivers are not loaded by default, so followed this blog, basically do following:</p>
-
 <pre><code>export FIRMWARE_INSTALL_DIR=&quot;/lib/firmware&quot;
 wget http://mirror2.openwrt.org/sources/broadcom-wl-5.100.138.tar.bz2
 tar xjf broadcom-wl-5.100.138.tar.bz2
 cd broadcom-wl-5.100.138/linux/
 
 sudo b43-fwcutter -w /lib/firmware wl_apsta.o
-</code></pre>
-
-<h2 id="slow-boot-problem">Slow boot problem</h2>
-
+</code></pre><h2 id="slow-boot-problem">Slow boot problem</h2>
 <p>Since the boot process is very slow so add this line to <code>/etc/default/grub</code></p>
-
 <pre><code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash video=SVIDEO-1:d&quot;
-</code></pre>
-
-<p>Update grub using</p>
-
+</code></pre><p>Update grub using</p>
 <pre><code>grub2-mkconfig -o /boot/grub2/grub.cfg
-</code></pre>
-
-<h2 id="continual-reporting-of-issues">Continual reporting of issues</h2>
-
+</code></pre><h2 id="continual-reporting-of-issues">Continual reporting of issues</h2>
 <p>Disabled SELinux and it stopped reporting those issues. For which just change the line from <code>SELinux=enforcing</code> to <code>SELinux=disabled</code> in <code>/etc/sysconfig/selinux</code>. Need to figure out why those errors were reported in a loop.</p>
-
 <p>Ref:</p>
-
 <ul>
 <li><a href="https://ask.fedoraproject.org/en/question/80362/how-do-i-update-grub-in-fedora-23/">Update Grub</a></li>
 <li><a href="https://askubuntu.com/questions/893817/boot-very-slow-because-of-drm-kms-helper-errors">Boot very slow because of drm_kms_helper errors</a></li>
 <li><a href="http://praveenkpal.blogspot.com/2010/05/firmware-file-b43ucode15fw-not-found.html">Firmware file &ldquo;b43/ucode15.fw&rdquo; not found</a></li>
-<li><a href="https://www.tecmint.com/disable-selinux-temporarily-permanently-in-centos-rhel-fedora/">How to Disable SELinux Temporarily or Permanently in RHEL/CentOS <sup>7</sup>&frasl;<sub>6</sub></a></li>
+<li><a href="https://www.tecmint.com/disable-selinux-temporarily-permanently-in-centos-rhel-fedora/">How to Disable SELinux Temporarily or Permanently in RHEL/CentOS 7/6</a></li>
 </ul>
 
     </div>
@@ -589,6 +569,34 @@ sudo b43-fwcutter -w /lib/firmware wl_apsta.o
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -628,34 +636,6 @@ sudo b43-fwcutter -w /lib/firmware wl_apsta.o
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -690,7 +670,7 @@ sudo b43-fwcutter -w /lib/firmware wl_apsta.o
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -708,7 +688,7 @@ sudo b43-fwcutter -w /lib/firmware wl_apsta.o
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

@@ -18,7 +18,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -38,13 +38,10 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/categories/centos/" />
-<meta property="og:updated_time" content="2017-09-18T10:43:46&#43;05:30"/>
+<meta property="og:updated_time" content="2017-09-18T10:43:46+05:30" />
 
-        
-<meta itemprop="name" content="centos">
+        <meta itemprop="name" content="centos">
 <meta itemprop="description" content="Blog">
-
-
         
 
         
@@ -195,6 +192,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -204,14 +209,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -254,9 +251,9 @@ if (!doNotTrack) {
 
     
 
-    <p>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don&rsquo;t have internet to download it, how do you share it?
+    <p>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don’t have internet to download it, how do you share it?
 You will need to export the box from machine that has it downloaded already. So on machine with boxes:
-$ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705)  I wanted to share fedora/26-cloud-base box to another machine.</p>
+$ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705) I wanted to share fedora/26-cloud-base box to another machine.</p>
 
     <footer>
         <ul class="actions">
@@ -425,6 +422,34 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -464,34 +489,6 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -526,7 +523,7 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -544,7 +541,7 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

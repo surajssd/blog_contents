@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>notes on Suraj Deshmukh</title>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 22 Apr 2019 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/post/surajd-talks-links/</guid>
-      <description> Hardening Kubernetes by Securing Pods - Rootconf 2019   State of Kubernetes Meetups - DevOpsDays India 2017   Making Kubernetes Simple For Developers - Rootconf 2017   Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s
+      <description> Hardening Kubernetes by Securing Pods - Rootconf 2019    State of Kubernetes Meetups - DevOpsDays India 2017    Making Kubernetes Simple For Developers - Rootconf 2017    Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s
   </description>
     </item>
     
@@ -28,7 +28,7 @@
       
       <guid>https://suraj.io/post/apiserver-in-minikube-static-configs/</guid>
       <description>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube&amp;rsquo;s --extra-config flag with apiserver.&amp;lt;apiserver flag&amp;gt;=&amp;lt;value&amp;gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
---extra-config=apiserver.authorization-mode=RBAC  So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</description>
+--extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</description>
     </item>
     
     <item>
@@ -60,7 +60,7 @@ export FIRMWARE_INSTALL_DIR=&amp;quot;/lib/firmware&amp;quot; wget http://mirror
       <guid>https://suraj.io/post/mkcert-using-python-http-server/</guid>
       <description>It&amp;rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
 Once installed just run:
-$ mkcert -install Created a new local CA at &amp;quot;/home/hummer/.local/share/mkcert&amp;quot; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</description>
+$ mkcert -install Created a new local CA at &amp;#34;/home/hummer/.local/share/mkcert&amp;#34; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</description>
     </item>
     
     <item>
@@ -94,8 +94,8 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
       
       <guid>https://suraj.io/post/node-no-sudo/</guid>
       <description>Make sure you have npm installed.
-$ sudo dnf -y install npm Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping. Dependencies resolved. Nothing to do. Complete!  Taken from this post.
-mkdir &amp;quot;${HOME}/.npm-packages&amp;quot; echo &#39;prefix=${HOME}/.npm-packages&#39; | tee -a ~/.npmrc echo &#39; #====================================== # npm related stuff NPM_PACKAGES=&amp;quot;${HOME}/.npm-packages&amp;quot; PATH=&amp;quot;$NPM_PACKAGES/bin:$PATH&amp;quot; # Unset manpath so we can inherit from /etc/manpath via the `manpath` command unset MANPATH # delete if you already modified MANPATH elsewhere in your config export MANPATH=&amp;quot;$NPM_PACKAGES/share/man:$(manpath)&amp;quot; #====================================== &#39; | tee -a ~/.</description>
+$ sudo dnf -y install npm Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping. Dependencies resolved. Nothing to do. Complete! Taken from this post.
+mkdir &amp;#34;${HOME}/.npm-packages&amp;#34; echo &amp;#39;prefix=${HOME}/.npm-packages&amp;#39; | tee -a ~/.npmrc echo &amp;#39; #====================================== # npm related stuff NPM_PACKAGES=&amp;#34;${HOME}/.npm-packages&amp;#34; PATH=&amp;#34;$NPM_PACKAGES/bin:$PATH&amp;#34; # Unset manpath so we can inherit from /etc/manpath via the `manpath` command unset MANPATH # delete if you already modified MANPATH elsewhere in your config export MANPATH=&amp;#34;$NPM_PACKAGES/share/man:$(manpath)&amp;#34; #====================================== &amp;#39; | tee -a ~/.</description>
     </item>
     
     <item>
@@ -106,7 +106,7 @@ mkdir &amp;quot;${HOME}/.npm-packages&amp;quot; echo &#39;prefix=${HOME}/.npm-pa
       <guid>https://suraj.io/post/quick-pv-for-local-k8s/</guid>
       <description>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
 Enter into the machine running k8s If using minikube you can do
-minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001  If you are on a machine that has SELinux enabled do the following</description>
+minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following</description>
     </item>
     
     <item>
@@ -116,7 +116,7 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
       
       <guid>https://suraj.io/post/using-crio-with-k8s-single-node/</guid>
       <description>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
-Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables  Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &#39;GOPATH=~/go&#39; &amp;gt;&amp;gt; ~/.</description>
+Installing OS dependencies dnf -y install \  go \  git \  btrfs-progs-devel \  device-mapper-devel \  glib2-devel \  glibc-devel \  glibc-static \  gpgme-devel \  libassuan-devel \  libgpg-error-devel \  libseccomp-devel \  libselinux-devel \  pkgconfig \  wget \  etcd \  iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &amp;#39;GOPATH=~/go&amp;#39; &amp;gt;&amp;gt; ~/.</description>
     </item>
     
     <item>
@@ -125,7 +125,7 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
       <pubDate>Fri, 24 Mar 2017 10:35:54 +0530</pubDate>
       
       <guid>https://suraj.io/post/rpm-notes/</guid>
-      <description>Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG  My Notes  Start reading from: Fedora packager&amp;rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros.  $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch   To see all macros on the system:  $ rpm --showrc   Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package  $ rpm -qip .</description>
+      <description>Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG My Notes  Start reading from: Fedora packager&amp;rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros.  $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch  To see all macros on the system:  $ rpm --showrc  Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package  $ rpm -qip .</description>
     </item>
     
     <item>
@@ -150,7 +150,7 @@ Shortcuts  Ctrl + Shift + A  Find any action in IDE
       <description>Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
 Setup your machine Install packages needed
-sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager  Setup certs</description>
+sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \  gcc byobu rpmlint rpmdevtools centos-packager Setup certs</description>
     </item>
     
     <item>
@@ -162,7 +162,7 @@ sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;am
       <description>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
 Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
 Starting the environment:
-docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:
+docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
 # Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.</description>
     </item>
     

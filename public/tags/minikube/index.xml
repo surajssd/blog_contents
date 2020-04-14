@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>minikube on Suraj Deshmukh</title>
@@ -18,7 +18,7 @@
       
       <guid>https://suraj.io/post/apiserver-in-minikube-static-configs/</guid>
       <description>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube&amp;rsquo;s --extra-config flag with apiserver.&amp;lt;apiserver flag&amp;gt;=&amp;lt;value&amp;gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
---extra-config=apiserver.authorization-mode=RBAC  So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</description>
+--extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</description>
     </item>
     
     <item>

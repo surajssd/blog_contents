@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Sharing Vagrant Box offline" />
 <meta property="og:description" content="Share Vagrant boxes like you shareed Operating System ISOs" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/move-vagrant-boxes/" /><meta property="article:published_time" content="2017-09-18T10:43:46&#43;05:30"/>
-<meta property="article:modified_time" content="2017-09-18T10:43:46&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/move-vagrant-boxes/" />
+<meta property="article:published_time" content="2017-09-18T10:43:46+05:30" />
+<meta property="article:modified_time" content="2017-09-18T10:43:46+05:30" />
 
-        
-<meta itemprop="name" content="Sharing Vagrant Box offline">
+        <meta itemprop="name" content="Sharing Vagrant Box offline">
 <meta itemprop="description" content="Share Vagrant boxes like you shareed Operating System ISOs">
-
-
 <meta itemprop="datePublished" content="2017-09-18T10:43:46&#43;05:30" />
 <meta itemprop="dateModified" content="2017-09-18T10:43:46&#43;05:30" />
 <meta itemprop="wordCount" content="243">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="vagrant,fedora,centos," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -366,46 +363,30 @@ if (!doNotTrack) {
         <p>If you have some box that was downloaded on your machine from <a href="https://app.vagrantup.com/boxes/search">Atlas</a>
 but now you wanna share it on other machines and you don&rsquo;t have internet to download it,
 how do you share it?</p>
-
 <p>You will need to export the box from machine that has it downloaded already. So on machine
 with boxes:</p>
-
-<pre><code class="language-bash">$ vagrant box list
-centos/7             (libvirt, 1610.01)
-centos/7             (libvirt, 1704.01)
-fedora/25-cloud-base (libvirt, 20161122)
-fedora/26-cloud-base (libvirt, 20170705)
-</code></pre>
-
-<p>I wanted to share <code>fedora/26-cloud-base</code> box to another machine. Run the following command:</p>
-
-<pre><code class="language-bash">$ vagrant box repackage fedora/26-cloud-base libvirt 20170705
-</code></pre>
-
-<p>If you deconstruct the above command you will find that the input to above command is all
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ vagrant box list
+centos/7             <span style="color:#f92672">(</span>libvirt, 1610.01<span style="color:#f92672">)</span>
+centos/7             <span style="color:#f92672">(</span>libvirt, 1704.01<span style="color:#f92672">)</span>
+fedora/25-cloud-base <span style="color:#f92672">(</span>libvirt, 20161122<span style="color:#f92672">)</span>
+fedora/26-cloud-base <span style="color:#f92672">(</span>libvirt, 20170705<span style="color:#f92672">)</span>
+</code></pre></div><p>I wanted to share <code>fedora/26-cloud-base</code> box to another machine. Run the following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ vagrant box repackage fedora/26-cloud-base libvirt <span style="color:#ae81ff">20170705</span>
+</code></pre></div><p>If you deconstruct the above command you will find that the input to above command is all
 seen in output of command <code>vagrant box list</code>, where <code>fedora/26-cloud-base</code> is the box name &amp;
 <code>libvirt</code> is the provider &amp; <code>20170705</code> is the version.</p>
-
 <p>Or find more help running:</p>
-
-<pre><code class="language-bash">$ vagrant box repackage -h
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ vagrant box repackage -h
 Usage: vagrant box repackage &lt;name&gt; &lt;provider&gt; &lt;version&gt;
-</code></pre>
-
-<p>Above command creates the file named <code>package.box</code>.</p>
-
+</code></pre></div><p>Above command creates the file named <code>package.box</code>.</p>
 <p>Now transfer this box file to another machine and there you will have to import this box.
 Over there run command:</p>
-
-<pre><code class="language-bash">$ vagrant box add fedora/26-cloud-base package.box
-==&gt; box: Box file was not detected as metadata. Adding it directly...
-==&gt; box: Adding box 'fedora/26-cloud-base' (v0) for provider: 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ vagrant box add fedora/26-cloud-base package.box
+<span style="color:#f92672">==</span>&gt; box: Box file was not detected as metadata. Adding it directly...
+<span style="color:#f92672">==</span>&gt; box: Adding box <span style="color:#e6db74">&#39;fedora/26-cloud-base&#39;</span> <span style="color:#f92672">(</span>v0<span style="color:#f92672">)</span> <span style="color:#66d9ef">for</span> provider: 
     box: Unpacking necessary files from: file:///home/foobar/package.box
-==&gt; box: Successfully added box 'fedora/26-cloud-base' (v0) for 'libvirt'!
-</code></pre>
-
-<p>Now you can list the boxes and use it on this new machine.</p>
-
+<span style="color:#f92672">==</span>&gt; box: Successfully added box <span style="color:#e6db74">&#39;fedora/26-cloud-base&#39;</span> <span style="color:#f92672">(</span>v0<span style="color:#f92672">)</span> <span style="color:#66d9ef">for</span> <span style="color:#e6db74">&#39;libvirt&#39;</span>!
+</code></pre></div><p>Now you can list the boxes and use it on this new machine.</p>
 <p>Here is a list of <a href="https://github.com/surajssd/scripts/tree/master/Vagrantfiles">Vagrantfiles</a>
 I use for all my local setup.</p>
 
@@ -598,6 +579,34 @@ I use for all my local setup.</p>
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -637,34 +646,6 @@ I use for all my local setup.</p>
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -699,7 +680,7 @@ I use for all my local setup.</p>
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -717,7 +698,7 @@ I use for all my local setup.</p>
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

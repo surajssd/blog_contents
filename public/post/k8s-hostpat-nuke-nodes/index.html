@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="HostPath volumes and it&#39;s problems" />
 <meta property="og:description" content="Kubernetes HostPath volume good way to nuke your Kubernetes Nodes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/k8s-hostpat-nuke-nodes/" /><meta property="article:published_time" content="2018-09-10T01:00:51&#43;05:30"/>
-<meta property="article:modified_time" content="2018-09-10T01:00:51&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/k8s-hostpat-nuke-nodes/" />
+<meta property="article:published_time" content="2018-09-10T01:00:51+05:30" />
+<meta property="article:modified_time" content="2018-09-10T01:00:51+05:30" />
 
-        
-<meta itemprop="name" content="HostPath volumes and it&#39;s problems">
+        <meta itemprop="name" content="HostPath volumes and it&#39;s problems">
 <meta itemprop="description" content="Kubernetes HostPath volume good way to nuke your Kubernetes Nodes">
-
-
 <meta itemprop="datePublished" content="2018-09-10T01:00:51&#43;05:30" />
 <meta itemprop="dateModified" content="2018-09-10T01:00:51&#43;05:30" />
 <meta itemprop="wordCount" content="1572">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="kubernetes,openshift,hostpath,security," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,346 +360,239 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>This post will demonstrate how Kubernetes <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"><code>HostPath</code></a> volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.</p>
-
+        <p>This post will demonstrate how Kubernetes <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"><code>HostPath</code></a> volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.</p>
 <p>I have a 3-master and 3-node cluster and setup using <a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant/blob/master/scripts/setup">this script</a>, running in a Vagrant environment.</p>
-
 <p>All the nodes are in ready state:</p>
-
-<pre><code class="language-bash">$ kubectl get nodes -o wide
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get nodes -o wide
 NAME       STATUS    ROLES     AGE       VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
 worker-0   Ready     &lt;none&gt;    24m       v1.11.2   192.168.199.20   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
 worker-1   Ready     &lt;none&gt;    23m       v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
 worker-2   Ready     &lt;none&gt;    21m       v1.11.2   192.168.199.22   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
-</code></pre>
-
-<p>The deployment looks like this:</p>
-
-<pre><code class="language-yaml">$ cat deployment.yaml 
-apiVersion: apps/v1beta1
-kind: Deployment
-metadata:
-  labels:
-    run: web
-  name: web
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      run: web
-  template:
-    metadata:
-      labels:
-        run: web
-    spec:
-      containers:
-      - image: centos/httpd
-        name: web
-        volumeMounts:
-        - mountPath: /web
-          name: test-volume
-      volumes:
-      - name: test-volume
-        hostPath:
-          path: /
-</code></pre>
-
-<p>Above you can see we are mounting <code>/</code> of the host inside pod at <code>/web</code>. This is our gateway to host&rsquo;s file system. Let&rsquo;s deploy this:</p>
-
-<pre><code class="language-bash">$ kubectl apply -f deployment.yaml
+</code></pre></div><p>The deployment looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$ cat deployment.yaml 
+<span style="color:#66d9ef">apiVersion</span>: apps/v1beta1
+<span style="color:#66d9ef">kind</span>: Deployment
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">labels</span>:
+    <span style="color:#66d9ef">run</span>: web
+  <span style="color:#66d9ef">name</span>: web
+<span style="color:#66d9ef">spec</span>:
+  <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">1</span>
+  <span style="color:#66d9ef">selector</span>:
+    <span style="color:#66d9ef">matchLabels</span>:
+      <span style="color:#66d9ef">run</span>: web
+  <span style="color:#66d9ef">template</span>:
+    <span style="color:#66d9ef">metadata</span>:
+      <span style="color:#66d9ef">labels</span>:
+        <span style="color:#66d9ef">run</span>: web
+    <span style="color:#66d9ef">spec</span>:
+      <span style="color:#66d9ef">containers</span>:
+      - <span style="color:#66d9ef">image</span>: centos/httpd
+        <span style="color:#66d9ef">name</span>: web
+        <span style="color:#66d9ef">volumeMounts</span>:
+        - <span style="color:#66d9ef">mountPath</span>: /web
+          <span style="color:#66d9ef">name</span>: test-volume
+      <span style="color:#66d9ef">volumes</span>:
+      - <span style="color:#66d9ef">name</span>: test-volume
+        <span style="color:#66d9ef">hostPath</span>:
+          <span style="color:#66d9ef">path</span>: /
+</code></pre></div><p>Above you can see we are mounting <code>/</code> of the host inside pod at <code>/web</code>. This is our gateway to host&rsquo;s file system. Let&rsquo;s deploy this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml
 deployment.apps/web created
-</code></pre>
-
-<p>And now that pod has started:</p>
-
-<pre><code class="language-bash">$ kubectl get pods -o wide
+</code></pre></div><p>And now that pod has started:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods -o wide
 NAME                   READY     STATUS    RESTARTS   AGE       IP          NODE       NOMINATED NODE
-web-66cdf67bbc-44zhj   1/1       Running   0          4m        10.38.0.1   worker-2   &lt;none&gt;
-</code></pre>
-
-<p>Getting inside the pod and checking out the mounted directory:</p>
-
-<pre><code class="language-bash">$ kubectl exec -it web-66cdf67bbc-44zhj bash
-[root@web-66cdf67bbc-44zhj /]# cd /web
-[root@web-66cdf67bbc-44zhj web]# ls
+web-66cdf67bbc-44zhj   1/1       Running   <span style="color:#ae81ff">0</span>          4m        10.38.0.1   worker-2   &lt;none&gt;
+</code></pre></div><p>Getting inside the pod and checking out the mounted directory:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl exec -it web-66cdf67bbc-44zhj bash
+<span style="color:#f92672">[</span>root@web-66cdf67bbc-44zhj /<span style="color:#f92672">]</span><span style="color:#75715e"># cd /web</span>
+<span style="color:#f92672">[</span>root@web-66cdf67bbc-44zhj web<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
 bin  boot  dev  etc  home  initrd.img  initrd.img.old  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  snap  srv  sys  tmp  usr  vagrant  var  vmlinuz  vmlinuz.old
-</code></pre>
-
-<p>Now we can either <code>chroot</code> into this and see the output of <code>ps</code>.</p>
-
-<pre><code class="language-bash">[root@web-66cdf67bbc-44zhj ~]# chroot /web
-# ps aufx
+</code></pre></div><p>Now we can either <code>chroot</code> into this and see the output of <code>ps</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@web-66cdf67bbc-44zhj ~<span style="color:#f92672">]</span><span style="color:#75715e"># chroot /web</span>
+<span style="color:#75715e"># ps aufx</span>
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root         2  0.0  0.0      0     0 ?        S    05:15   0:00 [kthreadd]
-root         4  0.0  0.0      0     0 ?        I&lt;   05:15   0:00  \_ [kworker/0:0H]
-root         6  0.0  0.0      0     0 ?        I&lt;   05:15   0:00  \_ [mm_percpu_wq]
-root         7  0.0  0.0      0     0 ?        S    05:15   0:00  \_ [ksoftirqd/0]
-root         8  0.0  0.0      0     0 ?        I    05:15   0:00  \_ [rcu_sched]
-root         9  0.0  0.0      0     0 ?        I    05:15   0:00  \_ [rcu_bh]
-root        10  0.0  0.0      0     0 ?        S    05:15   0:00  \_ [migration/0]
-root        11  0.0  0.0      0     0 ?        S    05:15   0:00  \_ [watchdog/0]
-root        12  0.0  0.0      0     0 ?        S    05:15   0:00  \_ [cpuhp/0]
-</code></pre>
-
-<p>Or you can just delete the entire <code>root</code>, a.k.a. nuking the node.</p>
-
-<pre><code class="language-bash"># rm -rf --no-preserve-root /
-</code></pre>
-
-<p>Now if you look at the nodes:</p>
-
-<pre><code class="language-bash">$ kubectl get nodes -o wide
+root         <span style="color:#ae81ff">2</span>  0.0  0.0      <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> ?        S    05:15   0:00 <span style="color:#f92672">[</span>kthreadd<span style="color:#f92672">]</span>
+root         <span style="color:#ae81ff">4</span>  0.0  0.0      <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> ?        I&lt;   05:15   0:00  <span style="color:#ae81ff">\_</span> <span style="color:#f92672">[</span>kworker/0:0H<span style="color:#f92672">]</span>
+root         <span style="color:#ae81ff">6</span>  0.0  0.0      <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> ?        I&lt;   05:15   0:00  <span style="color:#ae81ff">\_</span> <span style="color:#f92672">[</span>mm_percpu_wq<span style="color:#f92672">]</span>
+root         <span style="color:#ae81ff">7</span>  0.0  0.0      <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> ?        S    05:15   0:00  <span style="color:#ae81ff">\_</span> <span style="color:#f92672">[</span>ksoftirqd/0<span style="color:#f92672">]</span>
+root         <span style="color:#ae81ff">8</span>  0.0  0.0      <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> ?        I    05:15   0:00  <span style="color:#ae81ff">\_</span> <span style="color:#f92672">[</span>rcu_sched<span style="color:#f92672">]</span>
+root         <span style="color:#ae81ff">9</span>  0.0  0.0      <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> ?        I    05:15   0:00  <span style="color:#ae81ff">\_</span> <span style="color:#f92672">[</span>rcu_bh<span style="color:#f92672">]</span>
+root        <span style="color:#ae81ff">10</span>  0.0  0.0      <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> ?        S    05:15   0:00  <span style="color:#ae81ff">\_</span> <span style="color:#f92672">[</span>migration/0<span style="color:#f92672">]</span>
+root        <span style="color:#ae81ff">11</span>  0.0  0.0      <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> ?        S    05:15   0:00  <span style="color:#ae81ff">\_</span> <span style="color:#f92672">[</span>watchdog/0<span style="color:#f92672">]</span>
+root        <span style="color:#ae81ff">12</span>  0.0  0.0      <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> ?        S    05:15   0:00  <span style="color:#ae81ff">\_</span> <span style="color:#f92672">[</span>cpuhp/0<span style="color:#f92672">]</span>
+</code></pre></div><p>Or you can just delete the entire <code>root</code>, a.k.a. nuking the node.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># rm -rf --no-preserve-root /</span>
+</code></pre></div><p>Now if you look at the nodes:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get nodes -o wide
 NAME       STATUS     ROLES     AGE       VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
 worker-0   Ready      &lt;none&gt;    30m       v1.11.2   192.168.199.20   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
 worker-1   Ready      &lt;none&gt;    29m       v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
 worker-2   NotReady   &lt;none&gt;    27m       v1.11.2   192.168.199.22   &lt;none&gt;        Unknown              4.15.0-33-generic   cri-o://Unknown
-</code></pre>
-
-<p>The last node <code>worker-2</code> is in <code>NotReady</code> state. We have successfully made one node unusable. Now that one node is gone your pod will be scheduled on another node, where you can do similar stuff.</p>
-
-<pre><code class="language-bash">$ kubectl get pods -o wide
+</code></pre></div><p>The last node <code>worker-2</code> is in <code>NotReady</code> state. We have successfully made one node unusable. Now that one node is gone your pod will be scheduled on another node, where you can do similar stuff.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods -o wide
 NAME                   READY     STATUS    RESTARTS   AGE       IP          NODE       NOMINATED NODE
-web-66cdf67bbc-44zhj   0/1       Unknown   0          20m       10.38.0.1   worker-2   &lt;none&gt;
-web-66cdf67bbc-b22xn   1/1       Running   0          8m        10.32.0.2   worker-0   &lt;none&gt;
-</code></pre>
-
-<p>As you can see above the pod is re-scheduled on node <code>worker-0</code>. And we can do same set of steps to make <code>worker-0</code> unusable.</p>
-
+web-66cdf67bbc-44zhj   0/1       Unknown   <span style="color:#ae81ff">0</span>          20m       10.38.0.1   worker-2   &lt;none&gt;
+web-66cdf67bbc-b22xn   1/1       Running   <span style="color:#ae81ff">0</span>          8m        10.32.0.2   worker-0   &lt;none&gt;
+</code></pre></div><p>As you can see above the pod is re-scheduled on node <code>worker-0</code>. And we can do same set of steps to make <code>worker-0</code> unusable.</p>
 <p>Deleting the deployment to cleanup.</p>
-
-<pre><code class="language-bash">$ kubectl delete deployment web
-deployment.extensions &quot;web&quot; deleted
-</code></pre>
-
-<h1 id="stopping-this-attack-using-podsecuritypolicy">Stopping this attack using PodSecurityPolicy</h1>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl delete deployment web
+deployment.extensions <span style="color:#e6db74">&#34;web&#34;</span> deleted
+</code></pre></div><h1 id="stopping-this-attack-using-podsecuritypolicy">Stopping this attack using PodSecurityPolicy</h1>
 <p>Now as a cluster admin how can you prevent this from happening? You can create something called as <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/"><code>PodSecurityPolicy</code></a>. This let&rsquo;s you define what kind of pods be created. Or what permissions pod can request. Enable admission controller for this, read about it <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podsecuritypolicy">here</a>.</p>
-
 <p>Here is an example <code>PodSecurityPolicy</code>:</p>
-
-<pre><code class="language-yaml">$ cat podsecuritypolicy.yaml 
-apiVersion: policy/v1beta1
-kind: PodSecurityPolicy
-metadata:
-  name: example
-spec:
-  seLinux:
-    rule: RunAsAny
-  supplementalGroups:
-    rule: RunAsAny
-  runAsUser:
-    rule: RunAsAny
-  fsGroup:
-    rule: RunAsAny
-  volumes:
-  - '*'
-  privileged: false  # Don't allow privileged pods!
-  allowedHostPaths:
-  - pathPrefix: /foo
-    readOnly: true
-</code></pre>
-
-<p>In above example, we are restricting access to <code>hostPath</code> a pod can request. Here the path that is allowed is <code>/foo</code> and has <code>readOnly</code> access to the underlying file system.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$ cat podsecuritypolicy.yaml 
+<span style="color:#66d9ef">apiVersion</span>: policy/v1beta1
+<span style="color:#66d9ef">kind</span>: PodSecurityPolicy
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: example
+<span style="color:#66d9ef">spec</span>:
+  <span style="color:#66d9ef">seLinux</span>:
+    <span style="color:#66d9ef">rule</span>: RunAsAny
+  <span style="color:#66d9ef">supplementalGroups</span>:
+    <span style="color:#66d9ef">rule</span>: RunAsAny
+  <span style="color:#66d9ef">runAsUser</span>:
+    <span style="color:#66d9ef">rule</span>: RunAsAny
+  <span style="color:#66d9ef">fsGroup</span>:
+    <span style="color:#66d9ef">rule</span>: RunAsAny
+  <span style="color:#66d9ef">volumes</span>:
+  - <span style="color:#e6db74">&#39;*&#39;</span>
+  <span style="color:#66d9ef">privileged</span>: <span style="color:#66d9ef">false</span>  <span style="color:#75715e"># Don&#39;t allow privileged pods!</span>
+  <span style="color:#66d9ef">allowedHostPaths</span>:
+  - <span style="color:#66d9ef">pathPrefix</span>: /foo
+    <span style="color:#66d9ef">readOnly</span>: <span style="color:#66d9ef">true</span>
+</code></pre></div><p>In above example, we are restricting access to <code>hostPath</code> a pod can request. Here the path that is allowed is <code>/foo</code> and has <code>readOnly</code> access to the underlying file system.</p>
 <p>Create <code>PodSecurityPolicy</code> using above file:</p>
-
-<pre><code class="language-bash">$ kubectl apply -f podsecuritypolicy.yaml 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f podsecuritypolicy.yaml 
 podsecuritypolicy.policy/example created
-</code></pre>
-
-<p>To enable this policy we need to create few more objects, a <code>Role</code> and <code>RoleBinding</code>.</p>
-
+</code></pre></div><p>To enable this policy we need to create few more objects, a <code>Role</code> and <code>RoleBinding</code>.</p>
 <p><code>Role</code>:</p>
-
-<pre><code class="language-yaml">$ cat role.yaml 
-kind: Role
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: authorize-hostpath
-rules:
-- apiGroups: ['policy']
-  resources: ['podsecuritypolicies']
-  verbs:     ['use']
-  resourceNames:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$ cat role.yaml 
+<span style="color:#66d9ef">kind</span>: Role
+<span style="color:#66d9ef">apiVersion</span>: rbac.authorization.k8s.io/v1
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: authorize-hostpath
+<span style="color:#66d9ef">rules</span>:
+- <span style="color:#66d9ef">apiGroups</span>: [<span style="color:#e6db74">&#39;policy&#39;</span>]
+  <span style="color:#66d9ef">resources</span>: [<span style="color:#e6db74">&#39;podsecuritypolicies&#39;</span>]
+  <span style="color:#66d9ef">verbs</span>:     [<span style="color:#e6db74">&#39;use&#39;</span>]
+  <span style="color:#66d9ef">resourceNames</span>:
   - example
-</code></pre>
-
-<p>This <code>Role</code> will allow usage of policy that we created above.</p>
-
+</code></pre></div><p>This <code>Role</code> will allow usage of policy that we created above.</p>
 <p>Create <code>Role</code>:</p>
-
-<pre><code class="language-bash">$ kubectl apply -f role.yaml 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f role.yaml 
 role.rbac.authorization.k8s.io/authorize-hostpath created
-</code></pre>
+</code></pre></div><p><code>RoleBinding</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$ cat rolebinding.yaml 
+<span style="color:#66d9ef">kind</span>: RoleBinding
+<span style="color:#66d9ef">apiVersion</span>: rbac.authorization.k8s.io/v1
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: auth-hostpath
+<span style="color:#66d9ef">roleRef</span>:
+  <span style="color:#66d9ef">kind</span>: Role
+  <span style="color:#66d9ef">name</span>: authorize-hostpath
+  <span style="color:#66d9ef">apiGroup</span>: rbac.authorization.k8s.io
+<span style="color:#66d9ef">subjects</span>:
 
-<p><code>RoleBinding</code>:</p>
-
-<pre><code class="language-yaml">$ cat rolebinding.yaml 
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: auth-hostpath
-roleRef:
-  kind: Role
-  name: authorize-hostpath
-  apiGroup: rbac.authorization.k8s.io
-subjects:
-
-# Authorize all service accounts in a namespace:
-- kind: Group
-  apiGroup: rbac.authorization.k8s.io
-  name: system:serviceaccounts
-</code></pre>
-
-<p>This <code>RoleBinding</code> will bind the <code>Role</code> above and all the <code>ServiceAccounts</code> in current namespace.</p>
-
+<span style="color:#75715e"># Authorize all service accounts in a namespace:</span>
+- <span style="color:#66d9ef">kind</span>: Group
+  <span style="color:#66d9ef">apiGroup</span>: rbac.authorization.k8s.io
+  <span style="color:#66d9ef">name</span>: system:serviceaccounts
+</code></pre></div><p>This <code>RoleBinding</code> will bind the <code>Role</code> above and all the <code>ServiceAccounts</code> in current namespace.</p>
 <p>Create <code>RoleBinding</code>:</p>
-
-<pre><code class="language-bash">$ kubectl create -f rolebinding.yaml 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f rolebinding.yaml 
 rolebinding.rbac.authorization.k8s.io/auth-hostpath created
-</code></pre>
-
-<p>Now that we have required permissions in place, try to re-create the <code>deployment</code>:</p>
-
-<pre><code class="language-bash">$ kubectl apply -f deployment.yaml 
+</code></pre></div><p>Now that we have required permissions in place, try to re-create the <code>deployment</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml 
 deployment.apps/web created
-</code></pre>
-
-<p>The pod is not created and in events you can see an error as <code>Error creating: pods &quot;web-66cdf67bbc-&quot; is forbidden: unable to validate against any pod security policy: [spec.volumes[0].hostPath.pathPrefix: Invalid value: &quot;/&quot;: is not allowed to be used]</code>:</p>
-
-<pre><code class="language-bash">$ kubectl get events 
+</code></pre></div><p>The pod is not created and in events you can see an error as <code>Error creating: pods &quot;web-66cdf67bbc-&quot; is forbidden: unable to validate against any pod security policy: [spec.volumes[0].hostPath.pathPrefix: Invalid value: &quot;/&quot;: is not allowed to be used]</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get events 
 LAST SEEN   FIRST SEEN   COUNT     NAME                              KIND         SUBOBJECT   TYPE      REASON                    SOURCE                  MESSAGE
 ...
-6s          17s          12        web-66cdf67bbc.15530e83fd4f8592   ReplicaSet               Warning   FailedCreate              replicaset-controller   Error creating: pods &quot;web-66cdf67bbc-&quot; is forbidden: unable to validate against any pod security policy: [spec.volumes[0].hostPath.pathPrefix: Invalid value: &quot;/&quot;: is not allowed to be used]
-</code></pre>
-
-<p>This error is due to the fact that we have allowed <code>hostPath</code> to be only under <code>/foo</code> and in the original file it is set to <code>/</code>.</p>
-
+6s          17s          <span style="color:#ae81ff">12</span>        web-66cdf67bbc.15530e83fd4f8592   ReplicaSet               Warning   FailedCreate              replicaset-controller   Error creating: pods <span style="color:#e6db74">&#34;web-66cdf67bbc-&#34;</span> is forbidden: unable to validate against any pod security policy: <span style="color:#f92672">[</span>spec.volumes<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>.hostPath.pathPrefix: Invalid value: <span style="color:#e6db74">&#34;/&#34;</span>: is not allowed to be used<span style="color:#f92672">]</span>
+</code></pre></div><p>This error is due to the fact that we have allowed <code>hostPath</code> to be only under <code>/foo</code> and in the original file it is set to <code>/</code>.</p>
 <p>Now change in <code>deployment.yaml</code> file at path <code>deployment.spec.template.spec.volumes[0].hostPath.path</code> from <code>/</code> to <code>/foo</code> and apply again:</p>
-
-<pre><code class="language-bash">$ kubectl apply -f deployment.yaml 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml 
 deployment.apps/web configured
-</code></pre>
-
-<p>You can see another error <code>Error creating: pods &quot;web-85cb548b47-&quot; is forbidden: unable to validate against any pod security policy: [spec.containers[0].volumeMounts[0].readOnly: Invalid value: false: must be read-only]</code>:</p>
-
-<pre><code class="language-bash">$ kubectl get events 
+</code></pre></div><p>You can see another error <code>Error creating: pods &quot;web-85cb548b47-&quot; is forbidden: unable to validate against any pod security policy: [spec.containers[0].volumeMounts[0].readOnly: Invalid value: false: must be read-only]</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get events 
 LAST SEEN   FIRST SEEN   COUNT     NAME                              KIND         SUBOBJECT   TYPE      REASON                    SOURCE                  MESSAGE
 ...
-5s          15s          12        web-85cb548b47.15530eb0c27c6122   ReplicaSet               Warning   FailedCreate              replicaset-controller   Error creating: pods &quot;web-85cb548b47-&quot; is forbidden: unable to validate against any pod security policy: [spec.containers[0].volumeMounts[0].readOnly: Invalid value: false: must be read-only]
-</code></pre>
-
-<p>This is because in the <code>volumeMount</code>&rsquo;s <code>readOnly</code> we have used in container has no value defined, which means it defaults to <code>false</code> and in <code>PodSecurityPolicy</code> we have defaulted the <code>hostPath</code> to be <code>readOnly</code>.</p>
-
+5s          15s          <span style="color:#ae81ff">12</span>        web-85cb548b47.15530eb0c27c6122   ReplicaSet               Warning   FailedCreate              replicaset-controller   Error creating: pods <span style="color:#e6db74">&#34;web-85cb548b47-&#34;</span> is forbidden: unable to validate against any pod security policy: <span style="color:#f92672">[</span>spec.containers<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>.volumeMounts<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>.readOnly: Invalid value: false: must be read-only<span style="color:#f92672">]</span>
+</code></pre></div><p>This is because in the <code>volumeMount</code>'s <code>readOnly</code> we have used in container has no value defined, which means it defaults to <code>false</code> and in <code>PodSecurityPolicy</code> we have defaulted the <code>hostPath</code> to be <code>readOnly</code>.</p>
 <p>So change <code>deployment.spec.template.spec.containers[0].volumeMounts[0].readOnly</code> to <code>true</code>. And manifest should look like following:</p>
-
-<pre><code class="language-yaml">$ cat deployment.yaml 
-apiVersion: apps/v1beta1
-kind: Deployment
-metadata:
-  labels:
-    run: web
-  name: web
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      run: web
-  template:
-    metadata:
-      labels:
-        run: web
-    spec:
-      containers:
-      - image: centos/httpd
-        name: web
-        volumeMounts:
-        - mountPath: /web
-          name: test-volume
-          readOnly: true
-      volumes:
-      - name: test-volume
-        hostPath:
-          path: /foo
-</code></pre>
-
-<p>Now if you re-deploy the app:</p>
-
-<pre><code class="language-bash">$ kubectl apply -f deployment.yaml 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$ cat deployment.yaml 
+<span style="color:#66d9ef">apiVersion</span>: apps/v1beta1
+<span style="color:#66d9ef">kind</span>: Deployment
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">labels</span>:
+    <span style="color:#66d9ef">run</span>: web
+  <span style="color:#66d9ef">name</span>: web
+<span style="color:#66d9ef">spec</span>:
+  <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">1</span>
+  <span style="color:#66d9ef">selector</span>:
+    <span style="color:#66d9ef">matchLabels</span>:
+      <span style="color:#66d9ef">run</span>: web
+  <span style="color:#66d9ef">template</span>:
+    <span style="color:#66d9ef">metadata</span>:
+      <span style="color:#66d9ef">labels</span>:
+        <span style="color:#66d9ef">run</span>: web
+    <span style="color:#66d9ef">spec</span>:
+      <span style="color:#66d9ef">containers</span>:
+      - <span style="color:#66d9ef">image</span>: centos/httpd
+        <span style="color:#66d9ef">name</span>: web
+        <span style="color:#66d9ef">volumeMounts</span>:
+        - <span style="color:#66d9ef">mountPath</span>: /web
+          <span style="color:#66d9ef">name</span>: test-volume
+          <span style="color:#66d9ef">readOnly</span>: <span style="color:#66d9ef">true</span>
+      <span style="color:#66d9ef">volumes</span>:
+      - <span style="color:#66d9ef">name</span>: test-volume
+        <span style="color:#66d9ef">hostPath</span>:
+          <span style="color:#66d9ef">path</span>: /foo
+</code></pre></div><p>Now if you re-deploy the app:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml 
 deployment.apps/web configured
-</code></pre>
-
-<p>The pod is scheduled and created:</p>
-
-<pre><code class="language-bash">$ kubectl get pods
+</code></pre></div><p>The pod is scheduled and created:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods
 NAME                   READY     STATUS    RESTARTS   AGE
-web-7b77459d6b-kbqm8   1/1       Running   0          7s
-</code></pre>
-
-<p>Now if you exec into this pod and try to do something, you can see nothing happens:</p>
-
-<pre><code class="language-bash">$ kubectl exec -it web-7b77459d6b-kbqm8 bash
-[root@web-7b77459d6b-kbqm8 /]# cd /web/
-[root@web-7b77459d6b-kbqm8 web]# ls
-[root@web-7b77459d6b-kbqm8 web]# touch file.txt
-touch: cannot touch 'file.txt': Read-only file system
-</code></pre>
-
-<p>So this is really good feature you can use to stop someone from nuking your cluster.</p>
-
+web-7b77459d6b-kbqm8   1/1       Running   <span style="color:#ae81ff">0</span>          7s
+</code></pre></div><p>Now if you exec into this pod and try to do something, you can see nothing happens:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl exec -it web-7b77459d6b-kbqm8 bash
+<span style="color:#f92672">[</span>root@web-7b77459d6b-kbqm8 /<span style="color:#f92672">]</span><span style="color:#75715e"># cd /web/</span>
+<span style="color:#f92672">[</span>root@web-7b77459d6b-kbqm8 web<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
+<span style="color:#f92672">[</span>root@web-7b77459d6b-kbqm8 web<span style="color:#f92672">]</span><span style="color:#75715e"># touch file.txt</span>
+touch: cannot touch <span style="color:#e6db74">&#39;file.txt&#39;</span>: Read-only file system
+</code></pre></div><p>So this is really good feature you can use to stop someone from nuking your cluster.</p>
 <h1 id="stopping-this-attack-using-selinux">Stopping this attack using SELinux</h1>
-
 <p>Above setup of the Kubernetes cluster had a Ubuntu based machines, now I have a Kubernetes cluster that is setup on Fedora which supports <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/deployment_guide/ch-selinux">SELinux</a>.</p>
-
 <p>You can setup this cluster following steps in this <a href="https://suraj.io/post/single-node-k8s-fedora-selinux/">post</a>.</p>
-
 <p><strong>Note</strong>: This is a simple cluster setup without <code>PodSecurityPolicy</code>.</p>
-
 <p>Once you have the cluster running:</p>
-
-<pre><code class="language-bash">$ kubectl get nodes -o wide
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get nodes -o wide
 NAME      STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                    KERNEL-VERSION           CONTAINER-RUNTIME
-fedora    Ready     master    23m       v1.11.2   10.0.2.15     &lt;none&gt;        Fedora 28 (Cloud Edition)   4.16.3-301.fc28.x86_64   docker://1.13.1
-</code></pre>
-
-<p>Lets follow the same set of steps of creating the deployment:</p>
-
-<pre><code class="language-bash">$ kubectl apply -f deployment.yaml 
+fedora    Ready     master    23m       v1.11.2   10.0.2.15     &lt;none&gt;        Fedora <span style="color:#ae81ff">28</span> <span style="color:#f92672">(</span>Cloud Edition<span style="color:#f92672">)</span>   4.16.3-301.fc28.x86_64   docker://1.13.1
+</code></pre></div><p>Lets follow the same set of steps of creating the deployment:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml 
 deployment.apps/web created
-</code></pre>
-
-<p>The pod is created:</p>
-
-<pre><code class="language-bash">$ kubectl get pods
+</code></pre></div><p>The pod is created:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods
 NAME                   READY     STATUS    RESTARTS   AGE
-web-66cdf67bbc-t9n7m   1/1       Running   0          28s
-</code></pre>
-
-<p>Getting into the machine:</p>
-
-<pre><code class="language-bash">$ kubectl exec -it web-66cdf67bbc-t9n7m bash
-[root@web-66cdf67bbc-t9n7m /]#
-[root@web-66cdf67bbc-t9n7m /]# cd /web/
-[root@web-66cdf67bbc-t9n7m web]# ls
+web-66cdf67bbc-t9n7m   1/1       Running   <span style="color:#ae81ff">0</span>          28s
+</code></pre></div><p>Getting into the machine:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl exec -it web-66cdf67bbc-t9n7m bash
+<span style="color:#f92672">[</span>root@web-66cdf67bbc-t9n7m /<span style="color:#f92672">]</span>#
+<span style="color:#f92672">[</span>root@web-66cdf67bbc-t9n7m /<span style="color:#f92672">]</span><span style="color:#75715e"># cd /web/</span>
+<span style="color:#f92672">[</span>root@web-66cdf67bbc-t9n7m web<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
 bin  boot  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  vagrant  var
-[root@web-66cdf67bbc-t9n7m web]# touch file.txt
-touch: cannot touch 'file.txt': Permission denied
-</code></pre>
-
-<p>As you can see if you go to the root of host which is mounted at <code>/web</code> and try to create new file, it fails. This event will be logged into the SELinux audit logs. On host if you run following you will see logs:</p>
-
-<pre><code class="language-bash"># ausearch -m avc
+<span style="color:#f92672">[</span>root@web-66cdf67bbc-t9n7m web<span style="color:#f92672">]</span><span style="color:#75715e"># touch file.txt</span>
+touch: cannot touch <span style="color:#e6db74">&#39;file.txt&#39;</span>: Permission denied
+</code></pre></div><p>As you can see if you go to the root of host which is mounted at <code>/web</code> and try to create new file, it fails. This event will be logged into the SELinux audit logs. On host if you run following you will see logs:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># ausearch -m avc</span>
 ----
-time-&gt;Tue Sep 11 06:41:54 2018
-type=AVC msg=audit(1536648114.522:985): avc:  denied  { write } for  pid=15775 comm=&quot;touch&quot; name=&quot;/&quot; dev=&quot;sda1&quot; ino=2 scontext=system_u:system_r:container_t:s0:c230,c784 tcontext=system_u:object_r:root_t:s0 tclass=dir permissive=0
-</code></pre>
-
-<p>Here simple SELinux has stopped the container from writing into places it shouldn&rsquo;t. Compared to <code>PodSecurityPolicy</code> (which is a beta feature in k8s 1.11), SELinux can help you right away if you are using older Kubernetes cluster and are on CentOS or RHEL.</p>
-
+time-&gt;Tue Sep <span style="color:#ae81ff">11</span> 06:41:54 <span style="color:#ae81ff">2018</span>
+type<span style="color:#f92672">=</span>AVC msg<span style="color:#f92672">=</span>audit<span style="color:#f92672">(</span>1536648114.522:985<span style="color:#f92672">)</span>: avc:  denied  <span style="color:#f92672">{</span> write <span style="color:#f92672">}</span> <span style="color:#66d9ef">for</span>  pid<span style="color:#f92672">=</span><span style="color:#ae81ff">15775</span> comm<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;touch&#34;</span> name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/&#34;</span> dev<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sda1&#34;</span> ino<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> scontext<span style="color:#f92672">=</span>system_u:system_r:container_t:s0:c230,c784 tcontext<span style="color:#f92672">=</span>system_u:object_r:root_t:s0 tclass<span style="color:#f92672">=</span>dir permissive<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</code></pre></div><p>Here simple SELinux has stopped the container from writing into places it shouldn&rsquo;t. Compared to <code>PodSecurityPolicy</code> (which is a beta feature in k8s 1.11), SELinux can help you right away if you are using older Kubernetes cluster and are on CentOS or RHEL.</p>
 <h1 id="references">References</h1>
-
 <ul>
 <li><a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant">Multi node Kubernetes setup used here</a></li>
 <li><a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/">Pod Security Policies</a></li>
@@ -900,6 +790,34 @@ type=AVC msg=audit(1536648114.522:985): avc:  denied  { write } for  pid=15775 c
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -939,34 +857,6 @@ type=AVC msg=audit(1536648114.522:985): avc:  denied  { write } for  pid=15775 c
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1001,7 +891,7 @@ type=AVC msg=audit(1536648114.522:985): avc:  denied  { write } for  pid=15775 c
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -1019,7 +909,7 @@ type=AVC msg=audit(1536648114.522:985): avc:  denied  { write } for  pid=15775 c
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

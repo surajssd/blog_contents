@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>openshift on Suraj Deshmukh</title>
@@ -40,8 +40,8 @@ All the nodes are in ready state:</description>
       <guid>https://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
       <description>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
 If you are using minishift then get docker environment access of the minishift VM by running following commands.
-eval $(minishift docker-env) &amp;amp;&amp;amp; eval $(minishift oc-env)  Exec into the container named origin that runs OpenShift and all the needed services.
-$ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.</description>
+eval $(minishift docker-env) &amp;amp;&amp;amp; eval $(minishift oc-env) Exec into the container named origin that runs OpenShift and all the needed services.
+$ docker exec -it origin bash First install the etcdctl needed to talk to etcd.</description>
     </item>
     
   </channel>

@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Intellij Shortcuts" />
 <meta property="og:description" content="Shortcuts of intellij and also some short notes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/intellij-shortcuts/" /><meta property="article:published_time" content="2017-03-17T14:41:51&#43;05:30"/>
-<meta property="article:modified_time" content="2017-03-17T14:41:51&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/intellij-shortcuts/" />
+<meta property="article:published_time" content="2017-03-17T14:41:51+05:30" />
+<meta property="article:modified_time" content="2017-03-17T14:41:51+05:30" />
 
-        
-<meta itemprop="name" content="Intellij Shortcuts">
+        <meta itemprop="name" content="Intellij Shortcuts">
 <meta itemprop="description" content="Shortcuts of intellij and also some short notes">
-
-
 <meta itemprop="datePublished" content="2017-03-17T14:41:51&#43;05:30" />
 <meta itemprop="dateModified" content="2017-03-17T14:41:51&#43;05:30" />
 <meta itemprop="wordCount" content="935">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="intellij,ide,programming,productivity,notes," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,291 +360,197 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p><strong>Note</strong>: This is a living document and will be updated as I discover new things.</p>
-
+        <p><strong>Note</strong>: This is a living document and will be updated as I discover new things.</p>
 <h2 id="shortcuts">Shortcuts</h2>
-
 <ul>
 <li><code>Ctrl + Shift + A</code></li>
 </ul>
-
 <p>Find any action in IDE</p>
-
 <ul>
 <li><code>Ctrl + Shift + F</code></li>
 </ul>
-
 <p>Find in Path</p>
-
 <ul>
 <li><code>Alt + 1</code></li>
 </ul>
-
 <p>Open project navigator.
 You can search here, just start typing here, after the project navigator window is opened.</p>
-
 <ul>
 <li><code>Shift + Insert</code> in Project window</li>
 </ul>
-
 <p>Here you can add new file to the project. The filename could be the entire path, so the intermediate directories will be created for you.</p>
-
 <ul>
 <li><code>Ctrl + N</code></li>
 </ul>
-
 <p>Find a struct or class definition by name.</p>
-
 <ul>
 <li><code>Ctrl + Shift + N</code></li>
 </ul>
-
 <p>Find a file by name.
 If you type file name and number seprated by number it will take you to the line in that file. e.g. <code>main.go:6</code> This will take you to line 6 in <code>main.go</code>.</p>
-
 <ul>
 <li><code>Ctrl + Shift + Alt + N</code></li>
 </ul>
-
 <p>Find any symbol in the project. Here symbol means mainly type.</p>
-
 <ul>
 <li><code>Shift + Shift</code></li>
 </ul>
-
 <p>Search anything anywhere.</p>
-
 <ul>
 <li><code>Ctrl + F4</code></li>
 </ul>
-
 <p>Close section that is active.</p>
-
 <ul>
 <li><code>Ctrl + Tab</code></li>
 </ul>
-
 <p>Switcher to switch between open items</p>
-
 <ul>
 <li><code>Ctrl + Shift + B</code></li>
 </ul>
-
 <p>Jump to definition.</p>
-
 <ul>
 <li><code>Ctrl + B</code></li>
 </ul>
-
 <p>Find usage of that element in project. Or find declaration of a variable.</p>
-
 <ul>
 <li><code>Ctrl + Shift + P</code></li>
 </ul>
-
 <p>Find type of a variable.</p>
-
 <ul>
 <li><code>Ctrl + cursor up/down</code></li>
 </ul>
-
 <p>Navigate the code window up and down</p>
-
 <ul>
 <li><code>Ctrl + D</code></li>
 </ul>
-
 <p>Duplicate a line or selection.</p>
-
 <ul>
 <li><code>Ctrl + Y</code></li>
 </ul>
-
 <p>Delete a line or selection.</p>
-
 <ul>
 <li><code>Ctrl + /</code></li>
 </ul>
-
 <p>Comment/Uncomment out with line comment, a line or selected block.</p>
-
 <ul>
 <li><code>Ctrl + Shift + /</code></li>
 </ul>
-
 <p>Comment/Uncomment out with block comment, a line or selected block.</p>
-
 <ul>
 <li><code>Alt + Shift + cursor up/down</code></li>
 </ul>
-
 <p>Move line or selection up/down.</p>
-
 <ul>
 <li><code>Alt + -&gt;</code> or <code>Alt + &lt;-</code></li>
 </ul>
-
 <p>Switch tabs of open files.</p>
-
 <ul>
 <li><code>Ctrl + E</code></li>
 </ul>
-
 <p>Show recently openend files.</p>
-
 <ul>
 <li><code>Ctrl + Shift + A</code> &lsquo;Scratch files&rsquo;</li>
 </ul>
-
 <p>If you need files that are not part of project but need to test something.</p>
-
 <ul>
 <li><code>Ctrl + Shift + F12</code></li>
 </ul>
-
 <p>Hide all the windows and make editor full screen and press again to go back to having all the windows.</p>
-
 <ul>
 <li><code>View + Enter Distraction Free mode</code></li>
 </ul>
-
 <p>This will only keep editor rest everything goes away.</p>
-
 <ul>
 <li><code>Ctrl + Shift + &lt;-</code> or <code>Ctrl + Shift + -&gt;</code></li>
 </ul>
-
 <p>When in the project navigation window you can resize it.</p>
-
 <ul>
 <li><code>Ctrl + W</code></li>
 </ul>
-
 <p>Select a word, press again and select a line, then select entire line then entire block, then entire outcasting block and so on.</p>
-
 <ul>
 <li><code>Shift + Alt + up/down cursor</code></li>
 </ul>
-
 <p>When a line or block of code is selected and wanna move up and down.</p>
-
 <ul>
 <li><code>Ctrl + Shift + V</code></li>
 </ul>
-
 <p>To see your clipboard history</p>
-
 <ul>
 <li><code>Alt + mouse click in location</code></li>
 </ul>
-
 <p>To have multiple cursors. To get out of this mode just press <code>escape</code> key.</p>
-
 <ul>
 <li><code>Shift + F6</code></li>
 </ul>
-
 <p>This will select all occurrences of the current word, so you can edit all of them at once. After you are done edition press enter.</p>
-
 <ul>
 <li><code>Alt + J</code></li>
 </ul>
-
 <p>When pressed on a word, it finds the next occurrence of the word and puts a cursor there. So I can edit mutiple occurrences of same word simultaneously.</p>
-
 <ul>
 <li><code>Ctrl + Alt + I</code></li>
 </ul>
-
 <p>Select a block of code and get indentation right.</p>
-
 <ul>
 <li><code>Ctrl + Alt + L</code></li>
 </ul>
-
 <p>Reformat the code.</p>
-
 <ul>
 <li><code>Alt + Enter</code></li>
 </ul>
-
 <p>Goto a string and press this key and then you can do language injection. So you can tell intellij to interpret that string as <code>json</code> or something like that.
 So this helps in adding markup languages as string as a part of code. Also you can inject <code>regular expression</code> and then check if the string is validated
 against the regular expressions you put in.</p>
-
 <ul>
 <li><code>Alt + /</code></li>
 </ul>
-
 <p>So when a recommendation is opened up and if you press above key combination, the word is completed but if you keep pressing those keys the recommendation
 rotates through all the recommendation.</p>
-
 <ul>
 <li><code>Ctrl + J</code></li>
 </ul>
-
 <p>Recommend templates, if there are any pre-defined.</p>
-
 <ul>
 <li><code>Ctrl + Shift + Enter</code></li>
 </ul>
-
 <p>Auto complete the current statement.</p>
-
 <ul>
 <li><code>Ctrl + F12</code></li>
 </ul>
-
 <p>Navigate file structure, you can start typing and search for things. And then by pressing the enter key you can jump to the definition.</p>
-
 <ul>
 <li><code>Alt + 7</code></li>
 </ul>
-
 <p>Similar functionality as above only difference is that it opens in a side bar.</p>
-
 <ul>
 <li><code>Ctrl + Shift + A</code> &lsquo;annotate&rsquo;</li>
 </ul>
-
 <p>Start annotation to see who made changes on each line. From here you can copy the revision number and then search it in the &lsquo;version control&rsquo; window.</p>
-
 <ul>
 <li><code>Alt + F12</code></li>
 </ul>
-
 <p>Terminal in IDE</p>
-
 <ul>
 <li><code>Alt + 9</code></li>
 </ul>
-
 <p>Version Control window</p>
-
 <h2 id="notes-and-tips">Notes and Tips</h2>
-
 <ul>
 <li>In code you can write TODOs and FIXME and then IDE can identify them and you can write code later on in there.</li>
 <li>There is a plugin called as &lsquo;Presentation Assistant&rsquo; which shows what keys did you type</li>
 <li>In the project window(side bar), select <em>Auto Scroll from Source</em> so when you are moving from one file to another it shows in the project side bar where that file is right now.</li>
 <li>When navigating in the project side bar, to start editing certain file press function key <code>F4</code>. Press <code>Enter</code> to just view it.</li>
 </ul>
-
 <h2 id="other-receipes">Other receipes</h2>
-
 <h4 id="compare-branches">Compare branches</h4>
-
 <ul>
 <li>Press <code>Ctrl + Shift + A</code> to open the action window, search for <code>branches</code>, open branches window. Also can be done <a href="https://www.jetbrains.com/help/pycharm/2016.1/accessing-git-branches-popup-menu.html">as</a>.</li>
 <li>Once branch pop-window is open, select with what branch you wanna compare current checked out branch and select <code>compare</code>.</li>
 <li>It will open up a window with all changes, in top tabs select <code>diff</code>, then select a file you wanna compare.</li>
 <li>Above steps are also given <a href="https://www.jetbrains.com/help/pycharm/2016.1/merging-deleting-and-comparing-branches.html">here</a>.</li>
 </ul>
-
 <h2 id="ref">Ref:</h2>
-
 <ul>
 <li><a href="https://www.youtube.com/watch?v=vsyT-7n5-1I">IntelliJ IDEA Tutorial - Shortcuts to Ditch Your Mouse Today</a></li>
 <li><a href="https://youtu.be/eq3KiAH4IBI">42 IntelliJ IDEA Tips and Tricks</a></li>
@@ -840,6 +743,34 @@ rotates through all the recommendation.</p>
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -879,34 +810,6 @@ rotates through all the recommendation.</p>
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -941,7 +844,7 @@ rotates through all the recommendation.</p>
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -959,7 +862,7 @@ rotates through all the recommendation.</p>
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

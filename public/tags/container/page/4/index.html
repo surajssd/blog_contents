@@ -16,7 +16,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -36,13 +36,10 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/container/" />
-<meta property="og:updated_time" content="2017-09-01T16:03:58&#43;05:30"/>
+<meta property="og:updated_time" content="2019-06-25T15:15:07+05:30" />
 
-        
-<meta itemprop="name" content="container">
+        <meta itemprop="name" content="container">
 <meta itemprop="description" content="Blog">
-
-
         
 
         
@@ -193,6 +190,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -202,14 +207,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -225,6 +222,149 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/static-pods/">Static Pods using Kubelet on Fedora</a></h2>
+        
+        
+            <p>Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-09-23'>
+            September 23, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.
+This blog is only replacement of section Install the Standalone Kubelet in tutorial.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/static-pods/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/move-vagrant-boxes/">Sharing Vagrant Box offline</a></h2>
+        
+        
+            <p>Share Vagrant boxes like you shareed Operating System ISOs</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2017-09-18'>
+            September 18, 2017</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don’t have internet to download it, how do you share it?
+You will need to export the box from machine that has it downloaded already. So on machine with boxes:
+$ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705) I wanted to share fedora/26-cloud-base box to another machine.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/move-vagrant-boxes/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriesvagrant'>vagrant</a></li>
+    
+        <li><a href='/categoriesfedora'>fedora</a></li>
+    
+        <li><a href='/categoriescentos'>centos</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -257,7 +397,7 @@ if (!doNotTrack) {
 
     <p>If you are playing Counter Strike on Steam on linux you might be wondering how do I install new maps in the game. So here are steps to install maps.
 All the game maps for Counter Strike - Condition Zero are stored in following path:
-~/.local/share/Steam/steamapps/common/Half-Life/czero/maps  Format of the map files is .bsp.
+~/.local/share/Steam/steamapps/common/Half-Life/czero/maps Format of the map files is .bsp.
 So download the map files from over internet and then put in this location and now you should be able to see the maps in game.</p>
 
     <footer>
@@ -326,7 +466,7 @@ So download the map files from over internet and then put in this location and n
     
 
     <p>List of all the event reports from Kubernetes Bangalore meetup.
- April 2017 May 2017 June 2017 July 2017 Kubernetes 2nd Birthday Celebration August 2017 September 2017 October 2017 November 2017</p>
+April 2017 May 2017 June 2017 July 2017 Kubernetes 2nd Birthday Celebration August 2017 September 2017 October 2017 November 2017</p>
 
     <footer>
         <ul class="actions">
@@ -394,7 +534,7 @@ So download the map files from over internet and then put in this location and n
     
 
     <p>Following is the list of all the places you can learn Kubernetes from:
- Scalable Microservices with Kubernetes - Video tutorial Fundamentals of Containers, Kubernetes, and Red Hat OpenShift - Video tutorial Kubernetes By Example - DIY tutorial Learn Kubernetes using Interactive Browser-Based Scenarios - DIY tutorial in your own web browser Interactive Learning Portal for OpenShift - DIY tutorial in your own web browser Kubernetes docs - Textual DIY docs Kubernetes API reference v1.</p>
+Scalable Microservices with Kubernetes - Video tutorial Fundamentals of Containers, Kubernetes, and Red Hat OpenShift - Video tutorial Kubernetes By Example - DIY tutorial Learn Kubernetes using Interactive Browser-Based Scenarios - DIY tutorial in your own web browser Interactive Learning Portal for OpenShift - DIY tutorial in your own web browser Kubernetes docs - Textual DIY docs Kubernetes API reference v1.</p>
 
     <footer>
         <ul class="actions">
@@ -462,7 +602,7 @@ So download the map files from over internet and then put in this location and n
     
 
     <p>This edition of meetup was held at Nexus Ventures by folks at OpenEBS on July 8th 2017, which started on a lovely Saturday morning.
-Kiran Mova set the floor rolling with his talk on Hyperconverged version of OpenEBS with Kubernetes. Where he talked about containerized storage vs traditional storage, instead of building clustering into OpenEBS how they are leveraging Kubernetes&rsquo;s capabilities to do clustering.
+Kiran Mova set the floor rolling with his talk on Hyperconverged version of OpenEBS with Kubernetes. Where he talked about containerized storage vs traditional storage, instead of building clustering into OpenEBS how they are leveraging Kubernetes’s capabilities to do clustering.
 He also explained difference between various storage providers viz.</p>
 
     <footer>
@@ -531,8 +671,8 @@ He also explained difference between various storage providers viz.</p>
     
 
     <p>Make sure you have npm installed.
-$ sudo dnf -y install npm Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping. Dependencies resolved. Nothing to do. Complete!  Taken from this post.
-mkdir &quot;${HOME}/.npm-packages&quot; echo &lsquo;prefix=${HOME}/.npm-packages&rsquo; | tee -a ~/.npmrc echo &lsquo; #====================================== # npm related stuff NPM_PACKAGES=&quot;${HOME}/.npm-packages&quot; PATH=&quot;$NPM_PACKAGES/bin:$PATH&quot; # Unset manpath so we can inherit from /etc/manpath via the <code>manpath</code> command unset MANPATH # delete if you already modified MANPATH elsewhere in your config export MANPATH=&quot;$NPM_PACKAGES/share/man:$(manpath)&quot; #====================================== &lsquo; | tee -a ~/.</p>
+$ sudo dnf -y install npm Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping. Dependencies resolved. Nothing to do. Complete! Taken from this post.
+mkdir &quot;${HOME}/.npm-packages&quot; echo 'prefix=${HOME}/.npm-packages' | tee -a ~/.npmrc echo ' #====================================== # npm related stuff NPM_PACKAGES=&quot;${HOME}/.npm-packages&quot; PATH=&quot;$NPM_PACKAGES/bin:$PATH&quot; # Unset manpath so we can inherit from /etc/manpath via the <code>manpath</code> command unset MANPATH # delete if you already modified MANPATH elsewhere in your config export MANPATH=&quot;$NPM_PACKAGES/share/man:$(manpath)&quot; #====================================== ' | tee -a ~/.</p>
 
     <footer>
         <ul class="actions">
@@ -599,7 +739,7 @@ mkdir &quot;${HOME}/.npm-packages&quot; echo &lsquo;prefix=${HOME}/.npm-packages
 
     
 
-    <p>&ldquo;One does not simply deploy containers to production&rdquo;
+    <p>“One does not simply deploy containers to production”
 With the rising craze around the container community in Bangalore and relative lack in awareness around different container technologies like Kubernetes and OpenShift, an effort was made in imparting knowledge in this direction.
 So, this time around newbies were targeted for the Kubernetes Meetup.
 With the above objective, it was decided to have a Kubernetes 101 workshop at Red Hat Bangalore office on May 21, 2017 to familiarize people with concepts of Kubernetes and OpenShift and their usage and relevance as container orchestration tools for managing application deployments.</p>
@@ -742,147 +882,11 @@ $ ll total 24 -rw-rw-r&ndash;. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r&ndash;
 
     <p>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
 Enter into the machine running k8s If using minikube you can do
-minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001  If you are on a machine that has SELinux enabled do the following</p>
+minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following</p>
 
     <footer>
         <ul class="actions">
             <li><a href="https://suraj.io/post/quick-pv-for-local-k8s/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/blr-k8s-meetup-april-2017/">Bangalore Kubernetes Meetup April 2017</a></h2>
-        
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-04-08'>
-            April 8, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Like many Saturday mornings, Red Hat Bangalore office was once again abuzz with enthusiasm on 8th of April, for hosting yet another successful chapter of Bangalore Kubernetes Meetup. The Meetup had a good turnaround of about 40 people who gave up on their early morning saturday sleep to attend it despite the sweltering hot season and in line were four awesome talks.
-Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/blr-k8s-meetup-april-2017/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesevent_report'>event_report</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/using-crio-with-k8s-single-node/">k8s on CRI-O - single node</a></h2>
-        
-        
-            <p>How to make kubernetes use CRI-O as container runtime</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-04-08'>
-            April 8, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
-Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables  Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &lsquo;GOPATH=~/go&rsquo; &gt;&gt; ~/.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/using-crio-with-k8s-single-node/" class="button big">Continue Reading</a></li>
         </ul>
         <ul class="stats">
     
@@ -1047,6 +1051,34 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -1086,34 +1118,6 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1148,7 +1152,7 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -1166,7 +1170,7 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

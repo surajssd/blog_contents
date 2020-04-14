@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Capabilities on executables" />
 <meta property="og:description" content="Note on Linux Kernel capabilities" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/linux-cap-note/" /><meta property="article:published_time" content="2019-06-25T15:15:07&#43;05:30"/>
-<meta property="article:modified_time" content="2019-06-25T15:15:07&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/linux-cap-note/" />
+<meta property="article:published_time" content="2019-06-25T15:15:07+05:30" />
+<meta property="article:modified_time" content="2019-06-25T15:15:07+05:30" />
 
-        
-<meta itemprop="name" content="Capabilities on executables">
+        <meta itemprop="name" content="Capabilities on executables">
 <meta itemprop="description" content="Note on Linux Kernel capabilities">
-
-
 <meta itemprop="datePublished" content="2019-06-25T15:15:07&#43;05:30" />
 <meta itemprop="dateModified" content="2019-06-25T15:15:07&#43;05:30" />
 <meta itemprop="wordCount" content="135">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="proc,docker,host,containers,security," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,37 +360,24 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>File capabilities allow users to execute programs with higher privileges. Best example is network utility <code>ping</code>.</p>
-
+        <p>File capabilities allow users to execute programs with higher privileges. Best example is network utility <code>ping</code>.</p>
 <p>A <code>ping</code> binary has capabilities <code>CAP_NET_ADMIN</code> and <code>CAP_NET_RAW</code>. A normal user doesn&rsquo;t have <code>CAP_NET_ADMIN</code> privilege, since the executable file <code>ping</code> has that capability you can run it.</p>
-
-<pre><code class="language-bash">$ getcap `which ping`
-/usr/bin/ping = cap_net_admin,cap_net_raw+p
-</code></pre>
-
-<p>Which normally works as follows:</p>
-
-<pre><code class="language-bash">$ ping -c 1 1.1.1.1
-PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
-64 bytes from 1.1.1.1: icmp_seq=1 ttl=55 time=36.9 ms
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ getcap <span style="color:#e6db74">`</span>which ping<span style="color:#e6db74">`</span>
+/usr/bin/ping <span style="color:#f92672">=</span> cap_net_admin,cap_net_raw+p
+</code></pre></div><p>Which normally works as follows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ping -c <span style="color:#ae81ff">1</span> 1.1.1.1
+PING 1.1.1.1 <span style="color:#f92672">(</span>1.1.1.1<span style="color:#f92672">)</span> 56<span style="color:#f92672">(</span>84<span style="color:#f92672">)</span> bytes of data.
+<span style="color:#ae81ff">64</span> bytes from 1.1.1.1: icmp_seq<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> ttl<span style="color:#f92672">=</span><span style="color:#ae81ff">55</span> time<span style="color:#f92672">=</span>36.9 ms
 
 --- 1.1.1.1 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 36.885/36.885/36.885/0.000 ms
-</code></pre>
+<span style="color:#ae81ff">1</span> packets transmitted, <span style="color:#ae81ff">1</span> received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev <span style="color:#f92672">=</span> 36.885/36.885/36.885/0.000 ms
+</code></pre></div><p>If you copy file as a normal user the binary loses its privilege and the command ceases to work:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cp <span style="color:#e6db74">`</span>which ping<span style="color:#e6db74">`</span> /tmp/ping
 
-<p>If you copy file as a normal user the binary loses its privilege and the command ceases to work:</p>
-
-<pre><code class="language-bash">$ cp `which ping` /tmp/ping
-
-$ /tmp/ping -c 1 1.1.1.1
+$ /tmp/ping -c <span style="color:#ae81ff">1</span> 1.1.1.1
 ping: socket: Operation not permitted
-</code></pre>
-
-<h2 id="references">References</h2>
-
+</code></pre></div><h2 id="references">References</h2>
 <p><a href="https://www.kernel.org/doc/ols/2008/ols2008v1-pages-163-172.pdf">Linux Capabilities: making them work</a></p>
 
     </div>
@@ -442,6 +426,9 @@ ping: socket: Operation not permitted
                 class="button big previous">Root user inside container is root on the host</a></li>
     
 
+    
+        <li><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"
+                class="button big next">Enabling Seccomp on your Prometheus Operator and related Pods</a></li>
     
 </ul>
 
@@ -584,6 +571,34 @@ ping: socket: Operation not permitted
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -623,34 +638,6 @@ ping: socket: Operation not permitted
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -685,7 +672,7 @@ ping: socket: Operation not permitted
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -703,7 +690,7 @@ ping: socket: Operation not permitted
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

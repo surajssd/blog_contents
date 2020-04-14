@@ -18,7 +18,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -38,13 +38,10 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/categories/notes/" />
-<meta property="og:updated_time" content="2019-04-22T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2019-04-22T01:00:51+05:30" />
 
-        
-<meta itemprop="name" content="notes">
+        <meta itemprop="name" content="notes">
 <meta itemprop="description" content="Blog">
-
-
         
 
         
@@ -195,6 +192,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -204,14 +209,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -254,7 +251,7 @@ if (!doNotTrack) {
 
     
 
-    <p>Hardening Kubernetes by Securing Pods - Rootconf 2019   State of Kubernetes Meetups - DevOpsDays India 2017   Making Kubernetes Simple For Developers - Rootconf 2017   Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s</p>
+    <p>Hardening Kubernetes by Securing Pods - Rootconf 2019    State of Kubernetes Meetups - DevOpsDays India 2017    Making Kubernetes Simple For Developers - Rootconf 2017    Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s</p>
 
     <footer>
         <ul class="actions">
@@ -323,8 +320,8 @@ if (!doNotTrack) {
 
     
 
-    <p>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube&rsquo;s &ndash;extra-config flag with apiserver.&lt;apiserver flag&gt;=&lt;value&gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
-&ndash;extra-config=apiserver.authorization-mode=RBAC  So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</p>
+    <p>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube’s &ndash;extra-config flag with apiserver.&lt;apiserver flag&gt;=&lt;value&gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
+&ndash;extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</p>
 
     <footer>
         <ul class="actions">
@@ -396,7 +393,7 @@ if (!doNotTrack) {
     
 
     <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using emptyDir volume mount using subpath. The official description goes as follows:
- In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host&rsquo;s filesystem.</p>
+In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host’s filesystem.</p>
 
     <footer>
         <ul class="actions">
@@ -536,7 +533,7 @@ export FIRMWARE_INSTALL_DIR=&quot;/lib/firmware&quot; wget <a href="http://mirro
 
     
 
-    <p>It&rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
+    <p>It’s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
 Once installed just run:
 $ mkcert -install Created a new local CA at &quot;/home/hummer/.local/share/mkcert&quot; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</p>
 
@@ -613,10 +610,10 @@ $ mkcert -install Created a new local CA at &quot;/home/hummer/.local/share/mkce
 
     <p>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
 Shortcuts  Toggle side bar  Ctrl + B
- Project explorer in side bar  Ctrl + Shift + E
- Project wide search in side bar  Ctrl + Shift + F
- Source control in side bar  Ctrl + Shift + G
- Copy entire line  Ctrl + C (without any selection)</p>
+Project explorer in side bar  Ctrl + Shift + E
+Project wide search in side bar  Ctrl + Shift + F
+Source control in side bar  Ctrl + Shift + G
+Copy entire line  Ctrl + C (without any selection)</p>
 
     <footer>
         <ul class="actions">
@@ -756,8 +753,8 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
     
 
     <p>Make sure you have npm installed.
-$ sudo dnf -y install npm Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping. Dependencies resolved. Nothing to do. Complete!  Taken from this post.
-mkdir &quot;${HOME}/.npm-packages&quot; echo &lsquo;prefix=${HOME}/.npm-packages&rsquo; | tee -a ~/.npmrc echo &lsquo; #====================================== # npm related stuff NPM_PACKAGES=&quot;${HOME}/.npm-packages&quot; PATH=&quot;$NPM_PACKAGES/bin:$PATH&quot; # Unset manpath so we can inherit from /etc/manpath via the <code>manpath</code> command unset MANPATH # delete if you already modified MANPATH elsewhere in your config export MANPATH=&quot;$NPM_PACKAGES/share/man:$(manpath)&quot; #====================================== &lsquo; | tee -a ~/.</p>
+$ sudo dnf -y install npm Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping. Dependencies resolved. Nothing to do. Complete! Taken from this post.
+mkdir &quot;${HOME}/.npm-packages&quot; echo 'prefix=${HOME}/.npm-packages' | tee -a ~/.npmrc echo ' #====================================== # npm related stuff NPM_PACKAGES=&quot;${HOME}/.npm-packages&quot; PATH=&quot;$NPM_PACKAGES/bin:$PATH&quot; # Unset manpath so we can inherit from /etc/manpath via the <code>manpath</code> command unset MANPATH # delete if you already modified MANPATH elsewhere in your config export MANPATH=&quot;$NPM_PACKAGES/share/man:$(manpath)&quot; #====================================== ' | tee -a ~/.</p>
 
     <footer>
         <ul class="actions">
@@ -826,7 +823,7 @@ mkdir &quot;${HOME}/.npm-packages&quot; echo &lsquo;prefix=${HOME}/.npm-packages
 
     <p>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
 Enter into the machine running k8s If using minikube you can do
-minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001  If you are on a machine that has SELinux enabled do the following</p>
+minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following</p>
 
     <footer>
         <ul class="actions">
@@ -896,7 +893,7 @@ minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /
     
 
     <p>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
-Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables  Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &lsquo;GOPATH=~/go&rsquo; &gt;&gt; ~/.</p>
+Installing OS dependencies dnf -y install \  go \  git \  btrfs-progs-devel \  device-mapper-devel \  glib2-devel \  glibc-devel \  glibc-static \  gpgme-devel \  libassuan-devel \  libgpg-error-devel \  libseccomp-devel \  libselinux-devel \  pkgconfig \  wget \  etcd \  iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo 'GOPATH=~/go' &gt;&gt; ~/.</p>
 
     <footer>
         <ul class="actions">
@@ -1064,6 +1061,34 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -1103,34 +1128,6 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1165,7 +1162,7 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -1183,7 +1180,7 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

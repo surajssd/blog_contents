@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>programming on Suraj Deshmukh</title>
@@ -27,9 +27,9 @@
       
       <guid>https://suraj.io/post/golang-methods-interfaces/</guid>
       <description>Pointer receiver For a struct User with a method Work with pointer receiver.
-type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &amp;quot;has worked for&amp;quot;, u.Period, &amp;quot;hrs.&amp;quot;) } func main() { uval := User{&amp;quot;UserVal&amp;quot;, 5} uval.Work() pval := &amp;amp;User{&amp;quot;UserPtr&amp;quot;, 6} pval.Work() }  See on go playground.
+type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &amp;#34;has worked for&amp;#34;, u.Period, &amp;#34;hrs.&amp;#34;) } func main() { uval := User{&amp;#34;UserVal&amp;#34;, 5} uval.Work() pval := &amp;amp;User{&amp;#34;UserPtr&amp;#34;, 6} pval.Work() } See on go playground.
 output:
-UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</description>
+UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</description>
     </item>
     
   </channel>

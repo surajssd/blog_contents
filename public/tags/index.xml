@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Suraj Deshmukh</title>
@@ -6,50 +6,42 @@
     <description>Recent content in Tags on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Tue, 14 Apr 2020 11:57:07 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>centos</title>
-      <link>https://suraj.io/tags/centos/</link>
-      <pubDate>Mon, 18 Sep 2017 10:43:46 +0530</pubDate>
+      <title>kubernetes</title>
+      <link>https://suraj.io/tags/kubernetes/</link>
+      <pubDate>Tue, 14 Apr 2020 11:57:07 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/centos/</guid>
+      <guid>https://suraj.io/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>certificates</title>
-      <link>https://suraj.io/tags/certificates/</link>
-      <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
+      <title>seccomp</title>
+      <link>https://suraj.io/tags/seccomp/</link>
+      <pubDate>Tue, 14 Apr 2020 11:57:07 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/certificates/</guid>
+      <guid>https://suraj.io/tags/seccomp/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>cka</title>
-      <link>https://suraj.io/tags/cka/</link>
-      <pubDate>Sun, 21 Oct 2018 00:00:51 +0530</pubDate>
+      <title>security</title>
+      <link>https://suraj.io/tags/security/</link>
+      <pubDate>Tue, 14 Apr 2020 11:57:07 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/cka/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>cobra</title>
-      <link>https://suraj.io/tags/cobra/</link>
-      <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/cobra/</guid>
+      <guid>https://suraj.io/tags/security/</guid>
       <description></description>
     </item>
     
     <item>
       <title>container</title>
       <link>https://suraj.io/tags/container/</link>
-      <pubDate>Fri, 06 Oct 2017 19:32:33 +0530</pubDate>
+      <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
       
       <guid>https://suraj.io/tags/container/</guid>
       <description></description>
@@ -65,119 +57,11 @@
     </item>
     
     <item>
-      <title>crio</title>
-      <link>https://suraj.io/tags/crio/</link>
-      <pubDate>Sat, 08 Apr 2017 00:11:37 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/crio/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>cve</title>
-      <link>https://suraj.io/tags/cve/</link>
-      <pubDate>Mon, 14 Jan 2019 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/cve/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dell</title>
-      <link>https://suraj.io/tags/dell/</link>
-      <pubDate>Sun, 30 Dec 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/dell/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>desktop</title>
-      <link>https://suraj.io/tags/desktop/</link>
-      <pubDate>Sun, 23 Jun 2019 11:57:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/desktop/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>development</title>
-      <link>https://suraj.io/tags/development/</link>
-      <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>docker</title>
       <link>https://suraj.io/tags/docker/</link>
       <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
       
       <guid>https://suraj.io/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>editor</title>
-      <link>https://suraj.io/tags/editor/</link>
-      <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/editor/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fedora</title>
-      <link>https://suraj.io/tags/fedora/</link>
-      <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/fedora/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>gaming</title>
-      <link>https://suraj.io/tags/gaming/</link>
-      <pubDate>Fri, 01 Sep 2017 16:03:58 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/gaming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://suraj.io/tags/git/</link>
-      <pubDate>Tue, 21 Mar 2017 22:03:48 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>github</title>
-      <link>https://suraj.io/tags/github/</link>
-      <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>gnome</title>
-      <link>https://suraj.io/tags/gnome/</link>
-      <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/gnome/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://suraj.io/tags/golang/</link>
-      <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/golang/</guid>
       <description></description>
     </item>
     
@@ -191,56 +75,20 @@
     </item>
     
     <item>
-      <title>hostpath</title>
-      <link>https://suraj.io/tags/hostpath/</link>
-      <pubDate>Mon, 10 Sep 2018 01:00:51 +0530</pubDate>
+      <title>proc</title>
+      <link>https://suraj.io/tags/proc/</link>
+      <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/hostpath/</guid>
+      <guid>https://suraj.io/tags/proc/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>https</title>
-      <link>https://suraj.io/tags/https/</link>
-      <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
+      <title>desktop</title>
+      <link>https://suraj.io/tags/desktop/</link>
+      <pubDate>Sun, 23 Jun 2019 11:57:07 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/https/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ide</title>
-      <link>https://suraj.io/tags/ide/</link>
-      <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/ide/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>intellij</title>
-      <link>https://suraj.io/tags/intellij/</link>
-      <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/intellij/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>https://suraj.io/tags/kubernetes/</link>
-      <pubDate>Mon, 22 Apr 2019 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>laptop</title>
-      <link>https://suraj.io/tags/laptop/</link>
-      <pubDate>Sun, 30 Dec 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/laptop/</guid>
+      <guid>https://suraj.io/tags/desktop/</guid>
       <description></description>
     </item>
     
@@ -272,11 +120,29 @@
     </item>
     
     <item>
-      <title>monitoring</title>
-      <link>https://suraj.io/tags/monitoring/</link>
-      <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
+      <title>cve</title>
+      <link>https://suraj.io/tags/cve/</link>
+      <pubDate>Mon, 14 Jan 2019 01:00:51 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/monitoring/</guid>
+      <guid>https://suraj.io/tags/cve/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cobra</title>
+      <link>https://suraj.io/tags/cobra/</link>
+      <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/cobra/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://suraj.io/tags/golang/</link>
+      <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/golang/</guid>
       <description></description>
     </item>
     
@@ -290,11 +156,56 @@
     </item>
     
     <item>
-      <title>open source</title>
-      <link>https://suraj.io/tags/open-source/</link>
-      <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
+      <title>programming</title>
+      <link>https://suraj.io/tags/programming/</link>
+      <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/open-source/</guid>
+      <guid>https://suraj.io/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dell</title>
+      <link>https://suraj.io/tags/dell/</link>
+      <pubDate>Sun, 30 Dec 2018 01:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/dell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>laptop</title>
+      <link>https://suraj.io/tags/laptop/</link>
+      <pubDate>Sun, 30 Dec 2018 01:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/laptop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cka</title>
+      <link>https://suraj.io/tags/cka/</link>
+      <pubDate>Sun, 21 Oct 2018 00:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/cka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fedora</title>
+      <link>https://suraj.io/tags/fedora/</link>
+      <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/fedora/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gnome</title>
+      <link>https://suraj.io/tags/gnome/</link>
+      <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/gnome/</guid>
       <description></description>
     </item>
     
@@ -308,74 +219,47 @@
     </item>
     
     <item>
-      <title>proc</title>
-      <link>https://suraj.io/tags/proc/</link>
-      <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
+      <title>selinux</title>
+      <link>https://suraj.io/tags/selinux/</link>
+      <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/proc/</guid>
+      <guid>https://suraj.io/tags/selinux/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>productivity</title>
-      <link>https://suraj.io/tags/productivity/</link>
-      <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
+      <title>hostpath</title>
+      <link>https://suraj.io/tags/hostpath/</link>
+      <pubDate>Mon, 10 Sep 2018 01:00:51 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/productivity/</guid>
+      <guid>https://suraj.io/tags/hostpath/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>programming</title>
-      <link>https://suraj.io/tags/programming/</link>
-      <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
+      <title>certificates</title>
+      <link>https://suraj.io/tags/certificates/</link>
+      <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/programming/</guid>
+      <guid>https://suraj.io/tags/certificates/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>project</title>
-      <link>https://suraj.io/tags/project/</link>
-      <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
+      <title>development</title>
+      <link>https://suraj.io/tags/development/</link>
+      <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/project/</guid>
+      <guid>https://suraj.io/tags/development/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>prometheus</title>
-      <link>https://suraj.io/tags/prometheus/</link>
-      <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
+      <title>https</title>
+      <link>https://suraj.io/tags/https/</link>
+      <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/prometheus/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pv</title>
-      <link>https://suraj.io/tags/pv/</link>
-      <pubDate>Tue, 18 Apr 2017 23:56:15 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/pv/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>rpm</title>
-      <link>https://suraj.io/tags/rpm/</link>
-      <pubDate>Fri, 24 Mar 2017 10:35:54 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/rpm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>seccomp</title>
-      <link>https://suraj.io/tags/seccomp/</link>
-      <pubDate>Mon, 10 Jun 2019 11:57:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/seccomp/</guid>
+      <guid>https://suraj.io/tags/https/</guid>
       <description></description>
     </item>
     
@@ -389,20 +273,56 @@
     </item>
     
     <item>
-      <title>security</title>
-      <link>https://suraj.io/tags/security/</link>
-      <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
+      <title>monitoring</title>
+      <link>https://suraj.io/tags/monitoring/</link>
+      <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/security/</guid>
+      <guid>https://suraj.io/tags/monitoring/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>selinux</title>
-      <link>https://suraj.io/tags/selinux/</link>
-      <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
+      <title>prometheus</title>
+      <link>https://suraj.io/tags/prometheus/</link>
+      <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/selinux/</guid>
+      <guid>https://suraj.io/tags/prometheus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>editor</title>
+      <link>https://suraj.io/tags/editor/</link>
+      <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/editor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>productivity</title>
+      <link>https://suraj.io/tags/productivity/</link>
+      <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/productivity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vscode</title>
+      <link>https://suraj.io/tags/vscode/</link>
+      <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/vscode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>centos</title>
+      <link>https://suraj.io/tags/centos/</link>
+      <pubDate>Mon, 18 Sep 2017 10:43:46 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/centos/</guid>
       <description></description>
     </item>
     
@@ -416,11 +336,92 @@
     </item>
     
     <item>
-      <title>vscode</title>
-      <link>https://suraj.io/tags/vscode/</link>
-      <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
+      <title>gaming</title>
+      <link>https://suraj.io/tags/gaming/</link>
+      <pubDate>Fri, 01 Sep 2017 16:03:58 +0530</pubDate>
       
-      <guid>https://suraj.io/tags/vscode/</guid>
+      <guid>https://suraj.io/tags/gaming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pv</title>
+      <link>https://suraj.io/tags/pv/</link>
+      <pubDate>Tue, 18 Apr 2017 23:56:15 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/pv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>crio</title>
+      <link>https://suraj.io/tags/crio/</link>
+      <pubDate>Sat, 08 Apr 2017 00:11:37 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/crio/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://suraj.io/tags/git/</link>
+      <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github</title>
+      <link>https://suraj.io/tags/github/</link>
+      <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>open source</title>
+      <link>https://suraj.io/tags/open-source/</link>
+      <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/open-source/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>project</title>
+      <link>https://suraj.io/tags/project/</link>
+      <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/project/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rpm</title>
+      <link>https://suraj.io/tags/rpm/</link>
+      <pubDate>Fri, 24 Mar 2017 10:35:54 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/rpm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ide</title>
+      <link>https://suraj.io/tags/ide/</link>
+      <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/ide/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>intellij</title>
+      <link>https://suraj.io/tags/intellij/</link>
+      <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/intellij/</guid>
       <description></description>
     </item>
     

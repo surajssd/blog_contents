@@ -18,7 +18,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -38,13 +38,10 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/categories/programming/" />
-<meta property="og:updated_time" content="2018-03-07T02:21:49&#43;05:30"/>
+<meta property="og:updated_time" content="2018-03-07T02:21:49+05:30" />
 
-        
-<meta itemprop="name" content="programming">
+        <meta itemprop="name" content="programming">
 <meta itemprop="description" content="Blog">
-
-
         
 
         
@@ -195,6 +192,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -204,14 +209,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -254,7 +251,7 @@ if (!doNotTrack) {
 
     
 
-    <p>Test Fixtures  &ldquo;go test&rdquo; sets pwd as package directory  Test Helpers  should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures  Configurability  Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It&rsquo;s ok to make these configs unexported so only tests can set them.</p>
+    <p>Test Fixtures  “go test” sets pwd as package directory  Test Helpers  should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures  Configurability  Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It’s ok to make these configs unexported so only tests can set them.</p>
 
     <footer>
         <ul class="actions">
@@ -324,9 +321,9 @@ if (!doNotTrack) {
     
 
     <p>Pointer receiver For a struct User with a method Work with pointer receiver.
-type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;) } func main() { uval := User{&quot;UserVal&quot;, 5} uval.Work() pval := &amp;User{&quot;UserPtr&quot;, 6} pval.Work() }  See on go playground.
+type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;) } func main() { uval := User{&quot;UserVal&quot;, 5} uval.Work() pval := &amp;User{&quot;UserPtr&quot;, 6} pval.Work() } See on go playground.
 output:
-UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</p>
+UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</p>
 
     <footer>
         <ul class="actions">
@@ -493,6 +490,34 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -532,34 +557,6 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -594,7 +591,7 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -612,7 +609,7 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

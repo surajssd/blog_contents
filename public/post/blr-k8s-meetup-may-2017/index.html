@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Bangalore Kubernetes Meetup May 2017" />
 <meta property="og:description" content="Kubernetes and OpenShift 101 hands-on workshop" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/blr-k8s-meetup-may-2017/" /><meta property="article:published_time" content="2017-05-24T02:21:49&#43;05:30"/>
-<meta property="article:modified_time" content="2017-05-24T02:21:49&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/blr-k8s-meetup-may-2017/" />
+<meta property="article:published_time" content="2017-05-24T02:21:49+05:30" />
+<meta property="article:modified_time" content="2017-05-24T02:21:49+05:30" />
 
-        
-<meta itemprop="name" content="Bangalore Kubernetes Meetup May 2017">
+        <meta itemprop="name" content="Bangalore Kubernetes Meetup May 2017">
 <meta itemprop="description" content="Kubernetes and OpenShift 101 hands-on workshop">
-
-
 <meta itemprop="datePublished" content="2017-05-24T02:21:49&#43;05:30" />
 <meta itemprop="dateModified" content="2017-05-24T02:21:49&#43;05:30" />
 <meta itemprop="wordCount" content="576">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="kubernetes,meetup," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,88 +360,63 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p><em>&ldquo;One does not simply deploy containers to production&rdquo;</em></p>
-
-<p><img src="/images/blr-k8s-meetup-may-2017/mordor_meme.jpg" alt="One does not simply deploy containers to production" title="One does not simply deploy containers to production" /></p>
-
+        <p><em>&ldquo;One does not simply deploy containers to production&rdquo;</em></p>
+<p><img src="/images/blr-k8s-meetup-may-2017/mordor_meme.jpg" alt="One does not simply deploy containers to production" title="One does not simply deploy containers to production"></p>
 <p>With the rising craze around the container community in Bangalore and relative lack in awareness
 around different container technologies like <a href="http://kubernetesbyexample.com/">Kubernetes</a> and <a href="https://developers.openshift.com/">OpenShift</a>,
 an effort was made in imparting knowledge in this direction.</p>
-
 <p>So, this time around newbies were targeted for the Kubernetes Meetup.</p>
-
 <p>With the above objective, it was decided to have a <a href="https://www.meetup.com/kubernetes-openshift-India-Meetup/events/239381714/">Kubernetes 101 workshop</a>
- at Red Hat Bangalore office on May 21, 2017 to familiarize people with concepts of Kubernetes and OpenShift and their
- usage and relevance as container orchestration tools for managing application deployments.</p>
-
+at Red Hat Bangalore office on May 21, 2017 to familiarize people with concepts of Kubernetes and OpenShift and their
+usage and relevance as container orchestration tools for managing application deployments.</p>
 <p>The schedule for the Meetup was as follows:</p>
-
 <ul>
 <li>Kubernetes 101 - Knowing the terms in Kubernetes</li>
 <li>Kubernetes 101 - Hands-on workshop</li>
 <li>OpenShift 101 - What OpenShift adds to Kubernetes?</li>
 <li>OpenShift 101 - Hands-on workshop</li>
 </ul>
-
 <p>As per the schedule, we opened the floor with a talk by <a href="https://www.linkedin.com/in/hemani-katyal-57900081">Hemani Katyal</a>
- on Kubernetes Basics(<a href="https://docs.google.com/presentation/d/1pUg6eOfIfznSS-2m1-7EEXbyHyH9NPgCRZw6WcX6FG4/edit?usp=sharing">slides</a>),
- wherein she explained the need for Kubernetes, what it is, it&rsquo;s architecture, why Kubernetes would be better container
- orchestrator and the constructs of Kubernetes like pods, volumes, labels, replications controllers, services, etc.</p>
-
-<p><img src="/images/blr-k8s-meetup-may-2017/hemani.jpg" alt="Hemani Katyal" title="Hemani Katyal explaining Kubernetes" /></p>
-
+on Kubernetes Basics(<a href="https://docs.google.com/presentation/d/1pUg6eOfIfznSS-2m1-7EEXbyHyH9NPgCRZw6WcX6FG4/edit?usp=sharing">slides</a>),
+wherein she explained the need for Kubernetes, what it is, it&rsquo;s architecture, why Kubernetes would be better container
+orchestrator and the constructs of Kubernetes like pods, volumes, labels, replications controllers, services, etc.</p>
+<p><img src="/images/blr-k8s-meetup-may-2017/hemani.jpg" alt="Hemani Katyal" title="Hemani Katyal explaining Kubernetes"></p>
 <p>It was good to see people interested in concepts of service and the way it load balances traffic, how the labels
- construct is helpful in bringing in flexibility with deployments, why Kubernetes is better than other container
- orchestrators.</p>
-
+construct is helpful in bringing in flexibility with deployments, why Kubernetes is better than other container
+orchestrators.</p>
 <p>Following up with the excitement, <a href="https://twitter.com/surajd_">Suraj Deshmukh</a>, <a href="https://twitter.com/procrypt0">Abhishek Singh</a>,
- <a href="https://twitter.com/zee_10000">Zeeshan Ahmed</a> and <a href="https://twitter.com/ContainsCafeine">Shubham Minglani</a> happily
- volunteered to conduct the hands-on workshop. The workshop exercises were taken from <a href="https://www.katacoda.com/courses/kubernetes">Kubernetes section</a>
- of <a href="https://www.katacoda.com/">katacoda.com</a>.</p>
-
-<p><img src="/images/blr-k8s-meetup-may-2017/mzee.jpg" alt="Zeeshan Ahmed" title="Zeeshan Ahmed explaining Kubernetes Secrets and ConfigMaps" /></p>
-
+<a href="https://twitter.com/zee_10000">Zeeshan Ahmed</a> and <a href="https://twitter.com/ContainsCafeine">Shubham Minglani</a> happily
+volunteered to conduct the hands-on workshop. The workshop exercises were taken from <a href="https://www.katacoda.com/courses/kubernetes">Kubernetes section</a>
+of <a href="https://www.katacoda.com/">katacoda.com</a>.</p>
+<p><img src="/images/blr-k8s-meetup-may-2017/mzee.jpg" alt="Zeeshan Ahmed" title="Zeeshan Ahmed explaining Kubernetes Secrets and ConfigMaps"></p>
 <p>It was pleasure to have an excited and responsive audience. Questions like kube-adm functionality on CentOS,
- installing Kubernetes in an isolated environment without internet, how ingress works and the likes of the same were
- asked during the hands-on session.</p>
-
-<p><img src="/images/blr-k8s-meetup-may-2017/shubham.jpg" alt="Shubham Minglani" title="Shubham Minglani explaining Kubernetes HealthChecks" /></p>
-
+installing Kubernetes in an isolated environment without internet, how ingress works and the likes of the same were
+asked during the hands-on session.</p>
+<p><img src="/images/blr-k8s-meetup-may-2017/shubham.jpg" alt="Shubham Minglani" title="Shubham Minglani explaining Kubernetes HealthChecks"></p>
 <p>Post a quick coffee break, <a href="https://twitter.com/procrypt0">Abhishek Singh</a> briefed the audience about OpenShift basics(<a href="https://docs.google.com/presentation/d/1e9dEuNfoFI0kMbtQmPUIgw85zS7s-cvupWB5ogYxdpc/edit?usp=sharing">slides</a>),
- wherein he explained what OpenShift is and how it is an addon on top of Kubernetes. He touched upon topics like user
- management, various build features of OpenShift, container image handling in OpenShift, the way deployment fits in with
- build part, security, running OpenShift locally using <a href="https://github.com/minishift/minishift/">Minishift</a>, to name a few.</p>
-
-<p><img src="/images/blr-k8s-meetup-may-2017/abhi.jpg" alt="Abhishek Singh" title="Abhishek Singh explaining OpenShift" /></p>
-
+wherein he explained what OpenShift is and how it is an addon on top of Kubernetes. He touched upon topics like user
+management, various build features of OpenShift, container image handling in OpenShift, the way deployment fits in with
+build part, security, running OpenShift locally using <a href="https://github.com/minishift/minishift/">Minishift</a>, to name a few.</p>
+<p><img src="/images/blr-k8s-meetup-may-2017/abhi.jpg" alt="Abhishek Singh" title="Abhishek Singh explaining OpenShift"></p>
 <p>Satiating the hunger not just for knowledge but food as well, we broke for lunch.</p>
-
 <p>Post which we continued with OpenShift hand-on exercises, which were again from <a href="https://learn.openshift.com/">OpenShift section</a>
- of <a href="katacoda.com">katacoda.com</a>. <a href="https://twitter.com/zee_10000">Zeeshan Ahmed</a>, <a href="https://twitter.com/red_suraj">Suraj Narwade</a>
- and <a href="https://twitter.com/procrypt0">Abhishek Singh</a> helped with the workshop exercises. There seemed to be lot of
- interest around topics like the <a href="https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/builds_and_image_streams.html#source-build">source to image</a>
- feature of OpenShift, if <a href="https://docs.openshift.com/enterprise/3.2/dev_guide/routes.html">OpenShift’s router</a> allowed
- UDP traffic, the difference between ingress and routes.</p>
-
+of <a href="katacoda.com">katacoda.com</a>. <a href="https://twitter.com/zee_10000">Zeeshan Ahmed</a>, <a href="https://twitter.com/red_suraj">Suraj Narwade</a>
+and <a href="https://twitter.com/procrypt0">Abhishek Singh</a> helped with the workshop exercises. There seemed to be lot of
+interest around topics like the <a href="https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/builds_and_image_streams.html#source-build">source to image</a>
+feature of OpenShift, if <a href="https://docs.openshift.com/enterprise/3.2/dev_guide/routes.html">OpenShift’s router</a> allowed
+UDP traffic, the difference between ingress and routes.</p>
 <p>Red Hat’s latest announcement regarding the <a href="https://blog.openshift.com/aws-and-red-hat-digging-a-little-deeper/">integration of AWS services with OpenShift</a>
- also generated some curiosity among the audience.</p>
-
-<p><img src="/images/blr-k8s-meetup-may-2017/people.jpg" alt="Folks listening" title="Folks listening" /></p>
-
+also generated some curiosity among the audience.</p>
+<p><img src="/images/blr-k8s-meetup-may-2017/people.jpg" alt="Folks listening" title="Folks listening"></p>
 <p>The meetup concluded asking for <a href="https://goo.gl/forms/ILSI0Xb3OKuKMKht2">feedback</a> and distributing some swag. In
- feedback we received, people wanted to see some real world examples, the kind of applications that run on these
- platforms, and much more which are advanced topics and we would love to take up in normal meetup as opposed to a 101.</p>
-
+feedback we received, people wanted to see some real world examples, the kind of applications that run on these
+platforms, and much more which are advanced topics and we would love to take up in normal meetup as opposed to a 101.</p>
 <p>I would like to conclude here by thanking all speakers, volunteers for spreading knowledge, <a href="katacoda.com">katacoda.com</a>
- for awesome workshop material and audience for listening patiently and trying out things and making this meetup
- successful. And last but not the least, I would like to express my deepest gratitude to Red Hat for sponsoring the event
- and providing us with the venue and <a href="https://www.linkedin.com/in/hemani-katyal-57900081">Hemani Katyal</a>
- for making this post an awesome read.</p>
-
+for awesome workshop material and audience for listening patiently and trying out things and making this meetup
+successful. And last but not the least, I would like to express my deepest gratitude to Red Hat for sponsoring the event
+and providing us with the venue and <a href="https://www.linkedin.com/in/hemani-katyal-57900081">Hemani Katyal</a>
+for making this post an awesome read.</p>
 <h2 id="links">Links</h2>
-
 <ul>
 <li>Kubernetes DIY hands-on exercises <a href="https://www.katacoda.com/courses/kubernetes">https://www.katacoda.com/courses/kubernetes</a></li>
 <li>OpenShift DIY hands-on exercises <a href="https://learn.openshift.com/">https://learn.openshift.com/</a></li>
@@ -635,6 +607,34 @@ an effort was made in imparting knowledge in this direction.</p>
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -674,34 +674,6 @@ an effort was made in imparting knowledge in this direction.</p>
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -736,7 +708,7 @@ an effort was made in imparting knowledge in this direction.</p>
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -754,7 +726,7 @@ an effort was made in imparting knowledge in this direction.</p>
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

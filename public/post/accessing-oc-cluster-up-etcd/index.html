@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Access etcd in OpenShift origin" />
 <meta property="og:description" content="Access the etcd in OpenShift started by oc cluster up" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/accessing-oc-cluster-up-etcd/" /><meta property="article:published_time" content="2018-07-11T01:00:51&#43;05:30"/>
-<meta property="article:modified_time" content="2018-07-11T01:00:51&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/accessing-oc-cluster-up-etcd/" />
+<meta property="article:published_time" content="2018-07-11T01:00:51+05:30" />
+<meta property="article:modified_time" content="2018-07-11T01:00:51+05:30" />
 
-        
-<meta itemprop="name" content="Access etcd in OpenShift origin">
+        <meta itemprop="name" content="Access etcd in OpenShift origin">
 <meta itemprop="description" content="Access the etcd in OpenShift started by oc cluster up">
-
-
 <meta itemprop="datePublished" content="2018-07-11T01:00:51&#43;05:30" />
 <meta itemprop="dateModified" content="2018-07-11T01:00:51&#43;05:30" />
 <meta itemprop="wordCount" content="188">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="openshift,kubernetes,notes," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -364,34 +361,20 @@ if (!doNotTrack) {
 
     <div id="content">
         <p>How do you access the etcd that is being used by the OpenShift started by <code>oc cluster up</code> or using <a href="https://docs.openshift.org/latest/minishift/getting-started/index.html">minishift</a>.</p>
-
 <p>If you are using minishift then get docker environment access of the minishift VM by running following commands.</p>
-
-<pre><code class="language-bash">eval $(minishift docker-env) &amp;&amp; eval $(minishift oc-env)
-</code></pre>
-
-<p>Exec into the container named <code>origin</code> that runs OpenShift and all the needed services.</p>
-
-<pre><code class="language-bash">$ docker exec -it origin bash
-</code></pre>
-
-<p>First install the <code>etcdctl</code> needed to talk to <code>etcd</code>.</p>
-
-<pre><code class="language-bash">[root@surajd origin]$ yum -y install etcd
-</code></pre>
-
-<p>Get into the directory where all the certs and keys are available.</p>
-
-<pre><code class="language-bash">[root@surajd origin]$ cd /var/lib/origin/openshift.local.config/master
-</code></pre>
-
-<p>Now run following to connect to the <code>etcd</code>.</p>
-
-<pre><code class="language-bash">[root@surajd master]$ export ETCDCTL_API=3
-[root@surajd master]$ etcdctl --cacert ./ca.crt --cert ./master.etcd-client.crt \
- --key ./master.etcd-client.key \
- --endpoints=[https://127.0.0.1:4001] \
- get --prefix --keys-only=true /
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">eval <span style="color:#66d9ef">$(</span>minishift docker-env<span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> eval <span style="color:#66d9ef">$(</span>minishift oc-env<span style="color:#66d9ef">)</span>
+</code></pre></div><p>Exec into the container named <code>origin</code> that runs OpenShift and all the needed services.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker exec -it origin bash
+</code></pre></div><p>First install the <code>etcdctl</code> needed to talk to <code>etcd</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@surajd origin<span style="color:#f92672">]</span>$ yum -y install etcd
+</code></pre></div><p>Get into the directory where all the certs and keys are available.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@surajd origin<span style="color:#f92672">]</span>$ cd /var/lib/origin/openshift.local.config/master
+</code></pre></div><p>Now run following to connect to the <code>etcd</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@surajd master<span style="color:#f92672">]</span>$ export ETCDCTL_API<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>
+<span style="color:#f92672">[</span>root@surajd master<span style="color:#f92672">]</span>$ etcdctl --cacert ./ca.crt --cert ./master.etcd-client.crt <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --key ./master.etcd-client.key <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --endpoints<span style="color:#f92672">=[</span>https://127.0.0.1:4001<span style="color:#f92672">]</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> get --prefix --keys-only<span style="color:#f92672">=</span>true /
 
 /kubernetes.io/apiextensions.k8s.io/customresourcedefinitions/openshiftwebconsoleconfigs.webconsole.operator.openshift.io
 
@@ -401,20 +384,15 @@ if (!doNotTrack) {
 
 /kubernetes.io/apiservices/v1.apps.openshift.io
 ...
-</code></pre>
-
-<p>Now you can try to read about a specific object by looking at a specific key.</p>
-
-<pre><code class="language-bash">[root@surajd master]$ etcdctl --cacert ./ca.crt --cert ./master.etcd-client.crt --key ./master.etcd-client.key --endpoints=[https://127.0.0.1:4001] get --prefix  /openshift.io/users/developer
+</code></pre></div><p>Now you can try to read about a specific object by looking at a specific key.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@surajd master<span style="color:#f92672">]</span>$ etcdctl --cacert ./ca.crt --cert ./master.etcd-client.crt --key ./master.etcd-client.key --endpoints<span style="color:#f92672">=[</span>https://127.0.0.1:4001<span style="color:#f92672">]</span> get --prefix  /openshift.io/users/developer
 /openshift.io/users/developer
 k8s
 
 user.openshift.io/v1Userb
 G
-        developer&quot;*$a749b0bf-79ee-11e8-87db-507b9d785c9e2zanypassword:developer&quot;
-</code></pre>
-
-<p>This is a rpc binary data. You can use tools like <a href="https://github.com/golang/protobuf#installation"><code>protoc</code></a> to decode it. There is some discussion about <a href="https://groups.google.com/forum/#!topic/kubernetes-dev/GZuEOsYC95c">decoding</a> this data.</p>
+        developer<span style="color:#e6db74">&#34;*</span>$a749b0bf<span style="color:#e6db74">-79ee-11e8-87db-507b9d785c9e2zanypassword:developer&#34;</span>
+</code></pre></div><p>This is a rpc binary data. You can use tools like <a href="https://github.com/golang/protobuf#installation"><code>protoc</code></a> to decode it. There is some discussion about <a href="https://groups.google.com/forum/#!topic/kubernetes-dev/GZuEOsYC95c">decoding</a> this data.</p>
 
     </div>
 
@@ -603,6 +581,34 @@ G
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -642,34 +648,6 @@ G
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -704,7 +682,7 @@ G
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -722,7 +700,7 @@ G
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

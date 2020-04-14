@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Make static configs available for apiserver in minikube" />
 <meta property="og:description" content="Dealing with apiserver in minikube can be tricky" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/apiserver-in-minikube-static-configs/" /><meta property="article:published_time" content="2019-01-20T01:00:51&#43;05:30"/>
-<meta property="article:modified_time" content="2019-01-20T01:00:51&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/apiserver-in-minikube-static-configs/" />
+<meta property="article:published_time" content="2019-01-20T01:00:51+05:30" />
+<meta property="article:modified_time" content="2019-01-20T01:00:51+05:30" />
 
-        
-<meta itemprop="name" content="Make static configs available for apiserver in minikube">
+        <meta itemprop="name" content="Make static configs available for apiserver in minikube">
 <meta itemprop="description" content="Dealing with apiserver in minikube can be tricky">
-
-
 <meta itemprop="datePublished" content="2019-01-20T01:00:51&#43;05:30" />
 <meta itemprop="dateModified" content="2019-01-20T01:00:51&#43;05:30" />
 <meta itemprop="wordCount" content="446">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="kubernetes,minikube," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,81 +360,53 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>If you want to provide extra flags to the <code>kube-apiserver</code> that runs inside minikube how do you do it? You can use the minikube&rsquo;s <code>--extra-config</code> flag with <code>apiserver.&lt;apiserver flag&gt;=&lt;value&gt;</code>, for e.g. if you want to enable <code>RBAC</code> authorization mode you do it as follows:</p>
-
-<pre><code class="language-bash">--extra-config=apiserver.authorization-mode=RBAC
-</code></pre>
-
-<p>So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path. Because you will have to make that file available for apiserver. And this apiserver runs as a static pod inside minikube. How do you make the file available to that process inside pod inside minikube?</p>
-
+        <p>If you want to provide extra flags to the <code>kube-apiserver</code> that runs inside minikube how do you do it? You can use the minikube&rsquo;s <code>--extra-config</code> flag with <code>apiserver.&lt;apiserver flag&gt;=&lt;value&gt;</code>, for e.g. if you want to enable <code>RBAC</code> authorization mode you do it as follows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">--extra-config<span style="color:#f92672">=</span>apiserver.authorization-mode<span style="color:#f92672">=</span>RBAC
+</code></pre></div><p>So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path. Because you will have to make that file available for apiserver. And this apiserver runs as a static pod inside minikube. How do you make the file available to that process inside pod inside minikube?</p>
 <p>The solution is little tricky and not very straight forward. The api-server pod mounts minikube&rsquo;s <code>/var/lib/minikube/certs/</code> directory in the pod at location <code>/var/lib/minikube/certs/</code>. Make the file available at this location. When enabling that flag for apiserver provide file location of this directory.</p>
-
 <p>To make this step easier I have filed an issue in minikube upstream <a href="https://github.com/kubernetes/minikube/issues/3559">kubernetes/minikube/3559</a>.</p>
-
 <p>Follow this tutorial on how to do this. In this tutorial I want to make the <code>EncryptionConfiguration</code> file available for apiserver to enable encryption of secret data at rest. This is the first step to the tasks from kubernetes docs as mentioned <a href="https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#configuration-and-determining-whether-encryption-at-rest-is-already-enabled">here</a>.</p>
-
-<hr />
-
+<hr>
 <h3 id="start-minikube-normally">Start minikube normally</h3>
-
 <p>To make the file needed available in the machine start minikube normally. For that run following command:</p>
-
-<pre><code class="language-bash">minikube start \
---vm-driver kvm2 \
---kubernetes-version v1.13.2 \
---cpus 3 --memory 3000  \
---extra-config=apiserver.authorization-mode=RBAC \
---v 10
-</code></pre>
-
-<p>You can make required changes to the above commmand lke change the <code>--vm-driver</code> or <code>--cpus</code> or <code>--memory</code>, as per your needs.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">minikube start <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--vm-driver kvm2 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--kubernetes-version v1.13.2 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--cpus <span style="color:#ae81ff">3</span> --memory <span style="color:#ae81ff">3000</span>  <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--extra-config<span style="color:#f92672">=</span>apiserver.authorization-mode<span style="color:#f92672">=</span>RBAC <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--v <span style="color:#ae81ff">10</span>
+</code></pre></div><p>You can make required changes to the above commmand lke change the <code>--vm-driver</code> or <code>--cpus</code> or <code>--memory</code>, as per your needs.</p>
 <h3 id="make-file-available-inside-minikube">Make file available inside minikube</h3>
-
 <p>Run following command to go into machine</p>
-
-<pre><code class="language-bash">minikube ssh
-</code></pre>
-
-<p>Once inside machine become root by running <code>sudo -i</code>. And then create the config file needed that will be passed to the apiserver. For my needs I wanted to create a <code>EncryptionConfiguration</code>.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">minikube ssh
+</code></pre></div><p>Once inside machine become root by running <code>sudo -i</code>. And then create the config file needed that will be passed to the apiserver. For my needs I wanted to create a <code>EncryptionConfiguration</code>.</p>
 <p>Run following command to make the config file available.</p>
-
-<pre><code class="language-bash">echo &quot;
-kind: EncryptionConfiguration
-apiVersion: apiserver.config.k8s.io/v1
-resources:
-  - resources:
-    - secrets
-    providers:
-    - aescbc:
-        keys:
-        - name: key1
-          secret: fPLrjJNkbuLmh2aqOsCR5sZV+/Wqhi8CdMrgceaKR3E=
-    - identity: {}
-&quot; | tee /var/lib/minikube/certs/encryptionconfig.yaml
-</code></pre>
-
-<p>See the location of the file it is in <code>/var/lib/minikube/certs</code>. In above command you can change it to the config you would want to make available for apiserver.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;
+</span><span style="color:#e6db74">kind: EncryptionConfiguration
+</span><span style="color:#e6db74">apiVersion: apiserver.config.k8s.io/v1
+</span><span style="color:#e6db74">resources:
+</span><span style="color:#e6db74">  - resources:
+</span><span style="color:#e6db74">    - secrets
+</span><span style="color:#e6db74">    providers:
+</span><span style="color:#e6db74">    - aescbc:
+</span><span style="color:#e6db74">        keys:
+</span><span style="color:#e6db74">        - name: key1
+</span><span style="color:#e6db74">          secret: fPLrjJNkbuLmh2aqOsCR5sZV+/Wqhi8CdMrgceaKR3E=
+</span><span style="color:#e6db74">    - identity: {}
+</span><span style="color:#e6db74">&#34;</span> | tee /var/lib/minikube/certs/encryptionconfig.yaml
+</code></pre></div><p>See the location of the file it is in <code>/var/lib/minikube/certs</code>. In above command you can change it to the config you would want to make available for apiserver.</p>
 <h3 id="restart-minikube">Restart minikube</h3>
-
 <p>Exit out of the minikube vm and get to your host machine and run following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">minikube stop
 
-<pre><code class="language-bash">minikube stop
-
-minikube start \
---vm-driver kvm2 \
---kubernetes-version v1.13.2 \
---cpus 3 --memory 3000  \
---extra-config=apiserver.authorization-mode=RBAC \
---extra-config=apiserver.encryption-provider-config=/var/lib/minikube/certs/encryptionconfig.yaml \
---v 10
-</code></pre>
-
-<p>Again make changes to the apiserver flag and file name if needed according to your needs. Now you should have apiserver started without problems.</p>
+minikube start <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--vm-driver kvm2 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--kubernetes-version v1.13.2 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--cpus <span style="color:#ae81ff">3</span> --memory <span style="color:#ae81ff">3000</span>  <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--extra-config<span style="color:#f92672">=</span>apiserver.authorization-mode<span style="color:#f92672">=</span>RBAC <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--extra-config<span style="color:#f92672">=</span>apiserver.encryption-provider-config<span style="color:#f92672">=</span>/var/lib/minikube/certs/encryptionconfig.yaml <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--v <span style="color:#ae81ff">10</span>
+</code></pre></div><p>Again make changes to the apiserver flag and file name if needed according to your needs. Now you should have apiserver started without problems.</p>
 
     </div>
 
@@ -628,6 +597,34 @@ minikube start \
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -667,34 +664,6 @@ minikube start \
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -729,7 +698,7 @@ minikube start \
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -747,7 +716,7 @@ minikube start \
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

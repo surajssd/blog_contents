@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Project specific scripts" />
 <meta property="og:description" content="Instead of polluting your PATH the easier way to put project specific scripts" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/project-specific-scripts/" /><meta property="article:published_time" content="2019-06-23T11:57:07&#43;05:30"/>
-<meta property="article:modified_time" content="2019-06-23T11:57:07&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/project-specific-scripts/" />
+<meta property="article:published_time" content="2019-06-23T11:57:07+05:30" />
+<meta property="article:modified_time" content="2019-06-23T11:57:07+05:30" />
 
-        
-<meta itemprop="name" content="Project specific scripts">
+        <meta itemprop="name" content="Project specific scripts">
 <meta itemprop="description" content="Instead of polluting your PATH the easier way to put project specific scripts">
-
-
 <meta itemprop="datePublished" content="2019-06-23T11:57:07&#43;05:30" />
 <meta itemprop="dateModified" content="2019-06-23T11:57:07&#43;05:30" />
 <meta itemprop="wordCount" content="281">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="host,linux,desktop," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -364,37 +361,24 @@ if (!doNotTrack) {
 
     <div id="content">
         <p>There are always scripts that you write to automate some mundane tasks. And then you put that script in a directory that is in your <code>PATH</code>. But what this does is that it pollutes your system global <code>PATH</code> and shows up in places you wouldn&rsquo;t want it to be in.</p>
-
 <p>I was struggling with this issue for a while and struggling to get a proper solution. But there is a very simple and clever trick to solve this problem. You extend your <code>PATH</code> to have a relative path <code>.scripts</code> in it. Like following (this is a snippet from my <code>.bashrc</code>).</p>
-
-<pre><code class="language-bash">export PATH=$PATH:.scripts
-</code></pre>
-
-<p>And also add this directory to your global gitignore file. This should be done so that when you put this <code>.scripts</code> directory in your project the git should ignore it and not look at it as the change you would want to push to the git repository. Here is a snippet from my <code>gitignore</code> file.</p>
-
-<pre><code class="language-bash">$ grep scripts ~/.gitignore
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export PATH<span style="color:#f92672">=</span>$PATH:.scripts
+</code></pre></div><p>And also add this directory to your global gitignore file. This should be done so that when you put this <code>.scripts</code> directory in your project the git should ignore it and not look at it as the change you would want to push to the git repository. Here is a snippet from my <code>gitignore</code> file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ grep scripts ~/.gitignore
 17:# ignore the local scripts directory
 18:.scripts
-</code></pre>
-
-<p>Now on what you can do is put the scripts you want to be available in a particular project into a directory called <code>.scripts</code>. Like for example:</p>
-
-<pre><code class="language-bash">$ ll -a
-drwxrwxr-x@    - surajd 17 Jun 14:38 .scripts/
-drwxrwxr-x@    - surajd  4 Jun 15:51 .terraform/
-.rw-rw-r--@  162 surajd 11 Jun 14:03 locals.tf
+</code></pre></div><p>Now on what you can do is put the scripts you want to be available in a particular project into a directory called <code>.scripts</code>. Like for example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ll -a
+drwxrwxr-x@    - surajd <span style="color:#ae81ff">17</span> Jun 14:38 .scripts/
+drwxrwxr-x@    - surajd  <span style="color:#ae81ff">4</span> Jun 15:51 .terraform/
+.rw-rw-r--@  <span style="color:#ae81ff">162</span> surajd <span style="color:#ae81ff">11</span> Jun 14:03 locals.tf
 
 $ ll .scripts/
-.rwxrwxr-x@ 141 surajd 14 Jun 12:00 redeploy.sh*
-</code></pre>
-
-<p>Now you can see that whenever I am in this directory <code>redeploy.sh</code> is available for me to run. When I press tab key the autocomplete shows up the results.</p>
-
-<pre><code class="language-bash">$ red&lt;tab&gt;
+.rwxrwxr-x@ <span style="color:#ae81ff">141</span> surajd <span style="color:#ae81ff">14</span> Jun 12:00 redeploy.sh*
+</code></pre></div><p>Now you can see that whenever I am in this directory <code>redeploy.sh</code> is available for me to run. When I press tab key the autocomplete shows up the results.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ red&lt;tab&gt;
 red          redeploy.sh
-</code></pre>
-
-<p>Now I just create those scripts directories and my global <code>PATH</code> is not polluted and it makes me happy.</p>
+</code></pre></div><p>Now I just create those scripts directories and my global <code>PATH</code> is not polluted and it makes me happy.</p>
 
     </div>
 
@@ -585,6 +569,34 @@ red          redeploy.sh
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -624,34 +636,6 @@ red          redeploy.sh
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -686,7 +670,7 @@ red          redeploy.sh
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -704,7 +688,7 @@ red          redeploy.sh
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

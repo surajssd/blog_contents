@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -30,13 +30,10 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/" />
-<meta property="og:updated_time" content="2019-06-25T15:15:07&#43;05:30"/>
+<meta property="og:updated_time" content="2020-04-14T11:57:07+05:30" />
 
-        
-<meta itemprop="name" content="Suraj Deshmukh">
+        <meta itemprop="name" content="Suraj Deshmukh">
 <meta itemprop="description" content="Blog">
-
-
         
 
         
@@ -192,6 +189,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -201,14 +206,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -225,10 +222,10 @@ if (!doNotTrack) {
     <header>
     <div class="title">
         
-            <h2><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h2>
+            <h2><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h2>
         
         
-            <p>Note on Linux Kernel capabilities</p>
+            <p>This post shows how you can enable seccomp on all the Pods that are deployed with Prometheus Operator</p>
         
     </div>
     <div class="meta">
@@ -237,11 +234,11 @@ if (!doNotTrack) {
         
 
         <time class="published"
-            datetime='2019-06-25'>
-            June 25, 2019</time>
+            datetime='2020-04-14'>
+            April 14, 2020</time>
         <span class="author">Suraj Deshmukh</span>
         
-            <p>1 minute read</p>
+            <p>3 minute read</p>
         
         
     </div>
@@ -253,43 +250,43 @@ if (!doNotTrack) {
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f&text=Capabilities%20on%20executables&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f&text=Enabling%20Seccomp%20on%20your%20Prometheus%20Operator%20and%20related%20Pods&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f&title=Capabilities%20on%20executables" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f&title=Enabling%20Seccomp%20on%20your%20Prometheus%20Operator%20and%20related%20Pods" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f&title=Capabilities%20on%20executables" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f&title=Enabling%20Seccomp%20on%20your%20Prometheus%20Operator%20and%20related%20Pods" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f&title=Capabilities%20on%20executables" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f&title=Enabling%20Seccomp%20on%20your%20Prometheus%20Operator%20and%20related%20Pods" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -299,38 +296,42 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>File capabilities allow users to execute programs with higher privileges. Best example is network utility <code>ping</code>.</p>
-
-<p>A <code>ping</code> binary has capabilities <code>CAP_NET_ADMIN</code> and <code>CAP_NET_RAW</code>. A normal user doesn&rsquo;t have <code>CAP_NET_ADMIN</code> privilege, since the executable file <code>ping</code> has that capability you can run it.</p>
-
-<pre><code class="language-bash">$ getcap `which ping`
-/usr/bin/ping = cap_net_admin,cap_net_raw+p
-</code></pre>
-
-<p>Which normally works as follows:</p>
-
-<pre><code class="language-bash">$ ping -c 1 1.1.1.1
-PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
-64 bytes from 1.1.1.1: icmp_seq=1 ttl=55 time=36.9 ms
-
---- 1.1.1.1 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 36.885/36.885/36.885/0.000 ms
-</code></pre>
-
-<p>If you copy file as a normal user the binary loses its privilege and the command ceases to work:</p>
-
-<pre><code class="language-bash">$ cp `which ping` /tmp/ping
-
-$ /tmp/ping -c 1 1.1.1.1
-ping: socket: Operation not permitted
-</code></pre>
-
-<h2 id="references">References</h2>
-
-<p><a href="https://www.kernel.org/doc/ols/2008/ols2008v1-pages-163-172.pdf">Linux Capabilities: making them work</a></p>
+        <p><a href="https://en.wikipedia.org/wiki/Seccomp">Seccomp</a> helps us limit the system calls the process inside container can make. And <code>PodSecurityPolicy</code> is the way to enable it on pods in Kubernetes.</p>
+<h1 id="prometheus-operator">Prometheus Operator</h1>
+<p>Prometheus Operator makes it really easy to monitor your Kubernetes cluster. To deploy this behemoth, <a href="https://github.com/helm/charts/tree/master/stable/prometheus-operator">helm chart</a> is the easiest way to do it.</p>
+<p>Almost all the pods that run as a part of Prometheus Operator viz. <strong>Prometheus Operator</strong>, <strong>Prometheus</strong>, <strong>Alertmanager</strong>, <strong>Grafana</strong>, <strong>Kube State Metrics</strong> don’t need to run with elevated privileges except <strong>Node Exporter</strong>. In your Kubernetes cluster if you are using <code>PodSecurityPolicy</code> to make sure that your cluster is secure, then you would want your Prometheus Operator pods to run securely as well. And the good news is, Prometheus Operator chart ships <code>PodSecurityPolicy</code> for each sub-component. We will look at how to enable <code>seccomp</code> for all the sub-components.</p>
+<p>Since these components have their own PSPs, to enable <code>seccomp</code> on the pods you only need to add specific <strong>annotations</strong> in <code>metadata.annotations</code>. These <code>annotations</code> can help you to select and set the <code>seccomp</code> profiles that is applied to the Pod which is mutated by that PSP. More information on seccomp with PSP is in the <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/">Kubernetes docs</a>.</p>
+<p>In examples below I assume that you are running your workloads on Docker, hence the annotation value is <strong><code>docker/default</code></strong>. If you are running your workloads on other runtimes then use the generic <strong><code>runtime/default</code></strong> policy as mentioned in the docs. There are ways to provide custom <code>seccomp</code> profiles, but it is out of scope of this post.</p>
+<h2 id="kube-state-metrics">Kube State Metrics</h2>
+<p>Using <a href="https://github.com/kubernetes/kube-state-metrics">Kube State Metrics</a> is the best way to monitor your Kubernetes cluster <strong>state</strong>. Kube State Metrics chart supports custom PSP annotations which is little different from other components.</p>
+<p>In the Prometheus Operator helm chart values file add following snippet to enable <code>seccomp</code> to the Kube State Metrics Pods:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">kube-state-metrics</span>:
+  <span style="color:#66d9ef">podSecurityPolicy</span>:
+    <span style="color:#66d9ef">annotations</span>:
+      <span style="color:#66d9ef">seccomp.security.alpha.kubernetes.io/allowedProfileNames</span>: <span style="color:#e6db74">&#39;docker/default&#39;</span>
+      <span style="color:#66d9ef">seccomp.security.alpha.kubernetes.io/defaultProfileName</span>:  <span style="color:#e6db74">&#39;docker/default&#39;</span>
+</code></pre></div><p>Once this is added the resultant PSP will have following annotations:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: policy/v1beta1
+<span style="color:#66d9ef">kind</span>: PodSecurityPolicy
+<span style="color:#66d9ef">metadata</span>:
+ <span style="color:#66d9ef">name</span>: prometheus-operator-kube-state-metrics
+ <span style="color:#66d9ef">annotations</span>:
+   <span style="color:#66d9ef">seccomp.security.alpha.kubernetes.io/allowedProfileNames</span>: docker/default
+   <span style="color:#66d9ef">seccomp.security.alpha.kubernetes.io/defaultProfileName</span>: docker/default
+</code></pre></div><p>Now the Kube State Metrics pod that is mutated by the above PSP will have a <code>seccomp</code> profile that is shipped with Docker.</p>
+<h2 id="prometheus-operator-1">Prometheus Operator</h2>
+<p>For workloads Prometheus, Prometheus Operator, Alertmanager here are steps to enable <code>seccomp</code> on those pods. Since Grafana chart already ships pods with seccomp enabled so we don&rsquo;t need any special provisions.</p>
+<p>In the Prometheus Operator helm chart values file add following snippet:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">global</span>:
+  <span style="color:#66d9ef">rbac</span>:
+    <span style="color:#66d9ef">pspAnnotations</span>:
+      <span style="color:#66d9ef">seccomp.security.alpha.kubernetes.io/allowedProfileNames</span>: <span style="color:#e6db74">&#39;docker/default&#39;</span>
+      <span style="color:#66d9ef">seccomp.security.alpha.kubernetes.io/defaultProfileName</span>:  <span style="color:#e6db74">&#39;docker/default&#39;</span>
+</code></pre></div><p>This will add above annotations to the PSP <code>metadata.annotations</code> of the aforementioned workloads.</p>
+<h2 id="verify-if-seccomp-is-enabled-on-a-pod">Verify if seccomp is enabled on a pod</h2>
+<p>To verify if the <code>seccomp</code> is enabled on a pod, you <code>kubectl exec</code> into the pod and run following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /proc/self/status | grep Seccomp:
+</code></pre></div><p>If the output is <code>Seccomp:	2</code> then <code>seccomp</code> is enabled. If it is <code>Seccomp:	0</code> then <code>seccomp</code> is disabled.</p>
 
     </div>
 
@@ -360,11 +361,7 @@ ping: socket: Operation not permitted
 
     
     
-        <li><a href='/categoriesdocker'>docker</a></li>
-    
-        <li><a href='/categorieshost'>host</a></li>
-    
-        <li><a href='/categoriescontainers'>containers</a></li>
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
     
         <li><a href='/categoriessecurity'>security</a></li>
     
@@ -374,8 +371,8 @@ ping: socket: Operation not permitted
 </article>
 <ul class="actions pagination">
     
-        <li><a href="https://suraj.io/post/root-in-container-root-on-host/"
-                class="button big previous">Root user inside container is root on the host</a></li>
+        <li><a href="https://suraj.io/post/linux-cap-note/"
+                class="button big previous">Capabilities on executables</a></li>
     
 
     
@@ -419,43 +416,43 @@ ping: socket: Operation not permitted
             
 
 
-<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f&text=Capabilities%20on%20executables&via=surajd_" target="_blank" class="share-btn twitter">
+<li><a href="//twitter.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f&text=Enabling%20Seccomp%20on%20your%20Prometheus%20Operator%20and%20related%20Pods&via=surajd_" target="_blank" class="share-btn twitter">
     <i class="fa fa-twitter"></i>
     <p>Twitter</p>
 </a></li>
 
 
-<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f" target="_blank" class="share-btn google-plus">
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f" target="_blank" class="share-btn google-plus">
     <i class="fa fa-google-plus"></i>
     <p>Google+</p>
 </a></li>
 
 
-<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f" target="_blank" class="share-btn facebook">
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f" target="_blank" class="share-btn facebook">
     <i class="fa fa-facebook"></i>
     <p>Facebook</p>
 </a></li>
 
 
-<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f&title=Capabilities%20on%20executables" target="_blank" class="share-btn reddit">
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f&title=Enabling%20Seccomp%20on%20your%20Prometheus%20Operator%20and%20related%20Pods" target="_blank" class="share-btn reddit">
     <i class="fa fa-reddit-alien"></i>
     <p>Reddit</p>
 </a></li>
 
 
-<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f&title=Capabilities%20on%20executables" target="_blank" class="share-btn linkedin">
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f&title=Enabling%20Seccomp%20on%20your%20Prometheus%20Operator%20and%20related%20Pods" target="_blank" class="share-btn linkedin">
     <i class="fa fa-linkedin"></i>
     <p>LinkedIn</p>
 </a></li>
 
 
-<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f&title=Capabilities%20on%20executables" target="_blank" class="share-btn stumbleupon">
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f&title=Enabling%20Seccomp%20on%20your%20Prometheus%20Operator%20and%20related%20Pods" target="_blank" class="share-btn stumbleupon">
     <i class="fa fa-stumbleupon"></i>
     <p>StumbleUpon</p>
 </a></li>
 
 
-<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2flinux-cap-note%2f" target="_blank" class="share-btn email">
+<li><a href="mailto:?subject=Check out this post by Suraj%20Deshmukh&body=https%3a%2f%2fsuraj.io%2fpost%2fseccomp-in-kube-state-metrics%2f" target="_blank" class="share-btn email">
     <i class="fa fa-envelope"></i>
     <p>Email</p>
 </a></li>
@@ -579,6 +576,34 @@ ping: socket: Operation not permitted
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -618,34 +643,6 @@ ping: socket: Operation not permitted
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -680,7 +677,7 @@ ping: socket: Operation not permitted
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -698,7 +695,7 @@ ping: socket: Operation not permitted
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

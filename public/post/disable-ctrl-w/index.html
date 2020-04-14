@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="How to disable your Chrome Ctrl &#43; W keybinding" />
 <meta property="og:description" content="Learn how to disable the shortcut Ctrl &#43; W altogether on your GNOME" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/disable-ctrl-w/" /><meta property="article:published_time" content="2018-10-16T22:00:51&#43;05:30"/>
-<meta property="article:modified_time" content="2018-10-16T22:00:51&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/disable-ctrl-w/" />
+<meta property="article:published_time" content="2018-10-16T22:00:51+05:30" />
+<meta property="article:modified_time" content="2018-10-16T22:00:51+05:30" />
 
-        
-<meta itemprop="name" content="How to disable your Chrome Ctrl &#43; W keybinding">
+        <meta itemprop="name" content="How to disable your Chrome Ctrl &#43; W keybinding">
 <meta itemprop="description" content="Learn how to disable the shortcut Ctrl &#43; W altogether on your GNOME">
-
-
 <meta itemprop="datePublished" content="2018-10-16T22:00:51&#43;05:30" />
 <meta itemprop="dateModified" content="2018-10-16T22:00:51&#43;05:30" />
 <meta itemprop="wordCount" content="255">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="fedora,gnome,desktop,cka," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,38 +360,21 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>I am about to attempt the <a href="https://www.cncf.io/certification/cka/">CKA exam</a> and it has a browser based terminal. And I am used to this terminal shortcut <code>Ctrl + W</code> which deletes a word. But the same shortcut in browser can close a tab. Since this exam is combination of both I am afraid I might close my exam tab while deleting a word in terminal. Now the only solution to this is disabling the shortcut in chrome. But turns out that the shortcut is <a href="https://productforums.google.com/forum/#!msg/chrome/ZXtMxfqpULs/9vWwfWUVAEIJ">hard coded in chrome</a>.</p>
-
+        <p>I am about to attempt the <a href="https://www.cncf.io/certification/cka/">CKA exam</a> and it has a browser based terminal. And I am used to this terminal shortcut <code>Ctrl + W</code> which deletes a word. But the same shortcut in browser can close a tab. Since this exam is combination of both I am afraid I might close my exam tab while deleting a word in terminal. Now the only solution to this is disabling the shortcut in chrome. But turns out that the shortcut is <a href="https://productforums.google.com/forum/#!msg/chrome/ZXtMxfqpULs/9vWwfWUVAEIJ">hard coded in chrome</a>.</p>
 <p>I use <a href="https://getfedora.org/">Fedora Linux</a> with <a href="https://www.gnome.org/">GNOME</a> as my desktop environment. So the alternative to this problem is you just add this keybinding as a no operation in GNOME. So I am going to add this as a no-op till the exam and remove this once I am done with the exam. So here are the steps to do it.</p>
-
-<h2 id="steps-to-disable-ctrl-w">Steps to disable &ldquo;Ctrl + W&rdquo;</h2>
-
+<h2 id="steps-to-disable-ctrl--w">Steps to disable &ldquo;Ctrl + W&rdquo;</h2>
 <p>Open <code>Keyboard</code> in your <code>Settings</code>, you can just type in the GNOME search.</p>
-
-<p><img src="/images/disable-ctrl-w/0.png" alt="" /></p>
-
+<p><img src="/images/disable-ctrl-w/0.png" alt="" title=""></p>
 <p>Once you open <code>Keyboard</code> you can see bunch of shortcuts listed there.</p>
-
-<p><img src="/images/disable-ctrl-w/1.png" alt="" /></p>
-
+<p><img src="/images/disable-ctrl-w/1.png" alt="" title=""></p>
 <p>Goto the bottom of it and click on the plus button.</p>
-
-<p><img src="/images/disable-ctrl-w/2.png" alt="" /></p>
-
+<p><img src="/images/disable-ctrl-w/2.png" alt="" title=""></p>
 <p>Now you can add a custom shortcut here, <code>Name</code> it something so that you remember that you want to remove it later and in <code>Command</code> put some no-op thing. After that click on <code>Set Shortcut</code> to provide key binding.</p>
-
-<p><img src="/images/disable-ctrl-w/3.png" alt="" /></p>
-
+<p><img src="/images/disable-ctrl-w/3.png" alt="" title=""></p>
 <p>Type key combination of <code>Ctrl + W</code> here</p>
-
-<p><img src="/images/disable-ctrl-w/4.png" alt="" /></p>
-
+<p><img src="/images/disable-ctrl-w/4.png" alt="" title=""></p>
 <p>Your custom shortcut should look like this, and click the <code>Add</code> button.</p>
-
-<p><img src="/images/disable-ctrl-w/5.png" alt="" /></p>
-
+<p><img src="/images/disable-ctrl-w/5.png" alt="" title=""></p>
 <p>That&rsquo;s how you will have your <code>Ctrl + W</code> disabled.</p>
 
     </div>
@@ -584,6 +564,34 @@ if (!doNotTrack) {
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -623,34 +631,6 @@ if (!doNotTrack) {
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -685,7 +665,7 @@ if (!doNotTrack) {
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -703,7 +683,7 @@ if (!doNotTrack) {
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Enabling local development with Kubernetes" />
 <meta property="og:description" content="If you are doing development and want to use kubernetes for it, then here is how you can do it." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/enabling-local-development-with-k8s/" /><meta property="article:published_time" content="2017-04-23T15:57:07&#43;05:30"/>
-<meta property="article:modified_time" content="2017-04-23T15:57:07&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/enabling-local-development-with-k8s/" />
+<meta property="article:published_time" content="2017-04-23T15:57:07+05:30" />
+<meta property="article:modified_time" content="2017-04-23T15:57:07+05:30" />
 
-        
-<meta itemprop="name" content="Enabling local development with Kubernetes">
+        <meta itemprop="name" content="Enabling local development with Kubernetes">
 <meta itemprop="description" content="If you are doing development and want to use kubernetes for it, then here is how you can do it.">
-
-
 <meta itemprop="datePublished" content="2017-04-23T15:57:07&#43;05:30" />
 <meta itemprop="dateModified" content="2017-04-23T15:57:07&#43;05:30" />
 <meta itemprop="wordCount" content="885">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="kubernetes,minikube,development," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,159 +360,115 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>I want to show how you can enable <a href="https://kubernetes.io/">Kubernetes</a> in your day to day development workflow. So that
+        <p>I want to show how you can enable <a href="https://kubernetes.io/">Kubernetes</a> in your day to day development workflow. So that
 you get the feel of production deployment locally from day 1.</p>
-
 <p>I have a <a href="http://flask.pocoo.org/">flask application</a> which I am working on. The basic directory structure looks like this:</p>
-
-<pre><code class="language-bash">$ ll
-total 24
--rw-rw-r--. 1 foo foo  427 Apr 23 16:23 app.py
--rw-rw-r--. 1 foo foo  201 Apr 23 16:55 docker-compose.yml
--rw-rw-r--. 1 foo foo  363 Apr 23 16:21 Dockerfile
--rwxrwxr-x. 1 foo foo   82 Dec  5 19:41 entrypoint.sh
--rw-rw-r--. 1 foo foo 3010 Dec  5 19:41 README.adoc
--rw-rw-r--. 1 foo foo   11 Dec  5 19:41 requirements.txt
-</code></pre>
-
-<p>You can find all of these files in this <a href="https://github.com/surajssd/hitcounter">github repo</a>.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ll
+total <span style="color:#ae81ff">24</span>
+-rw-rw-r--. <span style="color:#ae81ff">1</span> foo foo  <span style="color:#ae81ff">427</span> Apr <span style="color:#ae81ff">23</span> 16:23 app.py
+-rw-rw-r--. <span style="color:#ae81ff">1</span> foo foo  <span style="color:#ae81ff">201</span> Apr <span style="color:#ae81ff">23</span> 16:55 docker-compose.yml
+-rw-rw-r--. <span style="color:#ae81ff">1</span> foo foo  <span style="color:#ae81ff">363</span> Apr <span style="color:#ae81ff">23</span> 16:21 Dockerfile
+-rwxrwxr-x. <span style="color:#ae81ff">1</span> foo foo   <span style="color:#ae81ff">82</span> Dec  <span style="color:#ae81ff">5</span> 19:41 entrypoint.sh
+-rw-rw-r--. <span style="color:#ae81ff">1</span> foo foo <span style="color:#ae81ff">3010</span> Dec  <span style="color:#ae81ff">5</span> 19:41 README.adoc
+-rw-rw-r--. <span style="color:#ae81ff">1</span> foo foo   <span style="color:#ae81ff">11</span> Dec  <span style="color:#ae81ff">5</span> 19:41 requirements.txt
+</code></pre></div><p>You can find all of these files in this <a href="https://github.com/surajssd/hitcounter">github repo</a>.</p>
 <p>For having a local cluster I am using <a href="https://github.com/kubernetes/minikube">minikube</a>. So follow instructions to
 <a href="https://kubernetes.io/docs/getting-started-guides/minikube/">setup minikube</a>. Once you follow the instructions
 you will have a vm running a single node kubernetes cluster and a locally available <code>kubectl</code> binary.</p>
-
 <p>Before running this application on the minikube cluster we need configurations that kubernetes understands. Since we
 already have docker-compose file we will generate configs from this file with the help from tool called <a href="http://kompose.io/">kompose</a>.
 Install kompose as per instructions as given on <a href="https://github.com/kubernetes-incubator/kompose#installation">docs</a>.</p>
-
 <p>Generating configs:</p>
-
-<pre><code class="language-bash">$ mkdir configs
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir configs
 $ kompose convert -o configs/
 WARN Kubernetes provider doesnt support build key - ignoring
-INFO file &quot;configs/hitcounter-service.yaml&quot; created
-INFO file &quot;configs/redis-service.yaml&quot; created
-INFO file &quot;configs/hitcounter-deployment.yaml&quot; created
-INFO file &quot;configs/redis-deployment.yaml&quot; created
-</code></pre>
-
-<p>Before we deploy the app we need to make some changes in the deployment files, that were converted from docker-compose service
+INFO file <span style="color:#e6db74">&#34;configs/hitcounter-service.yaml&#34;</span> created
+INFO file <span style="color:#e6db74">&#34;configs/redis-service.yaml&#34;</span> created
+INFO file <span style="color:#e6db74">&#34;configs/hitcounter-deployment.yaml&#34;</span> created
+INFO file <span style="color:#e6db74">&#34;configs/redis-deployment.yaml&#34;</span> created
+</code></pre></div><p>Before we deploy the app we need to make some changes in the deployment files, that were converted from docker-compose service
 having <code>build</code> construct in them. In our case only python app <code>hitcounter</code> is built is being built from <code>Dockerfile</code>.</p>
-
 <p>We will edit file <code>hitcounter-deployment.yaml</code> in <code>configs</code> directory, to not pull image but read image from the local docker
 storage. Add a field after <code>image</code> called <code>imagePullPolicy: IfNotPresent</code>. Make changes as shown in following diff:</p>
-
-<pre><code class="language-diff">$ git diff
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">$ git diff
 diff --git a/configs/hitcounter-deployment.yaml b/configs/hitcounter-deployment.yaml
 index 7b1116d..0ef35b3 100644
---- a/configs/hitcounter-deployment.yaml
-+++ b/configs/hitcounter-deployment.yaml
-@@ -17,6 +17,7 @@ spec:
-         - name: REDIS_HOST
+<span style="color:#f92672">--- a/configs/hitcounter-deployment.yaml
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ b/configs/hitcounter-deployment.yaml
+</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -17,6 +17,7 @@ spec:
+</span><span style="color:#75715e"></span>         - name: REDIS_HOST
            value: redis
          image: hitcounter
-+        imagePullPolicy: IfNotPresent
-         name: hitcounter
+<span style="color:#a6e22e">+        imagePullPolicy: IfNotPresent
+</span><span style="color:#a6e22e"></span>         name: hitcounter
          ports:
          - containerPort: 5000
-</code></pre>
-
-<p>Now we are ready with the configs, but we need to build container image for our app. So here you will need to have
+</code></pre></div><p>Now we are ready with the configs, but we need to build container image for our app. So here you will need to have
 <code>docker-compose</code> installed on your machine. For that follow <a href="https://docs.docker.com/compose/install/">docs here</a>.</p>
-
 <p>Build image in the minikube</p>
-
-<pre><code class="language-bash">eval $(minikube docker-env)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">eval <span style="color:#66d9ef">$(</span>minikube docker-env<span style="color:#66d9ef">)</span>
 docker-compose build
-</code></pre>
-
-<p>Once the build is complete, we are good to the deployment in kubernetes.</p>
-
-<pre><code class="language-bash">$ kubectl create -f configs/
-deployment &quot;hitcounter&quot; created
-service &quot;hitcounter&quot; created
-deployment &quot;redis&quot; created
-service &quot;redis&quot; created
-</code></pre>
-
-<p>To verify that the app is running, find out the exposed IP Address as follows:</p>
-
-<pre><code class="language-bash">$ kubectl get svc
-NAME         CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
+</code></pre></div><p>Once the build is complete, we are good to the deployment in kubernetes.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f configs/
+deployment <span style="color:#e6db74">&#34;hitcounter&#34;</span> created
+service <span style="color:#e6db74">&#34;hitcounter&#34;</span> created
+deployment <span style="color:#e6db74">&#34;redis&#34;</span> created
+service <span style="color:#e6db74">&#34;redis&#34;</span> created
+</code></pre></div><p>To verify that the app is running, find out the exposed IP Address as follows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get svc
+NAME         CLUSTER-IP   EXTERNAL-IP   PORT<span style="color:#f92672">(</span>S<span style="color:#f92672">)</span>          AGE
 hitcounter   10.0.0.244   &lt;pending&gt;     5000:30476/TCP   6s
 kubernetes   10.0.0.1     &lt;none&gt;        443/TCP          3d
 redis        10.0.0.21    &lt;none&gt;        6379/TCP         6s
-</code></pre>
-
-<p>Now hit the externally exposed port <code>30476</code> of service <code>hitcounter</code> as:</p>
-
-<pre><code class="language-bash">$ curl $(minikube ip):30476
-</code></pre>
-
-<p>Now everytime you make changes to code do the following:</p>
-
-<pre><code class="language-bash">docker-compose build
-kubectl scale deployment hitcounter --replicas=0
-kubectl scale deployment hitcounter --replicas=1
-</code></pre>
-
-<p>Above we are removing all containers with old image and asking it to use the new image. For OpenShift we can do
+</code></pre></div><p>Now hit the externally exposed port <code>30476</code> of service <code>hitcounter</code> as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl <span style="color:#66d9ef">$(</span>minikube ip<span style="color:#66d9ef">)</span>:30476
+</code></pre></div><p>Now everytime you make changes to code do the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose build
+kubectl scale deployment hitcounter --replicas<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+kubectl scale deployment hitcounter --replicas<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><p>Above we are removing all containers with old image and asking it to use the new image. For OpenShift we can do
 <code>oc deploy hitcounter --latest</code> and it will trigger the deployment but I could not find anything similar with
 kubernetes.</p>
-
 <h3 id="faq">FAQ</h3>
-
 <ul>
-<li><p><strong>- Why do I need to make changes in the kompose generated configs?</strong></p>
-
+<li>
+<p><strong>- Why do I need to make changes in the kompose generated configs?</strong></p>
 <p>Because by the default the config that kompose generates will not set <code>imagePullPolicy</code> and hence Kubernetes
 assumes its value to be <code>Always</code>. So if you don&rsquo;t make changes and try to deploy then Kubernetes will try
 to find the image from docker hub. Which it won&rsquo;t find and then that deployment will fail.
-So we need to tell Kubernetes to look for the image in local docker storage.</p></li>
-
-<li><p><strong>- Can I use the same configs in the production servers as well?</strong></p>
-
+So we need to tell Kubernetes to look for the image in local docker storage.</p>
+</li>
+<li>
+<p><strong>- Can I use the same configs in the production servers as well?</strong></p>
 <p>Yes you can use it just remove the change we did in the <code>imagePullPolicy: IfNotPresent</code>. The change is done
-to enable you to use the locally built images without having to push the image to any container registry.</p></li>
-
-<li><p><strong>- How do I get images when I am deploying in production level cluster?</strong></p>
-
+to enable you to use the locally built images without having to push the image to any container registry.</p>
+</li>
+<li>
+<p><strong>- How do I get images when I am deploying in production level cluster?</strong></p>
 <p>Make sure your cluster can pull images from some private container registry. And then set up a build pipeline
-from your code repo to build container on every change of it&rsquo;s stable branch.</p></li>
-
-<li><p><strong>- I have <code>build</code> defined in my <code>docker-compose</code> service why do I need to mention image name?</strong></p>
-
+from your code repo to build container on every change of it&rsquo;s stable branch.</p>
+</li>
+<li>
+<p><strong>- I have <code>build</code> defined in my <code>docker-compose</code> service why do I need to mention image name?</strong></p>
 <p>With docker-compose this is okay. But kompose cannot make up a name on it&rsquo;s own and create deployment. The
 <a href="https://github.com/kubernetes-incubator/kompose/issues/571">issue</a> is tracked in kompose. But for now
-with <code>build</code> also provide the <code>image</code> name you would expect.</p></li>
-
-<li><p><strong>- I get error running docker commands with minikube?</strong></p>
-
+with <code>build</code> also provide the <code>image</code> name you would expect.</p>
+</li>
+<li>
+<p><strong>- I get error running docker commands with minikube?</strong></p>
 <p>If you face problem accessing the docker daemon running inside the minikube VM like one of this</p>
-
-<pre><code class="language-bash">$ eval $(minikube docker-env)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ eval <span style="color:#66d9ef">$(</span>minikube docker-env<span style="color:#66d9ef">)</span>
 $ docker ps
-could not read CA certificate &quot;/etc/docker/ca.pem&quot;: open /etc/docker/ca.pem: no such file or directory
-</code></pre>
-
-<p>This could be because there is a mismatch in docker client and docker daemon version, so to solve this issue just copy
+could not read CA certificate <span style="color:#e6db74">&#34;/etc/docker/ca.pem&#34;</span>: open /etc/docker/ca.pem: no such file or directory
+</code></pre></div><p>This could be because there is a mismatch in docker client and docker daemon version, so to solve this issue just copy
 the docker client from the minikube VM to the local machine.</p>
-
 <p>Enter in the VM</p>
-
-<pre><code class="language-bash">minikube ssh
-</code></pre>
-
-<p>Copy the binary to host machine</p>
-
-<pre><code class="language-bash">scp $(which docker) foo@192.168.122.1:/home/foo/
-</code></pre>
-
-<p>Now put the binary in <code>PATH</code>.</p></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">minikube ssh
+</code></pre></div><p>Copy the binary to host machine</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">scp <span style="color:#66d9ef">$(</span>which docker<span style="color:#66d9ef">)</span> foo@192.168.122.1:/home/foo/
+</code></pre></div><p>Now put the binary in <code>PATH</code>.</p>
+</li>
 </ul>
-
 <p>If you have any other questions please ask it, I would like to add those here in FAQ section.</p>
 
     </div>
@@ -705,6 +658,34 @@ the docker client from the minikube VM to the local machine.</p>
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -744,34 +725,6 @@ the docker client from the minikube VM to the local machine.</p>
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -806,7 +759,7 @@ the docker client from the minikube VM to the local machine.</p>
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -824,7 +777,7 @@ the docker client from the minikube VM to the local machine.</p>
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

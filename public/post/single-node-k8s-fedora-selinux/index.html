@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Single node Kubernetes Cluster on Fedora with SELinux enabled" />
 <meta property="og:description" content="Kubeadm to install Single Node K8S with SELinux" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/single-node-k8s-fedora-selinux/" /><meta property="article:published_time" content="2018-09-11T01:00:51&#43;05:30"/>
-<meta property="article:modified_time" content="2018-09-11T01:00:51&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/single-node-k8s-fedora-selinux/" />
+<meta property="article:published_time" content="2018-09-11T01:00:51+05:30" />
+<meta property="article:modified_time" content="2018-09-11T01:00:51+05:30" />
 
-        
-<meta itemprop="name" content="Single node Kubernetes Cluster on Fedora with SELinux enabled">
+        <meta itemprop="name" content="Single node Kubernetes Cluster on Fedora with SELinux enabled">
 <meta itemprop="description" content="Kubeadm to install Single Node K8S with SELinux">
-
-
 <meta itemprop="datePublished" content="2018-09-11T01:00:51&#43;05:30" />
 <meta itemprop="dateModified" content="2018-09-11T01:00:51&#43;05:30" />
 <meta itemprop="wordCount" content="326">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="kubernetes,openshift,selinux,security,fedora," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,117 +360,77 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
+        <p>Start a single node fedora machine, using whatever method but I have used <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/fedora/Vagrantfile">this Vagrantfile</a> to do it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#75715e"># -*- mode: ruby -*-</span>
+<span style="color:#75715e"># vi: set ft=ruby :</span>
+<span style="color:#66d9ef">Vagrant</span><span style="color:#f92672">.</span>configure(<span style="color:#e6db74">&#34;2&#34;</span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>config<span style="color:#f92672">|</span>
 
-<p>Start a single node fedora machine, using whatever method but I have used <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/fedora/Vagrantfile">this Vagrantfile</a> to do it:</p>
+  config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>define <span style="color:#e6db74">&#34;fedora&#34;</span> <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>fedora<span style="color:#f92672">|</span>
+    fedora<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>box <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fedora/28-cloud-base&#34;</span>
+    config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>hostname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fedora&#34;</span>
+  <span style="color:#66d9ef">end</span>
 
-<pre><code class="language-ruby"># -*- mode: ruby -*-
-# vi: set ft=ruby :
-Vagrant.configure(&quot;2&quot;) do |config|
+  config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>provider <span style="color:#e6db74">&#34;virtualbox&#34;</span> <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>virtualbox, override<span style="color:#f92672">|</span>
+    virtualbox<span style="color:#f92672">.</span>memory <span style="color:#f92672">=</span> <span style="color:#ae81ff">4096</span>
+    virtualbox<span style="color:#f92672">.</span>cpus <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+  <span style="color:#66d9ef">end</span>
 
-  config.vm.define &quot;fedora&quot; do |fedora|
-    fedora.vm.box = &quot;fedora/28-cloud-base&quot;
-    config.vm.hostname = &quot;fedora&quot;
-  end
-
-  config.vm.provider &quot;virtualbox&quot; do |virtualbox, override|
-    virtualbox.memory = 4096
-    virtualbox.cpus = 4
-  end
-
-  config.vm.provision &quot;shell&quot;, privileged: false, inline: &lt;&lt;-SHELL
-    echo '127.0.0.1 localhost' | cat - /etc/hosts &gt; temp &amp;&amp; sudo mv temp /etc/hosts
-  SHELL
-end
-</code></pre>
-
-<p>Now start it and ssh into it:</p>
-
-<pre><code class="language-bash">vagrant up
+  config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>provision <span style="color:#e6db74">&#34;shell&#34;</span>, <span style="color:#e6db74">privileged</span>: <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">inline</span>: <span style="color:#e6db74">&lt;&lt;-SHELL
+</span><span style="color:#e6db74"></span>    echo <span style="color:#e6db74">&#39;127.0.0.1 localhost&#39;</span> <span style="color:#f92672">|</span> cat <span style="color:#f92672">-</span> <span style="color:#e6db74">/etc/</span>hosts <span style="color:#f92672">&gt;</span> temp <span style="color:#f92672">&amp;&amp;</span> sudo mv temp <span style="color:#e6db74">/etc/</span>hosts
+  <span style="color:#66d9ef">SHELL</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><p>Now start it and ssh into it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vagrant up
 vagrant ssh
-</code></pre>
-
-<p>Once inside the machine, become root user and run <a href="https://github.com/surajssd/scripts/blob/master/shell/k8s-install-single-node/install.sh">this script</a>:</p>
-
-<pre><code class="language-bash">sudo -i
+</code></pre></div><p>Once inside the machine, become root user and run <a href="https://github.com/surajssd/scripts/blob/master/shell/k8s-install-single-node/install.sh">this script</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo -i
 curl https://raw.githubusercontent.com/surajssd/scripts/master/shell/k8s-install-single-node/install.sh | sh
-</code></pre>
-
-<p>And you should have a running Kubernetes cluster.</p>
-
+</code></pre></div><p>And you should have a running Kubernetes cluster.</p>
 <h1 id="understanding-steps">Understanding steps</h1>
-
 <p>Install and start <code>docker</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install -y docker
+systemctl enable docker <span style="color:#f92672">&amp;&amp;</span> systemctl start docker
+</code></pre></div><p>Install <code>kubelet</code> and start it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;
+</span><span style="color:#e6db74">[kubernetes]
+</span><span style="color:#e6db74">name=Kubernetes
+</span><span style="color:#e6db74">baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+</span><span style="color:#e6db74">enabled=1
+</span><span style="color:#e6db74">gpgcheck=1
+</span><span style="color:#e6db74">repo_gpgcheck=1
+</span><span style="color:#e6db74">gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+</span><span style="color:#e6db74">exclude=kube*
+</span><span style="color:#e6db74">&#34;</span> | tee /etc/yum.repos.d/kubernetes.repo
 
-<pre><code class="language-bash">yum install -y docker
-systemctl enable docker &amp;&amp; systemctl start docker
-</code></pre>
-
-<p>Install <code>kubelet</code> and start it:</p>
-
-<pre><code class="language-bash">echo &quot;
-[kubernetes]
-name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
-enabled=1
-gpgcheck=1
-repo_gpgcheck=1
-gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-exclude=kube*
-&quot; | tee /etc/yum.repos.d/kubernetes.repo
-
-yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
-systemctl enable kubelet &amp;&amp; systemctl start kubelet
-</code></pre>
-
-<p>Set SELinux contexts:</p>
-
-<pre><code class="language-bash"># for kubernetes files
+yum install -y kubelet kubeadm kubectl --disableexcludes<span style="color:#f92672">=</span>kubernetes
+systemctl enable kubelet <span style="color:#f92672">&amp;&amp;</span> systemctl start kubelet
+</code></pre></div><p>Set SELinux contexts:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># for kubernetes files</span>
 mkdir -p /etc/kubernetes/
 chcon -R -t svirt_sandbox_file_t /etc/kubernetes/
 
-# for etcd files
+<span style="color:#75715e"># for etcd files</span>
 mkdir -p /var/lib/etcd
 chcon -R -t svirt_sandbox_file_t /var/lib/etcd
-</code></pre>
-
-<p>Start <code>kubeadm</code>:</p>
-
-<pre><code class="language-bash">kubeadm config images pull
+</code></pre></div><p>Start <code>kubeadm</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubeadm config images pull
 kubeadm init
-</code></pre>
-
-<p>Set the <code>kubectl</code> context:</p>
-
-<pre><code class="language-bash">mkdir -p $HOME/.kube
+</code></pre></div><p>Set the <code>kubectl</code> context:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-</code></pre>
-
-<p>Install network, this step can be varied depending on which networking provider you want to install, here I have installed weave net. For other providers see <a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#pod-network">here</a>.</p>
-
-<pre><code class="language-bash">kubectl apply -f &quot;https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')&quot;
-</code></pre>
-
-<p>Also use <code>master</code> node as <code>worker</code> node.</p>
-
-<pre><code class="language-bash">kubectl taint nodes --all node-role.kubernetes.io/master-
-</code></pre>
-
-<p>Finally list nodes or wait until node is ready.</p>
-
-<pre><code class="language-bash">kubectl get nodes
-</code></pre>
-
-<h1 id="debugging-the-setup">Debugging the setup</h1>
-
+sudo chown <span style="color:#66d9ef">$(</span>id -u<span style="color:#66d9ef">)</span>:<span style="color:#66d9ef">$(</span>id -g<span style="color:#66d9ef">)</span> $HOME/.kube/config
+</code></pre></div><p>Install network, this step can be varied depending on which networking provider you want to install, here I have installed weave net. For other providers see <a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#pod-network">here</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f <span style="color:#e6db74">&#34;https://cloud.weave.works/k8s/net?k8s-version=</span><span style="color:#66d9ef">$(</span>kubectl version | base64 | tr -d <span style="color:#e6db74">&#39;\n&#39;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><p>Also use <code>master</code> node as <code>worker</code> node.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl taint nodes --all node-role.kubernetes.io/master-
+</code></pre></div><p>Finally list nodes or wait until node is ready.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get nodes
+</code></pre></div><h1 id="debugging-the-setup">Debugging the setup</h1>
 <ul>
 <li>You can see logs of <code>kubelet</code> by running <code>journalctl -f -u kubelet</code></li>
 <li>You can also see if there are any failing control plain containers by running <code>docker ps -a</code> and then check the logs of failed containers.</li>
 </ul>
-
 <h1 id="references">References</h1>
-
 <ul>
 <li><a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/">Install Kubeadm</a></li>
 <li><a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/">Start Kubeadm cluster</a></li>
@@ -667,6 +624,34 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -706,34 +691,6 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -768,7 +725,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -786,7 +743,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

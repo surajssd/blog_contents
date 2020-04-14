@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>git on Suraj Deshmukh</title>
@@ -6,7 +6,7 @@
     <description>Recent content in git on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Mar 2017 22:03:48 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 26 Mar 2017 18:19:15 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,10 +18,11 @@
       
       <guid>https://suraj.io/post/git-notes/</guid>
       <description>Notes about using git.
-Tips and tricks Switch branches $ git checkout &amp;lt;branch&amp;gt;  status $ git status -sb  Show status in short format and also give branch info
-show $ git show  Shows log message and diff about the commit you are on.
-log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go  Get logs on file between line numbers.
-$ git log --graph --abbrev-commit  Show graph in logs.</description>
+Tips and tricks  Switch branches $ git checkout &amp;lt;branch&amp;gt;  status $ git status -sb Show status in short format and also give branch info
+ show $ git show Shows log message and diff about the commit you are on.
+ log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go Get logs on file between line numbers.
+$ git log --graph --abbrev-commit Show graph in logs.
+ commit $ git add -p Commit only parts of file.</description>
     </item>
     
   </channel>

@@ -16,7 +16,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -36,13 +36,10 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/vagrant/" />
-<meta property="og:updated_time" content="2018-08-12T01:00:51&#43;05:30"/>
+<meta property="og:updated_time" content="2017-09-18T10:43:46+05:30" />
 
-        
-<meta itemprop="name" content="vagrant">
+        <meta itemprop="name" content="vagrant">
 <meta itemprop="description" content="Blog">
-
-
         
 
         
@@ -193,6 +190,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -202,14 +207,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -225,6 +222,152 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h2>
+        
+        
+            <p>Kubernetes HostPath volume good way to nuke your Kubernetes Nodes</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-09-10'>
+            September 10, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>8 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>This post will demonstrate how Kubernetes HostPath volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.
+I have a 3-master and 3-node cluster and setup using this script, running in a Vagrant environment.
+All the nodes are in ready state:</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/k8s-hostpat-nuke-nodes/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+        <li><a href='/categoriesopenshift'>openshift</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/mkcert-using-python-http-server/">HTTPS during development using &#39;mkcert&#39;</a></h2>
+        
+        
+            <p>Use https even during your development</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2018-08-14'>
+            August 14, 2018</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>It’s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
+Once installed just run:
+$ mkcert -install Created a new local CA at &quot;/home/hummer/.local/share/mkcert&quot; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/mkcert-using-python-http-server/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categoriescerts'>certs</a></li>
+    
+        <li><a href='/categorieshttps'>https</a></li>
+    
+        <li><a href='/categoriessecurity'>security</a></li>
+    
+        <li><a href='/categoriesnotes'>notes</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -256,8 +399,8 @@ if (!doNotTrack) {
     
 
     <p>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
-type PodStatus struct { Status string <code>json: &amp;quot;,status&amp;quot;</code> }  If you run go vet on this piece of code you will get following error:
-$ go vet types.go # command-line-arguments ./types.go:28: struct field tag <code>json: &amp;quot;,status&amp;quot;</code> not compatible with reflect.StructTag.Get: bad syntax for struct tag value  Now this does not tell us what is wrong with the struct tag, json: &quot;,status&quot;.</p>
+type PodStatus struct { Status string <code>json: &amp;#34;,status&amp;#34;</code> } If you run go vet on this piece of code you will get following error:
+$ go vet types.go # command-line-arguments ./types.go:28: struct field tag <code>json: &amp;#34;,status&amp;#34;</code> not compatible with reflect.StructTag.Get: bad syntax for struct tag value Now this does not tell us what is wrong with the struct tag, json: &quot;,status&quot;.</p>
 
     <footer>
         <ul class="actions">
@@ -326,8 +469,8 @@ $ go vet types.go # command-line-arguments ./types.go:28: struct field tag <code
 
     <p>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
 If you are using minishift then get docker environment access of the minishift VM by running following commands.
-eval $(minishift docker-env) &amp;&amp; eval $(minishift oc-env)  Exec into the container named origin that runs OpenShift and all the needed services.
-$ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.</p>
+eval $(minishift docker-env) &amp;&amp; eval $(minishift oc-env) Exec into the container named origin that runs OpenShift and all the needed services.
+$ docker exec -it origin bash First install the etcdctl needed to talk to etcd.</p>
 
     <footer>
         <ul class="actions">
@@ -396,8 +539,8 @@ $ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.
 
     
 
-    <p>There is no easy way to change namespace in Kubernetes using kubectl command line utility. But here are some commands that you can alias in your bashrc file so that it&rsquo;s just a single command that you can use to change the namespace in the Kubernetes cluster.
-Change namespace Let&rsquo;s see step by step what goes in to change the namespace. So the first step is to find the context.</p>
+    <p>There is no easy way to change namespace in Kubernetes using kubectl command line utility. But here are some commands that you can alias in your bashrc file so that it’s just a single command that you can use to change the namespace in the Kubernetes cluster.
+Change namespace Let’s see step by step what goes in to change the namespace. So the first step is to find the context.</p>
 
     <footer>
         <ul class="actions">
@@ -537,7 +680,7 @@ Downloading Kedge The configurations defined for setting up this cluster is writ
 
     
 
-    <p>Test Fixtures  &ldquo;go test&rdquo; sets pwd as package directory  Test Helpers  should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures  Configurability  Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It&rsquo;s ok to make these configs unexported so only tests can set them.</p>
+    <p>Test Fixtures  “go test” sets pwd as package directory  Test Helpers  should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures  Configurability  Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It’s ok to make these configs unexported so only tests can set them.</p>
 
     <footer>
         <ul class="actions">
@@ -607,9 +750,9 @@ Downloading Kedge The configurations defined for setting up this cluster is writ
     
 
     <p>Pointer receiver For a struct User with a method Work with pointer receiver.
-type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;) } func main() { uval := User{&quot;UserVal&quot;, 5} uval.Work() pval := &amp;User{&quot;UserPtr&quot;, 6} pval.Work() }  See on go playground.
+type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;) } func main() { uval := User{&quot;UserVal&quot;, 5} uval.Work() pval := &amp;User{&quot;UserPtr&quot;, 6} pval.Work() } See on go playground.
 output:
-UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</p>
+UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</p>
 
     <footer>
         <ul class="actions">
@@ -680,10 +823,10 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.  If we call this met
 
     <p>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
 Shortcuts  Toggle side bar  Ctrl + B
- Project explorer in side bar  Ctrl + Shift + E
- Project wide search in side bar  Ctrl + Shift + F
- Source control in side bar  Ctrl + Shift + G
- Copy entire line  Ctrl + C (without any selection)</p>
+Project explorer in side bar  Ctrl + Shift + E
+Project wide search in side bar  Ctrl + Shift + F
+Source control in side bar  Ctrl + Shift + G
+Copy entire line  Ctrl + C (without any selection)</p>
 
     <footer>
         <ul class="actions">
@@ -789,149 +932,6 @@ On the configuration side of doing that you will need to create Kubernetes Secre
         <li><a href='/categoriesminikube'>minikube</a></li>
     
         <li><a href='/categoriescontainer'>container</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/static-pods/">Static Pods using Kubelet on Fedora</a></h2>
-        
-        
-            <p>Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-09-23'>
-            September 23, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.
-This blog is only replacement of section Install the Standalone Kubelet in tutorial.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/static-pods/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/move-vagrant-boxes/">Sharing Vagrant Box offline</a></h2>
-        
-        
-            <p>Share Vagrant boxes like you shareed Operating System ISOs</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2017-09-18'>
-            September 18, 2017</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don&rsquo;t have internet to download it, how do you share it?
-You will need to export the box from machine that has it downloaded already. So on machine with boxes:
-$ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705)  I wanted to share fedora/26-cloud-base box to another machine.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/move-vagrant-boxes/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesvagrant'>vagrant</a></li>
-    
-        <li><a href='/categoriesfedora'>fedora</a></li>
-    
-        <li><a href='/categoriescentos'>centos</a></li>
     
 </ul>
 
@@ -1067,6 +1067,34 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -1106,34 +1134,6 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1168,7 +1168,7 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -1186,7 +1186,7 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

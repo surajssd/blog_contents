@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -28,7 +28,7 @@
 <meta name="twitter:description" content="I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
 Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
 Starting the environment:
-docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:
+docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
 # Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github."/>
 <meta name="twitter:site" content="@surajd_"/>
 
@@ -36,21 +36,19 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:
 <meta property="og:description" content="I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
 Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
 Starting the environment:
-docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:
+docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
 # Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/test-kompose/" /><meta property="article:published_time" content="2017-03-14T00:31:57&#43;05:30"/>
-<meta property="article:modified_time" content="2017-03-14T00:31:57&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/test-kompose/" />
+<meta property="article:published_time" content="2017-03-14T00:31:57+05:30" />
+<meta property="article:modified_time" content="2017-03-14T00:31:57+05:30" />
 
-        
-<meta itemprop="name" content="Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package">
+        <meta itemprop="name" content="Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package">
 <meta itemprop="description" content="I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
 Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
 Starting the environment:
-docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:
+docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
 # Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.">
-
-
 <meta itemprop="datePublished" content="2017-03-14T00:31:57&#43;05:30" />
 <meta itemprop="dateModified" content="2017-03-14T00:31:57&#43;05:30" />
 <meta itemprop="wordCount" content="305">
@@ -58,7 +56,6 @@ docker run -it registry.fedoraproject.org/fedora:26 bash  Running tests:
 
 
 <meta itemprop="keywords" content="centos,fedora,rpm," />
-
         
 
         
@@ -214,6 +211,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -223,14 +228,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -375,98 +372,71 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>I generally do <code>kompose</code> package testing for <code>fedora</code> and <code>CentOS</code>. So here are the steps I follow.</p>
-
+        <p>I generally do <code>kompose</code> package testing for <code>fedora</code> and <code>CentOS</code>. So here are the steps I follow.</p>
 <h2 id="fedora">Fedora</h2>
-
 <p>For respective fedora version use the tag respectively for e.g. <code>25</code> for <code>fedora 25</code>.</p>
-
 <p>Starting the environment:</p>
-
-<pre><code class="language-bash">docker run -it registry.fedoraproject.org/fedora:26 bash
-</code></pre>
-
-<p>Running tests:</p>
-
-<pre><code class="language-bash"># Inside the container
-# Pull packages from the testing repository
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -it registry.fedoraproject.org/fedora:26 bash
+</code></pre></div><p>Running tests:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Inside the container</span>
+<span style="color:#75715e"># Pull packages from the testing repository</span>
 dnf --enablerepo updates-testing -y install kompose
 
-# Check the kompose version
+<span style="color:#75715e"># Check the kompose version</span>
 kompose version
 
-# Install the testing dependencies
+<span style="color:#75715e"># Install the testing dependencies</span>
 dnf install -y jq make
 
-# Pull the git repository to run the functional tests
+<span style="color:#75715e"># Pull the git repository to run the functional tests</span>
 git clone https://github.com/kubernetes/kompose/
 cd kompose
-git reset --hard $(kompose version | cut -d &quot;(&quot; -f2 | cut -d &quot;)&quot; -f1)
+git reset --hard <span style="color:#66d9ef">$(</span>kompose version | cut -d <span style="color:#e6db74">&#34;(&#34;</span> -f2 | cut -d <span style="color:#e6db74">&#34;)&#34;</span> -f1<span style="color:#66d9ef">)</span>
 
-# Run cmd tests
+<span style="color:#75715e"># Run cmd tests</span>
 make test-cmd
 
-</code></pre>
-
-<h2 id="centos-epel-repo">CentOS <code>epel</code> repo</h2>
-
+</code></pre></div><h2 id="centos-epel-repo">CentOS <code>epel</code> repo</h2>
 <p>Spin the CentOS environment in container.</p>
-
-<pre><code class="language-bash">docker run -it centos bash
-</code></pre>
-
-<p>Running tests:</p>
-
-<pre><code class="language-bash"># Install kompose from 'epel-testing' repo
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -it centos bash
+</code></pre></div><p>Running tests:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Install kompose from &#39;epel-testing&#39; repo</span>
 yum install -y epel-release
-yum --enablerepo=epel-testing -y install kompose
+yum --enablerepo<span style="color:#f92672">=</span>epel-testing -y install kompose
 
-# Install the testing dependencies
+<span style="color:#75715e"># Install the testing dependencies</span>
 yum install -y jq make
 
-# Pull the git repository to run the functional tests
+<span style="color:#75715e"># Pull the git repository to run the functional tests</span>
 git clone https://github.com/kubernetes/kompose/
 cd kompose
-git reset --hard $(kompose version | cut -d &quot;(&quot; -f2 | cut -d &quot;)&quot; -f1)
+git reset --hard <span style="color:#66d9ef">$(</span>kompose version | cut -d <span style="color:#e6db74">&#34;(&#34;</span> -f2 | cut -d <span style="color:#e6db74">&#34;)&#34;</span> -f1<span style="color:#66d9ef">)</span>
 
-# Run cmd tests
+<span style="color:#75715e"># Run cmd tests</span>
 make test-cmd
 
-</code></pre>
-
-<h2 id="centos-paas7-openshift-common-el7-repo">CentOS <code>paas7-openshift-common-el7</code> repo</h2>
-
+</code></pre></div><h2 id="centos-paas7-openshift-common-el7-repo">CentOS <code>paas7-openshift-common-el7</code> repo</h2>
 <p>Spin the CentOS environment in container.</p>
-
-<pre><code class="language-bash">docker run -it centos bash
-</code></pre>
-
-<p>Running tests:</p>
-
-<pre><code class="language-bash"># For pulling package from testing repo in CentOS PAAS sig
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -it centos bash
+</code></pre></div><p>Running tests:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># For pulling package from testing repo in CentOS PAAS sig</span>
 yum -y install centos-release-openshift-origin
-yum -y --enablerepo=centos-openshift-origin-testing install kompose
+yum -y --enablerepo<span style="color:#f92672">=</span>centos-openshift-origin-testing install kompose
 
-# Install the testing dependencies
+<span style="color:#75715e"># Install the testing dependencies</span>
 yum install -y epel-release
 yum install -y jq make
 
-# Pull the git repository to run the functional tests
+<span style="color:#75715e"># Pull the git repository to run the functional tests</span>
 git clone https://github.com/kubernetes/kompose/
 cd kompose
-git reset --hard $(kompose version | cut -d &quot;(&quot; -f2 | cut -d &quot;)&quot; -f1)
+git reset --hard <span style="color:#66d9ef">$(</span>kompose version | cut -d <span style="color:#e6db74">&#34;(&#34;</span> -f2 | cut -d <span style="color:#e6db74">&#34;)&#34;</span> -f1<span style="color:#66d9ef">)</span>
 
-# Run cmd tests
+<span style="color:#75715e"># Run cmd tests</span>
 make test-cmd
 
-</code></pre>
-
-<p>If all tests pass then just give a karma for it on the release page.</p>
-
+</code></pre></div><p>If all tests pass then just give a karma for it on the release page.</p>
 <h2 id="ref">Ref:</h2>
-
 <ul>
 <li><a href="https://github.com/surajssd/blog_contents/blob/master/content/post/test-kompose.md">Original article on Github</a></li>
 <li><a href="https://github.com/fedora-cloud/docker-brew-fedora/issues/44">Getting the latest fedora docker images</a></li>
@@ -659,6 +629,34 @@ make test-cmd
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -698,34 +696,6 @@ make test-cmd
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -760,7 +730,7 @@ make test-cmd
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -778,7 +748,7 @@ make test-cmd
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

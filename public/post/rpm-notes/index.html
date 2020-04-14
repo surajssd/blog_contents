@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="rpm Notes" />
 <meta property="og:description" content="General notes about rpm packaging and references to upstream docs" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/rpm-notes/" /><meta property="article:published_time" content="2017-03-24T10:35:54&#43;05:30"/>
-<meta property="article:modified_time" content="2017-03-24T10:35:54&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/rpm-notes/" />
+<meta property="article:published_time" content="2017-03-24T10:35:54+05:30" />
+<meta property="article:modified_time" content="2017-03-24T10:35:54+05:30" />
 
-        
-<meta itemprop="name" content="rpm Notes">
+        <meta itemprop="name" content="rpm Notes">
 <meta itemprop="description" content="General notes about rpm packaging and references to upstream docs">
-
-
 <meta itemprop="datePublished" content="2017-03-24T10:35:54&#43;05:30" />
 <meta itemprop="dateModified" content="2017-03-24T10:35:54&#43;05:30" />
 <meta itemprop="wordCount" content="281">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="centos,rpm,fedora," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,125 +360,76 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<h2 id="setup-of-the-system-for-building-rpms">Setup of the system for building rpms</h2>
-
-<pre><code class="language-bash">$ dnf -y install fedora-packager fedora-review
+        <h2 id="setup-of-the-system-for-building-rpms">Setup of the system for building rpms</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ dnf -y install fedora-packager fedora-review
 $ sudo usermod -a -G mock vagrant
 $ fedora-packager-setup
 $ kinit surajd@FEDORAPROJECT.ORG
-</code></pre>
-
-<h2 id="my-notes">My Notes</h2>
-
+</code></pre></div><h2 id="my-notes">My Notes</h2>
 <ul>
 <li>Start reading from: <a href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/index.html">Fedora packager&rsquo;s guide</a></li>
 <li>Some macros come from <code>redhat-rpm-config</code> and <code>fedora-rpm-macros</code>.</li>
 </ul>
-
-<pre><code class="language-bash">$ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch
-</code></pre>
-
-<ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch
+</code></pre></div><ul>
 <li>To see all macros on the system:</li>
 </ul>
-
-<pre><code class="language-bash">$ rpm --showrc
-</code></pre>
-
-<ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpm --showrc
+</code></pre></div><ul>
 <li>Koji - fedora build system</li>
 <li><code>fedora</code> uses <code>fedpkg</code> for doing builds, while <code>rpmbuild</code> is for <code>CentOS</code></li>
 <li>To get general info about the package</li>
 </ul>
-
-<pre><code class="language-bash">$ rpm -qip ./x86_64/namaskar-1-1.fc25.x86_64.rpm
-</code></pre>
-
-<p>OR</p>
-
-<pre><code class="language-bash">$ less namaskar-1-1.fc25.src.rpm
-</code></pre>
-
-<ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpm -qip ./x86_64/namaskar-1-1.fc25.x86_64.rpm
+</code></pre></div><p>OR</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ less namaskar-1-1.fc25.src.rpm
+</code></pre></div><ul>
 <li>To see what are the dependencies of the package</li>
 </ul>
-
-<pre><code class="language-bash">$ rpm -qp --requires ./noarch/namaskar-1-1.fc25.noarch.rpm
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpm -qp --requires ./noarch/namaskar-1-1.fc25.noarch.rpm
 /bin/bash
-rpmlib(CompressedFileNames) &lt;= 3.0.4-1
-rpmlib(FileDigests) &lt;= 4.6.0-1
-rpmlib(PayloadFilesHavePrefix) &lt;= 4.0-1
-rpmlib(PayloadIsXz) &lt;= 5.2-1
-</code></pre>
-
-<ul>
+rpmlib<span style="color:#f92672">(</span>CompressedFileNames<span style="color:#f92672">)</span> &lt;<span style="color:#f92672">=</span> 3.0.4-1
+rpmlib<span style="color:#f92672">(</span>FileDigests<span style="color:#f92672">)</span> &lt;<span style="color:#f92672">=</span> 4.6.0-1
+rpmlib<span style="color:#f92672">(</span>PayloadFilesHavePrefix<span style="color:#f92672">)</span> &lt;<span style="color:#f92672">=</span> 4.0-1
+rpmlib<span style="color:#f92672">(</span>PayloadIsXz<span style="color:#f92672">)</span> &lt;<span style="color:#f92672">=</span> 5.2-1
+</code></pre></div><ul>
 <li>To see what packages include your package as dependency</li>
 </ul>
-
-<pre><code class="language-bash">$ rpm -qp --provides ./noarch/namaskar-1-1.fc25.noarch.rpm
-namaskar = 1-1.fc25
-</code></pre>
-
-<ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpm -qp --provides ./noarch/namaskar-1-1.fc25.noarch.rpm
+namaskar <span style="color:#f92672">=</span> 1-1.fc25
+</code></pre></div><ul>
 <li>After you think the spec is ready and before you push it to build</li>
 </ul>
-
-<pre><code class="language-bash">$ fedpkg --release f25 lint
-</code></pre>
-
-<ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ fedpkg --release f25 lint
+</code></pre></div><ul>
 <li>Doing local mock build</li>
 </ul>
-
-<pre><code class="language-bash">$ fedpkg --release f25 mockbuild
-</code></pre>
-
-<ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ fedpkg --release f25 mockbuild
+</code></pre></div><ul>
 <li>Doing build in fedora build system, koji</li>
 </ul>
-
-<pre><code class="language-bash">$ fedpkg --release f25 scratch-build --target f25 --srpm
-</code></pre>
-
-<ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ fedpkg --release f25 scratch-build --target f25 --srpm
+</code></pre></div><ul>
 <li>Running fedora-review</li>
 </ul>
-
-<pre><code class="language-bash">$ fedpkg --release f25 srpm
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ fedpkg --release f25 srpm
 $ fedora-review -n namaskar
-</code></pre>
-
-<ul>
+</code></pre></div><ul>
 <li>Decompress a package, <a href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/sect-Packagers_Guide-Format_of_the_Archived_Files.html">src</a>.</li>
 </ul>
-
-<pre><code class="language-bash">$ rpm2cpio kompose-0.1.0-0.1.git8227684.el7.src.rpm | cpio -ivdm
-</code></pre>
-
-<p><strong>OR</strong></p>
-
-<pre><code class="language-bash">$ rpmdev-extract kompose-0.4.0-0.1.git4e3300c.fc27.x86_64.rpm
-</code></pre>
-
-<ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpm2cpio kompose-0.1.0-0.1.git8227684.el7.src.rpm | cpio -ivdm
+</code></pre></div><p><strong>OR</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpmdev-extract kompose-0.4.0-0.1.git4e3300c.fc27.x86_64.rpm
+</code></pre></div><ul>
 <li>Various ways to query package: <a href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/sect-Packagers_Guide-Querying_Packages.html">src</a>.</li>
 <li>To download source as mentioned in the <code>Source0</code> tag, use:</li>
 </ul>
-
-<pre><code class="language-bash">$ spectool -g kompose.spec
-</code></pre>
-
-<ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ spectool -g kompose.spec
+</code></pre></div><ul>
 <li>To validate the rpmspec if it is error free</li>
 </ul>
-
-<pre><code class="language-bash">$ rpmlint kompose.spec
-</code></pre>
-
-<h2 id="ref">Ref:</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpmlint kompose.spec
+</code></pre></div><h2 id="ref">Ref:</h2>
 <ul>
 <li>Yum and RPM Tricks <a href="https://wiki.centos.org/TipsAndTricks/YumAndRPM">https://wiki.centos.org/TipsAndTricks/YumAndRPM</a></li>
 <li>Creating RPM Packages with Fedora <a href="https://fedoraproject.org/wiki/How_to_create_an_RPM_package">https://fedoraproject.org/wiki/How_to_create_an_RPM_package</a></li>
@@ -680,6 +628,34 @@ $ fedora-review -n namaskar
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -719,34 +695,6 @@ $ fedora-review -n namaskar
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -781,7 +729,7 @@ $ fedora-review -n namaskar
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -799,7 +747,7 @@ $ fedora-review -n namaskar
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

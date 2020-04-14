@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>notes on Suraj Deshmukh</title>
@@ -38,8 +38,8 @@ $ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-I
       
       <guid>https://suraj.io/post/golang-struct-tags-space/</guid>
       <description>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
-type PodStatus struct { Status string `json: &amp;quot;,status&amp;quot;` }  If you run go vet on this piece of code you will get following error:
-$ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &amp;quot;,status&amp;quot;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value  Now this does not tell us what is wrong with the struct tag, json: &amp;quot;,status&amp;quot;.</description>
+type PodStatus struct { Status string `json: &amp;#34;,status&amp;#34;` } If you run go vet on this piece of code you will get following error:
+$ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &amp;#34;,status&amp;#34;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value Now this does not tell us what is wrong with the struct tag, json: &amp;quot;,status&amp;quot;.</description>
     </item>
     
     <item>
@@ -50,8 +50,8 @@ $ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json
       <guid>https://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
       <description>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
 If you are using minishift then get docker environment access of the minishift VM by running following commands.
-eval $(minishift docker-env) &amp;amp;&amp;amp; eval $(minishift oc-env)  Exec into the container named origin that runs OpenShift and all the needed services.
-$ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.</description>
+eval $(minishift docker-env) &amp;amp;&amp;amp; eval $(minishift oc-env) Exec into the container named origin that runs OpenShift and all the needed services.
+$ docker exec -it origin bash First install the etcdctl needed to talk to etcd.</description>
     </item>
     
     <item>
@@ -96,8 +96,8 @@ Shortcuts  Toggle side bar  Ctrl + B
       
       <guid>https://suraj.io/post/node-no-sudo/</guid>
       <description>Make sure you have npm installed.
-$ sudo dnf -y install npm Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping. Dependencies resolved. Nothing to do. Complete!  Taken from this post.
-mkdir &amp;quot;${HOME}/.npm-packages&amp;quot; echo &#39;prefix=${HOME}/.npm-packages&#39; | tee -a ~/.npmrc echo &#39; #====================================== # npm related stuff NPM_PACKAGES=&amp;quot;${HOME}/.npm-packages&amp;quot; PATH=&amp;quot;$NPM_PACKAGES/bin:$PATH&amp;quot; # Unset manpath so we can inherit from /etc/manpath via the `manpath` command unset MANPATH # delete if you already modified MANPATH elsewhere in your config export MANPATH=&amp;quot;$NPM_PACKAGES/share/man:$(manpath)&amp;quot; #====================================== &#39; | tee -a ~/.</description>
+$ sudo dnf -y install npm Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping. Dependencies resolved. Nothing to do. Complete! Taken from this post.
+mkdir &amp;#34;${HOME}/.npm-packages&amp;#34; echo &amp;#39;prefix=${HOME}/.npm-packages&amp;#39; | tee -a ~/.npmrc echo &amp;#39; #====================================== # npm related stuff NPM_PACKAGES=&amp;#34;${HOME}/.npm-packages&amp;#34; PATH=&amp;#34;$NPM_PACKAGES/bin:$PATH&amp;#34; # Unset manpath so we can inherit from /etc/manpath via the `manpath` command unset MANPATH # delete if you already modified MANPATH elsewhere in your config export MANPATH=&amp;#34;$NPM_PACKAGES/share/man:$(manpath)&amp;#34; #====================================== &amp;#39; | tee -a ~/.</description>
     </item>
     
     <item>
@@ -107,7 +107,7 @@ mkdir &amp;quot;${HOME}/.npm-packages&amp;quot; echo &#39;prefix=${HOME}/.npm-pa
       
       <guid>https://suraj.io/post/using-crio-with-k8s-single-node/</guid>
       <description>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
-Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables  Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &#39;GOPATH=~/go&#39; &amp;gt;&amp;gt; ~/.</description>
+Installing OS dependencies dnf -y install \  go \  git \  btrfs-progs-devel \  device-mapper-devel \  glib2-devel \  glibc-devel \  glibc-static \  gpgme-devel \  libassuan-devel \  libgpg-error-devel \  libseccomp-devel \  libselinux-devel \  pkgconfig \  wget \  etcd \  iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &amp;#39;GOPATH=~/go&amp;#39; &amp;gt;&amp;gt; ~/.</description>
     </item>
     
     <item>
@@ -117,10 +117,11 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
       
       <guid>https://suraj.io/post/git-notes/</guid>
       <description>Notes about using git.
-Tips and tricks Switch branches $ git checkout &amp;lt;branch&amp;gt;  status $ git status -sb  Show status in short format and also give branch info
-show $ git show  Shows log message and diff about the commit you are on.
-log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go  Get logs on file between line numbers.
-$ git log --graph --abbrev-commit  Show graph in logs.</description>
+Tips and tricks  Switch branches $ git checkout &amp;lt;branch&amp;gt;  status $ git status -sb Show status in short format and also give branch info
+ show $ git show Shows log message and diff about the commit you are on.
+ log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go Get logs on file between line numbers.
+$ git log --graph --abbrev-commit Show graph in logs.
+ commit $ git add -p Commit only parts of file.</description>
     </item>
     
     <item>

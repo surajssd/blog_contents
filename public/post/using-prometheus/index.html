@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Prometheus with existing application on OpenShift" />
 <meta property="og:description" content="Setting up Prometheus with any application" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/using-prometheus/" /><meta property="article:published_time" content="2018-04-04T08:00:51&#43;05:30"/>
-<meta property="article:modified_time" content="2018-04-04T08:00:51&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/using-prometheus/" />
+<meta property="article:published_time" content="2018-04-04T08:00:51+05:30" />
+<meta property="article:modified_time" content="2018-04-04T08:00:51+05:30" />
 
-        
-<meta itemprop="name" content="Prometheus with existing application on OpenShift">
+        <meta itemprop="name" content="Prometheus with existing application on OpenShift">
 <meta itemprop="description" content="Setting up Prometheus with any application">
-
-
 <meta itemprop="datePublished" content="2018-04-04T08:00:51&#43;05:30" />
 <meta itemprop="dateModified" content="2018-04-04T08:00:51&#43;05:30" />
 <meta itemprop="wordCount" content="308">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="monitoring,prometheus,openshift,kubernetes,notes," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,59 +360,29 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.</p>
-
-<p><img src="/images/using-prometheus/prometheus_logo.png" alt="Prometheus" title="Prometheus" /></p>
-
+        <p>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.</p>
+<p><img src="/images/using-prometheus/prometheus_logo.png" alt="Prometheus" title="Prometheus"></p>
 <h2 id="requirements">Requirements</h2>
-
 <h4 id="setting-up-cluster">Setting up cluster</h4>
-
 <p>I have done it using the <code>oc cluster up</code>, read about how to do this <a href="https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md">here</a>. You could also setup a local OpenShift cluster by running <a href="https://www.openshift.org/minishift/">minishift</a>, read about setting up minishift <a href="https://docs.openshift.org/latest/minishift/getting-started/installing.html">here</a>.</p>
-
 <h4 id="downloading-kedge">Downloading Kedge</h4>
-
 <p>The configurations defined for setting up this cluster is written in a format that is understood by a tool called <a href="http://kedgeproject.org/">Kedge</a>. This makes configuration easier to understand and edit. So for using this setup download Kedge and put it in your path as explained <a href="http://kedgeproject.org/installation/">here</a>.</p>
-
-<p><img src="/images/using-prometheus/openshift-origin-logo.png" alt="OpenShift Origin" title="OpenShift Origin" /></p>
-
+<p><img src="/images/using-prometheus/openshift-origin-logo.png" alt="OpenShift Origin" title="OpenShift Origin"></p>
 <h2 id="following-the-setup">Following the setup</h2>
-
 <p>Make sure you have a running OpenShift cluster</p>
-
-<pre><code class="language-bash">oc new-project monitor
-</code></pre>
-
-<p>Now if your metrics exporting service if it is backed by <code>https</code> then set this flag otherwise the default is <code>http</code>.</p>
-
-<pre><code class="language-bash">export APP_SCHEME=https
-</code></pre>
-
-<p>Give your application name</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc new-project monitor
+</code></pre></div><p>Now if your metrics exporting service if it is backed by <code>https</code> then set this flag otherwise the default is <code>http</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export APP_SCHEME<span style="color:#f92672">=</span>https
+</code></pre></div><p>Give your application name</p>
 <pre><code>export APP_NAME=wit
-</code></pre>
-
-<p>This one is important, here I have put in the link to the cluster which is exposing metrics, you can put yours.</p>
-
-<pre><code class="language-bash">export APP_URL=api.prod-preview.openshift.io
-</code></pre>
-
-<p>Download the latest Prometheus Kedge file <a href="https://github.com/surajssd/deploylocal/blob/master/prometheus/prometheus.yml">prometheus.yml</a>. Or you can also download the <a href="https://github.com/surajssd/deploylocal/blob/a9bdf24d9ba527e3a6d63a4d79af2c333dfaa654/prometheus/prometheus.yml">prometheus.yml</a> which was created as of this writing.</p>
-
-<pre><code class="language-bash">kedge apply -f prometheus.yml
-</code></pre>
-
-<p>Finally visit this URL to start seeing your prometheus dashboard.</p>
-
-<pre><code class="language-bash">echo http://$(oc get routes | grep prometheus | awk '{print $2}')
-</code></pre>
-
-<h2 id="how-it-looks">How it looks?</h2>
-
-<pre><code class="language-console">$ oc new-project monitor
+</code></pre><p>This one is important, here I have put in the link to the cluster which is exposing metrics, you can put yours.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export APP_URL<span style="color:#f92672">=</span>api.prod-preview.openshift.io
+</code></pre></div><p>Download the latest Prometheus Kedge file <a href="https://github.com/surajssd/deploylocal/blob/master/prometheus/prometheus.yml">prometheus.yml</a>. Or you can also download the <a href="https://github.com/surajssd/deploylocal/blob/a9bdf24d9ba527e3a6d63a4d79af2c333dfaa654/prometheus/prometheus.yml">prometheus.yml</a> which was created as of this writing.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kedge apply -f prometheus.yml
+</code></pre></div><p>Finally visit this URL to start seeing your prometheus dashboard.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo http://<span style="color:#66d9ef">$(</span>oc get routes | grep prometheus | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span><span style="color:#66d9ef">)</span>
+</code></pre></div><h2 id="how-it-looks">How it looks?</h2>
+<pre><code class="language-console" data-lang="console">$ oc new-project monitor
 Already on project &quot;monitor&quot; on server &quot;https://192.168.122.1:8443&quot;.
 
 You can add applications to this project with the 'new-app' command. For example, try:
@@ -437,10 +404,7 @@ deployment &quot;prometheus&quot; created
 
 $ echo http://$(oc get routes | grep prometheus | awk '{print $2}')
 http://prometheus-monitor.192.168.122.1.nip.io
-</code></pre>
-
-<p><img src="/images/using-prometheus/promgraph.png" alt="Prometheus dashboard" title="Prometheus dashboard showing goroutines" /></p>
-
+</code></pre><p><img src="/images/using-prometheus/promgraph.png" alt="Prometheus dashboard" title="Prometheus dashboard showing goroutines"></p>
 <p>Happy monitoring!</p>
 
     </div>
@@ -630,6 +594,34 @@ http://prometheus-monitor.192.168.122.1.nip.io
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -669,34 +661,6 @@ http://prometheus-monitor.192.168.122.1.nip.io
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -731,7 +695,7 @@ http://prometheus-monitor.192.168.122.1.nip.io
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -749,7 +713,7 @@ http://prometheus-monitor.192.168.122.1.nip.io
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

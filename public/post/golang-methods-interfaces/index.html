@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Methods that satisfy interfaces in golang" />
 <meta property="og:description" content="What receiver type methods satisfy which interface, can be understood here." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/golang-methods-interfaces/" /><meta property="article:published_time" content="2018-02-23T08:00:51&#43;05:30"/>
-<meta property="article:modified_time" content="2018-02-23T08:00:51&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/golang-methods-interfaces/" />
+<meta property="article:published_time" content="2018-02-23T08:00:51+05:30" />
+<meta property="article:modified_time" content="2018-02-23T08:00:51+05:30" />
 
-        
-<meta itemprop="name" content="Methods that satisfy interfaces in golang">
+        <meta itemprop="name" content="Methods that satisfy interfaces in golang">
 <meta itemprop="description" content="What receiver type methods satisfy which interface, can be understood here.">
-
-
 <meta itemprop="datePublished" content="2018-02-23T08:00:51&#43;05:30" />
 <meta itemprop="dateModified" content="2018-02-23T08:00:51&#43;05:30" />
 <meta itemprop="wordCount" content="581">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="golang,programming," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,178 +360,130 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<h2 id="pointer-receiver">Pointer receiver</h2>
-
+        <h2 id="pointer-receiver">Pointer receiver</h2>
 <p>For a struct <code>User</code> with a method <code>Work</code> with pointer receiver.</p>
-
-<pre><code class="language-go">type User struct {
-    Name   string
-    Period int
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
+    <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
 }
 
-func (u *User) Work() {
-    fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;)
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Work</span>() {
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;has worked for&#34;</span>, <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Period</span>, <span style="color:#e6db74">&#34;hrs.&#34;</span>)
 }
 
-func main() {
-    uval := User{&quot;UserVal&quot;, 5}
-    uval.Work()
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">uval</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserVal&#34;</span>, <span style="color:#ae81ff">5</span>}
+    <span style="color:#a6e22e">uval</span>.<span style="color:#a6e22e">Work</span>()
 
-    pval := &amp;User{&quot;UserPtr&quot;, 6}
-    pval.Work()
+    <span style="color:#a6e22e">pval</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserPtr&#34;</span>, <span style="color:#ae81ff">6</span>}
+    <span style="color:#a6e22e">pval</span>.<span style="color:#a6e22e">Work</span>()
 }
-</code></pre>
-
-<p>See on <a href="https://play.golang.org/p/PDsMlrd3QXV">go playground</a>.</p>
-
+</code></pre></div><p>See on <a href="https://play.golang.org/p/PDsMlrd3QXV">go playground</a>.</p>
 <p>output:</p>
-
-<pre><code class="language-bash">UserVal has worked for 5 hrs.
-UserPtr has worked for 6 hrs.
-</code></pre>
-
-<p>If we call this method on <strong>value</strong> type object <code>uval</code> it works, and obviously it works with <strong>pointer</strong> type object <code>pval</code>.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
+UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">6</span> hrs.
+</code></pre></div><p>If we call this method on <strong>value</strong> type object <code>uval</code> it works, and obviously it works with <strong>pointer</strong> type object <code>pval</code>.</p>
 <h2 id="value-receiver">Value receiver</h2>
-
 <p>Now we change the method receiver from pointer to value.</p>
-
-<pre><code class="language-go">type User struct {
-    Name   string
-    Period int
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
+    <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
 }
 
-func (u User) Work() {
-    fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;)
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Work</span>() {
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;has worked for&#34;</span>, <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Period</span>, <span style="color:#e6db74">&#34;hrs.&#34;</span>)
 }
 
-func main() {
-    uval := User{&quot;UserVal&quot;, 5}
-    uval.Work()
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">uval</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserVal&#34;</span>, <span style="color:#ae81ff">5</span>}
+    <span style="color:#a6e22e">uval</span>.<span style="color:#a6e22e">Work</span>()
 
-    pval := &amp;User{&quot;UserPtr&quot;, 6}
-    pval.Work()
+    <span style="color:#a6e22e">pval</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserPtr&#34;</span>, <span style="color:#ae81ff">6</span>}
+    <span style="color:#a6e22e">pval</span>.<span style="color:#a6e22e">Work</span>()
 }
-</code></pre>
-
-<p>See on <a href="https://play.golang.org/p/z7Q-B9PuzV2">go playground</a>.</p>
-
+</code></pre></div><p>See on <a href="https://play.golang.org/p/z7Q-B9PuzV2">go playground</a>.</p>
 <p>output:</p>
-
-<pre><code class="language-bash">UserVal has worked for 5 hrs.
-UserPtr has worked for 6 hrs.
-</code></pre>
-
-<p>So this also worked on both <strong>value</strong> type object <code>uval</code> and with <strong>pointer</strong> type object <code>pval</code>.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
+UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">6</span> hrs.
+</code></pre></div><p>So this also worked on both <strong>value</strong> type object <code>uval</code> and with <strong>pointer</strong> type object <code>pval</code>.</p>
 <h2 id="interface-and-pointer-receiver">Interface and pointer receiver</h2>
-
 <p>Lets try to add interface in the mix and see what happens, so adding interface <code>Worker</code> to pointer receiver method:</p>
-
-<pre><code class="language-go">type User struct {
-    Name   string
-    Period int
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
+    <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
 }
 
-type Worker interface {
-    Work()
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Worker</span> <span style="color:#66d9ef">interface</span> {
+    <span style="color:#a6e22e">Work</span>()
 }
 
-func (u *User) Work() {
-    fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;)
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Work</span>() {
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;has worked for&#34;</span>, <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Period</span>, <span style="color:#e6db74">&#34;hrs.&#34;</span>)
 }
 
-func main() {
-    uval := User{&quot;UserVal&quot;, 5}
-    DoWork(uval)
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">uval</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserVal&#34;</span>, <span style="color:#ae81ff">5</span>}
+    <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">uval</span>)
 
-    pval := &amp;User{&quot;UserPtr&quot;, 6}
-    DoWork(pval)
+    <span style="color:#a6e22e">pval</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserPtr&#34;</span>, <span style="color:#ae81ff">6</span>}
+    <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">pval</span>)
 }
 
-func DoWork(w Worker) {
-    w.Work()
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">Worker</span>) {
+    <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Work</span>()
 }
-</code></pre>
-
-<p>See on <a href="https://play.golang.org/p/shQ4PT66VaY">go playground</a>.</p>
-
+</code></pre></div><p>See on <a href="https://play.golang.org/p/shQ4PT66VaY">go playground</a>.</p>
 <p>output:</p>
-
-<pre><code class="language-bash"># command-line-arguments
-tmp/main.go:20:8: cannot use uval (type User) as type Worker in argument to DoWork:
-        User does not implement Worker (Work method has pointer receiver)
-</code></pre>
-
-<p>So <strong>pointer</strong> type object <code>pval</code> implements interface <code>Worker</code>, but <strong>value</strong> type object <code>uval</code> does not. Since the error clearly says</p>
-
-<pre><code class="language-bash">User does not implement Worker (Work method has pointer receiver)
-</code></pre>
-
-<p>To understand why this above code fails, you need to understand the concept of method sets. <a href="https://golang.org/ref/spec#Method_sets">Golang spec</a> defines <strong>Method sets</strong> as:</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># command-line-arguments</span>
+tmp/main.go:20:8: cannot use uval <span style="color:#f92672">(</span>type User<span style="color:#f92672">)</span> as type Worker in argument to DoWork:
+        User does not implement Worker <span style="color:#f92672">(</span>Work method has pointer receiver<span style="color:#f92672">)</span>
+</code></pre></div><p>So <strong>pointer</strong> type object <code>pval</code> implements interface <code>Worker</code>, but <strong>value</strong> type object <code>uval</code> does not. Since the error clearly says</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">User does not implement Worker <span style="color:#f92672">(</span>Work method has pointer receiver<span style="color:#f92672">)</span>
+</code></pre></div><p>To understand why this above code fails, you need to understand the concept of method sets. <a href="https://golang.org/ref/spec#Method_sets">Golang spec</a> defines <strong>Method sets</strong> as:</p>
 <blockquote>
 <p>The method set of any other type T consists of all methods declared with receiver type T.</p>
 </blockquote>
-
 <p>and</p>
-
 <blockquote>
 <p>The method set of the corresponding pointer type *T is the set of all methods declared with receiver *T or T (that is, it also contains the method set of T).</p>
 </blockquote>
-
 <p>finally</p>
-
 <blockquote>
 <p>The method set of a type determines the interfaces that the type implements and the methods that can be called using a receiver of that type.</p>
 </blockquote>
-
 <p>In above example the method with pointer receiver is not in method set of <strong>value</strong> type object <code>uval</code>.</p>
-
 <h2 id="interface-and-value-receiver">Interface and value receiver</h2>
-
 <p>Now lets try the same inteface but this time with value receiver:</p>
-
-<pre><code class="language-go">type User struct {
-    Name   string
-    Period int
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+    <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
+    <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
 }
 
-type Worker interface {
-    Work()
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Worker</span> <span style="color:#66d9ef">interface</span> {
+    <span style="color:#a6e22e">Work</span>()
 }
 
-func (u User) Work() {
-    fmt.Println(u.Name, &quot;has worked for&quot;, u.Period, &quot;hrs.&quot;)
+<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Work</span>() {
+    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;has worked for&#34;</span>, <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Period</span>, <span style="color:#e6db74">&#34;hrs.&#34;</span>)
 }
 
-func main() {
-    uval := User{&quot;UserVal&quot;, 5}
-    DoWork(uval)
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#a6e22e">uval</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserVal&#34;</span>, <span style="color:#ae81ff">5</span>}
+    <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">uval</span>)
 
-    pval := &amp;User{&quot;UserPtr&quot;, 6}
-    DoWork(pval)
+    <span style="color:#a6e22e">pval</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserPtr&#34;</span>, <span style="color:#ae81ff">6</span>}
+    <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">pval</span>)
 }
 
-func DoWork(w Worker) {
-    w.Work()
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">Worker</span>) {
+    <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Work</span>()
 }
-</code></pre>
-
-<p>See on <a href="https://play.golang.org/p/aW6kXdeNaqN">go playground</a>.</p>
-
+</code></pre></div><p>See on <a href="https://play.golang.org/p/aW6kXdeNaqN">go playground</a>.</p>
 <p>output:</p>
-
-<pre><code class="language-bash">UserVal has worked for 5 hrs.
-UserPtr has worked for 6 hrs.
-</code></pre>
-
-<p>Meanwhile the method with value receiver worked for both type of objects <strong>pointer</strong> type object <code>pval</code> and <strong>value</strong> type object <code>uval</code>.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
+UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">6</span> hrs.
+</code></pre></div><p>Meanwhile the method with value receiver worked for both type of objects <strong>pointer</strong> type object <code>pval</code> and <strong>value</strong> type object <code>uval</code>.</p>
 <p>So here is a table which charts this behavior:</p>
-
 <table>
 <thead>
 <tr>
@@ -543,26 +492,22 @@ UserPtr has worked for 6 hrs.
 <th>object pointer</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>pointer method</td>
 <td>yes</td>
 <td>yes</td>
 </tr>
-
 <tr>
 <td>value method</td>
 <td>yes</td>
 <td>yes</td>
 </tr>
-
 <tr>
 <td>interface pointer method</td>
 <td>no</td>
 <td>yes</td>
 </tr>
-
 <tr>
 <td>interface value method</td>
 <td>yes</td>
@@ -570,11 +515,8 @@ UserPtr has worked for 6 hrs.
 </tr>
 </tbody>
 </table>
-
 <p>More on the case of why code compilation fails or compiler complains about <strong>value</strong> type object <code>uval</code> not implementing the interface <code>Worker</code>.</p>
-
 <h2 id="references">References</h2>
-
 <ul>
 <li><a href="https://golang.org/ref/spec#Method_sets">Method sets in golang spec</a></li>
 <li><a href="https://www.ardanlabs.com/blog/2014/05/methods-interfaces-and-embedded-types.html">Methods, Interfaces and Embedded Types in Go</a></li>
@@ -767,6 +709,34 @@ UserPtr has worked for 6 hrs.
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -806,34 +776,6 @@ UserPtr has worked for 6 hrs.
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -868,7 +810,7 @@ UserPtr has worked for 6 hrs.
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -886,7 +828,7 @@ UserPtr has worked for 6 hrs.
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

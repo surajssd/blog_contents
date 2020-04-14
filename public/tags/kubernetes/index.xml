@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kubernetes on Suraj Deshmukh</title>
@@ -6,10 +6,21 @@
     <description>Recent content in kubernetes on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Apr 2019 01:00:51 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2020 11:57:07 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Enabling Seccomp on your Prometheus Operator and related Pods</title>
+      <link>https://suraj.io/post/seccomp-in-kube-state-metrics/</link>
+      <pubDate>Tue, 14 Apr 2020 11:57:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/seccomp-in-kube-state-metrics/</guid>
+      <description>Seccomp helps us limit the system calls the process inside container can make. And PodSecurityPolicy is the way to enable it on pods in Kubernetes.
+Prometheus Operator Prometheus Operator makes it really easy to monitor your Kubernetes cluster. To deploy this behemoth, helm chart is the easiest way to do it.
+Almost all the pods that run as a part of Prometheus Operator viz. Prometheus Operator, Prometheus, Alertmanager, Grafana, Kube State Metrics don’t need to run with elevated privileges except Node Exporter.</description>
+    </item>
     
     <item>
       <title>Suraj Deshmukh&#39;s talks at conferences</title>
@@ -17,7 +28,7 @@
       <pubDate>Mon, 22 Apr 2019 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/post/surajd-talks-links/</guid>
-      <description> Hardening Kubernetes by Securing Pods - Rootconf 2019   State of Kubernetes Meetups - DevOpsDays India 2017   Making Kubernetes Simple For Developers - Rootconf 2017   Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s
+      <description> Hardening Kubernetes by Securing Pods - Rootconf 2019    State of Kubernetes Meetups - DevOpsDays India 2017    Making Kubernetes Simple For Developers - Rootconf 2017    Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s
   </description>
     </item>
     
@@ -42,7 +53,7 @@ We go online in sometime here https://t.co/FkwgOx0Tm4
       
       <guid>https://suraj.io/post/apiserver-in-minikube-static-configs/</guid>
       <description>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube&amp;rsquo;s --extra-config flag with apiserver.&amp;lt;apiserver flag&amp;gt;=&amp;lt;value&amp;gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
---extra-config=apiserver.authorization-mode=RBAC  So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</description>
+--extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</description>
     </item>
     
     <item>
@@ -72,8 +83,8 @@ So if you are following Kubernetes the Hard Way to set up the cluster here are t
       
       <guid>https://suraj.io/post/psp-on-existing-cluster/</guid>
       <description>I enabled PodSecurityPolicy on a minikube cluster by appending PodSecurityPolicy to the apiserver flag in minikube like this:
---extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\ LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\ NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\ ResourceQuota,PodSecurityPolicy  Ideally when you have PSP enabled and if you don&amp;rsquo;t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.
-$ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h  Which got me thinking what is wrong with the way PSPs work.</description>
+--extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\  LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\  NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\  ResourceQuota,PodSecurityPolicy Ideally when you have PSP enabled and if you don&amp;rsquo;t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.
+$ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h Which got me thinking what is wrong with the way PSPs work.</description>
     </item>
     
     <item>
@@ -114,7 +125,7 @@ $ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-I
       
       <guid>https://suraj.io/post/single-node-k8s-fedora-selinux/</guid>
       <description>Start a single node fedora machine, using whatever method but I have used this Vagrantfile to do it:
-# -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(&amp;quot;2&amp;quot;) do |config| config.vm.define &amp;quot;fedora&amp;quot; do |fedora| fedora.vm.box = &amp;quot;fedora/28-cloud-base&amp;quot; config.vm.hostname = &amp;quot;fedora&amp;quot; end config.vm.provider &amp;quot;virtualbox&amp;quot; do |virtualbox, override| virtualbox.memory = 4096 virtualbox.cpus = 4 end config.vm.provision &amp;quot;shell&amp;quot;, privileged: false, inline: &amp;lt;&amp;lt;-SHELL echo &#39;127.0.0.1 localhost&#39; | cat - /etc/hosts &amp;gt; temp &amp;amp;&amp;amp; sudo mv temp /etc/hosts SHELL end  Now start it and ssh into it:</description>
+# -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(&amp;#34;2&amp;#34;) do |config| config.vm.define &amp;#34;fedora&amp;#34; do |fedora| fedora.vm.box = &amp;#34;fedora/28-cloud-base&amp;#34; config.vm.hostname = &amp;#34;fedora&amp;#34; end config.vm.provider &amp;#34;virtualbox&amp;#34; do |virtualbox, override| virtualbox.memory = 4096 virtualbox.cpus = 4 end config.vm.provision &amp;#34;shell&amp;#34;, privileged: false, inline: &amp;lt;&amp;lt;-SHELL  echo &amp;#39;127.0.0.1 localhost&amp;#39; | cat - /etc/hosts &amp;gt; temp &amp;amp;&amp;amp; sudo mv temp /etc/hosts SHELL end Now start it and ssh into it:</description>
     </item>
     
     <item>
@@ -136,8 +147,8 @@ All the nodes are in ready state:</description>
       <guid>https://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
       <description>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
 If you are using minishift then get docker environment access of the minishift VM by running following commands.
-eval $(minishift docker-env) &amp;amp;&amp;amp; eval $(minishift oc-env)  Exec into the container named origin that runs OpenShift and all the needed services.
-$ docker exec -it origin bash  First install the etcdctl needed to talk to etcd.</description>
+eval $(minishift docker-env) &amp;amp;&amp;amp; eval $(minishift oc-env) Exec into the container named origin that runs OpenShift and all the needed services.
+$ docker exec -it origin bash First install the etcdctl needed to talk to etcd.</description>
     </item>
     
     <item>
@@ -243,7 +254,7 @@ $ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo fo
       <guid>https://suraj.io/post/quick-pv-for-local-k8s/</guid>
       <description>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
 Enter into the machine running k8s If using minikube you can do
-minikube ssh  Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001  If you are on a machine that has SELinux enabled do the following</description>
+minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following</description>
     </item>
     
     <item>
@@ -263,7 +274,7 @@ Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein
       
       <guid>https://suraj.io/post/using-crio-with-k8s-single-node/</guid>
       <description>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
-Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables  Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &#39;GOPATH=~/go&#39; &amp;gt;&amp;gt; ~/.</description>
+Installing OS dependencies dnf -y install \  go \  git \  btrfs-progs-devel \  device-mapper-devel \  glib2-devel \  glibc-devel \  glibc-static \  gpgme-devel \  libassuan-devel \  libgpg-error-devel \  libseccomp-devel \  libselinux-devel \  pkgconfig \  wget \  etcd \  iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &amp;#39;GOPATH=~/go&amp;#39; &amp;gt;&amp;gt; ~/.</description>
     </item>
     
   </channel>

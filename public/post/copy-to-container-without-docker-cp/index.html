@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Copying files to container the generic way" />
 <meta property="og:description" content="No docker cp needed to copy files from host to your container" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/copy-to-container-without-docker-cp/" /><meta property="article:published_time" content="2019-06-21T11:57:07&#43;05:30"/>
-<meta property="article:modified_time" content="2019-06-21T11:57:07&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/copy-to-container-without-docker-cp/" />
+<meta property="article:published_time" content="2019-06-21T11:57:07+05:30" />
+<meta property="article:modified_time" content="2019-06-21T11:57:07+05:30" />
 
-        
-<meta itemprop="name" content="Copying files to container the generic way">
+        <meta itemprop="name" content="Copying files to container the generic way">
 <meta itemprop="description" content="No docker cp needed to copy files from host to your container">
-
-
 <meta itemprop="datePublished" content="2019-06-21T11:57:07&#43;05:30" />
 <meta itemprop="dateModified" content="2019-06-21T11:57:07&#43;05:30" />
 <meta itemprop="wordCount" content="418">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="proc,docker,host,containers," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,114 +360,75 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>This blog shows you how you can copy stuff from your host machine to the running container without the <code>docker cp</code> command that we usually use.</p>
-
+        <p>This blog shows you how you can copy stuff from your host machine to the running container without the <code>docker cp</code> command that we usually use.</p>
 <h1 id="steps-in-text">Steps in text</h1>
-
 <p>Here I have a script on the host, which looks following:</p>
-
-<pre><code class="language-bash">#!/bin/bash
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
 tput bold
-echo &quot;OS Information:&quot;
+echo <span style="color:#e6db74">&#34;OS Information:&#34;</span>
 tput sgr0
 echo
 
 cat /etc/os-release
-</code></pre>
-
-<p>After running which looks like following:</p>
-
-<pre><code class="language-bash">$ ls
+</code></pre></div><p>After running which looks like following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ls
 script.sh
 
 $ ./script.sh
 OS Information:
 
-NAME=&quot;Flatcar Linux by Kinvolk&quot;
-ID=flatcar
-ID_LIKE=coreos
-VERSION=2079.6.0
-VERSION_ID=2079.6.0
-BUILD_ID=2019-06-18-0855
-PRETTY_NAME=&quot;Flatcar Linux by Kinvolk 2079.6.0 (Rhyolite)&quot;
-ANSI_COLOR=&quot;38;5;75&quot;
-HOME_URL=&quot;https://flatcar-linux.org/&quot;
-BUG_REPORT_URL=&quot;https://issues.flatcar-linux.org&quot;
-FLATCAR_BOARD=&quot;amd64-usr&quot;
-</code></pre>
-
-<p>And here is the running container in another tab to which I want to copy the file.</p>
-
-<pre><code class="language-bash">$ docker run -it fedora bash
-[root@0d6d865626ff /]#
-</code></pre>
-
-<p><strong>Note</strong>: All the console with shell prompt <code>[root@0d6d865626ff /]#</code> means that the command is run inside the container.</p>
-
+NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Flatcar Linux by Kinvolk&#34;</span>
+ID<span style="color:#f92672">=</span>flatcar
+ID_LIKE<span style="color:#f92672">=</span>coreos
+VERSION<span style="color:#f92672">=</span>2079.6.0
+VERSION_ID<span style="color:#f92672">=</span>2079.6.0
+BUILD_ID<span style="color:#f92672">=</span>2019-06-18-0855
+PRETTY_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Flatcar Linux by Kinvolk 2079.6.0 (Rhyolite)&#34;</span>
+ANSI_COLOR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;38;5;75&#34;</span>
+HOME_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://flatcar-linux.org/&#34;</span>
+BUG_REPORT_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://issues.flatcar-linux.org&#34;</span>
+FLATCAR_BOARD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;amd64-usr&#34;</span>
+</code></pre></div><p>And here is the running container in another tab to which I want to copy the file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker run -it fedora bash
+<span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span>#
+</code></pre></div><p><strong>Note</strong>: All the console with shell prompt <code>[root@0d6d865626ff /]#</code> means that the command is run inside the container.</p>
 <p>I can always run the <code>docker cp</code> command like following to copy file:</p>
-
-<pre><code class="language-bash">$ docker ps
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker ps
 CONTAINER ID        IMAGE                                     COMMAND                  CREATED              STATUS              PORTS               NAMES
-0d6d865626ff        fedora                                    &quot;bash&quot;                   About a minute ago   Up About a minute                       hardcore_roentgen
+0d6d865626ff        fedora                                    <span style="color:#e6db74">&#34;bash&#34;</span>                   About a minute ago   Up About a minute                       hardcore_roentgen
 $ docker cp script.sh hardcore_roentgen:/
-</code></pre>
-
-<p>Now if I check it from the container:</p>
-
-<pre><code class="language-bash">[root@0d6d865626ff /]# ls / | grep script
+</code></pre></div><p>Now if I check it from the container:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># ls / | grep script</span>
 script.sh
-</code></pre>
-
-<p>Let&rsquo;s clean up the file and use another easier and container runtime agnostic method to do the same.</p>
-
-<pre><code class="language-bash">[root@0d6d865626ff /]# rm script.sh
-rm: remove regular file 'script.sh'? y
-[root@0d6d865626ff /]# ls /
+</code></pre></div><p>Let&rsquo;s clean up the file and use another easier and container runtime agnostic method to do the same.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># rm script.sh</span>
+rm: remove regular file <span style="color:#e6db74">&#39;script.sh&#39;</span>? y
+<span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># ls /</span>
 bin  boot  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-</code></pre>
+</code></pre></div><p>To figure out the file system root of the container process let&rsquo;s start a <code>sleep</code> process.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># sleep 3000</span>
 
-<p>To figure out the file system root of the container process let&rsquo;s start a <code>sleep</code> process.</p>
-
-<pre><code class="language-bash">[root@0d6d865626ff /]# sleep 3000
-
-</code></pre>
-
-<p>Now the <code>sleep</code> process will help us identify the PID of this process on the host.</p>
-
-<pre><code class="language-bash">$ ps aufx | grep sleep
+</code></pre></div><p>Now the <code>sleep</code> process will help us identify the PID of this process on the host.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ps aufx | grep sleep
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root      1668  0.0  0.0   5252   692 pts/0    S+   16:47   0:00          \_ sleep 3000
-</code></pre>
-
-<p>Since we figured out the PID of the process to be <code>1668</code>, now let&rsquo;s copy the file to the root of the container by running following command. Down here I have used the PID that I got output of above, replace it with the PID you get for your process.</p>
-
-<pre><code class="language-bash">$ sudo cp -v ./script.sh /proc/1668/root/
-'./script.sh' -&gt; '/proc/1668/root/script.sh'
-</code></pre>
-
-<p>Now we can stop the sleep process we started earlier in the container see in the root that the file has been copied successfully.</p>
-
-<pre><code class="language-bash">[root@0d6d865626ff /]# sleep 3000
+root      <span style="color:#ae81ff">1668</span>  0.0  0.0   <span style="color:#ae81ff">5252</span>   <span style="color:#ae81ff">692</span> pts/0    S+   16:47   0:00          <span style="color:#ae81ff">\_</span> sleep <span style="color:#ae81ff">3000</span>
+</code></pre></div><p>Since we figured out the PID of the process to be <code>1668</code>, now let&rsquo;s copy the file to the root of the container by running following command. Down here I have used the PID that I got output of above, replace it with the PID you get for your process.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo cp -v ./script.sh /proc/1668/root/
+<span style="color:#e6db74">&#39;./script.sh&#39;</span> -&gt; <span style="color:#e6db74">&#39;/proc/1668/root/script.sh&#39;</span>
+</code></pre></div><p>Now we can stop the sleep process we started earlier in the container see in the root that the file has been copied successfully.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># sleep 3000</span>
 ^C
-[root@0d6d865626ff /]# ls / | grep script
+<span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># ls / | grep script</span>
 script.sh
-</code></pre>
-
-<hr />
-
+</code></pre></div><hr>
 <h1 id="video-of-above-steps">Video of above steps</h1>
 
-
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/dVUhpFjEyEE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/dVUhpFjEyEE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-
-<hr />
-
+<hr>
 <p>I learnt this trick while pair coding/learning things about container security with my colleague Alban, thanks <a href="https://twitter.com/albcr">Alban</a>!.</p>
 
     </div>
@@ -662,6 +620,34 @@ script.sh
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -701,34 +687,6 @@ script.sh
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -763,7 +721,7 @@ script.sh
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -781,7 +739,7 @@ script.sh
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

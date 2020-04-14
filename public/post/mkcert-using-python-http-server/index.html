@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="HTTPS during development using &#39;mkcert&#39;" />
 <meta property="og:description" content="Use https even during your development" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/mkcert-using-python-http-server/" /><meta property="article:published_time" content="2018-08-14T01:00:51&#43;05:30"/>
-<meta property="article:modified_time" content="2018-08-14T01:00:51&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/mkcert-using-python-http-server/" />
+<meta property="article:published_time" content="2018-08-14T01:00:51+05:30" />
+<meta property="article:modified_time" content="2018-08-14T01:00:51+05:30" />
 
-        
-<meta itemprop="name" content="HTTPS during development using &#39;mkcert&#39;">
+        <meta itemprop="name" content="HTTPS during development using &#39;mkcert&#39;">
 <meta itemprop="description" content="Use https even during your development">
-
-
 <meta itemprop="datePublished" content="2018-08-14T01:00:51&#43;05:30" />
 <meta itemprop="dateModified" content="2018-08-14T01:00:51&#43;05:30" />
 <meta itemprop="wordCount" content="301">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="development,https,certificates,secure," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -364,55 +361,39 @@ if (!doNotTrack) {
 
     <div id="content">
         <p>It&rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using <a href="https://github.com/FiloSottile/mkcert">mkcert</a>. Install by following one of the steps mentioned in the <a href="https://github.com/FiloSottile/mkcert#installation">docs</a>.</p>
-
 <p>Once installed just run:</p>
-
-<pre><code class="language-bash">$ mkcert -install
-Created a new local CA at &quot;/home/hummer/.local/share/mkcert&quot; 💥
-[sudo] password for hummer: 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkcert -install
+Created a new local CA at <span style="color:#e6db74">&#34;/home/hummer/.local/share/mkcert&#34;</span> 💥
+<span style="color:#f92672">[</span>sudo<span style="color:#f92672">]</span> password <span style="color:#66d9ef">for</span> hummer: 
 The local CA is now installed in the system trust store! ⚡
-The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)! 🦊
-</code></pre>
+The local CA is now installed in the Firefox and/or Chrome/Chromium trust store <span style="color:#f92672">(</span>requires browser restart<span style="color:#f92672">)</span>! 🦊
+</code></pre></div><p>This has installed the local CA. Now all you need to do is create a new certificate.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkcert 127.0.0.1 localhost
+Using the local CA at <span style="color:#e6db74">&#34;/home/hummer/.local/share/mkcert&#34;</span> ✨
 
-<p>This has installed the local CA. Now all you need to do is create a new certificate.</p>
+Created a new certificate valid <span style="color:#66d9ef">for</span> the following names 📜
+ - <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>
+ - <span style="color:#e6db74">&#34;localhost&#34;</span>
 
-<pre><code class="language-bash">$ mkcert 127.0.0.1 localhost
-Using the local CA at &quot;/home/hummer/.local/share/mkcert&quot; ✨
+The certificate is at <span style="color:#e6db74">&#34;./127.0.0.1+1.pem&#34;</span> and the key at <span style="color:#e6db74">&#34;./127.0.0.1+1-key.pem&#34;</span> ✅
+</code></pre></div><p>Now is the time to test it, so to test it I am running a Python&rsquo;s <a href="https://docs.python.org/2/library/simplehttpserver.html">SimpleHTTPServer</a> using following code(by default if you run <code>python -m SimpleHTTPServer</code> it runs on <code>HTTP</code>).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">$</span> cat simple<span style="color:#f92672">-</span>https<span style="color:#f92672">-</span>server<span style="color:#f92672">.</span>py
+<span style="color:#f92672">import</span> BaseHTTPServer<span style="color:#f92672">,</span> SimpleHTTPServer
+<span style="color:#f92672">import</span> ssl
 
-Created a new certificate valid for the following names 📜
- - &quot;127.0.0.1&quot;
- - &quot;localhost&quot;
-
-The certificate is at &quot;./127.0.0.1+1.pem&quot; and the key at &quot;./127.0.0.1+1-key.pem&quot; ✅
-</code></pre>
-
-<p>Now is the time to test it, so to test it I am running a Python&rsquo;s <a href="https://docs.python.org/2/library/simplehttpserver.html">SimpleHTTPServer</a> using following code(by default if you run <code>python -m SimpleHTTPServer</code> it runs on <code>HTTP</code>).</p>
-
-<pre><code class="language-python">$ cat simple-https-server.py
-import BaseHTTPServer, SimpleHTTPServer
-import ssl
-
-httpd = BaseHTTPServer.HTTPServer(('localhost', 4443), SimpleHTTPServer.SimpleHTTPRequestHandler)
-httpd.socket = ssl.wrap_socket (httpd.socket, certfile='./127.0.0.1+1.pem', keyfile='127.0.0.1+1-key.pem', server_side=True)
-httpd.serve_forever()
-</code></pre>
-
-<p>This code is taken from <a href="https://gist.github.com/dergachev/7028596">here</a> with just modification to the <code>certfile</code> and <code>keyfile</code> file names.</p>
-
+httpd <span style="color:#f92672">=</span> BaseHTTPServer<span style="color:#f92672">.</span>HTTPServer((<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">4443</span>), SimpleHTTPServer<span style="color:#f92672">.</span>SimpleHTTPRequestHandler)
+httpd<span style="color:#f92672">.</span>socket <span style="color:#f92672">=</span> ssl<span style="color:#f92672">.</span>wrap_socket (httpd<span style="color:#f92672">.</span>socket, certfile<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./127.0.0.1+1.pem&#39;</span>, keyfile<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;127.0.0.1+1-key.pem&#39;</span>, server_side<span style="color:#f92672">=</span>True)
+httpd<span style="color:#f92672">.</span>serve_forever()
+</code></pre></div><p>This code is taken from <a href="https://gist.github.com/dergachev/7028596">here</a> with just modification to the <code>certfile</code> and <code>keyfile</code> file names.</p>
 <p>Now just run this file as:</p>
-
-<pre><code class="language-bash">$ python2 simple-https-server.py
-127.0.0.1 - - [14/Aug/2018 11:02:29] &quot;GET / HTTP/1.1&quot; 200 -
-127.0.0.1 - - [14/Aug/2018 11:02:29] code 404, message File not found
-127.0.0.1 - - [14/Aug/2018 11:02:29] &quot;GET /favicon.ico HTTP/1.1&quot; 404 -
-127.0.0.1 - - [14/Aug/2018 11:03:55] &quot;GET / HTTP/1.1&quot; 200 -
-127.0.0.1 - - [14/Aug/2018 11:03:58] &quot;GET /simple-https-server.py HTTP/1.1&quot; 200 -
-</code></pre>
-
-<p>Now if you have browser running already restart it and goto <a href="https://localhost:4443/">https://localhost:4443/</a>. And voila your local <code>HTTPS</code> server is running.</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python2 simple-https-server.py
+127.0.0.1 - - <span style="color:#f92672">[</span>14/Aug/2018 11:02:29<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> -
+127.0.0.1 - - <span style="color:#f92672">[</span>14/Aug/2018 11:02:29<span style="color:#f92672">]</span> code 404, message File not found
+127.0.0.1 - - <span style="color:#f92672">[</span>14/Aug/2018 11:02:29<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET /favicon.ico HTTP/1.1&#34;</span> <span style="color:#ae81ff">404</span> -
+127.0.0.1 - - <span style="color:#f92672">[</span>14/Aug/2018 11:03:55<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> -
+127.0.0.1 - - <span style="color:#f92672">[</span>14/Aug/2018 11:03:58<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET /simple-https-server.py HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> -
+</code></pre></div><p>Now if you have browser running already restart it and goto <a href="https://localhost:4443/">https://localhost:4443/</a>. And voila your local <code>HTTPS</code> server is running.</p>
 <p>Similarly you can create more certificates with wildcard domain and use those certificates with your applications.</p>
-
 <p>Huge 👍 to the developer of <a href="https://github.com/FiloSottile/mkcert">mkcert</a>.</p>
 
     </div>
@@ -606,6 +587,34 @@ httpd.serve_forever()
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -645,34 +654,6 @@ httpd.serve_forever()
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -707,7 +688,7 @@ httpd.serve_forever()
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -725,7 +706,7 @@ httpd.serve_forever()
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

@@ -16,7 +16,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -36,13 +36,10 @@
 <meta property="og:description" content="Blog" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/vagrant/" />
-<meta property="og:updated_time" content="2017-09-18T10:43:46&#43;05:30"/>
+<meta property="og:updated_time" content="2017-09-18T10:43:46+05:30" />
 
-        
-<meta itemprop="name" content="vagrant">
+        <meta itemprop="name" content="vagrant">
 <meta itemprop="description" content="Blog">
-
-
         
 
         
@@ -193,6 +190,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -202,14 +207,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -225,6 +222,120 @@ if (!doNotTrack) {
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h2>
+        
+        
+            <p>This post shows how you can enable seccomp on all the Pods that are deployed with Prometheus Operator</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2020-04-14'>
+            April 14, 2020</time>
+        <span class="author">Suraj Deshmukh</span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>Seccomp helps us limit the system calls the process inside container can make. And PodSecurityPolicy is the way to enable it on pods in Kubernetes.
+Prometheus Operator Prometheus Operator makes it really easy to monitor your Kubernetes cluster. To deploy this behemoth, helm chart is the easiest way to do it.
+Almost all the pods that run as a part of Prometheus Operator viz. Prometheus Operator, Prometheus, Alertmanager, Grafana, Kube State Metrics don’t need to run with elevated privileges except Node Exporter.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categorieskubernetes'>kubernetes</a></li>
+    
+        <li><a href='/categoriessecurity'>security</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://suraj.io/post/">Posts</a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2020-04-14'>
+            April 14, 2020</time>
+        <span class="author"></span>
+        
+            <p>0 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p></p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="https://suraj.io/post/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+
+    
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -256,8 +367,8 @@ if (!doNotTrack) {
     
 
     <p>File capabilities allow users to execute programs with higher privileges. Best example is network utility ping.
-A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn&rsquo;t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.
-$ getcap <code>which ping</code> /usr/bin/ping = cap_net_admin,cap_net_raw+p  Which normally works as follows:
+A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn’t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.
+$ getcap <code>which ping</code> /usr/bin/ping = cap_net_admin,cap_net_raw+p Which normally works as follows:
 $ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1.</p>
 
     <footer>
@@ -333,7 +444,7 @@ $ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1
 
     <p>Here are simple steps that you can follow to prove that the root user inside container is also root on the host. And how to mitigate this.
 Root in container, root on host I have a host with docker daemon running on it. I start a normal container on it with sleep process as PID1. See in the following output that the container clever_lalande started with sleep process.
-$ docker run -d &ndash;rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &quot;sleep 9999&quot; 12 seconds ago Up 11 seconds clever_lalande  Now let&rsquo;s find out the process sleep on the host.</p>
+$ docker run -d &ndash;rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &quot;sleep 9999&quot; 12 seconds ago Up 11 seconds clever_lalande Now let’s find out the process sleep on the host.</p>
 
     <footer>
         <ul class="actions">
@@ -406,7 +517,7 @@ $ docker run -d &ndash;rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7
 
     
 
-    <p>There are always scripts that you write to automate some mundane tasks. And then you put that script in a directory that is in your PATH. But what this does is that it pollutes your system global PATH and shows up in places you wouldn&rsquo;t want it to be in.
+    <p>There are always scripts that you write to automate some mundane tasks. And then you put that script in a directory that is in your PATH. But what this does is that it pollutes your system global PATH and shows up in places you wouldn’t want it to be in.
 I was struggling with this issue for a while and struggling to get a proper solution. But there is a very simple and clever trick to solve this problem.</p>
 
     <footer>
@@ -480,7 +591,7 @@ I was struggling with this issue for a while and struggling to get a proper solu
 
     <p>This blog shows you how you can copy stuff from your host machine to the running container without the docker cp command that we usually use.
 Steps in text Here I have a script on the host, which looks following:
-#!/bin/bash tput bold echo &quot;OS Information:&quot; tput sgr0 echo cat /etc/os-release  After running which looks like following:
+#!/bin/bash  tput bold echo &quot;OS Information:&quot; tput sgr0 echo cat /etc/os-release After running which looks like following:
 $ ls script.sh $ ./script.sh OS Information: NAME=&quot;Flatcar Linux by Kinvolk&quot; ID=flatcar ID_LIKE=coreos VERSION=2079.</p>
 
     <footer>
@@ -621,7 +732,7 @@ $ ls script.sh $ ./script.sh OS Information: NAME=&quot;Flatcar Linux by Kinvolk
 
     
 
-    <p>Hardening Kubernetes by Securing Pods - Rootconf 2019   State of Kubernetes Meetups - DevOpsDays India 2017   Making Kubernetes Simple For Developers - Rootconf 2017   Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s</p>
+    <p>Hardening Kubernetes by Securing Pods - Rootconf 2019    State of Kubernetes Meetups - DevOpsDays India 2017    Making Kubernetes Simple For Developers - Rootconf 2017    Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s</p>
 
     <footer>
         <ul class="actions">
@@ -693,9 +804,9 @@ $ ls script.sh $ ./script.sh OS Information: NAME=&quot;Flatcar Linux by Kinvolk
     <p>The Kubernetes Bangalore Meetup was organized at Arvind Internet on Feb 16th 2019. The agenda for the meetup was to teach Kubernetes to the beginners.
 Meetup agenda can be found here.
 The moments from Meetup:
-We go online in sometime here <a href="https://t.co/FkwgOx0Tm4">https://t.co/FkwgOx0Tm4</a>
-&mdash; Kubernetes Bangalore (@k8sBLR) March 16, 2019  .@pmishra1598 kick started the Meetup by explaining what #Kubernetes is! Currently clarifying what a pod is. pic.twitter.com/Ny7bN9c62x
-&mdash; Kubernetes Bangalore (@k8sBLR) March 16, 2019  Huge turnout at today&#39;s meetup it&#39;s on 🔥🔥 pic.</p>
+We go online in sometime here https://t.co/FkwgOx0Tm4
+— Kubernetes Bangalore (@k8sBLR) March 16, 2019  .@pmishra1598 kick started the Meetup by explaining what #Kubernetes is! Currently clarifying what a pod is. pic.twitter.com/Ny7bN9c62x
+— Kubernetes Bangalore (@k8sBLR) March 16, 2019  Huge turnout at today's meetup it's on 🔥🔥 pic.</p>
 
     <footer>
         <ul class="actions">
@@ -762,8 +873,8 @@ We go online in sometime here <a href="https://t.co/FkwgOx0Tm4">https://t.co/Fkw
 
     
 
-    <p>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube&rsquo;s &ndash;extra-config flag with apiserver.&lt;apiserver flag&gt;=&lt;value&gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
-&ndash;extra-config=apiserver.authorization-mode=RBAC  So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</p>
+    <p>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube’s &ndash;extra-config flag with apiserver.&lt;apiserver flag&gt;=&lt;value&gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
+&ndash;extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</p>
 
     <footer>
         <ul class="actions">
@@ -799,146 +910,6 @@ We go online in sometime here <a href="https://t.co/FkwgOx0Tm4">https://t.co/Fkw
         <li><a href='/categoriesminikube'>minikube</a></li>
     
         <li><a href='/categoriesnotes'>notes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h2>
-        
-        
-            <p>Subpath Volume Mount could give you access to node</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2019-01-14'>
-            January 14, 2019</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using emptyDir volume mount using subpath. The official description goes as follows:
- In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host&rsquo;s filesystem.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categorieskubernetes'>kubernetes</a></li>
-    
-        <li><a href='/categoriessecurity'>security</a></li>
-    
-        <li><a href='/categoriesnotes'>notes</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="https://suraj.io/post/cobra-persistent-flag/">Cobra and Persistentflags gotchas</a></h2>
-        
-        
-            <p>How wrong usage of persistent flags can burn you</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2019-01-04'>
-            January 4, 2019</time>
-        <span class="author">Suraj Deshmukh</span>
-        
-            <p>3 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>If you are using cobra cmd line library for golang applications and it&rsquo;s PersistentFlags and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.
-All the code referenced here can be found here <a href="https://github">https://github</a>.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="https://suraj.io/post/cobra-persistent-flag/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Category
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categoriesgolang'>golang</a></li>
     
 </ul>
 
@@ -1073,6 +1044,34 @@ All the code referenced here can be found here <a href="https://github">https://
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -1112,34 +1111,6 @@ All the code referenced here can be found here <a href="https://github">https://
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -1174,7 +1145,7 @@ All the code referenced here can be found here <a href="https://github">https://
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -1192,7 +1163,7 @@ All the code referenced here can be found here <a href="https://github">https://
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

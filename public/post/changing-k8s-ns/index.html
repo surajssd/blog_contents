@@ -10,7 +10,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.50-DEV" />
+        <meta name="generator" content="Hugo 0.69.0" />
         
 
 
@@ -29,14 +29,12 @@
         <meta property="og:title" content="Change namespaces in Kubernetes" />
 <meta property="og:description" content="Easy way to change namespace in Kubernetes" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/changing-k8s-ns/" /><meta property="article:published_time" content="2018-07-02T08:00:51&#43;05:30"/>
-<meta property="article:modified_time" content="2018-07-02T08:00:51&#43;05:30"/>
+<meta property="og:url" content="https://suraj.io/post/changing-k8s-ns/" />
+<meta property="article:published_time" content="2018-07-02T08:00:51+05:30" />
+<meta property="article:modified_time" content="2018-07-02T08:00:51+05:30" />
 
-        
-<meta itemprop="name" content="Change namespaces in Kubernetes">
+        <meta itemprop="name" content="Change namespaces in Kubernetes">
 <meta itemprop="description" content="Easy way to change namespace in Kubernetes">
-
-
 <meta itemprop="datePublished" content="2018-07-02T08:00:51&#43;05:30" />
 <meta itemprop="dateModified" content="2018-07-02T08:00:51&#43;05:30" />
 <meta itemprop="wordCount" content="457">
@@ -44,7 +42,6 @@
 
 
 <meta itemprop="keywords" content="openshift,kubernetes,notes," />
-
         
 
         
@@ -200,6 +197,14 @@ if (!doNotTrack) {
 
                 
                     <li>
+                        <a href="https://suraj.io/post/seccomp-in-kube-state-metrics/"><p>Enabling Seccomp on your Prometheus Operator and related Pods</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://suraj.io/post/"><p>Posts</p></a>
+                    </li>
+                
+                    <li>
                         <a href="https://suraj.io/post/linux-cap-note/"><p>Capabilities on executables</p></a>
                     </li>
                 
@@ -209,14 +214,6 @@ if (!doNotTrack) {
                 
                     <li>
                         <a href="https://suraj.io/post/project-specific-scripts/"><p>Project specific scripts</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/copy-to-container-without-docker-cp/"><p>Copying files to container the generic way</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="https://suraj.io/post/docker-seccomp-manual/"><p>Writing your own Seccomp profiles for Docker</p></a>
                     </li>
                 
             </ul>
@@ -363,63 +360,38 @@ if (!doNotTrack) {
     
 
     <div id="content">
-        
-
-<p>There is no easy way to change namespace in Kubernetes using <code>kubectl</code> command line utility. But here are some commands that you can alias in your <a href="https://www.lifewire.com/bashrc-file-4101947"><code>bashrc</code></a> file so that it&rsquo;s just a single command that you can use to change the namespace in the Kubernetes cluster.</p>
-
+        <p>There is no easy way to change namespace in Kubernetes using <code>kubectl</code> command line utility. But here are some commands that you can alias in your <a href="https://www.lifewire.com/bashrc-file-4101947"><code>bashrc</code></a> file so that it&rsquo;s just a single command that you can use to change the namespace in the Kubernetes cluster.</p>
 <h2 id="change-namespace">Change namespace</h2>
-
 <p>Let&rsquo;s see step by step what goes in to change the namespace. So the first step is to find the context.</p>
-
 <blockquote>
 <p>A context element in a kubeconfig file is used to group access parameters under a convenient name. Each context has three parameters: cluster, namespace, and user. By default, the <code>kubectl</code> command-line tool uses parameters from the current context to communicate with the cluster.  <a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#context">Read more</a>.</p>
 </blockquote>
-
-<pre><code class="language-bash">$ kubectl config current-context 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl config current-context 
 minikube
-</code></pre>
-
-<p>Now I have a namespace which I have created and want to switch to it.</p>
-
-<pre><code class="language-bash">$ kubectl create ns mywebapp
-namespace &quot;mywebapp&quot; created
-</code></pre>
-
-<p>Now we have two needed information to change the current default namespace, context and namespace name.</p>
-
-<pre><code class="language-bash">$ kubectl config set-context minikube --namespace mywebapp
-Context &quot;minikube&quot; modified.
-</code></pre>
-
-<p>Notice that we have put the context here as <code>minikube</code> and namespace name as we have created, <code>mywebapp</code>.</p>
-
+</code></pre></div><p>Now I have a namespace which I have created and want to switch to it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create ns mywebapp
+namespace <span style="color:#e6db74">&#34;mywebapp&#34;</span> created
+</code></pre></div><p>Now we have two needed information to change the current default namespace, context and namespace name.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl config set-context minikube --namespace mywebapp
+Context <span style="color:#e6db74">&#34;minikube&#34;</span> modified.
+</code></pre></div><p>Notice that we have put the context here as <code>minikube</code> and namespace name as we have created, <code>mywebapp</code>.</p>
 <p>So this can be put in one command and used conveniently. Just copy following bash function into your <code>bashrc</code> file and you will have <code>change-ns</code> as a command available.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> change-ns<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    namespace<span style="color:#f92672">=</span>$1
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z $namespace <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+        echo <span style="color:#e6db74">&#34;Please provide the namespace name: &#39;change-ns mywebapp&#39;&#34;</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">fi</span>
 
-<pre><code class="language-bash">function change-ns() {
-    namespace=$1
-    if [ -z $namespace ]; then
-        echo &quot;Please provide the namespace name: 'change-ns mywebapp'&quot;
-        return 1
-    fi
-
-    kubectl config set-context $(kubectl config current-context) --namespace $namespace
-}
-</code></pre>
-
-<h2 id="verify-change-of-namespace">Verify change of namespace</h2>
-
+    kubectl config set-context <span style="color:#66d9ef">$(</span>kubectl config current-context<span style="color:#66d9ef">)</span> --namespace $namespace
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="verify-change-of-namespace">Verify change of namespace</h2>
 <p>How do you verify that the namespace is changed? How do you find what is the current namespace? Run following command:</p>
-
-<pre><code class="language-bash">kubectl get sa default -o jsonpath='{.metadata.namespace}'
-</code></pre>
-
-<p>Let&rsquo;s deconstruct that. Every namespace that is created has a <code>ServiceAccount</code> created by default with name <code>default</code> (<a href="https://coreos.com/tectonic/docs/latest/users/creating-service-accounts.html#default-service-accounts">Read more</a>).</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get sa default -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.metadata.namespace}&#39;</span>
+</code></pre></div><p>Let&rsquo;s deconstruct that. Every namespace that is created has a <code>ServiceAccount</code> created by default with name <code>default</code> (<a href="https://coreos.com/tectonic/docs/latest/users/creating-service-accounts.html#default-service-accounts">Read more</a>).</p>
 <p>For any object/artifact in Kubernetes there is a field called <code>namespace</code> inside it&rsquo;s <code>metadata</code> field. Which tells you about what namespace a particular object is part of. If you don&rsquo;t set it while creating, Kubernetes will set it to the current default <code>namespace</code>. So this is a source of knowing what current <code>namespace</code> is.</p>
-
 <p>Look at following pod object definition, the namespace for pod <code>storage-provisioner</code> is <code>kube-system</code>.</p>
-
-<pre><code class="language-bash">$ kubectl get pod storage-provisioner -o yaml
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pod storage-provisioner -o yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -427,19 +399,13 @@ metadata:
   name: storage-provisioner
   namespace: kube-system
 ...
-</code></pre>
-
-<p>Now you can use the flag <code>-o</code> with <code>jsonpath</code> type of input to tell what specific object you would like to fetch information about, in our case we want <code>metadata.namespace</code>.</p>
-
+</code></pre></div><p>Now you can use the flag <code>-o</code> with <code>jsonpath</code> type of input to tell what specific object you would like to fetch information about, in our case we want <code>metadata.namespace</code>.</p>
 <p>The above command can also be converted to one command, just add following snippet to <code>bashrc</code> and you will have a command <code>current-ns</code>.</p>
-
-<pre><code class="language-bash">function current-ns() {
-	kubectl get sa default -o jsonpath='{.metadata.namespace}'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> current-ns<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+	kubectl get sa default -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.metadata.namespace}&#39;</span>
 	echo
-}
-</code></pre>
-
-<p>Hope that helps, you with being productive with Kubernetes. Happy hacking!</p>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Hope that helps, you with being productive with Kubernetes. Happy hacking!</p>
 
     </div>
 
@@ -628,6 +594,34 @@ metadata:
                     <li>
                         <article>
                             <header>
+                                <h3><a href="https://suraj.io/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="https://suraj.io/post/">Posts</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2020-04-14'>
+                                    April 14, 2020</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="https://suraj.io/post/linux-cap-note/">Capabilities on executables</a></h3>
                                 
                                     
@@ -667,34 +661,6 @@ metadata:
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-21'>
-                                    June 21, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="https://suraj.io/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2019-06-10'>
-                                    June 10, 2019</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -729,7 +695,7 @@ metadata:
                         <article>
                             <header>
                                 <a href="/categories/kubernetes/">kubernetes</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">17</span>
                             </header>
                         </article>
                     </li>
@@ -747,7 +713,7 @@ metadata:
                         <article>
                             <header>
                                 <a href="/categories/security/">security</a>
-                                <span style="float:right;">6</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>
