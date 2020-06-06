@@ -5,11 +5,21 @@
     <link>https://suraj.io/tags/kubernetes/</link>
     <description>Recent content in kubernetes on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 14 Apr 2020 11:57:07 +0530</lastBuildDate>
+    <language>en</language>
+    <lastBuildDate>Sat, 06 Jun 2020 20:30:07 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Watch Container Traffic Without Exec</title>
+      <link>https://suraj.io/post/snoop-on-pod-traffic/</link>
+      <pubDate>Sat, 06 Jun 2020 20:30:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/snoop-on-pod-traffic/</guid>
+      <description>Introduction For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.
+But for the developers or operators of such applications, it is hard to debug. Since they lack essential tools or even bash for that matter, but the application&amp;rsquo;s debugging ability should not dictate its production deployment and compromise its security posture.</description>
+    </item>
     
     <item>
       <title>Enabling Seccomp on your Prometheus Operator and related Pods</title>

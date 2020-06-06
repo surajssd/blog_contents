@@ -4,26 +4,61 @@
   
   <url>
     <loc>https://suraj.io/categories/</loc>
-    <lastmod>2020-04-14T11:57:07+05:30</lastmod>
+    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://suraj.io/post/seccomp-in-kube-state-metrics/</loc>
-    <lastmod>2020-04-14T11:57:07+05:30</lastmod>
+    <loc>https://suraj.io/tags/container/</loc>
+    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/container/</loc>
+    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/tags/kubernetes/</loc>
-    <lastmod>2020-04-14T11:57:07+05:30</lastmod>
+    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/kubernetes/</loc>
-    <lastmod>2020-04-14T11:57:07+05:30</lastmod>
+    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/post/</loc>
+    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/security/</loc>
+    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/security/</loc>
+    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/snoop-on-pod-traffic/</loc>
+    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/seccomp-in-kube-state-metrics/</loc>
     <lastmod>2020-04-14T11:57:07+05:30</lastmod>
   </url>
   
@@ -33,37 +68,7 @@
   </url>
   
   <url>
-    <loc>https://suraj.io/tags/security/</loc>
-    <lastmod>2020-04-14T11:57:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/security/</loc>
-    <lastmod>2020-04-14T11:57:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2020-04-14T11:57:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/</loc>
-    <lastmod>2020-04-14T11:57:07+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suraj.io/post/linux-cap-note/</loc>
-    <lastmod>2019-06-25T15:15:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/container/</loc>
-    <lastmod>2019-06-25T15:15:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/container/</loc>
     <lastmod>2019-06-25T15:15:07+05:30</lastmod>
   </url>
   

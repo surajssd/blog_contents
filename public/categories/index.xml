@@ -5,16 +5,25 @@
     <link>https://suraj.io/categories/</link>
     <description>Recent content in Categories on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 14 Apr 2020 11:57:07 +0530</lastBuildDate>
+    <language>en</language>
+    <lastBuildDate>Sat, 06 Jun 2020 20:30:07 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>container</title>
+      <link>https://suraj.io/categories/container/</link>
+      <pubDate>Sat, 06 Jun 2020 20:30:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/container/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>kubernetes</title>
       <link>https://suraj.io/categories/kubernetes/</link>
-      <pubDate>Tue, 14 Apr 2020 11:57:07 +0530</pubDate>
+      <pubDate>Sat, 06 Jun 2020 20:30:07 +0530</pubDate>
       
       <guid>https://suraj.io/categories/kubernetes/</guid>
       <description></description>
@@ -23,18 +32,9 @@
     <item>
       <title>security</title>
       <link>https://suraj.io/categories/security/</link>
-      <pubDate>Tue, 14 Apr 2020 11:57:07 +0530</pubDate>
+      <pubDate>Sat, 06 Jun 2020 20:30:07 +0530</pubDate>
       
       <guid>https://suraj.io/categories/security/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>container</title>
-      <link>https://suraj.io/categories/container/</link>
-      <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/container/</guid>
       <description></description>
     </item>
     
