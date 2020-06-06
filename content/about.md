@@ -1,5 +1,6 @@
 +++
 title = "About me"
+layout = "about"
 +++
 
 ![Suraj Deshmukh](https://github.com/surajssd.png)
