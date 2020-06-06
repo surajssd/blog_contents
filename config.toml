@@ -50,12 +50,12 @@ disableLanguages        = [""]
 
     [params.intro.pic]
       src                 = "https://github.com/surajssd.png"
-      shape               = "circle"
+      shape               = "square"
       width               = ""
       alt                 = "Suraj Deshmukh"
 
   [params.sidebar]
-    about               = "I am a Software Engineer at Kinvolk, working on various tooling around container technology like Docker, Kubernetes"
+    about               = "I am a Software Engineer at Kinvolk, working on various tooling around container technology like Docker, Kubernetes."
     postAmount          = 5
     categories          = true
     categoriesByCount   = true
@@ -95,7 +95,7 @@ disableLanguages        = [""]
   [[menu.main]]
     name              = "Blog"
     identifier        = "blog"
-    url               = "/blog/"
+    url               = "/post/"
     pre               = "<i class='far fa-newspaper'></i>"
     weight            = 3
 
