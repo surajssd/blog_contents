@@ -1,118 +1,172 @@
-baseurl = "https://suraj.io/"
-languageCode = "en-us"
-title = "Suraj Deshmukh"
-theme = "hugo-future-imperfect"
-preserveTaxonomyNames = true
-paginate = 10
-disqusShortname = "suraj-io"
-googleAnalytics = "UA-97006720-1"
+# For a description of these parameters, please visit the theme wiki.
+# https://github.com/pacollins/hugo-future-imperfect-slim/wiki/config.toml
+baseurl                 = "https://suraj.io/"
+DefaultContentLanguage  = "en"
+title                   = "Suraj Deshmukh"
+theme                   = "hugo-future-imperfect-slim"
+paginate                = 10
+disqusShortname         = "suraj-io"
+googleAnalytics         = "UA-97006720-1"
+pluralizeListTitles     = false
+disableLanguages        = [""]
+
+[outputs]
+  home                  = ["html", "json"]
 
 [params]
-    # Sets the meta tag description, usually reserved for the main page
-    description          = "Blog"
-    # This will appear on the top left of the navigation bar
-    navbarTitle          = "Suraj Deshmukh"
-    # Social media buttons that appear on the sidebar
-    socialAppearAtTop    = true
-    socialAppearAtBottom = true
-    # set this to the section name if section is not post
-    #viewMorePostLink     = "/blog/"
+  enableCDN             = false
+  cssFiles              = ["default"]
+  jsFiles               = ["default"]
+  highlightjs           = true
+  highlightjsTheme      = "github"
+  highlightjsLang       = ["html", "css", "js", "toml", "shell", "bash", "go"]
+  viewMorePostsLink     = "/post/"
+  readingTime           = true
+  socialShare           = ["twitter", "reddit", "linkedin", "facebook", "email"]
 
-# Optional Params
-    categoriesByCount    = true
-    includeReadingTime   = true
-    # The set of favicons used are based on the write-up from this link:
-    # https://github.com/audreyr/favicon-cheat-sheet
-    # Please see the favicon partial template for more information
-    loadFavicon          = false
-    faviconVersion       = ""
+  [params.meta]
+    description         = "Blog"
+    author              = "Suraj Deshmukh"
+    favicon             = false
+    svg                 = true
+    faviconVersion      = "1"
+    msColor             = "#ffffff"
+    iOSColor            = "#ffffff"
 
-    # Load custom CSS or JavaScript files. This replaces the deprecated params
-    # minifiedFilesCSS and minifiedFilesJS. The variable is an array so that you
-    # can load multiple files if necessary. You can also load the standard theme
-    # files by adding the value, "default".
-    # customCSS            = ["default", "/path/to/file"]
-    # customJS             = ["default", "/path/to/file"]
+  [params.header]
+    navbarTitle         = "Suraj Deshmukh"
+    dynamicTitles       = true
+    searchMenu          = true
+    shareMenu           = true
+    languageMenu        = true
 
-    # Loading min files for exampleSite
-    customCSS            = ["/css/main.min.css"]
-    customJS             = ["/js/main.min.js"]
+  [params.intro]
+    header                = "Blog"
+    paragraph             = "containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos"
+    rssIntro              = true
+    socialIntro           = true
+    hideWhenSingleColumn  = false
+    alwaysOnHomepage      = false
 
-# parms.intro will appear on the sidebar
-# This is optional, but it's suggested to use
-[params.intro]
-    header    = "Blog"
+    [params.intro.pic]
+      src                 = "https://github.com/surajssd.png"
+      shape               = "circle"
+      width               = ""
+      alt                 = "Suraj Deshmukh"
 
-    paragraph = "containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos"
+  [params.sidebar]
+    about               = "I am a Software Engineer at Kinvolk, working on various tooling around container technology like Docker, Kubernetes"
+    postAmount          = 5
+    categories          = true
+    categoriesByCount   = true
 
-    about     = "I am a Software Engineer at Kinvolk, working on various tooling around container technology like Docker, Kubernetes"
+  [params.footer]
+    rssFooter           = true
+    socialFooter        = true
 
-# This will also appear on the sidebar.
-# A width of less than 100px is recommended
-# This is optional
-[params.intro.pic]
-    # src       = "/img/main/logo.jpg"
-    # src       = "https://avatars0.githubusercontent.com/u/5815795?v=3&s=460"
-    src       = "https://github.com/surajssd.png"
-    # modify your picture in the shape of a circle or
-    # future imperfect's hexagonal shape
-    circle    = false
-    imperfect = true
-    width     = ""
-    alt       = "Suraj"
+  [params.staticman]
+    enabled             = true
+    api                 = ""  # No Trailing Slash
+    gitProvider         = ""
+    username            = ""
+    repo                = ""
+    branch              = ""
 
-# Adjust the amount of recent posts on the sidebar.
-# This is optional. The default value 5 will be used
-[params.postAmount]
-    sidebar = 5
+    [params.staticman.recaptcha]
+      siteKey           = ""
+      encryptedKey      = ""
 
-# Set up your menu items in the navigation bar
-# You can use identifier to prepend a font awesome icon to your text
-[[menu.main]]
-    name = "Blog"
-    url = "/post"
-    identifier = "fa fa-newspaper-o"
-    weight = 1
+[menu]
 
-[[menu.main]]
-    name = "Categories"
-    url = "/categories"
-    weight = 2
+  [[menu.main]]
+    name              = "Home"
+    identifier        = "home"
+    url               = "/"
+    pre               = "<i class='fa fa-home'></i>"
+    weight            = 1
 
-[[menu.main]]
-    name = "About"
-    url = "/about"
-    weight = 3
+  [[menu.main]]
+    name              = "About"
+    identifier        = "about"
+    url               = "/about/"
+    pre               = "<i class='far fa-id-card'></i>"
+    weight            = 2
 
-# Insert your username and the icon will apear on the page as long as
-# socialAppearAtTop or socialAppearAtBottom is set to true in the params area
-# The social media icons will appear on the sidebar
+  [[menu.main]]
+    name              = "Blog"
+    identifier        = "blog"
+    url               = "/blog/"
+    pre               = "<i class='far fa-newspaper'></i>"
+    weight            = 3
+
+  [[menu.main]]
+    name              = "Categories"
+    identifier        = "categories"
+    url               = "/categories/"
+    pre               = "<i class='fas fa-sitemap'></i>"
+    weight            = 5
+
+  # [[menu.main]]
+  #   name              = "Contact"
+  #   identifier        = "contact"
+  #   url               = "/contact/"
+  #   pre               = "<i class='far fa-envelope'></i>"
+  #   weight            = 6
+
+[Languages]
+
+  [Languages.en]
+    LanguageCode        = "en"
+    LanguageName        = "English"
+    weight              = 1
+
+
 [social]
-    github          = "surajssd"
-    bitbucket       = ""
-    jsfiddle        = ""
-    codepen         = ""
-    foursquare      = ""
-    dribbble        = ""
-    deviantart      = ""
-    behance         = ""
-    flickr          = ""
-    instagram       = ""
-    youtube         = "surajssd009005"
-    vimeo           = ""
-    vine            = ""
-    medium          = ""
-    wordpress       = "deshmukhsuraj"
-    tumblr          = ""
-    xing            = ""
-    linkedin        = "suraj-deshmukh-0205b834"
-    slideshare      = "surajssd009005"
-    stackoverflow   = "3848679/surajd"
-    reddit          = ""
-    pinterest       = ""
-    googleplus      = ""
-    facebook        = ""
-    facebook_admin  = ""
-    twitter_domain  = ""
-    twitter         = "surajd_"
-    email           = "surajd.service@gmail.com"
+  # Coding Communities
+  github                = "surajssd"
+  # gitlab                = ""
+  stackoverflow         = "3848679/surajd" # User Number
+  # bitbucket             = ""
+  # jsfiddle              = ""
+  # codepen               = ""
+  # Visual Art Communities
+  # deviantart            = ""
+  # flickr                = "example"
+  # behance               = ""
+  # dribbble              = ""
+  # Publishing Communities
+  wordpress             = "deshmukhsuraj"
+  # medium                = ""
+  # Professional/Business Oriented Communities
+  linkedin              = "suraj-deshmukh-0205b834"
+  # linkedin_company      = "examplebusiness"
+  # foursquare            = ""
+  # xing                  = ""
+  slideshare            = "surajssd009005"
+  # Social Networks
+  # facebook              = "example"
+  # googleplus            = ""
+  # reddit                = "example"
+  # quora                 = ""
+  youtube               = "surajssd009005"
+  # vimeo                 = ""
+  # whatsapp              = "" # WhatsApp Number
+    # WeChat and QQ need testing.
+    # wechat              = ""
+    # qq                  = "" # User ID Number
+  # instagram             = "example"
+  # tumblr                = ""
+  twitter               = "surajd_"
+  # strava                = ""
+  # skype                 = ""
+  # snapchat              = ""
+  # pinterest             = "example"
+  # telegram              = "example"
+  # vine                  = ""
+  # googlescholar         = ""
+  # orcid                 = ""
+  # researchgate          = "example"
+  # keybase               = "example"
+  # mastodon              = "example.com/@example"
+  # Email
+  email                 = "surajd.service@gmail.com"

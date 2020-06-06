@@ -1,38 +1,159 @@
-baseurl = "http://suraj.io"
-languageCode = "en"
+baseurl = "https://suraj.io/"
+languageCode = "en-us"
 title = "Suraj Deshmukh"
-theme = "hucore"
-copyright = "&copy; 2017 | Follow on <a href=\"https://twitter.com/surajd_\" target=\"_blank\">Twitter</a> | <a href=\"https://github.com/mgjohansen/hucore.git\" target=\"_blank\">Hucore theme</a> & <a href=\"http://gohugo.io\" target=\"_blank\">Hugo</a> ♥"
+theme = "hugo-future-imperfect-slim"
+preserveTaxonomyNames = true
+paginate = 10
 disqusShortname = "suraj-io"
-googleAnalytics = "trackingcode"
+googleAnalytics = "UA-97006720-1"
+pluralizeListTitles = false
 
-[taxonomies]
-tag = "tags"
-category = "categories"
+# Set the followings to true as part of your site SEO
+enableRobotsTXT = true
+canonifyURLs = true
 
 [params]
-description = "Your description here"
-keywords = ["keyword 1", "keyword 2", "keyword 3"]
-author = "Suraj Deshmukh"
-sharingicons = true
+    # Sets the meta tag description, usually reserved for the main page
+    description          = "Blog"
 
-[params.highlight]
-style = "github"
-languages = ["go", "dockerfile"]
+    # This will appear on the top left of the navigation bar
+    navbarTitle          = "Suraj Deshmukh"
 
-[[params.social]]
-url = "https://github.com/surajssd"
-fa_icon = "fa-github"
+    # Social media buttons that appear on the sidebar
+    socialAppearAtTop    = true
+    socialAppearAtBottom = true
 
-[[params.social]]
-url = "https://twitter.com/surajd_"
-fa_icon = "fa-twitter"
+    # Sets where "View More Posts" links
+    viewMorePostLink     = "/post/"
 
-[[params.social]]
-url = "https://www.linkedin.com/in/suraj-deshmukh-0205b834"
-fa_icon = "fa-linkedin-square"
+# Optional Params
+    # Sets navbarTitle to match the section of the website
+    dynamicTitles        = true
 
-[[params.social]]
-url = "/index.xml"
-fa_icon = "fa-rss"
+    # Sets RSS icons to appear on the sidebar with the social media buttons
+    rssAppearAtTop       = true
+    rssAppearAtBottom    = true
 
+    # Sets Categories to sort by number of posts instead of alphabetical
+    categoriesByCount    = true
+
+    # set to show or to hide categories in the sidebar
+    showSidebarCategories = true
+
+    # Sets Estimated Reading Time to appear in post headers
+    includeReadingTime   = true
+
+    # Sets the Favicon and Version for the site. Default support is for
+    # apple-touch-icon-precomposed.png, favicon.png, favicon.ico, and mstile.png.
+    # These are stored in the favicon folder. See the following for more information:
+    # https://github.com/audreyr/favicon-cheat-sheet
+    loadFavicon          = false
+    faviconVersion       = ""
+
+    # Sets Social Share links to appear on posts
+    socialShare          = true
+
+    # Sets specific share to appear on posts (default behavior is to appear)
+    socialShareTwitter   = true
+    socialShareLinkedin  = true
+    socialShareEmail     = true
+
+    # Load custom CSS or JavaScript files. The variable is an array so that you
+    # can load multiple files if necessary. You can also load the standard theme
+    # files by adding the value, "default".
+    # customCSS            = ["default", "/path/to/file"]
+    # customJS             = ["default", "/path/to/file"]
+    customCSS            = ["default"]
+    customJS             = ["default"]
+
+    # options for highlight.js (version, additional languages, and theme)
+    disable_highlight = false # set to true to disable Highlight
+    highlightjsVersion = "9.11.0"
+    highlightjsCDN = "//cdn.bootcss.com"
+    highlightjsLang = ["r", "yaml", "css"]
+    highlightjsTheme = "github"
+    MathJaxCDN = "//cdn.bootcss.com"
+    MathJaxVersion = "2.7.1"
+
+# parms.intro will appear on the sidebar
+# This is optional, but it's suggested to use
+[params.intro]
+    header    = "Blog"
+
+    paragraph = "containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos"
+
+    about     = "I am a Software Engineer at Kinvolk, working on various tooling around container technology like Docker, Kubernetes"
+
+# This will also appear on the sidebar.
+# A width of less than 100px is recommended
+# This is optional
+[params.intro.pic]
+    src       = "https://github.com/surajssd.png"
+    # modify your picture in the shape of a circle or
+    # future imperfect's hexagonal shape
+    circle    = false
+    imperfect = true
+    width     = ""
+    alt       = "Suraj Deshmukh"
+
+# Adjust the amount of recent posts on the sidebar.
+# This is optional. The default value 5 will be used
+[params.postAmount]
+    sidebar = 0
+
+# Set up your menu items in the navigation bar
+# You can use identifier to prepend a font awesome icon to your text
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    identifier = "fa fa-home"
+    weight = 1
+
+[[menu.main]]
+    name = "Blog"
+    url = "/post"
+    identifier = "fa fa-newspaper-o"
+    weight = 1
+
+[[menu.main]]
+    name = "Categories"
+    url = "/categories"
+    weight = 2
+
+[[menu.main]]
+    name = "About"
+    url = "/about"
+    weight = 3
+
+# Insert your username and the icon will apear on the page as long as
+# socialAppearAtTop or socialAppearAtBottom is set to true in the params area
+# The social media icons will appear on the sidebar
+[social]
+    github          = "surajssd"
+    bitbucket       = ""
+    jsfiddle        = ""
+    codepen         = ""
+    foursquare      = ""
+    dribbble        = ""
+    deviantart      = ""
+    behance         = ""
+    flickr          = ""
+    instagram       = ""
+    youtube         = "surajssd009005"
+    vimeo           = ""
+    vine            = ""
+    medium          = ""
+    wordpress       = "deshmukhsuraj"
+    tumblr          = ""
+    xing            = ""
+    linkedin        = "suraj-deshmukh-0205b834"
+    slideshare      = "surajssd009005"
+    stackoverflow   = "3848679/surajd"
+    reddit          = ""
+    pinterest       = ""
+    googleplus      = ""
+    facebook        = ""
+    facebook_admin  = ""
+    twitter_domain  = ""
+    twitter         = "surajd_"
+    email           = "surajd.service@gmail.com"
