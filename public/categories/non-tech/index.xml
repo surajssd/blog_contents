@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>non-tech on Suraj Deshmukh</title>
+    <link>https://suraj.io/categories/non-tech/</link>
+    <description>Recent content in non-tech on Suraj Deshmukh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 20 Jun 2020 11:30:07 +0530</lastBuildDate>
+    
+	<atom:link href="https://suraj.io/categories/non-tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Book Review of Einstein: His Life and Universe</title>
+      <link>https://suraj.io/post/book-review-einstein/</link>
+      <pubDate>Sat, 20 Jun 2020 11:30:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/book-review-einstein/</guid>
+      <description>I recently finished this book Einstein: His Life and Universe by Walter Isaacson. And here are my thoughts on the book.
+It&amp;rsquo;s a book that brings the image of Einstein to life.
+Although the book is a biography, it makes a reasonable effort in explaining the physics behind his theories of relativity, photoelectric effect and quantum physics. Physics in the book can be intimidating to someone coming from the non-Scientific background.</description>
+    </item>
+    
+  </channel>
+</rss>
