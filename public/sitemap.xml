@@ -3,17 +3,72 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suraj.io/tags/bash/</loc>
+    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/bash/</loc>
+    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/</loc>
+    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/framework-for-scripts-and-binaries/</loc>
+    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/notes/</loc>
+    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/notes/</loc>
+    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/packaging/</loc>
+    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/</loc>
+    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/productivity/</loc>
+    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/productivity/</loc>
+    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suraj.io/tags/book-review/</loc>
     <lastmod>2020-07-05T11:30:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/book-review/</loc>
-    <lastmod>2020-07-05T11:30:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/</loc>
     <lastmod>2020-07-05T11:30:07+05:30</lastmod>
   </url>
   
@@ -29,21 +84,6 @@
   
   <url>
     <loc>https://suraj.io/post/opinion-contemporary-world-1984-by-george-orwell/</loc>
-    <lastmod>2020-07-05T11:30:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/post/</loc>
-    <lastmod>2020-07-05T11:30:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2020-07-05T11:30:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/</loc>
     <lastmod>2020-07-05T11:30:07+05:30</lastmod>
   </url>
   
@@ -183,11 +223,6 @@
   </url>
   
   <url>
-    <loc>https://suraj.io/categories/notes/</loc>
-    <lastmod>2019-04-22T01:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suraj.io/post/surajd-talks-links/</loc>
     <lastmod>2019-04-22T01:00:51+05:30</lastmod>
   </url>
@@ -249,11 +284,6 @@
   
   <url>
     <loc>https://suraj.io/categories/golang/</loc>
-    <lastmod>2019-01-04T01:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/notes/</loc>
     <lastmod>2019-01-04T01:00:51+05:30</lastmod>
   </url>
   
@@ -483,11 +513,6 @@
   </url>
   
   <url>
-    <loc>https://suraj.io/tags/productivity/</loc>
-    <lastmod>2018-02-22T08:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suraj.io/tags/vscode/</loc>
     <lastmod>2018-02-22T08:00:51+05:30</lastmod>
   </url>
@@ -635,11 +660,6 @@
   <url>
     <loc>https://suraj.io/post/starting-a-new-opensource-project-requirements/</loc>
     <lastmod>2017-03-26T18:19:15+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/packaging/</loc>
-    <lastmod>2017-03-24T10:35:54+05:30</lastmod>
   </url>
   
   <url>

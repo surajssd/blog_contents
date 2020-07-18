@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>productivity on Suraj Deshmukh</title>
+    <link>https://suraj.io/categories/productivity/</link>
+    <description>Recent content in productivity on Suraj Deshmukh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 18 Jul 2020 19:00:51 +0530</lastBuildDate>
+    
+	<atom:link href="https://suraj.io/categories/productivity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Framework for managing random scripts and binaries</title>
+      <link>https://suraj.io/post/framework-for-scripts-and-binaries/</link>
+      <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/framework-for-scripts-and-binaries/</guid>
+      <description>I always had a conundrum about how to manage the scripts and binaries downloaded randomly from the internet. One way is to put them in the global PATH directory like /usr/local/bin, but I am sceptical about it.
+There are a couple of things I wanted to solve. How do you update these scripts and binaries? How to do it consistently across all my machines? How to make it easier to have my setup available on any new Linux machine(or even container) I setup?</description>
+    </item>
+    
+  </channel>
+</rss>

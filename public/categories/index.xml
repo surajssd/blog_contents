@@ -6,10 +6,46 @@
     <description>Recent content in Categories on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Jul 2020 11:30:07 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jul 2020 19:00:51 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>bash</title>
+      <link>https://suraj.io/categories/bash/</link>
+      <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>notes</title>
+      <link>https://suraj.io/categories/notes/</link>
+      <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/notes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>packaging</title>
+      <link>https://suraj.io/categories/packaging/</link>
+      <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/packaging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>productivity</title>
+      <link>https://suraj.io/categories/productivity/</link>
+      <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/productivity/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>book-review</title>
@@ -98,15 +134,6 @@
       <pubDate>Sun, 23 Jun 2019 11:57:07 +0530</pubDate>
       
       <guid>https://suraj.io/categories/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>notes</title>
-      <link>https://suraj.io/categories/notes/</link>
-      <pubDate>Mon, 22 Apr 2019 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/notes/</guid>
       <description></description>
     </item>
     
@@ -305,15 +332,6 @@
       <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
       
       <guid>https://suraj.io/categories/project_management/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>packaging</title>
-      <link>https://suraj.io/categories/packaging/</link>
-      <pubDate>Fri, 24 Mar 2017 10:35:54 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/packaging/</guid>
       <description></description>
     </item>
     
