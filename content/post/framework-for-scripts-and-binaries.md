@@ -118,4 +118,4 @@ With this simplicity I get all the goodness of the scripts and since this reposi
 
 ## Conclusion
 
-You can also setup a similar workflow for your scripts and binaries. This will provide you immense boost in productivity. Happy Hacking!
+You can also setup a similar workflow for your scripts and binaries. This will provide you immense boost in productivity. Also if you have some better way to do same sripts and binaries management please share with me here or on Twitter. Happy Hacking!
