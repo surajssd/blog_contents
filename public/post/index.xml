@@ -6,10 +6,20 @@
     <description>Recent content in Post on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 30 Jul 2020 16:00:07 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2020 19:00:51 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to backup and restore Prometheus?</title>
+      <link>https://suraj.io/post/how-to-backup-and-restore-prometheus/</link>
+      <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/how-to-backup-and-restore-prometheus/</guid>
+      <description>This blog will show you how to take a backup from a running Prometheus and restore it in some other Prometheus instance. You might ask why would you even want to do something like that? Well, sometimes you want the Prometheus metrics because they were collected for some particular purpose and you want to do some analysis later.
+Prerequisites/Assumptions This blog assumes that you have a Prometheus running that is deployed using prometheus-operator in monitoring namespace.</description>
+    </item>
     
     <item>
       <title>Book Review: Getting Things Done</title>

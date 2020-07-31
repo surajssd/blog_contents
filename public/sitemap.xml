@@ -3,6 +3,81 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suraj.io/tags/backup/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/backup/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/how-to-backup-and-restore-prometheus/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/kubernetes/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/kubernetes/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/monitoring/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/monitoring/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/notes/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/notes/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/prometheus/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/prometheus/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suraj.io/post/book-review-getting-things-done/</loc>
     <lastmod>2020-07-30T16:00:07+05:30</lastmod>
   </url>
@@ -18,32 +93,12 @@
   </url>
   
   <url>
-    <loc>https://suraj.io/categories/</loc>
-    <lastmod>2020-07-30T16:00:07+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suraj.io/tags/non-tech/</loc>
     <lastmod>2020-07-30T16:00:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/non-tech/</loc>
-    <lastmod>2020-07-30T16:00:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/post/</loc>
-    <lastmod>2020-07-30T16:00:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2020-07-30T16:00:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/</loc>
     <lastmod>2020-07-30T16:00:07+05:30</lastmod>
   </url>
   
@@ -59,16 +114,6 @@
   
   <url>
     <loc>https://suraj.io/post/framework-for-scripts-and-binaries/</loc>
-    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/notes/</loc>
-    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/notes/</loc>
     <lastmod>2020-07-18T19:00:51+05:30</lastmod>
   </url>
   
@@ -104,16 +149,6 @@
   
   <url>
     <loc>https://suraj.io/categories/container/</loc>
-    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/kubernetes/</loc>
-    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/kubernetes/</loc>
     <lastmod>2020-06-06T20:30:07+05:30</lastmod>
   </url>
   
@@ -465,26 +500,6 @@
   <url>
     <loc>https://suraj.io/categories/cmd-line/</loc>
     <lastmod>2018-07-02T08:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/monitoring/</loc>
-    <lastmod>2018-04-04T08:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/monitoring/</loc>
-    <lastmod>2018-04-04T08:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/prometheus/</loc>
-    <lastmod>2018-04-04T08:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/prometheus/</loc>
-    <lastmod>2018-04-04T08:00:51+05:30</lastmod>
   </url>
   
   <url>

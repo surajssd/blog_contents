@@ -6,10 +6,55 @@
     <description>Recent content in Categories on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 30 Jul 2020 16:00:07 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2020 19:00:51 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>backup</title>
+      <link>https://suraj.io/categories/backup/</link>
+      <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/backup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://suraj.io/categories/kubernetes/</link>
+      <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>monitoring</title>
+      <link>https://suraj.io/categories/monitoring/</link>
+      <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/monitoring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>notes</title>
+      <link>https://suraj.io/categories/notes/</link>
+      <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/notes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prometheus</title>
+      <link>https://suraj.io/categories/prometheus/</link>
+      <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/prometheus/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>book-review</title>
@@ -39,15 +84,6 @@
     </item>
     
     <item>
-      <title>notes</title>
-      <link>https://suraj.io/categories/notes/</link>
-      <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/notes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>packaging</title>
       <link>https://suraj.io/categories/packaging/</link>
       <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
@@ -71,15 +107,6 @@
       <pubDate>Sat, 06 Jun 2020 20:30:07 +0530</pubDate>
       
       <guid>https://suraj.io/categories/container/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>https://suraj.io/categories/kubernetes/</link>
-      <pubDate>Sat, 06 Jun 2020 20:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/kubernetes/</guid>
       <description></description>
     </item>
     
@@ -251,24 +278,6 @@
       <pubDate>Mon, 02 Jul 2018 08:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/categories/cmd-line/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>monitoring</title>
-      <link>https://suraj.io/categories/monitoring/</link>
-      <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/monitoring/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>prometheus</title>
-      <link>https://suraj.io/categories/prometheus/</link>
-      <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/prometheus/</guid>
       <description></description>
     </item>
     
