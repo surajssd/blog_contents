@@ -2,20 +2,28 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>host - Suraj Deshmukh</title>
+<title>Being Productive with Kubectl - Suraj Deshmukh</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.74.3" /><meta itemprop="name" content="host">
-<meta itemprop="description" content="">
-<meta property="og:title" content="host" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://suraj.io/tags/host/" />
-<meta property="og:updated_time" content="2019-06-25T15:15:07+05:30" />
+<meta name="generator" content="Hugo 0.74.3" /><meta itemprop="name" content="Being Productive with Kubectl">
+<meta itemprop="description" content="Tips and tricks to make your day to day usage easier">
+<meta itemprop="datePublished" content="2020-08-02T16:00:51+05:30" />
+<meta itemprop="dateModified" content="2020-08-02T16:00:51+05:30" />
+<meta itemprop="wordCount" content="552">
+
+
+
+<meta itemprop="keywords" content="kubernetes,productivity,notes," />
+<meta property="og:title" content="Being Productive with Kubectl" />
+<meta property="og:description" content="Tips and tricks to make your day to day usage easier" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suraj.io/post/being-productive-with-kubectl/" />
+<meta property="article:published_time" content="2020-08-02T16:00:51+05:30" />
+<meta property="article:modified_time" content="2020-08-02T16:00:51+05:30" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="host"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Being Productive with Kubectl"/>
+<meta name="twitter:description" content="Tips and tricks to make your day to day usage easier"/>
 <meta name="twitter:site" content="@surajd_"/>
 <link rel="stylesheet" href="/css/bundle.min.759e3848ea529eef056dab665b241e2af569e601ab80f68f8d4a4d002a155dd4.css" integrity="sha256-dZ44SOpSnu8FbatmWyQeKvVp5gGrgPaPjUpNACoVXdQ="><link rel="stylesheet" href="/css/add-on.css">
 </head>
@@ -29,7 +37,7 @@
       <a href="/" class="nav">
         
           
-            Tags
+            post
           
         
       </a>
@@ -92,31 +100,31 @@
 
   
     
-    <a href="//twitter.com/share?text=host&amp;url=https%3a%2f%2fsuraj.io%2ftags%2fhost%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+    <a href="//twitter.com/share?text=Being%20Productive%20with%20Kubectl&amp;url=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-kubectl%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
         <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
       </a>
   
 
   
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2ftags%2fhost%2f&amp;title=host" target="_blank" rel="noopener" class="nav share-btn reddit">
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-kubectl%2f&amp;title=Being%20Productive%20with%20Kubectl" target="_blank" rel="noopener" class="nav share-btn reddit">
           <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
         </a>
   
 
   
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2ftags%2fhost%2f&amp;title=host" target="_blank" rel="noopener" class="nav share-btn linkedin">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-kubectl%2f&amp;title=Being%20Productive%20with%20Kubectl" target="_blank" rel="noopener" class="nav share-btn linkedin">
             <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
           </a>
   
 
   
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2ftags%2fhost%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-kubectl%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
         <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
         </a>
   
 
   
-        <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fsuraj.io%2ftags%2fhost%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-kubectl%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
           <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
         </a>
   
@@ -139,8 +147,6 @@
     <footer>
       <ul class="socnet-icons">
         
-    <li><a href="/tags/host/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
-
 
         <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
 
@@ -191,48 +197,142 @@
 
       <main id="site-main">
         
-  
-  
-    <article class="post">
-  <header>
+  <article class="post">
+    <header>
   <div class="title">
     
-      <h2><a href="/post/linux-cap-note/">Capabilities on executables</a></h2>
+      <h2><a href="/post/being-productive-with-kubectl/">Being Productive with Kubectl</a></h2>
     
     
-      <p>Note on Linux Kernel capabilities</p>
+      <p>Tips and tricks to make your day to day usage easier</p>
     
   </div>
   <div class="meta">
-    <time class="published" datetime="2019-06-25 15:15:07 &#43;0530 IST">
-      June 25, 2019
+    <time class="published" datetime="2020-08-02 16:00:51 &#43;0530 IST">
+      August 2, 2020
     </time>
     <span class="author">Suraj Deshmukh</span>
     
-      <p>1 minute read</p>
+      <p>3 minute read</p>
     
   </div>
 </header>
 
+    <section id="socnet-share">
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Being%20Productive%20with%20Kubectl&amp;url=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-kubectl%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
   
 
   
-  <p>File capabilities allow users to execute programs with higher privileges. Best example is network utility <code>ping</code>.</p>
-  <footer>
-    <a href="/post/linux-cap-note/" class="button big">Read more</a>
-    <ul class="stats">
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-kubectl%2f&amp;title=Being%20Productive%20with%20Kubectl" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-kubectl%2f&amp;title=Being%20Productive%20with%20Kubectl" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-kubectl%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-kubectl%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </section>
+    
+
+    <div class="content">
+      <p>This blog will showcase my productivity tips with <code>kubectl</code> . This does not venture into any plugins per se. But only using bash aliases to achieve it.</p>
+<h2 id="bash-aliases">Bash Aliases</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># k8s alias</span>
+alias k<span style="color:#f92672">=</span>kubectl
+alias kg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kubectl get&#34;</span>
+alias kgp<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kubectl get pods&#34;</span>
+alias kgs<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kubectl get services&#34;</span>
+alias kge<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kubectl get events&#34;</span>
+alias kgpvc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kubectl get pvc&#34;</span>
+alias kgpv<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kubectl get pv&#34;</span>
+alias kd<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kubectl describe&#34;</span>
+alias kl<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kubectl logs -f&#34;</span>
+alias kc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kubectl create -f&#34;</span>
+</code></pre></div><p>I have above aliases setup in the <code>~/.bashrc</code> file. The beauty of the aliases is that you can append more flags and parameters to the existing smaller alias. For, e.g. I have an alias for <code>kubectl get pods</code> as <code>kgp</code>, but if I want to get pods from all the namespaces, I use <code>kgp -A</code>.</p>
+<p>Most used of the above aliases are <code>kgp</code>, <code>kd</code>, <code>kl</code> and for anything else just <code>k</code> when I want some other command not aliased.</p>
+<h2 id="bash-auto-completion">Bash Auto-Completion</h2>
+<p>You might wonder with all those aliases how do I get the benefit of auto-completion? Well, I don&rsquo;t get the benefit with the aliases except for the alias of <code>kubectl</code> which is <code>k</code>. For that, I have following snippet added in <code>~/.bashrc</code> file. Take a note of the line <code>source &lt;(kubectl completion bash | sed 's/kubectl/k/g')</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">which kubectl &gt; /dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    source &lt;<span style="color:#f92672">(</span>kubectl completion bash<span style="color:#f92672">)</span>
+    source &lt;<span style="color:#f92672">(</span>kubectl completion bash | sed <span style="color:#e6db74">&#39;s/kubectl/k/g&#39;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">fi</span>
+</code></pre></div><p><strong>NOTE</strong>: The above bash-completion has a check for the binary before sourcing its bash-completion code. This is done to avoid the errors like <code>bash: kubectl: command not found...</code> when starting the terminal.</p>
+<h2 id="changing-namespaces">Changing namespaces</h2>
+<p>I have two functions for this, also added in the <code>~/.bashrc</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># find what the current namespace on the cluster is</span>
+<span style="color:#66d9ef">function</span> current-ns<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+	kubectl get sa default -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.metadata.namespace}&#39;</span>
+	echo
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e"># changing namespace</span>
+<span style="color:#66d9ef">function</span> change-ns<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    namespace<span style="color:#f92672">=</span>$1
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z $namespace <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+        echo <span style="color:#e6db74">&#34;Please provide the namespace name: &#39;change-ns mywebapp&#39;&#34;</span>
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">fi</span>
+
+    kubectl config set-context <span style="color:#66d9ef">$(</span>kubectl config current-context<span style="color:#66d9ef">)</span> --namespace $namespace
+<span style="color:#f92672">}</span>
+</code></pre></div><p>For more information, read my other post on the topic of <a href="https://suraj.io/post/changing-k8s-ns/">changing namespace in Kubernetes</a>.</p>
+<h2 id="easy-access-scripts">Easy access scripts</h2>
+<p>For updating <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/update-kubectl.sh"><code>kubectl</code></a>, <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/update-minikube"><code>minikube</code></a>, <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/update-helm"><code>helm</code></a> or <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/update-kustomize.sh"><code>kustomize</code></a> I have scripts which update or download(if the binary is never downloaded) the binaries in place. I wrote a post a few weeks back explaining <a href="https://suraj.io/post/framework-for-scripts-and-binaries/">how I manage my bespoke scripts and binaries</a>.</p>
+<p>There are other scripts for things that need many flags like <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/start-minikube">starting minikube</a>.</p>
+<h2 id="find-the-jsonpath">Find the <code>jsonpath</code></h2>
+<p>I use the JSON path a lot when trying to get a specific field from the YAML output. Now those of you who don&rsquo;t know what I am talking about, let&rsquo;s say you want to find out what time a pod was created. Then you can query it like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kgp kube-proxy-hp7kq -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.metadata.creationTimestamp}&#39;</span>
+2020-08-02T10:39:59Z
+</code></pre></div><p>Here I am trying to find out when was the <code>kube-proxy</code> pod created. Now to even construct that JSON path of highly nested fields, it can become cumbersome. So I use a tool called <a href="https://github.com/fiatjaf/jiq"><code>jiq</code></a>. See the following small video to understand how it is used:</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/MAQN2mcwmu8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>I hope this was helpful. I don&rsquo;t use any fancy plugins. But there are many ways out there if you are an Ops person dealing with Kubernetes in your diurnal life let me know what your productivity tips with Kubectl and Kubernetes in general are. Happy hacking!</p>
+
+    </div>
+    <footer>
+      <ul class="stats">
   <li class="categories">
     <ul>
     
       
         
-          <li><a class="article-terms-link" href="/categories/docker/">docker</a></li>
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
         
-          <li><a class="article-terms-link" href="/categories/host/">host</a></li>
+          <li><a class="article-terms-link" href="/categories/productivity/">productivity</a></li>
         
-          <li><a class="article-terms-link" href="/categories/containers/">containers</a></li>
+          <li><a class="article-terms-link" href="/categories/bash/">bash</a></li>
         
-          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
         
       
     
@@ -243,15 +343,11 @@
     
       
         
-          <li><a class="article-terms-link" href="/tags/proc/">proc</a></li>
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
         
-          <li><a class="article-terms-link" href="/tags/docker/">docker</a></li>
+          <li><a class="article-terms-link" href="/tags/productivity/">productivity</a></li>
         
-          <li><a class="article-terms-link" href="/tags/host/">host</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/containers/">containers</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+          <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
         
       
     
@@ -259,212 +355,38 @@
   </li>
 </ul>
 
-  </footer>
-</article>
-
+    </footer>
+  </article>
   
-    <article class="post">
-  <header>
-  <div class="title">
+  <article class="post">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
-      <h2><a href="/post/root-in-container-root-on-host/">Root user inside container is root on the host</a></h2>
     
     
-      <p>The easiest way to prove that root inside the container is also root on the host</p>
-    
-  </div>
-  <div class="meta">
-    <time class="published" datetime="2019-06-25 11:57:07 &#43;0530 IST">
-      June 25, 2019
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>4 minute read</p>
-    
-  </div>
-</header>
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </article>
 
+
+
+
+  <div class="pagination">
   
-
-  
-  <p>Here are simple steps that you can follow to prove that the <code>root</code> user inside container is also <code>root</code> on the host. And how to mitigate this.</p>
-  <footer>
-    <a href="/post/root-in-container-root-on-host/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/categories/docker/">docker</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/host/">host</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/containers/">containers</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
-        
-      
-    
-    </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/tags/proc/">proc</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/docker/">docker</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/host/">host</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/containers/">containers</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
-        
-      
-    
-    </ul>
-  </li>
-</ul>
-
-  </footer>
-</article>
-
-  
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/project-specific-scripts/">Project specific scripts</a></h2>
-    
-    
-      <p>Instead of polluting your PATH the easier way to put project specific scripts</p>
-    
-  </div>
-  <div class="meta">
-    <time class="published" datetime="2019-06-23 11:57:07 &#43;0530 IST">
-      June 23, 2019
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>2 minute read</p>
-    
-  </div>
-</header>
-
-  
-
-  
-  <p>There are always scripts that you write to automate some mundane tasks. And then you put that script in a directory that is in your <code>PATH</code>. But what this does is that it pollutes your system global <code>PATH</code> and shows up in places you wouldn&rsquo;t want it to be in.</p>
-  <footer>
-    <a href="/post/project-specific-scripts/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/categories/host/">host</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/linux/">linux</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/desktop/">desktop</a></li>
-        
-      
-    
-    </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/tags/host/">host</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/linux/">linux</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/desktop/">desktop</a></li>
-        
-      
-    
-    </ul>
-  </li>
-</ul>
-
-  </footer>
-</article>
-
-  
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/copy-to-container-without-docker-cp/">Copying files to container the generic way</a></h2>
-    
-    
-      <p>No docker cp needed to copy files from host to your container</p>
-    
-  </div>
-  <div class="meta">
-    <time class="published" datetime="2019-06-21 11:57:07 &#43;0530 IST">
-      June 21, 2019
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>2 minute read</p>
-    
-  </div>
-</header>
-
-  
-
-  
-  <p>This blog shows you how you can copy stuff from your host machine to the running container without the <code>docker cp</code> command that we usually use.</p>
-  <footer>
-    <a href="/post/copy-to-container-without-docker-cp/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/categories/docker/">docker</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/host/">host</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/containers/">containers</a></li>
-        
-      
-    
-    </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/tags/proc/">proc</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/docker/">docker</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/host/">host</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/containers/">containers</a></li>
-        
-      
-    
-    </ul>
-  </li>
-</ul>
-
-  </footer>
-</article>
-
-  
-  
-<div class="pagination">
+    <a href="/post/how-to-backup-and-restore-prometheus/" class="button"><div class="previous"><div>How to backup and restore Prometheus?</div></div></a>
   
   
 </div>
@@ -765,8 +687,6 @@
   
       <ul class="socnet-icons">
         
-    <li><a href="/tags/host/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fas fa-rss"></a></li>
-
 
         <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
 
