@@ -12,7 +12,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/post/" />
-<meta property="og:updated_time" content="2020-08-02T16:00:51+05:30" />
+<meta property="og:updated_time" content="2020-08-16T22:00:51+05:30" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Post"/>
 <meta name="twitter:description" content=""/>
@@ -192,6 +192,76 @@
       <main id="site-main">
         
   
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/post/root-in-container-root-on-host/">Root user inside container is root on the host</a></h2>
+    
+    
+      <p>The easiest way to prove that root inside the container is also root on the host</p>
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2019-06-25 11:57:07 &#43;0530 IST">
+      June 25, 2019
+    </time>
+    <span class="author">Suraj Deshmukh</span>
+    
+      <p>4 minute read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  <p>Here are simple steps that you can follow to prove that the <code>root</code> user inside container is also <code>root</code> on the host. And how to mitigate this.</p>
+  <footer>
+    <a href="/post/root-in-container-root-on-host/" class="button big">Read more</a>
+    <ul class="stats">
+  <li class="categories">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/categories/docker/">docker</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/host/">host</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/containers/">containers</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+      
+    
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/tags/proc/">proc</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/docker/">docker</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/host/">host</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/containers/">containers</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+      
+    
+    </ul>
+  </li>
+</ul>
+
+  </footer>
+</article>
+
   
     <article class="post">
   <header>
@@ -749,64 +819,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/add-new-k8s-node-bootstrap-token/">Add new Node to k8s cluster with Bootstrap token</a></h2>
-    
-    
-      <p>Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver</p>
-    
-  </div>
-  <div class="meta">
-    <time class="published" datetime="2018-10-24 01:00:51 &#43;0530 IST">
-      October 24, 2018
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>4 minute read</p>
-    
-  </div>
-</header>
-
-  
-
-  
-  <p>Few days back I wrote a blog about <a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">adding new node to the cluster</a> using the static token file. The problem with that approach is that you need to restart <code>kube-apiserver</code> providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like <code>secrets</code>.</p>
-  <footer>
-    <a href="/post/add-new-k8s-node-bootstrap-token/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-      
-    
-    </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
-        
-      
-    
-    </ul>
-  </li>
-</ul>
-
-  </footer>
-</article>
-
-  
   
 <div class="pagination">
   
@@ -825,6 +837,17 @@
       <header>
         <h1>Recent posts</h1>
       </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/post/being-productive-with-git/">Being Productive with Git</a></h2>
+          <time class="published" datetime="">August 16, 2020</time>
+        </header>
+      </article>
       
       <article class="mini-post">
         <section>
@@ -870,17 +893,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h2><a href="/post/opinion-contemporary-world-1984-by-george-orwell/">Opinion: Contemporary world vis-à-vis 1984 by George Orwell</a></h2>
-          <time class="published" datetime="">July 5, 2020</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -907,7 +919,7 @@
           
           <li>
             
-              <a href="/categories/notes/">notes<span class="count">17</span></a>
+              <a href="/categories/notes/">notes<span class="count">18</span></a>
             
           
           <li>
@@ -942,6 +954,11 @@
           
           <li>
             
+              <a href="/categories/bash/">bash<span class="count">3</span></a>
+            
+          
+          <li>
+            
               <a href="/categories/book-review/">book-review<span class="count">3</span></a>
             
           
@@ -967,7 +984,7 @@
           
           <li>
             
-              <a href="/categories/bash/">bash<span class="count">2</span></a>
+              <a href="/categories/productivity/">productivity<span class="count">3</span></a>
             
           
           <li>
@@ -978,6 +995,11 @@
           <li>
             
               <a href="/categories/fedora/">fedora<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/git/">git<span class="count">2</span></a>
             
           
           <li>
@@ -993,11 +1015,6 @@
           <li>
             
               <a href="/categories/monitoring/">monitoring<span class="count">2</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/productivity/">productivity<span class="count">2</span></a>
             
           
           <li>
@@ -1048,11 +1065,6 @@
           <li>
             
               <a href="/categories/gaming/">gaming<span class="count">1</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/git/">git<span class="count">1</span></a>
             
           
           <li>

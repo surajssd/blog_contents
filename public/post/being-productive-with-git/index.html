@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Being Productive with Git - Suraj Deshmukh</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.74.3" /><meta itemprop="name" content="Being Productive with Git">
+<meta itemprop="description" content="Tips and tricks to make your day to day usage easier.">
+<meta itemprop="datePublished" content="2020-08-16T22:00:51+05:30" />
+<meta itemprop="dateModified" content="2020-08-16T22:00:51+05:30" />
+<meta itemprop="wordCount" content="1002">
+
+
+
+<meta itemprop="keywords" content="git,productivity,notes," />
+<meta property="og:title" content="Being Productive with Git" />
+<meta property="og:description" content="Tips and tricks to make your day to day usage easier." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suraj.io/post/being-productive-with-git/" />
+<meta property="article:published_time" content="2020-08-16T22:00:51+05:30" />
+<meta property="article:modified_time" content="2020-08-16T22:00:51+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Being Productive with Git"/>
+<meta name="twitter:description" content="Tips and tricks to make your day to day usage easier."/>
+<meta name="twitter:site" content="@surajd_"/>
+<link rel="stylesheet" href="/css/bundle.min.759e3848ea529eef056dab665b241e2af569e601ab80f68f8d4a4d002a155dd4.css" integrity="sha256-dZ44SOpSnu8FbatmWyQeKvVp5gGrgPaPjUpNACoVXdQ="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          
+            post
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          
+            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/post/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+      <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active">English (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Being%20Productive%20with%20Git&amp;url=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-git%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-git%2f&amp;title=Being%20Productive%20with%20Git" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-git%2f&amp;title=Being%20Productive%20with%20Git" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-git%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-git%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="https://github.com/surajssd.png" class="square" width="" alt="Suraj Deshmukh" /></a>
+  <header>
+    <h1>Blog</h1>
+  </header>
+  <main>
+    <p>containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article class="post">
+    <header>
+  <div class="title">
+    
+      <h2><a href="/post/being-productive-with-git/">Being Productive with Git</a></h2>
+    
+    
+      <p>Tips and tricks to make your day to day usage easier.</p>
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2020-08-16 22:00:51 &#43;0530 IST">
+      August 16, 2020
+    </time>
+    <span class="author">Suraj Deshmukh</span>
+    
+      <p>5 minute read</p>
+    
+  </div>
+</header>
+
+    <section id="socnet-share">
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Being%20Productive%20with%20Git&amp;url=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-git%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-git%2f&amp;title=Being%20Productive%20with%20Git" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-git%2f&amp;title=Being%20Productive%20with%20Git" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-git%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2fbeing-productive-with-git%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+        </a>
+  
+
+
+    </section>
+    
+
+    <div class="content">
+      <h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#bash-aliases">Bash Aliases</a>
+<ul>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#installation">Installation</a></li>
+</ul>
+</li>
+<li><a href="#global-git-configuration">Global Git Configuration</a>
+<ul>
+<li><a href="#configuration-1">Configuration</a></li>
+<li><a href="#installation-1">Installation</a></li>
+</ul>
+</li>
+<li><a href="#repository-specific-git-settings">Repository Specific Git Settings</a>
+<ul>
+<li><a href="#configuration-2">Configuration</a></li>
+<li><a href="#installation-2">Installation</a></li>
+</ul>
+</li>
+<li><a href="#bash-git-prompt">Bash Git Prompt</a>
+<ul>
+<li><a href="#configuration-3">Configuration</a></li>
+<li><a href="#installation-3">Installation</a></li>
+</ul>
+</li>
+<li><a href="#git-push">Git Push</a></li>
+<li><a href="#pr-reviews">PR Reviews</a>
+<ul>
+<li><a href="#configuration-4">Configuration</a></li>
+<li><a href="#installation-4">Installation</a></li>
+</ul>
+</li>
+<li><a href="#demo">Demo</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Git is a day to day tool for version control. It has become a de facto method of source code versioning, it has become ubiquitous with development and its an essential skill for a programmer. I use it all the time.</p>
+<p>Because of its usage frequency, I wanted to optimise the number of keystrokes I made to get things done with it. I have made some tweaks and personalisation to my git workflow. Obviously, it involves aliases, scripts and other bash graphic tools.</p>
+<h2 id="bash-aliases">Bash Aliases</h2>
+<p>The most straightforward way to shorten any long Linux command is to use an alias. And I use quite a bunch of aliases for everyday git commands. I have aliases for things like checking out the <code>master</code> branch, pulling stuff from remotes commonly named <code>upstream</code> or <code>origin</code>, looking at git commits, rebasing and amending commits.</p>
+<h3 id="configuration">Configuration</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias gpum<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git pull --ff upstream master&#34;</span>
+alias gpom<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git pull --ff origin master&#34;</span>
+alias gcm<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git checkout master&#34;</span>
+alias gs<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git status&#34;</span>
+alias gcmt<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git commit -s&#34;</span>
+alias gl<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git log --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&#34;</span>
+alias grba<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git rebase -i --autosquash &#34;</span>
+alias gca<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git commit --amend --no-edit&#34;</span>
+</code></pre></div><h3 id="installation">Installation</h3>
+<p>Above aliases you saw are placed in <code>~/.bashrc</code>. You can find mine <a href="https://github.com/surajssd/dotfiles/blob/2c2d97642835d78b5ab62a25079d8c29d4f315a8/configs/bashrc#L27-L38">here</a>.</p>
+<h2 id="global-git-configuration">Global Git Configuration</h2>
+<h3 id="configuration-1">Configuration</h3>
+<p>The contents of gitconfig file look like this. I don&rsquo;t have a lot of customisation just basic stuff. In the following snippet <code>code</code> means <a href="https://code.visualstudio.com/">Visual Studio Code</a>. I use vscode as my primary editor so I prefer it to be my <code>difftool</code> as well. The entire <a href="https://github.com/surajssd/dotfiles/blob/master/configs/gitconfig">gitconfig</a> is stored in my <a href="https://github.com/surajssd/dotfiles/">dotfiles repository</a>.</p>
+<pre><code>[user]
+  name = Suraj Deshmukh
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = auto
+  pager = true
+[diff]
+  tool = default-difftool
+  noprefix = true
+[difftool &quot;default-difftool&quot;]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[core]
+  excludesfile = ~/.gitignore
+  editor = code --wait
+</code></pre><h3 id="installation-1">Installation</h3>
+<p>My global git configuration <code>~/.gitconfig</code> is not something I create manually. I have an unusual way of creating it. So if you look at the configuration, it is just a symlink to the actual file which resides in my dotfiles repository. I have a special way of creating these symlinks, which is explained in my previous blog <a href="https://suraj.io/post/framework-for-scripts-and-binaries/">here</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ls -al ~/.gitconfig
+lrwxrwxrwx@ <span style="color:#ae81ff">43</span> surajd <span style="color:#ae81ff">27</span> Jul  1:05 /home/surajd/.gitconfig -&gt; /home/surajd/git/dotfiles/configs/gitconfig
+</code></pre></div><h2 id="repository-specific-git-settings">Repository Specific Git Settings</h2>
+<p>There are some settings I want only for that particular repository. For instance, for my work, I sign-off all my commits with my work email id. For those repository-specific settings, I have a script which does the job for me.</p>
+<h3 id="configuration-2">Configuration</h3>
+<p>Right now this is all I do for work repository, so that&rsquo;s all I need.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git config user.email <span style="color:#e6db74">&#34;me@work.com&#34;</span>
+</code></pre></div><h3 id="installation-2">Installation</h3>
+<p>You can copy above snippet in a file make it executable and place it in your <code>PATH</code>. I have this file in a dotfiles repository from where a script creates a symlink for this executable file and places in the <code>PATH</code>. All this script management framework is explained in my previous blog post <a href="https://suraj.io/post/framework-for-scripts-and-binaries/">here</a>. You can find the exact file <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/set-git-config-kinvolk">here</a>.</p>
+<h2 id="bash-git-prompt">Bash Git Prompt</h2>
+<p>Now when you are using plain old bash, it is not very helpful in terms of the context of the directory you are in. When you don&rsquo;t have a visual aid, it is easy to make mistakes like commit something on the wrong branch or other undesired things. So I use this helper utility called <a href="https://github.com/magicmonty/bash-git-prompt">bash-git-prompt</a> which provides me with the git directory context. Like it tells me the path to the repository, the branch, the number of files changed, if the files are committed or untracked, exit code of the previous command, current time, etc. The bash prompt will change to look something like this when you are in a git repository:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">✘-127 ~/git/blog_contents <span style="color:#f92672">[</span>foobar L|✚ 1…1<span style="color:#f92672">]</span>
+23:01 $
+</code></pre></div><h3 id="configuration-3">Configuration</h3>
+<p>You need to have these two settings in your <code>~/.bashrc</code>. So that the bash git prompt scripts are sourced every time the terminal starts.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Bash Git Prompt</span>
+source ~/.bash-git-prompt/gitprompt.sh
+GIT_PROMPT_ONLY_IN_REPO<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><h3 id="installation-3">Installation</h3>
+<p>Again this is installed easily using this helper script I have <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/update-git-prompt">here</a>. So I just have to run the command <code>update-git-prompt</code>, and then the repository is installed to be consumed.</p>
+<h2 id="git-push">Git Push</h2>
+<p>I have a script to push my changes to the PR I am working on. So every time I am done committing, I just need to do <code>gpo.sh</code>, and the changes are pushed to your <code>origin</code> remote. Behind the scene, there is a simple command which finds out what the current branch is and then push the current branch to <code>origin</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git push origin <span style="color:#66d9ef">$(</span>git branch --show-current<span style="color:#66d9ef">)</span> <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
+</code></pre></div><h2 id="pr-reviews">PR Reviews</h2>
+<p>For PR reviews, it is tough to comprehend all the code just by looking on Github. So I like to pull those changes locally. There is a handy script for it that I use. All I run is something like <code>pr.sh 704 origin</code>, so this is pulling PR number 704 from the remote named <code>origin</code>. If you have to pull changes from <code>upstream</code> then specify such or whatever your remote name maybe.</p>
+<h3 id="configuration-4">Configuration</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">random<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>RANDOM<span style="color:#e6db74">}${</span>RANDOM<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+git fetch <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>remote<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;pull/</span><span style="color:#e6db74">${</span>id<span style="color:#e6db74">}</span><span style="color:#e6db74">/head:pr_</span><span style="color:#e6db74">${</span>id<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span>remote<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span>random<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+git checkout <span style="color:#e6db74">&#34;pr_</span><span style="color:#e6db74">${</span>id<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span>remote<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span>random<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><h3 id="installation-4">Installation</h3>
+<p>I use my regular framework to install above <code>pr.sh</code>. You can find the entire file <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/pr.sh">here.</a></p>
+<h2 id="demo">Demo</h2>
+<ul>
+<li>Step 1: Create branch:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git checkout foobar
+</code></pre></div><ul>
+<li>Step 2: Make changes as needed. Look at the changes:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gs
+</code></pre></div><ul>
+<li>Step 3: Add the changes:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add .
+</code></pre></div><ul>
+<li>Step 4: Commit these changes:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gcmt
+</code></pre></div><ul>
+<li>Step 5: Push them:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gpo.sh
+</code></pre></div><ul>
+<li>Step 6: CI failed, and now you need to make changes. Make necessary fixes and follow step 2 to 3. Then to amend the last commit just run:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gca
+</code></pre></div><ul>
+<li>Step 7: Look at the git commits in the branch</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gl
+</code></pre></div><ul>
+<li>Step 8: Force push changes now:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gpo.sh -f
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>That was my tweaked Git workflow. Let me know your productivity hacks with git, in the comments or on twitter. Thanks for reading. Happy Hacking!</p>
+
+    </div>
+    <footer>
+      <ul class="stats">
+  <li class="categories">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/categories/git/">git</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/productivity/">productivity</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/bash/">bash</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
+        
+      
+    
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/tags/git/">git</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/productivity/">productivity</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
+        
+      
+    
+    </ul>
+  </li>
+</ul>
+
+    </footer>
+  </article>
+  
+  <article class="post">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </article>
+
+
+
+
+  <div class="pagination">
+  
+    <a href="/post/being-productive-with-kubectl/" class="button"><div class="previous"><div>Being Productive with Kubectl</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/post/being-productive-with-git/">Being Productive with Git</a></h2>
+          <time class="published" datetime="">August 16, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/post/being-productive-with-kubectl/">Being Productive with Kubectl</a></h2>
+          <time class="published" datetime="">August 2, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/post/how-to-backup-and-restore-prometheus/">How to backup and restore Prometheus?</a></h2>
+          <time class="published" datetime="">July 31, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/post/book-review-getting-things-done/">Book Review: Getting Things Done</a></h2>
+          <time class="published" datetime="">July 30, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/post/framework-for-scripts-and-binaries/">Framework for managing random scripts and binaries</a></h2>
+          <time class="published" datetime="">July 18, 2020</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          <li>
+            
+              <a href="/categories/kubernetes/">kubernetes<span class="count">20</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/notes/">notes<span class="count">18</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/security/">security<span class="count">8</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/event_report/">event_report<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/docker/">docker<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/golang/">golang<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/host/">host<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/packaging/">packaging<span class="count">4</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/bash/">bash<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/book-review/">book-review<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/containers/">containers<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/kompose/">kompose<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/non-tech/">non-tech<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/openshift/">openshift<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/productivity/">productivity<span class="count">3</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/container/">container<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/fedora/">fedora<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/git/">git<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/ide/">ide<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/minikube/">minikube<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/monitoring/">monitoring<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/programming/">programming<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/prometheus/">prometheus<span class="count">2</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/backup/">backup<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/centos/">centos<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/certs/">certs<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/cka/">cka<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/desktop/">desktop<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/etcd/">etcd<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/gaming/">gaming<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/gnome/">gnome<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/https/">https<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/linux/">linux<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/project_management/">project_management<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/selinux/">selinux<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/talks/">talks<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/vagrant/">vagrant<span class="count">1</span></a>
+            
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I am a Software Engineer at Kinvolk, working on various tooling around container technology like Docker, Kubernetes.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        Suraj Deshmukh
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.74.3' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.261856d9ecb177d8b2fc81645e7ed8af5e09fd97f1f608692a6a18d0337505bb.js" integrity="sha256-JhhW2eyxd9iy/IFkXn7Yr14J/Zfx9ghpKmoY0DN1Bbs="></script>
+    <script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-97006720-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>
