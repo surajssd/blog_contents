@@ -12,7 +12,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/kubernetes/" />
-<meta property="og:updated_time" content="2020-08-02T16:00:51+05:30" />
+<meta property="og:updated_time" content="2020-08-22T21:00:51+05:30" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="kubernetes"/>
 <meta name="twitter:description" content=""/>
@@ -192,6 +192,66 @@
       <main id="site-main">
         
   
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/post/psp-on-existing-cluster/">PodSecurityPolicy on existing Kubernetes clusters</a></h2>
+    
+    
+      <p>Burnt by enabling PSPs on existing Kubernetes and wondering why everything still works</p>
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2018-10-23 00:00:51 &#43;0530 IST">
+      October 23, 2018
+    </time>
+    <span class="author">Suraj Deshmukh</span>
+    
+      <p>2 minute read</p>
+    
+  </div>
+</header>
+
+  
+
+  
+  <p>I enabled <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/">PodSecurityPolicy</a> on a minikube cluster by appending <code>PodSecurityPolicy</code> to the apiserver flag in minikube like this:</p>
+  <footer>
+    <a href="/post/psp-on-existing-cluster/" class="button big">Read more</a>
+    <ul class="stats">
+  <li class="categories">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+      
+    
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+      
+    
+    </ul>
+  </li>
+</ul>
+
+  </footer>
+</article>
+
   
     <article class="post">
   <header>
@@ -758,73 +818,6 @@ download a Container image that is available in internally hosted private contai
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/static-pods/">Static Pods using Kubelet on Fedora</a></h2>
-    
-    
-      <p>Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;</p>
-    
-  </div>
-  <div class="meta">
-    <time class="published" datetime="2017-09-23 13:10:14 &#43;0530 IST">
-      September 23, 2017
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>2 minute read</p>
-    
-  </div>
-</header>
-
-  
-
-  
-  <p>I wanted to try out <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial"><em>Standalone Kubelet Tutorial</em></a>
-of <a href="https://twitter.com/kelseyhightower"><strong>Kelsey Hightower</strong></a> by myself but I could not
-follow it as it is, because it was firstly on <a href="https://cloud.google.com/compute/">GCE</a> and
-secondly it uses <a href="https://en.wikipedia.org/wiki/Container_Linux_by_CoreOS">CoreOS</a>,
-but since I am very familiar to <a href="https://en.wikipedia.org/wiki/Fedora_(operating_system)">Fedora</a>
-I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine
-use <a href="https://en.wikipedia.org/wiki/Vagrant_(software)">Vagrant</a>. I have used Vagrantfile
-available <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/fedora/Vagrantfile">here</a>.</p>
-  <footer>
-    <a href="/post/static-pods/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-      
-    
-    </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
-      
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/openshift/">openshift</a></li>
-        
-      
-    
-    </ul>
-  </li>
-</ul>
-
-  </footer>
-</article>
-
-  
   
 <div class="pagination">
   
@@ -843,6 +836,17 @@ available <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/
       <header>
         <h1>Recent posts</h1>
       </header>
+      
+      <article class="mini-post">
+        <section>
+          
+
+        </section>
+        <header>
+          <h2><a href="/post/use-configmap-for-scripts/">Use Configmap for Scripts</a></h2>
+          <time class="published" datetime="">August 22, 2020</time>
+        </header>
+      </article>
       
       <article class="mini-post">
         <section>
@@ -888,17 +892,6 @@ available <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/
         </header>
       </article>
       
-      <article class="mini-post">
-        <section>
-          
-
-        </section>
-        <header>
-          <h2><a href="/post/framework-for-scripts-and-binaries/">Framework for managing random scripts and binaries</a></h2>
-          <time class="published" datetime="">July 18, 2020</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See more</a>
@@ -920,12 +913,12 @@ available <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/
           
           <li>
             
-              <a href="/categories/kubernetes/">kubernetes<span class="count">20</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">21</span></a>
             
           
           <li>
             
-              <a href="/categories/notes/">notes<span class="count">18</span></a>
+              <a href="/categories/notes/">notes<span class="count">19</span></a>
             
           
           <li>
@@ -936,6 +929,11 @@ available <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/
           <li>
             
               <a href="/categories/event_report/">event_report<span class="count">5</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/bash/">bash<span class="count">4</span></a>
             
           
           <li>
@@ -956,11 +954,6 @@ available <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/
           <li>
             
               <a href="/categories/packaging/">packaging<span class="count">4</span></a>
-            
-          
-          <li>
-            
-              <a href="/categories/bash/">bash<span class="count">3</span></a>
             
           
           <li>
@@ -1056,6 +1049,11 @@ available <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/
           <li>
             
               <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
+            
+          
+          <li>
+            
+              <a href="/categories/configuration/">configuration<span class="count">1</span></a>
             
           
           <li>
