@@ -8,6 +8,8 @@ title = "rpm Notes"
 
 +++
 
+This post will get you through all the steps needed for doing RPM packaging.
+
 ## Setup of the system for building rpms
 
 ```bash

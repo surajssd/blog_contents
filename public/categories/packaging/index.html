@@ -283,26 +283,7 @@
   
 
   
-  <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ dnf -y install fedora-packager fedora-review
-$ sudo usermod -a -G mock vagrant
-$ fedora-packager-setup
-$ kinit surajd@FEDORAPROJECT.ORG
-</code></pre></div><h2 id="my-notes">My Notes</h2>
-<ul>
-<li>Start reading from: <a href="https://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/Packagers_Guide/index.html">Fedora packager&rsquo;s guide</a></li>
-<li>Some macros come from <code>redhat-rpm-config</code> and <code>fedora-rpm-macros</code>.</li>
-</ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch
-</code></pre></div><ul>
-<li>To see all macros on the system:</li>
-</ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpm --showrc
-</code></pre></div><ul>
-<li>Koji - fedora build system</li>
-<li><code>fedora</code> uses <code>fedpkg</code> for doing builds, while <code>rpmbuild</code> is for <code>CentOS</code></li>
-<li>To get general info about the package</li>
-</ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpm&hellip;</code></pre></div>
+  <p>This post will get you through all the steps needed for doing RPM packaging.</p>
   <footer>
     <a href="/post/rpm-notes/" class="button big">Read more</a>
     <ul class="stats">
