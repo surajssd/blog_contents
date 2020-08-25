@@ -613,5 +613,14 @@ docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
 # Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.</description>
     </item>
     
+    <item>
+      <title>First post</title>
+      <link>https://suraj.io/post/first-post/</link>
+      <pubDate>Mon, 13 Mar 2017 00:31:57 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/first-post/</guid>
+      <description>This is the new home for my blog. I use to write on wordpress before. You can find the older blog at https://deshmukhsuraj.wordpress.com. But I wanted to have my own domain and wordpress was charging exorbitantly to connect a custom domain to wordpress, so I just ditched it and started writing here. This is much more convenient.</description>
+    </item>
+    
   </channel>
 </rss>
