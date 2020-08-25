@@ -20,7 +20,7 @@ worker-2   Ready     <none>    1h        v1.11.2   192.168.199.22   <none>      
 Now to add a new node to this cluster you will need to bring up a VM, for this just use following `Vagrantfile`.
 
 ```bash
-$ cat Vagrantfile 
+$ cat Vagrantfile
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
@@ -100,7 +100,7 @@ Some of the configuration are same as other nodes which can be copied from other
 
 Following steps here help you re-create them if you can't access those from other nodes, follow them from [here](https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L114-L186):
 
-```bash
+```
 # generate the 99-loopback.conf common for all the workers, can be copied
 cat > 99-loopback.conf <<EOF
 {
@@ -185,7 +185,7 @@ EOF
 
 * The `cri-o` daemon's systemd service file.
 
-```bash
+```
 # generate the service file for the crio daemon, specific to node
 cat > ${hostname}-crio.service <<EOF
 [Unit]
@@ -268,7 +268,7 @@ kubectl config use-context default --kubeconfig="${hostname}.kubeconfig"
 
 * Now create `kubelet` systemd service file:
 
-```bash
+```
 cat > ${hostname}-kubelet.service <<EOF
 [Unit]
 Description=Kubernetes Kubelet

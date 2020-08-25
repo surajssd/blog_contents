@@ -17,7 +17,7 @@ So if you are following [Kubernetes the Hard Way](https://github.com/kelseyhight
 
 Add this flag `--enable-bootstrap-token-auth=true` to your `kube-apiserver` service file. In the end your service file should look like following:
 
-```bash
+```
 cat <<EOF | sudo tee /etc/systemd/system/kube-apiserver.service
 [Unit]
 Description=Kubernetes API Server
@@ -67,7 +67,7 @@ EOF
 
 Add following flag `--controllers=*,bootstrapsigner,tokencleaner` to the controller manager service file. So service file should look like following:
 
-```bash
+```
 cat <<EOF | sudo tee /etc/systemd/system/kube-controller-manager.service
 [Unit]
 Description=Kubernetes Controller Manager
@@ -102,7 +102,7 @@ The bootstrap token that we are using to setup is `07401b.f395accd246ae52d`(You 
 
 Create following secret which has certain requirements. The name of the secret should of the format `bootstrap-token-<token public id>` and should be available in `kube-system` namespace.
 
-```bash
+```
 cat <<EOF | kubectl apply --kubeconfig admin.kubeconfig -f -
 apiVersion: v1
 kind: Secret
@@ -147,13 +147,13 @@ kubectl create clusterrolebinding node-autoapprove-certificate-rotation \
 
 # Worker node changes
 
-## Kubelet 
+## Kubelet
 
 Add this flag `--bootstrap-kubeconfig`, it is a path to kubeconfig which we will generate shortly, it contains bootstrap token and information to talk to the `kube-apiserver`. And also you don't need to provide `--kubeconfig` but provide a path to it, this will be auto-generated and saved at that path.
 
 Your kubelet service file should look like following:
 
-```bash
+```
 cat <<EOF | sudo tee /etc/systemd/system/kubelet.service
 [Unit]
 Description=Kubernetes Kubelet
@@ -182,7 +182,7 @@ EOF
 
 Now changes in kubelet configuration file
 
-```bash
+```
 cat <<EOF | sudo tee /var/lib/kubelet/kubelet-config.yaml
 kind: KubeletConfiguration
 apiVersion: kubelet.config.k8s.io/v1beta1
