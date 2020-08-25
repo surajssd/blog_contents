@@ -25,7 +25,9 @@
 <meta name="twitter:title" content="Adding new worker to existing Kubernetes cluster"/>
 <meta name="twitter:description" content="Step by step guide to add new node"/>
 <meta name="twitter:site" content="@surajd_"/>
-<link rel="stylesheet" href="/css/bundle.min.759e3848ea529eef056dab665b241e2af569e601ab80f68f8d4a4d002a155dd4.css" integrity="sha256-dZ44SOpSnu8FbatmWyQeKvVp5gGrgPaPjUpNACoVXdQ="><link rel="stylesheet" href="/css/add-on.css">
+
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -36,9 +38,7 @@
     <h1 class="nav-title">
       <a href="/" class="nav">
         
-          
-            post
-          
+          Adding new worker to existing Kubernetes cluster
         
       </a>
     </h1>
@@ -46,34 +46,26 @@
       
         
           
-          
-            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
-          
+          <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
         
       
         
           
-          
-            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
-          
+          <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
         
       
         
           
-          
-            <a href="/post/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
-          
+          <a href="/post/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
         
       
         
           
-          
-            <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
-          
+          <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
         
       
-      <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
-      <a href="#search-input" class="nav search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
     </menu>
     <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
     <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
@@ -101,31 +93,31 @@
   
     
     <a href="//twitter.com/share?text=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster&amp;url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+        <p>Twitter</p>
       </a>
   
 
   
     <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&amp;title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" rel="noopener" class="nav share-btn reddit">
-          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+          <p>Reddit</p>
         </a>
   
 
   
         <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&amp;title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" rel="noopener" class="nav share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+            <p>LinkedIn</p>
           </a>
   
 
   
       <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
-        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        <p>Facebook</p>
         </a>
   
 
   
         <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+          <p>Email</p>
         </a>
   
 
@@ -136,7 +128,7 @@
 
     <div id="wrapper">
       <section id="site-intro" >
-  <a href="/"><img src="https://github.com/surajssd.png" class="square" width="" alt="Suraj Deshmukh" /></a>
+  <a href="/"><img src="https://github.com/surajssd.png" class="square" width="100" alt="Suraj Deshmukh" /></a>
   <header>
     <h1>Blog</h1>
   </header>
@@ -208,17 +200,13 @@
     
   </div>
   <div class="meta">
-    <time class="published" datetime="2018-09-23 01:00:51 &#43;0530 IST">
-      September 23, 2018
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>5 minute read</p>
-    
+    <time datetime="2018-09-23 01:00:51 &#43;0530 IST">September 23, 2018</time>
+    <p>Suraj Deshmukh</p>
+    <p>5-Minute Read</p>
   </div>
 </header>
 
-    <section id="socnet-share">
+    <div id="socnet-share">
       
 
 
@@ -227,39 +215,38 @@
   
     
     <a href="//twitter.com/share?text=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster&amp;url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+        <p>Twitter</p>
       </a>
   
 
   
     <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&amp;title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" rel="noopener" class="nav share-btn reddit">
-          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+          <p>Reddit</p>
         </a>
   
 
   
         <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f&amp;title=Adding%20new%20worker%20to%20existing%20Kubernetes%20cluster" target="_blank" rel="noopener" class="nav share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+            <p>LinkedIn</p>
           </a>
   
 
   
       <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
-        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        <p>Facebook</p>
         </a>
   
 
   
         <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2fadd-new-k8s-node-manually%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+          <p>Email</p>
         </a>
   
 
 
-    </section>
-    
-
+    </div>
     <div class="content">
+      
       <p>To setup a multi-node Kubernetes cluster just run <a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant#single-script">this script</a> and you will have a cluster with 3 masters and 3 workers.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get nodes -o wide
 NAME       STATUS    ROLES     AGE       VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
@@ -267,7 +254,7 @@ worker-0   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.20   &lt;no
 worker-1   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
 worker-2   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.22   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
 </code></pre></div><p>Now to add a new node to this cluster you will need to bring up a VM, for this just use following <code>Vagrantfile</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat Vagrantfile 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat Vagrantfile
 <span style="color:#75715e"># -*- mode: ruby -*-</span>
 <span style="color:#75715e"># vi: set ft=ruby :</span>
 Vagrant.configure<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;2&#34;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">do</span> |config|
@@ -328,103 +315,103 @@ mv -v cfssljson_linux-amd64 /usr/local/bin/cfssljson
 <li><code>/etc/systemd/system/kube-proxy.service</code></li>
 </ul>
 <p>Following steps here help you re-create them if you can&rsquo;t access those from other nodes, follow them from <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L114-L186">here</a>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># generate the 99-loopback.conf common for all the workers, can be copied</span>
-cat &gt; 99-loopback.conf <span style="color:#e6db74">&lt;&lt;EOF
-</span><span style="color:#e6db74">{
-</span><span style="color:#e6db74">    &#34;cniVersion&#34;: &#34;0.3.1&#34;,
-</span><span style="color:#e6db74">    &#34;type&#34;: &#34;loopback&#34;
-</span><span style="color:#e6db74">}
-</span><span style="color:#e6db74">EOF</span>
+<pre><code># generate the 99-loopback.conf common for all the workers, can be copied
+cat &gt; 99-loopback.conf &lt;&lt;EOF
+{
+    &quot;cniVersion&quot;: &quot;0.3.1&quot;,
+    &quot;type&quot;: &quot;loopback&quot;
+}
+EOF
 
-<span style="color:#75715e"># generate the kube-proxy cert common for all the workers, can be copied</span>
-cat &gt; kube-proxy-csr.json <span style="color:#e6db74">&lt;&lt;EOF
-</span><span style="color:#e6db74">{
-</span><span style="color:#e6db74">  &#34;CN&#34;: &#34;system:kube-proxy&#34;,
-</span><span style="color:#e6db74">  &#34;key&#34;: {
-</span><span style="color:#e6db74">    &#34;algo&#34;: &#34;rsa&#34;,
-</span><span style="color:#e6db74">    &#34;size&#34;: 2048
-</span><span style="color:#e6db74">  },
-</span><span style="color:#e6db74">  &#34;names&#34;: [
-</span><span style="color:#e6db74">    {
-</span><span style="color:#e6db74">      &#34;C&#34;: &#34;US&#34;,
-</span><span style="color:#e6db74">      &#34;L&#34;: &#34;Portland&#34;,
-</span><span style="color:#e6db74">      &#34;O&#34;: &#34;system:node-proxier&#34;,
-</span><span style="color:#e6db74">      &#34;OU&#34;: &#34;Kubernetes The Hard Way&#34;,
-</span><span style="color:#e6db74">      &#34;ST&#34;: &#34;Oregon&#34;
-</span><span style="color:#e6db74">    }
-</span><span style="color:#e6db74">  ]
-</span><span style="color:#e6db74">}
-</span><span style="color:#e6db74">EOF</span>
-
-
-cfssl gencert <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -ca<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>capem<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -ca-key<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>cakeypem<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -config<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>caconfig<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  -profile<span style="color:#f92672">=</span>kubernetes <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  kube-proxy-csr.json | cfssljson -bare kube-proxy
+# generate the kube-proxy cert common for all the workers, can be copied
+cat &gt; kube-proxy-csr.json &lt;&lt;EOF
+{
+  &quot;CN&quot;: &quot;system:kube-proxy&quot;,
+  &quot;key&quot;: {
+    &quot;algo&quot;: &quot;rsa&quot;,
+    &quot;size&quot;: 2048
+  },
+  &quot;names&quot;: [
+    {
+      &quot;C&quot;: &quot;US&quot;,
+      &quot;L&quot;: &quot;Portland&quot;,
+      &quot;O&quot;: &quot;system:node-proxier&quot;,
+      &quot;OU&quot;: &quot;Kubernetes The Hard Way&quot;,
+      &quot;ST&quot;: &quot;Oregon&quot;
+    }
+  ]
+}
+EOF
 
 
-kubectl config set-cluster kubernetes-the-hard-way <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --certificate-authority<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>capem<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --embed-certs<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --server<span style="color:#f92672">=</span>https://192.168.199.10:6443 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kube-proxy.kubeconfig&#34;</span>
+cfssl gencert \
+  -ca=${capem} \
+  -ca-key=${cakeypem} \
+  -config=${caconfig} \
+  -profile=kubernetes \
+  kube-proxy-csr.json | cfssljson -bare kube-proxy
 
 
-kubectl config set-credentials kube-proxy <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --client-certificate<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kube-proxy.pem&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --client-key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kube-proxy-key.pem&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --embed-certs<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kube-proxy.kubeconfig&#34;</span>
+kubectl config set-cluster kubernetes-the-hard-way \
+  --certificate-authority=${capem} \
+  --embed-certs=true \
+  --server=https://192.168.199.10:6443 \
+  --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
 
 
-kubectl config set-context default <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --cluster<span style="color:#f92672">=</span>kubernetes-the-hard-way <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --user<span style="color:#f92672">=</span>kube-proxy <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kube-proxy.kubeconfig&#34;</span>
+kubectl config set-credentials kube-proxy \
+  --client-certificate=&quot;kube-proxy.pem&quot; \
+  --client-key=&quot;kube-proxy-key.pem&quot; \
+  --embed-certs=true \
+  --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
 
 
-kubectl config use-context default --kubeconfig<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kube-proxy.kubeconfig&#34;</span>
+kubectl config set-context default \
+  --cluster=kubernetes-the-hard-way \
+  --user=kube-proxy \
+  --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
 
 
-<span style="color:#75715e"># generate the kube-proxy.service common for all the workers, can be copied</span>
-cat &gt; kube-proxy.service <span style="color:#e6db74">&lt;&lt;EOF
-</span><span style="color:#e6db74">[Unit]
-</span><span style="color:#e6db74">Description=Kubernetes Kube Proxy
-</span><span style="color:#e6db74">Documentation=https://github.com/GoogleCloudPlatform/kubernetes
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">[Service]
-</span><span style="color:#e6db74">ExecStart=/usr/local/bin/kube-proxy \\
-</span><span style="color:#e6db74">  --cluster-cidr=10.200.0.0/16 \\
-</span><span style="color:#e6db74">  --kubeconfig=/var/lib/kube-proxy/kubeconfig \\
-</span><span style="color:#e6db74">  --proxy-mode=iptables \\
-</span><span style="color:#e6db74">  --v=2
-</span><span style="color:#e6db74">Restart=on-failure
-</span><span style="color:#e6db74">RestartSec=5
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">[Install]
-</span><span style="color:#e6db74">WantedBy=multi-user.target
-</span><span style="color:#e6db74">EOF</span>
-</code></pre></div><h3 id="configuration-specific-to-workers">Configuration specific to workers</h3>
+kubectl config use-context default --kubeconfig=&quot;kube-proxy.kubeconfig&quot;
+
+
+# generate the kube-proxy.service common for all the workers, can be copied
+cat &gt; kube-proxy.service &lt;&lt;EOF
+[Unit]
+Description=Kubernetes Kube Proxy
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+
+[Service]
+ExecStart=/usr/local/bin/kube-proxy \\
+  --cluster-cidr=10.200.0.0/16 \\
+  --kubeconfig=/var/lib/kube-proxy/kubeconfig \\
+  --proxy-mode=iptables \\
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre><h3 id="configuration-specific-to-workers">Configuration specific to workers</h3>
 <ul>
 <li>The <code>cri-o</code> daemon&rsquo;s systemd service file.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># generate the service file for the crio daemon, specific to node</span>
-cat &gt; <span style="color:#e6db74">${</span>hostname<span style="color:#e6db74">}</span>-crio.service <span style="color:#e6db74">&lt;&lt;EOF
-</span><span style="color:#e6db74">[Unit]
-</span><span style="color:#e6db74">Description=CRI-O daemon
-</span><span style="color:#e6db74">Documentation=https://github.com/kubernetes-incubator/cri-o
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">[Service]
-</span><span style="color:#e6db74">ExecStart=/usr/local/bin/crio --stream-address ${ipaddr} --runtime /usr/local/bin/runc --registry docker.io
-</span><span style="color:#e6db74">Restart=always
-</span><span style="color:#e6db74">RestartSec=10s
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">[Install]
-</span><span style="color:#e6db74">WantedBy=multi-user.target
-</span><span style="color:#e6db74">EOF</span>
-</code></pre></div><p>Here IP address the daemon should bing to is to be specified and the only change.</p>
+<pre><code># generate the service file for the crio daemon, specific to node
+cat &gt; ${hostname}-crio.service &lt;&lt;EOF
+[Unit]
+Description=CRI-O daemon
+Documentation=https://github.com/kubernetes-incubator/cri-o
+
+[Service]
+ExecStart=/usr/local/bin/crio --stream-address ${ipaddr} --runtime /usr/local/bin/runc --registry docker.io
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre><p>Here IP address the daemon should bing to is to be specified and the only change.</p>
 <ul>
 <li>Generating <code>csr</code> file:</li>
 </ul>
@@ -484,40 +471,40 @@ kubectl config use-context default --kubeconfig<span style="color:#f92672">=</sp
 </code></pre></div><ul>
 <li>Now create <code>kubelet</code> systemd service file:</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat &gt; <span style="color:#e6db74">${</span>hostname<span style="color:#e6db74">}</span>-kubelet.service <span style="color:#e6db74">&lt;&lt;EOF
-</span><span style="color:#e6db74">[Unit]
-</span><span style="color:#e6db74">Description=Kubernetes Kubelet
-</span><span style="color:#e6db74">Documentation=https://github.com/GoogleCloudPlatform/kubernetes
-</span><span style="color:#e6db74">After=crio.service
-</span><span style="color:#e6db74">Requires=crio.service
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">[Service]
-</span><span style="color:#e6db74">ExecStart=/usr/local/bin/kubelet \\
-</span><span style="color:#e6db74">  --anonymous-auth=false \\
-</span><span style="color:#e6db74">  --authorization-mode=Webhook \\
-</span><span style="color:#e6db74">  --client-ca-file=/var/lib/kubernetes/ca.pem \\
-</span><span style="color:#e6db74">  --allow-privileged=true \\
-</span><span style="color:#e6db74">  --cluster-dns=10.32.0.10 \\
-</span><span style="color:#e6db74">  --cluster-domain=cluster.local \\
-</span><span style="color:#e6db74">  --container-runtime=remote \\
-</span><span style="color:#e6db74">  --container-runtime-endpoint=unix:///var/run/crio/crio.sock \\
-</span><span style="color:#e6db74">  --image-pull-progress-deadline=2m \\
-</span><span style="color:#e6db74">  --image-service-endpoint=unix:///var/run/crio/crio.sock \\
-</span><span style="color:#e6db74">  --kubeconfig=/var/lib/kubelet/kubeconfig \\
-</span><span style="color:#e6db74">  --network-plugin=cni \\
-</span><span style="color:#e6db74">  --register-node=true \\
-</span><span style="color:#e6db74">  --runtime-request-timeout=10m \\
-</span><span style="color:#e6db74">  --tls-cert-file=/var/lib/kubelet/${hostname}.pem \\
-</span><span style="color:#e6db74">  --tls-private-key-file=/var/lib/kubelet/${hostname}-key.pem \\
-</span><span style="color:#e6db74">  --node-ip=${ipaddr} \\
-</span><span style="color:#e6db74">  --v=2
-</span><span style="color:#e6db74">Restart=on-failure
-</span><span style="color:#e6db74">RestartSec=5
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">[Install]
-</span><span style="color:#e6db74">WantedBy=multi-user.target
-</span><span style="color:#e6db74">EOF</span>
-</code></pre></div><p>In above service file the things that changes are two flags: <code>--tls-cert-file</code> and <code>--tls-private-key-file</code>. And another flag value that is different from other nodes is <code>--node-ip</code>. Rest everything is same with other nodes. So just change the path to point to the right cert file and key file.</p>
+<pre><code>cat &gt; ${hostname}-kubelet.service &lt;&lt;EOF
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=crio.service
+Requires=crio.service
+
+[Service]
+ExecStart=/usr/local/bin/kubelet \\
+  --anonymous-auth=false \\
+  --authorization-mode=Webhook \\
+  --client-ca-file=/var/lib/kubernetes/ca.pem \\
+  --allow-privileged=true \\
+  --cluster-dns=10.32.0.10 \\
+  --cluster-domain=cluster.local \\
+  --container-runtime=remote \\
+  --container-runtime-endpoint=unix:///var/run/crio/crio.sock \\
+  --image-pull-progress-deadline=2m \\
+  --image-service-endpoint=unix:///var/run/crio/crio.sock \\
+  --kubeconfig=/var/lib/kubelet/kubeconfig \\
+  --network-plugin=cni \\
+  --register-node=true \\
+  --runtime-request-timeout=10m \\
+  --tls-cert-file=/var/lib/kubelet/${hostname}.pem \\
+  --tls-private-key-file=/var/lib/kubelet/${hostname}-key.pem \\
+  --node-ip=${ipaddr} \\
+  --v=2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre><p>In above service file the things that changes are two flags: <code>--tls-cert-file</code> and <code>--tls-private-key-file</code>. And another flag value that is different from other nodes is <code>--node-ip</code>. Rest everything is same with other nodes. So just change the path to point to the right cert file and key file.</p>
 <h1 id="install-configurations">Install configurations</h1>
 <p>Once all those configs are generated, copy all those to the appropriate location.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># install above generated config</span>
@@ -546,10 +533,9 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
 
     </div>
     <footer>
-      <ul class="stats">
-  <li class="categories">
-    <ul>
-    
+      <div class="stats">
+  
+    <ul class="categories">
       
         
           <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
@@ -557,12 +543,10 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
           <li><a class="article-terms-link" href="/categories/openshift/">openshift</a></li>
         
       
-    
     </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
+  
+  
+    <ul class="tags">
       
         
           <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
@@ -572,14 +556,14 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
           <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
         
       
-    
     </ul>
-  </li>
-</ul>
+  
+</div>
 
     </footer>
   </article>
   
+    
   <article class="post">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
@@ -606,82 +590,67 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
 
 
 
+  
   <div class="pagination">
-  
-    <a href="/post/single-node-k8s-fedora-selinux/" class="button"><div class="previous"><div>Single node Kubernetes Cluster on Fedora with SELinux enabled</div></div></a>
-  
-  
-    <a href="/post/add-new-k8s-node-cert-rotate/" class="button"><div class="next"><div>Add new Node to k8s cluster with cert rotation</div></div></a>
-  
-</div>
-
+    
+      <a href="/post/add-new-k8s-node-cert-rotate/" class="button left"><span>Add new Node to k8s cluster with cert rotation</span></a>
+    
+    
+      <a href="/post/single-node-k8s-fedora-selinux/" class="button right"><span>Single node Kubernetes Cluster on Fedora with SELinux enabled</span></a>
+    
+  </div>
 
       </main>
       <section id="site-sidebar">
   
     <section id="recent-posts">
       <header>
-        <h1>Recent posts</h1>
+        <h1>Recent Posts</h1>
       </header>
       
       <article class="mini-post">
-        <section>
           
-
-        </section>
         <header>
           <h2><a href="/post/use-configmap-for-scripts/">Use Configmap for Scripts</a></h2>
-          <time class="published" datetime="">August 22, 2020</time>
+          <time class="published" datetime="2020-08-22 21:00:51 &#43;0530 IST">August 22, 2020</time>
         </header>
       </article>
       
       <article class="mini-post">
-        <section>
           
-
-        </section>
         <header>
           <h2><a href="/post/being-productive-with-git/">Being Productive with Git</a></h2>
-          <time class="published" datetime="">August 16, 2020</time>
+          <time class="published" datetime="2020-08-16 22:00:51 &#43;0530 IST">August 16, 2020</time>
         </header>
       </article>
       
       <article class="mini-post">
-        <section>
           
-
-        </section>
         <header>
           <h2><a href="/post/being-productive-with-kubectl/">Being Productive with Kubectl</a></h2>
-          <time class="published" datetime="">August 2, 2020</time>
+          <time class="published" datetime="2020-08-02 16:00:51 &#43;0530 IST">August 2, 2020</time>
         </header>
       </article>
       
       <article class="mini-post">
-        <section>
           
-
-        </section>
         <header>
           <h2><a href="/post/how-to-backup-and-restore-prometheus/">How to backup and restore Prometheus?</a></h2>
-          <time class="published" datetime="">July 31, 2020</time>
+          <time class="published" datetime="2020-07-31 19:00:51 &#43;0530 IST">July 31, 2020</time>
         </header>
       </article>
       
       <article class="mini-post">
-        <section>
           
-
-        </section>
         <header>
           <h2><a href="/post/book-review-getting-things-done/">Book Review: Getting Things Done</a></h2>
-          <time class="published" datetime="">July 30, 2020</time>
+          <time class="published" datetime="2020-07-30 16:00:07 &#43;0530 IST">July 30, 2020</time>
         </header>
       </article>
       
       
         <footer>
-          <a href="/post/" class="button">See more</a>
+          <a href="/post/" class="button">See More</a>
         </footer>
       
     </section>
@@ -691,207 +660,127 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
     
       <section id="categories">
         <header>
-          <h1><a href="/categories">Categories</a></h1>
+          <h1><a href="/categories">categories</a></h1>
         </header>
         <ul>
           
-            
-          
           
           <li>
-            
               <a href="/categories/kubernetes/">kubernetes<span class="count">21</span></a>
-            
           
           <li>
-            
               <a href="/categories/notes/">notes<span class="count">19</span></a>
-            
           
           <li>
-            
               <a href="/categories/security/">security<span class="count">8</span></a>
-            
           
           <li>
-            
               <a href="/categories/event_report/">event_report<span class="count">5</span></a>
-            
           
           <li>
-            
               <a href="/categories/packaging/">packaging<span class="count">5</span></a>
-            
           
           <li>
-            
               <a href="/categories/bash/">bash<span class="count">4</span></a>
-            
           
           <li>
-            
               <a href="/categories/docker/">docker<span class="count">4</span></a>
-            
           
           <li>
-            
               <a href="/categories/golang/">golang<span class="count">4</span></a>
-            
           
           <li>
-            
               <a href="/categories/host/">host<span class="count">4</span></a>
-            
           
           <li>
-            
               <a href="/categories/book-review/">book-review<span class="count">3</span></a>
-            
           
           <li>
-            
               <a href="/categories/containers/">containers<span class="count">3</span></a>
-            
           
           <li>
-            
               <a href="/categories/kompose/">kompose<span class="count">3</span></a>
-            
           
           <li>
-            
               <a href="/categories/non-tech/">non-tech<span class="count">3</span></a>
-            
           
           <li>
-            
               <a href="/categories/openshift/">openshift<span class="count">3</span></a>
-            
           
           <li>
-            
               <a href="/categories/productivity/">productivity<span class="count">3</span></a>
-            
           
           <li>
-            
               <a href="/categories/container/">container<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/fedora/">fedora<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/git/">git<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/ide/">ide<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/minikube/">minikube<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/monitoring/">monitoring<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/programming/">programming<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/prometheus/">prometheus<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/backup/">backup<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/centos/">centos<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/certs/">certs<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/cka/">cka<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/configuration/">configuration<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/desktop/">desktop<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/etcd/">etcd<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/gaming/">gaming<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/gnome/">gnome<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/https/">https<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/linux/">linux<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/project_management/">project_management<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/selinux/">selinux<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/talks/">talks<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/vagrant/">vagrant<span class="count">1</span></a>
-            
           
           </li>
         </ul>
@@ -962,19 +851,16 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
       </ul>
   
   <p class="copyright">
-    
-      &copy; 2020
-      
-        Suraj Deshmukh
-      
-    . <br>
+    © 2020 Suraj Deshmukh
+      <br>
     Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.74.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.261856d9ecb177d8b2fc81645e7ed8af5e09fd97f1f608692a6a18d0337505bb.js" integrity="sha256-JhhW2eyxd9iy/IFkXn7Yr14J/Zfx9ghpKmoY0DN1Bbs="></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/go.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.5955090a3253deadcd66071270aa2274dabe15ffc97094cec252d87b6f3f00bf.js" integrity="sha256-WVUJCjJT3q3NZgcScKoidNq&#43;Ff/JcJTOwlLYe28/AL8="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

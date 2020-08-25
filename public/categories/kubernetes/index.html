@@ -17,7 +17,9 @@
 <meta name="twitter:title" content="kubernetes"/>
 <meta name="twitter:description" content=""/>
 <meta name="twitter:site" content="@surajd_"/>
-<link rel="stylesheet" href="/css/bundle.min.759e3848ea529eef056dab665b241e2af569e601ab80f68f8d4a4d002a155dd4.css" integrity="sha256-dZ44SOpSnu8FbatmWyQeKvVp5gGrgPaPjUpNACoVXdQ="><link rel="stylesheet" href="/css/add-on.css">
+
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -28,9 +30,7 @@
     <h1 class="nav-title">
       <a href="/" class="nav">
         
-          
-            Categories
-          
+          categories
         
       </a>
     </h1>
@@ -38,34 +38,26 @@
       
         
           
-          
-            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
-          
+          <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
         
       
         
           
-          
-            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
-          
+          <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
         
       
         
           
-          
-            <a href="/post/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
-          
+          <a href="/post/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
         
       
         
           
-          
-            <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
-          
+          <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
         
       
-      <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
-      <a href="#search-input" class="nav search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
     </menu>
     <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
     <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
@@ -93,31 +85,31 @@
   
     
     <a href="//twitter.com/share?text=kubernetes&amp;url=https%3a%2f%2fsuraj.io%2fcategories%2fkubernetes%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
-        <i class="fab fa-twitter"></i><p>&nbsp;Twitter</p>
+        <p>Twitter</p>
       </a>
   
 
   
     <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fcategories%2fkubernetes%2f&amp;title=kubernetes" target="_blank" rel="noopener" class="nav share-btn reddit">
-          <i class="fab fa-reddit-alien"></i><p>&nbsp;Reddit</p>
+          <p>Reddit</p>
         </a>
   
 
   
         <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fcategories%2fkubernetes%2f&amp;title=kubernetes" target="_blank" rel="noopener" class="nav share-btn linkedin">
-            <i class="fab fa-linkedin"></i><p>&nbsp;LinkedIn</p>
+            <p>LinkedIn</p>
           </a>
   
 
   
       <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fcategories%2fkubernetes%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
-        <i class="fab fa-facebook"></i><p>&nbsp;Facebook</p>
+        <p>Facebook</p>
         </a>
   
 
   
         <a href="mailto:?subject=Check%20out%20this%20post%20by %7b%20%20%20%20%20%20%20%20map%5b%5d%7d&amp;body=https%3a%2f%2fsuraj.io%2fcategories%2fkubernetes%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
-          <i class="fas fa-envelope"></i><p>&nbsp;Email</p>
+          <p>Email</p>
         </a>
   
 
@@ -128,7 +120,7 @@
 
     <div id="wrapper">
       <section id="site-intro" >
-  <a href="/"><img src="https://github.com/surajssd.png" class="square" width="" alt="Suraj Deshmukh" /></a>
+  <a href="/"><img src="https://github.com/surajssd.png" class="square" width="100" alt="Suraj Deshmukh" /></a>
   <header>
     <h1>Blog</h1>
   </header>
@@ -204,26 +196,22 @@
     
   </div>
   <div class="meta">
-    <time class="published" datetime="2020-08-22 21:00:51 &#43;0530 IST">
-      August 22, 2020
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>6 minute read</p>
-    
+    <time datetime="2020-08-22 21:00:51 &#43;0530 IST">August 22, 2020</time>
+    <p>Suraj Deshmukh</p>
+    <p>6-Minute Read</p>
   </div>
 </header>
 
-  
-
-  
-  <p>We generally use some sort of scripts in application container images. They serve various purposes. Some scripts might do an initial setup before the application starts, others may have the whole logic of the container image, etc. Whatever the goal may be the general pattern is to copy the script into the container image, build the image and then the script is available when you consume the image.</p>
-  <footer>
-    <a href="/post/use-configmap-for-scripts/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
+  <div class="content">
     
+    
+    <p>We generally use some sort of scripts in application container images. They serve various purposes. Some scripts might do an initial setup before the application starts, others may have the whole logic of the container image, etc. Whatever the goal may be the general pattern is to copy the script into the container image, build the image and then the script is available when you consume the image.</p>
+  </div>
+  <footer>
+    <a href="/post/use-configmap-for-scripts/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
       
         
           <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
@@ -235,12 +223,10 @@
           <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
         
       
-    
     </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
+  
+  
+    <ul class="tags">
       
         
           <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
@@ -250,10 +236,9 @@
           <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
         
       
-    
     </ul>
-  </li>
-</ul>
+  
+</div>
 
   </footer>
 </article>
@@ -270,26 +255,22 @@
     
   </div>
   <div class="meta">
-    <time class="published" datetime="2020-08-02 16:00:51 &#43;0530 IST">
-      August 2, 2020
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>3 minute read</p>
-    
+    <time datetime="2020-08-02 16:00:51 &#43;0530 IST">August 2, 2020</time>
+    <p>Suraj Deshmukh</p>
+    <p>3-Minute Read</p>
   </div>
 </header>
 
-  
-
-  
-  <p>This blog will showcase my productivity tips with <code>kubectl</code> . This does not venture into any plugins per se. But only using bash aliases to achieve it.</p>
-  <footer>
-    <a href="/post/being-productive-with-kubectl/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
+  <div class="content">
     
+    
+    <p>This blog will showcase my productivity tips with <code>kubectl</code> . This does not venture into any plugins per se. But only using bash aliases to achieve it.</p>
+  </div>
+  <footer>
+    <a href="/post/being-productive-with-kubectl/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
       
         
           <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
@@ -301,12 +282,10 @@
           <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
         
       
-    
     </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
+  
+  
+    <ul class="tags">
       
         
           <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
@@ -316,10 +295,9 @@
           <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
         
       
-    
     </ul>
-  </li>
-</ul>
+  
+</div>
 
   </footer>
 </article>
@@ -336,26 +314,22 @@
     
   </div>
   <div class="meta">
-    <time class="published" datetime="2020-07-31 19:00:51 &#43;0530 IST">
-      July 31, 2020
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>2 minute read</p>
-    
+    <time datetime="2020-07-31 19:00:51 &#43;0530 IST">July 31, 2020</time>
+    <p>Suraj Deshmukh</p>
+    <p>2-Minute Read</p>
   </div>
 </header>
 
-  
-
-  
-  <p>This blog will show you how to take a backup from a running Prometheus and restore it in some other Prometheus instance. You might ask why would you even want to do something like that? Well, sometimes you want the Prometheus metrics because they were collected for some particular purpose and you want to do some analysis later.</p>
-  <footer>
-    <a href="/post/how-to-backup-and-restore-prometheus/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
+  <div class="content">
     
+    
+    <p>This blog will show you how to take a backup from a running Prometheus and restore it in some other Prometheus instance. You might ask why would you even want to do something like that? Well, sometimes you want the Prometheus metrics because they were collected for some particular purpose and you want to do some analysis later.</p>
+  </div>
+  <footer>
+    <a href="/post/how-to-backup-and-restore-prometheus/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
       
         
           <li><a class="article-terms-link" href="/categories/prometheus/">prometheus</a></li>
@@ -369,12 +343,10 @@
           <li><a class="article-terms-link" href="/categories/monitoring/">monitoring</a></li>
         
       
-    
     </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
+  
+  
+    <ul class="tags">
       
         
           <li><a class="article-terms-link" href="/tags/prometheus/">prometheus</a></li>
@@ -388,10 +360,9 @@
           <li><a class="article-terms-link" href="/tags/monitoring/">monitoring</a></li>
         
       
-    
     </ul>
-  </li>
-</ul>
+  
+</div>
 
   </footer>
 </article>
@@ -408,26 +379,22 @@
     
   </div>
   <div class="meta">
-    <time class="published" datetime="2020-06-06 20:30:07 &#43;0530 IST">
-      June 6, 2020
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>4 minute read</p>
-    
+    <time datetime="2020-06-06 20:30:07 &#43;0530 IST">June 6, 2020</time>
+    <p>Suraj Deshmukh</p>
+    <p>4-Minute Read</p>
   </div>
 </header>
 
-  
-
-  
-  <p>For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.</p>
-  <footer>
-    <a href="/post/snoop-on-pod-traffic/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
+  <div class="content">
     
+    
+    <p>For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.</p>
+  </div>
+  <footer>
+    <a href="/post/snoop-on-pod-traffic/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
       
         
           <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
@@ -437,12 +404,10 @@
           <li><a class="article-terms-link" href="/categories/container/">container</a></li>
         
       
-    
     </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
+  
+  
+    <ul class="tags">
       
         
           <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
@@ -452,10 +417,9 @@
           <li><a class="article-terms-link" href="/tags/container/">container</a></li>
         
       
-    
     </ul>
-  </li>
-</ul>
+  
+</div>
 
   </footer>
 </article>
@@ -472,26 +436,22 @@
     
   </div>
   <div class="meta">
-    <time class="published" datetime="2020-04-14 11:57:07 &#43;0530 IST">
-      April 14, 2020
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>3 minute read</p>
-    
+    <time datetime="2020-04-14 11:57:07 &#43;0530 IST">April 14, 2020</time>
+    <p>Suraj Deshmukh</p>
+    <p>3-Minute Read</p>
   </div>
 </header>
 
-  
-
-  
-  <p><a href="https://en.wikipedia.org/wiki/Seccomp">Seccomp</a> helps us limit the system calls the process inside container can make. And <code>PodSecurityPolicy</code> is the way to enable it on pods in Kubernetes.</p>
-  <footer>
-    <a href="/post/seccomp-in-kube-state-metrics/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
+  <div class="content">
     
+    
+    <p><a href="https://en.wikipedia.org/wiki/Seccomp">Seccomp</a> helps us limit the system calls the process inside container can make. And <code>PodSecurityPolicy</code> is the way to enable it on pods in Kubernetes.</p>
+  </div>
+  <footer>
+    <a href="/post/seccomp-in-kube-state-metrics/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
       
         
           <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
@@ -499,12 +459,10 @@
           <li><a class="article-terms-link" href="/categories/security/">security</a></li>
         
       
-    
     </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
+  
+  
+    <ul class="tags">
       
         
           <li><a class="article-terms-link" href="/tags/seccomp/">seccomp</a></li>
@@ -514,10 +472,9 @@
           <li><a class="article-terms-link" href="/tags/security/">security</a></li>
         
       
-    
     </ul>
-  </li>
-</ul>
+  
+</div>
 
   </footer>
 </article>
@@ -534,26 +491,22 @@
     
   </div>
   <div class="meta">
-    <time class="published" datetime="2019-01-20 01:00:51 &#43;0530 IST">
-      January 20, 2019
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>3 minute read</p>
-    
+    <time datetime="2019-01-20 01:00:51 &#43;0530 IST">January 20, 2019</time>
+    <p>Suraj Deshmukh</p>
+    <p>3-Minute Read</p>
   </div>
 </header>
 
-  
-
-  
-  <p>If you want to provide extra flags to the <code>kube-apiserver</code> that runs inside minikube how do you do it? You can use the minikube&rsquo;s <code>--extra-config</code> flag with <code>apiserver.&lt;apiserver flag&gt;=&lt;value&gt;</code>, for e.g. if you want to enable <code>RBAC</code> authorization mode you do it as follows:</p>
-  <footer>
-    <a href="/post/apiserver-in-minikube-static-configs/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
+  <div class="content">
     
+    
+    <p>If you want to provide extra flags to the <code>kube-apiserver</code> that runs inside minikube how do you do it? You can use the minikube&rsquo;s <code>--extra-config</code> flag with <code>apiserver.&lt;apiserver flag&gt;=&lt;value&gt;</code>, for e.g. if you want to enable <code>RBAC</code> authorization mode you do it as follows:</p>
+  </div>
+  <footer>
+    <a href="/post/apiserver-in-minikube-static-configs/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
       
         
           <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
@@ -563,12 +516,10 @@
           <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
         
       
-    
     </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
+  
+  
+    <ul class="tags">
       
         
           <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
@@ -576,10 +527,9 @@
           <li><a class="article-terms-link" href="/tags/minikube/">minikube</a></li>
         
       
-    
     </ul>
-  </li>
-</ul>
+  
+</div>
 
   </footer>
 </article>
@@ -596,26 +546,22 @@
     
   </div>
   <div class="meta">
-    <time class="published" datetime="2019-01-14 01:00:51 &#43;0530 IST">
-      January 14, 2019
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>2 minute read</p>
-    
+    <time datetime="2019-01-14 01:00:51 &#43;0530 IST">January 14, 2019</time>
+    <p>Suraj Deshmukh</p>
+    <p>2-Minute Read</p>
   </div>
 </header>
 
-  
-
-  
-  <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using <code>emptyDir</code> volume mount using subpath. The official description goes as follows:</p>
-  <footer>
-    <a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
+  <div class="content">
     
+    
+    <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using <code>emptyDir</code> volume mount using subpath. The official description goes as follows:</p>
+  </div>
+  <footer>
+    <a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
       
         
           <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
@@ -625,12 +571,10 @@
           <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
         
       
-    
     </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
+  
+  
+    <ul class="tags">
       
         
           <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
@@ -640,10 +584,9 @@
           <li><a class="article-terms-link" href="/tags/security/">security</a></li>
         
       
-    
     </ul>
-  </li>
-</ul>
+  
+</div>
 
   </footer>
 </article>
@@ -660,37 +603,31 @@
     
   </div>
   <div class="meta">
-    <time class="published" datetime="2018-10-24 01:00:51 &#43;0530 IST">
-      October 24, 2018
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>4 minute read</p>
-    
+    <time datetime="2018-10-24 01:00:51 &#43;0530 IST">October 24, 2018</time>
+    <p>Suraj Deshmukh</p>
+    <p>4-Minute Read</p>
   </div>
 </header>
 
-  
-
-  
-  <p>Few days back I wrote a blog about <a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">adding new node to the cluster</a> using the static token file. The problem with that approach is that you need to restart <code>kube-apiserver</code> providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like <code>secrets</code>.</p>
-  <footer>
-    <a href="/post/add-new-k8s-node-bootstrap-token/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
+  <div class="content">
     
+    
+    <p>Few days back I wrote a blog about <a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">adding new node to the cluster</a> using the static token file. The problem with that approach is that you need to restart <code>kube-apiserver</code> providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like <code>secrets</code>.</p>
+  </div>
+  <footer>
+    <a href="/post/add-new-k8s-node-bootstrap-token/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
       
         
           <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
         
       
-    
     </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
+  
+  
+    <ul class="tags">
       
         
           <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
@@ -698,10 +635,9 @@
           <li><a class="article-terms-link" href="/tags/security/">security</a></li>
         
       
-    
     </ul>
-  </li>
-</ul>
+  
+</div>
 
   </footer>
 </article>
@@ -718,26 +654,22 @@
     
   </div>
   <div class="meta">
-    <time class="published" datetime="2018-10-23 00:00:51 &#43;0530 IST">
-      October 23, 2018
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>2 minute read</p>
-    
+    <time datetime="2018-10-23 00:00:51 &#43;0530 IST">October 23, 2018</time>
+    <p>Suraj Deshmukh</p>
+    <p>2-Minute Read</p>
   </div>
 </header>
 
-  
-
-  
-  <p>I enabled <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/">PodSecurityPolicy</a> on a minikube cluster by appending <code>PodSecurityPolicy</code> to the apiserver flag in minikube like this:</p>
-  <footer>
-    <a href="/post/psp-on-existing-cluster/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
+  <div class="content">
     
+    
+    <p>I enabled <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/">PodSecurityPolicy</a> on a minikube cluster by appending <code>PodSecurityPolicy</code> to the apiserver flag in minikube like this:</p>
+  </div>
+  <footer>
+    <a href="/post/psp-on-existing-cluster/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
       
         
           <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
@@ -745,12 +677,10 @@
           <li><a class="article-terms-link" href="/categories/security/">security</a></li>
         
       
-    
     </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
+  
+  
+    <ul class="tags">
       
         
           <li><a class="article-terms-link" href="/tags/security/">security</a></li>
@@ -758,10 +688,9 @@
           <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
         
       
-    
     </ul>
-  </li>
-</ul>
+  
+</div>
 
   </footer>
 </article>
@@ -778,26 +707,22 @@
     
   </div>
   <div class="meta">
-    <time class="published" datetime="2018-10-21 00:00:51 &#43;0530 IST">
-      October 21, 2018
-    </time>
-    <span class="author">Suraj Deshmukh</span>
-    
-      <p>4 minute read</p>
-    
+    <time datetime="2018-10-21 00:00:51 &#43;0530 IST">October 21, 2018</time>
+    <p>Suraj Deshmukh</p>
+    <p>4-Minute Read</p>
   </div>
 </header>
 
-  
-
-  
-  <p>I passed CKA exam with 92% marks on 19th October 2018.</p>
-  <footer>
-    <a href="/post/road-to-cka/" class="button big">Read more</a>
-    <ul class="stats">
-  <li class="categories">
-    <ul>
+  <div class="content">
     
+    
+    <p>I passed CKA exam with 92% marks on 19th October 2018.</p>
+  </div>
+  <footer>
+    <a href="/post/road-to-cka/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
       
         
           <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
@@ -805,12 +730,10 @@
           <li><a class="article-terms-link" href="/categories/cka/">cka</a></li>
         
       
-    
     </ul>
-  </li>
-  <li class="tags">
-    <ul>
-    
+  
+  
+    <ul class="tags">
       
         
           <li><a class="article-terms-link" href="/tags/cka/">cka</a></li>
@@ -818,90 +741,72 @@
           <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
         
       
-    
     </ul>
-  </li>
-</ul>
+  
+</div>
 
   </footer>
 </article>
 
   
-  
-<div class="pagination">
-  
-  
-    <a href="/categories/kubernetes/page/2/" class="button"><div class="next"><div>Next</div></div></a>
-  
-</div>
-
+  <div class="pagination">
+    
+    
+      <a href="/categories/kubernetes/page/2/" class="button right"><span>Next Page</span></a>
+    
+  </div>
 
       </main>
       <section id="site-sidebar">
   
     <section id="recent-posts">
       <header>
-        <h1>Recent posts</h1>
+        <h1>Recent Posts</h1>
       </header>
       
       <article class="mini-post">
-        <section>
           
-
-        </section>
         <header>
           <h2><a href="/post/use-configmap-for-scripts/">Use Configmap for Scripts</a></h2>
-          <time class="published" datetime="">August 22, 2020</time>
+          <time class="published" datetime="2020-08-22 21:00:51 &#43;0530 IST">August 22, 2020</time>
         </header>
       </article>
       
       <article class="mini-post">
-        <section>
           
-
-        </section>
         <header>
           <h2><a href="/post/being-productive-with-git/">Being Productive with Git</a></h2>
-          <time class="published" datetime="">August 16, 2020</time>
+          <time class="published" datetime="2020-08-16 22:00:51 &#43;0530 IST">August 16, 2020</time>
         </header>
       </article>
       
       <article class="mini-post">
-        <section>
           
-
-        </section>
         <header>
           <h2><a href="/post/being-productive-with-kubectl/">Being Productive with Kubectl</a></h2>
-          <time class="published" datetime="">August 2, 2020</time>
+          <time class="published" datetime="2020-08-02 16:00:51 &#43;0530 IST">August 2, 2020</time>
         </header>
       </article>
       
       <article class="mini-post">
-        <section>
           
-
-        </section>
         <header>
           <h2><a href="/post/how-to-backup-and-restore-prometheus/">How to backup and restore Prometheus?</a></h2>
-          <time class="published" datetime="">July 31, 2020</time>
+          <time class="published" datetime="2020-07-31 19:00:51 &#43;0530 IST">July 31, 2020</time>
         </header>
       </article>
       
       <article class="mini-post">
-        <section>
           
-
-        </section>
         <header>
           <h2><a href="/post/book-review-getting-things-done/">Book Review: Getting Things Done</a></h2>
-          <time class="published" datetime="">July 30, 2020</time>
+          <time class="published" datetime="2020-07-30 16:00:07 &#43;0530 IST">July 30, 2020</time>
         </header>
       </article>
       
       
         <footer>
-          <a href="/post/" class="button">See more</a>
+          <a href="/post/" class="button">See More</a>
         </footer>
       
     </section>
@@ -911,207 +816,127 @@
     
       <section id="categories">
         <header>
-          <h1><a href="/categories">Categories</a></h1>
+          <h1><a href="/categories">categories</a></h1>
         </header>
         <ul>
           
-            
-          
           
           <li>
-            
               <a href="/categories/kubernetes/">kubernetes<span class="count">21</span></a>
-            
           
           <li>
-            
               <a href="/categories/notes/">notes<span class="count">19</span></a>
-            
           
           <li>
-            
               <a href="/categories/security/">security<span class="count">8</span></a>
-            
           
           <li>
-            
               <a href="/categories/event_report/">event_report<span class="count">5</span></a>
-            
           
           <li>
-            
               <a href="/categories/packaging/">packaging<span class="count">5</span></a>
-            
           
           <li>
-            
               <a href="/categories/bash/">bash<span class="count">4</span></a>
-            
           
           <li>
-            
               <a href="/categories/docker/">docker<span class="count">4</span></a>
-            
           
           <li>
-            
               <a href="/categories/golang/">golang<span class="count">4</span></a>
-            
           
           <li>
-            
               <a href="/categories/host/">host<span class="count">4</span></a>
-            
           
           <li>
-            
               <a href="/categories/book-review/">book-review<span class="count">3</span></a>
-            
           
           <li>
-            
               <a href="/categories/containers/">containers<span class="count">3</span></a>
-            
           
           <li>
-            
               <a href="/categories/kompose/">kompose<span class="count">3</span></a>
-            
           
           <li>
-            
               <a href="/categories/non-tech/">non-tech<span class="count">3</span></a>
-            
           
           <li>
-            
               <a href="/categories/openshift/">openshift<span class="count">3</span></a>
-            
           
           <li>
-            
               <a href="/categories/productivity/">productivity<span class="count">3</span></a>
-            
           
           <li>
-            
               <a href="/categories/container/">container<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/fedora/">fedora<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/git/">git<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/ide/">ide<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/minikube/">minikube<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/monitoring/">monitoring<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/programming/">programming<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/prometheus/">prometheus<span class="count">2</span></a>
-            
           
           <li>
-            
               <a href="/categories/backup/">backup<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/centos/">centos<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/certs/">certs<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/cka/">cka<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/configuration/">configuration<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/desktop/">desktop<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/etcd/">etcd<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/gaming/">gaming<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/gnome/">gnome<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/https/">https<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/linux/">linux<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/project_management/">project_management<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/selinux/">selinux<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/talks/">talks<span class="count">1</span></a>
-            
           
           <li>
-            
               <a href="/categories/vagrant/">vagrant<span class="count">1</span></a>
-            
           
           </li>
         </ul>
@@ -1184,19 +1009,16 @@
       </ul>
   
   <p class="copyright">
-    
-      &copy; 2020
-      
-        Suraj Deshmukh
-      
-    . <br>
+    © 2020 Suraj Deshmukh
+      <br>
     Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.74.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.261856d9ecb177d8b2fc81645e7ed8af5e09fd97f1f608692a6a18d0337505bb.js" integrity="sha256-JhhW2eyxd9iy/IFkXn7Yr14J/Zfx9ghpKmoY0DN1Bbs="></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/go.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.5955090a3253deadcd66071270aa2274dabe15ffc97094cec252d87b6f3f00bf.js" integrity="sha256-WVUJCjJT3q3NZgcScKoidNq&#43;Ff/JcJTOwlLYe28/AL8="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;
