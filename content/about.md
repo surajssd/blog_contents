@@ -5,13 +5,12 @@ layout = "about"
 
 ![Suraj Deshmukh](https://github.com/surajssd.png)
 
-- I am OpenSource Enthusiast.
-- I contribute to various container & Kubernetes related technologies like Kedge, Kompose, cri-o, etc.
-- I works for [kinvolk](https://twitter.com/kinvolkio) & am ex-[Red Hatter](https://twitter.com/redhat).
+- I am open source, systems software enthusiast.
+- I contribute to various container & Kubernetes related technologies like Lokomotive, contour, rook, etc.
+- I work for [kinvolk](https://twitter.com/kinvolkio) and I am an ex-[Red Hatter](https://twitter.com/redhat).
 
 ## Contact
 
-- IRC, Slack: `surajd`
 - Github: [surajssd](https://github.com/surajssd/)
 - Twitter: [@surajd_](https://twitter.com/surajd_)
 - Email: `surajd.service@gmail.com` & `suraj@kinvolk.com`
