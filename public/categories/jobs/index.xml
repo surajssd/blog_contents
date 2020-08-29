@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jobs on Suraj Deshmukh</title>
+    <link>https://suraj.io/categories/jobs/</link>
+    <description>Recent content in jobs on Suraj Deshmukh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 29 Aug 2020 15:33:51 +0530</lastBuildDate>
+    
+	<atom:link href="https://suraj.io/categories/jobs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to gracefully kill Kubernetes Jobs with a sidecar?</title>
+      <link>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</link>
+      <pubDate>Sat, 29 Aug 2020 15:33:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</guid>
+      <description>Have you ever had a sidecar in your Kubernetes Job? If no, then trust me that you are lucky. If yes, then you will have the frustration of your life. The thing is Kubernetes Jobs are meant to exit on completion. But if you have a long-running sidecar, then that might twist things for Kubernetes and in turn of you.
+Why would you even want a sidecar for Job? Well, one of the most prevalent use case is when using service mesh proxy.</description>
+    </item>
+    
+  </channel>
+</rss>

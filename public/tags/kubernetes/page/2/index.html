@@ -12,7 +12,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/tags/kubernetes/" />
-<meta property="og:updated_time" content="2020-08-22T21:00:51+05:30" />
+<meta property="og:updated_time" content="2020-08-29T15:33:51+05:30" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="kubernetes"/>
 <meta name="twitter:description" content=""/>
@@ -184,6 +184,57 @@
       <main id="site-main">
         
   
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/post/add-new-k8s-node-bootstrap-token/">Add new Node to k8s cluster with Bootstrap token</a></h2>
+    
+    
+      <p>Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2018-10-24 01:00:51 &#43;0530 IST">October 24, 2018</time>
+    <p>Suraj Deshmukh</p>
+    <p>4-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>Few days back I wrote a blog about <a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">adding new node to the cluster</a> using the static token file. The problem with that approach is that you need to restart <code>kube-apiserver</code> providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like <code>secrets</code>.</p>
+  </div>
+  <footer>
+    <a href="/post/add-new-k8s-node-bootstrap-token/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
   
     <article class="post">
   <header>
@@ -682,64 +733,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/private-registry-from-minikube/">Using private container registries from minikube</a></h2>
-    
-    
-      <p>A guide to how would you download image from private container registry in minikube</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2017-10-06 19:32:33 &#43;0530 IST">October 6, 2017</time>
-    <p>Suraj Deshmukh</p>
-    <p>2-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>I am doing Kubernetes native development using minikube. And for doing that I had to
-download a Container image that is available in internally hosted private container registry.</p>
-  </div>
-  <footer>
-    <a href="/post/private-registry-from-minikube/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/minikube/">minikube</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/container/">container</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/minikube/">minikube</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/container/">container</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/tags/kubernetes/" class="button left"><span>Previous Page</span></a>
@@ -756,6 +749,14 @@ download a Container image that is available in internally hosted private contai
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/">How to gracefully kill Kubernetes Jobs with a sidecar?</a></h2>
+          <time class="published" datetime="2020-08-29 15:33:51 &#43;0530 IST">August 29, 2020</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           
@@ -789,14 +790,6 @@ download a Container image that is available in internally hosted private contai
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/book-review-getting-things-done/">Book Review: Getting Things Done</a></h2>
-          <time class="published" datetime="2020-07-30 16:00:07 &#43;0530 IST">July 30, 2020</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -815,10 +808,10 @@ download a Container image that is available in internally hosted private contai
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">21</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">22</span></a>
           
           <li>
-              <a href="/categories/notes/">notes<span class="count">19</span></a>
+              <a href="/categories/notes/">notes<span class="count">20</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">8</span></a>
@@ -860,6 +853,9 @@ download a Container image that is available in internally hosted private contai
               <a href="/categories/productivity/">productivity<span class="count">3</span></a>
           
           <li>
+              <a href="/categories/configuration/">configuration<span class="count">2</span></a>
+          
+          <li>
               <a href="/categories/container/">container<span class="count">2</span></a>
           
           <li>
@@ -899,9 +895,6 @@ download a Container image that is available in internally hosted private contai
               <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
           
           <li>
-              <a href="/categories/configuration/">configuration<span class="count">1</span></a>
-          
-          <li>
               <a href="/categories/desktop/">desktop<span class="count">1</span></a>
           
           <li>
@@ -915,6 +908,9 @@ download a Container image that is available in internally hosted private contai
           
           <li>
               <a href="/categories/https/">https<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/jobs/">jobs<span class="count">1</span></a>
           
           <li>
               <a href="/categories/linux/">linux<span class="count">1</span></a>
