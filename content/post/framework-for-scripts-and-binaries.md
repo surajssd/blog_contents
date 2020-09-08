@@ -47,6 +47,10 @@ Since I am creating such directories which are unrelated to the project and shou
 
 You can find my `~/.bashrc` file [here](https://github.com/surajssd/dotfiles/blob/master/configs/bashrc).
 
+### Project Specific Scripts
+
+There are specific scripts that you want to use only for a project. Now you might wonder why not contribute them to the project itself. There could be scripts to copy code to a remote server; you don't want to contribute such scripts to the project because they are particular to your workflow. In such a case, I have something called a project-specific `.scripts` directory in the root of the project. Read more about it in detail in this another blog post of mine [here](https://suraj.io/post/project-specific-scripts/).
+
 ## Managing random binaries
 
 Now many projects ship their binaries off of their Github releases but don't have a package made for an operating system. Now packaging an application for every operating system could be a daunting task for the maintainers of the project, not everyone is willing to take that on their plate(I am grateful those maintainers already working on the open source project I don't expect them to do more work).

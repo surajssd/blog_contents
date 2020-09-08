@@ -10,7 +10,7 @@
 <meta itemprop="description" content="This is an explanation of the framework that I have created to manage scripts and binaries.">
 <meta itemprop="datePublished" content="2020-07-18T19:00:51+05:30" />
 <meta itemprop="dateModified" content="2020-07-18T19:00:51+05:30" />
-<meta itemprop="wordCount" content="884">
+<meta itemprop="wordCount" content="972">
 
 
 
@@ -265,6 +265,8 @@ export PATH<span style="color:#f92672">=</span>$PATH:.scripts
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># ignore the local scripts directory</span>
 .scripts
 </code></pre></div><p>You can find my <code>~/.bashrc</code> file <a href="https://github.com/surajssd/dotfiles/blob/master/configs/bashrc">here</a>.</p>
+<h3 id="project-specific-scripts">Project Specific Scripts</h3>
+<p>There are specific scripts that you want to use only for a project. Now you might wonder why not contribute them to the project itself. There could be scripts to copy code to a remote server; you don&rsquo;t want to contribute such scripts to the project because they are particular to your workflow. In such a case, I have something called a project-specific <code>.scripts</code> directory in the root of the project. Read more about it in detail in this another blog post of mine <a href="https://suraj.io/post/project-specific-scripts/">here</a>.</p>
 <h2 id="managing-random-binaries">Managing random binaries</h2>
 <p>Now many projects ship their binaries off of their Github releases but don&rsquo;t have a package made for an operating system. Now packaging an application for every operating system could be a daunting task for the maintainers of the project, not everyone is willing to take that on their plate(I am grateful those maintainers already working on the open source project I don&rsquo;t expect them to do more work).</p>
 <p>To manage binaries of such projects, you need your own mechanism of downloading the new versions and replacing older ones. For this again, I rely on my <code>~/.local/bin</code> directory. Here I put such downloaded binaries. And for the tools that I need regularly, I have created scripts for them. These scripts are managed as explained in the <a href="#global-scripts"><strong>Global scripts</strong></a> section.</p>

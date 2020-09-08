@@ -43,3 +43,5 @@ red          redeploy.sh
 ```
 
 Now I just create those scripts directories and my global `PATH` is not polluted and it makes me happy.
+
+I have penned down the other aspects of scripts management in my post called: [Framework for managing random scripts and binaries](https://suraj.io/post/framework-for-scripts-and-binaries/).
