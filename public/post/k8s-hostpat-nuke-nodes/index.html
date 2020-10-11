@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.74.3" /><meta itemprop="name" content="HostPath volumes and it&#39;s problems">
+<meta name="generator" content="Hugo 0.76.3" /><meta itemprop="name" content="HostPath volumes and it&#39;s problems">
 <meta itemprop="description" content="Kubernetes HostPath volume good way to nuke your Kubernetes Nodes">
 <meta itemprop="datePublished" content="2018-09-10T01:00:51+05:30" />
 <meta itemprop="dateModified" content="2018-09-10T01:00:51+05:30" />
@@ -256,33 +256,33 @@ worker-0   Ready     &lt;none&gt;    24m       v1.11.2   192.168.199.20   &lt;no
 worker-1   Ready     &lt;none&gt;    23m       v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
 worker-2   Ready     &lt;none&gt;    21m       v1.11.2   192.168.199.22   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
 </code></pre></div><p>The deployment looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$ cat deployment.yaml 
-<span style="color:#66d9ef">apiVersion</span>: apps/v1beta1
-<span style="color:#66d9ef">kind</span>: Deployment
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">labels</span>:
-    <span style="color:#66d9ef">run</span>: web
-  <span style="color:#66d9ef">name</span>: web
-<span style="color:#66d9ef">spec</span>:
-  <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#66d9ef">selector</span>:
-    <span style="color:#66d9ef">matchLabels</span>:
-      <span style="color:#66d9ef">run</span>: web
-  <span style="color:#66d9ef">template</span>:
-    <span style="color:#66d9ef">metadata</span>:
-      <span style="color:#66d9ef">labels</span>:
-        <span style="color:#66d9ef">run</span>: web
-    <span style="color:#66d9ef">spec</span>:
-      <span style="color:#66d9ef">containers</span>:
-      - <span style="color:#66d9ef">image</span>: centos/httpd
-        <span style="color:#66d9ef">name</span>: web
-        <span style="color:#66d9ef">volumeMounts</span>:
-        - <span style="color:#66d9ef">mountPath</span>: /web
-          <span style="color:#66d9ef">name</span>: test-volume
-      <span style="color:#66d9ef">volumes</span>:
-      - <span style="color:#66d9ef">name</span>: test-volume
-        <span style="color:#66d9ef">hostPath</span>:
-          <span style="color:#66d9ef">path</span>: /
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat deployment.yaml </span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1beta1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">labels</span>:
+    <span style="color:#f92672">run</span>: <span style="color:#ae81ff">web</span>
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">web</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
+  <span style="color:#f92672">selector</span>:
+    <span style="color:#f92672">matchLabels</span>:
+      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">web</span>
+  <span style="color:#f92672">template</span>:
+    <span style="color:#f92672">metadata</span>:
+      <span style="color:#f92672">labels</span>:
+        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">web</span>
+    <span style="color:#f92672">spec</span>:
+      <span style="color:#f92672">containers</span>:
+      - <span style="color:#f92672">image</span>: <span style="color:#ae81ff">centos/httpd</span>
+        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">web</span>
+        <span style="color:#f92672">volumeMounts</span>:
+        - <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/web</span>
+          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-volume</span>
+      <span style="color:#f92672">volumes</span>:
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-volume</span>
+        <span style="color:#f92672">hostPath</span>:
+          <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/</span>
 </code></pre></div><p>Above you can see we are mounting <code>/</code> of the host inside pod at <code>/web</code>. This is our gateway to host&rsquo;s file system. Let&rsquo;s deploy this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml
 deployment.apps/web created
@@ -328,63 +328,63 @@ deployment.extensions <span style="color:#e6db74">&#34;web&#34;</span> deleted
 </code></pre></div><h1 id="stopping-this-attack-using-podsecuritypolicy">Stopping this attack using PodSecurityPolicy</h1>
 <p>Now as a cluster admin how can you prevent this from happening? You can create something called as <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/"><code>PodSecurityPolicy</code></a>. This let&rsquo;s you define what kind of pods be created. Or what permissions pod can request. Enable admission controller for this, read about it <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podsecuritypolicy">here</a>.</p>
 <p>Here is an example <code>PodSecurityPolicy</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$ cat podsecuritypolicy.yaml 
-<span style="color:#66d9ef">apiVersion</span>: policy/v1beta1
-<span style="color:#66d9ef">kind</span>: PodSecurityPolicy
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">name</span>: example
-<span style="color:#66d9ef">spec</span>:
-  <span style="color:#66d9ef">seLinux</span>:
-    <span style="color:#66d9ef">rule</span>: RunAsAny
-  <span style="color:#66d9ef">supplementalGroups</span>:
-    <span style="color:#66d9ef">rule</span>: RunAsAny
-  <span style="color:#66d9ef">runAsUser</span>:
-    <span style="color:#66d9ef">rule</span>: RunAsAny
-  <span style="color:#66d9ef">fsGroup</span>:
-    <span style="color:#66d9ef">rule</span>: RunAsAny
-  <span style="color:#66d9ef">volumes</span>:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat podsecuritypolicy.yaml </span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">policy/v1beta1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PodSecurityPolicy</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">example</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">seLinux</span>:
+    <span style="color:#f92672">rule</span>: <span style="color:#ae81ff">RunAsAny</span>
+  <span style="color:#f92672">supplementalGroups</span>:
+    <span style="color:#f92672">rule</span>: <span style="color:#ae81ff">RunAsAny</span>
+  <span style="color:#f92672">runAsUser</span>:
+    <span style="color:#f92672">rule</span>: <span style="color:#ae81ff">RunAsAny</span>
+  <span style="color:#f92672">fsGroup</span>:
+    <span style="color:#f92672">rule</span>: <span style="color:#ae81ff">RunAsAny</span>
+  <span style="color:#f92672">volumes</span>:
   - <span style="color:#e6db74">&#39;*&#39;</span>
-  <span style="color:#66d9ef">privileged</span>: <span style="color:#66d9ef">false</span>  <span style="color:#75715e"># Don&#39;t allow privileged pods!</span>
-  <span style="color:#66d9ef">allowedHostPaths</span>:
-  - <span style="color:#66d9ef">pathPrefix</span>: /foo
-    <span style="color:#66d9ef">readOnly</span>: <span style="color:#66d9ef">true</span>
+  <span style="color:#f92672">privileged</span>: <span style="color:#66d9ef">false</span>  <span style="color:#75715e"># Don&#39;t allow privileged pods!</span>
+  <span style="color:#f92672">allowedHostPaths</span>:
+  - <span style="color:#f92672">pathPrefix</span>: <span style="color:#ae81ff">/foo</span>
+    <span style="color:#f92672">readOnly</span>: <span style="color:#66d9ef">true</span>
 </code></pre></div><p>In above example, we are restricting access to <code>hostPath</code> a pod can request. Here the path that is allowed is <code>/foo</code> and has <code>readOnly</code> access to the underlying file system.</p>
 <p>Create <code>PodSecurityPolicy</code> using above file:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f podsecuritypolicy.yaml 
 podsecuritypolicy.policy/example created
 </code></pre></div><p>To enable this policy we need to create few more objects, a <code>Role</code> and <code>RoleBinding</code>.</p>
 <p><code>Role</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$ cat role.yaml 
-<span style="color:#66d9ef">kind</span>: Role
-<span style="color:#66d9ef">apiVersion</span>: rbac.authorization.k8s.io/v1
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">name</span>: authorize-hostpath
-<span style="color:#66d9ef">rules</span>:
-- <span style="color:#66d9ef">apiGroups</span>: [<span style="color:#e6db74">&#39;policy&#39;</span>]
-  <span style="color:#66d9ef">resources</span>: [<span style="color:#e6db74">&#39;podsecuritypolicies&#39;</span>]
-  <span style="color:#66d9ef">verbs</span>:     [<span style="color:#e6db74">&#39;use&#39;</span>]
-  <span style="color:#66d9ef">resourceNames</span>:
-  - example
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat role.yaml </span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Role</span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">authorize-hostpath</span>
+<span style="color:#f92672">rules</span>:
+- <span style="color:#f92672">apiGroups</span>: [<span style="color:#e6db74">&#39;policy&#39;</span>]
+  <span style="color:#f92672">resources</span>: [<span style="color:#e6db74">&#39;podsecuritypolicies&#39;</span>]
+  <span style="color:#f92672">verbs</span>:     [<span style="color:#e6db74">&#39;use&#39;</span>]
+  <span style="color:#f92672">resourceNames</span>:
+  - <span style="color:#ae81ff">example</span>
 </code></pre></div><p>This <code>Role</code> will allow usage of policy that we created above.</p>
 <p>Create <code>Role</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f role.yaml 
 role.rbac.authorization.k8s.io/authorize-hostpath created
 </code></pre></div><p><code>RoleBinding</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$ cat rolebinding.yaml 
-<span style="color:#66d9ef">kind</span>: RoleBinding
-<span style="color:#66d9ef">apiVersion</span>: rbac.authorization.k8s.io/v1
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">name</span>: auth-hostpath
-<span style="color:#66d9ef">roleRef</span>:
-  <span style="color:#66d9ef">kind</span>: Role
-  <span style="color:#66d9ef">name</span>: authorize-hostpath
-  <span style="color:#66d9ef">apiGroup</span>: rbac.authorization.k8s.io
-<span style="color:#66d9ef">subjects</span>:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat rolebinding.yaml </span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">RoleBinding</span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">auth-hostpath</span>
+<span style="color:#f92672">roleRef</span>:
+  <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Role</span>
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">authorize-hostpath</span>
+  <span style="color:#f92672">apiGroup</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io</span>
+<span style="color:#f92672">subjects</span>:
 
 <span style="color:#75715e"># Authorize all service accounts in a namespace:</span>
-- <span style="color:#66d9ef">kind</span>: Group
-  <span style="color:#66d9ef">apiGroup</span>: rbac.authorization.k8s.io
-  <span style="color:#66d9ef">name</span>: system:serviceaccounts
+- <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Group</span>
+  <span style="color:#f92672">apiGroup</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io</span>
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">system:serviceaccounts</span>
 </code></pre></div><p>This <code>RoleBinding</code> will bind the <code>Role</code> above and all the <code>ServiceAccounts</code> in current namespace.</p>
 <p>Create <code>RoleBinding</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f rolebinding.yaml 
@@ -406,36 +406,36 @@ deployment.apps/web configured
 LAST SEEN   FIRST SEEN   COUNT     NAME                              KIND         SUBOBJECT   TYPE      REASON                    SOURCE                  MESSAGE
 ...
 5s          15s          <span style="color:#ae81ff">12</span>        web-85cb548b47.15530eb0c27c6122   ReplicaSet               Warning   FailedCreate              replicaset-controller   Error creating: pods <span style="color:#e6db74">&#34;web-85cb548b47-&#34;</span> is forbidden: unable to validate against any pod security policy: <span style="color:#f92672">[</span>spec.containers<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>.volumeMounts<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>.readOnly: Invalid value: false: must be read-only<span style="color:#f92672">]</span>
-</code></pre></div><p>This is because in the <code>volumeMount</code>'s <code>readOnly</code> we have used in container has no value defined, which means it defaults to <code>false</code> and in <code>PodSecurityPolicy</code> we have defaulted the <code>hostPath</code> to be <code>readOnly</code>.</p>
+</code></pre></div><p>This is because in the <code>volumeMount</code>&rsquo;s <code>readOnly</code> we have used in container has no value defined, which means it defaults to <code>false</code> and in <code>PodSecurityPolicy</code> we have defaulted the <code>hostPath</code> to be <code>readOnly</code>.</p>
 <p>So change <code>deployment.spec.template.spec.containers[0].volumeMounts[0].readOnly</code> to <code>true</code>. And manifest should look like following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$ cat deployment.yaml 
-<span style="color:#66d9ef">apiVersion</span>: apps/v1beta1
-<span style="color:#66d9ef">kind</span>: Deployment
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">labels</span>:
-    <span style="color:#66d9ef">run</span>: web
-  <span style="color:#66d9ef">name</span>: web
-<span style="color:#66d9ef">spec</span>:
-  <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#66d9ef">selector</span>:
-    <span style="color:#66d9ef">matchLabels</span>:
-      <span style="color:#66d9ef">run</span>: web
-  <span style="color:#66d9ef">template</span>:
-    <span style="color:#66d9ef">metadata</span>:
-      <span style="color:#66d9ef">labels</span>:
-        <span style="color:#66d9ef">run</span>: web
-    <span style="color:#66d9ef">spec</span>:
-      <span style="color:#66d9ef">containers</span>:
-      - <span style="color:#66d9ef">image</span>: centos/httpd
-        <span style="color:#66d9ef">name</span>: web
-        <span style="color:#66d9ef">volumeMounts</span>:
-        - <span style="color:#66d9ef">mountPath</span>: /web
-          <span style="color:#66d9ef">name</span>: test-volume
-          <span style="color:#66d9ef">readOnly</span>: <span style="color:#66d9ef">true</span>
-      <span style="color:#66d9ef">volumes</span>:
-      - <span style="color:#66d9ef">name</span>: test-volume
-        <span style="color:#66d9ef">hostPath</span>:
-          <span style="color:#66d9ef">path</span>: /foo
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat deployment.yaml </span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1beta1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">labels</span>:
+    <span style="color:#f92672">run</span>: <span style="color:#ae81ff">web</span>
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">web</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
+  <span style="color:#f92672">selector</span>:
+    <span style="color:#f92672">matchLabels</span>:
+      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">web</span>
+  <span style="color:#f92672">template</span>:
+    <span style="color:#f92672">metadata</span>:
+      <span style="color:#f92672">labels</span>:
+        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">web</span>
+    <span style="color:#f92672">spec</span>:
+      <span style="color:#f92672">containers</span>:
+      - <span style="color:#f92672">image</span>: <span style="color:#ae81ff">centos/httpd</span>
+        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">web</span>
+        <span style="color:#f92672">volumeMounts</span>:
+        - <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/web</span>
+          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-volume</span>
+          <span style="color:#f92672">readOnly</span>: <span style="color:#66d9ef">true</span>
+      <span style="color:#f92672">volumes</span>:
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test-volume</span>
+        <span style="color:#f92672">hostPath</span>:
+          <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/foo</span>
 </code></pre></div><p>Now if you re-deploy the app:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml 
 deployment.apps/web configured
@@ -467,7 +467,7 @@ NAME                   READY     STATUS    RESTARTS   AGE
 web-66cdf67bbc-t9n7m   1/1       Running   <span style="color:#ae81ff">0</span>          28s
 </code></pre></div><p>Getting into the machine:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl exec -it web-66cdf67bbc-t9n7m bash
-<span style="color:#f92672">[</span>root@web-66cdf67bbc-t9n7m /<span style="color:#f92672">]</span>#
+<span style="color:#f92672">[</span>root@web-66cdf67bbc-t9n7m /<span style="color:#f92672">]</span><span style="color:#75715e">#</span>
 <span style="color:#f92672">[</span>root@web-66cdf67bbc-t9n7m /<span style="color:#f92672">]</span><span style="color:#75715e"># cd /web/</span>
 <span style="color:#f92672">[</span>root@web-66cdf67bbc-t9n7m web<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
 bin  boot  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  vagrant  var
@@ -572,6 +572,14 @@ type<span style="color:#f92672">=</span>AVC msg<span style="color:#f92672">=</sp
       <article class="mini-post">
           
         <header>
+          <h2><a href="/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/">Book Review: Algorithms to Live by — The Computer Science of Human Decisions</a></h2>
+          <time class="published" datetime="2020-10-11 17:30:07 &#43;0530 IST">October 11, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
           <h2><a href="/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/">How to gracefully kill Kubernetes Jobs with a sidecar?</a></h2>
           <time class="published" datetime="2020-08-29 15:33:51 &#43;0530 IST">August 29, 2020</time>
         </header>
@@ -601,14 +609,6 @@ type<span style="color:#f92672">=</span>AVC msg<span style="color:#f92672">=</sp
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/how-to-backup-and-restore-prometheus/">How to backup and restore Prometheus?</a></h2>
-          <time class="published" datetime="2020-07-31 19:00:51 &#43;0530 IST">July 31, 2020</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -621,7 +621,7 @@ type<span style="color:#f92672">=</span>AVC msg<span style="color:#f92672">=</sp
     
       <section id="categories">
         <header>
-          <h1><a href="/categories">categories</a></h1>
+          <h1><a href="/categories">Categories</a></h1>
         </header>
         <ul>
           
@@ -645,6 +645,9 @@ type<span style="color:#f92672">=</span>AVC msg<span style="color:#f92672">=</sp
               <a href="/categories/bash/">bash<span class="count">4</span></a>
           
           <li>
+              <a href="/categories/book-review/">book-review<span class="count">4</span></a>
+          
+          <li>
               <a href="/categories/docker/">docker<span class="count">4</span></a>
           
           <li>
@@ -654,16 +657,13 @@ type<span style="color:#f92672">=</span>AVC msg<span style="color:#f92672">=</sp
               <a href="/categories/host/">host<span class="count">4</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">3</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">4</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">3</span></a>
           
           <li>
               <a href="/categories/kompose/">kompose<span class="count">3</span></a>
-          
-          <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">3</span></a>
           
           <li>
               <a href="/categories/openshift/">openshift<span class="count">3</span></a>
@@ -817,7 +817,7 @@ type<span style="color:#f92672">=</span>AVC msg<span style="color:#f92672">=</sp
   <p class="copyright">
     © 2020 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.74.3' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.76.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

@@ -6,13 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.74.3" /><meta itemprop="name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.76.3" /><meta itemprop="name" content="Suraj Deshmukh">
 <meta itemprop="description" content="">
 <meta property="og:title" content="Suraj Deshmukh" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/" />
-<meta property="og:updated_time" content="2020-08-29T15:33:51+05:30" />
+<meta property="og:updated_time" content="2020-10-11T17:30:07+05:30" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Suraj Deshmukh"/>
 <meta name="twitter:description" content=""/>
@@ -218,6 +218,63 @@
       <main id="site-main">
         
   
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/post/snoop-on-pod-traffic/">Watch Container Traffic Without Exec</a></h2>
+    
+    
+      <p>How to watch the traffic of a container or a pod without execing into the pod/contaienr?</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2020-06-06 20:30:07 &#43;0530 IST">June 6, 2020</time>
+    <p>Suraj Deshmukh</p>
+    <p>4-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.</p>
+  </div>
+  <footer>
+    <a href="/post/snoop-on-pod-traffic/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/container/">container</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/container/">container</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
   
     <article class="post">
   <header>
@@ -730,63 +787,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h2>
-    
-    
-      <p>Subpath Volume Mount could give you access to node</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2019-01-14 01:00:51 &#43;0530 IST">January 14, 2019</time>
-    <p>Suraj Deshmukh</p>
-    <p>2-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using <code>emptyDir</code> volume mount using subpath. The official description goes as follows:</p>
-  </div>
-  <footer>
-    <a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/cve/">cve</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/" class="button left"><span>Previous Page</span></a>
@@ -803,6 +803,14 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/">Book Review: Algorithms to Live by — The Computer Science of Human Decisions</a></h2>
+          <time class="published" datetime="2020-10-11 17:30:07 &#43;0530 IST">October 11, 2020</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           
@@ -836,14 +844,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/how-to-backup-and-restore-prometheus/">How to backup and restore Prometheus?</a></h2>
-          <time class="published" datetime="2020-07-31 19:00:51 &#43;0530 IST">July 31, 2020</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -856,7 +856,7 @@
     
       <section id="categories">
         <header>
-          <h1><a href="/categories">categories</a></h1>
+          <h1><a href="/categories">Categories</a></h1>
         </header>
         <ul>
           
@@ -880,6 +880,9 @@
               <a href="/categories/bash/">bash<span class="count">4</span></a>
           
           <li>
+              <a href="/categories/book-review/">book-review<span class="count">4</span></a>
+          
+          <li>
               <a href="/categories/docker/">docker<span class="count">4</span></a>
           
           <li>
@@ -889,16 +892,13 @@
               <a href="/categories/host/">host<span class="count">4</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">3</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">4</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">3</span></a>
           
           <li>
               <a href="/categories/kompose/">kompose<span class="count">3</span></a>
-          
-          <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">3</span></a>
           
           <li>
               <a href="/categories/openshift/">openshift<span class="count">3</span></a>
@@ -1052,7 +1052,7 @@
   <p class="copyright">
     © 2020 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.74.3' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.76.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

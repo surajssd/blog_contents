@@ -6,11 +6,7 @@
     <description>Recent content in etcd on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Jul 2018 01:00:51 +0530</lastBuildDate>
-    
-	<atom:link href="https://suraj.io/categories/etcd/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 11 Jul 2018 01:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/etcd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Access etcd in OpenShift origin</title>
       <link>https://suraj.io/post/accessing-oc-cluster-up-etcd/</link>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.74.3" /><meta itemprop="name" content="Root user inside container is root on the host">
+<meta name="generator" content="Hugo 0.76.3" /><meta itemprop="name" content="Root user inside container is root on the host">
 <meta itemprop="description" content="The easiest way to prove that root inside the container is also root on the host">
 <meta itemprop="datePublished" content="2019-06-25T11:57:07+05:30" />
 <meta itemprop="dateModified" content="2019-06-25T11:57:07+05:30" />
@@ -273,7 +273,7 @@ $ id
 uid<span style="color:#f92672">=</span>500<span style="color:#f92672">(</span>core<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>500<span style="color:#f92672">(</span>core<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>500<span style="color:#f92672">(</span>core<span style="color:#f92672">)</span>,10<span style="color:#f92672">(</span>wheel<span style="color:#f92672">)</span>,233<span style="color:#f92672">(</span>docker<span style="color:#f92672">)</span>,248<span style="color:#f92672">(</span>systemd-journal<span style="color:#f92672">)</span>,250<span style="color:#f92672">(</span>portage<span style="color:#f92672">)</span>,251<span style="color:#f92672">(</span>rkt<span style="color:#f92672">)</span> context<span style="color:#f92672">=</span>system_u:system_r:kernel_t:s0
 </code></pre></div><p>Let&rsquo;s start the container in the same way but with additional flag <code>--user</code>. Here I started a new container and forced it to run under the security context of the user <code>core</code>. Here I specify the UID same as the UID on the host. The documentation of the flag says that:</p>
 <blockquote>
-<p>-u, &ndash;user=&rdquo;&rdquo;.</p>
+<p>-u, &ndash;user=&quot;&quot;.</p>
 <p>Sets the username or UID used and optionally the groupname or GID for the specified command.</p>
 </blockquote>
 <p>Here is the container that is started with <code>sleep</code> process named <code>wonderful_proskuriakova</code>.</p>
@@ -420,6 +420,14 @@ dockremap:100000:65536
       <article class="mini-post">
           
         <header>
+          <h2><a href="/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/">Book Review: Algorithms to Live by — The Computer Science of Human Decisions</a></h2>
+          <time class="published" datetime="2020-10-11 17:30:07 &#43;0530 IST">October 11, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
           <h2><a href="/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/">How to gracefully kill Kubernetes Jobs with a sidecar?</a></h2>
           <time class="published" datetime="2020-08-29 15:33:51 &#43;0530 IST">August 29, 2020</time>
         </header>
@@ -449,14 +457,6 @@ dockremap:100000:65536
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/how-to-backup-and-restore-prometheus/">How to backup and restore Prometheus?</a></h2>
-          <time class="published" datetime="2020-07-31 19:00:51 &#43;0530 IST">July 31, 2020</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -469,7 +469,7 @@ dockremap:100000:65536
     
       <section id="categories">
         <header>
-          <h1><a href="/categories">categories</a></h1>
+          <h1><a href="/categories">Categories</a></h1>
         </header>
         <ul>
           
@@ -493,6 +493,9 @@ dockremap:100000:65536
               <a href="/categories/bash/">bash<span class="count">4</span></a>
           
           <li>
+              <a href="/categories/book-review/">book-review<span class="count">4</span></a>
+          
+          <li>
               <a href="/categories/docker/">docker<span class="count">4</span></a>
           
           <li>
@@ -502,16 +505,13 @@ dockremap:100000:65536
               <a href="/categories/host/">host<span class="count">4</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">3</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">4</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">3</span></a>
           
           <li>
               <a href="/categories/kompose/">kompose<span class="count">3</span></a>
-          
-          <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">3</span></a>
           
           <li>
               <a href="/categories/openshift/">openshift<span class="count">3</span></a>
@@ -665,7 +665,7 @@ dockremap:100000:65536
   <p class="copyright">
     © 2020 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.74.3' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.76.3' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

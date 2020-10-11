@@ -6,11 +6,7 @@
     <description>Recent content in productivity on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 16 Aug 2020 22:00:51 +0530</lastBuildDate>
-    
-	<atom:link href="https://suraj.io/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 16 Aug 2020 22:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Being Productive with Git</title>
       <link>https://suraj.io/post/being-productive-with-git/</link>

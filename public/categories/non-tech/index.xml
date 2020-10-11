@@ -6,10 +6,15 @@
     <description>Recent content in non-tech on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 30 Jul 2020 16:00:07 +0530</lastBuildDate>
-    
-	<atom:link href="https://suraj.io/categories/non-tech/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sun, 11 Oct 2020 17:30:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/non-tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Book Review: Algorithms to Live by — The Computer Science of Human Decisions</title>
+      <link>https://suraj.io/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</link>
+      <pubDate>Sun, 11 Oct 2020 17:30:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</guid>
+      <description>Introduction The book &amp;ldquo;Algorithms to Live by — The Computer Science of Human Decisions&amp;rdquo; is written by &amp;ldquo;Brian Christian and Tom Griffiths&amp;rdquo;. It fits into the genre non-fiction, psychology and computer science. The book is written lucidly. If you have a background in computer science, then this book is easy to follow. The book creates analogies of computer science algorithms with real-life situations. I felt that some metaphors sound good in reading than their application, so if you plan on applying the things explained in the book directly to your life, they might not work.</description>
+    </item>
     
     <item>
       <title>Book Review: Getting Things Done</title>

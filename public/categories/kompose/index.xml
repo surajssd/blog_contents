@@ -6,11 +6,7 @@
     <description>Recent content in kompose on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Apr 2017 15:57:07 +0530</lastBuildDate>
-    
-	<atom:link href="https://suraj.io/categories/kompose/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 23 Apr 2017 15:57:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/kompose/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Enabling local development with Kubernetes</title>
       <link>https://suraj.io/post/enabling-local-development-with-k8s/</link>

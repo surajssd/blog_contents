@@ -6,11 +6,7 @@
     <description>Recent content in event_report on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 21 Mar 2019 01:00:51 +0530</lastBuildDate>
-    
-	<atom:link href="https://suraj.io/categories/event_report/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 21 Mar 2019 01:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/event_report/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kubernetes Bangalore March 2019 Event Report</title>
       <link>https://suraj.io/post/k8s-blr-event-report-2019-03-16/</link>

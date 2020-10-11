@@ -6,10 +6,24 @@
     <description>Recent content in Tags on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 29 Aug 2020 15:33:51 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 11 Oct 2020 17:30:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>book-review</title>
+      <link>https://suraj.io/tags/book-review/</link>
+      <pubDate>Sun, 11 Oct 2020 17:30:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/book-review/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    
+    <item>
+      <title>non-tech</title>
+      <link>https://suraj.io/tags/non-tech/</link>
+      <pubDate>Sun, 11 Oct 2020 17:30:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/non-tech/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>configuration</title>
@@ -80,24 +94,6 @@
       <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/tags/prometheus/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>book-review</title>
-      <link>https://suraj.io/tags/book-review/</link>
-      <pubDate>Thu, 30 Jul 2020 16:00:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/book-review/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>non-tech</title>
-      <link>https://suraj.io/tags/non-tech/</link>
-      <pubDate>Thu, 30 Jul 2020 16:00:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/non-tech/</guid>
       <description></description>
     </item>
     

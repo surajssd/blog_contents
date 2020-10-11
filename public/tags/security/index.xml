@@ -6,11 +6,7 @@
     <description>Recent content in security on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Jun 2020 20:30:07 +0530</lastBuildDate>
-    
-	<atom:link href="https://suraj.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 06 Jun 2020 20:30:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Watch Container Traffic Without Exec</title>
       <link>https://suraj.io/post/snoop-on-pod-traffic/</link>
