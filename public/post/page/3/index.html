@@ -6,13 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.76.3" /><meta itemprop="name" content="Post">
+<meta name="generator" content="Hugo 0.79.0" /><meta itemprop="name" content="Post">
 <meta itemprop="description" content="">
 <meta property="og:title" content="Post" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://suraj.io/post/" />
-<meta property="og:updated_time" content="2020-10-11T17:30:07+05:30" />
+<meta property="og:updated_time" content="2020-11-28T21:30:07+05:30" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Post"/>
 <meta name="twitter:description" content=""/>
@@ -184,6 +184,61 @@
       <main id="site-main">
         
   
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/post/apiserver-in-minikube-static-configs/">Make static configs available for apiserver in minikube</a></h2>
+    
+    
+      <p>Dealing with apiserver in minikube can be tricky</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2019-01-20 01:00:51 &#43;0530 IST">January 20, 2019</time>
+    <p>Suraj Deshmukh</p>
+    <p>3-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>If you want to provide extra flags to the <code>kube-apiserver</code> that runs inside minikube how do you do it? You can use the minikube&rsquo;s <code>--extra-config</code> flag with <code>apiserver.&lt;apiserver flag&gt;=&lt;value&gt;</code>, for e.g. if you want to enable <code>RBAC</code> authorization mode you do it as follows:</p>
+  </div>
+  <footer>
+    <a href="/post/apiserver-in-minikube-static-configs/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/minikube/">minikube</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/minikube/">minikube</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
   
     <article class="post">
   <header>
@@ -668,65 +723,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/single-node-k8s-fedora-selinux/">Single node Kubernetes Cluster on Fedora with SELinux enabled</a></h2>
-    
-    
-      <p>Kubeadm to install Single Node K8S with SELinux</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2018-09-11 01:00:51 &#43;0530 IST">September 11, 2018</time>
-    <p>Suraj Deshmukh</p>
-    <p>2-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>Start a single node fedora machine, using whatever method but I have used <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/fedora/Vagrantfile">this Vagrantfile</a> to do it:</p>
-  </div>
-  <footer>
-    <a href="/post/single-node-k8s-fedora-selinux/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/selinux/">selinux</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/openshift/">openshift</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/selinux/">selinux</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/fedora/">fedora</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/post/page/2/" class="button left"><span>Previous Page</span></a>
@@ -743,6 +739,14 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="/post/book-review-how-to-take-smart-notes/">Book Review: How to Take Smart Notes</a></h2>
+          <time class="published" datetime="2020-11-28 21:30:07 &#43;0530 IST">November 28, 2020</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           
@@ -776,14 +780,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/being-productive-with-kubectl/">Being Productive with Kubectl</a></h2>
-          <time class="published" datetime="2020-08-02 16:00:51 &#43;0530 IST">August 2, 2020</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -811,16 +807,19 @@
               <a href="/categories/security/">security<span class="count">8</span></a>
           
           <li>
+              <a href="/categories/book-review/">book-review<span class="count">5</span></a>
+          
+          <li>
               <a href="/categories/event_report/">event_report<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/non-tech/">non-tech<span class="count">5</span></a>
           
           <li>
               <a href="/categories/packaging/">packaging<span class="count">5</span></a>
           
           <li>
               <a href="/categories/bash/">bash<span class="count">4</span></a>
-          
-          <li>
-              <a href="/categories/book-review/">book-review<span class="count">4</span></a>
           
           <li>
               <a href="/categories/docker/">docker<span class="count">4</span></a>
@@ -830,9 +829,6 @@
           
           <li>
               <a href="/categories/host/">host<span class="count">4</span></a>
-          
-          <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">4</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">3</span></a>
@@ -994,7 +990,7 @@
   <p class="copyright">
     © 2020 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.76.3' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.79.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
