@@ -24,8 +24,8 @@ worker-2   Ready     <none>    21m       v1.11.2   192.168.199.22   <none>      
 The deployment looks like this:
 
 ```yaml
-$ cat deployment.yaml 
-apiVersion: apps/v1beta1
+$ cat deployment.yaml
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -136,7 +136,7 @@ Now as a cluster admin how can you prevent this from happening? You can create s
 Here is an example `PodSecurityPolicy`:
 
 ```yaml
-$ cat podsecuritypolicy.yaml 
+$ cat podsecuritypolicy.yaml
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
@@ -163,7 +163,7 @@ In above example, we are restricting access to `hostPath` a pod can request. Her
 Create `PodSecurityPolicy` using above file:
 
 ```bash
-$ kubectl apply -f podsecuritypolicy.yaml 
+$ kubectl apply -f podsecuritypolicy.yaml
 podsecuritypolicy.policy/example created
 ```
 
@@ -172,7 +172,7 @@ To enable this policy we need to create few more objects, a `Role` and `RoleBind
 `Role`:
 
 ```yaml
-$ cat role.yaml 
+$ cat role.yaml
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -190,14 +190,14 @@ This `Role` will allow usage of policy that we created above.
 Create `Role`:
 
 ```bash
-$ kubectl apply -f role.yaml 
+$ kubectl apply -f role.yaml
 role.rbac.authorization.k8s.io/authorize-hostpath created
 ```
 
 `RoleBinding`:
 
 ```yaml
-$ cat rolebinding.yaml 
+$ cat rolebinding.yaml
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -219,21 +219,21 @@ This `RoleBinding` will bind the `Role` above and all the `ServiceAccounts` in c
 Create `RoleBinding`:
 
 ```bash
-$ kubectl create -f rolebinding.yaml 
+$ kubectl create -f rolebinding.yaml
 rolebinding.rbac.authorization.k8s.io/auth-hostpath created
 ```
 
 Now that we have required permissions in place, try to re-create the `deployment`:
 
 ```bash
-$ kubectl apply -f deployment.yaml 
+$ kubectl apply -f deployment.yaml
 deployment.apps/web created
 ```
 
 The pod is not created and in events you can see an error as `Error creating: pods "web-66cdf67bbc-" is forbidden: unable to validate against any pod security policy: [spec.volumes[0].hostPath.pathPrefix: Invalid value: "/": is not allowed to be used]`:
 
 ```bash
-$ kubectl get events 
+$ kubectl get events
 LAST SEEN   FIRST SEEN   COUNT     NAME                              KIND         SUBOBJECT   TYPE      REASON                    SOURCE                  MESSAGE
 ...
 6s          17s          12        web-66cdf67bbc.15530e83fd4f8592   ReplicaSet               Warning   FailedCreate              replicaset-controller   Error creating: pods "web-66cdf67bbc-" is forbidden: unable to validate against any pod security policy: [spec.volumes[0].hostPath.pathPrefix: Invalid value: "/": is not allowed to be used]
@@ -244,14 +244,14 @@ This error is due to the fact that we have allowed `hostPath` to be only under `
 Now change in `deployment.yaml` file at path `deployment.spec.template.spec.volumes[0].hostPath.path` from `/` to `/foo` and apply again:
 
 ```bash
-$ kubectl apply -f deployment.yaml 
+$ kubectl apply -f deployment.yaml
 deployment.apps/web configured
 ```
 
 You can see another error `Error creating: pods "web-85cb548b47-" is forbidden: unable to validate against any pod security policy: [spec.containers[0].volumeMounts[0].readOnly: Invalid value: false: must be read-only]`:
 
 ```bash
-$ kubectl get events 
+$ kubectl get events
 LAST SEEN   FIRST SEEN   COUNT     NAME                              KIND         SUBOBJECT   TYPE      REASON                    SOURCE                  MESSAGE
 ...
 5s          15s          12        web-85cb548b47.15530eb0c27c6122   ReplicaSet               Warning   FailedCreate              replicaset-controller   Error creating: pods "web-85cb548b47-" is forbidden: unable to validate against any pod security policy: [spec.containers[0].volumeMounts[0].readOnly: Invalid value: false: must be read-only]
@@ -262,8 +262,8 @@ This is because in the `volumeMount`'s `readOnly` we have used in container has 
 So change `deployment.spec.template.spec.containers[0].volumeMounts[0].readOnly` to `true`. And manifest should look like following:
 
 ```yaml
-$ cat deployment.yaml 
-apiVersion: apps/v1beta1
+$ cat deployment.yaml
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -295,7 +295,7 @@ spec:
 Now if you re-deploy the app:
 
 ```bash
-$ kubectl apply -f deployment.yaml 
+$ kubectl apply -f deployment.yaml
 deployment.apps/web configured
 ```
 
@@ -339,7 +339,7 @@ fedora    Ready     master    23m       v1.11.2   10.0.2.15     <none>        Fe
 Lets follow the same set of steps of creating the deployment:
 
 ```bash
-$ kubectl apply -f deployment.yaml 
+$ kubectl apply -f deployment.yaml
 deployment.apps/web created
 ```
 

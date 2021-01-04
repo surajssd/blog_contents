@@ -256,8 +256,8 @@ worker-0   Ready     &lt;none&gt;    24m       v1.11.2   192.168.199.20   &lt;no
 worker-1   Ready     &lt;none&gt;    23m       v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
 worker-2   Ready     &lt;none&gt;    21m       v1.11.2   192.168.199.22   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
 </code></pre></div><p>The deployment looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat deployment.yaml </span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1beta1</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat deployment.yaml</span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
 <span style="color:#f92672">metadata</span>:
   <span style="color:#f92672">labels</span>:
@@ -328,7 +328,7 @@ deployment.extensions <span style="color:#e6db74">&#34;web&#34;</span> deleted
 </code></pre></div><h1 id="stopping-this-attack-using-podsecuritypolicy">Stopping this attack using PodSecurityPolicy</h1>
 <p>Now as a cluster admin how can you prevent this from happening? You can create something called as <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/"><code>PodSecurityPolicy</code></a>. This let&rsquo;s you define what kind of pods be created. Or what permissions pod can request. Enable admission controller for this, read about it <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podsecuritypolicy">here</a>.</p>
 <p>Here is an example <code>PodSecurityPolicy</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat podsecuritypolicy.yaml </span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat podsecuritypolicy.yaml</span>
 <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">policy/v1beta1</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">PodSecurityPolicy</span>
 <span style="color:#f92672">metadata</span>:
@@ -350,11 +350,11 @@ deployment.extensions <span style="color:#e6db74">&#34;web&#34;</span> deleted
     <span style="color:#f92672">readOnly</span>: <span style="color:#66d9ef">true</span>
 </code></pre></div><p>In above example, we are restricting access to <code>hostPath</code> a pod can request. Here the path that is allowed is <code>/foo</code> and has <code>readOnly</code> access to the underlying file system.</p>
 <p>Create <code>PodSecurityPolicy</code> using above file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f podsecuritypolicy.yaml 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f podsecuritypolicy.yaml
 podsecuritypolicy.policy/example created
 </code></pre></div><p>To enable this policy we need to create few more objects, a <code>Role</code> and <code>RoleBinding</code>.</p>
 <p><code>Role</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat role.yaml </span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat role.yaml</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Role</span>
 <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
 <span style="color:#f92672">metadata</span>:
@@ -367,10 +367,10 @@ podsecuritypolicy.policy/example created
   - <span style="color:#ae81ff">example</span>
 </code></pre></div><p>This <code>Role</code> will allow usage of policy that we created above.</p>
 <p>Create <code>Role</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f role.yaml 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f role.yaml
 role.rbac.authorization.k8s.io/authorize-hostpath created
 </code></pre></div><p><code>RoleBinding</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat rolebinding.yaml </span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat rolebinding.yaml</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">RoleBinding</span>
 <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
 <span style="color:#f92672">metadata</span>:
@@ -387,29 +387,29 @@ role.rbac.authorization.k8s.io/authorize-hostpath created
   <span style="color:#f92672">name</span>: <span style="color:#ae81ff">system:serviceaccounts</span>
 </code></pre></div><p>This <code>RoleBinding</code> will bind the <code>Role</code> above and all the <code>ServiceAccounts</code> in current namespace.</p>
 <p>Create <code>RoleBinding</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f rolebinding.yaml 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f rolebinding.yaml
 rolebinding.rbac.authorization.k8s.io/auth-hostpath created
 </code></pre></div><p>Now that we have required permissions in place, try to re-create the <code>deployment</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml
 deployment.apps/web created
 </code></pre></div><p>The pod is not created and in events you can see an error as <code>Error creating: pods &quot;web-66cdf67bbc-&quot; is forbidden: unable to validate against any pod security policy: [spec.volumes[0].hostPath.pathPrefix: Invalid value: &quot;/&quot;: is not allowed to be used]</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get events 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get events
 LAST SEEN   FIRST SEEN   COUNT     NAME                              KIND         SUBOBJECT   TYPE      REASON                    SOURCE                  MESSAGE
 ...
 6s          17s          <span style="color:#ae81ff">12</span>        web-66cdf67bbc.15530e83fd4f8592   ReplicaSet               Warning   FailedCreate              replicaset-controller   Error creating: pods <span style="color:#e6db74">&#34;web-66cdf67bbc-&#34;</span> is forbidden: unable to validate against any pod security policy: <span style="color:#f92672">[</span>spec.volumes<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>.hostPath.pathPrefix: Invalid value: <span style="color:#e6db74">&#34;/&#34;</span>: is not allowed to be used<span style="color:#f92672">]</span>
 </code></pre></div><p>This error is due to the fact that we have allowed <code>hostPath</code> to be only under <code>/foo</code> and in the original file it is set to <code>/</code>.</p>
 <p>Now change in <code>deployment.yaml</code> file at path <code>deployment.spec.template.spec.volumes[0].hostPath.path</code> from <code>/</code> to <code>/foo</code> and apply again:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml
 deployment.apps/web configured
 </code></pre></div><p>You can see another error <code>Error creating: pods &quot;web-85cb548b47-&quot; is forbidden: unable to validate against any pod security policy: [spec.containers[0].volumeMounts[0].readOnly: Invalid value: false: must be read-only]</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get events 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get events
 LAST SEEN   FIRST SEEN   COUNT     NAME                              KIND         SUBOBJECT   TYPE      REASON                    SOURCE                  MESSAGE
 ...
 5s          15s          <span style="color:#ae81ff">12</span>        web-85cb548b47.15530eb0c27c6122   ReplicaSet               Warning   FailedCreate              replicaset-controller   Error creating: pods <span style="color:#e6db74">&#34;web-85cb548b47-&#34;</span> is forbidden: unable to validate against any pod security policy: <span style="color:#f92672">[</span>spec.containers<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>.volumeMounts<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>.readOnly: Invalid value: false: must be read-only<span style="color:#f92672">]</span>
 </code></pre></div><p>This is because in the <code>volumeMount</code>&rsquo;s <code>readOnly</code> we have used in container has no value defined, which means it defaults to <code>false</code> and in <code>PodSecurityPolicy</code> we have defaulted the <code>hostPath</code> to be <code>readOnly</code>.</p>
 <p>So change <code>deployment.spec.template.spec.containers[0].volumeMounts[0].readOnly</code> to <code>true</code>. And manifest should look like following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat deployment.yaml </span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1beta1</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat deployment.yaml</span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
 <span style="color:#f92672">metadata</span>:
   <span style="color:#f92672">labels</span>:
@@ -437,7 +437,7 @@ LAST SEEN   FIRST SEEN   COUNT     NAME                              KIND       
         <span style="color:#f92672">hostPath</span>:
           <span style="color:#f92672">path</span>: <span style="color:#ae81ff">/foo</span>
 </code></pre></div><p>Now if you re-deploy the app:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml
 deployment.apps/web configured
 </code></pre></div><p>The pod is scheduled and created:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods
@@ -459,7 +459,7 @@ touch: cannot touch <span style="color:#e6db74">&#39;file.txt&#39;</span>: Read-
 NAME      STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                    KERNEL-VERSION           CONTAINER-RUNTIME
 fedora    Ready     master    23m       v1.11.2   10.0.2.15     &lt;none&gt;        Fedora <span style="color:#ae81ff">28</span> <span style="color:#f92672">(</span>Cloud Edition<span style="color:#f92672">)</span>   4.16.3-301.fc28.x86_64   docker://1.13.1
 </code></pre></div><p>Lets follow the same set of steps of creating the deployment:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl apply -f deployment.yaml
 deployment.apps/web created
 </code></pre></div><p>The pod is created:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods
