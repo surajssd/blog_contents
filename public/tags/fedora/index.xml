@@ -6,7 +6,18 @@
     <description>Recent content in fedora on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 16 Oct 2018 22:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/fedora/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Jan 2021 17:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/fedora/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux Partitioning Guide</title>
+      <link>https://suraj.io/post/fedora-partitioning/</link>
+      <pubDate>Mon, 11 Jan 2021 17:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/fedora-partitioning/</guid>
+      <description>I use Fedora Linux as my primary desktop OS. Every time there is a fresh install, I find myself confounded on how to partition the OS. So I thought I might as well make a permanent note of how I do it so that I always have a place to come back to.
+Partitioning Scheme This is how I partition my Fedora during installation:
+   Partition Mounted On Size Encrypted Filesystem     Boot /boot 512M No ext4   Boot EFI /boot/efi 200M No vfat   Swap - 1.</description>
+    </item>
+    
     <item>
       <title>How to disable your Chrome Ctrl &#43; W keybinding</title>
       <link>https://suraj.io/post/disable-ctrl-w/</link>

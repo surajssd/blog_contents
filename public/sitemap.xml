@@ -3,6 +3,56 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suraj.io/categories/</loc>
+    <lastmod>2021-01-11T17:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/fedora/</loc>
+    <lastmod>2021-01-11T17:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/fedora/</loc>
+    <lastmod>2021-01-11T17:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/linux/</loc>
+    <lastmod>2021-01-11T17:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/linux/</loc>
+    <lastmod>2021-01-11T17:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/fedora-partitioning/</loc>
+    <lastmod>2021-01-11T17:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/</loc>
+    <lastmod>2021-01-11T17:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2021-01-11T17:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/sysadmin/</loc>
+    <lastmod>2021-01-11T17:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2021-01-11T17:00:51+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suraj.io/post/book-review-how-to-take-smart-notes/</loc>
     <lastmod>2020-11-28T21:30:07+05:30</lastmod>
   </url>
@@ -18,32 +68,12 @@
   </url>
   
   <url>
-    <loc>https://suraj.io/categories/</loc>
-    <lastmod>2020-11-28T21:30:07+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suraj.io/tags/non-tech/</loc>
     <lastmod>2020-11-28T21:30:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/non-tech/</loc>
-    <lastmod>2020-11-28T21:30:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/post/</loc>
-    <lastmod>2020-11-28T21:30:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2020-11-28T21:30:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/</loc>
     <lastmod>2020-11-28T21:30:07+05:30</lastmod>
   </url>
   
@@ -288,16 +318,6 @@
   </url>
   
   <url>
-    <loc>https://suraj.io/tags/linux/</loc>
-    <lastmod>2019-06-23T11:57:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/linux/</loc>
-    <lastmod>2019-06-23T11:57:07+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suraj.io/post/project-specific-scripts/</loc>
     <lastmod>2019-06-23T11:57:07+05:30</lastmod>
   </url>
@@ -425,16 +445,6 @@
   <url>
     <loc>https://suraj.io/post/road-to-cka/</loc>
     <lastmod>2018-10-21T00:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/fedora/</loc>
-    <lastmod>2018-10-16T22:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/fedora/</loc>
-    <lastmod>2018-10-16T22:00:51+05:30</lastmod>
   </url>
   
   <url>
