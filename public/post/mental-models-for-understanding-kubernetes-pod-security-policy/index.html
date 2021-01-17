@@ -10,7 +10,7 @@
 <meta itemprop="description" content="Getting the game of PSP right!">
 <meta itemprop="datePublished" content="2021-01-16T13:10:51+05:30" />
 <meta itemprop="dateModified" content="2021-01-16T13:10:51+05:30" />
-<meta itemprop="wordCount" content="1081">
+<meta itemprop="wordCount" content="1125">
 
 
 
@@ -361,8 +361,9 @@
 <p><a href="https://youtu.be/2NutfCHAyNM"><strong>source:</strong> What Cheese Looks Like Around The World by Insider</a>.</p>
 <p>A generic restrictive PSP that mutates the pods looks like above, cheese cutting/moulding machine. It is ensuring that whatever comes out is of fixed mould, in case of Kubernetes the pod has fixed security restrictions.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>I hope this blog gives you some mental models of understanding how PSPs works in general. Although PSP is being discussed in upstream for replacing with something robust like the <a href="https://github.com/open-policy-agent/gatekeeper">OPA Gatekeeper</a>, it is not official yet. It is not clear when will that materialise, but until then, PSP is the saviour we have.
+<p>I hope this blog gives you some mental models of understanding how PSPs works in general. Although PSP is being discussed in upstream for replacing with something robust like the <a href="https://github.com/open-policy-agent/gatekeeper">OPA Gatekeeper</a>, it is <del>not</del> official yet. It is not clear when will that materialise, but until then, PSP is the saviour we have.
 If you are still confused about this, please reach out to me I will happy to explain.</p>
+<p><strong>EDIT</strong>: The PSP is officially deprecated, I was wrong before to mention it is not deprecated yet. This was pointed out to me on a <a href="https://www.reddit.com/r/kubernetes/comments/kyf2yu/mental_models_for_understanding_kubernetes_pod/?utm_source=share&amp;utm_medium=web2x&amp;context=3">Reddit thread</a>. According to <a href="https://github.com/kubernetes/kubernetes/pull/97171">this Kubernetes PR</a>, PSP will be deprecated in Kubernetes <code>v1.21</code> and removed entirely in <code>v1.25</code>.</p>
 
     </div>
     <footer>

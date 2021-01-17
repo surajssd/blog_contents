@@ -150,5 +150,7 @@ A generic restrictive PSP that mutates the pods looks like above, cheese cutting
 
 ## Conclusion
 
-I hope this blog gives you some mental models of understanding how PSPs works in general. Although PSP is being discussed in upstream for replacing with something robust like the [OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper), it is not official yet. It is not clear when will that materialise, but until then, PSP is the saviour we have.
+I hope this blog gives you some mental models of understanding how PSPs works in general. Although PSP is being discussed in upstream for replacing with something robust like the [OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper), it is ~~not~~ official yet. It is not clear when will that materialise, but until then, PSP is the saviour we have.
 If you are still confused about this, please reach out to me I will happy to explain.
+
+**EDIT**: The PSP is officially deprecated, I was wrong before to mention it is not deprecated yet. This was pointed out to me on a [Reddit thread](https://www.reddit.com/r/kubernetes/comments/kyf2yu/mental_models_for_understanding_kubernetes_pod/?utm_source=share&utm_medium=web2x&context=3). According to [this Kubernetes PR](https://github.com/kubernetes/kubernetes/pull/97171), PSP will be deprecated in Kubernetes `v1.21` and removed entirely in `v1.25`.
