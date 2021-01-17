@@ -6,7 +6,17 @@
     <description>Recent content in productivity on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 16 Aug 2020 22:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Jan 2021 12:28:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Monitor releases of your favourite software</title>
+      <link>https://suraj.io/post/monitor-releases-of-your-favourite-software/</link>
+      <pubDate>Sun, 17 Jan 2021 12:28:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/monitor-releases-of-your-favourite-software/</guid>
+      <description>There are various ways to know about the release of your favourite new software, follow the mailing list, check the Github release page periodically, follow the project&amp;rsquo;s Twitter handle, etc. But do you know there is even more reliable way to track the releases of your favourite software released on Github.
+Github Releases and RSS feeds For every repository on Github, if the project is posting their releases, you can follow the RSS feed of that project&amp;rsquo;s release.</description>
+    </item>
+    
     <item>
       <title>Being Productive with Git</title>
       <link>https://suraj.io/post/being-productive-with-git/</link>

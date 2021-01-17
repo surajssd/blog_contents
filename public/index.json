@@ -1,4 +1,10 @@
 [{
+    "title": "Monitor releases of your favourite software",
+    "date": "",
+    "description": "Be on top of the releases of the software you rely upon!",
+    "body": "There are various ways to know about the release of your favourite new software, follow the mailing list, check the Github release page periodically, follow the project\u0026rsquo;s Twitter handle, etc. But do you know there is even more reliable way to track the releases of your favourite software released on Github.\nGithub Releases and RSS feeds For every repository on Github, if the project is posting their releases, you can follow the RSS feed of that project\u0026rsquo;s release. The RSS feed link for any project\u0026rsquo;s release is:\nhttps://github.com/projectrepo/projectname/releases.atom For example, you can follow the Istio project release RSS feed here.\nRSS Reader App You can find many RSS reader apps out there, read this Zapier article about the other options. In these apps add the *.atom links to follow the feed.\nHere I will show how to track releases with Slack.\nStep 1: Go to Apps section in Slack sidebar. Step 2: Search for RSS. Once you click the \u0026ldquo;Add\u0026rdquo; it will open up browser.\nStep 3: Add to Slack. Step 4: Add the *.atom URLs. In the \u0026ldquo;Add a Feed\u0026rdquo; section start adding the RSS feed links of the projects you want to monitor:\nStep 5: Check the subscribed feeds. Step 6: Add from Slack comments section. You can also start watching a feed of a project from the Slack comment section. Type the following command in a channel you want to those release notifications:\n/feed subscribe https://github.com/kubernetes/kubernetes/release.atom You will see a comment like this:\nClosing remarks I hope you don\u0026rsquo;t miss out on the latest release of your favourite application.\n",
+    "ref": "/post/monitor-releases-of-your-favourite-software/"
+  },{
     "title": "Mental models for understanding Kubernetes Pod Security Policy",
     "date": "",
     "description": "Getting the game of PSP right!",

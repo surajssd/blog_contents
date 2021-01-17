@@ -6,7 +6,25 @@
     <description>Recent content in Categories on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 16 Jan 2021 13:10:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Jan 2021 12:28:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>productivity</title>
+      <link>https://suraj.io/categories/productivity/</link>
+      <pubDate>Sun, 17 Jan 2021 12:28:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/productivity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming</title>
+      <link>https://suraj.io/categories/programming/</link>
+      <pubDate>Sun, 17 Jan 2021 12:28:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/programming/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>kubernetes</title>
       <link>https://suraj.io/categories/kubernetes/</link>
@@ -103,15 +121,6 @@
       <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/categories/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>productivity</title>
-      <link>https://suraj.io/categories/productivity/</link>
-      <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/productivity/</guid>
       <description></description>
     </item>
     
@@ -310,15 +319,6 @@
       <pubDate>Mon, 02 Jul 2018 08:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/categories/cmd-line/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>programming</title>
-      <link>https://suraj.io/categories/programming/</link>
-      <pubDate>Wed, 07 Mar 2018 02:21:49 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/programming/</guid>
       <description></description>
     </item>
     
