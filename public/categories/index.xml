@@ -6,7 +6,34 @@
     <description>Recent content in Categories on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 17 Jan 2021 12:28:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Jan 2021 10:10:41 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bash</title>
+      <link>https://suraj.io/categories/bash/</link>
+      <pubDate>Sat, 23 Jan 2021 10:10:41 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>container</title>
+      <link>https://suraj.io/categories/container/</link>
+      <pubDate>Sat, 23 Jan 2021 10:10:41 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/container/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://suraj.io/categories/kubernetes/</link>
+      <pubDate>Sat, 23 Jan 2021 10:10:41 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>productivity</title>
       <link>https://suraj.io/categories/productivity/</link>
@@ -22,15 +49,6 @@
       <pubDate>Sun, 17 Jan 2021 12:28:51 +0530</pubDate>
       
       <guid>https://suraj.io/categories/programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>https://suraj.io/categories/kubernetes/</link>
-      <pubDate>Sat, 16 Jan 2021 13:10:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/kubernetes/</guid>
       <description></description>
     </item>
     
@@ -107,15 +125,6 @@
     </item>
     
     <item>
-      <title>bash</title>
-      <link>https://suraj.io/categories/bash/</link>
-      <pubDate>Sat, 22 Aug 2020 21:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/bash/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>git</title>
       <link>https://suraj.io/categories/git/</link>
       <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
@@ -157,15 +166,6 @@
       <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/categories/packaging/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>container</title>
-      <link>https://suraj.io/categories/container/</link>
-      <pubDate>Sat, 06 Jun 2020 20:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/container/</guid>
       <description></description>
     </item>
     

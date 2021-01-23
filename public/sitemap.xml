@@ -3,17 +3,62 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://suraj.io/categories/</loc>
-    <lastmod>2021-01-17T12:28:51+05:30</lastmod>
+    <loc>https://suraj.io/tags/bash/</loc>
+    <lastmod>2021-01-23T10:10:41+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://suraj.io/post/monitor-releases-of-your-favourite-software/</loc>
-    <lastmod>2021-01-17T12:28:51+05:30</lastmod>
+    <loc>https://suraj.io/categories/bash/</loc>
+    <lastmod>2021-01-23T10:10:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/</loc>
+    <lastmod>2021-01-23T10:10:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/container/</loc>
+    <lastmod>2021-01-23T10:10:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/container/</loc>
+    <lastmod>2021-01-23T10:10:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/2021/01/shell-exec/</loc>
+    <lastmod>2021-01-23T10:10:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/kubernetes/</loc>
+    <lastmod>2021-01-23T10:10:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/kubernetes/</loc>
+    <lastmod>2021-01-23T10:10:41+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/post/</loc>
+    <lastmod>2021-01-23T10:10:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2021-01-23T10:10:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2021-01-23T10:10:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/monitor-releases-of-your-favourite-software/</loc>
     <lastmod>2021-01-17T12:28:51+05:30</lastmod>
   </url>
   
@@ -35,26 +80,6 @@
   <url>
     <loc>https://suraj.io/categories/programming/</loc>
     <lastmod>2021-01-17T12:28:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2021-01-17T12:28:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/</loc>
-    <lastmod>2021-01-17T12:28:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/kubernetes/</loc>
-    <lastmod>2021-01-16T13:10:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/kubernetes/</loc>
-    <lastmod>2021-01-16T13:10:51+05:30</lastmod>
   </url>
   
   <url>
@@ -168,11 +193,6 @@
   </url>
   
   <url>
-    <loc>https://suraj.io/categories/bash/</loc>
-    <lastmod>2020-08-22T21:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suraj.io/post/use-configmap-for-scripts/</loc>
     <lastmod>2020-08-22T21:00:51+05:30</lastmod>
   </url>
@@ -238,11 +258,6 @@
   </url>
   
   <url>
-    <loc>https://suraj.io/tags/bash/</loc>
-    <lastmod>2020-07-18T19:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suraj.io/post/framework-for-scripts-and-binaries/</loc>
     <lastmod>2020-07-18T19:00:51+05:30</lastmod>
   </url>
@@ -260,16 +275,6 @@
   <url>
     <loc>https://suraj.io/post/book-review-einstein/</loc>
     <lastmod>2020-06-20T11:30:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/container/</loc>
-    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/container/</loc>
-    <lastmod>2020-06-06T20:30:07+05:30</lastmod>
   </url>
   
   <url>
