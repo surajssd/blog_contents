@@ -6,31 +6,49 @@
     <description>Recent content in Categories on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 23 Jan 2021 10:10:41 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>bash</title>
-      <link>https://suraj.io/categories/bash/</link>
-      <pubDate>Sat, 23 Jan 2021 10:10:41 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/bash/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Fri, 29 Jan 2021 22:02:41 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>container</title>
       <link>https://suraj.io/categories/container/</link>
-      <pubDate>Sat, 23 Jan 2021 10:10:41 +0530</pubDate>
+      <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
       
       <guid>https://suraj.io/categories/container/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>flatcar</title>
+      <link>https://suraj.io/categories/flatcar/</link>
+      <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/flatcar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubeadm</title>
+      <link>https://suraj.io/categories/kubeadm/</link>
+      <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/kubeadm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>kubernetes</title>
       <link>https://suraj.io/categories/kubernetes/</link>
-      <pubDate>Sat, 23 Jan 2021 10:10:41 +0530</pubDate>
+      <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
       
       <guid>https://suraj.io/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bash</title>
+      <link>https://suraj.io/categories/bash/</link>
+      <pubDate>Sat, 23 Jan 2021 10:10:41 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/bash/</guid>
       <description></description>
     </item>
     
