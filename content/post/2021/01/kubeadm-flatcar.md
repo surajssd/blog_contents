@@ -9,6 +9,8 @@ tags = ["kubernetes", "flatcar", "container", "kubeadm"]
 
 This blog shows a simple set of commands to install a Kubernetes cluster on [Flatcar Container Linux](https://www.flatcar-linux.org/) based machines using [Kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/).
 
+You might wonder why this blog when one can go to the official documentation and follow the steps? Yep, you are right. You can choose to do that. But this blog has a collection of actions specific to Flatcar Container Linux. These steps have been tried and tested on Flatcar, so you don't need to recreate and test them yourself. There are some nuances related to the read-only partitions of Flatcar, and this blog takes care of them at the control plane level and the CNI level both.
+
 ![Flatcar Container Linux](https://kinvolk.io/media/flatcar-linux-public-release_huff9ce14b9fc0c4cb57265a53fd2259cb_16308_900x0_resize_box_2.png "Flatcar Container Linux")
 
 # Textual Steps
@@ -151,6 +153,8 @@ kubectl get nodes -o wide
 
 ### 2.3. Generate worker config
 
+The general way to connect a worker to the control plane is by running the `kubeadm join` command generated at the end of the `kubeadm init` output. But you can run the following set of steps at any time to create a worker config.
+
 ```bash
 URL=$(kubectl config view -ojsonpath='{.clusters[0].cluster.server}')
 prefix="https://"
@@ -185,6 +189,10 @@ Run the following steps only on worker nodes.
 ```bash
 kubeadm join --config worker-config.yaml
 ```
+
+## 4. Verify
+
+Go to the controller node and run the command `kubectl get nodes` to verify if the worker has joined the cluster.
 
 # Video
 

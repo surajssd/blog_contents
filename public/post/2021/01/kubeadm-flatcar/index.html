@@ -192,7 +192,7 @@
   <div class="meta">
     <time datetime="2021-01-29 22:02:41 &#43;0530 IST">January 29, 2021</time>
     <p>Suraj Deshmukh</p>
-    <p>3-Minute Read</p>
+    <p>4-Minute Read</p>
   </div>
 </header>
 
@@ -238,6 +238,7 @@
     <div class="content">
       
       <p>This blog shows a simple set of commands to install a Kubernetes cluster on <a href="https://www.flatcar-linux.org/">Flatcar Container Linux</a> based machines using <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/">Kubeadm</a>.</p>
+<p>You might wonder why this blog when one can go to the official documentation and follow the steps? Yep, you are right. You can choose to do that. But this blog has a collection of actions specific to Flatcar Container Linux. These steps have been tried and tested on Flatcar, so you don&rsquo;t need to recreate and test them yourself. There are some nuances related to the read-only partitions of Flatcar, and this blog takes care of them at the control plane level and the CNI level both.</p>
 <p><img src="https://kinvolk.io/media/flatcar-linux-public-release_huff9ce14b9fc0c4cb57265a53fd2259cb_16308_900x0_resize_box_2.png" alt="Flatcar Container Linux" title="Flatcar Container Linux"></p>
 <h1 id="textual-steps">Textual Steps</h1>
 <p>All the commands are run by becoming <code>root</code> using <code>sudo -i</code>.</p>
@@ -339,6 +340,7 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 kubectl get pods -A
 kubectl get nodes -o wide
 </code></pre></div><h3 id="23-generate-worker-config">2.3. Generate worker config</h3>
+<p>The general way to connect a worker to the control plane is by running the <code>kubeadm join</code> command generated at the end of the <code>kubeadm init</code> output. But you can run the following set of steps at any time to create a worker config.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">URL<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl config view -ojsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.clusters[0].cluster.server}&#39;</span><span style="color:#66d9ef">)</span>
 prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://&#34;</span>
 short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>URL#<span style="color:#e6db74">&#34;</span>$prefix<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">}</span>
@@ -361,7 +363,9 @@ short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</spa
 <p>Run the following steps only on worker nodes.</p>
 <h3 id="31-connect-to-control-plane">3.1. Connect to Control-Plane</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubeadm join --config worker-config.yaml
-</code></pre></div><h1 id="video">Video</h1>
+</code></pre></div><h2 id="4-verify">4. Verify</h2>
+<p>Go to the controller node and run the command <code>kubectl get nodes</code> to verify if the worker has joined the cluster.</p>
+<h1 id="video">Video</h1>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://www.youtube.com/embed/wxa1fTDNcis" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
