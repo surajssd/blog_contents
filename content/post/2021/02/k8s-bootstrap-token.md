@@ -219,7 +219,7 @@ kubectl get nodes
 
 Watch this video to understand the same process explained in this blog. Unlike my previous blog videos, I am narrating, so you know what is going on.
 
-WIP
+{{<youtube RpBHoAmBBYY>}}
 
 # References
 
