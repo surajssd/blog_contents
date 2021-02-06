@@ -7,6 +7,8 @@ categories = ["kubernetes"]
 tags = ["kubernetes", "security"]
 +++
 
+> **NOTE**: There is an updated version of this blog [here](https://suraj.io/post/2021/02/k8s-bootstrap-token/).
+
 Few days back I wrote a blog about [adding new node to the cluster](https://suraj.io/post/add-new-k8s-node-cert-rotate/) using the static token file. The problem with that approach is that you need to restart `kube-apiserver` providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like `secrets`.
 
 So if you are following [Kubernetes the Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way/) to set up the cluster here are the changes you should do to adapt it to run with bootstrap token.
