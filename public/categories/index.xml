@@ -6,7 +6,34 @@
     <description>Recent content in Categories on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 29 Jan 2021 22:02:41 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Feb 2021 10:25:41 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>certs</title>
+      <link>https://suraj.io/categories/certs/</link>
+      <pubDate>Sat, 06 Feb 2021 10:25:41 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/certs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://suraj.io/categories/kubernetes/</link>
+      <pubDate>Sat, 06 Feb 2021 10:25:41 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>notes</title>
+      <link>https://suraj.io/categories/notes/</link>
+      <pubDate>Sat, 06 Feb 2021 10:25:41 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/notes/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>container</title>
       <link>https://suraj.io/categories/container/</link>
@@ -31,15 +58,6 @@
       <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
       
       <guid>https://suraj.io/categories/kubeadm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>https://suraj.io/categories/kubernetes/</link>
-      <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/kubernetes/</guid>
       <description></description>
     </item>
     
@@ -130,15 +148,6 @@
       <pubDate>Sat, 29 Aug 2020 15:33:51 +0530</pubDate>
       
       <guid>https://suraj.io/categories/jobs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>notes</title>
-      <link>https://suraj.io/categories/notes/</link>
-      <pubDate>Sat, 29 Aug 2020 15:33:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/notes/</guid>
       <description></description>
     </item>
     
@@ -301,15 +310,6 @@
       <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/categories/selinux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>certs</title>
-      <link>https://suraj.io/categories/certs/</link>
-      <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/certs/</guid>
       <description></description>
     </item>
     

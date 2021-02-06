@@ -6,7 +6,16 @@
     <description>Recent content in notes on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 29 Aug 2020 15:33:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/notes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Feb 2021 10:25:41 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Enable TLS bootstrapping in a Kubernetes cluster</title>
+      <link>https://suraj.io/post/2021/02/k8s-bootstrap-token/</link>
+      <pubDate>Sat, 06 Feb 2021 10:25:41 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/2021/02/k8s-bootstrap-token/</guid>
+      <description>This blog is a recap of my old blog &amp;ldquo;Add new node to Kubernetes cluster with bootstrap token&amp;rdquo;. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.</description>
+    </item>
+    
     <item>
       <title>How to gracefully kill Kubernetes Jobs with a sidecar?</title>
       <link>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</link>

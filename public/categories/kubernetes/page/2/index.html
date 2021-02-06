@@ -187,6 +187,61 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/apiserver-in-minikube-static-configs/">Make static configs available for apiserver in minikube</a></h2>
+    
+    
+      <p>Dealing with apiserver in minikube can be tricky</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2019-01-20 01:00:51 &#43;0530 IST">January 20, 2019</time>
+    <p>Suraj Deshmukh</p>
+    <p>3-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>If you want to provide extra flags to the <code>kube-apiserver</code> that runs inside minikube how do you do it? You can use the minikube&rsquo;s <code>--extra-config</code> flag with <code>apiserver.&lt;apiserver flag&gt;=&lt;value&gt;</code>, for e.g. if you want to enable <code>RBAC</code> authorization mode you do it as follows:</p>
+  </div>
+  <footer>
+    <a href="/post/apiserver-in-minikube-static-configs/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/minikube/">minikube</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/minikube/">minikube</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h2>
     
     
@@ -674,64 +729,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/private-registry-from-minikube/">Using private container registries from minikube</a></h2>
-    
-    
-      <p>A guide to how would you download image from private container registry in minikube</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2017-10-06 19:32:33 &#43;0530 IST">October 6, 2017</time>
-    <p>Suraj Deshmukh</p>
-    <p>2-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>I am doing Kubernetes native development using minikube. And for doing that I had to
-download a Container image that is available in internally hosted private container registry.</p>
-  </div>
-  <footer>
-    <a href="/post/private-registry-from-minikube/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/minikube/">minikube</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/container/">container</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/minikube/">minikube</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/container/">container</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/categories/kubernetes/" class="button left"><span>Previous Page</span></a>
@@ -748,6 +745,14 @@ download a Container image that is available in internally hosted private contai
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="/post/2021/02/k8s-bootstrap-token/">Enable TLS bootstrapping in a Kubernetes cluster</a></h2>
+          <time class="published" datetime="2021-02-06 10:25:41 &#43;0530 IST">February 6, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           
@@ -781,14 +786,6 @@ download a Container image that is available in internally hosted private contai
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/fedora-partitioning/">Linux Partitioning Guide</a></h2>
-          <time class="published" datetime="2021-01-11 17:00:51 &#43;0530 IST">January 11, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -808,10 +805,10 @@ download a Container image that is available in internally hosted private contai
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">25</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">26</span></a>
           
           <li>
-              <a href="/categories/notes/">notes<span class="count">20</span></a>
+              <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">8</span></a>
@@ -862,6 +859,9 @@ download a Container image that is available in internally hosted private contai
               <a href="/categories/programming/">programming<span class="count">3</span></a>
           
           <li>
+              <a href="/categories/certs/">certs<span class="count">2</span></a>
+          
+          <li>
               <a href="/categories/configuration/">configuration<span class="count">2</span></a>
           
           <li>
@@ -887,9 +887,6 @@ download a Container image that is available in internally hosted private contai
           
           <li>
               <a href="/categories/centos/">centos<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/certs/">certs<span class="count">1</span></a>
           
           <li>
               <a href="/categories/cka/">cka<span class="count">1</span></a>

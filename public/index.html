@@ -221,6 +221,63 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/2021/02/k8s-bootstrap-token/">Enable TLS bootstrapping in a Kubernetes cluster</a></h2>
+    
+    
+      <p>Add a new node using a bootstrap token to Kubernetes</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2021-02-06 10:25:41 &#43;0530 IST">February 6, 2021</time>
+    <p>Suraj Deshmukh</p>
+    <p>5-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>This blog is a recap of my old blog <a href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/">&ldquo;Add new node to Kubernetes cluster with bootstrap token&rdquo;</a>. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.</p>
+  </div>
+  <footer>
+    <a href="/post/2021/02/k8s-bootstrap-token/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/certs/">certs</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/certs/">certs</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/2021/01/kubeadm-flatcar/">Kubernetes Cluster using Kubeadm on Flatcar Container Linux</a></h2>
     
     
@@ -722,65 +779,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/being-productive-with-git/">Being Productive with Git</a></h2>
-    
-    
-      <p>Tips and tricks to make your day to day usage easier.</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2020-08-16 22:00:51 &#43;0530 IST">August 16, 2020</time>
-    <p>Suraj Deshmukh</p>
-    <p>5-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>Git is a day to day tool for version control. It has become a de facto method of source code versioning, it has become ubiquitous with development and its an essential skill for a programmer. I use it all the time.</p>
-  </div>
-  <footer>
-    <a href="/post/being-productive-with-git/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/git/">git</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/productivity/">productivity</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/bash/">bash</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/git/">git</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/productivity/">productivity</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
     
@@ -795,6 +793,14 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="/post/2021/02/k8s-bootstrap-token/">Enable TLS bootstrapping in a Kubernetes cluster</a></h2>
+          <time class="published" datetime="2021-02-06 10:25:41 &#43;0530 IST">February 6, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           
@@ -828,14 +834,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/fedora-partitioning/">Linux Partitioning Guide</a></h2>
-          <time class="published" datetime="2021-01-11 17:00:51 &#43;0530 IST">January 11, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -855,10 +853,10 @@
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">25</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">26</span></a>
           
           <li>
-              <a href="/categories/notes/">notes<span class="count">20</span></a>
+              <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">8</span></a>
@@ -909,6 +907,9 @@
               <a href="/categories/programming/">programming<span class="count">3</span></a>
           
           <li>
+              <a href="/categories/certs/">certs<span class="count">2</span></a>
+          
+          <li>
               <a href="/categories/configuration/">configuration<span class="count">2</span></a>
           
           <li>
@@ -934,9 +935,6 @@
           
           <li>
               <a href="/categories/centos/">centos<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/certs/">certs<span class="count">1</span></a>
           
           <li>
               <a href="/categories/cka/">cka<span class="count">1</span></a>

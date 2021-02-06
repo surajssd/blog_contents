@@ -187,6 +187,57 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/add-new-k8s-node-bootstrap-token/">Add new Node to k8s cluster with Bootstrap token</a></h2>
+    
+    
+      <p>Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2018-10-24 01:00:51 &#43;0530 IST">October 24, 2018</time>
+    <p>Suraj Deshmukh</p>
+    <p>4-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>Few days back I wrote a blog about <a href="https://suraj.io/post/add-new-k8s-node-cert-rotate/">adding new node to the cluster</a> using the static token file. The problem with that approach is that you need to restart <code>kube-apiserver</code> providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like <code>secrets</code>.</p>
+  </div>
+  <footer>
+    <a href="/post/add-new-k8s-node-bootstrap-token/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/psp-on-existing-cluster/">PodSecurityPolicy on existing Kubernetes clusters</a></h2>
     
     
@@ -680,61 +731,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/accessing-oc-cluster-up-etcd/">Access etcd in OpenShift origin</a></h2>
-    
-    
-      <p>Access the etcd in OpenShift started by oc cluster up</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2018-07-11 01:00:51 &#43;0530 IST">July 11, 2018</time>
-    <p>Suraj Deshmukh</p>
-    <p>1-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>How do you access the etcd that is being used by the OpenShift started by <code>oc cluster up</code> or using <a href="https://docs.openshift.org/latest/minishift/getting-started/index.html">minishift</a>.</p>
-  </div>
-  <footer>
-    <a href="/post/accessing-oc-cluster-up-etcd/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/openshift/">openshift</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/etcd/">etcd</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/openshift/">openshift</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/post/page/3/" class="button left"><span>Previous Page</span></a>
@@ -751,6 +747,14 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="/post/2021/02/k8s-bootstrap-token/">Enable TLS bootstrapping in a Kubernetes cluster</a></h2>
+          <time class="published" datetime="2021-02-06 10:25:41 &#43;0530 IST">February 6, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           
@@ -784,14 +788,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/fedora-partitioning/">Linux Partitioning Guide</a></h2>
-          <time class="published" datetime="2021-01-11 17:00:51 &#43;0530 IST">January 11, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -811,10 +807,10 @@
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">25</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">26</span></a>
           
           <li>
-              <a href="/categories/notes/">notes<span class="count">20</span></a>
+              <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">8</span></a>
@@ -865,6 +861,9 @@
               <a href="/categories/programming/">programming<span class="count">3</span></a>
           
           <li>
+              <a href="/categories/certs/">certs<span class="count">2</span></a>
+          
+          <li>
               <a href="/categories/configuration/">configuration<span class="count">2</span></a>
           
           <li>
@@ -890,9 +889,6 @@
           
           <li>
               <a href="/categories/centos/">centos<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/certs/">certs<span class="count">1</span></a>
           
           <li>
               <a href="/categories/cka/">cka<span class="count">1</span></a>
