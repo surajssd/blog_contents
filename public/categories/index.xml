@@ -6,7 +6,25 @@
     <description>Recent content in Categories on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Feb 2021 10:25:41 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Feb 2021 21:43:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>book-review</title>
+      <link>https://suraj.io/categories/book-review/</link>
+      <pubDate>Wed, 10 Feb 2021 21:43:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/book-review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>non-tech</title>
+      <link>https://suraj.io/categories/non-tech/</link>
+      <pubDate>Wed, 10 Feb 2021 21:43:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/categories/non-tech/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>certs</title>
       <link>https://suraj.io/categories/certs/</link>
@@ -112,24 +130,6 @@
       <pubDate>Mon, 11 Jan 2021 17:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/categories/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>book-review</title>
-      <link>https://suraj.io/categories/book-review/</link>
-      <pubDate>Sat, 28 Nov 2020 21:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/book-review/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>non-tech</title>
-      <link>https://suraj.io/categories/non-tech/</link>
-      <pubDate>Sat, 28 Nov 2020 21:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/categories/non-tech/</guid>
       <description></description>
     </item>
     

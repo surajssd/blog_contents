@@ -221,6 +221,65 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/use-configmap-for-scripts/">Use Configmap for Scripts</a></h2>
+    
+    
+      <p>A new way to ship scripts to container images.</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2020-08-22 21:00:51 &#43;0530 IST">August 22, 2020</time>
+    <p>Suraj Deshmukh</p>
+    <p>6-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>We generally use some sort of scripts in application container images. They serve various purposes. Some scripts might do an initial setup before the application starts, others may have the whole logic of the container image, etc. Whatever the goal may be the general pattern is to copy the script into the container image, build the image and then the script is available when you consume the image.</p>
+  </div>
+  <footer>
+    <a href="/post/use-configmap-for-scripts/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/configuration/">configuration</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/bash/">bash</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/configuration/">configuration</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/being-productive-with-git/">Being Productive with Git</a></h2>
     
     
@@ -730,69 +789,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/linux-cap-note/">Capabilities on executables</a></h2>
-    
-    
-      <p>Note on Linux Kernel capabilities</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2019-06-25 15:15:07 &#43;0530 IST">June 25, 2019</time>
-    <p>Suraj Deshmukh</p>
-    <p>1-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>File capabilities allow users to execute programs with higher privileges. Best example is network utility <code>ping</code>.</p>
-  </div>
-  <footer>
-    <a href="/post/linux-cap-note/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/docker/">docker</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/host/">host</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/containers/">containers</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/proc/">proc</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/docker/">docker</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/host/">host</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/containers/">containers</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/" class="button left"><span>Previous Page</span></a>
@@ -809,6 +805,14 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="/post/2021/02/book-hiw-learnings/">Book: How Innovation Works</a></h2>
+          <time class="published" datetime="2021-02-10 21:43:07 &#43;0530 IST">February 10, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           
@@ -842,14 +846,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/mental-models-for-understanding-kubernetes-pod-security-policy/">Mental models for understanding Kubernetes Pod Security Policy</a></h2>
-          <time class="published" datetime="2021-01-16 13:10:51 &#43;0530 IST">January 16, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -878,16 +874,16 @@
               <a href="/categories/security/">security<span class="count">8</span></a>
           
           <li>
+              <a href="/categories/book-review/">book-review<span class="count">6</span></a>
+          
+          <li>
+              <a href="/categories/non-tech/">non-tech<span class="count">6</span></a>
+          
+          <li>
               <a href="/categories/bash/">bash<span class="count">5</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">5</span></a>
-          
-          <li>
               <a href="/categories/event_report/">event_report<span class="count">5</span></a>
-          
-          <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">5</span></a>
           
           <li>
               <a href="/categories/packaging/">packaging<span class="count">5</span></a>
