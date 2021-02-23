@@ -221,6 +221,61 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h2>
+    
+    
+      <p>This post shows how you can enable seccomp on all the Pods that are deployed with Prometheus Operator</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2020-04-14 11:57:07 &#43;0530 IST">April 14, 2020</time>
+    <p>Suraj Deshmukh</p>
+    <p>3-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p><a href="https://en.wikipedia.org/wiki/Seccomp">Seccomp</a> helps us limit the system calls the process inside container can make. And <code>PodSecurityPolicy</code> is the way to enable it on pods in Kubernetes.</p>
+  </div>
+  <footer>
+    <a href="/post/seccomp-in-kube-state-metrics/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/seccomp/">seccomp</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/linux-cap-note/">Capabilities on executables</a></h2>
     
     
@@ -730,61 +785,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/cobra-persistent-flag/">Cobra and Persistentflags gotchas</a></h2>
-    
-    
-      <p>How wrong usage of persistent flags can burn you</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2019-01-04 01:00:51 &#43;0530 IST">January 4, 2019</time>
-    <p>Suraj Deshmukh</p>
-    <p>3-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>If you are using <a href="https://github.com/spf13/cobra">cobra</a> cmd line library for golang applications and it&rsquo;s <code>PersistentFlags</code> and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.</p>
-  </div>
-  <footer>
-    <a href="/post/cobra-persistent-flag/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/golang/">golang</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/cobra/">cobra</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/golang/">golang</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/programming/">programming</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/page/2/" class="button left"><span>Previous Page</span></a>
@@ -801,6 +801,14 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="/post/2021/02/kms-journey/">My Knowledge Management Journey</a></h2>
+          <time class="published" datetime="2021-02-23 09:07:07 &#43;0530 IST">February 23, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           
@@ -834,14 +842,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/monitor-releases-of-your-favourite-software/">Monitor releases of your favourite software</a></h2>
-          <time class="published" datetime="2021-01-17 12:28:51 &#43;0530 IST">January 17, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -870,10 +870,10 @@
               <a href="/categories/security/">security<span class="count">8</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">6</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">7</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">6</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">6</span></a>
           
           <li>
               <a href="/categories/bash/">bash<span class="count">5</span></a>
@@ -925,6 +925,9 @@
           
           <li>
               <a href="/categories/ide/">ide<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/kms/">kms<span class="count">2</span></a>
           
           <li>
               <a href="/categories/linux/">linux<span class="count">2</span></a>

@@ -3,8 +3,8 @@ author = "Suraj Deshmukh"
 date = "2020-11-28T21:30:07+05:30"
 title = "Book Review: How to Take Smart Notes"
 description = "One Simple Technique to Boost Writing, Learning and Thinking – for Students, Academics and Nonfiction Book Writers by Sönke Ahrens"
-categories = ["book-review", "non-tech"]
-tags = ["book-review", "non-tech"]
+categories = ["book-review", "non-tech", "KMS"]
+tags = ["book-review", "non-tech", "KMS"]
 +++
 
 ## Introduction
