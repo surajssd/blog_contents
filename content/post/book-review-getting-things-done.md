@@ -3,8 +3,8 @@ author = "Suraj Deshmukh"
 date = "2020-07-30T16:00:07+05:30"
 title = "Book Review: Getting Things Done"
 description = "The Art of Stress-free Productivity - David Allen"
-categories = ["book-review", "non-tech"]
-tags = ["book-review", "non-tech"]
+categories = ["book-review", "non-tech", "notion"]
+tags = ["book-review", "non-tech", "notion"]
 +++
 
 ## Introduction

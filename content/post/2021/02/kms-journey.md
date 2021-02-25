@@ -3,8 +3,8 @@ author = "Suraj Deshmukh"
 date = "2021-02-23T09:07:07+05:30"
 title = "My Knowledge Management Journey"
 description = "The story of various tools I have used over last five years."
-categories = ["non-tech", "KMS"]
-tags = ["non-tech", "KMS"]
+categories = ["non-tech", "KMS", "productivity", "notion"]
+tags = ["non-tech", "KMS", "productivity", "notion"]
 +++
 
 If you are reading this, you are definitely a [Knowledge Worker](https://en.wikipedia.org/wiki/Knowledge_worker). As Knowledge Workers, we rely a lot on the information we know or have access to for our day to day work. Occasionally, we will do the same thing twice, face the situation more than once, want to read that reference or try to understand the insights mentioned in that one particular blog. How do you keep track of such information? How do you find such information again after you have researched it once?! You need a [knowledge management system](https://en.wikipedia.org/wiki/Knowledge_management) that aids you in revisiting such information.
