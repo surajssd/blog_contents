@@ -4,8 +4,11 @@ date: "2021-02-28T07:07:07+05:30"
 title: "Importance of Typing Skills"
 description: "The foundational skill which improves everything else."
 draft: false
-categories: ["non-tech", "productivity",]
-tags: ["non-tech", "productivity",]
+categories: ["non-tech", "productivity"]
+tags: ["non-tech", "productivity"]
+images:
+- src: "/post/2021/02/typing-skills/keyboard.jpg"
+  alt: "Keyboard"
 ---
 
 Yes, today's topic is typing skills. I think not many people stress about it, but it is a very underrated skill, yet useful in our daily lives.
