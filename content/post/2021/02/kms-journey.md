@@ -106,7 +106,7 @@ The [Notion database](https://www.notion.so/Intro-to-databases-fd8cd2d212f74c509
 
 ![Notion Media DB](/post/2021/02/kms-journey/media.png "Notion Media DB")
 
-My Notion system is built similar to what August Bradley has recommended ([Media](https://www.youtube.com/watch?v=KFQ9qc3p_M8) and [Notes](https://www.youtube.com/watch?v=cbPPelWopis)). I have two Notion databases; one stores "Media" (blogs, videos, podcasts, books), and the other one is called "Notes", and both of these databases are linked.
+My Notion system is built similar to what [August Bradley](https://twitter.com/augustbradley) has recommended ([Media](https://www.youtube.com/watch?v=KFQ9qc3p_M8) and [Notes](https://www.youtube.com/watch?v=cbPPelWopis)). I have two Notion databases; one stores "Media" (blogs, videos, podcasts, books), and the other one is called "Notes", and both of these databases are linked.
 
 The Media database has columns that allow me to store metadata like the type of content, category of content, how likely you think it will be relevant, etc. These columns can later be used to filter and create dashboards. Like if I want to view just the media of type articles and in the technology field, I can make a dashboard named "Read - Technology" and have a filtered view of a database. To import content into the Media database, I use the [Notion web clipper](https://www.notion.so/web-clipper). It captures all the content in that webpage and saves it as a Notion page in a database. Once that webpage is copied in Notion, now you can decide what you want to highlight or bold or italic, etc.
 
