@@ -185,6 +185,63 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h2>
+    
+    
+      <p>Subpath Volume Mount could give you access to node</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2019-01-14 01:00:51 &#43;0530 IST">January 14, 2019</time>
+    <p>Suraj Deshmukh</p>
+    <p>2-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using <code>emptyDir</code> volume mount using subpath. The official description goes as follows:</p>
+  </div>
+  <footer>
+    <a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/cve/">cve</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/cobra-persistent-flag/">Cobra and Persistentflags gotchas</a></h2>
     
     
@@ -666,63 +723,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h2>
-    
-    
-      <p>Kubernetes HostPath volume good way to nuke your Kubernetes Nodes</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2018-09-10 01:00:51 &#43;0530 IST">September 10, 2018</time>
-    <p>Suraj Deshmukh</p>
-    <p>8-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>This post will demonstrate how Kubernetes <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"><code>HostPath</code></a> volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.</p>
-  </div>
-  <footer>
-    <a href="/post/k8s-hostpat-nuke-nodes/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/openshift/">openshift</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/openshift/">openshift</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/hostpath/">hostpath</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/page/3/" class="button left"><span>Previous Page</span></a>
@@ -739,6 +739,14 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="/post/2021/02/typing-skills/">Importance of Typing Skills</a></h2>
+          <time class="published" datetime="2021-02-28 07:07:07 &#43;0530 IST">February 28, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           
@@ -772,14 +780,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/2021/01/shell-exec/">Exec in container environment</a></h2>
-          <time class="published" datetime="2021-01-23 10:10:41 &#43;0530 IST">January 23, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -805,13 +805,16 @@
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
+              <a href="/categories/non-tech/">non-tech<span class="count">8</span></a>
+          
+          <li>
               <a href="/categories/security/">security<span class="count">8</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">7</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">6</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">6</span></a>
+              <a href="/categories/productivity/">productivity<span class="count">6</span></a>
           
           <li>
               <a href="/categories/bash/">bash<span class="count">5</span></a>
@@ -821,9 +824,6 @@
           
           <li>
               <a href="/categories/packaging/">packaging<span class="count">5</span></a>
-          
-          <li>
-              <a href="/categories/productivity/">productivity<span class="count">5</span></a>
           
           <li>
               <a href="/categories/container/">container<span class="count">4</span></a>
