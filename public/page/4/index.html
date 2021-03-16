@@ -185,6 +185,61 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/apiserver-in-minikube-static-configs/">Make static configs available for apiserver in minikube</a></h2>
+    
+    
+      <p>Dealing with apiserver in minikube can be tricky</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2019-01-20 01:00:51 &#43;0530 IST">January 20, 2019</time>
+    <p>Suraj Deshmukh</p>
+    <p>3-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>If you want to provide extra flags to the <code>kube-apiserver</code> that runs inside minikube how do you do it? You can use the minikube&rsquo;s <code>--extra-config</code> flag with <code>apiserver.&lt;apiserver flag&gt;=&lt;value&gt;</code>, for e.g. if you want to enable <code>RBAC</code> authorization mode you do it as follows:</p>
+  </div>
+  <footer>
+    <a href="/post/apiserver-in-minikube-static-configs/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/minikube/">minikube</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/minikube/">minikube</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h2>
     
     
@@ -664,65 +719,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/single-node-k8s-fedora-selinux/">Single node Kubernetes Cluster on Fedora with SELinux enabled</a></h2>
-    
-    
-      <p>Kubeadm to install Single Node K8S with SELinux</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2018-09-11 01:00:51 &#43;0530 IST">September 11, 2018</time>
-    <p>Suraj Deshmukh</p>
-    <p>2-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>Start a single node fedora machine, using whatever method but I have used <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/fedora/Vagrantfile">this Vagrantfile</a> to do it:</p>
-  </div>
-  <footer>
-    <a href="/post/single-node-k8s-fedora-selinux/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/selinux/">selinux</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/openshift/">openshift</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/selinux/">selinux</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/fedora/">fedora</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/page/3/" class="button left"><span>Previous Page</span></a>
@@ -739,6 +735,16 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/03/compounder-skills/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/compounder-skills/compound.png');">
+    <img src="https://suraj.io/post/2021/03/compounder-skills/compound.png" alt="Compounding Chart">
+  </a>
+        <header>
+          <h2><a href="/post/2021/03/compounder-skills/">On Compounder Skills</a></h2>
+          <time class="published" datetime="2021-03-16 07:07:07 &#43;0530 IST">March 16, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           <a href="/post/2021/02/typing-skills/" class="image" style="--bg-image: url('https://suraj.io/post/2021/02/typing-skills/keyboard.jpg');">
@@ -774,14 +780,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/2021/01/kubeadm-flatcar/">Kubernetes Cluster using Kubeadm on Flatcar Container Linux</a></h2>
-          <time class="published" datetime="2021-01-29 22:02:41 &#43;0530 IST">January 29, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -807,16 +805,16 @@
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">8</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">9</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">8</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">6</span></a>
+              <a href="/categories/productivity/">productivity<span class="count">7</span></a>
           
           <li>
-              <a href="/categories/productivity/">productivity<span class="count">6</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">6</span></a>
           
           <li>
               <a href="/categories/bash/">bash<span class="count">5</span></a>
