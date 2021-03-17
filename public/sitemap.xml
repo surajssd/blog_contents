@@ -4,46 +4,61 @@
   
   <url>
     <loc>https://suraj.io/categories/</loc>
-    <lastmod>2021-03-16T07:07:07+05:30</lastmod>
+    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/2021/03/k8s-blr-meetup/</loc>
+    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/meetup/</loc>
+    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/meetup/</loc>
+    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/tags/non-tech/</loc>
-    <lastmod>2021-03-16T07:07:07+05:30</lastmod>
+    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/non-tech/</loc>
-    <lastmod>2021-03-16T07:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/post/2021/03/compounder-skills/</loc>
-    <lastmod>2021-03-16T07:07:07+05:30</lastmod>
+    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/post/</loc>
-    <lastmod>2021-03-16T07:07:07+05:30</lastmod>
+    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/tags/productivity/</loc>
-    <lastmod>2021-03-16T07:07:07+05:30</lastmod>
+    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/productivity/</loc>
-    <lastmod>2021-03-16T07:07:07+05:30</lastmod>
+    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/</loc>
-    <lastmod>2021-03-16T07:07:07+05:30</lastmod>
+    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/tags/</loc>
+    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/2021/03/compounder-skills/</loc>
     <lastmod>2021-03-16T07:07:07+05:30</lastmod>
   </url>
   
@@ -445,11 +460,6 @@
   <url>
     <loc>https://suraj.io/post/docker-seccomp-manual/</loc>
     <lastmod>2019-06-10T11:57:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/meetup/</loc>
-    <lastmod>2019-04-22T01:00:51+05:30</lastmod>
   </url>
   
   <url>

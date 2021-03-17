@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>How we manage Kubernetes Bangalore Meetup? - Suraj Deshmukh</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+  <meta property="og:title" content="How we manage Kubernetes Bangalore Meetup?">
+  <meta property="og:description" content="The method of stress-free event management!">
+  <meta property="description" content="The method of stress-free event management!">
+  <meta property="og:url" content="https://suraj.io/post/2021/03/k8s-blr-meetup/">
+  <meta property="og:type" content="article">
+  
+    
+      <meta property="og:image" content="https://suraj.io/post/2021/03/k8s-blr-meetup/meetup.jpeg">
+      <meta property="og:image:alt" content="Kubernetes Bangalore Meetup">
+    
+  
+  
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          How we manage Kubernetes Bangalore Meetup?
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+        
+      
+        
+          
+          <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+        
+      
+        
+          
+          <a href="/post/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+        
+      
+        
+          
+          <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+        
+      
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active">English (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=How%20we%20manage%20Kubernetes%20Bangalore%20Meetup%3f&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f03%2fk8s-blr-meetup%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f03%2fk8s-blr-meetup%2f&amp;title=How%20we%20manage%20Kubernetes%20Bangalore%20Meetup%3f" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <p>Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f03%2fk8s-blr-meetup%2f&amp;title=How%20we%20manage%20Kubernetes%20Bangalore%20Meetup%3f" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f03%2fk8s-blr-meetup%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <p>Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f03%2fk8s-blr-meetup%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="https://github.com/surajssd.png" class="square" width="100" alt="Suraj Deshmukh" /></a>
+  <header>
+    <h1>Blog</h1>
+  </header>
+  <main>
+    <p>containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article class="post">
+    <header>
+  <div class="title">
+    
+      <h2><a href="/post/2021/03/k8s-blr-meetup/">How we manage Kubernetes Bangalore Meetup?</a></h2>
+    
+    
+      <p>The method of stress-free event management!</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2021-03-17 07:07:07 &#43;0530 IST">March 17, 2021</time>
+    <p>Suraj Deshmukh</p>
+    <p>3-Minute Read</p>
+  </div>
+</header>
+
+    <div id="socnet-share">
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=How%20we%20manage%20Kubernetes%20Bangalore%20Meetup%3f&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f03%2fk8s-blr-meetup%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f03%2fk8s-blr-meetup%2f&amp;title=How%20we%20manage%20Kubernetes%20Bangalore%20Meetup%3f" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <p>Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f03%2fk8s-blr-meetup%2f&amp;title=How%20we%20manage%20Kubernetes%20Bangalore%20Meetup%3f" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f03%2fk8s-blr-meetup%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <p>Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f03%2fk8s-blr-meetup%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </div>
+    <div class="content">
+      <a href="/post/2021/03/k8s-blr-meetup/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/k8s-blr-meetup/meetup.jpeg');">
+    <img src="https://suraj.io/post/2021/03/k8s-blr-meetup/meetup.jpeg" alt="Kubernetes Bangalore Meetup">
+  </a>
+      <p>I took the reins of the <a href="https://www.meetup.com/kubernetes-openshift-India-Meetup/">Kubernetes Bangalore Meetup</a> back in 2017. I have been organising the meetup since then. Earlier with <a href="https://twitter.com/red_suraj">Suraj Narwade</a>, <a href="https://twitter.com/aditya_konarde">Aditya Konarde</a> and now with <a href="https://twitter.com/pmishra1598">Prakash Mishra</a>. Over time the meetup has grown a lot, now it boasts about 5000 members. Organising meetup earlier was a straightforward affair, especially with Narwade and Konarde being my colleagues and friends. We could chat about the upcoming meetup at any time we would like, and it was all spontaneous. Once they left in 2019, Prakash took over as co-organiser, and we are managing the meetup since then.</p>
+<p>Although Prakash and I never worked in the same company, we managed meetup over the phone, text and did tasks as we recalled them. Also, we met every month during the meetup, we brainstormed various ideas on what could be the potential topic or what our audience is looking for. With pandemic, that changed. Now only text or phone was not helping a lot.</p>
+<p>Last year I had a <a href="https://suraj.io/post/book-review-getting-things-done/">personal transformation</a> with the book <a href="https://www.goodreads.com/book/show/25126499-getting-things-done">&ldquo;Getting Things Done by David Allen&rdquo;</a> and <a href="https://www.notion.so/">Notion</a> for my personal task management. I decided to give it a try with the help of Prakash to create a Notion page for our meetup management. It was a simple checklist of tasks to do on every meetup. We identified the tasks we do for every meetup that are recurring and added them to a template. So with every meetup, we create a new page from the existing template and fill in values.</p>
+<p>This template has gone transformation multiple times, as is the nature of the changing world. Like earlier, when we were doing online meetups using <a href="https://streamyard.com/">StreamYard</a> streaming directly to YouTube. If you wonder why StreamYard, well, Zoom was paid, Google Hangouts disabled the steam to YouTube feature and using Google Meet wasn&rsquo;t an option because we needed the recording for folks to watch later on our <a href="https://www.youtube.com/channel/UCqgyLOBWUikh_umxNICbcbQ">YouTube channel</a>. StreamYard was the only free option that allowed the stream to YouTube. But using StreamYard became monologue-ish because we only allowed speakers on StreamYard. The interaction between speakers and attendees was only via YouTube chat. That&rsquo;s when we moved from StreamYard to Zoom (a sponsored account). After doing this switch, we changed the template.</p>
+<p>We start out with the &ldquo;New Meetup&rdquo; button, which is just a template of tasks that we do on every meetup:</p>
+<p><img src="/post/2021/03/k8s-blr-meetup/new-meetup-button.png" alt="New Meetup Button" title="New Meetup Button"></p>
+<p>Once the page is created, then we start following the checklist. Some tasks are inherently assigned to one of the organisers. Like I am permanently assigned the task of creating the Zoom meeting invite. This is because <a href="https://kinvolk.io/">Kinvolk</a> (my employer) is sponsoring the Zoom for the meetup, and I have access to the Zoom account.</p>
+<p>A typical page for the meetup looks like the following. This page is from the planned March meetup:</p>
+<p><img src="/post/2021/03/k8s-blr-meetup/checklist-1.png" alt="Meetup Checklist 1" title="Meetup Checklist 1"></p>
+<p>Some tasks will only be done before, during and after the meetup.</p>
+<p><img src="/post/2021/03/k8s-blr-meetup/checklist-2.png" alt="Meetup Checklist 2" title="Meetup Checklist 2"></p>
+<p>That&rsquo;s about it. There is no rocket science behind this. You can use <a href="https://www.notion.so/Month-Year-meetup-name-Meetup-e605a5c58fbe40238833b1adabcbf801">our Notion template</a> to manage your meetup or create your own. To design your own, it will need some efforts and reflection. After moving the meetup management to the Notion checklist, the benefits we found were immense, like we did not miss anything in the plan. We were not panicking about finding specific information like we did before, and most importantly, it was all stress-free.</p>
+
+    </div>
+    <footer>
+      <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/non-tech/">non-tech</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/productivity/">productivity</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/meetup/">meetup</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/non-tech/">non-tech</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/productivity/">productivity</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/meetup/">meetup</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+    </footer>
+  </article>
+  
+    
+  <article class="post">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </article>
+
+
+
+
+  
+  <div class="pagination">
+    
+    
+      <a href="/post/2021/03/compounder-skills/" class="button right"><span>On Compounder Skills</span></a>
+    
+  </div>
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent Posts</h1>
+      </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/03/k8s-blr-meetup/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/k8s-blr-meetup/meetup.jpeg');">
+    <img src="https://suraj.io/post/2021/03/k8s-blr-meetup/meetup.jpeg" alt="Kubernetes Bangalore Meetup">
+  </a>
+        <header>
+          <h2><a href="/post/2021/03/k8s-blr-meetup/">How we manage Kubernetes Bangalore Meetup?</a></h2>
+          <time class="published" datetime="2021-03-17 07:07:07 &#43;0530 IST">March 17, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/03/compounder-skills/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/compounder-skills/compound.png');">
+    <img src="https://suraj.io/post/2021/03/compounder-skills/compound.png" alt="Compounding Chart">
+  </a>
+        <header>
+          <h2><a href="/post/2021/03/compounder-skills/">On Compounder Skills</a></h2>
+          <time class="published" datetime="2021-03-16 07:07:07 &#43;0530 IST">March 16, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/02/typing-skills/" class="image" style="--bg-image: url('https://suraj.io/post/2021/02/typing-skills/keyboard.jpg');">
+    <img src="https://suraj.io/post/2021/02/typing-skills/keyboard.jpg" alt="Keyboard">
+  </a>
+        <header>
+          <h2><a href="/post/2021/02/typing-skills/">Importance of Typing Skills</a></h2>
+          <time class="published" datetime="2021-02-28 07:07:07 &#43;0530 IST">February 28, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="/post/2021/02/kms-journey/">My Knowledge Management Journey</a></h2>
+          <time class="published" datetime="2021-02-23 09:07:07 &#43;0530 IST">February 23, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          
+        <header>
+          <h2><a href="/post/2021/02/book-hiw-learnings/">Book: How Innovation Works</a></h2>
+          <time class="published" datetime="2021-02-10 21:43:07 &#43;0530 IST">February 10, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See More</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+          
+          <li>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">26</span></a>
+          
+          <li>
+              <a href="/categories/notes/">notes<span class="count">21</span></a>
+          
+          <li>
+              <a href="/categories/non-tech/">non-tech<span class="count">10</span></a>
+          
+          <li>
+              <a href="/categories/productivity/">productivity<span class="count">8</span></a>
+          
+          <li>
+              <a href="/categories/security/">security<span class="count">8</span></a>
+          
+          <li>
+              <a href="/categories/book-review/">book-review<span class="count">6</span></a>
+          
+          <li>
+              <a href="/categories/bash/">bash<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/event_report/">event_report<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/packaging/">packaging<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/container/">container<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/docker/">docker<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/golang/">golang<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/host/">host<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/containers/">containers<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/fedora/">fedora<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/kompose/">kompose<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/notion/">notion<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/openshift/">openshift<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/programming/">programming<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/certs/">certs<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/configuration/">configuration<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/git/">git<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/ide/">ide<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/kms/">kms<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/linux/">linux<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/minikube/">minikube<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/monitoring/">monitoring<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/prometheus/">prometheus<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/backup/">backup<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/centos/">centos<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/cka/">cka<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/desktop/">desktop<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/etcd/">etcd<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/flatcar/">flatcar<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/gaming/">gaming<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/gnome/">gnome<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/https/">https<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/jobs/">jobs<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/kubeadm/">kubeadm<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/lokomotive/">lokomotive<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/meetup/">meetup<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/project_management/">project_management<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/selinux/">selinux<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/talks/">talks<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/vagrant/">vagrant<span class="count">1</span></a>
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I am a Software Engineer at Kinvolk, working on various tooling around container technology like Docker, Kubernetes.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    © 2021 Suraj Deshmukh
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/go.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bbba6b424a8ac5b6858cd5fc80eabc9c5277945cc2dc349204646b84891b4b58.js" integrity="sha256-u7prQkqKxbaFjNX8gOq8nFJ3lFzC3DSSBGRrhIkbS1g="></script>
+    <script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-97006720-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>
