@@ -19,6 +19,8 @@ This blog tries to enlist some of the compounder skills I think everyone should 
 
 We are super curious as infants, but it starts to recede as we grow old and get accustomed to things and start assuming things the way they are without considering why it is that way. Nurturing a genuine curiosity towards anything and everything, in general, is a great first thing to have. This curiosity is what will drive you to learn more and get into action. This will be your driving force for everything you do. I won't classify "curiosity" as a skill but a learnable trait.
 
+> [The curious are also provided with much fun and wisdom long after formal education has ended. — Charlie Munger](https://fs.blog/great-talks/psychology-human-misjudgment/)
+
 ## 📖 Reading
 
 The first and foremost skill everyone needs to enhance is reading. After we complete our formal education, we might feel like it is the end of the learning for life. Someone with a fixed mindset like that generally sees a very slow upward trajectory in their job and life. Doing the same things repeatedly will not result in progress. What got you here might not be helpful to go upwards. There are so many things worth learning that are not taught in school education. Later in professional programs, the scope becomes even narrower. Every individual needs to study psychology, philosophy, history, business skills, finance, investment, etc.
