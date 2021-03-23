@@ -6,7 +6,17 @@
     <description>Recent content in kubernetes on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Feb 2021 10:25:41 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Mar 2021 07:07:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes The Hard Way in &#34;Vagrant&#34;?</title>
+      <link>https://suraj.io/post/2021/03/kthw-vagrant/</link>
+      <pubDate>Tue, 23 Mar 2021 07:07:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/2021/03/kthw-vagrant/</guid>
+      <description>If you are studying for the Certified Kubernetes Administrator (CKA) exam, you might have come across folks recommending Kelsey Hightower&amp;rsquo;s Kubernetes the Hard Way. It is an excellent first step for someone who has no idea about the components that form a Kubernetes cluster. As the name suggests, it is created so that you learn the Kubernetes building blocks the &amp;ldquo;hard way&amp;rdquo;.
+But all that can be intimidating to someone who hasn&amp;rsquo;t played with Kubernetes ever.</description>
+    </item>
+    
     <item>
       <title>Enable TLS bootstrapping in a Kubernetes cluster</title>
       <link>https://suraj.io/post/2021/02/k8s-bootstrap-token/</link>

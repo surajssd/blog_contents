@@ -4,7 +4,47 @@
   
   <url>
     <loc>https://suraj.io/categories/</loc>
-    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
+    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/cka/</loc>
+    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/cka/</loc>
+    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/kubernetes/</loc>
+    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/kubernetes/</loc>
+    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/2021/03/kthw-vagrant/</loc>
+    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/</loc>
+    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
   </url>
   
   <url>
@@ -33,27 +73,12 @@
   </url>
   
   <url>
-    <loc>https://suraj.io/post/</loc>
-    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suraj.io/tags/productivity/</loc>
     <lastmod>2021-03-17T07:07:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/productivity/</loc>
-    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2021-03-17T07:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/</loc>
     <lastmod>2021-03-17T07:07:07+05:30</lastmod>
   </url>
   
@@ -119,16 +144,6 @@
   
   <url>
     <loc>https://suraj.io/post/2021/02/k8s-bootstrap-token/</loc>
-    <lastmod>2021-02-06T10:25:41+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/kubernetes/</loc>
-    <lastmod>2021-02-06T10:25:41+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/kubernetes/</loc>
     <lastmod>2021-02-06T10:25:41+05:30</lastmod>
   </url>
   
@@ -550,16 +565,6 @@
   <url>
     <loc>https://suraj.io/post/psp-on-existing-cluster/</loc>
     <lastmod>2018-10-23T00:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/cka/</loc>
-    <lastmod>2018-10-21T00:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/cka/</loc>
-    <lastmod>2018-10-21T00:00:51+05:30</lastmod>
   </url>
   
   <url>

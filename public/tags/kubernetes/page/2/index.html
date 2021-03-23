@@ -187,6 +187,61 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h2>
+    
+    
+      <p>This post shows how you can enable seccomp on all the Pods that are deployed with Prometheus Operator</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2020-04-14 11:57:07 &#43;0530 IST">April 14, 2020</time>
+    <p>Suraj Deshmukh</p>
+    <p>3-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p><a href="https://en.wikipedia.org/wiki/Seccomp">Seccomp</a> helps us limit the system calls the process inside container can make. And <code>PodSecurityPolicy</code> is the way to enable it on pods in Kubernetes.</p>
+  </div>
+  <footer>
+    <a href="/post/seccomp-in-kube-state-metrics/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/seccomp/">seccomp</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/surajd-talks-links/">Suraj Deshmukh&#39;s talks at conferences</a></h2>
     
     
@@ -662,65 +717,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/single-node-k8s-fedora-selinux/">Single node Kubernetes Cluster on Fedora with SELinux enabled</a></h2>
-    
-    
-      <p>Kubeadm to install Single Node K8S with SELinux</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2018-09-11 01:00:51 &#43;0530 IST">September 11, 2018</time>
-    <p>Suraj Deshmukh</p>
-    <p>2-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>Start a single node fedora machine, using whatever method but I have used <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/fedora/Vagrantfile">this Vagrantfile</a> to do it:</p>
-  </div>
-  <footer>
-    <a href="/post/single-node-k8s-fedora-selinux/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/selinux/">selinux</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/openshift/">openshift</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/selinux/">selinux</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/fedora/">fedora</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/tags/kubernetes/" class="button left"><span>Previous Page</span></a>
@@ -737,6 +733,16 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/03/kthw-vagrant/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/kthw-vagrant/cert.png');">
+    <img src="https://suraj.io/post/2021/03/kthw-vagrant/cert.png" alt="CKA logo">
+  </a>
+        <header>
+          <h2><a href="/post/2021/03/kthw-vagrant/">Kubernetes The Hard Way in &#34;Vagrant&#34;?</a></h2>
+          <time class="published" datetime="2021-03-23 07:07:07 &#43;0530 IST">March 23, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           <a href="/post/2021/03/k8s-blr-meetup/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/k8s-blr-meetup/meetup.jpeg');">
@@ -776,14 +782,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/2021/02/book-hiw-learnings/">Book: How Innovation Works</a></h2>
-          <time class="published" datetime="2021-02-10 21:43:07 &#43;0530 IST">February 10, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -803,7 +801,7 @@
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">26</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">27</span></a>
           
           <li>
               <a href="/categories/notes/">notes<span class="count">21</span></a>
@@ -863,6 +861,9 @@
               <a href="/categories/certs/">certs<span class="count">2</span></a>
           
           <li>
+              <a href="/categories/cka/">cka<span class="count">2</span></a>
+          
+          <li>
               <a href="/categories/configuration/">configuration<span class="count">2</span></a>
           
           <li>
@@ -891,9 +892,6 @@
           
           <li>
               <a href="/categories/centos/">centos<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/cka/">cka<span class="count">1</span></a>
           
           <li>
               <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
