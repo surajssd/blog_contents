@@ -6,7 +6,17 @@
     <description>Recent content in desktop on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Jun 2019 11:57:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/desktop/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Apr 2021 07:07:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/desktop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Monitor your PC with Prometheus Grafana stack</title>
+      <link>https://suraj.io/post/2021/03/node-monitor/</link>
+      <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/2021/03/node-monitor/</guid>
+      <description>How do you monitor your own computer? Of course, using Prometheus, node-exporter and Grafana. You might ask why would you wanna do that when you can simply use the operating system provided, &amp;ldquo;System Monitor&amp;rdquo;. Well, yes, you can use that. But the data you get from the OS System Monitor is coarse-grained. OS system monitor is not configurable, but this stack is.
+It is like running htop but where you can go back in history, unlike htop, which only shows the current state.</description>
+    </item>
+    
     <item>
       <title>Project specific scripts</title>
       <link>https://suraj.io/post/project-specific-scripts/</link>

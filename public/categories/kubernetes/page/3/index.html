@@ -187,6 +187,63 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h2>
+    
+    
+      <p>Kubernetes HostPath volume good way to nuke your Kubernetes Nodes</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2018-09-10 01:00:51 &#43;0530 IST">September 10, 2018</time>
+    <p>Suraj Deshmukh</p>
+    <p>8-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>This post will demonstrate how Kubernetes <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"><code>HostPath</code></a> volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.</p>
+  </div>
+  <footer>
+    <a href="/post/k8s-hostpat-nuke-nodes/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/openshift/">openshift</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/openshift/">openshift</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/hostpath/">hostpath</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/changing-k8s-ns/">Change namespaces in Kubernetes</a></h2>
     
     
@@ -589,6 +646,16 @@ you get the feel of production deployment locally from day 1.</p>
       </header>
       
       <article class="mini-post">
+          <a href="/post/2021/03/node-monitor/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png');">
+    <img src="https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png" alt="Node Exporter">
+  </a>
+        <header>
+          <h2><a href="/post/2021/03/node-monitor/">Monitor your PC with Prometheus Grafana stack</a></h2>
+          <time class="published" datetime="2021-04-02 07:07:07 &#43;0530 IST">April 2, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
           <a href="/post/2021/03/kthw-vagrant/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/kthw-vagrant/cert.png');">
     <img src="https://suraj.io/post/2021/03/kthw-vagrant/cert.png" alt="CKA logo">
   </a>
@@ -628,14 +695,6 @@ you get the feel of production deployment locally from day 1.</p>
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/2021/02/kms-journey/">My Knowledge Management Journey</a></h2>
-          <time class="published" datetime="2021-02-23 09:07:07 &#43;0530 IST">February 23, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -655,7 +714,7 @@ you get the feel of production deployment locally from day 1.</p>
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">27</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">28</span></a>
           
           <li>
               <a href="/categories/notes/">notes<span class="count">21</span></a>
@@ -703,6 +762,12 @@ you get the feel of production deployment locally from day 1.</p>
               <a href="/categories/kompose/">kompose<span class="count">3</span></a>
           
           <li>
+              <a href="/categories/linux/">linux<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/monitoring/">monitoring<span class="count">3</span></a>
+          
+          <li>
               <a href="/categories/notion/">notion<span class="count">3</span></a>
           
           <li>
@@ -710,6 +775,9 @@ you get the feel of production deployment locally from day 1.</p>
           
           <li>
               <a href="/categories/programming/">programming<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/prometheus/">prometheus<span class="count">3</span></a>
           
           <li>
               <a href="/categories/certs/">certs<span class="count">2</span></a>
@@ -721,6 +789,9 @@ you get the feel of production deployment locally from day 1.</p>
               <a href="/categories/configuration/">configuration<span class="count">2</span></a>
           
           <li>
+              <a href="/categories/desktop/">desktop<span class="count">2</span></a>
+          
+          <li>
               <a href="/categories/git/">git<span class="count">2</span></a>
           
           <li>
@@ -730,16 +801,7 @@ you get the feel of production deployment locally from day 1.</p>
               <a href="/categories/kms/">kms<span class="count">2</span></a>
           
           <li>
-              <a href="/categories/linux/">linux<span class="count">2</span></a>
-          
-          <li>
               <a href="/categories/minikube/">minikube<span class="count">2</span></a>
-          
-          <li>
-              <a href="/categories/monitoring/">monitoring<span class="count">2</span></a>
-          
-          <li>
-              <a href="/categories/prometheus/">prometheus<span class="count">2</span></a>
           
           <li>
               <a href="/categories/backup/">backup<span class="count">1</span></a>
@@ -749,9 +811,6 @@ you get the feel of production deployment locally from day 1.</p>
           
           <li>
               <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/desktop/">desktop<span class="count">1</span></a>
           
           <li>
               <a href="/categories/etcd/">etcd<span class="count">1</span></a>

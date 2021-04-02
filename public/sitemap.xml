@@ -4,7 +4,77 @@
   
   <url>
     <loc>https://suraj.io/categories/</loc>
-    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/desktop/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/desktop/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/kubernetes/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/kubernetes/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/linux/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/linux/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/2021/03/node-monitor/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/monitoring/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/monitoring/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/prometheus/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/prometheus/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
   </url>
   
   <url>
@@ -18,32 +88,7 @@
   </url>
   
   <url>
-    <loc>https://suraj.io/tags/kubernetes/</loc>
-    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/kubernetes/</loc>
-    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suraj.io/post/2021/03/kthw-vagrant/</loc>
-    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/post/</loc>
-    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2021-03-23T07:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/</loc>
     <lastmod>2021-03-23T07:07:07+05:30</lastmod>
   </url>
   
@@ -253,16 +298,6 @@
   </url>
   
   <url>
-    <loc>https://suraj.io/tags/linux/</loc>
-    <lastmod>2021-01-11T17:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/linux/</loc>
-    <lastmod>2021-01-11T17:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suraj.io/post/fedora-partitioning/</loc>
     <lastmod>2021-01-11T17:00:51+05:30</lastmod>
   </url>
@@ -339,26 +374,6 @@
   
   <url>
     <loc>https://suraj.io/post/how-to-backup-and-restore-prometheus/</loc>
-    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/monitoring/</loc>
-    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/monitoring/</loc>
-    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/prometheus/</loc>
-    <lastmod>2020-07-31T19:00:51+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/prometheus/</loc>
     <lastmod>2020-07-31T19:00:51+05:30</lastmod>
   </url>
   
@@ -450,16 +465,6 @@
   <url>
     <loc>https://suraj.io/post/root-in-container-root-on-host/</loc>
     <lastmod>2019-06-25T11:57:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/desktop/</loc>
-    <lastmod>2019-06-23T11:57:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/desktop/</loc>
-    <lastmod>2019-06-23T11:57:07+05:30</lastmod>
   </url>
   
   <url>

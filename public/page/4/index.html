@@ -185,6 +185,61 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/docker-seccomp-manual/">Writing your own Seccomp profiles for Docker</a></h2>
+    
+    
+      <p>Understanding the seccomp profile json format</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2019-06-10 11:57:07 &#43;0530 IST">June 10, 2019</time>
+    <p>Suraj Deshmukh</p>
+    <p>3-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</p>
+  </div>
+  <footer>
+    <a href="/post/docker-seccomp-manual/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/docker/">docker</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/seccomp/">seccomp</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/docker/">docker</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/surajd-talks-links/">Suraj Deshmukh&#39;s talks at conferences</a></h2>
     
     
@@ -660,63 +715,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/disable-ctrl-w/">How to disable your Chrome Ctrl &#43; W keybinding</a></h2>
-    
-    
-      <p>Learn how to disable the shortcut Ctrl &#43; W altogether on your GNOME</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2018-10-16 22:00:51 &#43;0530 IST">October 16, 2018</time>
-    <p>Suraj Deshmukh</p>
-    <p>2-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>I am about to attempt the <a href="https://www.cncf.io/certification/cka/">CKA exam</a> and it has a browser based terminal. And I am used to this terminal shortcut <code>Ctrl + W</code> which deletes a word. But the same shortcut in browser can close a tab. Since this exam is combination of both I am afraid I might close my exam tab while deleting a word in terminal. Now the only solution to this is disabling the shortcut in chrome. But turns out that the shortcut is <a href="https://productforums.google.com/forum/#!msg/chrome/ZXtMxfqpULs/9vWwfWUVAEIJ">hard coded in chrome</a>.</p>
-  </div>
-  <footer>
-    <a href="/post/disable-ctrl-w/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/fedora/">fedora</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/gnome/">gnome</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/fedora/">fedora</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/gnome/">gnome</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/desktop/">desktop</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/cka/">cka</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/page/3/" class="button left"><span>Previous Page</span></a>
@@ -733,6 +731,16 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/03/node-monitor/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png');">
+    <img src="https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png" alt="Node Exporter">
+  </a>
+        <header>
+          <h2><a href="/post/2021/03/node-monitor/">Monitor your PC with Prometheus Grafana stack</a></h2>
+          <time class="published" datetime="2021-04-02 07:07:07 &#43;0530 IST">April 2, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           <a href="/post/2021/03/kthw-vagrant/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/kthw-vagrant/cert.png');">
@@ -774,14 +782,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/2021/02/kms-journey/">My Knowledge Management Journey</a></h2>
-          <time class="published" datetime="2021-02-23 09:07:07 &#43;0530 IST">February 23, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -801,7 +801,7 @@
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">27</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">28</span></a>
           
           <li>
               <a href="/categories/notes/">notes<span class="count">21</span></a>
@@ -849,6 +849,12 @@
               <a href="/categories/kompose/">kompose<span class="count">3</span></a>
           
           <li>
+              <a href="/categories/linux/">linux<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/monitoring/">monitoring<span class="count">3</span></a>
+          
+          <li>
               <a href="/categories/notion/">notion<span class="count">3</span></a>
           
           <li>
@@ -856,6 +862,9 @@
           
           <li>
               <a href="/categories/programming/">programming<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/prometheus/">prometheus<span class="count">3</span></a>
           
           <li>
               <a href="/categories/certs/">certs<span class="count">2</span></a>
@@ -867,6 +876,9 @@
               <a href="/categories/configuration/">configuration<span class="count">2</span></a>
           
           <li>
+              <a href="/categories/desktop/">desktop<span class="count">2</span></a>
+          
+          <li>
               <a href="/categories/git/">git<span class="count">2</span></a>
           
           <li>
@@ -876,16 +888,7 @@
               <a href="/categories/kms/">kms<span class="count">2</span></a>
           
           <li>
-              <a href="/categories/linux/">linux<span class="count">2</span></a>
-          
-          <li>
               <a href="/categories/minikube/">minikube<span class="count">2</span></a>
-          
-          <li>
-              <a href="/categories/monitoring/">monitoring<span class="count">2</span></a>
-          
-          <li>
-              <a href="/categories/prometheus/">prometheus<span class="count">2</span></a>
           
           <li>
               <a href="/categories/backup/">backup<span class="count">1</span></a>
@@ -895,9 +898,6 @@
           
           <li>
               <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/desktop/">desktop<span class="count">1</span></a>
           
           <li>
               <a href="/categories/etcd/">etcd<span class="count">1</span></a>

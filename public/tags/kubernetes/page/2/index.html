@@ -187,6 +187,63 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/snoop-on-pod-traffic/">Watch Container Traffic Without Exec</a></h2>
+    
+    
+      <p>How to watch the traffic of a container or a pod without execing into the pod/contaienr?</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2020-06-06 20:30:07 &#43;0530 IST">June 6, 2020</time>
+    <p>Suraj Deshmukh</p>
+    <p>4-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.</p>
+  </div>
+  <footer>
+    <a href="/post/snoop-on-pod-traffic/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/container/">container</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/container/">container</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h2>
     
     
@@ -662,61 +719,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/add-new-k8s-node-manually/">Adding new worker to existing Kubernetes cluster</a></h2>
-    
-    
-      <p>Step by step guide to add new node</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2018-09-23 01:00:51 &#43;0530 IST">September 23, 2018</time>
-    <p>Suraj Deshmukh</p>
-    <p>5-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>To setup a multi-node Kubernetes cluster just run <a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant#single-script">this script</a> and you will have a cluster with 3 masters and 3 workers.</p>
-  </div>
-  <footer>
-    <a href="/post/add-new-k8s-node-manually/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/openshift/">openshift</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/openshift/">openshift</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/tags/kubernetes/" class="button left"><span>Previous Page</span></a>
@@ -733,6 +735,16 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/03/node-monitor/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png');">
+    <img src="https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png" alt="Node Exporter">
+  </a>
+        <header>
+          <h2><a href="/post/2021/03/node-monitor/">Monitor your PC with Prometheus Grafana stack</a></h2>
+          <time class="published" datetime="2021-04-02 07:07:07 &#43;0530 IST">April 2, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           <a href="/post/2021/03/kthw-vagrant/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/kthw-vagrant/cert.png');">
@@ -774,14 +786,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/2021/02/kms-journey/">My Knowledge Management Journey</a></h2>
-          <time class="published" datetime="2021-02-23 09:07:07 &#43;0530 IST">February 23, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -801,7 +805,7 @@
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">27</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">28</span></a>
           
           <li>
               <a href="/categories/notes/">notes<span class="count">21</span></a>
@@ -849,6 +853,12 @@
               <a href="/categories/kompose/">kompose<span class="count">3</span></a>
           
           <li>
+              <a href="/categories/linux/">linux<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/monitoring/">monitoring<span class="count">3</span></a>
+          
+          <li>
               <a href="/categories/notion/">notion<span class="count">3</span></a>
           
           <li>
@@ -856,6 +866,9 @@
           
           <li>
               <a href="/categories/programming/">programming<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/prometheus/">prometheus<span class="count">3</span></a>
           
           <li>
               <a href="/categories/certs/">certs<span class="count">2</span></a>
@@ -867,6 +880,9 @@
               <a href="/categories/configuration/">configuration<span class="count">2</span></a>
           
           <li>
+              <a href="/categories/desktop/">desktop<span class="count">2</span></a>
+          
+          <li>
               <a href="/categories/git/">git<span class="count">2</span></a>
           
           <li>
@@ -876,16 +892,7 @@
               <a href="/categories/kms/">kms<span class="count">2</span></a>
           
           <li>
-              <a href="/categories/linux/">linux<span class="count">2</span></a>
-          
-          <li>
               <a href="/categories/minikube/">minikube<span class="count">2</span></a>
-          
-          <li>
-              <a href="/categories/monitoring/">monitoring<span class="count">2</span></a>
-          
-          <li>
-              <a href="/categories/prometheus/">prometheus<span class="count">2</span></a>
           
           <li>
               <a href="/categories/backup/">backup<span class="count">1</span></a>
@@ -895,9 +902,6 @@
           
           <li>
               <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/desktop/">desktop<span class="count">1</span></a>
           
           <li>
               <a href="/categories/etcd/">etcd<span class="count">1</span></a>
