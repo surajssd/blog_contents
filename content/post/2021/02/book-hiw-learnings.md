@@ -1,17 +1,19 @@
-+++
-author = "Suraj Deshmukh"
-date = "2021-02-10T21:43:07+05:30"
-title = "Book: How Innovation Works"
-description = "And Why It Flourishes in Freedom by Matt Ridley"
-categories = ["book-review", "non-tech"]
-tags = ["book-review", "non-tech"]
-+++
+---
+author: "Suraj Deshmukh"
+date: "2021-02-10T21:43:07+05:30"
+title: "Book: How Innovation Works"
+description: "And Why It Flourishes in Freedom by Matt Ridley"
+draft: false
+categories: ["book-review", "non-tech"]
+tags: ["book-review", "non-tech"]
+images:
+- src: "/post/2021/02/hiw/hiw.jpg"
+  alt: "Book Review"
+---
 
 ## Introduction
 
 I recently finished reading the book: ["How Innovation Works: And Why It Flourishes in Freedom"](https://www.goodreads.com/book/show/52219273-how-innovation-works) by [Matt Ridley](https://en.wikipedia.org/wiki/Matt_Ridley). The book was published less than a year ago in May 2020, and it is a short read of fewer than four hundred pages. I am not sure how to categorise this book, it probably falls into business, science and/or technological history.
-
-![How Innovation Works](/post/2021/02/hiw/hiw.jpg "How Innovation Works")
 
 While listening to [Naval Ravikant](https://en.wikipedia.org/wiki/Naval_Ravikant)'s podcast, I found this book when Matt Ridley, the author, was a guest [in one episode](https://nav.al/matt-ridley). I was profoundly influenced by the introduction of the book I got in the podcast.
 
