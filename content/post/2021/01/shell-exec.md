@@ -3,8 +3,8 @@ author = "Suraj Deshmukh"
 title = "Exec in container environment"
 description = "The correct way to use exec and the signal passing."
 date = "2021-01-23T10:10:41+05:30"
-categories = ["kubernetes", "container", "bash"]
-tags = ["kubernetes", "container", "bash"]
+categories = ["kubernetes", "containers", "bash"]
+tags = ["kubernetes", "containers", "bash"]
 +++
 
 If you use `exec` in your container script, then the container or Kubernetes pod might exit after the command that is exec-ed into has exited. But if that's what you wanted, then it's okay. This blog tries to explain how to pass the signals to the applications, how they work differently when invoked uniquely and what to do if the application does handle them.

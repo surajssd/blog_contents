@@ -3,8 +3,8 @@ author = "Suraj Deshmukh"
 title = "Kubernetes Cluster using Kubeadm on Flatcar Container Linux"
 description = "Simple steps to install the cluster based on Flatcar Container Linux"
 date = "2021-01-29T22:02:41+05:30"
-categories = ["kubernetes", "flatcar", "container", "kubeadm"]
-tags = ["kubernetes", "flatcar", "container", "kubeadm"]
+categories = ["kubernetes", "flatcar", "containers", "kubeadm"]
+tags = ["kubernetes", "flatcar", "containers", "kubeadm"]
 +++
 
 This blog shows a simple set of commands to install a Kubernetes cluster on [Flatcar Container Linux](https://www.flatcar-linux.org/) based machines using [Kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/).

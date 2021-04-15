@@ -3,12 +3,12 @@ author = "Suraj Deshmukh"
 title = "Using private container registries from minikube"
 date = "2017-10-06T19:32:33+05:30"
 description = "A guide to how would you download image from private container registry in minikube"
-categories = ["kubernetes", "minikube", "container"]
-tags = ["kubernetes", "minikube", "container"]
+categories = ["kubernetes", "minikube", "containers"]
+tags = ["kubernetes", "minikube", "containers"]
 +++
 
 I am doing Kubernetes native development using minikube. And for doing that I had to
-download a Container image that is available in internally hosted private container registry. 
+download a Container image that is available in internally hosted private container registry.
 
 On the configuration side of doing that you will need to create Kubernetes Secret of type
 `docker-registry`. And now refer that secret you just created in your Pod manifest under

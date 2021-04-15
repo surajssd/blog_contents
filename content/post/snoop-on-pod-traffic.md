@@ -3,8 +3,8 @@ author = "Suraj Deshmukh"
 date = "2020-06-06T20:30:07+05:30"
 title = "Watch Container Traffic Without Exec"
 description = "How to watch the traffic of a container or a pod without execing into the pod/contaienr?"
-categories = ["kubernetes", "security", "container"]
-tags = ["kubernetes", "security", "container"]
+categories = ["kubernetes", "security", "containers"]
+tags = ["kubernetes", "security", "containers"]
 +++
 
 ## Introduction
