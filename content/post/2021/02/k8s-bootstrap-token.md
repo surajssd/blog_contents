@@ -1,11 +1,19 @@
-+++
-author = "Suraj Deshmukh"
-title = "Enable TLS bootstrapping in a Kubernetes cluster"
-description = "Add a new node using a bootstrap token to Kubernetes"
-date = "2021-02-06T10:25:41+05:30"
-categories = ["kubernetes", "notes", "certs"]
-tags = ["kubernetes", "notes", "certs"]
-+++
+---
+author: "Suraj Deshmukh"
+date: "2021-02-06T10:25:41+05:30"
+title: "Enable TLS bootstrapping in a Kubernetes cluster"
+description: "Add a new node using a bootstrap token to Kubernetes"
+draft: false
+categories: ["kubernetes", "notes", "certs"]
+tags: ["kubernetes", "notes", "certs"]
+images:
+- src: "/post/2021/02/k8s-bootstrap-token/rack.jpg"
+  alt: "Bootstrap token"
+---
+
+Photo by [Jordan Harrison](https://unsplash.com/@jordanharrison?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) from [Unsplash](https://unsplash.com).
+
+---
 
 This blog is a recap of my old blog ["Add new node to Kubernetes cluster with bootstrap token"](https://suraj.io/post/add-new-k8s-node-bootstrap-token/). Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.
 

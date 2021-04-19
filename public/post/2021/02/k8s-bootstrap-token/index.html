@@ -13,7 +13,10 @@
   <meta property="og:url" content="https://suraj.io/post/2021/02/k8s-bootstrap-token/">
   <meta property="og:type" content="article">
   
-    <meta property="og:image" content="https://github.com/surajssd.png">
+    
+      <meta property="og:image" content="https://suraj.io/post/2021/02/k8s-bootstrap-token/rack.jpg">
+      <meta property="og:image:alt" content="Bootstrap token">
+    
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
@@ -236,8 +239,12 @@
 
     </div>
     <div class="content">
-      
-      <p>This blog is a recap of my old blog <a href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/">&ldquo;Add new node to Kubernetes cluster with bootstrap token&rdquo;</a>. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.</p>
+      <a href="/post/2021/02/k8s-bootstrap-token/" class="image" style="--bg-image: url('https://suraj.io/post/2021/02/k8s-bootstrap-token/rack.jpg');">
+    <img src="https://suraj.io/post/2021/02/k8s-bootstrap-token/rack.jpg" alt="Bootstrap token">
+  </a>
+      <p>Photo by <a href="https://unsplash.com/@jordanharrison?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jordan Harrison</a> from <a href="https://unsplash.com">Unsplash</a>.</p>
+<hr>
+<p>This blog is a recap of my old blog <a href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/">&ldquo;Add new node to Kubernetes cluster with bootstrap token&rdquo;</a>. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.</p>
 <h1 id="textual">Textual</h1>
 <h2 id="1-kubernetes-cluster">1. Kubernetes Cluster</h2>
 <p>If you have a cluster running, you can skip this step. To demonstrate how TLS bootstrap tokens work, I have brought up a cluster using <a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant/">Kubernetes the Hard Way (Vagrant)</a>. This section shows how to bring up a multi-node, multi-worker Kubernetes cluster quickly.</p>
