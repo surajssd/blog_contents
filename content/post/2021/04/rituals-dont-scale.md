@@ -30,3 +30,24 @@ So the lighting of firecrackers started only in the fifteenth century, and I am 
 I think the middle ground can be established by educating folks about the harm the current firecrackers are causing to the environment. If there is an innovation in creating these firecrackers like a firecracker that generates vivid colours but does not create the awful side effects like sound and air pollution. But the government has to intervene on environmental grounds by levying heavy taxes on the sale of firecrackers, so average Indian associates burning a firecracker as burning cash. But I don't think any political party would come forward (at least aggressively) to find a permanent solution to this problem without taking a toll on their vote bank. Hence supreme court had to intervene at the inability of the governments to act. Subsequently, the Delhi state government acted only last year to ban firecrackers. Despite this ban, there was no enforcement; if there was any, the [air quality index](https://www.thehindu.com/news/cities/Delhi/worst-air-quality-on-deepavali-in-four-years/article33104493.ece) would have reflected that. I think Science and Technology is the only solution to this problem.
 
 Let us not politicise this issue and look at the long term. Since this practice was established by us, so can this be abolished by us. Let nobody fool you into thinking that this act of renunciation is in any way an attack on Hindu religion or western influence. What good a ritual (illegal to the scriptures) would be if it makes life unbearable for us today and for posterity?
+
+## Holi
+
+[The festival of colours](https://en.wikipedia.org/wiki/Holi). People celebrate this festival by smearing colour on each other's faces and body. As long as only dry colours are involved, this festival is fine. But when folks use water, along with the colours, to throw upon each other, this seems like a waste. This festival comes just before the scorching Indian summer (in March). Many Indian states are always drought-stricken in summer, and multiple Indians die due to lack of water. The water situation in India is so bad that metro cities like [Chennai had to be supplied water by train](https://www.livemint.com/news/india/first-train-carrying-50-wagons-of-water-is-on-its-way-to-chennai-from-vellore-1562906892126.html). A city can afford to procure water like that, but the poor villages are neglected, and people here die unnoticed. This problem is again widening the gap between rich and poor. The rich can afford to buy water (regardless of the source); they only spend a meagre per cent of their income on this basic necessity. While the poor have to pay an equal amount but a considerable per cent of their income to get water.
+
+![Holi](/post/2021/04/rituals-dont-scale/holi.jpg "Holi")
+
+Photo by [Yogendra Singh](https://unsplash.com/@yogendras31) from [Unsplash](https://unsplash.com).
+
+
+Now on the face of it all, some like to waste water uselessly.
+
+Here the festival is about colours, as long as there are only colours involved it is okay. Again if billion people waste 10 litres per person, that is 10 billion litres of water wasted. Considering the humans dying due to the lack of water, the callousness of those wasting water always surprises me!
+
+Hindu bigots have to realise that this is a severe problem with immediate consequences. And supporting wasting water only to kill their fellow Hindus due to lack of it seems like hypocrisy with ramifications to lives. The long term problems are even grave. If a farmer cannot find water to farm, their toil will go to waste and only cause problems to the society as a whole in the form of food shortage. So the Hindus have to transform themselves and think about this festival celebration ways. This awareness is necessary because it is not just about this one festival but about the wastage of water in general. Once people are aware of the problems, short and long-term issues, they will be economical with water regardless of where it is used.
+
+Technology and innovation can help here if only it can find a way to generate more usable water from somewhere.
+
+Sure there are ways to reduce water wastage. Like there is a lot of water wasted due to poor infrastructure. Suppose ordinary folks are aware of the problems. In that case, they will automatically keep the governments in check by calling out the issues.
+
+Also, this issue has no scope of politicising. It is a matter of being aware, using common sense and taking a vow of not wasting water uselessly regardless of the occasion.
