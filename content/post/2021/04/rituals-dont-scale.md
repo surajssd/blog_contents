@@ -51,3 +51,27 @@ Technology and innovation can help here if only it can find a way to generate mo
 Sure there are ways to reduce water wastage. Like there is a lot of water wasted due to poor infrastructure. Suppose ordinary folks are aware of the problems. In that case, they will automatically keep the governments in check by calling out the issues.
 
 Also, this issue has no scope of politicising. It is a matter of being aware, using common sense and taking a vow of not wasting water uselessly regardless of the occasion.
+
+## River Goddesses
+
+Many people make the pilgrimage to [Varanasi](https://en.wikipedia.org/wiki/Varanasi) to take a dip in the holy river [Ganga](https://en.wikipedia.org/wiki/Ganges). This ablution is believed to wash away their sins. Rivers are venerated as sacred and as goddesses in [Hinduism](https://en.wikipedia.org/wiki/Rivers_in_Hinduism). To [show devotion to these goddesses](https://en.wikipedia.org/wiki/Ganges#Embodiment_of_sacredness) and their earthly manifestations (the flowing rivers), people offer flowers, garlands and aarti. By offer, I mean they put all the flowers, garlands and [Diyas](https://en.wikipedia.org/wiki/Diya_(lamp)) (from [Arti](https://en.wikipedia.org/wiki/Arti_(Hinduism))) into the flowing river.
+
+![Ganga](/post/2021/04/rituals-dont-scale/ganga.jpg "Ganga")
+
+Photo by [Tejal Shanbhag](https://unsplash.com/@tejalshanbhag) on [Unsplash](https://unsplash.com).
+
+When Hindus die, it's considered a ritual to [spread the ash from the pyre into the river](https://en.wikipedia.org/wiki/Cremation#Indian_religions). It could be any river near them or into the holiest of them all, the river [Ganga](https://en.wikipedia.org/wiki/Ganges). Even better would be a person who gets their cremation done at the [ghat of Ganga](https://en.wikipedia.org/wiki/Ghats_in_Varanasi#Cremation_on_ghats). The pyres on the [Varanasi ghat](https://en.wikipedia.org/wiki/Ghats_in_Varanasi) are in much demand that many a time, the body isn't allowed to burn completely. The ash (or partially burnt body) is spread into the river.
+
+[Ganesh Chaturthi](https://en.wikipedia.org/wiki/Ganesh_Chaturthi) and [Durga Puja](https://en.wikipedia.org/wiki/Durga_Puja) are celebrated by erecting pandal and placing idols of respective gods. These are observed for more than a week. According to the rituals, these temporary places of worship should be removed only after [submerging the idols](https://en.wikipedia.org/wiki/Ganesh_Chaturthi#Visarjan/Nimajjinam) into the water body like river, sea or lake. It is a way of parting with the lord for the time being and anticipating their return next year.
+
+Now in aforementioned examples show how in one form or another, something is dipped into the water, like garlands and flowers for river goddess, ash from dead for their soul's peace and idols from a week-long festival for parting with the lord. All this is fine on a small scale. Nature's might is magnanimous to digest all that is thrown into its stomach. But imagine all these (mis)deeds happening to the mother earth at a scale of millions if not billions.
+
+No wonder why there are very few water bodies in India that are left clean, and people can simply enter them to swim without thinking twice about the filth, stink and squalor that these water bodies carry today. The holy rivers don't evoke reverence but repugnance of the whole site. There was a [program](https://en.wikipedia.org/wiki/Pollution_of_the_Ganges#Namami_Gange_Programme) launched by the central government to clean the river Ganga, but it went nowhere. Rivers with pilgrim importance are all dirty.
+
+All blame cannot be put on the Hindus spoiling these water bodies, but the rivers, lakes and seas have also become dirty because of the sewage put into them by the city administrations and untreated water from industries.
+
+There are multiple solutions to these problems that could be categorised as technological, educational and statutory. Many initiatives from startups working on projects to clean up oceans; the same tech can be utilised for rivers. But it is being applied only on a small scale to make any significant impact.
+
+People need to be educated that these water bodies, a lifeline to many humans living in their vicinity, should be kept clean. Religious leaders should come forward and suggest alternatives to polluting rivers and lakes. In this respect, the Ganesh Visarjan is performed by people in [small tanks](https://www.thebetterindia.com/113139/special-tanks-hyderabad-will-keep-lakes-green-ganesh-chaturthi/) now, instead of big water bodies.
+
+Once strict laws are implemented and enforced, people, industries, and local administration will refrain from throwing things into these water bodies.
