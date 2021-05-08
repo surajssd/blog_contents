@@ -6,7 +6,18 @@
     <description>Recent content in security on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Jun 2020 20:30:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 May 2021 12:17:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Access Any Kubernetes Secret</title>
+      <link>https://suraj.io/post/2021/05/access-k8s-secrets/</link>
+      <pubDate>Sat, 08 May 2021 12:17:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/2021/05/access-k8s-secrets/</guid>
+      <description>Photo by Kyle Glenn on Unsplash.
+You can gain access to any secret that you want in Kubernetes even if you don&amp;rsquo;t have RBAC permissions to get, list or view that secret. All you need is permission that allows you to do anything on pods and an ability to guess the names of secrets. With these two ingredients, here is how you can access any secret out there.
+Nasty User Here is a user called nastyuser who can only do stuff on pod objects.</description>
+    </item>
+    
     <item>
       <title>Watch Container Traffic Without Exec</title>
       <link>https://suraj.io/post/snoop-on-pod-traffic/</link>

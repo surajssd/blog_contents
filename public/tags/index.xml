@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 12 Apr 2021 07:07:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 May 2021 12:17:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>kubernetes</title>
+      <link>https://suraj.io/tags/kubernetes/</link>
+      <pubDate>Sat, 08 May 2021 12:17:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>security</title>
+      <link>https://suraj.io/tags/security/</link>
+      <pubDate>Sat, 08 May 2021 12:17:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/security/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>activism</title>
       <link>https://suraj.io/tags/activism/</link>
@@ -31,15 +49,6 @@
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
       
       <guid>https://suraj.io/tags/desktop/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>https://suraj.io/tags/kubernetes/</link>
-      <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/kubernetes/</guid>
       <description></description>
     </item>
     
@@ -193,15 +202,6 @@
       <pubDate>Sat, 16 Jan 2021 13:10:51 +0530</pubDate>
       
       <guid>https://suraj.io/tags/lokomotive/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>security</title>
-      <link>https://suraj.io/tags/security/</link>
-      <pubDate>Sat, 16 Jan 2021 13:10:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/security/</guid>
       <description></description>
     </item>
     
