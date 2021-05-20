@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Mitigation of: Access Any Kubernetes Secret - Suraj Deshmukh</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+  <meta property="og:title" content="Mitigation of: Access Any Kubernetes Secret">
+  <meta property="og:description" content="A Validating Admission Webhook Server to deny anyone accessing forbidden Kubernetes Secrets!">
+  <meta property="description" content="A Validating Admission Webhook Server to deny anyone accessing forbidden Kubernetes Secrets!">
+  <meta property="og:url" content="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/">
+  <meta property="og:type" content="article">
+  
+    
+      <meta property="og:image" content="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png">
+      <meta property="og:image:alt" content="Config">
+    
+  
+  
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          Mitigation of: Access Any Kubernetes Secret
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+        
+      
+        
+          
+          <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+        
+      
+        
+          
+          <a href="/post/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+        
+      
+        
+          
+          <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+        
+      
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active">English (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Mitigation%20of%3a%20Access%20Any%20Kubernetes%20Secret&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2faccess-k8s-secrets-mitigation%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2faccess-k8s-secrets-mitigation%2f&amp;title=Mitigation%20of%3a%20Access%20Any%20Kubernetes%20Secret" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <p>Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2faccess-k8s-secrets-mitigation%2f&amp;title=Mitigation%20of%3a%20Access%20Any%20Kubernetes%20Secret" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2faccess-k8s-secrets-mitigation%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <p>Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2faccess-k8s-secrets-mitigation%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="https://github.com/surajssd.png" class="square" width="100" alt="Suraj Deshmukh" /></a>
+  <header>
+    <h1>Blog</h1>
+  </header>
+  <main>
+    <p>containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article class="post">
+    <header>
+  <div class="title">
+    
+      <h2><a href="/post/2021/05/access-k8s-secrets-mitigation/">Mitigation of: Access Any Kubernetes Secret</a></h2>
+    
+    
+      <p>A Validating Admission Webhook Server to deny anyone accessing forbidden Kubernetes Secrets!</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2021-05-20 08:47:07 &#43;0530 IST">May 20, 2021</time>
+    <p>Suraj Deshmukh</p>
+    <p>4-Minute Read</p>
+  </div>
+</header>
+
+    <div id="socnet-share">
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Mitigation%20of%3a%20Access%20Any%20Kubernetes%20Secret&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2faccess-k8s-secrets-mitigation%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2faccess-k8s-secrets-mitigation%2f&amp;title=Mitigation%20of%3a%20Access%20Any%20Kubernetes%20Secret" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <p>Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2faccess-k8s-secrets-mitigation%2f&amp;title=Mitigation%20of%3a%20Access%20Any%20Kubernetes%20Secret" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2faccess-k8s-secrets-mitigation%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <p>Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2faccess-k8s-secrets-mitigation%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </div>
+    <div class="content">
+      <a href="/post/2021/05/access-k8s-secrets-mitigation/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png');">
+    <img src="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png" alt="Config">
+  </a>
+      <p>In <a href="https://suraj.io/post/2021/05/access-k8s-secrets/">the previous blog</a>, we discussed how any user without RBAC access to a Kubernetes secret can use a trick to access that secret. To mitigate that problem, we will use a validating admission webhook. But before looking at what sorcery this validating admission webhook server is, let us understand how Kubernetes handles the API requests.</p>
+<h2 id="what-are-admission-controllers">What are admission controllers?</h2>
+<p>All requests going to the Kubernetes API server go through the following four steps:</p>
+<ol>
+<li>Authentication</li>
+<li>Authorisation</li>
+<li>Admission controllers</li>
+<li>Etcd Server</li>
+</ol>
+<p><img src="/post/2021/05/access-k8s-secrets-mitigation/access-control-overview.svg" alt="API Request flow" title="API Request flow"></p>
+<p><a href="https://kubernetes.io/docs/concepts/security/controlling-access/">Image Source: Controlling Access to the Kubernetes API</a></p>
+<p>Request denied at any step does not go to the next steps. Any request reaching the &ldquo;Admission Controllers&rdquo; has already been authenticated and authorised. There are the <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook">standard set of admission controllers</a> shipped with the Kubernetes API server. You can enable or disable them using flags to the Kubernetes API server.</p>
+<p>As the name suggests, the job of the admission controller is to perform certain business logic based on the request. For example, the <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#noderestriction">NodeRestriction</a> admission controller&rsquo;s role is to restrict a node&rsquo;s (Kubelet&rsquo;s) access on top of RBAC restrictions. When Kubelet requests secrets from the Kubernetes API server, the NodeRestriction admission controller ensures that Kubelet does not request secrets for pods, <strong>not</strong> on its node. This is especially helpful if a node is compromised, then the hacker cannot request all secrets from the cluster.</p>
+<h2 id="what-is-a-validating-admission-webhooks">What is a Validating Admission Webhooks?</h2>
+<p>For our situation, we are going to use an admission controller called <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#validatingadmissionwebhook">ValidatingAdmissionWebhook</a>. This allows us to dynamically load any new webserver with logic to process the requests sent by the ValidatingAdmissionWebhook admission controller. The expectation from these dynamically loaded webservers is to only respond with yes or no.</p>
+<p>This admission controller sends a webhook to the specified endpoints when a given condition is met. We can ask things like send all the requests to a particular URL after encountering a resource called <code>pods</code> of apiVersion <code>v1</code> when someone is trying to <code>CREATE</code> them. Now all the pod create requests will be sent to your webserver.</p>
+<p><img src="/post/2021/05/access-k8s-secrets-mitigation/admission-controller-phases.png" alt="Admission Controllers Zoomed in" title="Admission Controllers Zoomed in"></p>
+<p><a href="https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/">Image Source: A Guide to Kubernetes Admission Controllers</a></p>
+<h2 id="kubernetes-secret-access-validator">Kubernetes Secret Access Validator</h2>
+<p>With all that essential knowledge, we will employ it to stop an attacker from gaining access to the secret they don&rsquo;t have RBAC access to. We will create a simple webhook server that will intercept all the Pod, CronJob, DaemonSet, Deployment, Job, ReplicaSet, ReplicationController and Statefulset create and update requests. On these requests, we will first figure out who (user/group) is making the request and what kind of secrets they are asking for access to?</p>
+<p>Once we have these two pieces of information, we will do a programmatic equivalent of the following kubectl command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl --as<span style="color:#f92672">=</span>&lt;API requesting user&gt; can-i get secret &lt;secret being accessed&gt;
+</code></pre></div><p>If the answer to the above is no, we will reject the request to the user.</p>
+<p><img src="/post/2021/05/access-k8s-secrets-mitigation/rejected.gif" alt="Rejected" title="Rejected"></p>
+<h2 id="validating-webhook-server-in-action">Validating Webhook Server in Action</h2>
+<p>Install the <a href="https://github.com/surajssd/k8s-secret-access-validator">Kubernetes Secret Access Validator</a> by following the steps mentioned <a href="https://github.com/surajssd/k8s-secret-access-validator#install">here</a>. Now let us try to recreate the hack situation mentioned in the <a href="https://suraj.io/post/2021/05/access-k8s-secrets/">previous blog</a>.</p>
+<p>Create a test user that has access to pods, but not to secrets:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create role pod-all --verb<span style="color:#f92672">=</span>* --resource<span style="color:#f92672">=</span>pods --resource<span style="color:#f92672">=</span>pods/exec
+kubectl create rolebinding pod-all:nastyuser --role<span style="color:#f92672">=</span>pod-all --user<span style="color:#f92672">=</span>nastyuser
+kubectl create secret generic supersecret --from-literal data<span style="color:#f92672">=</span>supersecretvaluesinhere
+alias kubectl<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kubectl --as=nastyuser&#39;</span>
+kubectl auth can-i --list
+</code></pre></div><p>Save this pod config in a <code>pod.yaml</code>, and we will try to deploy it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">labels</span>:
+    <span style="color:#f92672">run</span>: <span style="color:#ae81ff">sleep</span>
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">sleep</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">containers</span>:
+  - <span style="color:#f92672">args</span>:
+    - <span style="color:#ae81ff">sleep</span>
+    - <span style="color:#ae81ff">infinity</span>
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">fedora</span>
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">sleep</span>
+    <span style="color:#f92672">resources</span>: {}
+    <span style="color:#f92672">volumeMounts</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hackedsecret</span>
+      <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/access-secret/</span>
+  <span style="color:#f92672">dnsPolicy</span>: <span style="color:#ae81ff">ClusterFirst</span>
+  <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">Always</span>
+  <span style="color:#f92672">volumes</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hackedsecret</span>
+    <span style="color:#f92672">secret</span>:
+      <span style="color:#f92672">secretName</span>: <span style="color:#ae81ff">supersecret</span>
+</code></pre></div><p>Now trying to deploy it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f pod.yaml
+Error from server: error when creating <span style="color:#e6db74">&#34;pod.yaml&#34;</span>: admission webhook <span style="color:#e6db74">&#34;validating.suraj.io&#34;</span> denied the
+request: User <span style="color:#e6db74">&#34;nastyuser&#34;</span> does not have access to the secret <span style="color:#e6db74">&#34;supersecret&#34;</span> in the namespace <span style="color:#e6db74">&#34;default&#34;</span>.
+</code></pre></div><h2 id="in-conclusion">In Conclusion</h2>
+<p><a href="https://github.com/surajssd/k8s-secret-access-validator">This project</a> is in a nascent stage. Right now, it only supports pod creation and update. The support for other pod creating controllers will be added soon.</p>
+<p>I haven&rsquo;t fully grasped the side effect of this webhook server running inside an operational cluster. But once I do that, I will learn the pros and cons of this approach. Ideally, this should be done at the Kubernetes API server level.</p>
+<p>If you are aware of any other solution please comment or let me know on <a href="https://twitter.com/surajd_">Twitter</a>.</p>
+
+    </div>
+    <footer>
+      <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+    </footer>
+  </article>
+  
+    
+  <article class="post">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </article>
+
+
+
+
+  
+  <div class="pagination">
+    
+    
+      <a href="/post/2021/05/access-k8s-secrets/" class="button right"><span>Access Any Kubernetes Secret</span></a>
+    
+  </div>
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent Posts</h1>
+      </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/05/access-k8s-secrets-mitigation/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png');">
+    <img src="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png" alt="Config">
+  </a>
+        <header>
+          <h2><a href="/post/2021/05/access-k8s-secrets-mitigation/">Mitigation of: Access Any Kubernetes Secret</a></h2>
+          <time class="published" datetime="2021-05-20 08:47:07 &#43;0530 IST">May 20, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/05/access-k8s-secrets/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/access-k8s-secrets/forbidden.jpg');">
+    <img src="https://suraj.io/post/2021/05/access-k8s-secrets/forbidden.jpg" alt="Forbidden">
+  </a>
+        <header>
+          <h2><a href="/post/2021/05/access-k8s-secrets/">Access Any Kubernetes Secret</a></h2>
+          <time class="published" datetime="2021-05-08 12:17:07 &#43;0530 IST">May 8, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/04/rituals-dont-scale/" class="image" style="--bg-image: url('https://suraj.io/post/2021/04/rituals-dont-scale/earth.jpg');">
+    <img src="https://suraj.io/post/2021/04/rituals-dont-scale/earth.jpg" alt="Earth">
+  </a>
+        <header>
+          <h2><a href="/post/2021/04/rituals-dont-scale/">Religious Rituals Don&#39;t Scale With Population</a></h2>
+          <time class="published" datetime="2021-04-12 07:07:07 &#43;0530 IST">April 12, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/03/node-monitor/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png');">
+    <img src="https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png" alt="Node Exporter">
+  </a>
+        <header>
+          <h2><a href="/post/2021/03/node-monitor/">Monitor your PC with Prometheus Grafana stack</a></h2>
+          <time class="published" datetime="2021-04-02 07:07:07 &#43;0530 IST">April 2, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/03/kthw-vagrant/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/kthw-vagrant/cert.png');">
+    <img src="https://suraj.io/post/2021/03/kthw-vagrant/cert.png" alt="CKA logo">
+  </a>
+        <header>
+          <h2><a href="/post/2021/03/kthw-vagrant/">Kubernetes The Hard Way in &#34;Vagrant&#34;?</a></h2>
+          <time class="published" datetime="2021-03-23 07:07:07 &#43;0530 IST">March 23, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See More</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+          
+          <li>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">30</span></a>
+          
+          <li>
+              <a href="/categories/notes/">notes<span class="count">21</span></a>
+          
+          <li>
+              <a href="/categories/non-tech/">non-tech<span class="count">11</span></a>
+          
+          <li>
+              <a href="/categories/security/">security<span class="count">10</span></a>
+          
+          <li>
+              <a href="/categories/productivity/">productivity<span class="count">8</span></a>
+          
+          <li>
+              <a href="/categories/containers/">containers<span class="count">7</span></a>
+          
+          <li>
+              <a href="/categories/book-review/">book-review<span class="count">6</span></a>
+          
+          <li>
+              <a href="/categories/bash/">bash<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/event_report/">event_report<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/packaging/">packaging<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/docker/">docker<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/golang/">golang<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/host/">host<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/fedora/">fedora<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/kompose/">kompose<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/linux/">linux<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/monitoring/">monitoring<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/notion/">notion<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/openshift/">openshift<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/programming/">programming<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/prometheus/">prometheus<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/certs/">certs<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/cka/">cka<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/configuration/">configuration<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/desktop/">desktop<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/git/">git<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/ide/">ide<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/kms/">kms<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/minikube/">minikube<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/activism/">activism<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/backup/">backup<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/centos/">centos<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/etcd/">etcd<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/flatcar/">flatcar<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/gaming/">gaming<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/gnome/">gnome<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/https/">https<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/jobs/">jobs<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/kubeadm/">kubeadm<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/lokomotive/">lokomotive<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/meetup/">meetup<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/project_management/">project_management<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/selinux/">selinux<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/talks/">talks<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/vagrant/">vagrant<span class="count">1</span></a>
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I am a Software Engineer at Kinvolk, working on various tooling around container technology like Docker, Kubernetes.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    © 2021 Suraj Deshmukh
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/go.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bbba6b424a8ac5b6858cd5fc80eabc9c5277945cc2dc349204646b84891b4b58.js" integrity="sha256-u7prQkqKxbaFjNX8gOq8nFJ3lFzC3DSSBGRrhIkbS1g="></script>
+    <script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-97006720-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>
