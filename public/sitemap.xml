@@ -3,8 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suraj.io/tags/book-review/</loc>
+    <lastmod>2021-05-20T12:15:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/book-review/</loc>
+    <lastmod>2021-05-20T12:15:07+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suraj.io/categories/</loc>
-    <lastmod>2021-05-20T08:47:07+05:30</lastmod>
+    <lastmod>2021-05-20T12:15:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/2021/05/learnings-psychology-of-money/</loc>
+    <lastmod>2021-05-20T12:15:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/non-tech/</loc>
+    <lastmod>2021-05-20T12:15:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/non-tech/</loc>
+    <lastmod>2021-05-20T12:15:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/</loc>
+    <lastmod>2021-05-20T12:15:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2021-05-20T12:15:07+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2021-05-20T12:15:07+05:30</lastmod>
   </url>
   
   <url>
@@ -23,27 +63,12 @@
   </url>
   
   <url>
-    <loc>https://suraj.io/post/</loc>
-    <lastmod>2021-05-20T08:47:07+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suraj.io/tags/security/</loc>
     <lastmod>2021-05-20T08:47:07+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/security/</loc>
-    <lastmod>2021-05-20T08:47:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2021-05-20T08:47:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/</loc>
     <lastmod>2021-05-20T08:47:07+05:30</lastmod>
   </url>
   
@@ -59,16 +84,6 @@
   
   <url>
     <loc>https://suraj.io/categories/activism/</loc>
-    <lastmod>2021-04-12T07:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/non-tech/</loc>
-    <lastmod>2021-04-12T07:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/non-tech/</loc>
     <lastmod>2021-04-12T07:07:07+05:30</lastmod>
   </url>
   
@@ -195,16 +210,6 @@
   <url>
     <loc>https://suraj.io/categories/notion/</loc>
     <lastmod>2021-02-23T09:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/book-review/</loc>
-    <lastmod>2021-02-10T21:43:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/book-review/</loc>
-    <lastmod>2021-02-10T21:43:07+05:30</lastmod>
   </url>
   
   <url>

@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 20 May 2021 08:47:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 May 2021 12:15:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>book-review</title>
+      <link>https://suraj.io/tags/book-review/</link>
+      <pubDate>Thu, 20 May 2021 12:15:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/book-review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>non-tech</title>
+      <link>https://suraj.io/tags/non-tech/</link>
+      <pubDate>Thu, 20 May 2021 12:15:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/non-tech/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>kubernetes</title>
       <link>https://suraj.io/tags/kubernetes/</link>
@@ -31,15 +49,6 @@
       <pubDate>Mon, 12 Apr 2021 07:07:07 +0530</pubDate>
       
       <guid>https://suraj.io/tags/activism/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>non-tech</title>
-      <link>https://suraj.io/tags/non-tech/</link>
-      <pubDate>Mon, 12 Apr 2021 07:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/non-tech/</guid>
       <description></description>
     </item>
     
@@ -121,15 +130,6 @@
       <pubDate>Tue, 23 Feb 2021 09:07:07 +0530</pubDate>
       
       <guid>https://suraj.io/tags/notion/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>book-review</title>
-      <link>https://suraj.io/tags/book-review/</link>
-      <pubDate>Wed, 10 Feb 2021 21:43:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/book-review/</guid>
       <description></description>
     </item>
     
