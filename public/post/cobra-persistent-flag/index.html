@@ -16,7 +16,7 @@
     <meta property="og:image" content="https://github.com/surajssd.png">
   
   
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
           <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -179,8 +179,9 @@
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
+  <article>
+    <div class="post">
+      <header>
   <div class="title">
     
       <h2><a href="/post/cobra-persistent-flag/">Cobra and Persistentflags gotchas</a></h2>
@@ -196,8 +197,8 @@
   </div>
 </header>
 
-    <div id="socnet-share">
-      
+      <div id="socnet-share">
+        
 
 
 
@@ -234,10 +235,10 @@
   
 
 
-    </div>
-    <div class="content">
-      
-      <p>If you are using <a href="https://github.com/spf13/cobra">cobra</a> cmd line library for golang applications and it&rsquo;s <code>PersistentFlags</code> and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.</p>
+      </div>
+      <div class="content">
+        
+        <p>If you are using <a href="https://github.com/spf13/cobra">cobra</a> cmd line library for golang applications and it&rsquo;s <code>PersistentFlags</code> and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.</p>
 <p>All the code referenced here can be found here <a href="https://github.com/surajssd/cobrademo">https://github.com/surajssd/cobrademo</a>.</p>
 <p><img src="/images/cobra-persistent-flag/cobra.png" alt="" title=""></p>
 <p>The cmd line tool built with cobra has following structure. The main tool is called <code>cobrademo</code>. And the sub-commands are <code>alpha</code> and <code>num</code>. Sub-command <code>num</code> has one more sub-command called <code>one</code>.</p>
@@ -321,9 +322,9 @@ $ go run main.go alpha --config<span style="color:#f92672">=</span>foobar
 inside alpha, config value:  foobar
 </code></pre></div><p>There are other cobra gotchas that exist but then that is for another post.</p>
 
-    </div>
-    <footer>
-      <div class="stats">
+      </div>
+      <footer>
+        <div class="stats">
   
     <ul class="categories">
       
@@ -350,11 +351,11 @@ inside alpha, config value:  foobar
   
 </div>
 
-    </footer>
-  </article>
-  
+      </footer>
+    </div>
     
-  <article class="post">
+      
+  <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -375,12 +376,12 @@ inside alpha, config value:  foobar
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
   </article>
-
-
-
-
-  
   <div class="pagination">
     
       <a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/" class="button left"><span>Recreate Kubernetes CVE-2017-1002101</span></a>
@@ -681,8 +682,8 @@ inside alpha, config value:  foobar
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/go.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bbba6b424a8ac5b6858cd5fc80eabc9c5277945cc2dc349204646b84891b4b58.js" integrity="sha256-u7prQkqKxbaFjNX8gOq8nFJ3lFzC3DSSBGRrhIkbS1g="></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

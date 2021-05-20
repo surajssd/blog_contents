@@ -19,7 +19,7 @@
     
   
   
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
           <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -182,8 +182,9 @@
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
+  <article>
+    <div class="post">
+      <header>
   <div class="title">
     
       <h2><a href="/post/2021/05/access-k8s-secrets-mitigation/">Mitigation of: Access Any Kubernetes Secret</a></h2>
@@ -199,8 +200,8 @@
   </div>
 </header>
 
-    <div id="socnet-share">
-      
+      <div id="socnet-share">
+        
 
 
 
@@ -237,12 +238,12 @@
   
 
 
-    </div>
-    <div class="content">
-      <a href="/post/2021/05/access-k8s-secrets-mitigation/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png');">
+      </div>
+      <div class="content">
+        <a href="/post/2021/05/access-k8s-secrets-mitigation/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png');">
     <img src="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png" alt="Config">
   </a>
-      <p>In <a href="https://suraj.io/post/2021/05/access-k8s-secrets/">the previous blog</a>, we discussed how any user without RBAC access to a Kubernetes secret can use a trick to access that secret. To mitigate that problem, we will use a validating admission webhook. But before looking at what sorcery this validating admission webhook server is, let us understand how Kubernetes handles the API requests.</p>
+        <p>In <a href="https://suraj.io/post/2021/05/access-k8s-secrets/">the previous blog</a>, we discussed how any user without RBAC access to a Kubernetes secret can use a trick to access that secret. To mitigate that problem, we will use a validating admission webhook. But before looking at what sorcery this validating admission webhook server is, let us understand how Kubernetes handles the API requests.</p>
 <h2 id="what-are-admission-controllers">What are admission controllers?</h2>
 <p>All requests going to the Kubernetes API server go through the following four steps:</p>
 <ol>
@@ -307,9 +308,9 @@ request: User <span style="color:#e6db74">&#34;nastyuser&#34;</span> does not ha
 <p>I haven&rsquo;t fully grasped the side effect of this webhook server running inside an operational cluster. But once I do that, I will learn the pros and cons of this approach. Ideally, this should be done at the Kubernetes API server level.</p>
 <p>If you are aware of any other solution, please comment or let me know on <a href="https://twitter.com/surajd_">Twitter</a>.</p>
 
-    </div>
-    <footer>
-      <div class="stats">
+      </div>
+      <footer>
+        <div class="stats">
   
     <ul class="categories">
       
@@ -334,11 +335,11 @@ request: User <span style="color:#e6db74">&#34;nastyuser&#34;</span> does not ha
   
 </div>
 
-    </footer>
-  </article>
-  
+      </footer>
+    </div>
     
-  <article class="post">
+      
+  <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -359,12 +360,12 @@ request: User <span style="color:#e6db74">&#34;nastyuser&#34;</span> does not ha
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
   </article>
-
-
-
-
-  
   <div class="pagination">
     
       <a href="/post/2021/05/learnings-psychology-of-money/" class="button left"><span>Learnings from &#39;The Psychology of Money&#39;</span></a>
@@ -665,8 +666,8 @@ request: User <span style="color:#e6db74">&#34;nastyuser&#34;</span> does not ha
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/go.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bbba6b424a8ac5b6858cd5fc80eabc9c5277945cc2dc349204646b84891b4b58.js" integrity="sha256-u7prQkqKxbaFjNX8gOq8nFJ3lFzC3DSSBGRrhIkbS1g="></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

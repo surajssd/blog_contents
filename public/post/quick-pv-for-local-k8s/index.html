@@ -16,7 +16,7 @@
     <meta property="og:image" content="https://github.com/surajssd.png">
   
   
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
           <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -179,8 +179,9 @@
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
+  <article>
+    <div class="post">
+      <header>
   <div class="title">
     
       <h2><a href="/post/quick-pv-for-local-k8s/">Quick PV for local Kubernetes cluster</a></h2>
@@ -196,8 +197,8 @@
   </div>
 </header>
 
-    <div id="socnet-share">
-      
+      <div id="socnet-share">
+        
 
 
 
@@ -234,10 +235,10 @@
   
 
 
-    </div>
-    <div class="content">
-      
-      <p>I do lot of <a href="https://kubernetes.io/">Kubernetes</a> related work either on <a href="https://kubernetes.io/docs/getting-started-guides/minikube/">minikube</a> or local <a href="https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md#overview">OpenShift cluster</a> setup in a VM. Often I need to create a <code>PersistentVolumeClaim</code> a.k.a. <code>pvc</code>. But to use <code>pvc</code> you have to have a <code>PersistentVolume</code> or <code>pv</code> defined.</p>
+      </div>
+      <div class="content">
+        
+        <p>I do lot of <a href="https://kubernetes.io/">Kubernetes</a> related work either on <a href="https://kubernetes.io/docs/getting-started-guides/minikube/">minikube</a> or local <a href="https://github.com/openshift/origin/blob/master/docs/cluster_up_down.md#overview">OpenShift cluster</a> setup in a VM. Often I need to create a <code>PersistentVolumeClaim</code> a.k.a. <code>pvc</code>. But to use <code>pvc</code> you have to have a <code>PersistentVolume</code> or <code>pv</code> defined.</p>
 <h3 id="enter-into-the-machine-running-k8s">Enter into the machine running k8s</h3>
 <p>If using minikube you can do</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">minikube ssh
@@ -267,9 +268,9 @@ spec:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc create -f pv.yaml
 </code></pre></div><p>There you have a <code>pv</code> now you can create <code>pvc</code>&rsquo;s to use it.</p>
 
-    </div>
-    <footer>
-      <div class="stats">
+      </div>
+      <footer>
+        <div class="stats">
   
     <ul class="categories">
       
@@ -296,11 +297,11 @@ spec:
   
 </div>
 
-    </footer>
-  </article>
-  
+      </footer>
+    </div>
     
-  <article class="post">
+      
+  <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -321,12 +322,12 @@ spec:
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
   </article>
-
-
-
-
-  
   <div class="pagination">
     
       <a href="/post/enabling-local-development-with-k8s/" class="button left"><span>Enabling local development with Kubernetes</span></a>
@@ -627,8 +628,8 @@ spec:
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/go.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bbba6b424a8ac5b6858cd5fc80eabc9c5277945cc2dc349204646b84891b4b58.js" integrity="sha256-u7prQkqKxbaFjNX8gOq8nFJ3lFzC3DSSBGRrhIkbS1g="></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

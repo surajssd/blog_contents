@@ -16,7 +16,7 @@
     <meta property="og:image" content="https://github.com/surajssd.png">
   
   
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
           <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -179,8 +179,9 @@
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
+  <article>
+    <div class="post">
+      <header>
   <div class="title">
     
       <h2><a href="/post/use-configmap-for-scripts/">Use Configmap for Scripts</a></h2>
@@ -196,8 +197,8 @@
   </div>
 </header>
 
-    <div id="socnet-share">
-      
+      <div id="socnet-share">
+        
 
 
 
@@ -234,10 +235,10 @@
   
 
 
-    </div>
-    <div class="content">
-      
-      <p>We generally use some sort of scripts in application container images. They serve various purposes. Some scripts might do an initial setup before the application starts, others may have the whole logic of the container image, etc. Whatever the goal may be the general pattern is to copy the script into the container image, build the image and then the script is available when you consume the image.</p>
+      </div>
+      <div class="content">
+        
+        <p>We generally use some sort of scripts in application container images. They serve various purposes. Some scripts might do an initial setup before the application starts, others may have the whole logic of the container image, etc. Whatever the goal may be the general pattern is to copy the script into the container image, build the image and then the script is available when you consume the image.</p>
 <h2 id="cons-of-the-traditional-method">Cons of the Traditional Method</h2>
 <p>The round trip time during development and testing of such script is very long. You make some change to the script, you need to build the image, push it and then it is downloaded again. On an average for every change adds a couple of minutes to your feedback loop. Bash scripts are generally precarious in nature. You have to hammer it down, consider edge cases and thereby make it robust. This, of course, takes a lot of iterations. And with iterations comes the added time. So the question is, how do we reduce this feedback loop?</p>
 <h2 id="use-kubernetes-configmap-for-scripts">Use Kubernetes Configmap for Scripts</h2>
@@ -383,9 +384,9 @@ Sleeping <span style="color:#66d9ef">for</span> eternity!
 <li>Repository with helm chart: <a href="https://github.com/surajssd/echoscript">https://github.com/surajssd/echoscript</a>.</li>
 </ul>
 
-    </div>
-    <footer>
-      <div class="stats">
+      </div>
+      <footer>
+        <div class="stats">
   
     <ul class="categories">
       
@@ -416,11 +417,11 @@ Sleeping <span style="color:#66d9ef">for</span> eternity!
   
 </div>
 
-    </footer>
-  </article>
-  
+      </footer>
+    </div>
     
-  <article class="post">
+      
+  <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -441,12 +442,12 @@ Sleeping <span style="color:#66d9ef">for</span> eternity!
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
   </article>
-
-
-
-
-  
   <div class="pagination">
     
       <a href="/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/" class="button left"><span>How to gracefully kill Kubernetes Jobs with a sidecar?</span></a>
@@ -747,8 +748,8 @@ Sleeping <span style="color:#66d9ef">for</span> eternity!
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/go.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bbba6b424a8ac5b6858cd5fc80eabc9c5277945cc2dc349204646b84891b4b58.js" integrity="sha256-u7prQkqKxbaFjNX8gOq8nFJ3lFzC3DSSBGRrhIkbS1g="></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

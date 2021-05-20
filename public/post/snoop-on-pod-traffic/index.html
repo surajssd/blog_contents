@@ -16,7 +16,7 @@
     <meta property="og:image" content="https://github.com/surajssd.png">
   
   
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
           <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -179,8 +179,9 @@
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
+  <article>
+    <div class="post">
+      <header>
   <div class="title">
     
       <h2><a href="/post/snoop-on-pod-traffic/">Watch Container Traffic Without Exec</a></h2>
@@ -196,8 +197,8 @@
   </div>
 </header>
 
-    <div id="socnet-share">
-      
+      <div id="socnet-share">
+        
 
 
 
@@ -234,10 +235,10 @@
   
 
 
-    </div>
-    <div class="content">
-      
-      <h2 id="introduction">Introduction</h2>
+      </div>
+      <div class="content">
+        
+        <h2 id="introduction">Introduction</h2>
 <p>For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.</p>
 <p>But for the developers or operators of such applications, it is hard to debug. Since they lack essential tools or even <code>bash</code> for that matter, but the application&rsquo;s debugging ability should not dictate its production deployment and compromise its security posture.</p>
 <p>This blog shows one of the many debugging requirements of any connected application, i.e. network snooping or network debugging. I won&rsquo;t emphasise the importance of network debugging in the world of microservices, where containers lead the deployment model.</p>
@@ -306,9 +307,9 @@ sudo nsenter -t $PID -n tcpdump
 <li>The complex tcpdump command used to decode the HTTP traffic: <a href="https://sites.google.com/site/jimmyxu101/testing/use-tcpdump-to-monitor-http-traffic">https://sites.google.com/site/jimmyxu101/testing/use-tcpdump-to-monitor-http-traffic</a>.</li>
 </ul>
 
-    </div>
-    <footer>
-      <div class="stats">
+      </div>
+      <footer>
+        <div class="stats">
   
     <ul class="categories">
       
@@ -337,11 +338,11 @@ sudo nsenter -t $PID -n tcpdump
   
 </div>
 
-    </footer>
-  </article>
-  
+      </footer>
+    </div>
     
-  <article class="post">
+      
+  <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -362,12 +363,12 @@ sudo nsenter -t $PID -n tcpdump
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
   </article>
-
-
-
-
-  
   <div class="pagination">
     
       <a href="/post/book-review-einstein/" class="button left"><span>Book Review of Einstein: His Life and Universe</span></a>
@@ -668,8 +669,8 @@ sudo nsenter -t $PID -n tcpdump
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/go.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bbba6b424a8ac5b6858cd5fc80eabc9c5277945cc2dc349204646b84891b4b58.js" integrity="sha256-u7prQkqKxbaFjNX8gOq8nFJ3lFzC3DSSBGRrhIkbS1g="></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

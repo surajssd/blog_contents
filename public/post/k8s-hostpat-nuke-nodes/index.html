@@ -16,7 +16,7 @@
     <meta property="og:image" content="https://github.com/surajssd.png">
   
   
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
           <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -179,8 +179,9 @@
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
+  <article>
+    <div class="post">
+      <header>
   <div class="title">
     
       <h2><a href="/post/k8s-hostpat-nuke-nodes/">HostPath volumes and it&#39;s problems</a></h2>
@@ -196,8 +197,8 @@
   </div>
 </header>
 
-    <div id="socnet-share">
-      
+      <div id="socnet-share">
+        
 
 
 
@@ -234,10 +235,10 @@
   
 
 
-    </div>
-    <div class="content">
-      
-      <p>This post will demonstrate how Kubernetes <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"><code>HostPath</code></a> volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.</p>
+      </div>
+      <div class="content">
+        
+        <p>This post will demonstrate how Kubernetes <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"><code>HostPath</code></a> volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.</p>
 <p>I have a 3-master and 3-node cluster and setup using <a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant/blob/master/scripts/setup">this script</a>, running in a Vagrant environment.</p>
 <p>All the nodes are in ready state:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get nodes -o wide
@@ -480,9 +481,9 @@ type<span style="color:#f92672">=</span>AVC msg<span style="color:#f92672">=</sp
 <li><a href="https://suraj.io/post/single-node-k8s-fedora-selinux/">Single node cluster with SELinux used here</a></li>
 </ul>
 
-    </div>
-    <footer>
-      <div class="stats">
+      </div>
+      <footer>
+        <div class="stats">
   
     <ul class="categories">
       
@@ -511,11 +512,11 @@ type<span style="color:#f92672">=</span>AVC msg<span style="color:#f92672">=</sp
   
 </div>
 
-    </footer>
-  </article>
-  
+      </footer>
+    </div>
     
-  <article class="post">
+      
+  <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -536,12 +537,12 @@ type<span style="color:#f92672">=</span>AVC msg<span style="color:#f92672">=</sp
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
   </article>
-
-
-
-
-  
   <div class="pagination">
     
       <a href="/post/single-node-k8s-fedora-selinux/" class="button left"><span>Single node Kubernetes Cluster on Fedora with SELinux enabled</span></a>
@@ -842,8 +843,8 @@ type<span style="color:#f92672">=</span>AVC msg<span style="color:#f92672">=</sp
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/go.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bbba6b424a8ac5b6858cd5fc80eabc9c5277945cc2dc349204646b84891b4b58.js" integrity="sha256-u7prQkqKxbaFjNX8gOq8nFJ3lFzC3DSSBGRrhIkbS1g="></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

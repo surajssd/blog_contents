@@ -16,7 +16,7 @@
     <meta property="og:image" content="https://github.com/surajssd.png">
   
   
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
           <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -179,8 +179,9 @@
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
+  <article>
+    <div class="post">
+      <header>
   <div class="title">
     
       <h2><a href="/post/mental-models-for-understanding-kubernetes-pod-security-policy/">Mental models for understanding Kubernetes Pod Security Policy</a></h2>
@@ -196,8 +197,8 @@
   </div>
 </header>
 
-    <div id="socnet-share">
-      
+      <div id="socnet-share">
+        
 
 
 
@@ -234,10 +235,10 @@
   
 
 
-    </div>
-    <div class="content">
-      
-      <p>PodSecurityPolicy (PSP) is hard to get right in the first attempt. There has never been a situation when I haven&rsquo;t banged my head to get it working on the cluster. It is a frustrating experience, but it is one of the essential security features of Kubernetes. Some applications have started shipping the PSP configs with their helm charts, but if a helm chart does not ship a PSP config, it must be handcrafted by the <strong>cluster-admin</strong> to make the application work reliably in the cluster.</p>
+      </div>
+      <div class="content">
+        
+        <p>PodSecurityPolicy (PSP) is hard to get right in the first attempt. There has never been a situation when I haven&rsquo;t banged my head to get it working on the cluster. It is a frustrating experience, but it is one of the essential security features of Kubernetes. Some applications have started shipping the PSP configs with their helm charts, but if a helm chart does not ship a PSP config, it must be handcrafted by the <strong>cluster-admin</strong> to make the application work reliably in the cluster.</p>
 <p>This post assumes that you already know what <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy">Pod Security Policies</a> and <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/">Role-based access control (RBAC)</a> are. You can find the best explanation of the basics from the upstream documentation.</p>
 <p>This post will define a nomenclature for PSP types, how a <strong>cluster-admin</strong> can create a PSP that is allowed for all workloads, and how a developer can generate PSP from scratch. This post won&rsquo;t try to define steps on achieving above but will give guidelines and point you into the right direction for securing your cluster with PSPs.</p>
 <h2 id="policy-order">Policy Order</h2>
@@ -355,9 +356,9 @@
 If you are still confused about this, please reach out to me I will happy to explain.</p>
 <p><strong>EDIT</strong>: The PSP is officially deprecated, I was wrong before to mention it is not deprecated yet. This was pointed out to me on a <a href="https://www.reddit.com/r/kubernetes/comments/kyf2yu/mental_models_for_understanding_kubernetes_pod/?utm_source=share&amp;utm_medium=web2x&amp;context=3">Reddit thread</a>. According to <a href="https://github.com/kubernetes/kubernetes/pull/97171">this Kubernetes PR</a>, PSP will be deprecated in Kubernetes <code>v1.21</code> and removed entirely in <code>v1.25</code>.</p>
 
-    </div>
-    <footer>
-      <div class="stats">
+      </div>
+      <footer>
+        <div class="stats">
   
     <ul class="categories">
       
@@ -384,11 +385,11 @@ If you are still confused about this, please reach out to me I will happy to exp
   
 </div>
 
-    </footer>
-  </article>
-  
+      </footer>
+    </div>
     
-  <article class="post">
+      
+  <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -409,12 +410,12 @@ If you are still confused about this, please reach out to me I will happy to exp
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
   </article>
-
-
-
-
-  
   <div class="pagination">
     
       <a href="/post/monitor-releases-of-your-favourite-software/" class="button left"><span>Monitor releases of your favourite software</span></a>
@@ -715,8 +716,8 @@ If you are still confused about this, please reach out to me I will happy to exp
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/go.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bbba6b424a8ac5b6858cd5fc80eabc9c5277945cc2dc349204646b84891b4b58.js" integrity="sha256-u7prQkqKxbaFjNX8gOq8nFJ3lFzC3DSSBGRrhIkbS1g="></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

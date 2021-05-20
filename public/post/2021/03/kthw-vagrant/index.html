@@ -19,7 +19,7 @@
     
   
   
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
           <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -182,8 +182,9 @@
 
       <main id="site-main">
         
-  <article class="post">
-    <header>
+  <article>
+    <div class="post">
+      <header>
   <div class="title">
     
       <h2><a href="/post/2021/03/kthw-vagrant/">Kubernetes The Hard Way in &#34;Vagrant&#34;?</a></h2>
@@ -199,8 +200,8 @@
   </div>
 </header>
 
-    <div id="socnet-share">
-      
+      <div id="socnet-share">
+        
 
 
 
@@ -237,12 +238,12 @@
   
 
 
-    </div>
-    <div class="content">
-      <a href="/post/2021/03/kthw-vagrant/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/kthw-vagrant/cert.png');">
+      </div>
+      <div class="content">
+        <a href="/post/2021/03/kthw-vagrant/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/kthw-vagrant/cert.png');">
     <img src="https://suraj.io/post/2021/03/kthw-vagrant/cert.png" alt="CKA logo">
   </a>
-      <p>If you are studying for the <a href="https://suraj.io/post/road-to-cka/">Certified Kubernetes Administrator (CKA)</a> exam, you might have come across folks recommending <a href="https://twitter.com/kelseyhightower">Kelsey Hightower&rsquo;s</a> <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way/">Kubernetes the Hard Way</a>. It is an excellent first step for someone who has no idea about the <a href="https://kubernetes.io/docs/concepts/overview/components/">components that form a Kubernetes cluster</a>. As the name suggests, it is created so that you learn the Kubernetes building blocks the &ldquo;hard way&rdquo;.</p>
+        <p>If you are studying for the <a href="https://suraj.io/post/road-to-cka/">Certified Kubernetes Administrator (CKA)</a> exam, you might have come across folks recommending <a href="https://twitter.com/kelseyhightower">Kelsey Hightower&rsquo;s</a> <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way/">Kubernetes the Hard Way</a>. It is an excellent first step for someone who has no idea about the <a href="https://kubernetes.io/docs/concepts/overview/components/">components that form a Kubernetes cluster</a>. As the name suggests, it is created so that you learn the Kubernetes building blocks the &ldquo;hard way&rdquo;.</p>
 <p>But all that can be intimidating to someone who hasn&rsquo;t played with Kubernetes ever. Also, <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way/">the guide</a> uses Google Cloud as a platform to install everything, which mandates you to have a Google Cloud account. But don&rsquo;t worry, there is a version of Kubernetes the Hard Way, which runs locally, hence free. Enter <a href="https://github.com/surajssd/kubernetes-the-hard-way-vagrant">Kubernetes the Hard Way Vagrant</a>!</p>
 <p>Kubernetes the Hard Way Vagrant, was started by folks at <a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant">Kinvolk</a>. It is a set of scripts that does the exact same thing done in Kelsey&rsquo;s KTHW. The only difference is that it is automated with scripts and, at the same time, gives you the flexibility to do things manually if you like. These scripts help any newbie understand how a Kubernetes cluster can be brought up one node at a time. They can study each and every step of cluster creation and replicate those steps manually. Another minor difference is that this repository uses <a href="https://github.com/cri-o/cri-o">cri-o</a> as a container runtime instead of <a href="https://containerd.io/">containerd</a> used in Kelsey&rsquo;s tutorial.</p>
 <p>To get started, all you need is a machine with 4.8 GB of spare memory and enough CPU to run seven small VMs. Install <a href="https://www.vagrantup.com/docs/installation">Vagrant</a> and <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> to run these VMs. Once you have these prerequisites, all you need to do to get started is run the following steps:</p>
@@ -255,9 +256,9 @@ cd kubernetes-the-hard-way-vagrant
 <p>You can run individual script invoked by <code>./scripts/setup</code> manually to get an in-depth understanding of what is happening underneath. Find more explanation on each sub-script on the <a href="https://github.com/surajssd/kubernetes-the-hard-way-vagrant#multiple-scripts">README</a>.</p>
 <p><a href="https://github.com/surajssd/kubernetes-the-hard-way-vagrant">This repository</a> is an excellent first step to doing Kelsey&rsquo;s KTHW on Vagrant. I hope you find this helpful.</p>
 
-    </div>
-    <footer>
-      <div class="stats">
+      </div>
+      <footer>
+        <div class="stats">
   
     <ul class="categories">
       
@@ -282,11 +283,11 @@ cd kubernetes-the-hard-way-vagrant
   
 </div>
 
-    </footer>
-  </article>
-  
+      </footer>
+    </div>
     
-  <article class="post">
+      
+  <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
@@ -307,12 +308,12 @@ cd kubernetes-the-hard-way-vagrant
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
   </article>
-
-
-
-
-  
   <div class="pagination">
     
       <a href="/post/2021/03/node-monitor/" class="button left"><span>Monitor your PC with Prometheus Grafana stack</span></a>
@@ -613,8 +614,8 @@ cd kubernetes-the-hard-way-vagrant
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/languages/go.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.bbba6b424a8ac5b6858cd5fc80eabc9c5277945cc2dc349204646b84891b4b58.js" integrity="sha256-u7prQkqKxbaFjNX8gOq8nFJ3lFzC3DSSBGRrhIkbS1g="></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;
