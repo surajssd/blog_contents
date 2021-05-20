@@ -190,7 +190,7 @@ supersecretvaluesinhere
 
 This post was from the perspective of an attacker. It showed you how you could use guessing the secret name to gain access to any secret you like, of course, with the help of Kubelet.
 
-In the next blog, we will see how to detect this issue and stop it from happening.
+In the [next blog](https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/), we will see how to detect this issue and stop it from happening.
 
 ## Background Setup
 

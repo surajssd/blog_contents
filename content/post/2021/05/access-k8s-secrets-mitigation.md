@@ -112,4 +112,4 @@ request: User "nastyuser" does not have access to the secret "supersecret" in th
 
 I haven't fully grasped the side effect of this webhook server running inside an operational cluster. But once I do that, I will learn the pros and cons of this approach. Ideally, this should be done at the Kubernetes API server level.
 
-If you are aware of any other solution please comment or let me know on [Twitter](https://twitter.com/surajd_).
+If you are aware of any other solution, please comment or let me know on [Twitter](https://twitter.com/surajd_).
