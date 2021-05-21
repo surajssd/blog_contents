@@ -187,6 +187,65 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/use-configmap-for-scripts/">Use Configmap for Scripts</a></h2>
+    
+    
+      <p>A new way to ship scripts to container images.</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2020-08-22 21:00:51 &#43;0530 IST">August 22, 2020</time>
+    <p>Suraj Deshmukh</p>
+    <p>6-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>We generally use some sort of scripts in application container images. They serve various purposes. Some scripts might do an initial setup before the application starts, others may have the whole logic of the container image, etc. Whatever the goal may be the general pattern is to copy the script into the container image, build the image and then the script is available when you consume the image.</p>
+  </div>
+  <footer>
+    <a href="/post/use-configmap-for-scripts/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/configuration/">configuration</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/bash/">bash</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/configuration/">configuration</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/being-productive-with-kubectl/">Being Productive with Kubectl</a></h2>
     
     
@@ -688,57 +747,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/add-new-k8s-node-cert-rotate/">Add new Node to k8s cluster with cert rotation</a></h2>
-    
-    
-      <p>Use this technique to add node to the cluster without providing any certificates</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2018-10-16 01:00:51 &#43;0530 IST">October 16, 2018</time>
-    <p>Suraj Deshmukh</p>
-    <p>3-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>The setup here is created by following <a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/"><em>Kubernetes the Hard Way</em></a> by <a href="https://twitter.com/kelseyhightower"><strong>Kelsey Hightower</strong></a>. So if you are following along in this then do all the setup till the step <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/09-bootstrapping-kubernetes-workers.md"><em>Bootstrapping the Kubernetes Worker Nodes</em></a>. In this just don&rsquo;t start the <code>kubelet</code>, start other services like <code>containerd</code> and <code>kube-proxy</code>.</p>
-  </div>
-  <footer>
-    <a href="/post/add-new-k8s-node-cert-rotate/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/categories/kubernetes/" class="button left"><span>Previous Page</span></a>
@@ -755,6 +763,16 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
+    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
+  </a>
+        <header>
+          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
+          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           <a href="/post/2021/05/learnings-psychology-of-money/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/learnings-psychology-of-money/logo.jpg');">
@@ -796,16 +814,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/03/node-monitor/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png');">
-    <img src="https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png" alt="Node Exporter">
-  </a>
-        <header>
-          <h2><a href="/post/2021/03/node-monitor/">Monitor your PC with Prometheus Grafana stack</a></h2>
-          <time class="published" datetime="2021-04-02 07:07:07 &#43;0530 IST">April 2, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -825,7 +833,7 @@
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">30</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">31</span></a>
           
           <li>
               <a href="/categories/notes/">notes<span class="count">21</span></a>
@@ -834,7 +842,7 @@
               <a href="/categories/non-tech/">non-tech<span class="count">12</span></a>
           
           <li>
-              <a href="/categories/security/">security<span class="count">10</span></a>
+              <a href="/categories/security/">security<span class="count">11</span></a>
           
           <li>
               <a href="/categories/productivity/">productivity<span class="count">8</span></a>

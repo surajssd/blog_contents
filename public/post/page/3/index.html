@@ -187,6 +187,65 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/">How to gracefully kill Kubernetes Jobs with a sidecar?</a></h2>
+    
+    
+      <p>A sidecar in a Kubernetes Job, what? Yeah you might need one and here is how to shut it.</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2020-08-29 15:33:51 &#43;0530 IST">August 29, 2020</time>
+    <p>Suraj Deshmukh</p>
+    <p>6-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>Have you ever had a sidecar in your Kubernetes Job? If no, then trust me that you are lucky. If yes, then you will have the frustration of your life. The thing is Kubernetes Jobs are meant to exit on completion. But if you have a long-running sidecar, then that might twist things for Kubernetes and in turn of you.</p>
+  </div>
+  <footer>
+    <a href="/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/configuration/">configuration</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/jobs/">jobs</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/configuration/">configuration</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/use-configmap-for-scripts/">Use Configmap for Scripts</a></h2>
     
     
@@ -704,61 +763,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h2>
-    
-    
-      <p>This post shows how you can enable seccomp on all the Pods that are deployed with Prometheus Operator</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2020-04-14 11:57:07 &#43;0530 IST">April 14, 2020</time>
-    <p>Suraj Deshmukh</p>
-    <p>3-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p><a href="https://en.wikipedia.org/wiki/Seccomp">Seccomp</a> helps us limit the system calls the process inside container can make. And <code>PodSecurityPolicy</code> is the way to enable it on pods in Kubernetes.</p>
-  </div>
-  <footer>
-    <a href="/post/seccomp-in-kube-state-metrics/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/seccomp/">seccomp</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/post/page/2/" class="button left"><span>Previous Page</span></a>
@@ -775,6 +779,16 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
+    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
+  </a>
+        <header>
+          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
+          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           <a href="/post/2021/05/learnings-psychology-of-money/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/learnings-psychology-of-money/logo.jpg');">
@@ -816,16 +830,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/03/node-monitor/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png');">
-    <img src="https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png" alt="Node Exporter">
-  </a>
-        <header>
-          <h2><a href="/post/2021/03/node-monitor/">Monitor your PC with Prometheus Grafana stack</a></h2>
-          <time class="published" datetime="2021-04-02 07:07:07 &#43;0530 IST">April 2, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -845,7 +849,7 @@
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">30</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">31</span></a>
           
           <li>
               <a href="/categories/notes/">notes<span class="count">21</span></a>
@@ -854,7 +858,7 @@
               <a href="/categories/non-tech/">non-tech<span class="count">12</span></a>
           
           <li>
-              <a href="/categories/security/">security<span class="count">10</span></a>
+              <a href="/categories/security/">security<span class="count">11</span></a>
           
           <li>
               <a href="/categories/productivity/">productivity<span class="count">8</span></a>

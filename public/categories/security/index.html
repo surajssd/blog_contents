@@ -187,6 +187,61 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
+    
+    
+      <p>A simple binary to generate TLS x509 certificates.</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
+    <p>Suraj Deshmukh</p>
+    <p>2-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
+    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
+  </a>
+    
+    <p>If you are writing a webhook server for <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#what-are-they">Kubernetes Admission Controllers</a> like <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#validatingadmissionwebhook">ValidatingAdmissionWebhooks</a> or <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#mutatingadmissionwebhook">MutatingAdmissionWebhooks</a>, you must expose it over HTTPS. To run these servers on HTTPS, you need TLS certificates. There are solutions available which you can use to solve this problem, first and foremost that comes to my mind is <a href="https://cert-manager.io/docs/">cert-manager</a>. It is a great project and automates this problem. But it is an added dependency that you might have to keep running in your cluster.</p>
+  </div>
+  <footer>
+    <a href="/post/2021/05/self-sign-k8s-cert/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/2021/05/access-k8s-secrets-mitigation/">Mitigation of: Access Any Kubernetes Secret</a></h2>
     
     
@@ -696,69 +751,10 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/mkcert-using-python-http-server/">HTTPS during development using &#39;mkcert&#39;</a></h2>
-    
-    
-      <p>Use https even during your development</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2018-08-14 01:00:51 &#43;0530 IST">August 14, 2018</time>
-    <p>Suraj Deshmukh</p>
-    <p>2-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>It&rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using <a href="https://github.com/FiloSottile/mkcert">mkcert</a>. Install by following one of the steps mentioned in the <a href="https://github.com/FiloSottile/mkcert#installation">docs</a>.</p>
-  </div>
-  <footer>
-    <a href="/post/mkcert-using-python-http-server/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/certs/">certs</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/https/">https</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/development/">development</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/https/">https</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/certificates/">certificates</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/secure/">secure</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
+    
+      <a href="/categories/security/page/2/" class="button right"><span>Next Page</span></a>
     
   </div>
 
@@ -769,6 +765,16 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
+    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
+  </a>
+        <header>
+          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
+          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           <a href="/post/2021/05/learnings-psychology-of-money/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/learnings-psychology-of-money/logo.jpg');">
@@ -810,16 +816,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/03/node-monitor/" class="image" style="--bg-image: url('https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png');">
-    <img src="https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png" alt="Node Exporter">
-  </a>
-        <header>
-          <h2><a href="/post/2021/03/node-monitor/">Monitor your PC with Prometheus Grafana stack</a></h2>
-          <time class="published" datetime="2021-04-02 07:07:07 &#43;0530 IST">April 2, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -839,7 +835,7 @@
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">30</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">31</span></a>
           
           <li>
               <a href="/categories/notes/">notes<span class="count">21</span></a>
@@ -848,7 +844,7 @@
               <a href="/categories/non-tech/">non-tech<span class="count">12</span></a>
           
           <li>
-              <a href="/categories/security/">security<span class="count">10</span></a>
+              <a href="/categories/security/">security<span class="count">11</span></a>
           
           <li>
               <a href="/categories/productivity/">productivity<span class="count">8</span></a>
