@@ -44,3 +44,9 @@ It is a perfect coffee table book, where concepts are explained backed by storie
 - Nothing is free in this world. Similarly, investing comes with the risk of losing money. If you lose some money in the short term, look at it as a price instead of loss or fine.
 - Everyone has different investing goals, so don't take generic tips from people who don't know your investment goals.
 - Pessimism can keep you alive in the game, but the optimists win the game in the long run.
+
+## Links
+
+- [Goodreads link to the book.](https://www.goodreads.com/notes/55362487-the-psychology-of-money/26285732-suraj-deshmukh)
+- [My Highlights from the book.](https://www.goodreads.com/book/show/55362487-the-psychology-of-money)
+- [The famous article by the author.](https://www.collaborativefund.com/blog/the-psychology-of-money/)
