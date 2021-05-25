@@ -13,8 +13,9 @@
       <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
       
       <guid>https://suraj.io/post/2021/01/kubeadm-flatcar/</guid>
-      <description>This blog shows a simple set of commands to install a Kubernetes cluster on Flatcar Container Linux based machines using Kubeadm.
-You might wonder why this blog when one can go to the official documentation and follow the steps? Yep, you are right. You can choose to do that. But this blog has a collection of actions specific to Flatcar Container Linux. These steps have been tried and tested on Flatcar, so you don&amp;rsquo;t need to recreate and test them yourself.</description>
+      <description>Image Source: Flatcar Linux is now open to the public.
+This blog shows a simple set of commands to install a Kubernetes cluster on Flatcar Container Linux based machines using Kubeadm.
+You might wonder why this blog when one can go to the official documentation and follow the steps? Yep, you are right. You can choose to do that. But this blog has a collection of actions specific to Flatcar Container Linux.</description>
     </item>
     
     <item>

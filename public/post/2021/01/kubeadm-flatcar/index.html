@@ -13,7 +13,10 @@
   <meta property="og:url" content="https://suraj.io/post/2021/01/kubeadm-flatcar/">
   <meta property="og:type" content="article">
   
-    <meta property="og:image" content="https://github.com/surajssd.png">
+    
+      <meta property="og:image" content="https://suraj.io/post/2021/01/kubeadm-flatcar/flatcar.jpg">
+      <meta property="og:image:alt" content="Flatcar">
+    
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
@@ -237,10 +240,12 @@
 
       </div>
       <div class="content">
-        
-        <p>This blog shows a simple set of commands to install a Kubernetes cluster on <a href="https://www.flatcar-linux.org/">Flatcar Container Linux</a> based machines using <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/">Kubeadm</a>.</p>
+        <a href="/post/2021/01/kubeadm-flatcar/" class="image" style="--bg-image: url('https://suraj.io/post/2021/01/kubeadm-flatcar/flatcar.jpg');">
+    <img src="https://suraj.io/post/2021/01/kubeadm-flatcar/flatcar.jpg" alt="Flatcar">
+  </a>
+        <p><a href="https://kinvolk.io/blog/2018/04/flatcar-linux-is-now-open-to-the-public/">Image Source: Flatcar Linux is now open to the public.</a></p>
+<p>This blog shows a simple set of commands to install a Kubernetes cluster on <a href="https://www.flatcar-linux.org/">Flatcar Container Linux</a> based machines using <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/">Kubeadm</a>.</p>
 <p>You might wonder why this blog when one can go to the official documentation and follow the steps? Yep, you are right. You can choose to do that. But this blog has a collection of actions specific to Flatcar Container Linux. These steps have been tried and tested on Flatcar, so you don&rsquo;t need to recreate and test them yourself. There are some nuances related to the read-only partitions of Flatcar, and this blog takes care of them at the control plane level and the CNI level both.</p>
-<p><img src="https://kinvolk.io/media/flatcar-linux-public-release_huff9ce14b9fc0c4cb57265a53fd2259cb_16308_900x0_resize_box_2.png" alt="Flatcar Container Linux" title="Flatcar Container Linux"></p>
 <h1 id="textual-steps">Textual Steps</h1>
 <p>All the commands are run by becoming <code>root</code> using <code>sudo -i</code>.</p>
 <h2 id="1-setup-nodes">1. Setup Nodes</h2>

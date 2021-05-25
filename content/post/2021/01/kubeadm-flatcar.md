@@ -1,17 +1,21 @@
-+++
-author = "Suraj Deshmukh"
-title = "Kubernetes Cluster using Kubeadm on Flatcar Container Linux"
-description = "Simple steps to install the cluster based on Flatcar Container Linux"
-date = "2021-01-29T22:02:41+05:30"
-categories = ["kubernetes", "flatcar", "containers", "kubeadm"]
-tags = ["kubernetes", "flatcar", "containers", "kubeadm"]
-+++
+---
+author: "Suraj Deshmukh"
+date: "2021-01-29T22:02:41+05:30"
+title: "Kubernetes Cluster using Kubeadm on Flatcar Container Linux"
+description: "Simple steps to install the cluster based on Flatcar Container Linux"
+draft: false
+categories: ["kubernetes", "flatcar", "containers", "kubeadm"]
+tags: ["kubernetes", "flatcar", "containers", "kubeadm"]
+images:
+- src: "/post/2021/01/kubeadm-flatcar/flatcar.jpg"
+  alt: "Flatcar"
+---
+
+[Image Source: Flatcar Linux is now open to the public.](https://kinvolk.io/blog/2018/04/flatcar-linux-is-now-open-to-the-public/)
 
 This blog shows a simple set of commands to install a Kubernetes cluster on [Flatcar Container Linux](https://www.flatcar-linux.org/) based machines using [Kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/).
 
 You might wonder why this blog when one can go to the official documentation and follow the steps? Yep, you are right. You can choose to do that. But this blog has a collection of actions specific to Flatcar Container Linux. These steps have been tried and tested on Flatcar, so you don't need to recreate and test them yourself. There are some nuances related to the read-only partitions of Flatcar, and this blog takes care of them at the control plane level and the CNI level both.
-
-![Flatcar Container Linux](https://kinvolk.io/media/flatcar-linux-public-release_huff9ce14b9fc0c4cb57265a53fd2259cb_16308_900x0_resize_box_2.png "Flatcar Container Linux")
 
 # Textual Steps
 
