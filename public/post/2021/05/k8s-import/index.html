@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>How to import &#39;any&#39; Kubernetes package into your project? - Suraj Deshmukh</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+  <meta property="og:title" content="How to import &#39;any&#39; Kubernetes package into your project?">
+  <meta property="og:description" content="Blog">
+  <meta property="description" content="Blog">
+  <meta property="og:url" content="https://suraj.io/post/2021/05/k8s-import/">
+  <meta property="og:type" content="article">
+  
+    
+      <meta property="og:image" content="https://suraj.io/post/2021/05/k8s-import/gok8s.jpg">
+      <meta property="og:image:alt" content="Golang and Kubernetes">
+    
+  
+  
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
+          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          How to import &#39;any&#39; Kubernetes package into your project?
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+        
+      
+        
+          
+          <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+        
+      
+        
+          
+          <a href="/post/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+        
+      
+        
+          
+          <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+        
+      
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active">English (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=How%20to%20import%20%27any%27%20Kubernetes%20package%20into%20your%20project%3f&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2fk8s-import%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2fk8s-import%2f&amp;title=How%20to%20import%20%27any%27%20Kubernetes%20package%20into%20your%20project%3f" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <p>Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2fk8s-import%2f&amp;title=How%20to%20import%20%27any%27%20Kubernetes%20package%20into%20your%20project%3f" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2fk8s-import%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <p>Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2fk8s-import%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="https://github.com/surajssd.png" class="square" width="100" alt="Suraj Deshmukh" /></a>
+  <header>
+    <h1>Blog</h1>
+  </header>
+  <main>
+    <p>containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article>
+    <div class="post">
+      <header>
+  <div class="title">
+    
+      <h2><a href="/post/2021/05/k8s-import/">How to import &#39;any&#39; Kubernetes package into your project?</a></h2>
+    
+    
+  </div>
+  <div class="meta">
+    <time datetime="2021-05-30 09:40:00 &#43;0530 IST">May 30, 2021</time>
+    <p>Suraj Deshmukh</p>
+    <p>4-Minute Read</p>
+  </div>
+</header>
+
+      <div id="socnet-share">
+        
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=How%20to%20import%20%27any%27%20Kubernetes%20package%20into%20your%20project%3f&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2fk8s-import%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2fk8s-import%2f&amp;title=How%20to%20import%20%27any%27%20Kubernetes%20package%20into%20your%20project%3f" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <p>Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2fk8s-import%2f&amp;title=How%20to%20import%20%27any%27%20Kubernetes%20package%20into%20your%20project%3f" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2fk8s-import%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <p>Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f05%2fk8s-import%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+      </div>
+      <div class="content">
+        <a href="/post/2021/05/k8s-import/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/k8s-import/gok8s.jpg');">
+    <img src="https://suraj.io/post/2021/05/k8s-import/gok8s.jpg" alt="Golang and Kubernetes">
+  </a>
+        <p>The client libraries that Kubernetes ships are meant to be imported, and you definitely don&rsquo;t need this post explaining how to import them in your Golang based project. A simple <code>go get ...</code> should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of <em>&ldquo;technical reasons&rdquo;</em> ? Could you simply add them to your import statements in the <code>.go</code> file, and the <code>go</code> binary will do the right thing when you build the code? Well, let&rsquo;s find that out!</p>
+<h2 id="usecase">Usecase</h2>
+<p>I have a project, and in it, the imported packages look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;crypto/x509&#34;</span>
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;io/ioutil&#34;</span>
+	<span style="color:#e6db74">&#34;log&#34;</span>
+	<span style="color:#e6db74">&#34;path/filepath&#34;</span>
+
+	<span style="color:#e6db74">&#34;github.com/spf13/cobra&#34;</span>
+	<span style="color:#e6db74">&#34;k8s.io/client-go/util/cert&#34;</span>
+	<span style="color:#e6db74">&#34;k8s.io/client-go/util/keyutil&#34;</span>
+	<span style="color:#e6db74">&#34;k8s.io/kubernetes/test/utils&#34;</span>
+)
+</code></pre></div><p><a href="https://github.com/surajssd/self-signed-cert/blob/61a5c44ca2f4d6d951b361e1f271bd13ce355f9d/main.go#L3-L14">source</a></p>
+<p>So it consists of a couple of inbuilt packages, and then the CLI library <a href="https://github.com/spf13/cobra">Cobra</a>, a couple of <a href="https://github.com/kubernetes/client-go">client-go</a> packages. The only out of the ordinary thing is the <code>k8s.io/kubernetes/test/utils</code> package.</p>
+<h2 id="importing">Importing</h2>
+<p>Let us tidy up the dependencies before building the code:</p>
+<pre><code>$ go get github.com/spf13/cobra \
+&gt;        k8s.io/client-go/util/cert \
+&gt;        k8s.io/client-go/util/keyutil \
+&gt;        k8s.io/kubernetes/test/utils
+go: downloading k8s.io/client-go v1.5.2
+go: downloading github.com/spf13/cobra v1.1.3
+go: downloading k8s.io/kubernetes v1.21.1
+go: downloading k8s.io/client-go v0.21.1
+go get: k8s.io/kubernetes@v1.15.0-alpha.0 updating to
+        k8s.io/kubernetes@v1.21.1 requires
+        k8s.io/api@v0.0.0: reading k8s.io/api/go.mod at revision v0.0.0: unknown revision v0.0.0
+</code></pre><p>Now, this is a weird error:</p>
+<pre><code>k8s.io/api@v0.0.0: reading k8s.io/api/go.mod at revision v0.0.0: unknown revision v0.0.0
+</code></pre><h2 id="tldr-give-me-the-solution">tl;dr Give me the solution</h2>
+<p>Save the following bash script in <code>download-deps.sh</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
+VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>1#<span style="color:#e6db74">&#34;v&#34;</span><span style="color:#e6db74">}</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span>$VERSION<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  echo <span style="color:#e6db74">&#34;Please specify the Kubernetes version: e.g.&#34;</span>
+  echo <span style="color:#e6db74">&#34;./download-deps.sh v1.21.0&#34;</span>
+  exit <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">fi</span>
+
+set -euo pipefail
+
+<span style="color:#75715e"># Find out all the replaced imports, make a list of them.</span>
+MODS<span style="color:#f92672">=(</span><span style="color:#66d9ef">$(</span>
+  curl -sS <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/kubernetes/kubernetes/v</span><span style="color:#e6db74">${</span>VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/go.mod&#34;</span> |
+    sed -n <span style="color:#e6db74">&#39;s|.*k8s.io/\(.*\) =&gt; ./staging/src/k8s.io/.*|k8s.io/\1|p&#39;</span>
+<span style="color:#66d9ef">)</span><span style="color:#f92672">)</span>
+
+<span style="color:#75715e"># Now add those similar replace statements in the local go.mod file, but first find the version that</span>
+<span style="color:#75715e"># the Kubernetes is using for them.</span>
+<span style="color:#66d9ef">for</span> MOD in <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MODS[@]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">do</span>
+  V<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
+    go mod download -json <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MOD<span style="color:#e6db74">}</span><span style="color:#e6db74">@kubernetes-</span><span style="color:#e6db74">${</span>VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> |
+      sed -n <span style="color:#e6db74">&#39;s|.*&#34;Version&#34;: &#34;\(.*\)&#34;.*|\1|p&#39;</span>
+  <span style="color:#66d9ef">)</span>
+
+  go mod edit <span style="color:#e6db74">&#34;-replace=</span><span style="color:#e6db74">${</span>MOD<span style="color:#e6db74">}</span><span style="color:#e6db74">=</span><span style="color:#e6db74">${</span>MOD<span style="color:#e6db74">}</span><span style="color:#e6db74">@</span><span style="color:#e6db74">${</span>V<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">done</span>
+
+go get <span style="color:#e6db74">&#34;k8s.io/kubernetes@v</span><span style="color:#e6db74">${</span>VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+go mod download
+</code></pre></div><p>Make the script usable:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod u+x download-deps.sh
+</code></pre></div><p>Use the following script. It will update the <code>go.mod</code> file with the required dependencies:</p>
+<pre><code class="language-consle" data-lang="consle">$ ./download-deps.sh v1.21.0
+go: downloading k8s.io/kubernetes v1.21.0
+go get: added k8s.io/kubernetes v1.21.0
+</code></pre><p>Now you can build your code! Keep reading further to understand why this happens.</p>
+<blockquote>
+<p>Kudos 👏 to <a href="https://github.com/abursavich">Andy Bursavich</a> for writing the aforementioned script. I took the script from <a href="https://github.com/kubernetes/kubernetes/issues/79384#issuecomment-521493597">this comment</a> and made minor modifications.</p>
+</blockquote>
+<h2 id="reasoning">Reasoning</h2>
+<p>The error <code>k8s.io/api@v0.0.0: reading k8s.io/api/go.mod at revision v0.0.0: unknown revision v0.0.0</code> is caused because, in Kubernetes&rsquo;s <a href="https://github.com/kubernetes/kubernetes/blob/e6136c0303028d68cac67290d94a60cec167ccdf/go.mod#L109-L120"><code>go.mod</code></a>, you will find the following snippet:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">require (</span>
+...
+	<span style="color:#ae81ff">k8s.io/api v0.0.0</span>
+	<span style="color:#ae81ff">k8s.io/apiextensions-apiserver v0.0.0</span>
+	<span style="color:#ae81ff">k8s.io/apimachinery v0.0.0</span>
+	<span style="color:#ae81ff">k8s.io/apiserver v0.0.0</span>
+...
+<span style="color:#ae81ff">)</span>
+
+<span style="color:#ae81ff">replace (</span>
+...
+	<span style="color:#ae81ff">k8s.io/api =&gt; ./staging/src/k8s.io/api</span>
+	<span style="color:#ae81ff">k8s.io/apiextensions-apiserver =&gt; ./staging/src/k8s.io/apiextensions-apiserver</span>
+	<span style="color:#ae81ff">k8s.io/apimachinery =&gt; ./staging/src/k8s.io/apimachinery</span>
+	<span style="color:#ae81ff">k8s.io/apiserver =&gt; ./staging/src/k8s.io/apiserver</span>
+...
+<span style="color:#ae81ff">)</span>
+</code></pre></div><p>In the Kubernetes repository, the packages listed under <code>require</code> directive are tagged with a pseudo-version <code>v0.0.0</code> but then are replaced with a local code in the <a href="https://github.com/kubernetes/kubernetes/tree/e8760b95bb0a0dfb5c184fd4e5ab95da3650a040/staging"><code>staging</code></a> directory. Now <code>replace</code> directive works fine when building Kubernetes itself but won&rsquo;t work when someone is importing it. The Golang documentation says the following about <code>replace</code> directive:</p>
+<blockquote>
+<p><code>replace</code> directives only apply in the main module&rsquo;s go.mod file and are ignored in other modules.</p>
+</blockquote>
+<p><a href="https://golang.org/ref/mod#go-mod-file-replace">source</a></p>
+<p>Generally, the pseudo-version has a format <code>v0.0.0-Time-commit_id</code>, but in this case, it practically is a dead end. Why is Kubernetes doing such a thing in their project? Why not tag with an actual pseudo-version format? Well, because the code is available locally. And the directories in the <code>staging</code> folder are published as standalone projects for folks to use later on.</p>
+<p>So the net effect is that I am trying to import code using <code>go get</code>, but it is tagged with a pseudo-version <code>v0.0.0</code> and hence <code>go get</code> fails. The solution to this problem is to find the correct versions of those dependencies yourself and add them to your repo&rsquo;s <code>go.mod</code> under <code>replace</code> directive.</p>
+<p>This is precisely what the script is doing.</p>
+<h2 id="final-go-mod">Final Go Mod</h2>
+<p>So in our project, the <code>go.mod</code> looks like this from the successful imports before running the script:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">module foobar</span>
+
+<span style="color:#ae81ff">go 1.16</span>
+
+<span style="color:#ae81ff">require (</span>
+        <span style="color:#ae81ff">github.com/spf13/cobra v1.1.3 // indirect</span>
+        <span style="color:#ae81ff">k8s.io/client-go v0.21.1 // indirect</span>
+<span style="color:#ae81ff">)</span>
+</code></pre></div><p>After running the script, this is how it looks like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">module foobar</span>
+
+<span style="color:#ae81ff">go 1.16</span>
+
+<span style="color:#ae81ff">require (</span>
+        <span style="color:#ae81ff">github.com/spf13/cobra v1.1.3 // indirect</span>
+        <span style="color:#ae81ff">k8s.io/client-go v0.21.1 // indirect</span>
+        <span style="color:#ae81ff">k8s.io/kubernetes v1.21.0 // indirect</span>
+<span style="color:#ae81ff">)</span>
+
+<span style="color:#ae81ff">replace k8s.io/api =&gt; k8s.io/api v0.21.0</span>
+<span style="color:#ae81ff">replace k8s.io/apiextensions-apiserver =&gt; k8s.io/apiextensions-apiserver v0.21.0</span>
+<span style="color:#ae81ff">replace k8s.io/apimachinery =&gt; k8s.io/apimachinery v0.21.1-rc.0</span>
+<span style="color:#ae81ff">replace k8s.io/apiserver =&gt; k8s.io/apiserver v0.21.0</span>
+...
+</code></pre></div>
+      </div>
+      <footer>
+        <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/golang/">golang</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/golang/">golang</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+      </footer>
+    </div>
+    
+      
+  <div class='post'>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
+  </article>
+  <div class="pagination">
+    
+    
+      <a href="/post/2021/05/self-sign-k8s-cert/" class="button right"><span>How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</span></a>
+    
+  </div>
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent Posts</h1>
+      </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/05/k8s-import/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/k8s-import/gok8s.jpg');">
+    <img src="https://suraj.io/post/2021/05/k8s-import/gok8s.jpg" alt="Golang and Kubernetes">
+  </a>
+        <header>
+          <h2><a href="/post/2021/05/k8s-import/">How to import &#39;any&#39; Kubernetes package into your project?</a></h2>
+          <time class="published" datetime="2021-05-30 09:40:00 &#43;0530 IST">May 30, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
+    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
+  </a>
+        <header>
+          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
+          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/05/learnings-psychology-of-money/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/learnings-psychology-of-money/logo.jpg');">
+    <img src="https://suraj.io/post/2021/05/learnings-psychology-of-money/logo.jpg" alt="TPOM">
+  </a>
+        <header>
+          <h2><a href="/post/2021/05/learnings-psychology-of-money/">Learnings from &#39;The Psychology of Money&#39;</a></h2>
+          <time class="published" datetime="2021-05-20 12:15:07 &#43;0530 IST">May 20, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/05/access-k8s-secrets-mitigation/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png');">
+    <img src="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png" alt="Config">
+  </a>
+        <header>
+          <h2><a href="/post/2021/05/access-k8s-secrets-mitigation/">Mitigation of: Access Any Kubernetes Secret</a></h2>
+          <time class="published" datetime="2021-05-20 08:47:07 &#43;0530 IST">May 20, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/05/access-k8s-secrets/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/access-k8s-secrets/forbidden.jpg');">
+    <img src="https://suraj.io/post/2021/05/access-k8s-secrets/forbidden.jpg" alt="Forbidden">
+  </a>
+        <header>
+          <h2><a href="/post/2021/05/access-k8s-secrets/">Access Any Kubernetes Secret</a></h2>
+          <time class="published" datetime="2021-05-08 12:17:07 &#43;0530 IST">May 8, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See More</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+          
+          <li>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">32</span></a>
+          
+          <li>
+              <a href="/categories/notes/">notes<span class="count">21</span></a>
+          
+          <li>
+              <a href="/categories/non-tech/">non-tech<span class="count">12</span></a>
+          
+          <li>
+              <a href="/categories/security/">security<span class="count">11</span></a>
+          
+          <li>
+              <a href="/categories/productivity/">productivity<span class="count">8</span></a>
+          
+          <li>
+              <a href="/categories/book-review/">book-review<span class="count">7</span></a>
+          
+          <li>
+              <a href="/categories/containers/">containers<span class="count">7</span></a>
+          
+          <li>
+              <a href="/categories/bash/">bash<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/event_report/">event_report<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/golang/">golang<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/packaging/">packaging<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/docker/">docker<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/host/">host<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/fedora/">fedora<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/kompose/">kompose<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/linux/">linux<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/monitoring/">monitoring<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/notion/">notion<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/openshift/">openshift<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/programming/">programming<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/prometheus/">prometheus<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/certs/">certs<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/cka/">cka<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/configuration/">configuration<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/desktop/">desktop<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/git/">git<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/ide/">ide<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/kms/">kms<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/minikube/">minikube<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/activism/">activism<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/backup/">backup<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/centos/">centos<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/etcd/">etcd<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/flatcar/">flatcar<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/gaming/">gaming<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/gnome/">gnome<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/https/">https<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/jobs/">jobs<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/kubeadm/">kubeadm<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/lokomotive/">lokomotive<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/meetup/">meetup<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/project_management/">project_management<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/selinux/">selinux<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/talks/">talks<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/vagrant/">vagrant<span class="count">1</span></a>
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I am a Software Engineer at Kinvolk, working on various tooling around container technology like Docker, Kubernetes.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    © 2021 Suraj Deshmukh
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
+    <script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-97006720-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

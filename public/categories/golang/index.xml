@@ -6,7 +6,16 @@
     <description>Recent content in golang on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 04 Jan 2019 01:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 May 2021 09:40:00 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to import &#39;any&#39; Kubernetes package into your project?</title>
+      <link>https://suraj.io/post/2021/05/k8s-import/</link>
+      <pubDate>Sun, 30 May 2021 09:40:00 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/2021/05/k8s-import/</guid>
+      <description>The client libraries that Kubernetes ships are meant to be imported, and you definitely don&amp;rsquo;t need this post explaining how to import them in your Golang based project. A simple go get ... should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of &amp;ldquo;technical reasons&amp;rdquo; ? Could you simply add them to your import statements in the .</description>
+    </item>
+    
     <item>
       <title>Cobra and Persistentflags gotchas</title>
       <link>https://suraj.io/post/cobra-persistent-flag/</link>

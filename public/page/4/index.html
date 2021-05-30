@@ -185,6 +185,63 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/snoop-on-pod-traffic/">Watch Container Traffic Without Exec</a></h2>
+    
+    
+      <p>How to watch the traffic of a container or a pod without execing into the pod/contaienr?</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2020-06-06 20:30:07 &#43;0530 IST">June 6, 2020</time>
+    <p>Suraj Deshmukh</p>
+    <p>4-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.</p>
+  </div>
+  <footer>
+    <a href="/post/snoop-on-pod-traffic/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/containers/">containers</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/containers/">containers</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/seccomp-in-kube-state-metrics/">Enabling Seccomp on your Prometheus Operator and related Pods</a></h2>
     
     
@@ -692,63 +749,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h2>
-    
-    
-      <p>Subpath Volume Mount could give you access to node</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2019-01-14 01:00:51 &#43;0530 IST">January 14, 2019</time>
-    <p>Suraj Deshmukh</p>
-    <p>2-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using <code>emptyDir</code> volume mount using subpath. The official description goes as follows:</p>
-  </div>
-  <footer>
-    <a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/cve/">cve</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/page/3/" class="button left"><span>Previous Page</span></a>
@@ -765,6 +765,16 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/05/k8s-import/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/k8s-import/gok8s.jpg');">
+    <img src="https://suraj.io/post/2021/05/k8s-import/gok8s.jpg" alt="Golang and Kubernetes">
+  </a>
+        <header>
+          <h2><a href="/post/2021/05/k8s-import/">How to import &#39;any&#39; Kubernetes package into your project?</a></h2>
+          <time class="published" datetime="2021-05-30 09:40:00 &#43;0530 IST">May 30, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
@@ -806,16 +816,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/04/rituals-dont-scale/" class="image" style="--bg-image: url('https://suraj.io/post/2021/04/rituals-dont-scale/earth.jpg');">
-    <img src="https://suraj.io/post/2021/04/rituals-dont-scale/earth.jpg" alt="Earth">
-  </a>
-        <header>
-          <h2><a href="/post/2021/04/rituals-dont-scale/">Religious Rituals Don&#39;t Scale With Population</a></h2>
-          <time class="published" datetime="2021-04-12 07:07:07 &#43;0530 IST">April 12, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -835,7 +835,7 @@
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">31</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">32</span></a>
           
           <li>
               <a href="/categories/notes/">notes<span class="count">21</span></a>
@@ -862,13 +862,13 @@
               <a href="/categories/event_report/">event_report<span class="count">5</span></a>
           
           <li>
+              <a href="/categories/golang/">golang<span class="count">5</span></a>
+          
+          <li>
               <a href="/categories/packaging/">packaging<span class="count">5</span></a>
           
           <li>
               <a href="/categories/docker/">docker<span class="count">4</span></a>
-          
-          <li>
-              <a href="/categories/golang/">golang<span class="count">4</span></a>
           
           <li>
               <a href="/categories/host/">host<span class="count">4</span></a>
