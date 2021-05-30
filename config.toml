@@ -42,7 +42,7 @@ disableLanguages        = [""]
 
   [params.intro]
     header                = "Blog"
-    paragraph             = "containers, packaging, programming, hacks, kubernetes, openshift, fedora, centos"
+    paragraph             = "containers, programming, golang, hacks, kubernetes, productivity, books"
     rssIntro              = true
     socialIntro           = true
     hideWhenSingleColumn  = false
@@ -55,7 +55,7 @@ disableLanguages        = [""]
       alt                 = "Suraj Deshmukh"
 
   [params.sidebar]
-    about               = "I am a Software Engineer at Kinvolk, working on various tooling around container technology like Docker, Kubernetes."
+    about               = "I am a Senior Software Engineer at Microsoft, working on various tooling around container technology like Docker, Kubernetes, etc."
     postAmount          = 5
     categories          = true
     categoriesByCount   = true
