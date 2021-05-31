@@ -194,7 +194,7 @@
   <div class="meta">
     <time datetime="2021-05-30 09:40:00 &#43;0530 IST">May 30, 2021</time>
     <p>Suraj Deshmukh</p>
-    <p>4-Minute Read</p>
+    <p>5-Minute Read</p>
   </div>
 </header>
 
@@ -274,6 +274,7 @@ go get: k8s.io/kubernetes@v1.15.0-alpha.0 updating to
 </code></pre><p>Now, this is a weird error:</p>
 <pre><code>k8s.io/api@v0.0.0: reading k8s.io/api/go.mod at revision v0.0.0: unknown revision v0.0.0
 </code></pre><h2 id="tldr-give-me-the-solution">tl;dr Give me the solution</h2>
+<p><strong>NOTE</strong>: Please read the &ldquo;Caveats&rdquo; section before you venture into using this solution.</p>
 <p>Save the following bash script in <code>download-deps.sh</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
 </span><span style="color:#75715e"></span>
@@ -368,7 +369,15 @@ go get: added k8s.io/kubernetes v1.21.0
 <span style="color:#ae81ff">replace k8s.io/apimachinery =&gt; k8s.io/apimachinery v0.21.1-rc.0</span>
 <span style="color:#ae81ff">replace k8s.io/apiserver =&gt; k8s.io/apiserver v0.21.0</span>
 ...
-</code></pre></div>
+</code></pre></div><h2 id="caveats">Caveats</h2>
+<p>Kubernetes upstream cautions against using the packages as we have done in this blog (Thanks, <a href="https://twitter.com/dims/status/1398972850883682304">Dims</a>, for bringing this to my notice):</p>
+<blockquote>
+<p>To use Kubernetes code as a library in other applications, see the <a href="https://github.com/kubernetes/kubernetes/blob/master/staging/README.md">list of published components</a>. Use of the <code>k8s.io/kubernetes</code> module or <code>k8s.io/kubernetes/...</code> packages as libraries is not supported.</p>
+</blockquote>
+<p><a href="https://github.com/kubernetes/kubernetes#to-start-using-k8s">source</a></p>
+<p>If you are importing a package that is not supported as a library by the upstream community, you might be up for a catch-up going forward. The unsupported, non-library packages are subject to API definition changes without any public warning. And if your production code relies on such a package, it might impact you. At that point, you have no right to go and accuse upstream of not being public about the changes.</p>
+<p>That being said, if there are any libraries you identify that are widely used and should be published, bring them to the notice of the upstream community. They will surely help in publishing them. This helps the broader community by consuming the libraries from a widely published place and saving anyone and everyone from catching up. But unless they are not published as libraries consuming anything else is a call for a lot of code churn.</p>
+
       </div>
       <footer>
         <div class="stats">

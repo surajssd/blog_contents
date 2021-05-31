@@ -62,6 +62,8 @@ k8s.io/api@v0.0.0: reading k8s.io/api/go.mod at revision v0.0.0: unknown revisio
 
 ## tl;dr Give me the solution
 
+**NOTE**: Please read the "Caveats" section before you venture into using this solution.
+
 Save the following bash script in `download-deps.sh`:
 
 ```bash
@@ -185,3 +187,15 @@ replace k8s.io/apimachinery => k8s.io/apimachinery v0.21.1-rc.0
 replace k8s.io/apiserver => k8s.io/apiserver v0.21.0
 ...
 ```
+
+## Caveats
+
+Kubernetes upstream cautions against using the packages as we have done in this blog (Thanks, [Dims](https://twitter.com/dims/status/1398972850883682304), for bringing this to my notice):
+
+> To use Kubernetes code as a library in other applications, see the [list of published components](https://github.com/kubernetes/kubernetes/blob/master/staging/README.md). Use of the `k8s.io/kubernetes` module or `k8s.io/kubernetes/...` packages as libraries is not supported.
+
+[source](https://github.com/kubernetes/kubernetes#to-start-using-k8s)
+
+If you are importing a package that is not supported as a library by the upstream community, you might be up for a catch-up going forward. The unsupported, non-library packages are subject to API definition changes without any public warning. And if your production code relies on such a package, it might impact you. At that point, you have no right to go and accuse upstream of not being public about the changes.
+
+That being said, if there are any libraries you identify that are widely used and should be published, bring them to the notice of the upstream community. They will surely help in publishing them. This helps the broader community by consuming the libraries from a widely published place and saving anyone and everyone from catching up. But unless they are not published as libraries consuming anything else is a call for a lot of code churn.
