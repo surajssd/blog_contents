@@ -6,7 +6,16 @@
     <description>Recent content in Post on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 30 May 2021 09:40:00 +0530</lastBuildDate><atom:link href="https://suraj.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 19 Jun 2021 16:16:00 +0530</lastBuildDate><atom:link href="https://suraj.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to create a Systemd daemon quickly?</title>
+      <link>https://suraj.io/post/2021/06/systemd-service/</link>
+      <pubDate>Sat, 19 Jun 2021 16:16:00 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/2021/06/systemd-service/</guid>
+      <description>If you have a script or a binary and want to run it as a Systemd service, keep following. This blog will show you how to take any such executable code and run it using Systemd. Sure, you can do similar stuff using Docker as well. Although there are certain downsides of using Docker (alone) for managing the daemons. Systemd is good at log management on the node over a Docker container.</description>
+    </item>
+    
     <item>
       <title>How to import &#39;any&#39; Kubernetes package into your project?</title>
       <link>https://suraj.io/post/2021/05/k8s-import/</link>

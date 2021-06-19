@@ -4,7 +4,47 @@
   
   <url>
     <loc>https://suraj.io/categories/</loc>
-    <lastmod>2021-05-30T09:40:00+05:30</lastmod>
+    <lastmod>2021-06-19T16:16:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/2021/06/systemd-service/</loc>
+    <lastmod>2021-06-19T16:16:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/linux/</loc>
+    <lastmod>2021-06-19T16:16:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/linux/</loc>
+    <lastmod>2021-06-19T16:16:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/</loc>
+    <lastmod>2021-06-19T16:16:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2021-06-19T16:16:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/systemd/</loc>
+    <lastmod>2021-06-19T16:16:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/systemd/</loc>
+    <lastmod>2021-06-19T16:16:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2021-06-19T16:16:00+05:30</lastmod>
   </url>
   
   <url>
@@ -29,21 +69,6 @@
   
   <url>
     <loc>https://suraj.io/categories/kubernetes/</loc>
-    <lastmod>2021-05-30T09:40:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/post/</loc>
-    <lastmod>2021-05-30T09:40:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2021-05-30T09:40:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/</loc>
     <lastmod>2021-05-30T09:40:00+05:30</lastmod>
   </url>
   
@@ -119,16 +144,6 @@
   
   <url>
     <loc>https://suraj.io/categories/desktop/</loc>
-    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/linux/</loc>
-    <lastmod>2021-04-02T07:07:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/linux/</loc>
     <lastmod>2021-04-02T07:07:07+05:30</lastmod>
   </url>
   
