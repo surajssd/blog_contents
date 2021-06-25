@@ -187,6 +187,63 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/">Recreate Kubernetes CVE-2017-1002101</a></h2>
+    
+    
+      <p>Subpath Volume Mount could give you access to node</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2019-01-14 01:00:51 &#43;0530 IST">January 14, 2019</time>
+    <p>Suraj Deshmukh</p>
+    <p>2-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using <code>emptyDir</code> volume mount using subpath. The official description goes as follows:</p>
+  </div>
+  <footer>
+    <a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/cve/">cve</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/add-new-k8s-node-bootstrap-token/">Add new Node to k8s cluster with Bootstrap token</a></h2>
     
     
@@ -672,65 +729,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/using-prometheus/">Prometheus with existing application on OpenShift</a></h2>
-    
-    
-      <p>Setting up Prometheus with any application</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2018-04-04 08:00:51 &#43;0530 IST">April 4, 2018</time>
-    <p>Suraj Deshmukh</p>
-    <p>2-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.</p>
-  </div>
-  <footer>
-    <a href="/post/using-prometheus/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/monitoring/">monitoring</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/prometheus/">prometheus</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/monitoring/">monitoring</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/prometheus/">prometheus</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/openshift/">openshift</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/tags/kubernetes/page/2/" class="button left"><span>Previous Page</span></a>
@@ -747,6 +745,16 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/06/automatic-cert-gen/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/automatic-cert-gen/obama.jpg');">
+    <img src="https://suraj.io/post/2021/06/automatic-cert-gen/obama.jpg" alt="Self Signed Certificates">
+  </a>
+        <header>
+          <h2><a href="/post/2021/06/automatic-cert-gen/">How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
+          <time class="published" datetime="2021-06-25 09:00:00 &#43;0530 IST">June 25, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           <a href="/post/2021/06/systemd-service/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/systemd-service/systemd.png');">
@@ -788,16 +796,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/05/access-k8s-secrets-mitigation/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png');">
-    <img src="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png" alt="Config">
-  </a>
-        <header>
-          <h2><a href="/post/2021/05/access-k8s-secrets-mitigation/">Mitigation of: Access Any Kubernetes Secret</a></h2>
-          <time class="published" datetime="2021-05-20 08:47:07 &#43;0530 IST">May 20, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -817,7 +815,7 @@
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">32</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">33</span></a>
           
           <li>
               <a href="/categories/notes/">notes<span class="count">21</span></a>
@@ -826,7 +824,7 @@
               <a href="/categories/non-tech/">non-tech<span class="count">12</span></a>
           
           <li>
-              <a href="/categories/security/">security<span class="count">11</span></a>
+              <a href="/categories/security/">security<span class="count">12</span></a>
           
           <li>
               <a href="/categories/productivity/">productivity<span class="count">8</span></a>

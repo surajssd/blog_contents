@@ -187,6 +187,61 @@
   <header>
   <div class="title">
     
+      <h2><a href="/post/mental-models-for-understanding-kubernetes-pod-security-policy/">Mental models for understanding Kubernetes Pod Security Policy</a></h2>
+    
+    
+      <p>Getting the game of PSP right!</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2021-01-16 13:10:51 &#43;0530 IST">January 16, 2021</time>
+    <p>Suraj Deshmukh</p>
+    <p>6-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    
+    
+    <p>PodSecurityPolicy (PSP) is hard to get right in the first attempt. There has never been a situation when I haven&rsquo;t banged my head to get it working on the cluster. It is a frustrating experience, but it is one of the essential security features of Kubernetes. Some applications have started shipping the PSP configs with their helm charts, but if a helm chart does not ship a PSP config, it must be handcrafted by the <strong>cluster-admin</strong> to make the application work reliably in the cluster.</p>
+  </div>
+  <footer>
+    <a href="/post/mental-models-for-understanding-kubernetes-pod-security-policy/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/lokomotive/">lokomotive</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/lokomotive/">lokomotive</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
       <h2><a href="/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/">How to gracefully kill Kubernetes Jobs with a sidecar?</a></h2>
     
     
@@ -700,59 +755,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/psp-on-existing-cluster/">PodSecurityPolicy on existing Kubernetes clusters</a></h2>
-    
-    
-      <p>Burnt by enabling PSPs on existing Kubernetes and wondering why everything still works</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2018-10-23 00:00:51 &#43;0530 IST">October 23, 2018</time>
-    <p>Suraj Deshmukh</p>
-    <p>2-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    
-    
-    <p>I enabled <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/">PodSecurityPolicy</a> on a minikube cluster by appending <code>PodSecurityPolicy</code> to the apiserver flag in minikube like this:</p>
-  </div>
-  <footer>
-    <a href="/post/psp-on-existing-cluster/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/categories/kubernetes/" class="button left"><span>Previous Page</span></a>
@@ -769,6 +771,16 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/06/automatic-cert-gen/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/automatic-cert-gen/obama.jpg');">
+    <img src="https://suraj.io/post/2021/06/automatic-cert-gen/obama.jpg" alt="Self Signed Certificates">
+  </a>
+        <header>
+          <h2><a href="/post/2021/06/automatic-cert-gen/">How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
+          <time class="published" datetime="2021-06-25 09:00:00 &#43;0530 IST">June 25, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           <a href="/post/2021/06/systemd-service/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/systemd-service/systemd.png');">
@@ -810,16 +822,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/05/access-k8s-secrets-mitigation/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png');">
-    <img src="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png" alt="Config">
-  </a>
-        <header>
-          <h2><a href="/post/2021/05/access-k8s-secrets-mitigation/">Mitigation of: Access Any Kubernetes Secret</a></h2>
-          <time class="published" datetime="2021-05-20 08:47:07 &#43;0530 IST">May 20, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -839,7 +841,7 @@
           
           
           <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">32</span></a>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">33</span></a>
           
           <li>
               <a href="/categories/notes/">notes<span class="count">21</span></a>
@@ -848,7 +850,7 @@
               <a href="/categories/non-tech/">non-tech<span class="count">12</span></a>
           
           <li>
-              <a href="/categories/security/">security<span class="count">11</span></a>
+              <a href="/categories/security/">security<span class="count">12</span></a>
           
           <li>
               <a href="/categories/productivity/">productivity<span class="count">8</span></a>

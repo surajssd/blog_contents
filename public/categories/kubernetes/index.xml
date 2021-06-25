@@ -6,7 +6,17 @@
     <description>Recent content in kubernetes on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 30 May 2021 09:40:00 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Jun 2021 09:00:00 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</title>
+      <link>https://suraj.io/post/2021/06/automatic-cert-gen/</link>
+      <pubDate>Fri, 25 Jun 2021 09:00:00 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/2021/06/automatic-cert-gen/</guid>
+      <description>The previous blog talked about generating self-signed certificates using a binary. It was a manual, cumbersome process where you had to generate the certificates using a tool, embed them into a Kubernetes Secret via Helm chart, and then use it. There is a better way of doing it! Which is what this blog will discuss.
+We will use a Helm chart, which has a couple of Kubernetes Jobs that generates the self-signed certificate, embed them in a Kubernetes Secret and finally update the ValidatingWebhookConfiguration or MutatingWebhookConfiguration of your choice.</description>
+    </item>
+    
     <item>
       <title>How to import &#39;any&#39; Kubernetes package into your project?</title>
       <link>https://suraj.io/post/2021/05/k8s-import/</link>
