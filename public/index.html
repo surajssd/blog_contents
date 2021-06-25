@@ -364,7 +364,7 @@
     <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
   </a>
     
-    <p>If you are writing a webhook server for <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#what-are-they">Kubernetes Admission Controllers</a> like <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#validatingadmissionwebhook">ValidatingAdmissionWebhooks</a> or <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#mutatingadmissionwebhook">MutatingAdmissionWebhooks</a>, you must expose it over HTTPS. To run these servers on HTTPS, you need TLS certificates. There are solutions available which you can use to solve this problem, first and foremost that comes to my mind is <a href="https://cert-manager.io/docs/">cert-manager</a>. It is a great project and automates this problem. But it is an added dependency that you might have to keep running in your cluster.</p>
+    <p><strong>UPDATE:</strong> There is a way to generate these certificates automatically. To find out how, <a href="https://suraj.io/post/2021/06/automatic-cert-gen/">read this post</a>.</p>
   </div>
   <footer>
     <a href="/post/2021/05/self-sign-k8s-cert/" class="button big">Read More</a>

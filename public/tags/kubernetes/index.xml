@@ -32,7 +32,8 @@ We will use a Helm chart, which has a couple of Kubernetes Jobs that generates t
       <pubDate>Fri, 21 May 2021 15:33:07 +0530</pubDate>
       
       <guid>https://suraj.io/post/2021/05/self-sign-k8s-cert/</guid>
-      <description>If you are writing a webhook server for Kubernetes Admission Controllers like ValidatingAdmissionWebhooks or MutatingAdmissionWebhooks, you must expose it over HTTPS. To run these servers on HTTPS, you need TLS certificates. There are solutions available which you can use to solve this problem, first and foremost that comes to my mind is cert-manager. It is a great project and automates this problem. But it is an added dependency that you might have to keep running in your cluster.</description>
+      <description>UPDATE: There is a way to generate these certificates automatically. To find out how, read this post.
+ If you are writing a webhook server for Kubernetes Admission Controllers like ValidatingAdmissionWebhooks or MutatingAdmissionWebhooks, you must expose it over HTTPS. To run these servers on HTTPS, you need TLS certificates. There are solutions available which you can use to solve this problem, first and foremost that comes to my mind is cert-manager.</description>
     </item>
     
     <item>

@@ -11,6 +11,8 @@ images:
   alt: "cert"
 ---
 
+> **UPDATE:** There is a way to generate these certificates automatically. To find out how, [read this post](https://suraj.io/post/2021/06/automatic-cert-gen/).
+
 If you are writing a webhook server for [Kubernetes Admission Controllers](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#what-are-they) like [ValidatingAdmissionWebhooks](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#validatingadmissionwebhook) or [MutatingAdmissionWebhooks](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#mutatingadmissionwebhook), you must expose it over HTTPS. To run these servers on HTTPS, you need TLS certificates. There are solutions available which you can use to solve this problem, first and foremost that comes to my mind is [cert-manager](https://cert-manager.io/docs/). It is a great project and automates this problem. But it is an added dependency that you might have to keep running in your cluster.
 
 ## Self Signed Cert Generation
@@ -64,3 +66,5 @@ I have removed the error handling parts for simplicity of code, but please add t
 ---
 
 Let me know what tools do you use to generate private certificates for the webhook servers.
+
+> **UPDATE:** There is a way to generate these certificates automatically. To find out how, [read this post](https://suraj.io/post/2021/06/automatic-cert-gen/).
