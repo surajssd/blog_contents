@@ -4,7 +4,37 @@
   
   <url>
     <loc>https://suraj.io/categories/</loc>
-    <lastmod>2021-06-25T09:00:00+05:30</lastmod>
+    <lastmod>2021-06-30T01:45:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/non-tech/</loc>
+    <lastmod>2021-06-30T01:45:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/categories/non-tech/</loc>
+    <lastmod>2021-06-30T01:45:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/</loc>
+    <lastmod>2021-06-30T01:45:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/post/2021/06/reading-devices/</loc>
+    <lastmod>2021-06-30T01:45:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2021-06-30T01:45:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2021-06-30T01:45:00+05:30</lastmod>
   </url>
   
   <url>
@@ -23,27 +53,12 @@
   </url>
   
   <url>
-    <loc>https://suraj.io/post/</loc>
-    <lastmod>2021-06-25T09:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suraj.io/tags/security/</loc>
     <lastmod>2021-06-25T09:00:00+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://suraj.io/categories/security/</loc>
-    <lastmod>2021-06-25T09:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2021-06-25T09:00:00+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/</loc>
     <lastmod>2021-06-25T09:00:00+05:30</lastmod>
   </url>
   
@@ -104,16 +119,6 @@
   
   <url>
     <loc>https://suraj.io/post/2021/05/learnings-psychology-of-money/</loc>
-    <lastmod>2021-05-20T12:15:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/tags/non-tech/</loc>
-    <lastmod>2021-05-20T12:15:07+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suraj.io/categories/non-tech/</loc>
     <lastmod>2021-05-20T12:15:07+05:30</lastmod>
   </url>
   
