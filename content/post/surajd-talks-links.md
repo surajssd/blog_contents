@@ -1,11 +1,16 @@
-+++
-author = "Suraj Deshmukh"
-title = "Suraj Deshmukh's talks at conferences"
-description = "List of all the talks presented by me"
-date = "2019-04-22T01:00:51+05:30"
-categories = ["talks", "notes"]
-tags = ["kubernetes", "meetup"]
-+++
+---
+author: "Suraj Deshmukh"
+date: "2019-04-22T01:00:51+05:30"
+title: "Suraj Deshmukh's talks at conferences"
+description: "List of all the talks presented by me"
+draft: false
+categories: ["talks", "notes"]
+tags: ["kubernetes", "meetup"]
+---
+
+## PSP and Beyond - Kubernetes Bangalore Meetup June 2021
+
+{{< youtube VwQ7_cnHSzM >}}
 
 ---
 
