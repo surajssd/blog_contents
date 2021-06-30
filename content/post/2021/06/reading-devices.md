@@ -4,8 +4,8 @@ date: "2021-06-30T01:45:00+05:30"
 title: "Reading Devices"
 description: "Pros and Cons of various reading devices"
 draft: false
-categories: ["non-tech"]
-tags: ["non-tech"]
+categories: ["non-tech", "productivity"]
+tags: ["non-tech", "productivity"]
 images:
 - src: "/post/2021/06/reading-devices/devices.jpg"
   alt: "Devices"
@@ -122,4 +122,4 @@ You can listen to audiobooks on Laptops, it is available, but it could be cumber
 
 ## Conclusion
 
-I hope this blog gave you an understanding of what device suits what kind of book or content consumption. To summarise, I use a Kindle e-reader for all the fiction, non-fiction, philosophy, psychology, etc., genre books. iPad for technical books, blogs, emails, video etc. Phone for Kindle books, blogs, emails and audiobooks. The laptop is for studying stuff, especially when I need to do hands-on while learning something.
+I hope this blog gave you an understanding of what device suits what kind of book or content consumption. To summarise, I use a Kindle e-reader for all the fiction, non-fiction, philosophy, psychology, etc., genre books. iPad for technical books, research papers, blogs, emails, video etc. Phone for Kindle books, blogs, emails and audiobooks. The laptop is for studying stuff, especially when I need to do hands-on while learning something.
