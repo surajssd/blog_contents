@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?">
   <meta property="og:description" content="A simple Helm chart to generate TLS x509 certificates.">
   <meta property="description" content="A simple Helm chart to generate TLS x509 certificates.">
@@ -20,7 +20,7 @@
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -249,12 +249,12 @@
 <h2 id="helm-sub-chart">Helm Sub-chart</h2>
 <p>Helm allows you to specify a particular chart to be a dependency for your chart. During installation, Helm will install the dependencies first and then install your application chart. When you install a chart as a dependency, it is effortless to do the maintenance. You just have to keep updating the dependent chart version going forward.</p>
 <p>Let us start out by adding the dependency in your chart. Include the following snippet in your chart’s <code>Chart.yaml</code> file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">dependencies</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">dependencies</span>:
 - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">automatic-webhook-certificates</span>
   <span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;0.1.1&#34;</span>
   <span style="color:#f92672">repository</span>: <span style="color:#e6db74">&#34;https://suraj.io/helm-charts&#34;</span>
 </code></pre></div><p>Now define the configuration for the sub-chart. To do that, include the following configuration in your chart&rsquo;s <code>values.yaml</code> file with fields populated as necessary:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">automatic-webhook-certificates</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">automatic-webhook-certificates</span>:
   <span style="color:#f92672">webhook</span>:
     <span style="color:#f92672">name</span>: <span style="color:#ae81ff">&lt;name of the webhook config&gt;</span>
     <span style="color:#f92672">service</span>: <span style="color:#ae81ff">&lt;name of the service serving the webhook pod&gt;</span>
@@ -266,12 +266,12 @@
 </code></pre></div><p><strong>NOTE</strong>: For detailed information on each field in the above values file, consult <a href="https://github.com/surajssd/helm-charts/tree/main/charts/automatic-webhook-certificates">this documentation</a>.</p>
 <p>Once this sub-chart is installed, a Kubernetes Secret will be created by the <a href="https://github.com/jet/kube-webhook-certgen">kube-webhook-certgen</a> running as a Kubernetes Job. The certs will be stored in a Kubernetes Secret that you mentioned in the values file at <code>webhook.secret</code>. The Kubernetes Secret has keys named <code>ca</code>, <code>cert</code> and <code>key</code>.</p>
 <p>Before you install your chart, run the following commands:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">helm dependency update
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">helm dependency update
 helm install ...
 helm upgrade ...
 </code></pre></div><h2 id="plain-simple-kubernetes-configuration">Plain simple Kubernetes configuration</h2>
 <p>Although this type of configuration consumption does promise using plain simple <code>kubectl apply</code>, it needs Helm to download the configuration release. First, create the <code>values.yaml</code> file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">webhook</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">webhook</span>:
   <span style="color:#f92672">name</span>: <span style="color:#ae81ff">&lt;name of the webhook config&gt;</span>
   <span style="color:#f92672">service</span>: <span style="color:#ae81ff">&lt;name of the service serving the webhook pod&gt;</span>
   <span style="color:#f92672">secret</span>: <span style="color:#ae81ff">&lt;secret you wish to have certificates stored&gt;</span>
@@ -281,7 +281,7 @@ helm upgrade ...
 <span style="color:#f92672">psp</span>: <span style="color:#66d9ef">true</span> <span style="color:#ae81ff">or false</span>
 </code></pre></div><p><strong>NOTE</strong>: For detailed information on each field in the above values file, consult <a href="https://github.com/surajssd/helm-charts/tree/main/charts/automatic-webhook-certificates">this documentation</a>.</p>
 <p>Now run the following commands to generate the YAML file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">helm repo add suraj-helm-charts https://suraj.io/helm-charts
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">helm repo add suraj-helm-charts https://suraj.io/helm-charts
 helm repo update
 helm template <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --values<span style="color:#f92672">=</span>values.yaml <span style="color:#ae81ff">\
@@ -371,6 +371,16 @@ helm template <span style="color:#ae81ff">\
       </header>
       
       <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
           <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
     <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
   </a>
@@ -410,16 +420,6 @@ helm template <span style="color:#ae81ff">\
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
-    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
-  </a>
-        <header>
-          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
-          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -445,7 +445,7 @@ helm template <span style="color:#ae81ff">\
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">13</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">14</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">12</span></a>
@@ -454,7 +454,7 @@ helm template <span style="color:#ae81ff">\
               <a href="/categories/productivity/">productivity<span class="count">9</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">7</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">7</span></a>
@@ -650,14 +650,14 @@ helm template <span style="color:#ae81ff">\
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

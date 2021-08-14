@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Adding new worker to existing Kubernetes cluster">
   <meta property="og:description" content="Step by step guide to add new node">
   <meta property="description" content="Step by step guide to add new node">
@@ -17,7 +17,7 @@
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -239,13 +239,13 @@
       <div class="content">
         
         <p>To setup a multi-node Kubernetes cluster just run <a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant#single-script">this script</a> and you will have a cluster with 3 masters and 3 workers.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get nodes -o wide
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get nodes -o wide
 NAME       STATUS    ROLES     AGE       VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
 worker-0   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.20   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
 worker-1   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.21   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
 worker-2   Ready     &lt;none&gt;    1h        v1.11.2   192.168.199.22   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-33-generic   cri-o://1.11.2
 </code></pre></div><p>Now to add a new node to this cluster you will need to bring up a VM, for this just use following <code>Vagrantfile</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat Vagrantfile
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat Vagrantfile
 <span style="color:#75715e"># -*- mode: ruby -*-</span>
 <span style="color:#75715e"># vi: set ft=ruby :</span>
 Vagrant.configure<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;2&#34;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">do</span> |config|
@@ -263,13 +263,13 @@ Vagrant.configure<span style="color:#f92672">(</span><span style="color:#e6db74"
 end
 </code></pre></div><p><strong>Note</strong>: This machine I have given IP address which is in the same subnet as other workers.</p>
 <p>Bring up this machine using:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vagrant up
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vagrant up
 </code></pre></div><p>Now you can setup the node in one shot by running <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh">this script</a>.</p>
 <h1 id="download-and-install-binaries">Download and install binaries</h1>
 <p>Let&rsquo;s go through this script and let me try to explain what each step does.</p>
 <p>You can skip <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L50-L76">the part</a> where we are downloading tools, if you all the required binaries available, viz. <code>kubelet</code>, <code>kube-proxy</code>, <code>kubectl</code>, <code>cfssl</code>, <code>cni</code>, <code>runc</code>, etc.</p>
 <p>Once you all the tools available install them following <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L78-L106">this section</a>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># install those tools</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># install those tools</span>
 mkdir -p <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  /etc/containers <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  /etc/cni/net.d <span style="color:#ae81ff">\
@@ -406,7 +406,7 @@ EOF
 <ul>
 <li>Generating <code>csr</code> file:</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># generate the worker certs, specific to node</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># generate the worker certs, specific to node</span>
 cat &gt; <span style="color:#e6db74">${</span>hostname<span style="color:#e6db74">}</span>-csr.json <span style="color:#e6db74">&lt;&lt;EOF
 </span><span style="color:#e6db74">{
 </span><span style="color:#e6db74">  &#34;CN&#34;: &#34;system:node:${hostname}&#34;,
@@ -429,7 +429,7 @@ cat &gt; <span style="color:#e6db74">${</span>hostname<span style="color:#e6db74
 <ul>
 <li>Generate <code>certs</code> and <code>kubeconfig</code>:</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cfssl gencert <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cfssl gencert <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  -ca<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>capem<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  -ca-key<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>cakeypem<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  -config<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>caconfig<span style="color:#e6db74">}</span> <span style="color:#ae81ff">\
@@ -498,7 +498,7 @@ EOF
 </code></pre><p>In above service file the things that changes are two flags: <code>--tls-cert-file</code> and <code>--tls-private-key-file</code>. And another flag value that is different from other nodes is <code>--node-ip</code>. Rest everything is same with other nodes. So just change the path to point to the right cert file and key file.</p>
 <h1 id="install-configurations">Install configurations</h1>
 <p>Once all those configs are generated, copy all those to the appropriate location.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># install above generated config</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># install above generated config</span>
 cp 99-loopback.conf /etc/cni/net.d
 cp kube-proxy.kubeconfig /var/lib/kube-proxy/kubeconfig
 cp kube-proxy.service /etc/systemd/system/
@@ -510,11 +510,11 @@ cp <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>
 cp <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>hostname<span style="color:#e6db74">}</span><span style="color:#e6db74">-kubelet.service&#34;</span> /etc/systemd/system/kubelet.service
 </code></pre></div><h1 id="start-processes">Start processes</h1>
 <p>Now that all binaries and configs are in place, just restart the processes:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl daemon-reload
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl daemon-reload
 systemctl enable crio kubelet kube-proxy
 systemctl start crio kubelet kube-proxy
 </code></pre></div><h1 id="check-nodes">Check nodes</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get nodes -o wide
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get nodes -o wide
 NAME       STATUS    ROLES     AGE       VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
 ubuntu     Ready     &lt;none&gt;    5m        v1.11.2   192.168.199.23   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
 worker-0   Ready     &lt;none&gt;    40m       v1.11.2   192.168.199.20   &lt;none&gt;        Ubuntu 18.04.1 LTS   4.15.0-34-generic   cri-o://1.11.2
@@ -600,6 +600,16 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
       </header>
       
       <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
           <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
     <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
   </a>
@@ -639,16 +649,6 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
-    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
-  </a>
-        <header>
-          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
-          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -674,7 +674,7 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">13</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">14</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">12</span></a>
@@ -683,7 +683,7 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
               <a href="/categories/productivity/">productivity<span class="count">9</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">7</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">7</span></a>
@@ -879,14 +879,14 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

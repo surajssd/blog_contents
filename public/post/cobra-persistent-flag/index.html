@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Cobra and Persistentflags gotchas">
   <meta property="og:description" content="How wrong usage of persistent flags can burn you">
   <meta property="description" content="How wrong usage of persistent flags can burn you">
@@ -17,7 +17,7 @@
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -242,12 +242,12 @@
 <p>All the code referenced here can be found here <a href="https://github.com/surajssd/cobrademo">https://github.com/surajssd/cobrademo</a>.</p>
 <p><img src="/images/cobra-persistent-flag/cobra.png" alt="" title=""></p>
 <p>The cmd line tool built with cobra has following structure. The main tool is called <code>cobrademo</code>. And the sub-commands are <code>alpha</code> and <code>num</code>. Sub-command <code>num</code> has one more sub-command called <code>one</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cobrademo
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cobrademo
 ├── alpha
 └── num
     └── one
 </code></pre></div><p>Now I want a persistent flag <code>--config</code> to be availabe under sub-command <code>one</code> and <code>alpha</code> both. So I created a func that allows me to add this flag under any command, which looked like following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addConfig</span>(<span style="color:#a6e22e">cmd</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addConfig</span>(<span style="color:#a6e22e">cmd</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>) {
 	<span style="color:#75715e">// add config flag
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">cmd</span>.<span style="color:#a6e22e">PersistentFlags</span>().<span style="color:#a6e22e">String</span>(
 		<span style="color:#e6db74">&#34;config&#34;</span>,
@@ -258,7 +258,7 @@
 </code></pre></div><p>Above code is <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/root.go#L29-L36">here</a>.</p>
 <p>Now this is called from <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/one.go#L18"><code>one.go</code></a> and <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/alpha.go#L18"><code>alpha.go</code></a> to add the flag under those sub-command.</p>
 <p>Now the command structure for <code>alpha</code> sub-command looks like following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go run main.go alpha -h
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go run main.go alpha -h
 All the alphabet related commands
 
 Usage:
@@ -269,7 +269,7 @@ Flags:
   -h, --help            help <span style="color:#66d9ef">for</span> alpha
 
 </code></pre></div><p>For sub-command <code>one</code> it looks like following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go run main.go num -h
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go run main.go num -h
 All the numeric related commands
 
 Usage:
@@ -282,7 +282,7 @@ Flags:
   -h, --help   help <span style="color:#66d9ef">for</span> num
 
 Use <span style="color:#e6db74">&#34;cobrademo num [command] --help&#34;</span> <span style="color:#66d9ef">for</span> more information about a command.
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go run main.go num one -h
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go run main.go num one -h
 first subcommand in numerics
 
 Usage:
@@ -292,14 +292,14 @@ Flags:
       --config string   Path to config file <span style="color:#f92672">(</span>default <span style="color:#e6db74">&#34;/home/hummer/.config&#34;</span><span style="color:#f92672">)</span>
   -h, --help            help <span style="color:#66d9ef">for</span> one
 </code></pre></div><p>But if you look at the functionality it does not work as expected.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go run main.go num one --config<span style="color:#f92672">=</span>foobar
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go run main.go num one --config<span style="color:#f92672">=</span>foobar
 inside one, config value:  foobar
 
 $ go run main.go alpha --config<span style="color:#f92672">=</span>foobar
 inside alpha, config value:  /home/hummer/.config
 </code></pre></div><p>If you see the output of both the commands it is different. While it should have been same i.e. <code>foobar</code>. What made it work in case of sub-command <code>one</code> and it did not work in case of sub-command <code>alpha</code>?</p>
 <p>Now we are registering a persistent flag twice once for sub-command <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/one.go#L16-L19"><code>one</code></a> and again for <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/alpha.go#L16-L19"><code>alpha</code></a>. And these calls happen from the <code>init</code> func of those files. If you look at the order of the evaluation of those <code>init</code> functions then it happens in alphabetical order.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ tree cmd/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ tree cmd/
 cmd/
 ├── alpha.go
 ├── num.go
@@ -308,14 +308,14 @@ cmd/
 </code></pre></div><p>Hence the <code>init</code> func of <code>alpha</code> is called first and the flag <code>config</code> is registered there first and again it is registered for <code>one</code>. So the final flag is just registered for <code>one</code>. Hence the functionality works correctly for <code>one</code> and not for <code>alpha</code>.</p>
 <p>So the right way to work with persistent flags is to register them only once. If any particular sub-command tree needs that flag then only register at it&rsquo;s root. In our case most of the sub-commands will need it, so the right way to use it is to add it to the <a href="https://github.com/surajssd/cobrademo/blob/ab3fe4d7ecec26ca5c02cffa861941708f89a5de/cmd/root.go#L10-L13"><code>rootCmd</code></a>.</p>
 <p>In above code I removed the function <code>addConfig</code> and all it&rsquo;s references(see the changes <a href="https://github.com/surajssd/cobrademo/commit/ab3fe4d7ecec26ca5c02cffa861941708f89a5de">here</a>). And added following code snippet to the <code>init</code> func of <code>root.go</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">	<span style="color:#75715e">// add config flag
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">	<span style="color:#75715e">// add config flag
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">rootCmd</span>.<span style="color:#a6e22e">PersistentFlags</span>().<span style="color:#a6e22e">String</span>(
 		<span style="color:#e6db74">&#34;config&#34;</span>,
 		<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">ExpandEnv</span>(<span style="color:#e6db74">&#34;$HOME/.config&#34;</span>),
 		<span style="color:#e6db74">&#34;Path to config file&#34;</span>)
 	<span style="color:#a6e22e">viper</span>.<span style="color:#a6e22e">BindPFlag</span>(<span style="color:#e6db74">&#34;config&#34;</span>, <span style="color:#a6e22e">rootCmd</span>.<span style="color:#a6e22e">PersistentFlags</span>().<span style="color:#a6e22e">Lookup</span>(<span style="color:#e6db74">&#34;config&#34;</span>))
 </code></pre></div><p>And now after running the code again with above changes it works absolutely fine:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go run main.go num one --config<span style="color:#f92672">=</span>foobar
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go run main.go num one --config<span style="color:#f92672">=</span>foobar
 inside one, config value:  foobar
 
 $ go run main.go alpha --config<span style="color:#f92672">=</span>foobar
@@ -400,6 +400,16 @@ inside alpha, config value:  foobar
       </header>
       
       <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
           <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
     <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
   </a>
@@ -439,16 +449,6 @@ inside alpha, config value:  foobar
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
-    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
-  </a>
-        <header>
-          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
-          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -474,7 +474,7 @@ inside alpha, config value:  foobar
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">13</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">14</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">12</span></a>
@@ -483,7 +483,7 @@ inside alpha, config value:  foobar
               <a href="/categories/productivity/">productivity<span class="count">9</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">7</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">7</span></a>
@@ -679,14 +679,14 @@ inside alpha, config value:  foobar
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

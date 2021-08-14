@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Enabling local development with Kubernetes">
   <meta property="og:description" content="If you are doing development and want to use kubernetes for it, then here is how you can do it.">
   <meta property="description" content="If you are doing development and want to use kubernetes for it, then here is how you can do it.">
@@ -17,7 +17,7 @@
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -241,7 +241,7 @@
         <p>I want to show how you can enable <a href="https://kubernetes.io/">Kubernetes</a> in your day to day development workflow. So that
 you get the feel of production deployment locally from day 1.</p>
 <p>I have a <a href="http://flask.pocoo.org/">flask application</a> which I am working on. The basic directory structure looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ll
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ll
 total <span style="color:#ae81ff">24</span>
 -rw-rw-r--. <span style="color:#ae81ff">1</span> foo foo  <span style="color:#ae81ff">427</span> Apr <span style="color:#ae81ff">23</span> 16:23 app.py
 -rw-rw-r--. <span style="color:#ae81ff">1</span> foo foo  <span style="color:#ae81ff">201</span> Apr <span style="color:#ae81ff">23</span> 16:55 docker-compose.yml
@@ -257,7 +257,7 @@ you will have a vm running a single node kubernetes cluster and a locally availa
 already have docker-compose file we will generate configs from this file with the help from tool called <a href="http://kompose.io/">kompose</a>.
 Install kompose as per instructions as given on <a href="https://github.com/kubernetes-incubator/kompose#installation">docs</a>.</p>
 <p>Generating configs:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir configs
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir configs
 $ kompose convert -o configs/
 WARN Kubernetes provider doesnt support build key - ignoring
 INFO file <span style="color:#e6db74">&#34;configs/hitcounter-service.yaml&#34;</span> created
@@ -268,7 +268,7 @@ INFO file <span style="color:#e6db74">&#34;configs/redis-deployment.yaml&#34;</s
 having <code>build</code> construct in them. In our case only python app <code>hitcounter</code> is built is being built from <code>Dockerfile</code>.</p>
 <p>We will edit file <code>hitcounter-deployment.yaml</code> in <code>configs</code> directory, to not pull image but read image from the local docker
 storage. Add a field after <code>image</code> called <code>imagePullPolicy: IfNotPresent</code>. Make changes as shown in following diff:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">$ git diff
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">$ git diff
 diff --git a/configs/hitcounter-deployment.yaml b/configs/hitcounter-deployment.yaml
 index 7b1116d..0ef35b3 100644
 <span style="color:#f92672">--- a/configs/hitcounter-deployment.yaml
@@ -284,24 +284,24 @@ index 7b1116d..0ef35b3 100644
 </code></pre></div><p>Now we are ready with the configs, but we need to build container image for our app. So here you will need to have
 <code>docker-compose</code> installed on your machine. For that follow <a href="https://docs.docker.com/compose/install/">docs here</a>.</p>
 <p>Build image in the minikube</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">eval <span style="color:#66d9ef">$(</span>minikube docker-env<span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">eval <span style="color:#66d9ef">$(</span>minikube docker-env<span style="color:#66d9ef">)</span>
 docker-compose build
 </code></pre></div><p>Once the build is complete, we are good to the deployment in kubernetes.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f configs/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f configs/
 deployment <span style="color:#e6db74">&#34;hitcounter&#34;</span> created
 service <span style="color:#e6db74">&#34;hitcounter&#34;</span> created
 deployment <span style="color:#e6db74">&#34;redis&#34;</span> created
 service <span style="color:#e6db74">&#34;redis&#34;</span> created
 </code></pre></div><p>To verify that the app is running, find out the exposed IP Address as follows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get svc
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get svc
 NAME         CLUSTER-IP   EXTERNAL-IP   PORT<span style="color:#f92672">(</span>S<span style="color:#f92672">)</span>          AGE
 hitcounter   10.0.0.244   &lt;pending&gt;     5000:30476/TCP   6s
 kubernetes   10.0.0.1     &lt;none&gt;        443/TCP          3d
 redis        10.0.0.21    &lt;none&gt;        6379/TCP         6s
 </code></pre></div><p>Now hit the externally exposed port <code>30476</code> of service <code>hitcounter</code> as:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl <span style="color:#66d9ef">$(</span>minikube ip<span style="color:#66d9ef">)</span>:30476
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl <span style="color:#66d9ef">$(</span>minikube ip<span style="color:#66d9ef">)</span>:30476
 </code></pre></div><p>Now everytime you make changes to code do the following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose build
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose build
 kubectl scale deployment hitcounter --replicas<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
 kubectl scale deployment hitcounter --replicas<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 </code></pre></div><p>Above we are removing all containers with old image and asking it to use the new image. For OpenShift we can do
@@ -335,15 +335,15 @@ with <code>build</code> also provide the <code>image</code> name you would expec
 <li>
 <p><strong>- I get error running docker commands with minikube?</strong></p>
 <p>If you face problem accessing the docker daemon running inside the minikube VM like one of this</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ eval <span style="color:#66d9ef">$(</span>minikube docker-env<span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ eval <span style="color:#66d9ef">$(</span>minikube docker-env<span style="color:#66d9ef">)</span>
 $ docker ps
 could not read CA certificate <span style="color:#e6db74">&#34;/etc/docker/ca.pem&#34;</span>: open /etc/docker/ca.pem: no such file or directory
 </code></pre></div><p>This could be because there is a mismatch in docker client and docker daemon version, so to solve this issue just copy
 the docker client from the minikube VM to the local machine.</p>
 <p>Enter in the VM</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">minikube ssh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">minikube ssh
 </code></pre></div><p>Copy the binary to host machine</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">scp <span style="color:#66d9ef">$(</span>which docker<span style="color:#66d9ef">)</span> foo@192.168.122.1:/home/foo/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">scp <span style="color:#66d9ef">$(</span>which docker<span style="color:#66d9ef">)</span> foo@192.168.122.1:/home/foo/
 </code></pre></div><p>Now put the binary in <code>PATH</code>.</p>
 </li>
 </ul>
@@ -427,6 +427,16 @@ the docker client from the minikube VM to the local machine.</p>
       </header>
       
       <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
           <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
     <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
   </a>
@@ -466,16 +476,6 @@ the docker client from the minikube VM to the local machine.</p>
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
-    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
-  </a>
-        <header>
-          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
-          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -501,7 +501,7 @@ the docker client from the minikube VM to the local machine.</p>
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">13</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">14</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">12</span></a>
@@ -510,7 +510,7 @@ the docker client from the minikube VM to the local machine.</p>
               <a href="/categories/productivity/">productivity<span class="count">9</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">7</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">7</span></a>
@@ -706,14 +706,14 @@ the docker client from the minikube VM to the local machine.</p>
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

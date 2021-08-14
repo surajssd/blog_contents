@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Writing your own Seccomp profiles for Docker">
   <meta property="og:description" content="Understanding the seccomp profile json format">
   <meta property="description" content="Understanding the seccomp profile json format">
@@ -17,7 +17,7 @@
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -246,7 +246,7 @@
 <h2 id="seccomp-with-docker">Seccomp with Docker</h2>
 <p>Seccomp profile is attached with docker container by <a href="https://github.com/moby/moby/blob/master/profiles/seccomp/default.json">default</a>. But understanding the profile can be hard if you are new to it.</p>
 <p>Here is the snippet of syscalls allowed from the default profile:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;names&#34;</span>: [
     <span style="color:#e6db74">&#34;bpf&#34;</span>,
     <span style="color:#e6db74">&#34;clone&#34;</span>,
@@ -278,7 +278,7 @@
 <h2 id="experiment">Experiment</h2>
 <p>I have done my own experiment where I am tying the <code>chmod</code> syscall to the capability <code>CAP_WAKE_ALARM</code> (There is no serious thinking put behind tying <code>chmod</code> to this capability <code>CAP_WAKE_ALARM</code>, I chose it because this capability did not seem to be doing much important hence I picked it up).</p>
 <p>To try this out I have created a config of my own by changing the default config which looks like following diff:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">--- default.json                2019-06-10 14:23:11.688170627 +0530
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">--- default.json                2019-06-10 14:23:11.688170627 +0530
 </span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ chmod-wake-alarm.json       2019-06-10 14:19:25.706274172 +0530
 </span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -62,7 +62,6 @@
 </span><span style="color:#75715e"></span>                                &#34;capget&#34;,
@@ -328,7 +328,7 @@
 </span><span style="color:#f92672"></span>\ No newline at end of file
 <span style="color:#a6e22e">+}
 </span></code></pre></div><p>To understand what has changed I first removed all the references to the <code>chmod</code> and then added following snippet to tie the <code>chmod</code> to <code>CAP_WAKE_ALARM</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#f92672">&#34;names&#34;</span>: [
         <span style="color:#e6db74">&#34;chmod&#34;</span>,
         <span style="color:#e6db74">&#34;fchmod&#34;</span>,
@@ -345,12 +345,12 @@
     <span style="color:#f92672">&#34;excludes&#34;</span>: {}
 }<span style="color:#960050;background-color:#1e0010">,</span>
 </code></pre></div><p>Now let&rsquo;s try this if it works:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker container run --rm -it --security-opt seccomp<span style="color:#f92672">=</span>chmod-wake-alarm.json alpine sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker container run --rm -it --security-opt seccomp<span style="color:#f92672">=</span>chmod-wake-alarm.json alpine sh
 / <span style="color:#75715e"># touch foo.sh</span>
 / <span style="color:#75715e"># chmod +x foo.sh</span>
 chmod: foo.sh: Operation not permitted
 </code></pre></div><p>If you see with the newly created profile the container did not allow <code>chmod</code> to run.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker container run --cap-add<span style="color:#f92672">=</span>WAKE_ALARM --rm -it --security-opt seccomp<span style="color:#f92672">=</span>chmod-wake-alarm.json alpine sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker container run --cap-add<span style="color:#f92672">=</span>WAKE_ALARM --rm -it --security-opt seccomp<span style="color:#f92672">=</span>chmod-wake-alarm.json alpine sh
 / <span style="color:#75715e"># touch foo.sh</span>
 / <span style="color:#75715e"># chmod +x foo.sh</span>
 </code></pre></div><p>But in the above command I explicitly permitted this container to run with capability <code>CAP_WAKE_ALARM</code>, and now the container allows <code>chmod</code>. In this way you can create your own profile and tie it up with any capability you want.</p>
@@ -441,6 +441,16 @@ chmod: foo.sh: Operation not permitted
       </header>
       
       <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
           <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
     <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
   </a>
@@ -480,16 +490,6 @@ chmod: foo.sh: Operation not permitted
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
-    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
-  </a>
-        <header>
-          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
-          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -515,7 +515,7 @@ chmod: foo.sh: Operation not permitted
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">13</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">14</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">12</span></a>
@@ -524,7 +524,7 @@ chmod: foo.sh: Operation not permitted
               <a href="/categories/productivity/">productivity<span class="count">9</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">7</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">7</span></a>
@@ -720,14 +720,14 @@ chmod: foo.sh: Operation not permitted
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

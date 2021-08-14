@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="HTTPS during development using &#39;mkcert&#39;">
   <meta property="og:description" content="Use https even during your development">
   <meta property="description" content="Use https even during your development">
@@ -17,7 +17,7 @@
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -240,13 +240,13 @@
         
         <p>It&rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using <a href="https://github.com/FiloSottile/mkcert">mkcert</a>. Install by following one of the steps mentioned in the <a href="https://github.com/FiloSottile/mkcert#installation">docs</a>.</p>
 <p>Once installed just run:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkcert -install
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkcert -install
 Created a new local CA at <span style="color:#e6db74">&#34;/home/hummer/.local/share/mkcert&#34;</span> 💥
 <span style="color:#f92672">[</span>sudo<span style="color:#f92672">]</span> password <span style="color:#66d9ef">for</span> hummer: 
 The local CA is now installed in the system trust store! ⚡
 The local CA is now installed in the Firefox and/or Chrome/Chromium trust store <span style="color:#f92672">(</span>requires browser restart<span style="color:#f92672">)</span>! 🦊
 </code></pre></div><p>This has installed the local CA. Now all you need to do is create a new certificate.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkcert 127.0.0.1 localhost
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkcert 127.0.0.1 localhost
 Using the local CA at <span style="color:#e6db74">&#34;/home/hummer/.local/share/mkcert&#34;</span> ✨
 
 Created a new certificate valid <span style="color:#66d9ef">for</span> the following names 📜
@@ -255,16 +255,16 @@ Created a new certificate valid <span style="color:#66d9ef">for</span> the follo
 
 The certificate is at <span style="color:#e6db74">&#34;./127.0.0.1+1.pem&#34;</span> and the key at <span style="color:#e6db74">&#34;./127.0.0.1+1-key.pem&#34;</span> ✅
 </code></pre></div><p>Now is the time to test it, so to test it I am running a Python&rsquo;s <a href="https://docs.python.org/2/library/simplehttpserver.html">SimpleHTTPServer</a> using following code(by default if you run <code>python -m SimpleHTTPServer</code> it runs on <code>HTTP</code>).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">$</span> cat simple<span style="color:#f92672">-</span>https<span style="color:#f92672">-</span>server<span style="color:#f92672">.</span>py
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">$</span> cat simple<span style="color:#f92672">-</span>https<span style="color:#f92672">-</span>server<span style="color:#f92672">.</span>py
 <span style="color:#f92672">import</span> BaseHTTPServer<span style="color:#f92672">,</span> SimpleHTTPServer
 <span style="color:#f92672">import</span> ssl
 
 httpd <span style="color:#f92672">=</span> BaseHTTPServer<span style="color:#f92672">.</span>HTTPServer((<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">4443</span>), SimpleHTTPServer<span style="color:#f92672">.</span>SimpleHTTPRequestHandler)
-httpd<span style="color:#f92672">.</span>socket <span style="color:#f92672">=</span> ssl<span style="color:#f92672">.</span>wrap_socket (httpd<span style="color:#f92672">.</span>socket, certfile<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./127.0.0.1+1.pem&#39;</span>, keyfile<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;127.0.0.1+1-key.pem&#39;</span>, server_side<span style="color:#f92672">=</span>True)
+httpd<span style="color:#f92672">.</span>socket <span style="color:#f92672">=</span> ssl<span style="color:#f92672">.</span>wrap_socket (httpd<span style="color:#f92672">.</span>socket, certfile<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./127.0.0.1+1.pem&#39;</span>, keyfile<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;127.0.0.1+1-key.pem&#39;</span>, server_side<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 httpd<span style="color:#f92672">.</span>serve_forever()
 </code></pre></div><p>This code is taken from <a href="https://gist.github.com/dergachev/7028596">here</a> with just modification to the <code>certfile</code> and <code>keyfile</code> file names.</p>
 <p>Now just run this file as:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python2 simple-https-server.py
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python2 simple-https-server.py
 127.0.0.1 - - <span style="color:#f92672">[</span>14/Aug/2018 11:02:29<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> -
 127.0.0.1 - - <span style="color:#f92672">[</span>14/Aug/2018 11:02:29<span style="color:#f92672">]</span> code 404, message File not found
 127.0.0.1 - - <span style="color:#f92672">[</span>14/Aug/2018 11:02:29<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET /favicon.ico HTTP/1.1&#34;</span> <span style="color:#ae81ff">404</span> -
@@ -358,6 +358,16 @@ httpd<span style="color:#f92672">.</span>serve_forever()
       </header>
       
       <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
           <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
     <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
   </a>
@@ -397,16 +407,6 @@ httpd<span style="color:#f92672">.</span>serve_forever()
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
-    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
-  </a>
-        <header>
-          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
-          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -432,7 +432,7 @@ httpd<span style="color:#f92672">.</span>serve_forever()
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">13</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">14</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">12</span></a>
@@ -441,7 +441,7 @@ httpd<span style="color:#f92672">.</span>serve_forever()
               <a href="/categories/productivity/">productivity<span class="count">9</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">7</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">7</span></a>
@@ -637,14 +637,14 @@ httpd<span style="color:#f92672">.</span>serve_forever()
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

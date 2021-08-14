@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Methods that satisfy interfaces in golang">
   <meta property="og:description" content="What receiver type methods satisfy which interface, can be understood here.">
   <meta property="description" content="What receiver type methods satisfy which interface, can be understood here.">
@@ -17,7 +17,7 @@
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -240,7 +240,7 @@
         
         <h2 id="pointer-receiver">Pointer receiver</h2>
 <p>For a struct <code>User</code> with a method <code>Work</code> with pointer receiver.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
     <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
     <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
 }
@@ -258,12 +258,12 @@
 }
 </code></pre></div><p>See on <a href="https://play.golang.org/p/PDsMlrd3QXV">go playground</a>.</p>
 <p>output:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
 UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">6</span> hrs.
 </code></pre></div><p>If we call this method on <strong>value</strong> type object <code>uval</code> it works, and obviously it works with <strong>pointer</strong> type object <code>pval</code>.</p>
 <h2 id="value-receiver">Value receiver</h2>
 <p>Now we change the method receiver from pointer to value.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
     <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
     <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
 }
@@ -281,12 +281,12 @@ UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae
 }
 </code></pre></div><p>See on <a href="https://play.golang.org/p/z7Q-B9PuzV2">go playground</a>.</p>
 <p>output:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
 UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">6</span> hrs.
 </code></pre></div><p>So this also worked on both <strong>value</strong> type object <code>uval</code> and with <strong>pointer</strong> type object <code>pval</code>.</p>
 <h2 id="interface-and-pointer-receiver">Interface and pointer receiver</h2>
 <p>Lets try to add interface in the mix and see what happens, so adding interface <code>Worker</code> to pointer receiver method:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
     <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
     <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
 }
@@ -312,11 +312,11 @@ UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae
 }
 </code></pre></div><p>See on <a href="https://play.golang.org/p/shQ4PT66VaY">go playground</a>.</p>
 <p>output:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># command-line-arguments</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># command-line-arguments</span>
 tmp/main.go:20:8: cannot use uval <span style="color:#f92672">(</span>type User<span style="color:#f92672">)</span> as type Worker in argument to DoWork:
         User does not implement Worker <span style="color:#f92672">(</span>Work method has pointer receiver<span style="color:#f92672">)</span>
 </code></pre></div><p>So <strong>pointer</strong> type object <code>pval</code> implements interface <code>Worker</code>, but <strong>value</strong> type object <code>uval</code> does not. Since the error clearly says</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">User does not implement Worker <span style="color:#f92672">(</span>Work method has pointer receiver<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">User does not implement Worker <span style="color:#f92672">(</span>Work method has pointer receiver<span style="color:#f92672">)</span>
 </code></pre></div><p>To understand why this above code fails, you need to understand the concept of method sets. <a href="https://golang.org/ref/spec#Method_sets">Golang spec</a> defines <strong>Method sets</strong> as:</p>
 <blockquote>
 <p>The method set of any other type T consists of all methods declared with receiver type T.</p>
@@ -332,7 +332,7 @@ tmp/main.go:20:8: cannot use uval <span style="color:#f92672">(</span>type User<
 <p>In above example the method with pointer receiver is not in method set of <strong>value</strong> type object <code>uval</code>.</p>
 <h2 id="interface-and-value-receiver">Interface and value receiver</h2>
 <p>Now lets try the same inteface but this time with value receiver:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
     <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
     <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
 }
@@ -358,7 +358,7 @@ tmp/main.go:20:8: cannot use uval <span style="color:#f92672">(</span>type User<
 }
 </code></pre></div><p>See on <a href="https://play.golang.org/p/aW6kXdeNaqN">go playground</a>.</p>
 <p>output:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
 UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">6</span> hrs.
 </code></pre></div><p>Meanwhile the method with value receiver worked for both type of objects <strong>pointer</strong> type object <code>pval</code> and <strong>value</strong> type object <code>uval</code>.</p>
 <p>So here is a table which charts this behavior:</p>
@@ -476,6 +476,16 @@ UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae
       </header>
       
       <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
           <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
     <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
   </a>
@@ -515,16 +525,6 @@ UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
-    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
-  </a>
-        <header>
-          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
-          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -550,7 +550,7 @@ UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">13</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">14</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">12</span></a>
@@ -559,7 +559,7 @@ UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae
               <a href="/categories/productivity/">productivity<span class="count">9</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">7</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">7</span></a>
@@ -755,14 +755,14 @@ UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

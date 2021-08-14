@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Enable TLS bootstrapping in a Kubernetes cluster">
   <meta property="og:description" content="Add a new node using a bootstrap token to Kubernetes">
   <meta property="description" content="Add a new node using a bootstrap token to Kubernetes">
@@ -20,7 +20,7 @@
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -251,7 +251,7 @@
 <p>If you have a cluster running, you can skip this step. To demonstrate how TLS bootstrap tokens work, I have brought up a cluster using <a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant/">Kubernetes the Hard Way (Vagrant)</a>. This section shows how to bring up a multi-node, multi-worker Kubernetes cluster quickly.</p>
 <h3 id="11-setup-machine">1.1. Setup Machine</h3>
 <p>I am running this setup on a Ubuntu 20.04 machine. Install virtual-box and vagrant by executing the following commands as the <code>root</code> user:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>apt-get -y upgrade <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>apt-get install -y make git byobu linux-generic
 
@@ -262,19 +262,19 @@ apt-get install -y linux-headers-<span style="color:#e6db74">`</span>uname -r<sp
 </span><span style="color:#ae81ff"></span>apt-get install -y vagrant <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>dpkg-reconfigure virtualbox-dkms
 </code></pre></div><h3 id="12-clone-the-repository">1.2. Clone the Repository</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p git/kubernetes-the-hard-way-vagrant
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p git/kubernetes-the-hard-way-vagrant
 git clone https://github.com/kinvolk/kubernetes-the-hard-way-vagrant git/kubernetes-the-hard-way-vagrant
 cd git/kubernetes-the-hard-way-vagrant
 </code></pre></div><h3 id="13-install-the-cluster">1.3. Install the Cluster</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./scripts/install-tools
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./scripts/install-tools
 ./scripts/setup
 </code></pre></div><h3 id="14-verify-the-cluster-installation">1.4. Verify the Cluster Installation</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get nodes
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get nodes
 </code></pre></div><h2 id="2-prepare-control-plane">2. Prepare Control Plane</h2>
 <h3 id="21-setup-rbac">2.1. Setup RBAC</h3>
 <p>When a new node tries to authenticate to the control plane, the only credential used is a bootstrap token. Such a node client (kubelet) is a member of group <code>system:bootstrappers</code>, we need to ensure that such a client has permissions to create Certificate Signing Requests (CSRs), get them approved, renew them, etc. The following ClusterRoleBindings will ensure that these nodes join without authorisation issues. This setting needs to be done only once and does not change from node-to-node.</p>
 <p>Run the following command to create the bindings that will allow the new nodes to connect to the cluster:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF | kubectl apply -f -</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF | kubectl apply -f -</span>
 <span style="color:#75715e"># Enable bootstrapping nodes to create CSR.</span>
 <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">rbac.authorization.k8s.io/v1</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterRoleBinding</span>
@@ -319,21 +319,21 @@ cd git/kubernetes-the-hard-way-vagrant
 <span style="color:#ae81ff">EOF</span>
 </code></pre></div><h3 id="22-modify-kubernetes-apiserver">2.2. Modify Kubernetes Apiserver</h3>
 <p>Add the following set of flags to the <code>kube-apiserver</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">--authorization-mode<span style="color:#f92672">=</span>Node,RBAC
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">--authorization-mode<span style="color:#f92672">=</span>Node,RBAC
 --enable-bootstrap-token-auth<span style="color:#f92672">=</span>true
 </code></pre></div><p>Above setting needs to be performed on each control plane node.</p>
 <h3 id="23-modify-kubernetes-controller-manager">2.3. Modify Kubernetes Controller Manager</h3>
 <p>Add the following flag to the <code>kube-controller-manager</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">--controllers<span style="color:#f92672">=</span>*,tokencleaner,bootstrapsigner
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">--controllers<span style="color:#f92672">=</span>*,tokencleaner,bootstrapsigner
 </code></pre></div><p>Above setting needs to be performed on each control plane node.</p>
 <h2 id="3-modify--add-workers">3. Modify / Add Workers</h2>
 <h3 id="31-create-the-bootstrap-token">3.1. Create the Bootstrap Token</h3>
 <p>Please note these tokens, we will need them in two places. One, while creating a bootstrap-token embedded Kubernetes Secret object and another in the bootstrap kubeconfig for the Kubelet:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">TOKEN_ID<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>openssl rand -hex 3<span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">TOKEN_ID<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>openssl rand -hex 3<span style="color:#66d9ef">)</span>
 TOKEN_SECRET<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>openssl rand -hex 8<span style="color:#66d9ef">)</span>
 </code></pre></div><h3 id="32-create-bootstrap-token-secret">3.2. Create Bootstrap Token Secret</h3>
 <p>Kubernetes apiserver will use this secret to identify the node that is joining the cluster. Execute the following command to create the secret embedding the previously generated tokens:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF | kubectl apply -f -</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF | kubectl apply -f -</span>
 <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Secret</span>
 <span style="color:#f92672">type</span>: <span style="color:#ae81ff">bootstrap.kubernetes.io/token</span>
@@ -349,9 +349,9 @@ TOKEN_SECRET<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</
 <span style="color:#ae81ff">EOF</span>
 </code></pre></div><h3 id="33-create-bootstrap-kubeconfig-for-kubelets">3.3. Create Bootstrap Kubeconfig for Kubelets</h3>
 <p>Create bootstrap Kubeconfig for Kubelet(s):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">SERVER<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl config view -ojsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.clusters[0].cluster.server}&#39;</span><span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">SERVER<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl config view -ojsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.clusters[0].cluster.server}&#39;</span><span style="color:#66d9ef">)</span>
 CA_CERT<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl config view --flatten -ojsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.clusters[0].cluster.certificate-authority-data}&#39;</span><span style="color:#66d9ef">)</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF | tee kubeconfig</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF | tee kubeconfig</span>
 <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Config</span>
 <span style="color:#f92672">clusters</span>:
@@ -372,14 +372,14 @@ CA_CERT<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
 <h3 id="34-modify-kubelet">3.4. Modify Kubelet</h3>
 <p>Copy the bootstrap kubeconfig created in step 3.3 to the worker node you want to connect to control plane using bootstrap tokens. Save the kubeconfig on the node and provide the path to that file to flag <code>--bootstrap-kubeconfig</code>. The path supplied to <code>--kubeconfig</code> will have newly downloaded kubeconfig once the kubelet authenticates with the kube-apiserver.</p>
 <p>Add the following set of flags to the <code>kubelet</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">--kubeconfig<span style="color:#f92672">=</span>/var/lib/kubelet/kubeconfig
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">--kubeconfig<span style="color:#f92672">=</span>/var/lib/kubelet/kubeconfig
 --bootstrap-kubeconfig<span style="color:#f92672">=</span>/etc/kubernetes/kubeconfig
 --rotate-certificates
 </code></pre></div><p><strong>NOTE:</strong> You can remove the file in <code>/var/lib/kubelet/kubeconfig</code>, especially if you modify an existing worker node, to ensure that Kubelet downloads the new kubeconfig at that location.</p>
 <p>You can have a separate token for each worker node to reduce the attack surface. To generate distinct token repeat steps 3.1 to 3.4 for each worker node. But if you wish to use the same token for each worker node, repeat step 3.4 on each worker.</p>
 <h2 id="4-verify">4. Verify</h2>
 <p>Ensure that the node has joined the control plane using TLS bootstrap token by executing the following command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get nodes
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get nodes
 </code></pre></div><h1 id="video">Video</h1>
 <p>Watch this video to understand the same process explained in this blog. Unlike my previous blog videos, I am narrating, so you know what is going on.</p>
 
@@ -472,6 +472,16 @@ CA_CERT<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
       </header>
       
       <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
           <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
     <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
   </a>
@@ -511,16 +521,6 @@ CA_CERT<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
-    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
-  </a>
-        <header>
-          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
-          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -546,7 +546,7 @@ CA_CERT<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">13</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">14</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">12</span></a>
@@ -555,7 +555,7 @@ CA_CERT<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
               <a href="/categories/productivity/">productivity<span class="count">9</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">7</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">7</span></a>
@@ -751,14 +751,14 @@ CA_CERT<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

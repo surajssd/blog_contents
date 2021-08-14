@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Kubernetes Cluster using Kubeadm on Flatcar Container Linux">
   <meta property="og:description" content="Simple steps to install the cluster based on Flatcar Container Linux">
   <meta property="description" content="Simple steps to install the cluster based on Flatcar Container Linux">
@@ -20,7 +20,7 @@
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -264,7 +264,7 @@ net.bridge.bridge-nf-call-iptables = 1
 EOF
 sysctl --system
 </code></pre><h3 id="12-download-binaries-and-start-kubelet">1.2. Download binaries and start Kubelet</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">CNI_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v0.8.2&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">CNI_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v0.8.2&#34;</span>
 CRICTL_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v1.17.0&#34;</span>
 RELEASE_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v0.4.0&#34;</span>
 DOWNLOAD_DIR<span style="color:#f92672">=</span>/opt/bin
@@ -287,10 +287,10 @@ systemctl enable --now kubelet
 systemctl status kubelet
 </code></pre></div><h3 id="13-update-flatcar">1.3. Update Flatcar</h3>
 <p>Verify if you need to update Flatcar by running the following two commands:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -sSL https://stable.release.flatcar-linux.net/amd64-usr/current/version.txt | grep FLATCAR_VERSION
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -sSL https://stable.release.flatcar-linux.net/amd64-usr/current/version.txt | grep FLATCAR_VERSION
 cat /etc/os-release | grep VERSION
 </code></pre></div><p>If the output of the above two commands match, your Flatcar is already up to date, you don&rsquo;t need to run the following commands.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">update_engine_client -update
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">update_engine_client -update
 systemctl reboot
 </code></pre></div><h2 id="2-setup-controller-node">2. Setup Controller Node</h2>
 <p>Run these steps only on the controller node.</p>
@@ -300,7 +300,7 @@ systemctl reboot
 <blockquote>
 <p>On Linux distributions such as Flatcar Container Linux, the directory <code>/usr</code> is mounted as a read-only filesystem. For flex-volume support, Kubernetes components like the kubelet and kube-controller-manager use the default path of <code>/usr/libexec/kubernetes/kubelet-plugins/volume/exec/</code>, yet the flex-volume directory <strong>must be writeable</strong> for the feature to work.</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF | tee kubeadm-config.yaml</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF | tee kubeadm-config.yaml</span>
 <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta2</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">InitConfiguration</span>
 <span style="color:#f92672">nodeRegistration</span>:
@@ -315,14 +315,14 @@ systemctl reboot
   <span style="color:#f92672">extraArgs</span>:
     <span style="color:#f92672">flex-volume-plugin-dir</span>: <span style="color:#e6db74">&#34;/opt/libexec/kubernetes/kubelet-plugins/volume/exec/&#34;</span>
 <span style="color:#ae81ff">EOF</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubeadm config images pull
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubeadm config images pull
 kubeadm init --config kubeadm-config.yaml
 
 mkdir -p $HOME/.kube
 cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 </code></pre></div><h3 id="22-install-cni">2.2. Install CNI</h3>
 <p>Here I have chosen <a href="https://www.projectcalico.org/">Calico</a> as the CNI to install because it is the one that I am familiar with, but you can choose to install any <a href="https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model">other CNI</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF | tee calico.yaml</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF | tee calico.yaml</span>
 <span style="color:#75715e"># Source: https://docs.projectcalico.org/manifests/custom-resources.yaml</span>
 <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">operator.tigera.io/v1</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Installation</span>
@@ -340,17 +340,17 @@ cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
       <span style="color:#f92672">nodeSelector</span>: <span style="color:#ae81ff">all()</span>
   <span style="color:#f92672">flexVolumePath</span>: <span style="color:#ae81ff">/opt/libexec/kubernetes/kubelet-plugins/volume/exec/</span>
 <span style="color:#ae81ff">EOF</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
 kubectl apply -f calico.yaml
 kubectl taint nodes --all node-role.kubernetes.io/master-
 kubectl get pods -A
 kubectl get nodes -o wide
 </code></pre></div><h3 id="23-generate-worker-config">2.3. Generate worker config</h3>
 <p>The general way to connect a worker to the control plane is by running the <code>kubeadm join</code> command generated at the end of the <code>kubeadm init</code> output. But you can run the following set of steps at any time to create a worker config.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">URL<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl config view -ojsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.clusters[0].cluster.server}&#39;</span><span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">URL<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl config view -ojsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.clusters[0].cluster.server}&#39;</span><span style="color:#66d9ef">)</span>
 prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://&#34;</span>
 short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>URL#<span style="color:#e6db74">&#34;</span>$prefix<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">}</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF</span>
 <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta2</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">JoinConfiguration</span>
 <span style="color:#f92672">discovery</span>:
@@ -368,7 +368,7 @@ short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</spa
 <h2 id="3-join-workers-to-controllers">3. Join Workers to Controllers</h2>
 <p>Run the following steps only on worker nodes.</p>
 <h3 id="31-connect-to-control-plane">3.1. Connect to Control-Plane</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubeadm join --config worker-config.yaml
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubeadm join --config worker-config.yaml
 </code></pre></div><h2 id="4-verify">4. Verify</h2>
 <p>Go to the controller node and run the command <code>kubectl get nodes</code> to verify if the worker has joined the cluster.</p>
 <h1 id="video">Video</h1>
@@ -471,6 +471,16 @@ short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</spa
       </header>
       
       <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
           <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
     <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
   </a>
@@ -510,16 +520,6 @@ short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</spa
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
-    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
-  </a>
-        <header>
-          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
-          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -545,7 +545,7 @@ short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</spa
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">13</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">14</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">12</span></a>
@@ -554,7 +554,7 @@ short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</spa
               <a href="/categories/productivity/">productivity<span class="count">9</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">7</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">7</span></a>
@@ -750,14 +750,14 @@ short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</spa
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

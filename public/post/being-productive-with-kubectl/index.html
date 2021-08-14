@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Being Productive with Kubectl">
   <meta property="og:description" content="Tips and tricks to make your day to day usage easier">
   <meta property="description" content="Tips and tricks to make your day to day usage easier">
@@ -17,7 +17,7 @@
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -240,7 +240,7 @@
         
         <p>This blog will showcase my productivity tips with <code>kubectl</code> . This does not venture into any plugins per se. But only using bash aliases to achieve it.</p>
 <h2 id="bash-aliases">Bash Aliases</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># k8s alias</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># k8s alias</span>
 alias k<span style="color:#f92672">=</span>kubectl
 alias kg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kubectl get&#34;</span>
 alias kgp<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kubectl get pods&#34;</span>
@@ -255,7 +255,7 @@ alias kc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kub
 <p>Most used of the above aliases are <code>kgp</code>, <code>kd</code>, <code>kl</code> and for anything else just <code>k</code> when I want some other command not aliased.</p>
 <h2 id="bash-auto-completion">Bash Auto-Completion</h2>
 <p>You might wonder with all those aliases how do I get the benefit of auto-completion? Well, I don&rsquo;t get the benefit with the aliases except for the alias of <code>kubectl</code> which is <code>k</code>. For that, I have following snippet added in <code>~/.bashrc</code> file. Take a note of the line <code>source &lt;(kubectl completion bash | sed 's/kubectl/k/g')</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">which kubectl &gt; /dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">which kubectl &gt; /dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span>
 <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
     source &lt;<span style="color:#f92672">(</span>kubectl completion bash<span style="color:#f92672">)</span>
     source &lt;<span style="color:#f92672">(</span>kubectl completion bash | sed <span style="color:#e6db74">&#39;s/kubectl/k/g&#39;</span><span style="color:#f92672">)</span>
@@ -263,7 +263,7 @@ alias kc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kub
 </code></pre></div><p><strong>NOTE</strong>: The above bash-completion has a check for the binary before sourcing its bash-completion code. This is done to avoid the errors like <code>bash: kubectl: command not found...</code> when starting the terminal.</p>
 <h2 id="changing-namespaces">Changing namespaces</h2>
 <p>I have two functions for this, also added in the <code>~/.bashrc</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># find what the current namespace on the cluster is</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># find what the current namespace on the cluster is</span>
 <span style="color:#66d9ef">function</span> current-ns<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 	kubectl get sa default -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.metadata.namespace}&#39;</span>
 	echo
@@ -285,7 +285,7 @@ alias kc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kub
 <p>There are other scripts for things that need many flags like <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/start-minikube">starting minikube</a>.</p>
 <h2 id="find-the-jsonpath">Find the <code>jsonpath</code></h2>
 <p>I use the JSON path a lot when trying to get a specific field from the YAML output. Now those of you who don&rsquo;t know what I am talking about, let&rsquo;s say you want to find out what time a pod was created. Then you can query it like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kgp kube-proxy-hp7kq -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.metadata.creationTimestamp}&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kgp kube-proxy-hp7kq -o jsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.metadata.creationTimestamp}&#39;</span>
 2020-08-02T10:39:59Z
 </code></pre></div><p>Here I am trying to find out when was the <code>kube-proxy</code> pod created. Now to even construct that JSON path of highly nested fields, it can become cumbersome. So I use a tool called <a href="https://github.com/fiatjaf/jiq"><code>jiq</code></a>. See the following small video to understand how it is used:</p>
 
@@ -378,6 +378,16 @@ alias kc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kub
       </header>
       
       <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
           <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
     <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
   </a>
@@ -417,16 +427,6 @@ alias kc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kub
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
-    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
-  </a>
-        <header>
-          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
-          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -452,7 +452,7 @@ alias kc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kub
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">13</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">14</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">12</span></a>
@@ -461,7 +461,7 @@ alias kc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kub
               <a href="/categories/productivity/">productivity<span class="count">9</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">7</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">7</span></a>
@@ -657,14 +657,14 @@ alias kc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kub
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.80.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Packaging &#39;kompose&#39; for centos paas sig">
   <meta property="og:description" content="Blog">
   <meta property="description" content="Blog">
@@ -17,7 +17,7 @@
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.307f33cd8015e5bab28d6ebda9b400f8d3059bc248b4e60adf4d23469fab5a2b.css" integrity="sha256-MH8zzYAV5bqyjW69qbQA&#43;NMFm8JItOYK300jRp&#43;rWis="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -240,37 +240,37 @@
 <p>Following are steps to package kompose for <a href="https://wiki.centos.org/SpecialInterestGroup/PaaS">CentOS PAAS SIG</a>. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.</p>
 <h2 id="setup-your-machine">Setup your machine</h2>
 <p>Install packages needed</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo yum update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo yum update -y <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>sudo yum install -y epel-release <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>sudo yum install -y rpm-build go redhat-rpm-config make koji <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>                    gcc byobu rpmlint rpmdevtools centos-packager
 </code></pre></div><p>Setup certs</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">centos-cert -u surajd -n
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">centos-cert -u surajd -n
 </code></pre></div><h2 id="make-sure-your-rpmspec-is-error-free">Make sure your rpmspec is error free</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rpmlint kompose.spec
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rpmlint kompose.spec
 </code></pre></div><h2 id="building-kompose-srpm">Building kompose srpm</h2>
 <p>There are two ways to build <code>srpm</code> either build it locally or the ones that is built in koji for <code>epel</code>.</p>
 <h3 id="build-rpms-locally">Build rpms locally</h3>
 <p>Before you begin make sure you have setup the local directory structure:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf ~/rpmbuild/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rm -rf ~/rpmbuild/
 mkdir -p ~/rpmbuild/<span style="color:#f92672">{</span>BUILD,RPMS,SOURCES,SPECS,SRPMS<span style="color:#f92672">}</span>
 echo <span style="color:#e6db74">&#39;%_topdir %(echo $HOME)/rpmbuild&#39;</span> &gt; ~/.rpmmacros
 </code></pre></div><p>Update the rpm spec and get source code using it.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">spectool -g kompose.spec
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">spectool -g kompose.spec
 </code></pre></div><p>Move the source to appropriate location</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp kompose-* ~/rpmbuild/SOURCES/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp kompose-* ~/rpmbuild/SOURCES/
 </code></pre></div><p>Start local build</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rpmbuild -ba kompose.spec --define <span style="color:#e6db74">&#34;dist .el7&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rpmbuild -ba kompose.spec --define <span style="color:#e6db74">&#34;dist .el7&#34;</span>
 </code></pre></div><p>Once above exits with status code 0, you can find the <code>RPM</code>s:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ll ~/rpmbuild/RPMS/x86_64/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ll ~/rpmbuild/RPMS/x86_64/
 total <span style="color:#ae81ff">9724</span>
 -rw-rw-r--. <span style="color:#ae81ff">1</span> vagrant vagrant <span style="color:#ae81ff">9956072</span> May <span style="color:#ae81ff">26</span> 09:37 kompose-0.7.0-0.1.el7.x86_64.rpm
 </code></pre></div><p><code>SRPM</code>s can be found at:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ll ~/rpmbuild/SRPMS/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ll ~/rpmbuild/SRPMS/
 total <span style="color:#ae81ff">4828</span>
 -rw-rw-r--. <span style="color:#ae81ff">1</span> vagrant vagrant <span style="color:#ae81ff">4941880</span> May <span style="color:#ae81ff">26</span> 09:37 kompose-0.7.0-0.1.el7.src.rpm
 </code></pre></div><p>See if dependencies are properly set</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpm -qpR ~/rpmbuild/RPMS/x86_64/kompose-*
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpm -qpR ~/rpmbuild/RPMS/x86_64/kompose-*
 git
 libc.so.6<span style="color:#f92672">()(</span>64bit<span style="color:#f92672">)</span>
 libc.so.6<span style="color:#f92672">(</span>GLIBC_2.2.5<span style="color:#f92672">)(</span>64bit<span style="color:#f92672">)</span>
@@ -284,21 +284,21 @@ rpmlib<span style="color:#f92672">(</span>PayloadIsXz<span style="color:#f92672"
 </code></pre></div><p>Try installing it locally and test it as mentioned in <a href="http://suraj.io/post/test-kompose/">http://suraj.io/post/test-kompose/</a></p>
 <h3 id="pull-sprm">Pull sprm</h3>
 <p>For release 0.3.0, I pulled SRPM from:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://kojipkgs.fedoraproject.org//packages/kompose/0.3.0/0.1.git135165b.el7/src/kompose-0.3.0-0.1.git135165b.el7.src.rpm
 </code></pre></div><h2 id="build-the-rpm-on-cbs-from-srcrpm">Build the rpm on cbs from src.rpm</h2>
 <p>CBS is a community build system for SpecialInterestGroup members. It allows to build packages with Koji against CentOS5, CentOS6 and CentOS7.</p>
 <h3 id="trying-a-scratch-build-on-cbs">Trying a scratch build on CBS</h3>
 <p>Do a scratch build on CBS in <code>paas7-openshift-common-release</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-*
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cbs build --scratch paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-*
 </code></pre></div><p>You can download the rpm built here to test on CentOS machine.</p>
 <h3 id="making-an-actual-release">Making an actual release</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cbs build paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-*
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cbs build paas7-openshift-common-el7 ~/rpmbuild/SRPMS/kompose-*
 </code></pre></div><p>Once build is done successfully goto build page and download the rpm that is built for <code>x86_64</code>.</p>
 <p>The page where builds were listed: <a href="https://cbs.centos.org/koji/taskinfo?taskID=181452">https://cbs.centos.org/koji/taskinfo?taskID=181452</a>
 The page where this particular build happened and where I had download link to rpm: <a href="https://cbs.centos.org/koji/buildinfo?buildID=17249">https://cbs.centos.org/koji/buildinfo?buildID=17249</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget http://cbs.centos.org/kojifiles/packages/kompose/0.7.0/0.1.el7/x86_64/kompose-0.7.0-0.1.el7.x86_64.rpm
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget http://cbs.centos.org/kojifiles/packages/kompose/0.7.0/0.1.el7/x86_64/kompose-0.7.0-0.1.el7.x86_64.rpm
 </code></pre></div><p>Try to install this rpm and see if it works on CentOS:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install -y epel-release
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install -y epel-release
 yum install -y wget jq make
 
 wget http://cbs.centos.org/kojifiles/packages/kompose/0.7.0/0.1.el7/x86_64/kompose-0.7.0-0.1.el7.x86_64.rpm
@@ -311,26 +311,26 @@ git reset --hard <span style="color:#66d9ef">$(</span>kompose version | cut -d <
 make test-cmd
 </code></pre></div><p>If everything is okay, Tag it into testing,
 Verify that whatever you built last cbs is the good, the output should be version you wanted, and not the old one.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cbs latest-build paas7-openshift-common-candidate kompose
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cbs latest-build paas7-openshift-common-candidate kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
 kompose-0.7.0-0.1.el7                     paas7-openshift-common-candidate  surajd
 </code></pre></div><p>Tag the build output of above command to testing</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cbs tag-pkg paas7-openshift-common-testing kompose-0.7.0-0.1.el7
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cbs tag-pkg paas7-openshift-common-testing kompose-0.7.0-0.1.el7
 Created task <span style="color:#ae81ff">181472</span>
 Watching tasks <span style="color:#f92672">(</span>this may be safely interrupted<span style="color:#f92672">)</span>...
 <span style="color:#ae81ff">181472</span> tagBuild <span style="color:#f92672">(</span>noarch<span style="color:#f92672">)</span>: closed
 
 <span style="color:#ae81ff">181472</span> tagBuild <span style="color:#f92672">(</span>noarch<span style="color:#f92672">)</span> completed successfully
 </code></pre></div><p>Verify it is in testing</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cbs latest-build paas7-openshift-common-testing kompose
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cbs latest-build paas7-openshift-common-testing kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
 kompose-0.7.0-0.1.el7                     paas7-openshift-common-testing  surajd
 </code></pre></div><p>Run whatever tests you want to verify that it&rsquo;s a good build.
 It takes anywhere from 5 to 30 minutes for the rpm to make it into testing
 <a href="http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/">http://buildlogs.centos.org/centos/7/paas/x86_64/openshift-origin/</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y install centos-release-openshift-origin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y install centos-release-openshift-origin
 yum -y --enablerepo<span style="color:#f92672">=</span>centos-openshift-origin-testing install kompose
 yum install -y epel-release
 yum install -y jq make
@@ -340,12 +340,12 @@ cd kompose
 git reset --hard <span style="color:#66d9ef">$(</span>kompose version | cut -d <span style="color:#e6db74">&#34;(&#34;</span> -f2 | cut -d <span style="color:#e6db74">&#34;)&#34;</span> -f1<span style="color:#66d9ef">)</span>
 make test-cmd
 </code></pre></div><p>Check if the package is in testing</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cbs latest-build paas7-openshift-common-testing kompose
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cbs latest-build paas7-openshift-common-testing kompose
 Build                                     Tag                   Built by
 ----------------------------------------  --------------------  ----------------
 kompose-0.7.0-0.1.el7                     paas7-openshift-common-testing  surajd
 </code></pre></div><p>Tag it into release:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cbs tag-pkg paas7-openshift-common-release kompose-0.7.0-0.1.el7
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cbs tag-pkg paas7-openshift-common-release kompose-0.7.0-0.1.el7
 Created task <span style="color:#ae81ff">181634</span>
 Watching tasks <span style="color:#f92672">(</span>this may be safely interrupted<span style="color:#f92672">)</span>...
 <span style="color:#ae81ff">181634</span> tagBuild <span style="color:#f92672">(</span>noarch<span style="color:#f92672">)</span>: free
@@ -354,7 +354,7 @@ Watching tasks <span style="color:#f92672">(</span>this may be safely interrupte
 
 <span style="color:#ae81ff">181634</span> tagBuild <span style="color:#f92672">(</span>noarch<span style="color:#f92672">)</span> completed successfully
 </code></pre></div><p>Once it is populated, it will show up in the repos, install it as follows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install -y centos-release-openshift-origin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install -y centos-release-openshift-origin
 yum install -y kompose
 </code></pre></div><h2 id="ref">Ref:</h2>
 <ul>
@@ -450,6 +450,16 @@ yum install -y kompose
       </header>
       
       <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
           <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
     <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
   </a>
@@ -489,16 +499,6 @@ yum install -y kompose
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
-    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
-  </a>
-        <header>
-          <h2><a href="/post/2021/05/self-sign-k8s-cert/">How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
-          <time class="published" datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -524,7 +524,7 @@ yum install -y kompose
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">13</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">14</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">12</span></a>
@@ -533,7 +533,7 @@ yum install -y kompose
               <a href="/categories/productivity/">productivity<span class="count">9</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">7</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">7</span></a>
@@ -729,14 +729,14 @@ yum install -y kompose
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.80.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.3b56a9b984cfa78fed3a7843ad11f8065f52c7e64e6871ad2fe9729ed30d5c4f.js" integrity="sha256-O1apuYTPp4/tOnhDrRH4Bl9Sx&#43;ZOaHGtL&#43;lyntMNXE8="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

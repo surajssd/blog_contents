@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Learnings from &#39;Sapiens&#39; - Suraj Deshmukh</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+  <meta property="og:title" content="Learnings from &#39;Sapiens&#39;">
+  <meta property="og:description" content="Sapiens: A Brief History of Humankind">
+  <meta property="description" content="Sapiens: A Brief History of Humankind">
+  <meta property="og:url" content="https://suraj.io/post/2021/08/sapiens/">
+  <meta property="og:type" content="article">
+  
+    
+      <meta property="og:image" content="https://suraj.io/post/2021/08/sapiens/logo.png">
+      <meta property="og:image:alt" content="Sapiens">
+    
+  
+  
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          Learnings from &#39;Sapiens&#39;
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+        
+      
+        
+          
+          <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+        
+      
+        
+          
+          <a href="/post/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+        
+      
+        
+          
+          <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+        
+      
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active">English (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Learnings%20from%20%27Sapiens%27&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f08%2fsapiens%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f08%2fsapiens%2f&amp;title=Learnings%20from%20%27Sapiens%27" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <p>Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f08%2fsapiens%2f&amp;title=Learnings%20from%20%27Sapiens%27" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f08%2fsapiens%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <p>Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f08%2fsapiens%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="https://github.com/surajssd.png" class="square" width="100" alt="Suraj Deshmukh" /></a>
+  <header>
+    <h1>Blog</h1>
+  </header>
+  <main>
+    <p>containers, programming, golang, hacks, kubernetes, productivity, books</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article>
+    <div class="post">
+      <header>
+  <div class="title">
+    
+      <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+    
+    
+      <p>Sapiens: A Brief History of Humankind</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+    <p>Suraj Deshmukh</p>
+    <p>21-Minute Read</p>
+  </div>
+</header>
+
+      <div id="socnet-share">
+        
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Learnings%20from%20%27Sapiens%27&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f08%2fsapiens%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f08%2fsapiens%2f&amp;title=Learnings%20from%20%27Sapiens%27" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <p>Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f08%2fsapiens%2f&amp;title=Learnings%20from%20%27Sapiens%27" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f08%2fsapiens%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <p>Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f08%2fsapiens%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+      </div>
+      <div class="content">
+        <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <p>This is not a book review. Instead, this is a book recommendation. Please go ahead and buy this book. If you cannot afford to buy the book, please reach out to me. I will help you buy it⁕. This blog will give you a general idea of what this book is about. I will provide some background about the book and the author, followed by the notes from the book.</p>
+<blockquote>
+<p>I encourage all of us, whatever our beliefs, to question the basic narratives of our world, to connect past developments with present concerns, and not to be afraid of controversial issues — Dr. Yuval Noah Harari</p>
+</blockquote>
+<p><a href="https://www.goodreads.com/book/show/23198201-sapiens">&quot;<strong>Sapiens: A Brief History of Humankind</strong>&quot;</a> is written by Yuval Noah Harari. The book was initially published in Hebrew and later translated to English and many different languages. It fits into the History genre, but I would like to categorize it as a life-changing genre if there is such a genre. The book is just shy of 450 pages, but don&rsquo;t go by its page count. The book is so gripping that you may finish it in a couple of days if you are really at it.</p>
+<p>Dr. Yuval Noah Harari is a professor at the Hebrew University. The story behind the book goes that while teaching History to his students, he gave some notes, the notes became popular among his students and other History studying students. Which he decided to publish as a book, and it topped various book charts. When it was translated to English, and then it became an international hit.</p>
+<h2 id="sweeping-impressions">Sweeping Impressions</h2>
+<p>The book is a mix of facts and insights. Not a lot of facts because it is a history of several millennia, so giving every fact is not possible in a ~400-page book. The book does not just go into Whats and Hows like most history books do. But most importantly, it asks Why and tries to answer those Whys. The book tries to answer big questions, which are generally accepted in general discourse. The book will open your eyes to some of the deepest held beliefs. But that does not mean the book is dogmatic about one way of thinking. Even with your deeply held beliefs, the book acknowledges that it is ok to have them. Everyone has one form or other forms of such beliefs. And these beliefs had evolutionary benefits. It is just that you should be aware of your beliefs and once in a while check if they are rational.</p>
+<blockquote>
+<p>We believe in a particular order not because it is objectively true, but because believing in it enables us to cooperate effectively and forge a better society. Imagined orders are not evil conspiracies or useless mirages. Rather, they are the only way large numbers of humans can cooperate effectively.</p>
+</blockquote>
+<h2 id="notes">Notes</h2>
+<h3 id="cognitive-revolution">Cognitive Revolution</h3>
+<ul>
+<li>With the discovery of fire and subsequently cooking, we started to develop better brains. Earlier, the majority of our energy was spent digesting food. With cooked food, digestion became easier, and we no longer needed large guts. Thus, our brains could grow. This insight was also shared in the book &ldquo;How Innovation Works.&rdquo;</li>
+<li>Languages shaped our cognitive abilities, thus leading to the cognitive revolution. Unlike other social animals that have a method of communicating essential information, humans can go beyond that. The fact that you are reading this proves it. Language with rich vocabulary is an excellent tool for expressing feelings.</li>
+<li>Our language has helped us co-operate better. It has given birth to common myths which bound us together, like religion, nationalism, etc. Other animals don&rsquo;t have such notions. This fiction has helped us to create big kingdoms, cities, nations, etc.</li>
+<li>&ldquo;Collective Imagination&rdquo; is when everyone (in the community) imagines the same thing.</li>
+<li>The author speaks about objective and subjective reality. Other animals believe in &ldquo;objective reality&rdquo; only. For, e.g., consider a herd of deers and zebras munching on some grass, and if someone notices a lion, everyone starts running, be it zebra, deer, or human, because it is an &ldquo;objective reality.&rdquo; But humans fear going near a graveyard in fear of ghosts. This is a form of some subjective reality created by some humans who think they have sighted ghosts. But stray dogs have no such qualms; they will go about as usual.</li>
+<li>Other animals change their behaviors in the process of evolution, which takes a really long time. But we humans can change our behaviors by forming habits, and we can even pass these new behaviors to our offspring.</li>
+<li>We are hard-wired in a hunter-gatherer lifestyle, but we operate in the modern world where we have an abundance of almost everything. Due to this mindset, we are always looking for ways to hoard stuff. That&rsquo;s one of the reasons why people are obese.</li>
+</ul>
+<h3 id="agricultural-revolution">Agricultural Revolution</h3>
+<blockquote>
+<p>The Agricultural Revolution was history’s biggest fraud.</p>
+</blockquote>
+<ul>
+<li>
+<p>Humans destroying this earth is not a new phenomenon. It has happened in the past as well. When Homo Sapiens first started migrating to various parts of the world, wherever they went, they wreaked havoc. Not the kind we see in the sci-fi movies, but slowly gradually, they changed the ecosystem of the place they went. But the process of degradation has accelerated in the last 100 years.</p>
+</li>
+<li>
+<p>It is said that lazy people find ingenious ways over their laziness. I guess that is nothing new to the Industrial age but has been happening for a very long time. It is ingrained in us. That&rsquo;s why we gave up hunting-gathering in favor of farming.</p>
+</li>
+<li>
+<p>Today we are taught to live in the present. Not to think about what has passed or what will come next. I guess this age-old quip would be meaningless to the hunter-gatherers. It was only after the Agricultural revolution we started worrying about the future. With the business of hunting and gathering, people lived from day to day. They would eat anything and everything they could find or move to a new place. With Agriculture, we became super dependent on the crop that grew.</p>
+</li>
+<li>
+<p>I always wondered that history that we read is about the collective humans, and when it is about individuals, it is almost always about some legendary person. It is hard to know what the average Joe was up to. I guess this quote here sums it up.</p>
+<blockquote>
+<p>The stress of farming had far-reaching consequences. It was the foundation of large-scale political and social systems. Sadly, the diligent peasants almost never achieved the future economic security they so craved through their hard work in the present. Everywhere, rulers and elites sprang up, living off the peasants’ surplus food and leaving them with only a bare subsistence. These forfeited food surpluses fuelled politics, wars, art and philosophy. They built palaces, forts, monuments and temples. Until the late modern era, more than 90 per cent of humans were peasants who rose each morning to till the land by the sweat of their brows. The extra they produced fed the tiny minority of elites – kings, government officials, soldiers, priests, artists and thinkers – who fill the history books. History is something that very few people have been doing while everyone else was ploughing fields and carrying water buckets.</p>
+</blockquote>
+</li>
+<li>
+<p>Agricultural Revolution led to crowded cities. While humans did not evolve to live in such huge crowds. To keep such crowded cities and empires together, human imagination developed shared myths. These myths filled the void created by slow evolution. These myths included religions, companies, nations, etc. It is just not in our DNA to be part of such enormous groups.</p>
+</li>
+<li>
+<p>We have developed various hierarchies in our societies. These imagined orders need continuous work to keep them in place. These orders are based on myths, and myths are valid as long as there are believers of the legend.</p>
+</li>
+<li>
+<p>Here is a recipe for creating an imagined order:</p>
+<ul>
+<li>First, don&rsquo;t say it is an imagined order.</li>
+<li>Explain how the imagined order is as accurate as it gets since it was created by God or nature.</li>
+<li>Indoctrinate individuals from birth. Make the material forms of imagined reality so ubiquitous that you can later prove imagined order from these material things. Create more content about this imagined reality.</li>
+</ul>
+</li>
+<li>
+<p>Understand what keeps the imagined order sustainable:</p>
+<ul>
+<li>The tokens of imagined reality are so embedded in our material world that the believers seldom question its authenticity.</li>
+<li>The imagined order works on the consensus, as in we always need enough people of the group to believe the imagined order so that others also fall into the trap. If there are not enough people, then the imagined order will collapse.</li>
+</ul>
+</li>
+<li>
+<p>Unlike honey bees, whose social order is developed due to evolution, ours is a result of our imagination.</p>
+</li>
+<li>
+<p>Imagined hierarchies, just like imagined orders, are about placing humans at various strata of the social pyramid. So think of it like in an imagined order there could be multiple imagined hierarchies.</p>
+</li>
+<li>
+<p>Hindus who believe in caste legitimized it saying it is a divine creation written in Vedas.</p>
+<blockquote>
+<p>it is an iron rule of history that every imagined hierarchy disavows its fictional origins and claims to be natural and inevitable. For instance, many people who have viewed the hierarchy of free persons and slaves as natural and correct have argued that slavery is not a human invention.</p>
+</blockquote>
+</li>
+<li>
+<p>Imagined hierarchies are not necessarily evil as long as they are not used as a tool of oppression.</p>
+</li>
+<li>
+<p>Imagined reality is not set in biology, so it is inherently flawed. If it was established in biology, then biologists would have figured it out by now.</p>
+</li>
+<li>
+<p>It is unclear if humans ever were a matriarchal society, or it is also unknown when humans became a patriarchal society.</p>
+</li>
+<li>
+<p>Thumb rule to identify if something is set in biology or a figment of the human imagination:</p>
+<blockquote>
+<p>How can we distinguish what is biologically determined from what people merely try to justify through biological myths? A good rule of thumb is ‘Biology enables, culture forbids.’ Biology is willing to tolerate a very wide spectrum of possibilities. It’s culture that obliges people to realise some possibilities while forbidding others. Biology enables women to have children – some cultures oblige women to realise this possibility. Biology enables men to enjoy sex with one another – some cultures forbid them to realise this possibility.</p>
+</blockquote>
+<blockquote>
+<p>Culture tends to argue that it forbids only that which is unnatural. But from a biological perspective, nothing is unnatural. Whatever is possible is by definition also natural. A truly unnatural behaviour, one that goes against the laws of nature, simply cannot exist, so it would need no prohibition. No culture has ever bothered to forbid men to photosynthehassise, women to run faster than the speed of light, or negatively charged electrons to be attracted to each other.</p>
+</blockquote>
+</li>
+<li>
+<p>Male ≠ Masculine or Female ≠ Feminine. Male and Female can be identified based on chromosomes, but it is culturally defined what it means to be masculine or feminine.</p>
+</li>
+</ul>
+<h3 id="scientific-revolution">Scientific Revolution</h3>
+<ul>
+<li>
+<p>Every man-made change is constantly changing in response to its environment. Unlike laws of Physics, the culture is something that is continuously undergoing reconciliation to its internal contradictions.</p>
+</li>
+<li>
+<p>The things that tried to encompass humanity into a single order have happened in three different fields, viz. Economy, Politics, and Religion. The Capitalists or traders attempted to see the whole world as a single market. The imperialists tried to encompass the entire earth into one kingdom or empire. And finally, the missionary religions strived to incorporate all non-believers into the faith.</p>
+</li>
+<li>
+<p>Money is the most significant liberal force in this world, bringing everyone on the same belief plane.</p>
+<blockquote>
+<p>the story of the greatest conqueror in history, a conqueror possessed of extreme tolerance and adaptability, which consequently managed to gain the allegiance of all people. This conqueror is money. People who do not believe in the same god or obey the same king are more than willing to use the same money. Osama bin Laden, for all his hatred of American culture, American religion, and American politics, was very fond of American dollars. How did money succeed where gods and kings failed?</p>
+</blockquote>
+</li>
+<li>
+<p>Money is yet another shared imagination created by humans. In the case of money, it is valuable because everyone believes in it in their shared imagination. Definition of money:</p>
+<blockquote>
+<p>Money is not coins and banknotes. Money is anything that people are willing to use in order to represent systematically the value of other things for the purpose of exchanging goods and services. Money enables people to compare quickly and easily the value of different commodities (such as apples, shoes and divorces), to easily exchange one thing for another, and to store wealth conveniently.</p>
+</blockquote>
+<blockquote>
+<p>Why do I believe in the cowry shell or gold coin or dollar bill? Because my neighbours believe in them. And my neighbours believe in them because I believe in them. And we all believe in them because our king believes in them and demands them in taxes, and because our priest believes in them and demands them in tithes.</p>
+</blockquote>
+</li>
+<li>
+<p>Money is the most ingenious system devised by humans. It will enable anybody to co-operate, regardless of their caste, creed, race, color, gender, etc.</p>
+</li>
+<li>
+<p>This line reminds me of the book <a href="https://www.goodreads.com/book/show/27808164-shivaji-kon-hota">&ldquo;Shivaji Kon Hota.&quot;</a> There the author says that in the Mughal period, the peasants hardly knew who their rulers were. Even if the land went from Mughalshahi to Adilshahi, the peasants were ignorant because they paid taxes no matter who ruled. Also, they were paying taxes despite the produce. They were never given rebates, and exploitation was rampant. But with the change of regime to Shivaji Maharaj, he ensured that the tax was collected only when there was a yield. There were various subsidies and help from the Swaraj. So people started taking notice of this new magnanimous ruler.</p>
+<blockquote>
+<p>In many cases, the destruction of one empire hardly meant independence for subject peoples. Instead, a new empire stepped into the vacuum created when the old one collapsed or retreated.</p>
+</blockquote>
+</li>
+<li>
+<p>Empires with all their evil doings like genocide, rapes, deportation, etc., also have a bright side where they sponsored stuff like art, philosophy, infrastructure, etc.</p>
+</li>
+<li>
+<p>The subjugated people under imperial regimes generally were looked upon by the imperialists as barbarians. Even when the conquered tried to follow the new ruler&rsquo;s traditions, they were treated as a second grade at best.</p>
+</li>
+<li>
+<p>Religions, despite being the source of division in groups they also have been a great unifier.</p>
+</li>
+<li>
+<p>According to one theory, people invented Gods whenever they had problems. Like the peasants saw draught that year it means gods will help with rains.</p>
+</li>
+<li>
+<p>Polytheist religions have been more tolerant than monotheist religions. Many monotheist religions believe in one God but find it hard to worship that one God, so they invented other worship entities like Saints, Pirs, etc. There are many inconsistencies in monotheism regarding the hegemony of one God vs. the constant attacks from Satan. Who is more powerful? Who created Satan? If God was so powerful, why did it not stop Satan from coming into existence in the first place?</p>
+<blockquote>
+<p>monotheism, as it has played out in history, is a kaleidoscope of monotheist, dualist, polytheist and animist legacies, jumbling together under a single divine umbrella. The average Christian believes in the monotheist God, but also in the dualist Devil, in polytheist saints, and in animist ghosts. Scholars of religion have a name for this simultaneous avowal of different and even contradictory ideas and the combination of rituals and practices taken from different sources. It’s called syncretism. Syncretism might, in fact, be the single great world religion.</p>
+</blockquote>
+</li>
+<li>
+<p>Our mind is a pendulum constantly bobbing between the desire to retain pleasure and the restlessness of avoiding pain.</p>
+<blockquote>
+<p>Gautama’s insight was that no matter what the mind experiences, it usually reacts with craving, and craving always involves dissatisfaction. When the mind experiences something distasteful it craves to be rid of the irritation. When the mind experiences something pleasant, it craves that the pleasure will remain and will intensify. Therefore, the mind is always dissatisfied and restless. This is very clear when we experience unpleasant things, such as pain. As long as the pain continues, we are dissatisfied and do all we can to avoid it. Yet even when we experience pleasant things we are never content. We either fear that the pleasure might disappear, or we hope that it will intensify.</p>
+</blockquote>
+</li>
+<li>
+<p>A tip on the hindsight bias but from the perspective of our past self.</p>
+<blockquote>
+<p>It is an iron rule of history that what looks inevitable in hindsight was far from obvious at the time. Today is no different.</p>
+</blockquote>
+<blockquote>
+<p>possibilities which seem very unlikely to contemporaries often get realised.</p>
+</blockquote>
+</li>
+<li>
+<p>A primer on chaotic systems:</p>
+<ol>
+<li>Level one chaos is the chaos that does not react to predictions about it. e.g., weather.</li>
+<li>Level two chaos is the chaos that reacts to predictions about it and can never be predicted accurately. e.g., Stock Markets.</li>
+</ol>
+</li>
+<li>
+<p>All the things that happened in history are not natural. They happened the way they did is a mere coincidence. There were numerous forces at play. Similarly, we cannot predict the future based on historical accounts because there are innumerable forces at play today, and we will never know which force will triumph eventually.</p>
+</li>
+<li>
+<p>Some scholars believe that Cultures are like parasites. They feed on the host and transfer from one host to another. It does not care for the host. It stays alive as long as the last host was able to transmit it to his fellow human.</p>
+</li>
+<li>
+<p>Game theory in one line:</p>
+<blockquote>
+<p>Game theory explains how in multi-player systems, views and behavior patterns that harm all players nevertheless manage to take root and spread. Arms races are a famous example.</p>
+</blockquote>
+</li>
+<li>
+<p>After 1500 the Industrial Revolution or the age of Scientific Revolution began. It is called the scientific revolution because humans before the 1500s doubted their ability to improve their medicinal, military, economic conditions. After 1500 this started at a more tremendous pace.</p>
+</li>
+<li>
+<p>The scientific revolution has enabled us to realize that we don&rsquo;t know everything, but we can eventually figure it out with enough research, study, observation, etc.</p>
+<blockquote>
+<p>Ancient traditions of knowledge admitted only two kinds of ignorance. First, an individual might be ignorant of something important. To obtain the necessary knowledge, all he needed to do was ask somebody wiser. There was no need to discover something that nobody yet knew.</p>
+</blockquote>
+<blockquote>
+<p>Second, an entire tradition might be ignorant of unimportant things. By definition, whatever the great gods or the wise people of the past did not bother to tell us was unimportant.</p>
+</blockquote>
+<blockquote>
+<p>The willingness to admit ignorance has made modern science more dynamic, supple and inquisitive than any previous tradition of knowledge.</p>
+</blockquote>
+</li>
+<li>
+<p>Until the Scientific revolution, humans believed that the world was stagnant and the good old days were in the past. We should consult the scriptures to bring back the good old days.</p>
+</li>
+<li>
+<p>Today Scientific research is often dictated by the donor. Scientists hardly have any say in it.</p>
+</li>
+</ul>
+<blockquote>
+<p>Two forces in particular deserve our attention: imperialism and capitalism. The feedback loop between science, empire and capital has arguably been history’s chief engine for the past 500 years.</p>
+</blockquote>
+<ul>
+<li>
+<p>Why did West succeed in the imperial projects of the last 500 years? It is not that the West was technologically superior to the eastern empires. It is because the West had a groundwork laid that the East was lacking. This groundwork was laid on Science and Capitalism.</p>
+</li>
+<li>
+<p>Unlike other imperialists, European Imperialism was based on the conquest of gaining more knowledge than just expanding their reach.</p>
+</li>
+<li>
+<p>Empires good or evil?</p>
+<blockquote>
+<p>Due to their close cooperation with science, these empires wielded so much power and changed the world to such an extent that perhaps they cannot be simply labelled as good or evil. They created the world as we know it, including the ideologies we use in order to judge them.</p>
+</blockquote>
+</li>
+<li>
+<p>Entire economies and credit facilities work on the trust that the future has more value in-store than today.</p>
+</li>
+<li>
+<p>The trust in the future only started building with the industrial and scientific revolution. Earlier, there were credit facilities, but they did not believe in the future of being better rather, they thought that the good days were only in the past. The business and economy were thought to be a zero-sum game with a fixed pie. One person&rsquo;s growth was always at the expense of another person.</p>
+<blockquote>
+<p>It was lose–lose. Because credit was limited, people had trouble financing new businesses. Because there were few new businesses, the economy did not grow. Because it did not grow, people assumed it never would, and those who had capital were wary of extending credit. The expectation of stagnation fulfilled itself.</p>
+</blockquote>
+</li>
+<li>
+<p>Adam Smith wrote the most important book of economics. He says that when the economic pie grows, everyone benefits.</p>
+</li>
+<li>
+<p>There is a difference between capitalism and wealth. Capitalism is propounded forward when a person reinvests in the stock market versus buying an asset that does not contribute to the growth of the pie, like non-performing real estate.</p>
+</li>
+<li>
+<p>Despite that, the drive to generate profit can cause devastating results for the poor.</p>
+</li>
+<li>
+<p>Until the industrial revolution, humans mainly relied on solar energy for doing work. The device that converted solar energy to chemical energy are plants. And then, humans and other farm animals converted the plant-based chemical energy into mechanical energy for work.</p>
+<blockquote>
+<p>At heart, the Industrial Revolution has been a revolution in energy conversion.</p>
+</blockquote>
+</li>
+<li>
+<p>Consumerism keeps the poor people poor. It entices poor people into buying traps. The rich, meanwhile, live frugally and don&rsquo;t spend extravagantly like the Kings and aristocrats of pre-modern ages did. The rich also don&rsquo;t fall into the buying traps they invest.</p>
+</li>
+<li>
+<p>Benefits of the Industrial revolution:</p>
+<blockquote>
+<p>The Industrial Revolution brought about dozens of major upheavals in human society. Adapting to industrial time is just one of them. Other notable examples include urbanisation, the disappearance of the peasantry, the rise of the industrial proletariat, the empowerment of the common person, democratisation, youth culture and the disintegration of patriarchy.</p>
+</blockquote>
+</li>
+<li>
+<p>The state and the market brought about Individualism. All the needs of an individual were provided by family, community, and religion in the early days. They are now satisfied by state and market.</p>
+</li>
+<li>
+<p>The cost of the conventional war has gone up. Nuclear weapons have brought the ultimate peace. Now countries honing them rarely go on war head-on because that becomes a source of collective suicide. And due to globalization, it is hard to go to war since, on the one hand, going to war affects everyone. The businesses lobby the government to avoid conflict at all costs. For, e.g., in 1999, during the India Pakistan war, the American companies lobbied hard in India and Pakistan to a ceasefire.</p>
+</li>
+<li>
+<p>Definition of Happiness:</p>
+<blockquote>
+<p>The generally accepted definition of happiness is ‘subjective well-being’. Happiness, according to this view, is something I feel inside myself, a sense of either immediate pleasure or long-term contentment with the way my life is going.</p>
+</blockquote>
+</li>
+<li>
+<p>Our happiness is highly dependent on the correlation between objective conditions and subjective expectations.</p>
+<blockquote>
+<p>When things improve, expectations balloon, and consequently even dramatic improvements in objective conditions can leave us dissatisfied. When things deteriorate, expectations shrink, and consequently even a severe illness might leave you pretty much as happy as you were before.</p>
+</blockquote>
+</li>
+<li>
+<p>While our happiness is tied to our expectations and the social media is constantly showing us that there is someone out there better than you, thus depleting you of your satisfaction and contentment, eventually making you feel dissatisfied all the time.</p>
+</li>
+<li>
+<p>Many folks say they have a sense of purpose in their life, etc. But on the universal scale (in terms of distance and time), humans are a mere blip in time and super tiny in size. Humans are an anomaly created on an obscure planet. We might as well be wiped off by the same cosmic changes that made us. So all this struggle may as well be for nothing! This reminds me of the Sanskrit saying whose translation goes as &ldquo;This world is temporary, and it is me the divine Atma who is permanent.&rdquo; I don&rsquo;t know about the second part, but the first actually makes sense!</p>
+</li>
+<li>
+<p>Buddhism&rsquo;s teaching concerning happiness:</p>
+<blockquote>
+<p>the root of suffering is neither the feeling of pain nor of sadness nor even of meaninglessness. Rather, the real root of suffering is this never-ending and pointless pursuit of ephemeral feelings, which causes us to be in a constant state of tension, restlessness and dissatisfaction. Due to this pursuit, the mind is never satisfied. Even when experiencing pleasure, it is not content, because it fears this feeling might soon disappear, and craves that this feeling should stay and intensify.</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>History teaches us that what seems to be just around the corner may never materialise due to unforeseen barriers, and that other unimagined scenarios will in fact come to pass.</p>
+</blockquote>
+<h2 id="references-and-links">References and Links</h2>
+<ul>
+<li><a href="https://www.goodreads.com/book/show/23198201-sapiens">Book Link on Goodreads</a>.</li>
+<li><a href="https://www.goodreads.com/notes/23198201-sapiens/26285732-suraj-deshmukh">Link to the book highlights</a>.</li>
+</ul>
+<h3 id="videos">Videos</h3>
+<ul>
+<li><a href="https://youtu.be/nzj7Wg4DAbs">Why humans run the world | TED</a>.</li>
+<li><a href="https://youtu.be/9drNVSuyp0w">Sapiens and Pandemic: A Special Discussion with Yuval Noah Harari - NHK WORLD-JAPAN</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=ta4U8G03q98">Who Really Runs The World? - Russell Brand &amp; Yuval Noah Harari</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=b5_W2ecr0r4">How Sapiens Conquered the World - Yuval Harari, at USI</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=Bw9P_ZXWDJU">Yuval Noah Harari | 21 Lessons for the 21st Century | Talks at Google</a>.</li>
+<li><a href="https://youtu.be/g6BK5Q_Dblo">New Religions of the 21st Century | Yuval Harari | Talks at Google</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=x6tMLAjPVyo">The 2 Most Important Skills For the Rest Of Your Life | Yuval Noah Harari on Impact Theory</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=szt7f5NmE9E">Nationalism vs. globalism: the new political divide | Yuval Noah Harari</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=4ChHc5jhZxs">Homo Deus: A Brief History of Tomorrow with Yuval Noah Harari</a>.</li>
+</ul>
+<h3 id="footnotes">Footnotes</h3>
+<p>⁕ It will be my sole discretion on whom to help in buying the book.</p>
+
+      </div>
+      <footer>
+        <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/book-review/">book-review</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/non-tech/">non-tech</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/book-review/">book-review</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/non-tech/">non-tech</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+      </footer>
+    </div>
+    
+      
+  <div class='post'>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
+  </article>
+  <div class="pagination">
+    
+    
+      <a href="/post/2021/06/reading-devices/" class="button right"><span>Reading Devices</span></a>
+    
+  </div>
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent Posts</h1>
+      </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
+    <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
+  </a>
+        <header>
+          <h2><a href="/post/2021/06/reading-devices/">Reading Devices</a></h2>
+          <time class="published" datetime="2021-06-30 01:45:00 &#43;0530 IST">June 30, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/06/automatic-cert-gen/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/automatic-cert-gen/obama.jpg');">
+    <img src="https://suraj.io/post/2021/06/automatic-cert-gen/obama.jpg" alt="Self Signed Certificates">
+  </a>
+        <header>
+          <h2><a href="/post/2021/06/automatic-cert-gen/">How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
+          <time class="published" datetime="2021-06-25 09:00:00 &#43;0530 IST">June 25, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/06/systemd-service/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/systemd-service/systemd.png');">
+    <img src="https://suraj.io/post/2021/06/systemd-service/systemd.png" alt="Systemd">
+  </a>
+        <header>
+          <h2><a href="/post/2021/06/systemd-service/">How to create a Systemd daemon quickly?</a></h2>
+          <time class="published" datetime="2021-06-19 16:16:00 &#43;0530 IST">June 19, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/05/k8s-import/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/k8s-import/gok8s.jpg');">
+    <img src="https://suraj.io/post/2021/05/k8s-import/gok8s.jpg" alt="Golang and Kubernetes">
+  </a>
+        <header>
+          <h2><a href="/post/2021/05/k8s-import/">How to import &#39;any&#39; Kubernetes package into your project?</a></h2>
+          <time class="published" datetime="2021-05-30 09:40:00 &#43;0530 IST">May 30, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See More</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+          
+          <li>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">33</span></a>
+          
+          <li>
+              <a href="/categories/notes/">notes<span class="count">21</span></a>
+          
+          <li>
+              <a href="/categories/non-tech/">non-tech<span class="count">14</span></a>
+          
+          <li>
+              <a href="/categories/security/">security<span class="count">12</span></a>
+          
+          <li>
+              <a href="/categories/productivity/">productivity<span class="count">9</span></a>
+          
+          <li>
+              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
+          
+          <li>
+              <a href="/categories/containers/">containers<span class="count">7</span></a>
+          
+          <li>
+              <a href="/categories/bash/">bash<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/event_report/">event_report<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/golang/">golang<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/packaging/">packaging<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/docker/">docker<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/host/">host<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/linux/">linux<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/fedora/">fedora<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/kompose/">kompose<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/monitoring/">monitoring<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/notion/">notion<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/openshift/">openshift<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/programming/">programming<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/prometheus/">prometheus<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/certs/">certs<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/cka/">cka<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/configuration/">configuration<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/desktop/">desktop<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/git/">git<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/ide/">ide<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/kms/">kms<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/minikube/">minikube<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/activism/">activism<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/backup/">backup<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/centos/">centos<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/etcd/">etcd<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/flatcar/">flatcar<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/gaming/">gaming<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/gnome/">gnome<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/https/">https<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/jobs/">jobs<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/kubeadm/">kubeadm<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/lokomotive/">lokomotive<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/meetup/">meetup<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/project_management/">project_management<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/selinux/">selinux<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/systemd/">systemd<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/talks/">talks<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/vagrant/">vagrant<span class="count">1</span></a>
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I am a Senior Software Engineer at Microsoft, working on various tooling around container technology like Docker, Kubernetes, etc.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    © 2021 Suraj Deshmukh
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
+    <script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-97006720-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>
