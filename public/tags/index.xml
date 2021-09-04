@@ -6,7 +6,43 @@
     <description>Recent content in Tags on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Aug 2021 10:45:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Sep 2021 13:30:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cka</title>
+      <link>https://suraj.io/tags/cka/</link>
+      <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/cka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cks</title>
+      <link>https://suraj.io/tags/cks/</link>
+      <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/cks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://suraj.io/tags/kubernetes/</link>
+      <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>security</title>
+      <link>https://suraj.io/tags/security/</link>
+      <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/tags/security/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>book-review</title>
       <link>https://suraj.io/tags/book-review/</link>
@@ -31,24 +67,6 @@
       <pubDate>Wed, 30 Jun 2021 01:45:00 +0530</pubDate>
       
       <guid>https://suraj.io/tags/productivity/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>https://suraj.io/tags/kubernetes/</link>
-      <pubDate>Fri, 25 Jun 2021 09:00:00 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>security</title>
-      <link>https://suraj.io/tags/security/</link>
-      <pubDate>Fri, 25 Jun 2021 09:00:00 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/security/</guid>
       <description></description>
     </item>
     
@@ -112,15 +130,6 @@
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
       
       <guid>https://suraj.io/tags/prometheus/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>cka</title>
-      <link>https://suraj.io/tags/cka/</link>
-      <pubDate>Tue, 23 Mar 2021 07:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/cka/</guid>
       <description></description>
     </item>
     

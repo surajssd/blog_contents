@@ -6,7 +6,17 @@
     <description>Recent content in cka on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Mar 2021 07:07:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/cka/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Sep 2021 13:30:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/cka/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Certified Kubernetes Security Specialist CKS exam tips</title>
+      <link>https://suraj.io/post/2021/09/cks-tips/</link>
+      <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/2021/09/cks-tips/</guid>
+      <description>I recently cleared the CKS certification exam. So it is incumbent upon me to help you navigate this stress-bound exam. All the tips that are provided are either from accrued knowledge or from personal experience.
+Study Material During the study of CKA almost three years ago, I studied everything from the documentation. Back then, the documentation had less content hence it was comprehensible. But now, to go through the entire documentation was not practical.</description>
+    </item>
+    
     <item>
       <title>Kubernetes The Hard Way in &#34;Vagrant&#34;?</title>
       <link>https://suraj.io/post/2021/03/kthw-vagrant/</link>

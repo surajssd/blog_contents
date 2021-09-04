@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Certified Kubernetes Security Specialist CKS exam tips - Suraj Deshmukh</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+  <meta property="og:title" content="Certified Kubernetes Security Specialist CKS exam tips">
+  <meta property="og:description" content="Things to keep in mind to clear exam effortlessly.">
+  <meta property="description" content="Things to keep in mind to clear exam effortlessly.">
+  <meta property="og:url" content="https://suraj.io/post/2021/09/cks-tips/">
+  <meta property="og:type" content="article">
+  
+    
+      <meta property="og:image" content="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png">
+      <meta property="og:image:alt" content="cert">
+    
+  
+  
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
+          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          Certified Kubernetes Security Specialist CKS exam tips
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+        
+      
+        
+          
+          <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+        
+      
+        
+          
+          <a href="/post/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+        
+      
+        
+          
+          <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+        
+      
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active">English (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Certified%20Kubernetes%20Security%20Specialist%20CKS%20exam%20tips&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f09%2fcks-tips%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f09%2fcks-tips%2f&amp;title=Certified%20Kubernetes%20Security%20Specialist%20CKS%20exam%20tips" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <p>Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f09%2fcks-tips%2f&amp;title=Certified%20Kubernetes%20Security%20Specialist%20CKS%20exam%20tips" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f09%2fcks-tips%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <p>Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f09%2fcks-tips%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="https://github.com/surajssd.png" class="square" width="100" alt="Suraj Deshmukh" /></a>
+  <header>
+    <h1>Blog</h1>
+  </header>
+  <main>
+    <p>containers, programming, golang, hacks, kubernetes, productivity, books</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article>
+    <div class="post">
+      <header>
+  <div class="title">
+    
+      <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
+    
+    
+      <p>Things to keep in mind to clear exam effortlessly.</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+    <p>Suraj Deshmukh</p>
+    <p>5-Minute Read</p>
+  </div>
+</header>
+
+      <div id="socnet-share">
+        
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Certified%20Kubernetes%20Security%20Specialist%20CKS%20exam%20tips&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f09%2fcks-tips%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f09%2fcks-tips%2f&amp;title=Certified%20Kubernetes%20Security%20Specialist%20CKS%20exam%20tips" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <p>Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f09%2fcks-tips%2f&amp;title=Certified%20Kubernetes%20Security%20Specialist%20CKS%20exam%20tips" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f09%2fcks-tips%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <p>Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f09%2fcks-tips%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+      </div>
+      <div class="content">
+        <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+  </a>
+        <p>I recently cleared the CKS certification exam. So it is incumbent upon me to help you navigate this stress-bound exam. All the tips that are provided are either from accrued knowledge or from personal experience.</p>
+<p><img src="/post/2021/09/cks-tips/cks.png" alt="my cert" title="my cert"></p>
+<h2 id="study-material">Study Material</h2>
+<p>During the <a href="https://suraj.io/post/road-to-cka/">study of CKA</a> almost three years ago, I studied everything from the documentation. Back then, the documentation had less content hence it was comprehensible. But now, to go through the entire documentation was not practical. So I did the <a href="https://killer.sh/r?d=cks-course">course by the killer.sh</a>. This course is rich in information, exercises and tries to explain the basics. At the end of each section in the course, the trainer provides resources to read more on the given topic. I would recommend going through each and every resource provided. Don&rsquo;t skip these. These resources will help you familiarize yourself with the Kubernetes documentation and support you during the exam.</p>
+<p>Another good resource to study or read from is <a href="https://github.com/walidshaari/Certified-Kubernetes-Security-Specialist#cks-repo-topics-overview">Walid Shaari&rsquo;s Github repository</a>. It has a ton of resources I would highly recommend finishing those.</p>
+<h2 id="practice">Practice</h2>
+<ul>
+<li>There are many ways to set up a single controller single worker Kubernetes cluster. I used Vagrant-VirtualBox to set up a single controller, two worker Kubernetes set up using kubeadm. You can find the Vagrantfile and instructions to use it <a href="https://github.com/surajssd/cks-playground">here</a>.</li>
+<li>Once you have gone through all the study material and are unsure if you are ready for the exam, then the simulator will help you gauge your progress.</li>
+<li>Once you buy the <a href="https://killer.sh/r?d=cks-course">killer.sh course</a>, you get access to the simulator.</li>
+<li>Another way to get access to the simulator is by buying the exam. Now you get access to the same simulator even by just purchasing the exam. I think CNCF and <a href="http://killer.sh">killer.sh</a> has some kind of tie-up there.</li>
+<li>Official Kubernetes documentation does provide <a href="https://kubernetes.io/docs/tasks/administer-cluster/declare-network-policy/">ample resources</a> to practice NetworkPolicies. But I found this <a href="https://github.com/ahmetb/kubernetes-network-policy-recipes">Github repository by Ahmet</a> particularly helpful since it has various scenarios you can play with to better understand NetworkPolicies.</li>
+<li>Use <code>kubectl describe</code> with network policies to better understand them. Basic YAML configs could be confusing.</li>
+<li>In the exam, you have only one browser window open, which has a terminal and questions. It is helpful in the CKS exam to have multiple terminal windows to reduce cognitive load. To achieve this, you can use a tool like <code>tmux</code>. So while practicing for the exam, also practice <code>tmux</code> in your day-to-day work. To get started <a href="https://tmuxcheatsheet.com/">here is a tmux cheatsheet</a>.</li>
+</ul>
+<h2 id="general-tips">General Tips</h2>
+<ul>
+<li>If you struggle with keeping up with the exam studies, then schedule the exam and work backward. This way, you won&rsquo;t have moving goalposts, and you will be forced to focus on your preparation.</li>
+<li>At any point, you are reading specific Kubernetes documentation, and you feel that the documentation can be helpful during the exam; just bookmark it. This is faster than searching the documentation during the exam.</li>
+<li>Here is a <a href="https://gist.github.com/surajssd/702c14eca6f4e8644d837b6e1c9ca0b7">Github gist</a> with links to all the docs that I bookmarked for the exam.</li>
+<li>By heart, all the quick helper commands using <code>kubectl</code>. It has many generator commands that help you generate basic config, which can be used instead of fiddling with the YAML config from scratch. Most of such commands are documented in this <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/">cheat sheet document</a>.</li>
+<li>As mentioned before, you can use <code>kubectl</code> to generate RBAC config as well. Practice creating RBAC config using <code>kubectl</code>. You should be able to generate <code>Role</code>, <code>Rolebinding</code>, <code>ClusterRole</code>, <code>ClusterRolebinding</code> using <code>kubectl</code> only. Follow <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#command-line-utilities">this doc</a> to learn these commands.</li>
+<li>Two weeks before the exam, become comfortable sitting for at least two hours uninterrupted at the exact same time as the exam. This helps prime your body to be comfortable on the day of the exam.</li>
+<li>If you don&rsquo;t know where the configs for a particular systemd service reside, use <code>systemctl cat &lt;process name&gt;</code> to find that. e.g., <code>systemctl cat kubelet</code>.</li>
+</ul>
+<h2 id="before-exam-tips">Before exam Tips</h2>
+<ul>
+<li>Disable <code>Ctrl + W</code> if you are used to that command on the terminal. On the terminal, this key combination is used to delete a word. But on a browser window, the same key combo could kill the exam window. Thus causing disturbances in your exam. If you are on Gnome-based Linux, <a href="https://suraj.io/post/disable-ctrl-w/">here</a> is a simple way to disable the key combination. <a href="https://suraj.io/post/disable-ctrl-w/">This post</a> explains setting up the command to a <code>noop</code>. On a typical desktop, windows manager takes precedence on the key combination. So once you set this key combination at that level, it stops working everywhere else.</li>
+<li>Clean the entire history of your browser. That way, any bookmark that you create does not conflict with your history.</li>
+</ul>
+<h2 id="exam-tips">Exam Tips</h2>
+<ul>
+<li>
+<p>By heart the following config and set it up before the exam:</p>
+<ul>
+<li>
+<p>Create a <code>~/.vimrc</code> and enter the following config:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">set expandtab
+set tabstop<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+set shiftwidth<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+set paste
+</code></pre></div></li>
+<li>
+<p>Update <code>~/.bashrc</code> with the aliases and auto-completion:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">source &lt;<span style="color:#f92672">(</span>kubectl completion bash<span style="color:#f92672">)</span>
+alias k<span style="color:#f92672">=</span>kubectl
+complete -F __start_kubectl k
+
+alias kg<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kubectl get&#39;</span>
+alias kgp<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kubectl get pods&#39;</span>
+alias kl<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kubectl logs -f&#39;</span>
+alias kd<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kubectl describe&#39;</span>
+export <span style="color:#66d9ef">do</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--dry-run=client -o yaml&#34;</span>
+export del<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;--wait=0 --timeout=0 --force&#34;</span>
+
+change-ns <span style="color:#f92672">()</span>
+<span style="color:#f92672">{</span>
+    kubectl config set-context <span style="color:#66d9ef">$(</span>kubectl config current-context<span style="color:#66d9ef">)</span> --namespace $1
+<span style="color:#f92672">}</span>
+</code></pre></div><p><strong>NOTE</strong>: Use the aliases of your choice. These are what I use. You can copy the auto-completion config during the exam from these <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash">k8s docs here</a>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>During the exam, whenever a question is presented to you. The question also gives you a command to change the context. Along with changing the context using the command provided, also switch to the appropriate namespace. This reduces the time to type <code>-n namespace-name</code> on every namespaced command. It also reduces the anxiety of wondering if you typed the command in the correct namespace. Add the following alias to the exam terminal&rsquo;s <code>.bashrc</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">change-ns <span style="color:#f92672">()</span>
+<span style="color:#f92672">{</span>
+    kubectl config set-context <span style="color:#66d9ef">$(</span>kubectl config current-context<span style="color:#66d9ef">)</span> --namespace $1
+<span style="color:#f92672">}</span>
+</code></pre></div></li>
+<li>
+<p>I followed a mantra of not solving anything that has weightage less than equal to 5%. I use to flag these low-weightage questions to solve later.</p>
+</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>I hope you find these tips helpful. And all the best with your exam!</p>
+
+      </div>
+      <footer>
+        <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/cka/">cka</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/cks/">cks</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/cka/">cka</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/cks/">cks</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+      </footer>
+    </div>
+    
+      
+  <div class='post'>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
+  </article>
+  <div class="pagination">
+    
+    
+      <a href="/post/2021/08/sapiens/" class="button right"><span>Learnings from &#39;Sapiens&#39;</span></a>
+    
+  </div>
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent Posts</h1>
+      </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+  </a>
+        <header>
+          <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
+    <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
+  </a>
+        <header>
+          <h2><a href="/post/2021/06/reading-devices/">Reading Devices</a></h2>
+          <time class="published" datetime="2021-06-30 01:45:00 &#43;0530 IST">June 30, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/06/automatic-cert-gen/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/automatic-cert-gen/obama.jpg');">
+    <img src="https://suraj.io/post/2021/06/automatic-cert-gen/obama.jpg" alt="Self Signed Certificates">
+  </a>
+        <header>
+          <h2><a href="/post/2021/06/automatic-cert-gen/">How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
+          <time class="published" datetime="2021-06-25 09:00:00 &#43;0530 IST">June 25, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/06/systemd-service/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/systemd-service/systemd.png');">
+    <img src="https://suraj.io/post/2021/06/systemd-service/systemd.png" alt="Systemd">
+  </a>
+        <header>
+          <h2><a href="/post/2021/06/systemd-service/">How to create a Systemd daemon quickly?</a></h2>
+          <time class="published" datetime="2021-06-19 16:16:00 &#43;0530 IST">June 19, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See More</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+          
+          <li>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">34</span></a>
+          
+          <li>
+              <a href="/categories/notes/">notes<span class="count">21</span></a>
+          
+          <li>
+              <a href="/categories/non-tech/">non-tech<span class="count">14</span></a>
+          
+          <li>
+              <a href="/categories/security/">security<span class="count">13</span></a>
+          
+          <li>
+              <a href="/categories/productivity/">productivity<span class="count">9</span></a>
+          
+          <li>
+              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
+          
+          <li>
+              <a href="/categories/containers/">containers<span class="count">7</span></a>
+          
+          <li>
+              <a href="/categories/bash/">bash<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/event_report/">event_report<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/golang/">golang<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/packaging/">packaging<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/docker/">docker<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/host/">host<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/linux/">linux<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/cka/">cka<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/fedora/">fedora<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/kompose/">kompose<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/monitoring/">monitoring<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/notion/">notion<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/openshift/">openshift<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/programming/">programming<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/prometheus/">prometheus<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/certs/">certs<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/configuration/">configuration<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/desktop/">desktop<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/git/">git<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/ide/">ide<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/kms/">kms<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/minikube/">minikube<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/activism/">activism<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/backup/">backup<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/centos/">centos<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/cks/">cks<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/etcd/">etcd<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/flatcar/">flatcar<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/gaming/">gaming<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/gnome/">gnome<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/https/">https<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/jobs/">jobs<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/kubeadm/">kubeadm<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/lokomotive/">lokomotive<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/meetup/">meetup<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/project_management/">project_management<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/selinux/">selinux<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/systemd/">systemd<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/talks/">talks<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/vagrant/">vagrant<span class="count">1</span></a>
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I am a Senior Software Engineer at Microsoft, working on various tooling around container technology like Docker, Kubernetes, etc.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    © 2021 Suraj Deshmukh
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
+    <script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-97006720-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>
