@@ -19,6 +19,8 @@ This is not a book review. Instead, this is a book recommendation. Please go ahe
 
 Dr. Yuval Noah Harari is a professor at the Hebrew University. The story behind the book goes that while teaching History to his students, he gave some notes, the notes became popular among his students and other History studying students. Which he decided to publish as a book, and it topped various book charts. When it was translated to English, and then it became an international hit.
 
+If you are the kind of person who learns visually. [Here](https://www.goodreads.com/book/show/54110137-sapiens) is the graphic avatar of the book Sapiens.
+
 ## Sweeping Impressions
 
 The book is a mix of facts and insights. Not a lot of facts because it is a history of several millennia, so giving every fact is not possible in a ~400-page book. The book does not just go into Whats and Hows like most history books do. But most importantly, it asks Why and tries to answer those Whys. The book tries to answer big questions, which are generally accepted in general discourse. The book will open your eyes to some of the deepest held beliefs. But that does not mean the book is dogmatic about one way of thinking. Even with your deeply held beliefs, the book acknowledges that it is ok to have them. Everyone has one form or other forms of such beliefs. And these beliefs had evolutionary benefits. It is just that you should be aware of your beliefs and once in a while check if they are rational.
@@ -27,11 +29,14 @@ The book is a mix of facts and insights. Not a lot of facts because it is a hist
 
 ## Notes
 
+- As new archeological pieces of evidence are collected, our understanding of history becomes more precise.
+
 ### Cognitive Revolution
 
 - With the discovery of fire and subsequently cooking, we started to develop better brains. Earlier, the majority of our energy was spent digesting food. With cooked food, digestion became easier, and we no longer needed large guts. Thus, our brains could grow. This insight was also shared in the book "How Innovation Works."
 - Languages shaped our cognitive abilities, thus leading to the cognitive revolution. Unlike other social animals that have a method of communicating essential information, humans can go beyond that. The fact that you are reading this proves it. Language with rich vocabulary is an excellent tool for expressing feelings.
 - Our language has helped us co-operate better. It has given birth to common myths which bound us together, like religion, nationalism, etc. Other animals don't have such notions. This fiction has helped us to create big kingdoms, cities, nations, etc.
+- Our ability to co-operate is what makes us humans uniquely powerful. This ability has helped us undertake various events, from building pyramids to waging deadly wars.
 - "Collective Imagination" is when everyone (in the community) imagines the same thing.
 - The author speaks about objective and subjective reality. Other animals believe in "objective reality" only. For, e.g., consider a herd of deers and zebras munching on some grass, and if someone notices a lion, everyone starts running, be it zebra, deer, or human, because it is an "objective reality." But humans fear going near a graveyard in fear of ghosts. This is a form of some subjective reality created by some humans who think they have sighted ghosts. But stray dogs have no such qualms; they will go about as usual.
 - Other animals change their behaviors in the process of evolution, which takes a really long time. But we humans can change our behaviors by forming habits, and we can even pass these new behaviors to our offspring.
@@ -49,6 +54,7 @@ The book is a mix of facts and insights. Not a lot of facts because it is a hist
     > The stress of farming had far-reaching consequences. It was the foundation of large-scale political and social systems. Sadly, the diligent peasants almost never achieved the future economic security they so craved through their hard work in the present. Everywhere, rulers and elites sprang up, living off the peasants’ surplus food and leaving them with only a bare subsistence. These forfeited food surpluses fuelled politics, wars, art and philosophy. They built palaces, forts, monuments and temples. Until the late modern era, more than 90 per cent of humans were peasants who rose each morning to till the land by the sweat of their brows. The extra they produced fed the tiny minority of elites – kings, government officials, soldiers, priests, artists and thinkers – who fill the history books. History is something that very few people have been doing while everyone else was ploughing fields and carrying water buckets.
 
 - Agricultural Revolution led to crowded cities. While humans did not evolve to live in such huge crowds. To keep such crowded cities and empires together, human imagination developed shared myths. These myths filled the void created by slow evolution. These myths included religions, companies, nations, etc. It is just not in our DNA to be part of such enormous groups.
+- "If you tell a lie big enough and keep repeating it, people will eventually come to believe it." - Joseph Goebbels (chief propagandist for the Nazi Party, and then Reich Minister of Propaganda). This is very true for the religions and gods that humans have created.
 - We have developed various hierarchies in our societies. These imagined orders need continuous work to keep them in place. These orders are based on myths, and myths are valid as long as there are believers of the legend.
 - Here is a recipe for creating an imagined order:
     - First, don't say it is an imagined order.
@@ -58,6 +64,7 @@ The book is a mix of facts and insights. Not a lot of facts because it is a hist
     - The tokens of imagined reality are so embedded in our material world that the believers seldom question its authenticity.
     - The imagined order works on the consensus, as in we always need enough people of the group to believe the imagined order so that others also fall into the trap. If there are not enough people, then the imagined order will collapse.
 - Unlike honey bees, whose social order is developed due to evolution, ours is a result of our imagination.
+- The agricultural revolution caused many problems for humans. The deeply rooted hierarchies that we see in societies today were first forged due to the Agricultural revolution. This does not mean that we can go back to the hunter-gatherer lifestyle. We can't feed so many people with that approach.
 - Imagined hierarchies, just like imagined orders, are about placing humans at various strata of the social pyramid. So think of it like in an imagined order there could be multiple imagined hierarchies.
 - Hindus who believe in caste legitimized it saying it is a divine creation written in Vedas.
 
@@ -88,7 +95,7 @@ The book is a mix of facts and insights. Not a lot of facts because it is a hist
 
     > Why do I believe in the cowry shell or gold coin or dollar bill? Because my neighbours believe in them. And my neighbours believe in them because I believe in them. And we all believe in them because our king believes in them and demands them in taxes, and because our priest believes in them and demands them in tithes.
 
-- Money is the most ingenious system devised by humans. It will enable anybody to co-operate, regardless of their caste, creed, race, color, gender, etc.
+- Money is the most ingenious system devised by humans. It will enable anybody to co-operate, regardless of their caste, creed, race, color, gender, etc. Watch [this video](https://youtu.be/S1Om2rSQcDE) which explains, visually, how money is imaginary.
 - This line reminds me of the book ["Shivaji Kon Hota."](https://www.goodreads.com/book/show/27808164-shivaji-kon-hota) There the author says that in the Mughal period, the peasants hardly knew who their rulers were. Even if the land went from Mughalshahi to Adilshahi, the peasants were ignorant because they paid taxes no matter who ruled. Also, they were paying taxes despite the produce. They were never given rebates, and exploitation was rampant. But with the change of regime to Shivaji Maharaj, he ensured that the tax was collected only when there was a yield. There were various subsidies and help from the Swaraj. So people started taking notice of this new magnanimous ruler.
 
     > In many cases, the destruction of one empire hardly meant independence for subject peoples. Instead, a new empire stepped into the vacuum created when the old one collapsed or retreated.
@@ -100,6 +107,8 @@ The book is a mix of facts and insights. Not a lot of facts because it is a hist
 - Polytheist religions have been more tolerant than monotheist religions. Many monotheist religions believe in one God but find it hard to worship that one God, so they invented other worship entities like Saints, Pirs, etc. There are many inconsistencies in monotheism regarding the hegemony of one God vs. the constant attacks from Satan. Who is more powerful? Who created Satan? If God was so powerful, why did it not stop Satan from coming into existence in the first place?
 
     > monotheism, as it has played out in history, is a kaleidoscope of monotheist, dualist, polytheist and animist legacies, jumbling together under a single divine umbrella. The average Christian believes in the monotheist God, but also in the dualist Devil, in polytheist saints, and in animist ghosts. Scholars of religion have a name for this simultaneous avowal of different and even contradictory ideas and the combination of rituals and practices taken from different sources. It’s called syncretism. Syncretism might, in fact, be the single great world religion.
+
+- Religions have a guard work set up against rationally curious people. They (self-proclaimed saints) warn the believers against anyone trying to question them against their beliefs. They sanctify particular book(s) as god's word. They convince all the believers that our belief has been attacked in the past, but it survived despite those attacks. You need to stay firm in your beliefs and not let your guard down. They also encourage the believers to take arms in the fight of religion if the need arises. Due to this indoctrination of believers, it is hard for them to think otherwise. Rather, they become more defensive whenever a rational person challenges their beliefs. This is what Dr. Babasaheb Amedkar did in his book "Annihilation of Castes," he challenged the sanctity of the Shastras that validated the caste system.
 
 - Our mind is a pendulum constantly bobbing between the desire to retain pleasure and the restlessness of avoiding pain.
 
@@ -159,6 +168,7 @@ The book is a mix of facts and insights. Not a lot of facts because it is a hist
     > The Industrial Revolution brought about dozens of major upheavals in human society. Adapting to industrial time is just one of them. Other notable examples include urbanisation, the disappearance of the peasantry, the rise of the industrial proletariat, the empowerment of the common person, democratisation, youth culture and the disintegration of patriarchy.
 
 - The state and the market brought about Individualism. All the needs of an individual were provided by family, community, and religion in the early days. They are now satisfied by state and market.
+- There are two types of religions in this world, theistic and atheistic. The traditional god-ful religions a.k.a. theistic religions. And then the new atheistic religions that hide behind the veil of ideologies. For e.g., capitalism, humanism, socialism, communism, etc.
 - The cost of the conventional war has gone up. Nuclear weapons have brought the ultimate peace. Now countries honing them rarely go on war head-on because that becomes a source of collective suicide. And due to globalization, it is hard to go to war since, on the one hand, going to war affects everyone. The businesses lobby the government to avoid conflict at all costs. For, e.g., in 1999, during the India Pakistan war, the American companies lobbied hard in India and Pakistan to a ceasefire.
 - Definition of Happiness:
 
@@ -176,6 +186,10 @@ The book is a mix of facts and insights. Not a lot of facts because it is a hist
 
 > History teaches us that what seems to be just around the corner may never materialise due to unforeseen barriers, and that other unimagined scenarios will in fact come to pass.
 
+- I had come to the conclusion that Indian society is eventually gonna be liberal before reading the book. But the book emphasizes that the entire world would move in that direction. Although orthodox Indians label such change in the society as degradation and western influence.
+
+- Test to check if something is imagined or real: Always ask if that thing suffers? A nation loses a war, but the country never suffers. It is the citizens that suffer. A company could go bankrupt; as a result, the company does not suffer, but the employees do. More too often, we put real entities into suffering in the service of imaginary entities.
+
 ## References and Links
 
 - [Book Link on Goodreads](https://www.goodreads.com/book/show/23198201-sapiens).
@@ -192,6 +206,7 @@ The book is a mix of facts and insights. Not a lot of facts because it is a hist
 - [The 2 Most Important Skills For the Rest Of Your Life | Yuval Noah Harari on Impact Theory](https://www.youtube.com/watch?v=x6tMLAjPVyo).
 - [Nationalism vs. globalism: the new political divide | Yuval Noah Harari](https://www.youtube.com/watch?v=szt7f5NmE9E).
 - [Homo Deus: A Brief History of Tomorrow with Yuval Noah Harari](https://www.youtube.com/watch?v=4ChHc5jhZxs).
+- [Money Is Imaginary. Should You Trust It?](https://youtu.be/S1Om2rSQcDE).
 
 ### Footnotes
 

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.88.1" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="How to import &#39;any&#39; Kubernetes package into your project?">
   <meta property="og:description" content="Blog">
   <meta property="description" content="Blog">
@@ -260,7 +260,7 @@
 <p>So it consists of a couple of inbuilt packages, and then the CLI library <a href="https://github.com/spf13/cobra">Cobra</a>, a couple of <a href="https://github.com/kubernetes/client-go">client-go</a> packages. The only out of the ordinary thing is the <code>k8s.io/kubernetes/test/utils</code> package.</p>
 <h2 id="importing">Importing</h2>
 <p>Let us tidy up the dependencies before building the code:</p>
-<pre><code>$ go get github.com/spf13/cobra \
+<pre tabindex="0"><code>$ go get github.com/spf13/cobra \
 &gt;        k8s.io/client-go/util/cert \
 &gt;        k8s.io/client-go/util/keyutil \
 &gt;        k8s.io/kubernetes/test/utils
@@ -272,7 +272,7 @@ go get: k8s.io/kubernetes@v1.15.0-alpha.0 updating to
         k8s.io/kubernetes@v1.21.1 requires
         k8s.io/api@v0.0.0: reading k8s.io/api/go.mod at revision v0.0.0: unknown revision v0.0.0
 </code></pre><p>Now, this is a weird error:</p>
-<pre><code>k8s.io/api@v0.0.0: reading k8s.io/api/go.mod at revision v0.0.0: unknown revision v0.0.0
+<pre tabindex="0"><code>k8s.io/api@v0.0.0: reading k8s.io/api/go.mod at revision v0.0.0: unknown revision v0.0.0
 </code></pre><h2 id="tldr-give-me-the-solution">tl;dr Give me the solution</h2>
 <p><strong>NOTE</strong>: Please read the &ldquo;Caveats&rdquo; section before you venture into using this solution.</p>
 <p>Save the following bash script in <code>download-deps.sh</code>:</p>
@@ -309,7 +309,7 @@ go mod download
 </code></pre></div><p>Make the script usable:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod u+x download-deps.sh
 </code></pre></div><p>Use the following script. It will update the <code>go.mod</code> file with the required dependencies:</p>
-<pre><code class="language-consle" data-lang="consle">$ ./download-deps.sh v1.21.0
+<pre tabindex="0"><code class="language-consle" data-lang="consle">$ ./download-deps.sh v1.21.0
 go: downloading k8s.io/kubernetes v1.21.0
 go get: added k8s.io/kubernetes v1.21.0
 </code></pre><p>Now you can build your code! Keep reading further to understand why this happens.</p>
@@ -736,7 +736,7 @@ go get: added k8s.io/kubernetes v1.21.0
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.88.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.88.1" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Adding new worker to existing Kubernetes cluster">
   <meta property="og:description" content="Step by step guide to add new node">
   <meta property="description" content="Step by step guide to add new node">
@@ -306,7 +306,7 @@ mv -v cfssljson_linux-amd64 /usr/local/bin/cfssljson
 <li><code>/etc/systemd/system/kube-proxy.service</code></li>
 </ul>
 <p>Following steps here help you re-create them if you can&rsquo;t access those from other nodes, follow them from <a href="https://github.com/surajssd/scripts/blob/master/shell/add-node-to-k8s/add-node.sh#L114-L186">here</a>:</p>
-<pre><code># generate the 99-loopback.conf common for all the workers, can be copied
+<pre tabindex="0"><code># generate the 99-loopback.conf common for all the workers, can be copied
 cat &gt; 99-loopback.conf &lt;&lt;EOF
 {
     &quot;cniVersion&quot;: &quot;0.3.1&quot;,
@@ -388,7 +388,7 @@ EOF
 <ul>
 <li>The <code>cri-o</code> daemon&rsquo;s systemd service file.</li>
 </ul>
-<pre><code># generate the service file for the crio daemon, specific to node
+<pre tabindex="0"><code># generate the service file for the crio daemon, specific to node
 cat &gt; ${hostname}-crio.service &lt;&lt;EOF
 [Unit]
 Description=CRI-O daemon
@@ -462,7 +462,7 @@ kubectl config use-context default --kubeconfig<span style="color:#f92672">=</sp
 </code></pre></div><ul>
 <li>Now create <code>kubelet</code> systemd service file:</li>
 </ul>
-<pre><code>cat &gt; ${hostname}-kubelet.service &lt;&lt;EOF
+<pre tabindex="0"><code>cat &gt; ${hostname}-kubelet.service &lt;&lt;EOF
 [Unit]
 Description=Kubernetes Kubelet
 Documentation=https://github.com/GoogleCloudPlatform/kubernetes
@@ -882,7 +882,7 @@ worker-2   Ready     &lt;none&gt;    38m       v1.11.2   192.168.199.22   &lt;no
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.88.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

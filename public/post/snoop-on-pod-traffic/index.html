@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.88.1" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Watch Container Traffic Without Exec">
   <meta property="og:description" content="How to watch the traffic of a container or a pod without execing into the pod/contaienr?">
   <meta property="description" content="How to watch the traffic of a container or a pod without execing into the pod/contaienr?">
@@ -296,7 +296,7 @@ E..@..@.@.9..........@..wJE...P.....XX.....
 </code></pre></div><p>There you go, the output shows that the target server <code>172.17.0.1:8000</code> is responding over <code>HTTP</code> protocol <code>I am Server</code>.</p>
 <h2 id="with-kubernetes">With Kubernetes</h2>
 <p>The same can be achieved with Kubernetes as well. Follow these steps:</p>
-<pre><code>docker ps | grep &lt;pod-initial&gt;
+<pre tabindex="0"><code>docker ps | grep &lt;pod-initial&gt;
 ID= // take docker id by hand
 PID=`docker inspect --format '{{.State.Pid}}' $ID`
 sudo nsenter -t $PID -n tcpdump
@@ -669,7 +669,7 @@ sudo nsenter -t $PID -n tcpdump
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.88.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.88.1" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Add new Node to k8s cluster with cert rotation">
   <meta property="og:description" content="Use this technique to add node to the cluster without providing any certificates">
   <meta property="description" content="Use this technique to add node to the cluster without providing any certificates">
@@ -308,7 +308,7 @@ kubectl create clusterrolebinding node-client-auto-renew-crt <span style="color:
 </span><span style="color:#ae81ff"></span>    --group<span style="color:#f92672">=</span>system:nodes
 </code></pre></div><h2 id="worker-node">worker node</h2>
 <p>First create a bootstrap kubeconfig file that will be used by <code>kubelet</code>. Run following commands to create it.</p>
-<pre><code># I have used the ip address of my api-server use yours
+<pre tabindex="0"><code># I have used the ip address of my api-server use yours
 kubectl config set-cluster kthw \
   --certificate-authority=ca.pem \
   --embed-certs=true \
@@ -751,7 +751,7 @@ node   Ready    &lt;none&gt;   27s   v1.12.0
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.88.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

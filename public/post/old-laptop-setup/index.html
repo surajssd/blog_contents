@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.88.1" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Old laptop setup reference">
   <meta property="og:description" content="Links and things to do while setting up older Dell Inspiron 1525">
   <meta property="description" content="Links and things to do while setting up older Dell Inspiron 1525">
@@ -241,7 +241,7 @@
         <p>I have this old PC Dell Inspiron 1525 with 2GB RAM and 32 bit dual core processor and I wanted to install fedora on it, but I cam accross few problems which I am documenting for further reference.</p>
 <h2 id="wifi-device-not-detected">Wifi device not detected</h2>
 <p>The wifi drivers are not loaded by default, so followed this blog, basically do following:</p>
-<pre><code>export FIRMWARE_INSTALL_DIR=&quot;/lib/firmware&quot;
+<pre tabindex="0"><code>export FIRMWARE_INSTALL_DIR=&quot;/lib/firmware&quot;
 wget http://mirror2.openwrt.org/sources/broadcom-wl-5.100.138.tar.bz2
 tar xjf broadcom-wl-5.100.138.tar.bz2
 cd broadcom-wl-5.100.138/linux/
@@ -249,9 +249,9 @@ cd broadcom-wl-5.100.138/linux/
 sudo b43-fwcutter -w /lib/firmware wl_apsta.o
 </code></pre><h2 id="slow-boot-problem">Slow boot problem</h2>
 <p>Since the boot process is very slow so add this line to <code>/etc/default/grub</code></p>
-<pre><code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash video=SVIDEO-1:d&quot;
+<pre tabindex="0"><code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash video=SVIDEO-1:d&quot;
 </code></pre><p>Update grub using</p>
-<pre><code>grub2-mkconfig -o /boot/grub2/grub.cfg
+<pre tabindex="0"><code>grub2-mkconfig -o /boot/grub2/grub.cfg
 </code></pre><h2 id="continual-reporting-of-issues">Continual reporting of issues</h2>
 <p>Disabled SELinux and it stopped reporting those issues. For which just change the line from <code>SELinux=enforcing</code> to <code>SELinux=disabled</code> in <code>/etc/sysconfig/selinux</code>. Need to figure out why those errors were reported in a loop.</p>
 <p>Ref:</p>
@@ -618,7 +618,7 @@ sudo b43-fwcutter -w /lib/firmware wl_apsta.o
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.88.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.88.1" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Add new Node to k8s cluster with Bootstrap token">
   <meta property="og:description" content="Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver">
   <meta property="description" content="Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver">
@@ -246,7 +246,7 @@
 <h1 id="master-node-changes">Master Node changes</h1>
 <h2 id="kube-apiserver">kube-apiserver</h2>
 <p>Add this flag <code>--enable-bootstrap-token-auth=true</code> to your <code>kube-apiserver</code> service file. In the end your service file should look like following:</p>
-<pre><code>cat &lt;&lt;EOF | sudo tee /etc/systemd/system/kube-apiserver.service
+<pre tabindex="0"><code>cat &lt;&lt;EOF | sudo tee /etc/systemd/system/kube-apiserver.service
 [Unit]
 Description=Kubernetes API Server
 Documentation=https://github.com/kubernetes/kubernetes
@@ -291,7 +291,7 @@ WantedBy=multi-user.target
 EOF
 </code></pre><h2 id="kube-controller-manager">kube-controller-manager</h2>
 <p>Add following flag <code>--controllers=*,bootstrapsigner,tokencleaner</code> to the controller manager service file. So service file should look like following:</p>
-<pre><code>cat &lt;&lt;EOF | sudo tee /etc/systemd/system/kube-controller-manager.service
+<pre tabindex="0"><code>cat &lt;&lt;EOF | sudo tee /etc/systemd/system/kube-controller-manager.service
 [Unit]
 Description=Kubernetes Controller Manager
 Documentation=https://github.com/kubernetes/kubernetes
@@ -320,7 +320,7 @@ EOF
 </code></pre><h2 id="bootstrap-secret">Bootstrap secret</h2>
 <p>The bootstrap token that we are using to setup is <code>07401b.f395accd246ae52d</code>(You can generate one of yourself). This token has two parts <code>07401b</code> which is public id and private part <code>f395accd246ae52d</code> a secret. Read more about the token, what is allowed and what it should look like <a href="https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/#enabling-bootstrap-token-authentication">here</a>. And about the bootstrap token secret format <a href="https://kubernetes.io/docs/reference/access-authn-authz/bootstrap-tokens/#bootstrap-token-secret-format">here</a>.</p>
 <p>Create following secret which has certain requirements. The name of the secret should of the format <code>bootstrap-token-&lt;token public id&gt;</code> and should be available in <code>kube-system</code> namespace.</p>
-<pre><code>cat &lt;&lt;EOF | kubectl apply --kubeconfig admin.kubeconfig -f -
+<pre tabindex="0"><code>cat &lt;&lt;EOF | kubectl apply --kubeconfig admin.kubeconfig -f -
 apiVersion: v1
 kind: Secret
 metadata:
@@ -359,7 +359,7 @@ kubectl create clusterrolebinding node-autoapprove-certificate-rotation <span st
 <h2 id="kubelet">Kubelet</h2>
 <p>Add this flag <code>--bootstrap-kubeconfig</code>, it is a path to kubeconfig which we will generate shortly, it contains bootstrap token and information to talk to the <code>kube-apiserver</code>. And also you don&rsquo;t need to provide <code>--kubeconfig</code> but provide a path to it, this will be auto-generated and saved at that path.</p>
 <p>Your kubelet service file should look like following:</p>
-<pre><code>cat &lt;&lt;EOF | sudo tee /etc/systemd/system/kubelet.service
+<pre tabindex="0"><code>cat &lt;&lt;EOF | sudo tee /etc/systemd/system/kubelet.service
 [Unit]
 Description=Kubernetes Kubelet
 Documentation=https://github.com/kubernetes/kubernetes
@@ -384,7 +384,7 @@ RestartSec=5
 WantedBy=multi-user.target
 EOF
 </code></pre><p>Now changes in kubelet configuration file</p>
-<pre><code>cat &lt;&lt;EOF | sudo tee /var/lib/kubelet/kubelet-config.yaml
+<pre tabindex="0"><code>cat &lt;&lt;EOF | sudo tee /var/lib/kubelet/kubelet-config.yaml
 kind: KubeletConfiguration
 apiVersion: kubelet.config.k8s.io/v1beta1
 authentication:
@@ -787,7 +787,7 @@ kubectl config use-context default <span style="color:#ae81ff">\
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.88.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

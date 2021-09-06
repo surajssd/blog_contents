@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.87.0" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.88.1" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Quick PV for local Kubernetes cluster">
   <meta property="og:description" content="A hostPath based local PV creation process for using via PVC">
   <meta property="description" content="A hostPath based local PV creation process for using via PVC">
@@ -249,7 +249,7 @@ chmod <span style="color:#ae81ff">777</span> /tmp/pv0001
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo chcon -R -t svirt_sandbox_file_t /tmp/pv0001
 </code></pre></div><h3 id="creating-pv">Creating <code>pv</code></h3>
 <p>Create file with following content</p>
-<pre><code>$ cat pv.yaml
+<pre tabindex="0"><code>$ cat pv.yaml
 apiVersion: &quot;v1&quot;
 kind: &quot;PersistentVolume&quot;
 metadata:
@@ -628,7 +628,7 @@ spec:
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.87.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.88.1' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
