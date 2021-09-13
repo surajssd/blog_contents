@@ -30,13 +30,17 @@ Thus everything feels like work. All the aforementioned experiences had differen
 
 A particular environment evokes a certain type of behavior out of people. Like a bar is designed so that you drink more or at least order more. A library has a vibe of reading and being quiet. A casino is flashy, and you can hardly think straight. A conference is a place to network with people and pollinate ideas leading to serendipitous discoveries and inventions.
 
-As described by James Clear in his book Atomic Habits, any behavior or habitual action is triggered by a cue, and then you crave for it, you respond to that cue using some action, and finally, you are rewarded for that action. Almost all behaviors have this cue-craving-response-reward cycle. Hence environment plays a significant role since it is filled with various cues. If a work environment gets filled with new non-work cues, you are more distracted while doing work.
+As described by James Clear in his book [Atomic Habits](https://www.goodreads.com/book/show/40121378-atomic-habits), any behavior or habitual action is triggered by a cue, and then you crave for it, you respond to that cue using some action, and finally, you are rewarded for that action. Almost all behaviors have this cue-craving-response-reward cycle. Hence environment plays a significant role since it is filled with various cues. If a work environment gets filled with new non-work cues, you are more distracted while doing work.
 
 James also propounds the idea that you form a relationship with things and places. If the couch in your living room is where you spend time reading books, you will feel like reading every time you are around that couch. At the same time, if someone else spends time watching TV on their couch, then that couch will provoke them to turn on the TV. Depending on your relationship, you will behave differently.
+
+> Whenever possible, avoid mixing the context of one habit with an other. When you start mixing contexts, you'll start mixing habits and the easier ones will usually win out. — Atomic Habits, James Clear (Chapter 6)
 
 ## The Principle of Single Association
 
 I am a big fan of single associations. A place for a particular type of action, a device for specific digital work, etc. To give you an example of digital usage, I like to use different apps even if they offer a web version (albeit there are some exceptions). I use the Kindle for reading ebooks and iPad to read anything that isn’t available on the Kindle or can’t be read on Kindle e-reader. If everything is accessed from a browser, that is a huge source of distraction, and you may feel overwhelmed.
+
+Read more about this [here](https://www.sparringmind.com/changing-habits).
 
 ## Way forward
 
