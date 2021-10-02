@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # This script takes in commit message as an argument and then builds the
 # website using hugo. Copies the output to the repo of website and does.
