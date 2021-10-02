@@ -15,11 +15,11 @@ This is not a book review. Instead, this is a book recommendation. Please go ahe
 
 > I encourage all of us, whatever our beliefs, to question the basic narratives of our world, to connect past developments with present concerns, and not to be afraid of controversial issues — Dr. Yuval Noah Harari
 
-["**Sapiens: A Brief History of Humankind**"](https://www.goodreads.com/book/show/23198201-sapiens) is written by Yuval Noah Harari. The book was initially published in Hebrew and later translated to English and many different languages. It fits into the History genre, but I would like to categorize it as a life-changing genre if there is such a genre. The book is just shy of 450 pages, but don't go by its page count. The book is so gripping that you may finish it in a couple of days if you are really at it.
+["**Sapiens: A Brief History of Humankind**"](https://amzn.to/3A97INy) is written by Yuval Noah Harari. The book was initially published in Hebrew and later translated to English and many different languages. It fits into the History genre, but I would like to categorize it as a life-changing genre if there is such a genre. The book is just shy of 450 pages, but don't go by its page count. The book is so gripping that you may finish it in a couple of days if you are really at it.
 
 Dr. Yuval Noah Harari is a professor at the Hebrew University. The story behind the book goes that while teaching History to his students, he gave some notes, the notes became popular among his students and other History studying students. Which he decided to publish as a book, and it topped various book charts. When it was translated to English, and then it became an international hit.
 
-If you are the kind of person who learns visually. [Here](https://www.goodreads.com/book/show/54110137-sapiens) is the graphic avatar of the book Sapiens.
+If you are the kind of person who learns visually. [Here](https://amzn.to/3ithAf0) is the graphic avatar of the book Sapiens.
 
 ## Sweeping Impressions
 

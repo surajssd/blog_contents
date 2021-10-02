@@ -7,7 +7,7 @@ categories = ["book-review", "non-tech"]
 tags = ["book-review", "non-tech"]
 +++
 
-I recently finished this book [**Einstein: His Life and Universe by Walter Isaacson**](https://www.goodreads.com/book/show/19031590-einstein). And here are my thoughts on the book.
+I recently finished this book [**Einstein: His Life and Universe by Walter Isaacson**](https://amzn.to/3l8Rdgd). And here are my thoughts on the book.
 
 ![Albert Einstein](/images/book-review-einstein/einstein.jpg "Albert Einstein")
 

@@ -13,7 +13,7 @@ images:
 
 ## Introduction
 
-I recently finished reading the book: ["How Innovation Works: And Why It Flourishes in Freedom"](https://www.goodreads.com/book/show/52219273-how-innovation-works) by [Matt Ridley](https://en.wikipedia.org/wiki/Matt_Ridley). The book was published less than a year ago in May 2020, and it is a short read of fewer than four hundred pages. I am not sure how to categorise this book, it probably falls into business, science and/or technological history.
+I recently finished reading the book: ["How Innovation Works: And Why It Flourishes in Freedom"](https://amzn.to/2WCjUZo) by [Matt Ridley](https://en.wikipedia.org/wiki/Matt_Ridley). The book was published less than a year ago in May 2020, and it is a short read of fewer than four hundred pages. I am not sure how to categorise this book, it probably falls into business, science and/or technological history.
 
 While listening to [Naval Ravikant](https://en.wikipedia.org/wiki/Naval_Ravikant)'s podcast, I found this book when Matt Ridley, the author, was a guest [in one episode](https://nav.al/matt-ridley). I was profoundly influenced by the introduction of the book I got in the podcast.
 

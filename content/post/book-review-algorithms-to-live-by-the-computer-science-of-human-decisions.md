@@ -9,7 +9,7 @@ tags = ["book-review", "non-tech"]
 
 ## Introduction
 
-The book ["Algorithms to Live by — The Computer Science of Human Decisions"](https://www.goodreads.com/book/show/25666050-algorithms-to-live-by) is written by "Brian Christian and Tom Griffiths". It fits into the genre non-fiction, psychology and computer science. The book is written lucidly. If you have a background in computer science, then this book is easy to follow. The book creates analogies of computer science algorithms with real-life situations. I felt that some metaphors sound good in reading than their application, so if you plan on applying the things explained in the book directly to your life, they might not work. Because real-life has a lot of constraints that can be simplified in a computer algorithm to solve a problem, so the algorithms don't apply vis-à-vis.
+The book ["Algorithms to Live by — The Computer Science of Human Decisions"](https://amzn.to/2ZRVUTh) is written by "Brian Christian and Tom Griffiths". It fits into the genre non-fiction, psychology and computer science. The book is written lucidly. If you have a background in computer science, then this book is easy to follow. The book creates analogies of computer science algorithms with real-life situations. I felt that some metaphors sound good in reading than their application, so if you plan on applying the things explained in the book directly to your life, they might not work. Because real-life has a lot of constraints that can be simplified in a computer algorithm to solve a problem, so the algorithms don't apply vis-à-vis.
 
 ![Book Cover](/images/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/algorithms-to-live-by-cover.jpg "Book Cover")
 

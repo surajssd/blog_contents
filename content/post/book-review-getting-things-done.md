@@ -9,7 +9,7 @@ tags = ["book-review", "non-tech", "notion"]
 
 ## Introduction
 
-Recently I completed the book called **Getting Things Done: The Art of Stress-free Productivity by David Allen**. I read the book on my kindle e-reader device, and as the name suggests, it is a self-help category book and about three hundred pages long.
+Recently I completed the book called [**Getting Things Done: The Art of Stress-free Productivity by David Allen**](https://amzn.to/39ZywVK). I read the book on my kindle e-reader device, and as the name suggests, it is a self-help category book and about three hundred pages long.
 
 The book is an extraordinary walkthrough of how to set up a system that will help you navigate your daily tasks without missing any of them. This system then enables you to patch up the crevices of your memory from which day-to-day tasks fall through.
 
