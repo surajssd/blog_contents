@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Learnings from &#39;Atomic Habits&#39; - Suraj Deshmukh</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.88.1" /><meta property="og:site_name" content="Suraj Deshmukh">
+  <meta property="og:title" content="Learnings from &#39;Atomic Habits&#39;">
+  <meta property="og:description" content="Atomic Habits: An Easy &amp; Proven Way to Build Good Habits &amp; Break Bad Ones">
+  <meta property="description" content="Atomic Habits: An Easy &amp; Proven Way to Build Good Habits &amp; Break Bad Ones">
+  <meta property="og:url" content="https://suraj.io/post/2021/10/atomic-habits/">
+  <meta property="og:type" content="article">
+  
+    
+      <meta property="og:image" content="https://suraj.io/post/2021/10/atomic-habits/logo.jpg">
+      <meta property="og:image:alt" content="Atomic Habits">
+    
+  
+  
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
+          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          Learnings from &#39;Atomic Habits&#39;
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+        
+      
+        
+          
+          <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+        
+      
+        
+          
+          <a href="/post/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+        
+      
+        
+          
+          <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+        
+      
+      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
+      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
+    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  <menu id="lang-menu" class="flyout-menu menu">
+  <a href="#" lang="en" class="nav link active">English (en)</a>
+  
+    
+      
+    
+  
+</menu>
+
+  
+    <menu id="share-menu" class="flyout-menu menu">
+      <h1>Share Post</h1>
+      
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Learnings%20from%20%27Atomic%20Habits%27&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f10%2fatomic-habits%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f10%2fatomic-habits%2f&amp;title=Learnings%20from%20%27Atomic%20Habits%27" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <p>Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f10%2fatomic-habits%2f&amp;title=Learnings%20from%20%27Atomic%20Habits%27" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f10%2fatomic-habits%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <p>Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f10%2fatomic-habits%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+    </menu>
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" >
+  <a href="/"><img src="https://github.com/surajssd.png" class="square" width="100" alt="Suraj Deshmukh" /></a>
+  <header>
+    <h1>Blog</h1>
+  </header>
+  <main>
+    <p>containers, programming, golang, hacks, kubernetes, productivity, books</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article>
+    <div class="post">
+      <header>
+  <div class="title">
+    
+      <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
+    
+    
+      <p>Atomic Habits: An Easy &amp; Proven Way to Build Good Habits &amp; Break Bad Ones</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+    <p>Suraj Deshmukh</p>
+    <p>11-Minute Read</p>
+  </div>
+</header>
+
+      <div id="socnet-share">
+        
+
+
+
+
+  
+    
+    <a href="//twitter.com/share?text=Learnings%20from%20%27Atomic%20Habits%27&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f10%2fatomic-habits%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
+        <p>Twitter</p>
+      </a>
+  
+
+  
+    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f10%2fatomic-habits%2f&amp;title=Learnings%20from%20%27Atomic%20Habits%27" target="_blank" rel="noopener" class="nav share-btn reddit">
+          <p>Reddit</p>
+        </a>
+  
+
+  
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f10%2fatomic-habits%2f&amp;title=Learnings%20from%20%27Atomic%20Habits%27" target="_blank" rel="noopener" class="nav share-btn linkedin">
+            <p>LinkedIn</p>
+          </a>
+  
+
+  
+      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f10%2fatomic-habits%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
+        <p>Facebook</p>
+        </a>
+  
+
+  
+        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2f2021%2f10%2fatomic-habits%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
+          <p>Email</p>
+        </a>
+  
+
+
+      </div>
+      <div class="content">
+        <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+  </a>
+        <p>Yet again, this is not a book review, instead, go ahead and read the book <a href="https://amzn.to/3GpIb6P">Atomic Habits</a>. I can&rsquo;t recommend it enough.</p>
+<p>Written by James Clear, the book is not a theoretical text just talking about habits. Rather, it is a handbook that goes into the depth of how habits form, how they can be fostered, how human evolution hinders good habit formation in today&rsquo;s world, etc. It gives you practical tips and actions on setting good habits and breaking bad ones.</p>
+<p>A lot of tips and tricks have been formalized by the author from his personal experiences. The author draws a lot of background material on habit formation, human psychology, human evolution, genetic behaviors, etc., from the research that has already happened. You may already be performing habits/techniques mentioned in the book, but having a vocabulary for specific behavior helps form conversation and communicate ideas efficiently.</p>
+<p>I won&rsquo;t recommend reading this book cover-to-cover. Take this three hundred-page book, read one chapter a day. Internalize the techniques, digest the ideas, and see how you can apply them in your life.</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>
+<p>When forming new habits, it can be frustrating, especially when we start and when some change shows up.</p>
+</li>
+<li>
+<p>The results of compounding are hidden at first the essential component of compounding is time. As time passes the results become apparent and sometimes surpass what you would expect.</p>
+</li>
+<li>
+<p>The result of any habit (either good or bad) works the way compounding does. In the early stages, it seems like nothing is moving, but in the later stages, significant results show up.</p>
+</li>
+<li>
+<p>Other people see that this was an overnight success when a lot of effort went in for so many days before the final blow made it look like an overnight success.</p>
+</li>
+<li>
+<p>When setting a goal, also deliberate about the process. Just setting a goal won&rsquo;t do. Plan for small daily steps, even for big projects.</p>
+</li>
+<li>
+<p>The author downplays the Goals a lot. But in my opinion goals act as a north star. Unlike the sports example given in the book, other life goals are complicated and need to be adequately defined. Just doing the same work daily with habits won&rsquo;t help. It is a process where you define big goals, divide them into projects, and divide those projects into actionable tasks, as <a href="https://amzn.to/3pAluqz">David Allen</a> has described in <a href="https://suraj.io/post/book-review-getting-things-done/">&ldquo;Getting Things Done.&quot;</a></p>
+</li>
+<li>
+<p>I think we need to create a nomenclature for types of goals. Not all goals are the same. Some goals are a one-time thing, while some other are recurring goals. One-time goals don&rsquo;t come under &ldquo;Achieving Goals is Momentary&rdquo; rules. One-time goals like &ldquo;starting a company&rdquo; or &ldquo;writing a book&rdquo; may not need daily changes or the same daily actions. The author comes from a sports background; hence he thinks that way. A sports team may have a goal like always being top of the game.</p>
+</li>
+<li>
+<p>Treat the cause, not the symptoms of a problem. If you clean up the mess once and then don&rsquo;t change habits that caused the chaos in the first place, here you are, just treating symptoms. The mess will form again quickly.</p>
+</li>
+<li>
+<p>There are many ways to achieve success. The goals that we have defined are not the only path. Deliberate on what success looks like to you. Once you do that, which goals finish successfully and which ones fail does not matter as long as you have achieved the success.</p>
+</li>
+</ul>
+<p><img src="/post/2021/10/atomic-habits/path-to-success.png" alt="Various paths to success" title="Various paths to success"></p>
+<ul>
+<li>
+<p>For most habits we start out by thinking about the outcomes. Author emphasises on forming identity first.</p>
+</li>
+<li>
+<p>First, change your belief. Believe in what you want to become. If you wanna lose weight, don&rsquo;t think you are fat and want to lose weight. Instead, believe that you are fit and already in control. Or when offered junk food, resist by saying I am healthy I don&rsquo;t need to sabotage my health by eating this junk.</p>
+</li>
+<li>
+<p>To change behavior or habits, you need to internalize that you are so and so. For example, if a person wants to be rich but spends a lot won&rsquo;t stay rich. The belief and habits are incongruent.</p>
+</li>
+<li>
+<p>You don&rsquo;t need motivation when a habit becomes part of your identity. For e.g., I don&rsquo;t need the motivation to read a book; it is simply my identity that I am a reader. Similarly, one of my friend does not require the motivation to go to the gym; It is merely his identity that he is a bodybuilder.</p>
+</li>
+<li>
+<p>This identity thing works both ways. Some people have self-sabotaging identities as well. Like I can&rsquo;t read the entire book, I can never walk that long, etc.</p>
+</li>
+<li>
+<p>The habits you have will reinforce your identity. Like mom is a religious person, and her habits align on those lines. Like she does Puja every day without fail and feels terrible when she could not (which is very rare).</p>
+</li>
+<li>
+<p>The more proof I have about the identity, the more I will believe it. Like I write blogs, I think I am a blogger. I don&rsquo;t need a lot of motivation to blog.</p>
+</li>
+<li>
+<p>Habit formation is a way of the brain to automate stuff. Once the habit is formed, the task is handed over from the conscious to the subconscious brain. After this conscious brain is free to focus elsewhere.</p>
+</li>
+<li>
+<p>You have a limited power in your cognitive battery (so to speak). Without habits, you have to actively make decisions, thus eroding your cognitive power. This is the very reason why Steve Jobs used to wear black turtle neck everyday so that he could spend his cognitive power on work and not on trivial things like what to wear to work. If you have good financial habits, workout habits, you are sorted and don&rsquo;t have to think about them. They happen automatically to you.</p>
+</li>
+<li>
+<p>Every habit formation goes through this loop of &ldquo;Cue 👉 Craving 👉 Response 👉 Reward.&rdquo;</p>
+</li>
+</ul>
+<p><img src="/post/2021/10/atomic-habits/four-laws-of-behaviour-change.jpg" alt="Four Laws Of Behavior Change" title="Four Laws Of Behavior Change"></p>
+<ul>
+<li>
+<p>For any habitual action, you don&rsquo;t realize the cue until you make a conscious effort to notice it.</p>
+</li>
+<li>
+<p>To be conscious about something we do, we can call it out. Like I am eating this Vadapav, and it is not good for my health. This point and calling habit can increase the chance that we will adhere to healthy habits.</p>
+</li>
+<li>
+<p>Implementation Intention is when you intend to do something at a specific location and time. This also sounds like affirmation but is more actionable. This primes you up for what is coming. This is precisely similar to what August Bradley&rsquo;s morning routine contains. He asks one to do a visualization routine. It involves you imagining how your day will look like. In it, you are doing all the planned tasks one after another. This sets you up for the whole day in your mind, and during the day, you are just executing on already thought stuff.</p>
+</li>
+<li>
+<p>Without &ldquo;Implementation Intention,&rdquo; everything that we promise ourselves is vague. Like I want to be more healthy, or I want to burn more calories, etc. They do not have the time, location, or exactness of what needs to be done.</p>
+</li>
+<li>
+<p>With Implementation Intention, you have a concrete idea of what needs to happen.</p>
+</li>
+<li>
+<p>Most of the tasks we do, one thing leads to another; that&rsquo;s how we progress throughout the day. Like if you are working and you see a receipt that needs filing, and once you finish that reimbursement, you remember you have not put all the receipts in one place, so on and so forth.</p>
+</li>
+<li>
+<p>Similarly, you can stack one new habit after an existing one. This is Implementation Intention, but rather than depending on time and place, this one hooks onto the existing habit.</p>
+</li>
+</ul>
+<blockquote>
+<p>The implementation intention formula is: I will [BEHAVIOR] at [TIME] in [LOCATION].</p>
+</blockquote>
+<blockquote>
+<p>The habit stacking formula is: After [CURRENT HABIT], I will [NEW HABIT].</p>
+</blockquote>
+<ul>
+<li>
+<p>The environment you are in has a significant impact on your habits and behavior. If there are sweets readily available in your kitchen, you will likely consume them more often.</p>
+</li>
+<li>
+<p>Since the environment has a considerable influence, take control of the environment you live in/work in. Add cues that are beneficial to you or help you in forming good habits.</p>
+</li>
+<li>
+<p>Sometimes, it is not one cue that triggers a behavior. Sometimes, a mix of various environmental cues contributes to behavior, e.g., Gym, Bar, etc.</p>
+</li>
+<li>
+<p>Context is usually associated with things. Like I like to read on the sofa in the living room. I work on the standing desk, and anything else there feels like work.</p>
+</li>
+<li>
+<p>In my college days, I used to have a phone capable of internet. Whenever I used to have a data subscription on the phone, I remained anxious, and my head used to ache. But when I had no data on my phone, my life was peaceful and focused on studies.</p>
+</li>
+<li>
+<p>Today, it is almost impossible to be away from the phone. Since there are apps that show OTP, and if I try to open the phone, the first thing that I see is notifications from other apps. It is hard not to get distracted.</p>
+</li>
+<li>
+<p>I have been optimizing notifications on my phone for a long time now. I am not sure how people get anything meaningful done with all the notifications from the apps turned on.</p>
+</li>
+<li>
+<p>The author talks about how self-control or willpower is inversely proportional to temptations. I wonder how long will a brahmachari sadhu hold his resolve while taking a lap dance in a strip club.</p>
+</li>
+<li>
+<p>It is an excellent insight that people who are more self-controlled/self-disciplined have their environments set up to remove all the temptations that will break their self-control. I like to think that I am a self-disciplined person. I think I figured out the environment optimization part way before I learned this term.</p>
+</li>
+<li>
+<p>Earlier, I always wanted to get up early, do workouts, etc. But I have always been living in a shared setup with roommates all this while. Hence when I went to bed was often dictated by the whims of others around me. Sometimes the food was made late by our cook, I went outside with roommates for dinner, or someone came over to our room to have long chats, etc. So it was often outside my control to maintain a schedule. But in the last one and half years since the COVID pandemic, I have realized that when I am the sole owner of my time, I can form great habits. There was no one else who would reign in and hijack my time.</p>
+</li>
+<li>
+<p>Our ancestors lived as hunter-gatherers for a very long time, and food was scarce, so they devoured anything they got. Nobody knew when and where the next meal would come from, and the same habit (or rather instinct) we have genetically ingrained in us today. We overeat, and today more people die out of disorders originating from obesity than the scarcity of food. This exact insight was shared in Sapiens and now in this book as well.</p>
+</li>
+<li>
+<p>Belonging to a group or a tribe feels natural to us. That&rsquo;s how Homo Sapiens are hardwired over the course of evolution. The norms in the tribe have been used for a long while to bring people together, celebrate festivals, follow certain rituals, etc. We can use the same thing to our benefit by reverse engineering it. Instead of being in the place given to you (your home, locality, school) and following its norms, go and pick a place/group/tribe where people are doing things you want to do but cannot because of your current &ldquo;place.&rdquo; If you want to be a cyclist and are surrounded by lazy people, you will find it hard to gather motivation to do cycling. But you can join a group that does cycling, so now you are motivated by looking at the peers in your group to do more of it that you want to do but weren&rsquo;t feeling like doing.</p>
+</li>
+</ul>
+<blockquote>
+<p>When changing your habits means challenging the tribe, change is unattractive. When changing your habits means fitting in with the tribe, change is very attractive.</p>
+</blockquote>
+<ul>
+<li>
+<p>Most of our actions are like a reconciliation loop.</p>
+<ul>
+<li>All day long, we are running a simulation based on cues. What will happen if I do X or not do X. Based on these simulations, we are constantly predicting.</li>
+<li>These predictions create the desired state possibly different from our current state.</li>
+<li>There is a current state and the desired state. We continually strive to achieve our desired state through our actions.</li>
+</ul>
+</li>
+<li>
+<p>The whole idea of doing something now that will make something else convenient later is what I have been doing I don&rsquo;t remember since when. I don&rsquo;t know how I got into that habit either. Maybe it was from Mummy. Like when I used to go cycling, I kept shoes and cycling outfit ready and wiped the dust off of the cycle the night before cycling. When I was in school, I prepared my school bag with all the books necessary for the next day&rsquo;s classes to never miss the books needed for a class.</p>
+</li>
+<li>
+<p>For cultivating a good habit if reducing friction helps. Similarly, for removing a bad habit, do the opposite. Increase the friction. Like for social media websites which are a huge time sink, I remove apps, and this simple thing reduces my usage of these apps substantially.</p>
+</li>
+<li>
+<p>The rule of showing up helps you build identity.</p>
+</li>
+<li>
+<p>Doing something is better than nothing at all.</p>
+</li>
+<li>
+<p>We are hardwired to only think from a short-term perspective. Most animals, including our hunter-gatherer ancestors, worked only when they were hungry. They never hoarded stuff for next month or next year. This hoarding, saving for the future, thinking long-term, or waiting for delayed gratification is a relatively new phenomenon for humans. We started thinking long-term only after the agricultural revolution. So it is in our best interests to fight our instincts of instant gratification and delay them by installing good habits.</p>
+</li>
+</ul>
+
+      </div>
+      <footer>
+        <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/book-review/">book-review</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/non-tech/">non-tech</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/book-review/">book-review</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/non-tech/">non-tech</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+      </footer>
+    </div>
+    
+      
+  <div class='post'>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+
+
+
+    
+  </article>
+  <div class="pagination">
+    
+    
+      <a href="/post/2021/09/unchanging-context/" class="button right"><span>Unchanging Contexts and Degrading Productivity</span></a>
+    
+  </div>
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent Posts</h1>
+      </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+  </a>
+        <header>
+          <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+  </a>
+        <header>
+          <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+  </a>
+        <header>
+          <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
+    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+  </a>
+        <header>
+          <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+          <a href="/post/2021/06/reading-devices/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/reading-devices/devices.jpg');">
+    <img src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
+  </a>
+        <header>
+          <h2><a href="/post/2021/06/reading-devices/">Reading Devices</a></h2>
+          <time class="published" datetime="2021-06-30 01:45:00 &#43;0530 IST">June 30, 2021</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/post/" class="button">See More</a>
+        </footer>
+      
+    </section>
+  
+
+  
+    
+
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+          
+          <li>
+              <a href="/categories/kubernetes/">kubernetes<span class="count">34</span></a>
+          
+          <li>
+              <a href="/categories/notes/">notes<span class="count">21</span></a>
+          
+          <li>
+              <a href="/categories/non-tech/">non-tech<span class="count">16</span></a>
+          
+          <li>
+              <a href="/categories/security/">security<span class="count">13</span></a>
+          
+          <li>
+              <a href="/categories/productivity/">productivity<span class="count">10</span></a>
+          
+          <li>
+              <a href="/categories/book-review/">book-review<span class="count">9</span></a>
+          
+          <li>
+              <a href="/categories/containers/">containers<span class="count">7</span></a>
+          
+          <li>
+              <a href="/categories/bash/">bash<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/event_report/">event_report<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/golang/">golang<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/packaging/">packaging<span class="count">5</span></a>
+          
+          <li>
+              <a href="/categories/docker/">docker<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/host/">host<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/linux/">linux<span class="count">4</span></a>
+          
+          <li>
+              <a href="/categories/cka/">cka<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/fedora/">fedora<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/kompose/">kompose<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/monitoring/">monitoring<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/notion/">notion<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/openshift/">openshift<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/programming/">programming<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/prometheus/">prometheus<span class="count">3</span></a>
+          
+          <li>
+              <a href="/categories/certs/">certs<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/configuration/">configuration<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/desktop/">desktop<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/git/">git<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/ide/">ide<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/kms/">kms<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/minikube/">minikube<span class="count">2</span></a>
+          
+          <li>
+              <a href="/categories/activism/">activism<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/backup/">backup<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/centos/">centos<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/cks/">cks<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/etcd/">etcd<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/flatcar/">flatcar<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/gaming/">gaming<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/gnome/">gnome<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/https/">https<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/jobs/">jobs<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/kubeadm/">kubeadm<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/lokomotive/">lokomotive<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/meetup/">meetup<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/project_management/">project_management<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/selinux/">selinux<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/systemd/">systemd<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/talks/">talks<span class="count">1</span></a>
+          
+          <li>
+              <a href="/categories/vagrant/">vagrant<span class="count">1</span></a>
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I am a Senior Software Engineer at Microsoft, working on various tooling around container technology like Docker, Kubernetes, etc.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
+
+<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
+
+
+
+<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    © 2021 Suraj Deshmukh
+      <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.88.1' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script src="/js/add-on.js"></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-97006720-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </div>
+  </body>
+</html>

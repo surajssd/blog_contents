@@ -17,7 +17,7 @@
   
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.1bfccf86359e3de974865922b006112447a52f942c2a9c2bf93d159980ae641b.css" integrity="sha256-G/zPhjWePel0hlkisAYRJEelL5QsKpwr&#43;T0VmYCuZBs="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -180,6 +180,61 @@
       <main id="site-main">
         
   
+  
+    <article class="post">
+  <header>
+  <div class="title">
+    
+      <h2><a href="/post/2021/05/access-k8s-secrets-mitigation/">Mitigation of: Access Any Kubernetes Secret</a></h2>
+    
+    
+      <p>A Validating Admission Webhook Server to deny anyone accessing forbidden Kubernetes Secrets!</p>
+    
+  </div>
+  <div class="meta">
+    <time datetime="2021-05-20 08:47:07 &#43;0530 IST">May 20, 2021</time>
+    <p>Suraj Deshmukh</p>
+    <p>4-Minute Read</p>
+  </div>
+</header>
+
+  <div class="content">
+    <a href="/post/2021/05/access-k8s-secrets-mitigation/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png');">
+    <img src="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png" alt="Config">
+  </a>
+    
+    <p>In <a href="https://suraj.io/post/2021/05/access-k8s-secrets/">the previous blog</a>, we discussed how any user without RBAC access to a Kubernetes secret can use a trick to access that secret. To mitigate that problem, we will use a validating admission webhook. But before looking at what sorcery this validating admission webhook server is, let us understand how Kubernetes handles the API requests.</p>
+  </div>
+  <footer>
+    <a href="/post/2021/05/access-k8s-secrets-mitigation/" class="button big">Read More</a>
+    <div class="stats">
+  
+    <ul class="categories">
+      
+        
+          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/categories/security/">security</a></li>
+        
+      
+    </ul>
+  
+  
+    <ul class="tags">
+      
+        
+          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/security/">security</a></li>
+        
+      
+    </ul>
+  
+</div>
+
+  </footer>
+</article>
+
   
     <article class="post">
   <header>
@@ -667,7 +722,7 @@
     <img src="https://suraj.io/post/2021/02/hiw/hiw.jpg" alt="Book Review">
   </a>
     
-    <p>I recently finished reading the book: <a href="https://www.goodreads.com/book/show/52219273-how-innovation-works">&ldquo;How Innovation Works: And Why It Flourishes in Freedom&rdquo;</a> by <a href="https://en.wikipedia.org/wiki/Matt_Ridley">Matt Ridley</a>. The book was published less than a year ago in May 2020, and it is a short read of fewer than four hundred pages. I am not sure how to categorise this book, it probably falls into business, science and/or technological history.</p>
+    <p>I recently finished reading the book: <a href="https://amzn.to/2WCjUZo">&ldquo;How Innovation Works: And Why It Flourishes in Freedom&rdquo;</a> by <a href="https://en.wikipedia.org/wiki/Matt_Ridley">Matt Ridley</a>. The book was published less than a year ago in May 2020, and it is a short read of fewer than four hundred pages. I am not sure how to categorise this book, it probably falls into business, science and/or technological history.</p>
   </div>
   <footer>
     <a href="/post/2021/02/book-hiw-learnings/" class="button big">Read More</a>
@@ -700,65 +755,6 @@
 </article>
 
   
-    <article class="post">
-  <header>
-  <div class="title">
-    
-      <h2><a href="/post/2021/02/k8s-bootstrap-token/">Enable TLS bootstrapping in a Kubernetes cluster</a></h2>
-    
-    
-      <p>Add a new node using a bootstrap token to Kubernetes</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2021-02-06 10:25:41 &#43;0530 IST">February 6, 2021</time>
-    <p>Suraj Deshmukh</p>
-    <p>5-Minute Read</p>
-  </div>
-</header>
-
-  <div class="content">
-    <a href="/post/2021/02/k8s-bootstrap-token/" class="image" style="--bg-image: url('https://suraj.io/post/2021/02/k8s-bootstrap-token/rack.jpg');">
-    <img src="https://suraj.io/post/2021/02/k8s-bootstrap-token/rack.jpg" alt="Bootstrap token">
-  </a>
-    
-    <p>Photo by <a href="https://unsplash.com/@jordanharrison?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jordan Harrison</a> from <a href="https://unsplash.com">Unsplash</a>.</p>
-  </div>
-  <footer>
-    <a href="/post/2021/02/k8s-bootstrap-token/" class="button big">Read More</a>
-    <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/notes/">notes</a></li>
-        
-          <li><a class="article-terms-link" href="/categories/certs/">certs</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/kubernetes/">kubernetes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/certs/">certs</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-  </footer>
-</article>
-
-  
   <div class="pagination">
     
       <a href="/" class="button left"><span>Previous Page</span></a>
@@ -775,6 +771,16 @@
       <header>
         <h1>Recent Posts</h1>
       </header>
+      
+      <article class="mini-post">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+  </a>
+        <header>
+          <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+        </header>
+      </article>
       
       <article class="mini-post">
           <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
@@ -816,16 +822,6 @@
         </header>
       </article>
       
-      <article class="mini-post">
-          <a href="/post/2021/06/automatic-cert-gen/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/automatic-cert-gen/obama.jpg');">
-    <img src="https://suraj.io/post/2021/06/automatic-cert-gen/obama.jpg" alt="Self Signed Certificates">
-  </a>
-        <header>
-          <h2><a href="/post/2021/06/automatic-cert-gen/">How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</a></h2>
-          <time class="published" datetime="2021-06-25 09:00:00 &#43;0530 IST">June 25, 2021</time>
-        </header>
-      </article>
-      
       
         <footer>
           <a href="/post/" class="button">See More</a>
@@ -851,7 +847,7 @@
               <a href="/categories/notes/">notes<span class="count">21</span></a>
           
           <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">15</span></a>
+              <a href="/categories/non-tech/">non-tech<span class="count">16</span></a>
           
           <li>
               <a href="/categories/security/">security<span class="count">13</span></a>
@@ -860,7 +856,7 @@
               <a href="/categories/productivity/">productivity<span class="count">10</span></a>
           
           <li>
-              <a href="/categories/book-review/">book-review<span class="count">8</span></a>
+              <a href="/categories/book-review/">book-review<span class="count">9</span></a>
           
           <li>
               <a href="/categories/containers/">containers<span class="count">7</span></a>
@@ -1066,7 +1062,7 @@
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.b42acf395d44f52871e4616da8293319f414713a0509a0f71f0c7f6f41e8888a.js" integrity="sha256-tCrPOV1E9Shx5GFtqCkzGfQUcToFCaD3Hwx/b0HoiIo="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

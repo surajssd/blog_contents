@@ -12,8 +12,8 @@ function err() {
 
 function commit() {
   git add .
-  git commit -m "$@"
-  git push origin master
+  git commit -s -S -m "$@"
+  git push origin master -f
 }
 
 # check if the commit message was provided
