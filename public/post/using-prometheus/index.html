@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.88.1" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Prometheus with existing application on OpenShift">
   <meta property="og:description" content="Setting up Prometheus with any application">
   <meta property="description" content="Setting up Prometheus with any application">
@@ -260,29 +260,29 @@
 </code></pre></div><p>Finally visit this URL to start seeing your prometheus dashboard.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo http://<span style="color:#66d9ef">$(</span>oc get routes | grep prometheus | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span><span style="color:#66d9ef">)</span>
 </code></pre></div><h2 id="how-it-looks">How it looks?</h2>
-<pre tabindex="0"><code class="language-console" data-lang="console">$ oc new-project monitor
-Already on project &quot;monitor&quot; on server &quot;https://192.168.122.1:8443&quot;.
-
-You can add applications to this project with the 'new-app' command. For example, try:
-
-    oc new-app centos/ruby-22-centos7~https://github.com/openshift/ruby-ex.git
-
-to build a new example application in Ruby.
-
-$ export APP_SCHEME=https
-$ export APP_NAME=wit
-$ export APP_URL=api.prod-preview.openshift.io
-
-$ kedge apply -f prometheus.yml
-persistentvolumeclaim &quot;prometheus-storage&quot; created
-service &quot;prometheus&quot; created
-route &quot;prometheus&quot; created
-configmap &quot;prometheus-config&quot; created
-deployment &quot;prometheus&quot; created
-
-$ echo http://$(oc get routes | grep prometheus | awk '{print $2}')
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ oc new-project monitor
+Already on project &#34;monitor&#34; on server &#34;https://192.168.122.1:8443&#34;.
+<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>You can add applications to this project with the &#39;new-app&#39; command. For example, try:
+<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    oc new-app centos/ruby-22-centos7~https://github.com/openshift/ruby-ex.git
+<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>to build a new example application in Ruby.
+<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>$ export APP_SCHEME<span style="color:#f92672">=</span>https
+$ export APP_NAME<span style="color:#f92672">=</span>wit
+$ export APP_URL<span style="color:#f92672">=</span>api.prod-preview.openshift.io
+<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>$ kedge apply -f prometheus.yml
+persistentvolumeclaim &#34;prometheus-storage&#34; created
+service &#34;prometheus&#34; created
+route &#34;prometheus&#34; created
+configmap &#34;prometheus-config&#34; created
+deployment &#34;prometheus&#34; created
+<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>$ echo http://<span style="color:#66d9ef">$(</span>oc get routes | grep prometheus | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span><span style="color:#66d9ef">)</span>
 http://prometheus-monitor.192.168.122.1.nip.io
-</code></pre><p><img src="/images/using-prometheus/promgraph.png" alt="Prometheus dashboard" title="Prometheus dashboard showing goroutines"></p>
+</code></pre></div><p><img src="/images/using-prometheus/promgraph.png" alt="Prometheus dashboard" title="Prometheus dashboard showing goroutines"></p>
 <p>Happy monitoring!</p>
 
       </div>
@@ -649,7 +649,7 @@ http://prometheus-monitor.192.168.122.1.nip.io
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.88.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>

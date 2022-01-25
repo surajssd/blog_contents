@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.88.1" /><meta property="og:site_name" content="Suraj Deshmukh">
+<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Kubernetes Cluster using Kubeadm on Flatcar Container Linux">
   <meta property="og:description" content="Simple steps to install the cluster based on Flatcar Container Linux">
   <meta property="description" content="Simple steps to install the cluster based on Flatcar Container Linux">
@@ -264,8 +264,8 @@ net.bridge.bridge-nf-call-iptables = 1
 EOF
 sysctl --system
 </code></pre><h3 id="12-download-binaries-and-start-kubelet">1.2. Download binaries and start Kubelet</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">CNI_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v0.8.2&#34;</span>
-CRICTL_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v1.17.0&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">CNI_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v1.0.1&#34;</span>
+CRICTL_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v1.23.0&#34;</span>
 RELEASE_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v0.4.0&#34;</span>
 DOWNLOAD_DIR<span style="color:#f92672">=</span>/opt/bin
 RELEASE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -sSL https://dl.k8s.io/release/stable.txt<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
@@ -273,12 +273,11 @@ RELEASE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</sp
 mkdir -p /opt/cni/bin
 mkdir -p /etc/systemd/system/kubelet.service.d
 
-alias curl<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;curl -sSL&#39;</span>
-curl <span style="color:#e6db74">&#34;https://github.com/containernetworking/plugins/releases/download/</span><span style="color:#e6db74">${</span>CNI_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/cni-plugins-linux-amd64-</span><span style="color:#e6db74">${</span>CNI_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">.tgz&#34;</span> | tar -C /opt/cni/bin -xz
-curl <span style="color:#e6db74">&#34;https://github.com/kubernetes-sigs/cri-tools/releases/download/</span><span style="color:#e6db74">${</span>CRICTL_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/crictl-</span><span style="color:#e6db74">${</span>CRICTL_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">-linux-amd64.tar.gz&#34;</span> | tar -C $DOWNLOAD_DIR -xz
-curl <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/kubernetes/release/</span><span style="color:#e6db74">${</span>RELEASE_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/cmd/kubepkg/templates/latest/deb/kubelet/lib/systemd/system/kubelet.service&#34;</span> | sed <span style="color:#e6db74">&#34;s:/usr/bin:</span><span style="color:#e6db74">${</span>DOWNLOAD_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">:g&#34;</span> | tee /etc/systemd/system/kubelet.service
-curl <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/kubernetes/release/</span><span style="color:#e6db74">${</span>RELEASE_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/cmd/kubepkg/templates/latest/deb/kubeadm/10-kubeadm.conf&#34;</span> | sed <span style="color:#e6db74">&#34;s:/usr/bin:</span><span style="color:#e6db74">${</span>DOWNLOAD_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">:g&#34;</span> | tee /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-curl --remote-name-all https://storage.googleapis.com/kubernetes-release/release/<span style="color:#e6db74">${</span>RELEASE<span style="color:#e6db74">}</span>/bin/linux/amd64/<span style="color:#f92672">{</span>kubeadm,kubelet,kubectl<span style="color:#f92672">}</span>
+curl -sSL <span style="color:#e6db74">&#34;https://github.com/containernetworking/plugins/releases/download/</span><span style="color:#e6db74">${</span>CNI_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/cni-plugins-linux-amd64-</span><span style="color:#e6db74">${</span>CNI_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">.tgz&#34;</span> | tar -C /opt/cni/bin -xz
+curl -sSL <span style="color:#e6db74">&#34;https://github.com/kubernetes-sigs/cri-tools/releases/download/</span><span style="color:#e6db74">${</span>CRICTL_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/crictl-</span><span style="color:#e6db74">${</span>CRICTL_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">-linux-amd64.tar.gz&#34;</span> | tar -C $DOWNLOAD_DIR -xz
+curl -sSL <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/kubernetes/release/</span><span style="color:#e6db74">${</span>RELEASE_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/cmd/kubepkg/templates/latest/deb/kubelet/lib/systemd/system/kubelet.service&#34;</span> | sed <span style="color:#e6db74">&#34;s:/usr/bin:</span><span style="color:#e6db74">${</span>DOWNLOAD_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">:g&#34;</span> | tee /etc/systemd/system/kubelet.service
+curl -sSL <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/kubernetes/release/</span><span style="color:#e6db74">${</span>RELEASE_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/cmd/kubepkg/templates/latest/deb/kubeadm/10-kubeadm.conf&#34;</span> | sed <span style="color:#e6db74">&#34;s:/usr/bin:</span><span style="color:#e6db74">${</span>DOWNLOAD_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">:g&#34;</span> | tee /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+curl -sSL --remote-name-all https://storage.googleapis.com/kubernetes-release/release/<span style="color:#e6db74">${</span>RELEASE<span style="color:#e6db74">}</span>/bin/linux/amd64/<span style="color:#f92672">{</span>kubeadm,kubelet,kubectl<span style="color:#f92672">}</span>
 
 chmod +x <span style="color:#f92672">{</span>kubeadm,kubelet,kubectl<span style="color:#f92672">}</span>
 mv <span style="color:#f92672">{</span>kubeadm,kubelet,kubectl<span style="color:#f92672">}</span> $DOWNLOAD_DIR/
@@ -301,19 +300,23 @@ systemctl reboot
 <p>On Linux distributions such as Flatcar Container Linux, the directory <code>/usr</code> is mounted as a read-only filesystem. For flex-volume support, Kubernetes components like the kubelet and kube-controller-manager use the default path of <code>/usr/libexec/kubernetes/kubelet-plugins/volume/exec/</code>, yet the flex-volume directory <strong>must be writeable</strong> for the feature to work.</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF | tee kubeadm-config.yaml</span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta2</span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta3</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">InitConfiguration</span>
 <span style="color:#f92672">nodeRegistration</span>:
   <span style="color:#f92672">kubeletExtraArgs</span>:
     <span style="color:#f92672">volume-plugin-dir</span>: <span style="color:#e6db74">&#34;/opt/libexec/kubernetes/kubelet-plugins/volume/exec/&#34;</span>
 ---
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta2</span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta3</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterConfiguration</span>
 <span style="color:#f92672">networking</span>:
   <span style="color:#f92672">podSubnet</span>: <span style="color:#ae81ff">192.168.0.0</span><span style="color:#ae81ff">/16</span>
 <span style="color:#f92672">controllerManager</span>:
   <span style="color:#f92672">extraArgs</span>:
     <span style="color:#f92672">flex-volume-plugin-dir</span>: <span style="color:#e6db74">&#34;/opt/libexec/kubernetes/kubelet-plugins/volume/exec/&#34;</span>
+---
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">KubeletConfiguration</span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubelet.config.k8s.io/v1beta1</span>
+<span style="color:#f92672">cgroupDriver</span>: <span style="color:#ae81ff">$(docker info -f &#39;{{.CgroupDriver}}&#39;)</span>
 <span style="color:#ae81ff">EOF</span>
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubeadm config images pull
 kubeadm init --config kubeadm-config.yaml
@@ -351,7 +354,7 @@ kubectl get nodes -o wide
 prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://&#34;</span>
 short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>URL#<span style="color:#e6db74">&#34;</span>$prefix<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">}</span>
 </code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF</span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta2</span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta3</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">JoinConfiguration</span>
 <span style="color:#f92672">discovery</span>:
   <span style="color:#f92672">bootstrapToken</span>:
@@ -753,7 +756,7 @@ short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</spa
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.88.1' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
