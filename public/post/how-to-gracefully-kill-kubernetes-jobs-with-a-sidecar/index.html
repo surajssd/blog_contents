@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>How to gracefully kill Kubernetes Jobs with a sidecar? - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A sidecar in a Kubernetes Job, what? Yeah you might need one and here is how to shut it.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="How to gracefully kill Kubernetes Jobs with a sidecar?">
+<meta property="og:description" content="A sidecar in a Kubernetes Job, what? Yeah you might need one and here is how to shut it.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="How to gracefully kill Kubernetes Jobs with a sidecar?">
-  <meta property="og:description" content="A sidecar in a Kubernetes Job, what? Yeah you might need one and here is how to shut it.">
-  <meta property="description" content="A sidecar in a Kubernetes Job, what? Yeah you might need one and here is how to shut it.">
-  <meta property="og:url" content="https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2020-08-29 15:33:51 &#43;0530 IST">August 29, 2020</time>
+    <time datetime="2020-08-29 15:33:51 &#43;0530 &#43;0530">August 29, 2020</time>
     <p>Suraj Deshmukh</p>
     <p>6-Minute Read</p>
   </div>
@@ -238,196 +244,197 @@
       </div>
       <div class="content">
         
+        
         <p>Have you ever had a sidecar in your Kubernetes Job? If no, then trust me that you are lucky. If yes, then you will have the frustration of your life. The thing is Kubernetes Jobs are meant to exit on completion. But if you have a long-running sidecar, then that might twist things for Kubernetes and in turn of you.</p>
 <p>Why would you even want a sidecar for Job? Well, one of the most prevalent use case is when using service mesh proxy. There could be something else as well like metrics endpoint, log collection or whatever. Given the complexity and heterogeneity of the workloads, there could be any kind of use case that involves having sidecar for a Job pod.</p>
 <p>This blog post will showcase how to cleanly exit from a Job pod if you have a long-running sidecar.</p>
 <h2 id="normal-job">Normal Job</h2>
 <p>Let&rsquo;s see how a normal Job workflow looks like. I have a Job that runs the following script:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">for</span> num in <span style="color:#66d9ef">$(</span>seq <span style="color:#ae81ff">10</span> -1 1<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
-  echo $num
-  sleep <span style="color:#ae81ff">1</span>
-<span style="color:#66d9ef">done</span>
-
-echo <span style="color:#e6db74">&#34;And it is a lift off!&#34;</span>
-</code></pre></div><p>See the above script in the Github repository <a href="https://github.com/surajssd/kill-jobpod-with-sidecar/blob/5cff292a822c56bb9c2930e4f0e82e16b1a31340/job/scripts/run.sh">here</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> num in <span style="color:#66d9ef">$(</span>seq <span style="color:#ae81ff">10</span> -1 1<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  echo $num
+</span></span><span style="display:flex;"><span>  sleep <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;And it is a lift off!&#34;</span>
+</span></span></code></pre></div><p>See the above script in the Github repository <a href="https://github.com/surajssd/kill-jobpod-with-sidecar/blob/5cff292a822c56bb9c2930e4f0e82e16b1a31340/job/scripts/run.sh">here</a>.</p>
 <p>And the Kubernetes Job configuration looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">batch/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Job</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">foojob</span>
-  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">default</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">OnFailure</span>
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">foojob</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">fedora:32</span>
-        <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;/bin/bash&#34;</span>]
-        <span style="color:#f92672">args</span>: [<span style="color:#e6db74">&#34;/scripts-dir/run.sh&#34;</span>]
-        <span style="color:#f92672">volumeMounts</span>:
-        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">scripts-vol</span>
-          <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/scripts-dir</span>
-      <span style="color:#f92672">volumes</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">scripts-vol</span>
-        <span style="color:#f92672">configMap</span>:
-          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">scripts-configmap</span>
-</code></pre></div><p>See the full definition of the Job configuration <a href="https://github.com/surajssd/kill-jobpod-with-sidecar/blob/5cff292a822c56bb9c2930e4f0e82e16b1a31340/job/templates/deployment.yaml">here</a>. To understand why the Job configuration has <code>volumes</code> and <code>volumeMounts</code>, read <a href="https://suraj.io/post/use-configmap-for-scripts/">my other blog</a> where I explain how configmaps are the best way to use inject scripts into containers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">batch/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Job</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">foojob</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">template</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">OnFailure</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">foojob</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">fedora:32</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">command</span>: [<span style="color:#e6db74">&#34;/bin/bash&#34;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">args</span>: [<span style="color:#e6db74">&#34;/scripts-dir/run.sh&#34;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">volumeMounts</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">scripts-vol</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/scripts-dir</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">scripts-vol</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">configMap</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">scripts-configmap</span>
+</span></span></code></pre></div><p>See the full definition of the Job configuration <a href="https://github.com/surajssd/kill-jobpod-with-sidecar/blob/5cff292a822c56bb9c2930e4f0e82e16b1a31340/job/templates/deployment.yaml">here</a>. To understand why the Job configuration has <code>volumes</code> and <code>volumeMounts</code>, read <a href="https://suraj.io/post/use-configmap-for-scripts/">my other blog</a> where I explain how configmaps are the best way to use inject scripts into containers.</p>
 <p>A typical run of above will look like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ helm install --generate-name job/
-NAME: job-1598685079
-LAST DEPLOYED: Sat Aug <span style="color:#ae81ff">29</span> 12:41:19 <span style="color:#ae81ff">2020</span>
-NAMESPACE: default
-STATUS: deployed
-REVISION: <span style="color:#ae81ff">1</span>
-TEST SUITE: None
-
-$ kubectl get pods
-NAME           READY   STATUS              RESTARTS   AGE
-foojob-86rlf   0/1     ContainerCreating   <span style="color:#ae81ff">0</span>          1s
-
-$ kubectl logs foojob-86rlf
-<span style="color:#ae81ff">10</span>
-<span style="color:#ae81ff">9</span>
-<span style="color:#ae81ff">8</span>
-<span style="color:#ae81ff">7</span>
-<span style="color:#ae81ff">6</span>
-<span style="color:#ae81ff">5</span>
-<span style="color:#ae81ff">4</span>
-<span style="color:#ae81ff">3</span>
-<span style="color:#ae81ff">2</span>
-<span style="color:#ae81ff">1</span>
-And it is a lift off!
-
-$ kubectl get pods
-NAME           READY   STATUS      RESTARTS   AGE
-foojob-86rlf   0/1     Completed   <span style="color:#ae81ff">0</span>          14s
-</code></pre></div><p>So pod exits with <code>STATUS</code> field set to <code>Completed</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ helm install --generate-name job/
+</span></span><span style="display:flex;"><span>NAME: job-1598685079
+</span></span><span style="display:flex;"><span>LAST DEPLOYED: Sat Aug <span style="color:#ae81ff">29</span> 12:41:19 <span style="color:#ae81ff">2020</span>
+</span></span><span style="display:flex;"><span>NAMESPACE: default
+</span></span><span style="display:flex;"><span>STATUS: deployed
+</span></span><span style="display:flex;"><span>REVISION: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>TEST SUITE: None
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl get pods
+</span></span><span style="display:flex;"><span>NAME           READY   STATUS              RESTARTS   AGE
+</span></span><span style="display:flex;"><span>foojob-86rlf   0/1     ContainerCreating   <span style="color:#ae81ff">0</span>          1s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl logs foojob-86rlf
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">9</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">7</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>And it is a lift off!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl get pods
+</span></span><span style="display:flex;"><span>NAME           READY   STATUS      RESTARTS   AGE
+</span></span><span style="display:flex;"><span>foojob-86rlf   0/1     Completed   <span style="color:#ae81ff">0</span>          14s
+</span></span></code></pre></div><p>So pod exits with <code>STATUS</code> field set to <code>Completed</code>.</p>
 <h2 id="what-happens-when-a-job-has-sidecar">What happens when a Job has Sidecar?</h2>
 <p>To add a sidecar to our existing Job I added a container which just sleeps forever. See following diff to understand what has changed:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">diff --git job/templates/job.yaml job/templates/job.yaml
-index 04e7175..1bb5a08 100644
-<span style="color:#f92672">--- job/templates/job.yaml
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ job/templates/job.yaml
-</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -9,6 +9,10 @@ spec:
-</span><span style="color:#75715e"></span>     spec:
-       restartPolicy: OnFailure
-       containers:
-<span style="color:#a6e22e">+      - name: endlesssidecar
-</span><span style="color:#a6e22e">+        image: fedora:32
-</span><span style="color:#a6e22e">+        command: [&#34;/bin/bash&#34;]
-</span><span style="color:#a6e22e">+        args: [&#34;-c&#34;, &#34;sleep infinity; echo &#39;stopping now!&#39;&#34;]
-</span><span style="color:#a6e22e"></span>       - name: foojob
-         image: fedora:32
-         command: [&#34;/bin/bash&#34;]
-</code></pre></div><p>See the new full configuration of Job manifest <a href="https://github.com/surajssd/kill-jobpod-with-sidecar/blob/80dd2e8d485c62f62ff1de67d6c5128c07c6fba0/job/templates/deployment.yaml#L12-L15">here</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>diff --git job/templates/job.yaml job/templates/job.yaml
+</span></span><span style="display:flex;"><span>index 04e7175..1bb5a08 100644
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--- job/templates/job.yaml
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ job/templates/job.yaml
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -9,6 +9,10 @@ spec:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     spec:
+</span></span><span style="display:flex;"><span>       restartPolicy: OnFailure
+</span></span><span style="display:flex;"><span>       containers:
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+      - name: endlesssidecar
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        image: fedora:32
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        command: [&#34;/bin/bash&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        args: [&#34;-c&#34;, &#34;sleep infinity; echo &#39;stopping now!&#39;&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>       - name: foojob
+</span></span><span style="display:flex;"><span>         image: fedora:32
+</span></span><span style="display:flex;"><span>         command: [&#34;/bin/bash&#34;]
+</span></span></code></pre></div><p>See the new full configuration of Job manifest <a href="https://github.com/surajssd/kill-jobpod-with-sidecar/blob/80dd2e8d485c62f62ff1de67d6c5128c07c6fba0/job/templates/deployment.yaml#L12-L15">here</a>.</p>
 <blockquote>
 <p><strong>NOTE:</strong> In your case, it could be any other sidecar, for illustration purposes I have added a dummy sidecar.</p>
 </blockquote>
 <p>Now let&rsquo;s see the full run of this setup:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ helm install --generate-name job/
-NAME: job-1598685624
-LAST DEPLOYED: Sat Aug <span style="color:#ae81ff">29</span> 12:50:25 <span style="color:#ae81ff">2020</span>
-NAMESPACE: default
-STATUS: deployed
-REVISION: <span style="color:#ae81ff">1</span>
-TEST SUITE: None
-
-$ kubectl get pods
-NAME           READY   STATUS              RESTARTS   AGE
-foojob-kd9sl   0/2     ContainerCreating   <span style="color:#ae81ff">0</span>          1s
-
-$ kubectl logs foojob-kd9sl foojob
-<span style="color:#ae81ff">10</span>
-<span style="color:#ae81ff">9</span>
-<span style="color:#ae81ff">8</span>
-<span style="color:#ae81ff">7</span>
-<span style="color:#ae81ff">6</span>
-<span style="color:#ae81ff">5</span>
-<span style="color:#ae81ff">4</span>
-<span style="color:#ae81ff">3</span>
-<span style="color:#ae81ff">2</span>
-<span style="color:#ae81ff">1</span>
-And it is a lift off!
-
-$ kubectl get pods
-NAME           READY   STATUS     RESTARTS   AGE
-foojob-kd9sl   1/2     NotReady   <span style="color:#ae81ff">0</span>          21s
-</code></pre></div><p>If you see everything went fine in the <code>foojob</code> container of the Job pod. But the pod <code>STATUS</code> has changed to <code>NotReady</code>. This is because one container has stopped successfully, and the other is still running. This is the problem with sidecar in the Job. Now Kubernetes does not concede this as <code>Completed</code> because not all containers have stopped in the pod.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ helm install --generate-name job/
+</span></span><span style="display:flex;"><span>NAME: job-1598685624
+</span></span><span style="display:flex;"><span>LAST DEPLOYED: Sat Aug <span style="color:#ae81ff">29</span> 12:50:25 <span style="color:#ae81ff">2020</span>
+</span></span><span style="display:flex;"><span>NAMESPACE: default
+</span></span><span style="display:flex;"><span>STATUS: deployed
+</span></span><span style="display:flex;"><span>REVISION: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>TEST SUITE: None
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl get pods
+</span></span><span style="display:flex;"><span>NAME           READY   STATUS              RESTARTS   AGE
+</span></span><span style="display:flex;"><span>foojob-kd9sl   0/2     ContainerCreating   <span style="color:#ae81ff">0</span>          1s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl logs foojob-kd9sl foojob
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">9</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">7</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>And it is a lift off!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl get pods
+</span></span><span style="display:flex;"><span>NAME           READY   STATUS     RESTARTS   AGE
+</span></span><span style="display:flex;"><span>foojob-kd9sl   1/2     NotReady   <span style="color:#ae81ff">0</span>          21s
+</span></span></code></pre></div><p>If you see everything went fine in the <code>foojob</code> container of the Job pod. But the pod <code>STATUS</code> has changed to <code>NotReady</code>. This is because one container has stopped successfully, and the other is still running. This is the problem with sidecar in the Job. Now Kubernetes does not concede this as <code>Completed</code> because not all containers have stopped in the pod.</p>
 <h2 id="job-sidecar-with-unique-setup">Job Sidecar with unique setup!</h2>
 <p>Since the long running sidecar does not stop gracefully, we should make sure that it is halted. So the onus is on the <code>foojob</code> to kill the long running sidecar. So this is what I have added to our simple script:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">diff --git job/scripts/run.sh job/scripts/run.sh
-index 8fed959..5932149 100755
-<span style="color:#f92672">--- job/scripts/run.sh
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ job/scripts/run.sh
-</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -6,3 +6,6 @@ for num in $(seq 10 -1 1); do
-</span><span style="color:#75715e"></span> done
-
- echo &#34;And it is a lift off!&#34;
-<span style="color:#a6e22e">+
-</span><span style="color:#a6e22e">+pkill sleep
-</span><span style="color:#a6e22e">+true
-</span></code></pre></div><p>But have you realised how does a script running in one container has access to the process in another container? Well, we have a Kubernetes native answer to that: <code>shareProcessNamespace</code>. Here is what it mean straight from the docs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>diff --git job/scripts/run.sh job/scripts/run.sh
+</span></span><span style="display:flex;"><span>index 8fed959..5932149 100755
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--- job/scripts/run.sh
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ job/scripts/run.sh
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -6,3 +6,6 @@ for num in $(seq 10 -1 1); do
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> done
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> echo &#34;And it is a lift off!&#34;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+pkill sleep
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+true
+</span></span></span></code></pre></div><p>But have you realised how does a script running in one container has access to the process in another container? Well, we have a Kubernetes native answer to that: <code>shareProcessNamespace</code>. Here is what it mean straight from the docs:</p>
 <blockquote>
 <p><code>Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set.</code></p>
 </blockquote>
 <p>In simple terms set the field <code>shareProcessNamespace</code> to <code>true</code> in <code>pod.spec</code> and all containers now share the process namespace and can see each other. Due to this enablement <code>pkill sleep</code> from the <code>foojob</code> container can kill its sidecar or sidecar&rsquo;s main process.</p>
 <p>Here is the diff from the Job YAML file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">diff --git job/templates/job.yaml job/templates/job.yaml
-index 1bb5a08..61d75cf 100644
-<span style="color:#f92672">--- job/templates/job.yaml
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ job/templates/job.yaml
-</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -7,14 +7,15 @@ metadata:
-</span><span style="color:#75715e"></span> spec:
-   template:
-     spec:
-<span style="color:#a6e22e">+      shareProcessNamespace: true
-</span><span style="color:#a6e22e"></span>       restartPolicy: OnFailure
-       containers:
-         command: [&#34;/bin/bash&#34;]
-       - name: foojob
-<span style="color:#f92672">-        image: fedora:32
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+        image: surajd/fedora32-pgrep
-</span><span style="color:#a6e22e"></span>         command: [&#34;/bin/bash&#34;]
-         args: [&#34;/scripts-dir/run.sh&#34;]
-         volumeMounts:
-</code></pre></div><p>The image has been changed from plain <code>fedora:32</code> to <code>surajd/fedora32-pgrep</code> because the default fedora image does not ship <code>pkill</code> so I installed the package <code>procps</code> and now all the &ldquo;process-killing&rdquo; tools are available in the new docker image. See the dockerfile <a href="https://github.com/surajssd/kill-jobpod-with-sidecar/blob/master/Dockerfile">here</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>diff --git job/templates/job.yaml job/templates/job.yaml
+</span></span><span style="display:flex;"><span>index 1bb5a08..61d75cf 100644
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--- job/templates/job.yaml
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ job/templates/job.yaml
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -7,14 +7,15 @@ metadata:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> spec:
+</span></span><span style="display:flex;"><span>   template:
+</span></span><span style="display:flex;"><span>     spec:
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+      shareProcessNamespace: true
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>       restartPolicy: OnFailure
+</span></span><span style="display:flex;"><span>       containers:
+</span></span><span style="display:flex;"><span>         command: [&#34;/bin/bash&#34;]
+</span></span><span style="display:flex;"><span>       - name: foojob
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-        image: fedora:32
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+        image: surajd/fedora32-pgrep
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>         command: [&#34;/bin/bash&#34;]
+</span></span><span style="display:flex;"><span>         args: [&#34;/scripts-dir/run.sh&#34;]
+</span></span><span style="display:flex;"><span>         volumeMounts:
+</span></span></code></pre></div><p>The image has been changed from plain <code>fedora:32</code> to <code>surajd/fedora32-pgrep</code> because the default fedora image does not ship <code>pkill</code> so I installed the package <code>procps</code> and now all the &ldquo;process-killing&rdquo; tools are available in the new docker image. See the dockerfile <a href="https://github.com/surajssd/kill-jobpod-with-sidecar/blob/master/Dockerfile">here</a>.</p>
 <p>Now let&rsquo;s see this in operation:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ helm install --generate-name job/
-NAME: job-1598689001
-LAST DEPLOYED: Sat Aug <span style="color:#ae81ff">29</span> 13:46:41 <span style="color:#ae81ff">2020</span>
-NAMESPACE: default
-STATUS: deployed
-REVISION: <span style="color:#ae81ff">1</span>
-TEST SUITE: None
-
-$ kubectl get pods
-NAME           READY   STATUS              RESTARTS   AGE
-foojob-wr9hl   0/2     ContainerCreating   <span style="color:#ae81ff">0</span>          1s
-
-$ kubectl logs foojob-wr9hl foojob
-<span style="color:#ae81ff">10</span>
-<span style="color:#ae81ff">9</span>
-<span style="color:#ae81ff">8</span>
-<span style="color:#ae81ff">7</span>
-<span style="color:#ae81ff">6</span>
-<span style="color:#ae81ff">5</span>
-<span style="color:#ae81ff">4</span>
-<span style="color:#ae81ff">3</span>
-<span style="color:#ae81ff">2</span>
-<span style="color:#ae81ff">1</span>
-And it is a lift off!
-
-$ kubectl logs foojob-wr9hl endlesssidecar
-Terminated
-stopping now!
-
-$ kubectl get pods
-NAME           READY   STATUS      RESTARTS   AGE
-foojob-wr9hl   0/2     Completed   <span style="color:#ae81ff">0</span>          32s
-</code></pre></div><p>If you notice there is output from the sidecar as well, it first says <code>Terminated</code> which is as a result of the <code>pkill</code> we added. So that is the easiest way to kill the sidecar and satisfy Kubernetes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ helm install --generate-name job/
+</span></span><span style="display:flex;"><span>NAME: job-1598689001
+</span></span><span style="display:flex;"><span>LAST DEPLOYED: Sat Aug <span style="color:#ae81ff">29</span> 13:46:41 <span style="color:#ae81ff">2020</span>
+</span></span><span style="display:flex;"><span>NAMESPACE: default
+</span></span><span style="display:flex;"><span>STATUS: deployed
+</span></span><span style="display:flex;"><span>REVISION: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>TEST SUITE: None
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl get pods
+</span></span><span style="display:flex;"><span>NAME           READY   STATUS              RESTARTS   AGE
+</span></span><span style="display:flex;"><span>foojob-wr9hl   0/2     ContainerCreating   <span style="color:#ae81ff">0</span>          1s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl logs foojob-wr9hl foojob
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">9</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">7</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>And it is a lift off!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl logs foojob-wr9hl endlesssidecar
+</span></span><span style="display:flex;"><span>Terminated
+</span></span><span style="display:flex;"><span>stopping now!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl get pods
+</span></span><span style="display:flex;"><span>NAME           READY   STATUS      RESTARTS   AGE
+</span></span><span style="display:flex;"><span>foojob-wr9hl   0/2     Completed   <span style="color:#ae81ff">0</span>          32s
+</span></span></code></pre></div><p>If you notice there is output from the sidecar as well, it first says <code>Terminated</code> which is as a result of the <code>pkill</code> we added. So that is the easiest way to kill the sidecar and satisfy Kubernetes.</p>
 <h2 id="upstream-efforts">Upstream efforts</h2>
 <ul>
 <li>There is an issue in Kubernetes upstream for this, find it <a href="https://github.com/kubernetes/kubernetes/issues/25908">here</a>.</li>
@@ -477,7 +484,7 @@ foojob-wr9hl   0/2     Completed   <span style="color:#ae81ff">0</span>         
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -519,52 +526,52 @@ foojob-wr9hl   0/2     Completed   <span style="color:#ae81ff">0</span>         
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -801,14 +808,14 @@ foojob-wr9hl   0/2     Completed   <span style="color:#ae81ff">0</span>         
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

@@ -48,7 +48,7 @@ I was struggling with this issue for a while and struggling to get a proper solu
       <guid>https://suraj.io/post/copy-to-container-without-docker-cp/</guid>
       <description>This blog shows you how you can copy stuff from your host machine to the running container without the docker cp command that we usually use.
 Steps in text Here I have a script on the host, which looks following:
-#!/bin/bash  tput bold echo &amp;#34;OS Information:&amp;#34; tput sgr0 echo cat /etc/os-release After running which looks like following:
+#!/bin/bash tput bold echo &amp;#34;OS Information:&amp;#34; tput sgr0 echo cat /etc/os-release After running which looks like following:
 $ ls script.sh $ ./script.sh OS Information: NAME=&amp;#34;Flatcar Linux by Kinvolk&amp;#34; ID=flatcar ID_LIKE=coreos VERSION=2079.</description>
     </item>
     

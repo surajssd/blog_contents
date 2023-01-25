@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Being Productive with Git - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tips and tricks to make your day to day usage easier.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Being Productive with Git">
+<meta property="og:description" content="Tips and tricks to make your day to day usage easier.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/being-productive-with-git/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Being Productive with Git">
-  <meta property="og:description" content="Tips and tricks to make your day to day usage easier.">
-  <meta property="description" content="Tips and tricks to make your day to day usage easier.">
-  <meta property="og:url" content="https://suraj.io/post/being-productive-with-git/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2020-08-16 22:00:51 &#43;0530 IST">August 16, 2020</time>
+    <time datetime="2020-08-16 22:00:51 &#43;0530 &#43;0530">August 16, 2020</time>
     <p>Suraj Deshmukh</p>
     <p>5-Minute Read</p>
   </div>
@@ -238,6 +244,7 @@
       </div>
       <div class="content">
         
+        
         <h2 id="contents">Contents</h2>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
@@ -281,15 +288,15 @@
 <h2 id="bash-aliases">Bash Aliases</h2>
 <p>The most straightforward way to shorten any long Linux command is to use an alias. And I use quite a bunch of aliases for everyday git commands. I have aliases for things like checking out the <code>master</code> branch, pulling stuff from remotes commonly named <code>upstream</code> or <code>origin</code>, looking at git commits, rebasing and amending commits.</p>
 <h3 id="configuration">Configuration</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias gpum<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git pull --ff upstream master&#34;</span>
-alias gpom<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git pull --ff origin master&#34;</span>
-alias gcm<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git checkout master&#34;</span>
-alias gs<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git status&#34;</span>
-alias gcmt<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git commit -s&#34;</span>
-alias gl<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git log --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&#34;</span>
-alias grba<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git rebase -i --autosquash &#34;</span>
-alias gca<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git commit --amend --no-edit&#34;</span>
-</code></pre></div><h3 id="installation">Installation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>alias gpum<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git pull --ff upstream master&#34;</span>
+</span></span><span style="display:flex;"><span>alias gpom<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git pull --ff origin master&#34;</span>
+</span></span><span style="display:flex;"><span>alias gcm<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git checkout master&#34;</span>
+</span></span><span style="display:flex;"><span>alias gs<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git status&#34;</span>
+</span></span><span style="display:flex;"><span>alias gcmt<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git commit -s&#34;</span>
+</span></span><span style="display:flex;"><span>alias gl<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git log --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&#34;</span>
+</span></span><span style="display:flex;"><span>alias grba<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git rebase -i --autosquash &#34;</span>
+</span></span><span style="display:flex;"><span>alias gca<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;git commit --amend --no-edit&#34;</span>
+</span></span></code></pre></div><h3 id="installation">Installation</h3>
 <p>Above aliases you saw are placed in <code>~/.bashrc</code>. You can find mine <a href="https://github.com/surajssd/dotfiles/blob/2c2d97642835d78b5ab62a25079d8c29d4f315a8/configs/bashrc#L27-L38">here</a>.</p>
 <h2 id="global-git-configuration">Global Git Configuration</h2>
 <h3 id="configuration-1">Configuration</h3>
@@ -306,78 +313,78 @@ alias gca<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gi
 [diff]
   tool = default-difftool
   noprefix = true
-[difftool &quot;default-difftool&quot;]
+[difftool &#34;default-difftool&#34;]
   cmd = code --wait --diff $LOCAL $REMOTE
 [core]
   excludesfile = ~/.gitignore
   editor = code --wait
 </code></pre><h3 id="installation-1">Installation</h3>
 <p>My global git configuration <code>~/.gitconfig</code> is not something I create manually. I have an unusual way of creating it. So if you look at the configuration, it is just a symlink to the actual file which resides in my dotfiles repository. I have a special way of creating these symlinks, which is explained in my previous blog <a href="https://suraj.io/post/framework-for-scripts-and-binaries/">here</a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ls -al ~/.gitconfig
-lrwxrwxrwx@ <span style="color:#ae81ff">43</span> surajd <span style="color:#ae81ff">27</span> Jul  1:05 /home/surajd/.gitconfig -&gt; /home/surajd/git/dotfiles/configs/gitconfig
-</code></pre></div><h2 id="repository-specific-git-settings">Repository Specific Git Settings</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ls -al ~/.gitconfig
+</span></span><span style="display:flex;"><span>lrwxrwxrwx@ <span style="color:#ae81ff">43</span> surajd <span style="color:#ae81ff">27</span> Jul  1:05 /home/surajd/.gitconfig -&gt; /home/surajd/git/dotfiles/configs/gitconfig
+</span></span></code></pre></div><h2 id="repository-specific-git-settings">Repository Specific Git Settings</h2>
 <p>There are some settings I want only for that particular repository. For instance, for my work, I sign-off all my commits with my work email id. For those repository-specific settings, I have a script which does the job for me.</p>
 <h3 id="configuration-2">Configuration</h3>
 <p>Right now this is all I do for work repository, so that&rsquo;s all I need.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git config user.email <span style="color:#e6db74">&#34;me@work.com&#34;</span>
-</code></pre></div><h3 id="installation-2">Installation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config user.email <span style="color:#e6db74">&#34;me@work.com&#34;</span>
+</span></span></code></pre></div><h3 id="installation-2">Installation</h3>
 <p>You can copy above snippet in a file make it executable and place it in your <code>PATH</code>. I have this file in a dotfiles repository from where a script creates a symlink for this executable file and places in the <code>PATH</code>. All this script management framework is explained in my previous blog post <a href="https://suraj.io/post/framework-for-scripts-and-binaries/">here</a>. You can find the exact file <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/set-git-config-kinvolk">here</a>.</p>
 <h2 id="bash-git-prompt">Bash Git Prompt</h2>
 <p>Now when you are using plain old bash, it is not very helpful in terms of the context of the directory you are in. When you don&rsquo;t have a visual aid, it is easy to make mistakes like commit something on the wrong branch or other undesired things. So I use this helper utility called <a href="https://github.com/magicmonty/bash-git-prompt">bash-git-prompt</a> which provides me with the git directory context. Like it tells me the path to the repository, the branch, the number of files changed, if the files are committed or untracked, exit code of the previous command, current time, etc. The bash prompt will change to look something like this when you are in a git repository:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">✘-127 ~/git/blog_contents <span style="color:#f92672">[</span>foobar L|✚ 1…1<span style="color:#f92672">]</span>
-23:01 $
-</code></pre></div><h3 id="configuration-3">Configuration</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>✘-127 ~/git/blog_contents <span style="color:#f92672">[</span>foobar L|✚ 1…1<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>23:01 $
+</span></span></code></pre></div><h3 id="configuration-3">Configuration</h3>
 <p>You need to have these two settings in your <code>~/.bashrc</code>. So that the bash git prompt scripts are sourced every time the terminal starts.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Bash Git Prompt</span>
-source ~/.bash-git-prompt/gitprompt.sh
-GIT_PROMPT_ONLY_IN_REPO<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-</code></pre></div><h3 id="installation-3">Installation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Bash Git Prompt</span>
+</span></span><span style="display:flex;"><span>source ~/.bash-git-prompt/gitprompt.sh
+</span></span><span style="display:flex;"><span>GIT_PROMPT_ONLY_IN_REPO<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h3 id="installation-3">Installation</h3>
 <p>Again this is installed easily using this helper script I have <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/update-git-prompt">here</a>. So I just have to run the command <code>update-git-prompt</code>, and then the repository is installed to be consumed.</p>
 <h2 id="git-push">Git Push</h2>
 <p>I have a script to push my changes to the PR I am working on. So every time I am done committing, I just need to do <code>gpo.sh</code>, and the changes are pushed to your <code>origin</code> remote. Behind the scene, there is a simple command which finds out what the current branch is and then push the current branch to <code>origin</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git push origin <span style="color:#66d9ef">$(</span>git branch --show-current<span style="color:#66d9ef">)</span> <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
-</code></pre></div><h2 id="pr-reviews">PR Reviews</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin <span style="color:#66d9ef">$(</span>git branch --show-current<span style="color:#66d9ef">)</span> <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><h2 id="pr-reviews">PR Reviews</h2>
 <p>For PR reviews, it is tough to comprehend all the code just by looking on Github. So I like to pull those changes locally. There is a handy script for it that I use. All I run is something like <code>pr.sh 704 origin</code>, so this is pulling PR number 704 from the remote named <code>origin</code>. If you have to pull changes from <code>upstream</code> then specify such or whatever your remote name maybe.</p>
 <h3 id="configuration-4">Configuration</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">random<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>RANDOM<span style="color:#e6db74">}${</span>RANDOM<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-git fetch <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>remote<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;pull/</span><span style="color:#e6db74">${</span>id<span style="color:#e6db74">}</span><span style="color:#e6db74">/head:pr_</span><span style="color:#e6db74">${</span>id<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span>remote<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span>random<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-git checkout <span style="color:#e6db74">&#34;pr_</span><span style="color:#e6db74">${</span>id<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span>remote<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span>random<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</code></pre></div><h3 id="installation-4">Installation</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>random<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>RANDOM<span style="color:#e6db74">}${</span>RANDOM<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>git fetch <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>remote<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;pull/</span><span style="color:#e6db74">${</span>id<span style="color:#e6db74">}</span><span style="color:#e6db74">/head:pr_</span><span style="color:#e6db74">${</span>id<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span>remote<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span>random<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>git checkout <span style="color:#e6db74">&#34;pr_</span><span style="color:#e6db74">${</span>id<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span>remote<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">${</span>random<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><h3 id="installation-4">Installation</h3>
 <p>I use my regular framework to install above <code>pr.sh</code>. You can find the entire file <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/pr.sh">here.</a></p>
 <h2 id="demo">Demo</h2>
 <ul>
 <li>Step 1: Create branch:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git checkout foobar
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git checkout foobar
+</span></span></code></pre></div><ul>
 <li>Step 2: Make changes as needed. Look at the changes:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gs
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gs
+</span></span></code></pre></div><ul>
 <li>Step 3: Add the changes:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add .
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .
+</span></span></code></pre></div><ul>
 <li>Step 4: Commit these changes:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gcmt
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gcmt
+</span></span></code></pre></div><ul>
 <li>Step 5: Push them:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gpo.sh
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gpo.sh
+</span></span></code></pre></div><ul>
 <li>Step 6: CI failed, and now you need to make changes. Make necessary fixes and follow step 2 to 3. Then to amend the last commit just run:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gca
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gca
+</span></span></code></pre></div><ul>
 <li>Step 7: Look at the git commits in the branch</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gl
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gl
+</span></span></code></pre></div><ul>
 <li>Step 8: Force push changes now:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gpo.sh -f
-</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gpo.sh -f
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>That was my tweaked Git workflow. Let me know your productivity hacks with git, in the comments or on twitter. Thanks for reading. Happy Hacking!</p>
 
       </div>
@@ -420,7 +427,7 @@ git checkout <span style="color:#e6db74">&#34;pr_</span><span style="color:#e6db
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -462,52 +469,52 @@ git checkout <span style="color:#e6db74">&#34;pr_</span><span style="color:#e6db
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -744,14 +751,14 @@ git checkout <span style="color:#e6db74">&#34;pr_</span><span style="color:#e6db
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

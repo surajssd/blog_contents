@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>k8s on CRI-O - single node - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How to make kubernetes use CRI-O as container runtime">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="k8s on CRI-O - single node">
+<meta property="og:description" content="How to make kubernetes use CRI-O as container runtime">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/using-crio-with-k8s-single-node/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="k8s on CRI-O - single node">
-  <meta property="og:description" content="How to make kubernetes use CRI-O as container runtime">
-  <meta property="description" content="How to make kubernetes use CRI-O as container runtime">
-  <meta property="og:url" content="https://suraj.io/post/using-crio-with-k8s-single-node/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2017-04-08 00:11:37 &#43;0530 IST">April 8, 2017</time>
+    <time datetime="2017-04-08 00:11:37 &#43;0530 &#43;0530">April 8, 2017</time>
     <p>Suraj Deshmukh</p>
     <p>2-Minute Read</p>
   </div>
@@ -238,110 +244,111 @@
       </div>
       <div class="content">
         
+        
         <p>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.</p>
 <h3 id="installing-os-dependencies">Installing OS dependencies</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dnf -y install <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  go <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  git <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  btrfs-progs-devel <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  device-mapper-devel <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  glib2-devel <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  glibc-devel <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  glibc-static <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  gpgme-devel <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  libassuan-devel <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  libgpg-error-devel <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  libseccomp-devel <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  libselinux-devel <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  pkgconfig <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  wget <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  etcd <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  iptables
-</code></pre></div><h3 id="creating-go-environment">Creating go environment</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~
-mkdir -p ~/go
-
-export GOPATH<span style="color:#f92672">=</span>~/go
-export GOBIN<span style="color:#f92672">=</span>$GOPATH/bin
-export PATH<span style="color:#f92672">=</span>$PATH:$GOBIN
-
-echo <span style="color:#e6db74">&#39;GOPATH=~/go&#39;</span> &gt;&gt; ~/.bashrc
-echo <span style="color:#e6db74">&#39;GOBIN=$GOPATH/bin&#39;</span> &gt;&gt; ~/.bashrc
-echo <span style="color:#e6db74">&#39;PATH=$PATH:$GOBIN&#39;</span> &gt;&gt; ~/.bashrc
-</code></pre></div><h3 id="pull-all-the-code-dependencies">Pull all the code dependencies</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">go get -d k8s.io/kubernetes
-go get -u github.com/cloudflare/cfssl/cmd/...
-</code></pre></div><h3 id="install-runc">Install runc</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">go get -d github.com/opencontainers/runc
-cd $GOPATH/src/github.com/opencontainers/runc
-git reset --hard v1.0.0-rc3
-make BUILDTAGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;seccomp selinux&#39;</span> <span style="color:#f92672">&amp;&amp;</span> make install
-</code></pre></div><h3 id="build-cri-o">Build <code>cri-o</code></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd
-go get -d github.com/kubernetes-incubator/cri-o
-cd $GOPATH/src/github.com/kubernetes-incubator/cri-o
-make install.tools
-make <span style="color:#f92672">&amp;&amp;</span> make install
-make install.config
-</code></pre></div><h3 id="set-up-cni">Set up CNI</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">go get -d github.com/containernetworking/cni
-cd $GOPATH/src/github.com/containernetworking/cni
-./build.sh
-
-mkdir -p /opt/cni/bin
-cp bin/* /opt/cni/bin/
-
-mkdir -p /etc/cni/net.d/
-cat &gt; /etc/cni/net.d/10-ocid-bridge.conf <span style="color:#e6db74">&lt;&lt;EOF
-</span><span style="color:#e6db74">{
-</span><span style="color:#e6db74">    &#34;cniVersion&#34;: &#34;0.2.0&#34;,
-</span><span style="color:#e6db74">    &#34;name&#34;: &#34;ocid-bridge&#34;,
-</span><span style="color:#e6db74">    &#34;type&#34;: &#34;bridge&#34;,
-</span><span style="color:#e6db74">    &#34;bridge&#34;: &#34;cni0&#34;,
-</span><span style="color:#e6db74">    &#34;isGateway&#34;: true,
-</span><span style="color:#e6db74">    &#34;ipMasq&#34;: true,
-</span><span style="color:#e6db74">    &#34;ipam&#34;: {
-</span><span style="color:#e6db74">        &#34;type&#34;: &#34;host-local&#34;,
-</span><span style="color:#e6db74">        &#34;subnet&#34;: &#34;10.88.0.0/16&#34;,
-</span><span style="color:#e6db74">        &#34;routes&#34;: [
-</span><span style="color:#e6db74">            { &#34;dst&#34;: &#34;0.0.0.0/0&#34; }
-</span><span style="color:#e6db74">        ]
-</span><span style="color:#e6db74">    }
-</span><span style="color:#e6db74">}
-</span><span style="color:#e6db74">EOF</span>
-
-cat &gt; /etc/cni/net.d/99-loopback.conf <span style="color:#e6db74">&lt;&lt;EOF
-</span><span style="color:#e6db74">{
-</span><span style="color:#e6db74">    &#34;cniVersion&#34;: &#34;0.2.0&#34;,
-</span><span style="color:#e6db74">    &#34;type&#34;: &#34;loopback&#34;
-</span><span style="color:#e6db74">}
-</span><span style="color:#e6db74">EOF</span>
-</code></pre></div><h3 id="create-policyjson">Create <code>policy.json</code></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p  /etc/containers
-
-cat &gt; /etc/containers/policy.json <span style="color:#e6db74">&lt;&lt;EOF
-</span><span style="color:#e6db74">{
-</span><span style="color:#e6db74">    &#34;default&#34;: [
-</span><span style="color:#e6db74">        {
-</span><span style="color:#e6db74">            &#34;type&#34;: &#34;insecureAcceptAnything&#34;
-</span><span style="color:#e6db74">        }
-</span><span style="color:#e6db74">    ]
-</span><span style="color:#e6db74">}
-</span><span style="color:#e6db74">EOF</span>
-</code></pre></div><h3 id="make-selinux-happy">Make SELinux happy</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p /var/lib/containers/
-chcon -Rt svirt_sandbox_file_t /var/lib/containers/
-</code></pre></div><h3 id="start-ocid-service">Start ocid service</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export PATH<span style="color:#f92672">=</span>$PATH:/usr/local/bin/
-echo <span style="color:#e6db74">&#39;PATH=$PATH:/usr/local/bin/&#39;</span> &gt;&gt; ~/.bashrc
-ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug --selinux true
-</code></pre></div><h3 id="start-k8s-cluster-with-crio">Start k8s cluster with crio</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd $GOPATH/src/k8s.io/kubernetes/
-CONTAINER_RUNTIME<span style="color:#f92672">=</span>remote CONTAINER_RUNTIME_ENDPOINT<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/var/run/ocid.sock --runtime-request-timeout=15m&#39;</span> ./hack/local-up-cluster.sh
-</code></pre></div><p>To use <code>kubectl</code> (in new terminal)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias kubectl<span style="color:#f92672">=</span>$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh
-echo <span style="color:#e6db74">&#39;alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh&#39;</span>  &gt;&gt; ~/.bashrc
-</code></pre></div><p>Ref:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dnf -y install <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  go <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  git <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  btrfs-progs-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  device-mapper-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  glib2-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  glibc-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  glibc-static <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  gpgme-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  libassuan-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  libgpg-error-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  libseccomp-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  libselinux-devel <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  pkgconfig <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  wget <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  etcd <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  iptables
+</span></span></code></pre></div><h3 id="creating-go-environment">Creating go environment</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~
+</span></span><span style="display:flex;"><span>mkdir -p ~/go
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>export GOPATH<span style="color:#f92672">=</span>~/go
+</span></span><span style="display:flex;"><span>export GOBIN<span style="color:#f92672">=</span>$GOPATH/bin
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$PATH:$GOBIN
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;GOPATH=~/go&#39;</span> &gt;&gt; ~/.bashrc
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;GOBIN=$GOPATH/bin&#39;</span> &gt;&gt; ~/.bashrc
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;PATH=$PATH:$GOBIN&#39;</span> &gt;&gt; ~/.bashrc
+</span></span></code></pre></div><h3 id="pull-all-the-code-dependencies">Pull all the code dependencies</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go get -d k8s.io/kubernetes
+</span></span><span style="display:flex;"><span>go get -u github.com/cloudflare/cfssl/cmd/...
+</span></span></code></pre></div><h3 id="install-runc">Install runc</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go get -d github.com/opencontainers/runc
+</span></span><span style="display:flex;"><span>cd $GOPATH/src/github.com/opencontainers/runc
+</span></span><span style="display:flex;"><span>git reset --hard v1.0.0-rc3
+</span></span><span style="display:flex;"><span>make BUILDTAGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;seccomp selinux&#39;</span> <span style="color:#f92672">&amp;&amp;</span> make install
+</span></span></code></pre></div><h3 id="build-cri-o">Build <code>cri-o</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd
+</span></span><span style="display:flex;"><span>go get -d github.com/kubernetes-incubator/cri-o
+</span></span><span style="display:flex;"><span>cd $GOPATH/src/github.com/kubernetes-incubator/cri-o
+</span></span><span style="display:flex;"><span>make install.tools
+</span></span><span style="display:flex;"><span>make <span style="color:#f92672">&amp;&amp;</span> make install
+</span></span><span style="display:flex;"><span>make install.config
+</span></span></code></pre></div><h3 id="set-up-cni">Set up CNI</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go get -d github.com/containernetworking/cni
+</span></span><span style="display:flex;"><span>cd $GOPATH/src/github.com/containernetworking/cni
+</span></span><span style="display:flex;"><span>./build.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir -p /opt/cni/bin
+</span></span><span style="display:flex;"><span>cp bin/* /opt/cni/bin/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir -p /etc/cni/net.d/
+</span></span><span style="display:flex;"><span>cat &gt; /etc/cni/net.d/10-ocid-bridge.conf <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;cniVersion&#34;: &#34;0.2.0&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;name&#34;: &#34;ocid-bridge&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;type&#34;: &#34;bridge&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;bridge&#34;: &#34;cni0&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;isGateway&#34;: true,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;ipMasq&#34;: true,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;ipam&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;type&#34;: &#34;host-local&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;subnet&#34;: &#34;10.88.0.0/16&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;routes&#34;: [
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            { &#34;dst&#34;: &#34;0.0.0.0/0&#34; }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        ]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cat &gt; /etc/cni/net.d/99-loopback.conf <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;cniVersion&#34;: &#34;0.2.0&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;type&#34;: &#34;loopback&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><h3 id="create-policyjson">Create <code>policy.json</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p  /etc/containers
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cat &gt; /etc/containers/policy.json <span style="color:#e6db74">&lt;&lt;EOF
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;default&#34;: [
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;type&#34;: &#34;insecureAcceptAnything&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><h3 id="make-selinux-happy">Make SELinux happy</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p /var/lib/containers/
+</span></span><span style="display:flex;"><span>chcon -Rt svirt_sandbox_file_t /var/lib/containers/
+</span></span></code></pre></div><h3 id="start-ocid-service">Start ocid service</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$PATH:/usr/local/bin/
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;PATH=$PATH:/usr/local/bin/&#39;</span> &gt;&gt; ~/.bashrc
+</span></span><span style="display:flex;"><span>ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug --selinux true
+</span></span></code></pre></div><h3 id="start-k8s-cluster-with-crio">Start k8s cluster with crio</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd $GOPATH/src/k8s.io/kubernetes/
+</span></span><span style="display:flex;"><span>CONTAINER_RUNTIME<span style="color:#f92672">=</span>remote CONTAINER_RUNTIME_ENDPOINT<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/var/run/ocid.sock --runtime-request-timeout=15m&#39;</span> ./hack/local-up-cluster.sh
+</span></span></code></pre></div><p>To use <code>kubectl</code> (in new terminal)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>alias kubectl<span style="color:#f92672">=</span>$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh&#39;</span>  &gt;&gt; ~/.bashrc
+</span></span></code></pre></div><p>Ref:</p>
 <ul>
 <li>Bangalore Kubernetes Meetup - April 2017 - <a href="https://docs.google.com/presentation/d/1tP7b1e1fy-n3_v5bilDLjOAheZGu602B3WK-1kxXkVo/edit?usp=sharing">Slides</a>.</li>
 <li><a href="https://twitter.com/runc0m">runcom&rsquo;s</a> <a href="https://gist.github.com/runcom/ba58bf2f64e38d9f5d376d587751a0f9#file-fedora_25">Setup script</a> for Fedora.</li>
@@ -387,7 +394,7 @@ echo <span style="color:#e6db74">&#39;alias kubectl=$GOPATH/src/k8s.io/kubernete
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -429,52 +436,52 @@ echo <span style="color:#e6db74">&#39;alias kubectl=$GOPATH/src/k8s.io/kubernete
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -711,14 +718,14 @@ echo <span style="color:#e6db74">&#39;alias kubectl=$GOPATH/src/k8s.io/kubernete
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

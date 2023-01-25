@@ -3,24 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>How to create a Systemd daemon quickly? - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Blog">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="How to create a Systemd daemon quickly?">
+<meta property="og:description" content="Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/2021/06/systemd-service/">
+    <meta property="og:image" content="https://suraj.io/post/2021/06/systemd-service/systemd.png">
+    <meta property="og:image:alt" content="Systemd">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="How to create a Systemd daemon quickly?">
-  <meta property="og:description" content="Blog">
-  <meta property="description" content="Blog">
-  <meta property="og:url" content="https://suraj.io/post/2021/06/systemd-service/">
-  <meta property="og:type" content="article">
-  
-    
-      <meta property="og:image" content="https://suraj.io/post/2021/06/systemd-service/systemd.png">
-      <meta property="og:image:alt" content="Systemd">
-    
-  
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -192,7 +195,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2021-06-19 16:16:00 &#43;0530 IST">June 19, 2021</time>
+    <time datetime="2021-06-19 16:16:00 &#43;0530 &#43;0530">June 19, 2021</time>
     <p>Suraj Deshmukh</p>
     <p>2-Minute Read</p>
   </div>
@@ -238,41 +241,42 @@
 
       </div>
       <div class="content">
-        <a href="/post/2021/06/systemd-service/" class="image" style="--bg-image: url('https://suraj.io/post/2021/06/systemd-service/systemd.png');">
-    <img src="https://suraj.io/post/2021/06/systemd-service/systemd.png" alt="Systemd">
+        <a href="/post/2021/06/systemd-service/" class="image" style="--bg-image: url('/post/2021/06/systemd-service/systemd.png');">
+    <img src="/post/2021/06/systemd-service/systemd.png" alt="Systemd">
   </a>
+        
         <p>If you have a script or a binary and want to run it as a Systemd service, keep following. This blog will show you how to take any such executable code and run it using Systemd. Sure, you can do similar stuff using Docker as well. Although there are certain downsides of using Docker (alone) for managing the daemons. Systemd is good at log management on the node over a Docker container. If a container fails, you may or may not have access to the logs. Systemd provides constructs in managing dependencies quite well. And finally, you may not be using Docker on the machine, while Systemd is quite ubiquitous on any Linux.</p>
 <h1 id="steps">Steps</h1>
 <h2 id="binary">Binary</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export BIN_PATH<span style="color:#f92672">=</span>/absolute/path/to/the/binary
-</code></pre></div><p>Ensure that the binary is executable:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod +x <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BIN_PATH<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</code></pre></div><h2 id="systemd-service-file">Systemd service file</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export BIN_PATH<span style="color:#f92672">=</span>/absolute/path/to/the/binary
+</span></span></code></pre></div><p>Ensure that the binary is executable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>BIN_PATH<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><h2 id="systemd-service-file">Systemd service file</h2>
 <p>Provide the name you wish to assign to this service (use <a href="https://en.wikipedia.org/wiki/Letter_case#Special_case_styles">kebab-case</a>):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># e.g. export SVC_NAME=&#34;my-app&#34;</span>
-export SVC_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;name-of-the-service&#34;</span>
-</code></pre></div><p>Now create a Systemd service file. Service files contain configuration pertaining to a daemon. Here you specify all the things that the Systemd needs, e.g. path to the binary, its dependencies, how often do you restart, etc.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;
-</span><span style="color:#e6db74">[Unit]
-</span><span style="color:#e6db74">Description=</span><span style="color:#e6db74">${</span>SVC_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">[Service]
-</span><span style="color:#e6db74">ExecStart=</span><span style="color:#e6db74">${</span>BIN_PATH<span style="color:#e6db74">}</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">Restart=always
-</span><span style="color:#e6db74">RestartSec=5
-</span><span style="color:#e6db74">[Install]
-</span><span style="color:#e6db74">&#34;</span> | tee /etc/systemd/system/<span style="color:#e6db74">${</span>SVC_NAME<span style="color:#e6db74">}</span>.service
-</code></pre></div><p><strong>NOTE</strong>: If there are dependencies for this executable code, then you can add <code>Requires=dep.service</code> and <code>After=dep.service</code> under the <code>[Unit]</code> section of the service file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># e.g. export SVC_NAME=&#34;my-app&#34;</span>
+</span></span><span style="display:flex;"><span>export SVC_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;name-of-the-service&#34;</span>
+</span></span></code></pre></div><p>Now create a Systemd service file. Service files contain configuration pertaining to a daemon. Here you specify all the things that the Systemd needs, e.g. path to the binary, its dependencies, how often do you restart, etc.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Description=</span><span style="color:#e6db74">${</span>SVC_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ExecStart=</span><span style="color:#e6db74">${</span>BIN_PATH<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Restart=always
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">RestartSec=5
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[Install]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span> | tee /etc/systemd/system/<span style="color:#e6db74">${</span>SVC_NAME<span style="color:#e6db74">}</span>.service
+</span></span></code></pre></div><p><strong>NOTE</strong>: If there are dependencies for this executable code, then you can add <code>Requires=dep.service</code> and <code>After=dep.service</code> under the <code>[Unit]</code> section of the service file.</p>
 <h2 id="start-the-process">Start the process</h2>
 <p>Run the following commands to start the process:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl daemon-reload
-
-<span style="color:#75715e"># Start the process right now and enable it to run on reboot.</span>
-systemctl enable --now <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SVC_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-systemctl status --no-pager <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SVC_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-journalctl -fu <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SVC_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</code></pre></div><h2 id="watch-logs">Watch logs</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl daemon-reload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Start the process right now and enable it to run on reboot.</span>
+</span></span><span style="display:flex;"><span>systemctl enable --now <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SVC_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>systemctl status --no-pager <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SVC_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>journalctl -fu <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SVC_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><h2 id="watch-logs">Watch logs</h2>
 <p>Execute the following command to see the logs of the process:</p>
-<pre tabindex="0"><code>journalctl -u &quot;${SVC_NAME}&quot;
+<pre tabindex="0"><code>journalctl -u &#34;${SVC_NAME}&#34;
 </code></pre><h1 id="conclusion">Conclusion</h1>
 <p>That’s it. It is that easy to convert any binary into a Systemd service.</p>
 
@@ -310,7 +314,7 @@ journalctl -fu <span style="color:#e6db74">&#34;</span><span style="color:#e6db7
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -352,52 +356,52 @@ journalctl -fu <span style="color:#e6db74">&#34;</span><span style="color:#e6db7
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -634,14 +638,14 @@ journalctl -fu <span style="color:#e6db74">&#34;</span><span style="color:#e6db7
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

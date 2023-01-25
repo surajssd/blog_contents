@@ -33,7 +33,7 @@ Cons of the Traditional Method The round trip time during development and testin
       <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/post/being-productive-with-git/</guid>
-      <description>Contents  Introduction Bash Aliases  Configuration Installation   Global Git Configuration  Configuration Installation   Repository Specific Git Settings  Configuration Installation   Bash Git Prompt  Configuration Installation   Git Push PR Reviews  Configuration Installation   Demo Conclusion  Introduction Git is a day to day tool for version control. It has become a de facto method of source code versioning, it has become ubiquitous with development and its an essential skill for a programmer.</description>
+      <description>Contents Introduction Bash Aliases Configuration Installation Global Git Configuration Configuration Installation Repository Specific Git Settings Configuration Installation Bash Git Prompt Configuration Installation Git Push PR Reviews Configuration Installation Demo Conclusion Introduction Git is a day to day tool for version control. It has become a de facto method of source code versioning, it has become ubiquitous with development and its an essential skill for a programmer. I use it all the time.</description>
     </item>
     
     <item>

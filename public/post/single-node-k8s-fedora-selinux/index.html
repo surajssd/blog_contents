@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Single node Kubernetes Cluster on Fedora with SELinux enabled - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Kubeadm to install Single Node K8S with SELinux">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Single node Kubernetes Cluster on Fedora with SELinux enabled">
+<meta property="og:description" content="Kubeadm to install Single Node K8S with SELinux">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/single-node-k8s-fedora-selinux/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Single node Kubernetes Cluster on Fedora with SELinux enabled">
-  <meta property="og:description" content="Kubeadm to install Single Node K8S with SELinux">
-  <meta property="description" content="Kubeadm to install Single Node K8S with SELinux">
-  <meta property="og:url" content="https://suraj.io/post/single-node-k8s-fedora-selinux/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2018-09-11 01:00:51 &#43;0530 IST">September 11, 2018</time>
+    <time datetime="2018-09-11 01:00:51 &#43;0530 &#43;0530">September 11, 2018</time>
     <p>Suraj Deshmukh</p>
     <p>2-Minute Read</p>
   </div>
@@ -238,72 +244,73 @@
       </div>
       <div class="content">
         
+        
         <p>Start a single node fedora machine, using whatever method but I have used <a href="https://github.com/surajssd/scripts/blob/master/Vagrantfiles/fedora/Vagrantfile">this Vagrantfile</a> to do it:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#75715e"># -*- mode: ruby -*-</span>
-<span style="color:#75715e"># vi: set ft=ruby :</span>
-<span style="color:#66d9ef">Vagrant</span><span style="color:#f92672">.</span>configure(<span style="color:#e6db74">&#34;2&#34;</span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>config<span style="color:#f92672">|</span>
-
-  config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>define <span style="color:#e6db74">&#34;fedora&#34;</span> <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>fedora<span style="color:#f92672">|</span>
-    fedora<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>box <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fedora/28-cloud-base&#34;</span>
-    config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>hostname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fedora&#34;</span>
-  <span style="color:#66d9ef">end</span>
-
-  config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>provider <span style="color:#e6db74">&#34;virtualbox&#34;</span> <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>virtualbox, override<span style="color:#f92672">|</span>
-    virtualbox<span style="color:#f92672">.</span>memory <span style="color:#f92672">=</span> <span style="color:#ae81ff">4096</span>
-    virtualbox<span style="color:#f92672">.</span>cpus <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
-  <span style="color:#66d9ef">end</span>
-
-  config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>provision <span style="color:#e6db74">&#34;shell&#34;</span>, <span style="color:#e6db74">privileged</span>: <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">inline</span>: <span style="color:#e6db74">&lt;&lt;-SHELL
-</span><span style="color:#e6db74"></span>    echo <span style="color:#e6db74">&#39;127.0.0.1 localhost&#39;</span> <span style="color:#f92672">|</span> cat <span style="color:#f92672">-</span> <span style="color:#e6db74">/etc/</span>hosts <span style="color:#f92672">&gt;</span> temp <span style="color:#f92672">&amp;&amp;</span> sudo mv temp <span style="color:#e6db74">/etc/</span>hosts
-  <span style="color:#66d9ef">SHELL</span>
-<span style="color:#66d9ef">end</span>
-</code></pre></div><p>Now start it and ssh into it:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vagrant up
-vagrant ssh
-</code></pre></div><p>Once inside the machine, become root user and run <a href="https://github.com/surajssd/scripts/blob/master/shell/k8s-install-single-node/install.sh">this script</a>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo -i
-curl https://raw.githubusercontent.com/surajssd/scripts/master/shell/k8s-install-single-node/install.sh | sh
-</code></pre></div><p>And you should have a running Kubernetes cluster.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#75715e"># -*- mode: ruby -*-</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># vi: set ft=ruby :</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">Vagrant</span><span style="color:#f92672">.</span>configure(<span style="color:#e6db74">&#34;2&#34;</span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>config<span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>define <span style="color:#e6db74">&#34;fedora&#34;</span> <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>fedora<span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    fedora<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>box <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fedora/28-cloud-base&#34;</span>
+</span></span><span style="display:flex;"><span>    config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>hostname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fedora&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>provider <span style="color:#e6db74">&#34;virtualbox&#34;</span> <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>virtualbox, override<span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>    virtualbox<span style="color:#f92672">.</span>memory <span style="color:#f92672">=</span> <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>    virtualbox<span style="color:#f92672">.</span>cpus <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>provision <span style="color:#e6db74">&#34;shell&#34;</span>, <span style="color:#e6db74">privileged</span>: <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">inline</span>: <span style="color:#e6db74">&lt;&lt;-SHELL
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>    echo <span style="color:#e6db74">&#39;127.0.0.1 localhost&#39;</span> <span style="color:#f92672">|</span> cat <span style="color:#f92672">-</span> <span style="color:#e6db74">/etc/</span>hosts <span style="color:#f92672">&gt;</span> temp <span style="color:#f92672">&amp;&amp;</span> sudo mv temp <span style="color:#e6db74">/etc/</span>hosts
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">SHELL</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><p>Now start it and ssh into it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vagrant up
+</span></span><span style="display:flex;"><span>vagrant ssh
+</span></span></code></pre></div><p>Once inside the machine, become root user and run <a href="https://github.com/surajssd/scripts/blob/master/shell/k8s-install-single-node/install.sh">this script</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo -i
+</span></span><span style="display:flex;"><span>curl https://raw.githubusercontent.com/surajssd/scripts/master/shell/k8s-install-single-node/install.sh | sh
+</span></span></code></pre></div><p>And you should have a running Kubernetes cluster.</p>
 <h1 id="understanding-steps">Understanding steps</h1>
 <p>Install and start <code>docker</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install -y docker
-systemctl enable docker <span style="color:#f92672">&amp;&amp;</span> systemctl start docker
-</code></pre></div><p>Install <code>kubelet</code> and start it:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;
-</span><span style="color:#e6db74">[kubernetes]
-</span><span style="color:#e6db74">name=Kubernetes
-</span><span style="color:#e6db74">baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
-</span><span style="color:#e6db74">enabled=1
-</span><span style="color:#e6db74">gpgcheck=1
-</span><span style="color:#e6db74">repo_gpgcheck=1
-</span><span style="color:#e6db74">gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-</span><span style="color:#e6db74">exclude=kube*
-</span><span style="color:#e6db74">&#34;</span> | tee /etc/yum.repos.d/kubernetes.repo
-
-yum install -y kubelet kubeadm kubectl --disableexcludes<span style="color:#f92672">=</span>kubernetes
-systemctl enable kubelet <span style="color:#f92672">&amp;&amp;</span> systemctl start kubelet
-</code></pre></div><p>Set SELinux contexts:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># for kubernetes files</span>
-mkdir -p /etc/kubernetes/
-chcon -R -t svirt_sandbox_file_t /etc/kubernetes/
-
-<span style="color:#75715e"># for etcd files</span>
-mkdir -p /var/lib/etcd
-chcon -R -t svirt_sandbox_file_t /var/lib/etcd
-</code></pre></div><p>Start <code>kubeadm</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubeadm config images pull
-kubeadm init
-</code></pre></div><p>Set the <code>kubectl</code> context:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown <span style="color:#66d9ef">$(</span>id -u<span style="color:#66d9ef">)</span>:<span style="color:#66d9ef">$(</span>id -g<span style="color:#66d9ef">)</span> $HOME/.kube/config
-</code></pre></div><p>Install network, this step can be varied depending on which networking provider you want to install, here I have installed weave net. For other providers see <a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#pod-network">here</a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f <span style="color:#e6db74">&#34;https://cloud.weave.works/k8s/net?k8s-version=</span><span style="color:#66d9ef">$(</span>kubectl version | base64 | tr -d <span style="color:#e6db74">&#39;\n&#39;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-</code></pre></div><p>Also use <code>master</code> node as <code>worker</code> node.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl taint nodes --all node-role.kubernetes.io/master-
-</code></pre></div><p>Finally list nodes or wait until node is ready.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get nodes
-</code></pre></div><h1 id="debugging-the-setup">Debugging the setup</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum install -y docker
+</span></span><span style="display:flex;"><span>systemctl enable docker <span style="color:#f92672">&amp;&amp;</span> systemctl start docker
+</span></span></code></pre></div><p>Install <code>kubelet</code> and start it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[kubernetes]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">name=Kubernetes
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">enabled=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">gpgcheck=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">repo_gpgcheck=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">exclude=kube*
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span> | tee /etc/yum.repos.d/kubernetes.repo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>yum install -y kubelet kubeadm kubectl --disableexcludes<span style="color:#f92672">=</span>kubernetes
+</span></span><span style="display:flex;"><span>systemctl enable kubelet <span style="color:#f92672">&amp;&amp;</span> systemctl start kubelet
+</span></span></code></pre></div><p>Set SELinux contexts:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># for kubernetes files</span>
+</span></span><span style="display:flex;"><span>mkdir -p /etc/kubernetes/
+</span></span><span style="display:flex;"><span>chcon -R -t svirt_sandbox_file_t /etc/kubernetes/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># for etcd files</span>
+</span></span><span style="display:flex;"><span>mkdir -p /var/lib/etcd
+</span></span><span style="display:flex;"><span>chcon -R -t svirt_sandbox_file_t /var/lib/etcd
+</span></span></code></pre></div><p>Start <code>kubeadm</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubeadm config images pull
+</span></span><span style="display:flex;"><span>kubeadm init
+</span></span></code></pre></div><p>Set the <code>kubectl</code> context:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p $HOME/.kube
+</span></span><span style="display:flex;"><span>sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+</span></span><span style="display:flex;"><span>sudo chown <span style="color:#66d9ef">$(</span>id -u<span style="color:#66d9ef">)</span>:<span style="color:#66d9ef">$(</span>id -g<span style="color:#66d9ef">)</span> $HOME/.kube/config
+</span></span></code></pre></div><p>Install network, this step can be varied depending on which networking provider you want to install, here I have installed weave net. For other providers see <a href="https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#pod-network">here</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl apply -f <span style="color:#e6db74">&#34;https://cloud.weave.works/k8s/net?k8s-version=</span><span style="color:#66d9ef">$(</span>kubectl version | base64 | tr -d <span style="color:#e6db74">&#39;\n&#39;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>Also use <code>master</code> node as <code>worker</code> node.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl taint nodes --all node-role.kubernetes.io/master-
+</span></span></code></pre></div><p>Finally list nodes or wait until node is ready.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl get nodes
+</span></span></code></pre></div><h1 id="debugging-the-setup">Debugging the setup</h1>
 <ul>
 <li>You can see logs of <code>kubelet</code> by running <code>journalctl -f -u kubelet</code></li>
 <li>You can also see if there are any failing control plain containers by running <code>docker ps -a</code> and then check the logs of failed containers.</li>
@@ -355,7 +362,7 @@ sudo chown <span style="color:#66d9ef">$(</span>id -u<span style="color:#66d9ef"
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -397,52 +404,52 @@ sudo chown <span style="color:#66d9ef">$(</span>id -u<span style="color:#66d9ef"
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -679,14 +686,14 @@ sudo chown <span style="color:#66d9ef">$(</span>id -u<span style="color:#66d9ef"
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

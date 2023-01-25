@@ -15,7 +15,7 @@
       <guid>https://suraj.io/post/old-laptop-setup/</guid>
       <description>I have this old PC Dell Inspiron 1525 with 2GB RAM and 32 bit dual core processor and I wanted to install fedora on it, but I cam accross few problems which I am documenting for further reference.
 Wifi device not detected The wifi drivers are not loaded by default, so followed this blog, basically do following:
-export FIRMWARE_INSTALL_DIR=&amp;quot;/lib/firmware&amp;quot; wget http://mirror2.openwrt.org/sources/broadcom-wl-5.100.138.tar.bz2 tar xjf broadcom-wl-5.100.138.tar.bz2 cd broadcom-wl-5.100.138/linux/ sudo b43-fwcutter -w /lib/firmware wl_apsta.</description>
+export FIRMWARE_INSTALL_DIR=&amp;#34;/lib/firmware&amp;#34; wget http://mirror2.openwrt.org/sources/broadcom-wl-5.100.138.tar.bz2 tar xjf broadcom-wl-5.100.138.tar.bz2 cd broadcom-wl-5.100.138/linux/ sudo b43-fwcutter -w /lib/firmware wl_apsta.</description>
     </item>
     
   </channel>

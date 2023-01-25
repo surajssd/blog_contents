@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Prometheus with existing application on OpenShift - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Setting up Prometheus with any application">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Prometheus with existing application on OpenShift">
+<meta property="og:description" content="Setting up Prometheus with any application">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/using-prometheus/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Prometheus with existing application on OpenShift">
-  <meta property="og:description" content="Setting up Prometheus with any application">
-  <meta property="description" content="Setting up Prometheus with any application">
-  <meta property="og:url" content="https://suraj.io/post/using-prometheus/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2018-04-04 08:00:51 &#43;0530 IST">April 4, 2018</time>
+    <time datetime="2018-04-04 08:00:51 &#43;0530 &#43;0530">April 4, 2018</time>
     <p>Suraj Deshmukh</p>
     <p>2-Minute Read</p>
   </div>
@@ -238,6 +244,7 @@
       </div>
       <div class="content">
         
+        
         <p>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.</p>
 <p><img src="/images/using-prometheus/prometheus_logo.png" alt="Prometheus" title="Prometheus"></p>
 <h2 id="requirements">Requirements</h2>
@@ -248,41 +255,41 @@
 <p><img src="/images/using-prometheus/openshift-origin-logo.png" alt="OpenShift Origin" title="OpenShift Origin"></p>
 <h2 id="following-the-setup">Following the setup</h2>
 <p>Make sure you have a running OpenShift cluster</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc new-project monitor
-</code></pre></div><p>Now if your metrics exporting service if it is backed by <code>https</code> then set this flag otherwise the default is <code>http</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export APP_SCHEME<span style="color:#f92672">=</span>https
-</code></pre></div><p>Give your application name</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>oc new-project monitor
+</span></span></code></pre></div><p>Now if your metrics exporting service if it is backed by <code>https</code> then set this flag otherwise the default is <code>http</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export APP_SCHEME<span style="color:#f92672">=</span>https
+</span></span></code></pre></div><p>Give your application name</p>
 <pre tabindex="0"><code>export APP_NAME=wit
 </code></pre><p>This one is important, here I have put in the link to the cluster which is exposing metrics, you can put yours.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export APP_URL<span style="color:#f92672">=</span>api.prod-preview.openshift.io
-</code></pre></div><p>Download the latest Prometheus Kedge file <a href="https://github.com/surajssd/deploylocal/blob/master/prometheus/prometheus.yml">prometheus.yml</a>. Or you can also download the <a href="https://github.com/surajssd/deploylocal/blob/a9bdf24d9ba527e3a6d63a4d79af2c333dfaa654/prometheus/prometheus.yml">prometheus.yml</a> which was created as of this writing.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kedge apply -f prometheus.yml
-</code></pre></div><p>Finally visit this URL to start seeing your prometheus dashboard.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo http://<span style="color:#66d9ef">$(</span>oc get routes | grep prometheus | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span><span style="color:#66d9ef">)</span>
-</code></pre></div><h2 id="how-it-looks">How it looks?</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-console" data-lang="console">$ oc new-project monitor
-Already on project &#34;monitor&#34; on server &#34;https://192.168.122.1:8443&#34;.
-<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>You can add applications to this project with the &#39;new-app&#39; command. For example, try:
-<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>    oc new-app centos/ruby-22-centos7~https://github.com/openshift/ruby-ex.git
-<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>to build a new example application in Ruby.
-<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>$ export APP_SCHEME<span style="color:#f92672">=</span>https
-$ export APP_NAME<span style="color:#f92672">=</span>wit
-$ export APP_URL<span style="color:#f92672">=</span>api.prod-preview.openshift.io
-<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>$ kedge apply -f prometheus.yml
-persistentvolumeclaim &#34;prometheus-storage&#34; created
-service &#34;prometheus&#34; created
-route &#34;prometheus&#34; created
-configmap &#34;prometheus-config&#34; created
-deployment &#34;prometheus&#34; created
-<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>$ echo http://<span style="color:#66d9ef">$(</span>oc get routes | grep prometheus | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span><span style="color:#66d9ef">)</span>
-http://prometheus-monitor.192.168.122.1.nip.io
-</code></pre></div><p><img src="/images/using-prometheus/promgraph.png" alt="Prometheus dashboard" title="Prometheus dashboard showing goroutines"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export APP_URL<span style="color:#f92672">=</span>api.prod-preview.openshift.io
+</span></span></code></pre></div><p>Download the latest Prometheus Kedge file <a href="https://github.com/surajssd/deploylocal/blob/master/prometheus/prometheus.yml">prometheus.yml</a>. Or you can also download the <a href="https://github.com/surajssd/deploylocal/blob/a9bdf24d9ba527e3a6d63a4d79af2c333dfaa654/prometheus/prometheus.yml">prometheus.yml</a> which was created as of this writing.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kedge apply -f prometheus.yml
+</span></span></code></pre></div><p>Finally visit this URL to start seeing your prometheus dashboard.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo http://<span style="color:#66d9ef">$(</span>oc get routes | grep prometheus | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span><span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><h2 id="how-it-looks">How it looks?</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>$ oc new-project monitor
+</span></span><span style="display:flex;"><span>Already on project &#34;monitor&#34; on server &#34;https://192.168.122.1:8443&#34;.
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>You can add applications to this project with the &#39;new-app&#39; command. For example, try:
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    oc new-app centos/ruby-22-centos7~https://github.com/openshift/ruby-ex.git
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>to build a new example application in Ruby.
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>$ export APP_SCHEME<span style="color:#f92672">=</span>https
+</span></span><span style="display:flex;"><span>$ export APP_NAME<span style="color:#f92672">=</span>wit
+</span></span><span style="display:flex;"><span>$ export APP_URL<span style="color:#f92672">=</span>api.prod-preview.openshift.io
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>$ kedge apply -f prometheus.yml
+</span></span><span style="display:flex;"><span>persistentvolumeclaim &#34;prometheus-storage&#34; created
+</span></span><span style="display:flex;"><span>service &#34;prometheus&#34; created
+</span></span><span style="display:flex;"><span>route &#34;prometheus&#34; created
+</span></span><span style="display:flex;"><span>configmap &#34;prometheus-config&#34; created
+</span></span><span style="display:flex;"><span>deployment &#34;prometheus&#34; created
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>$ echo http://<span style="color:#66d9ef">$(</span>oc get routes | grep prometheus | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>http://prometheus-monitor.192.168.122.1.nip.io
+</span></span></code></pre></div><p><img src="/images/using-prometheus/promgraph.png" alt="Prometheus dashboard" title="Prometheus dashboard showing goroutines"></p>
 <p>Happy monitoring!</p>
 
       </div>
@@ -325,7 +332,7 @@ http://prometheus-monitor.192.168.122.1.nip.io
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -367,52 +374,52 @@ http://prometheus-monitor.192.168.122.1.nip.io
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -649,14 +656,14 @@ http://prometheus-monitor.192.168.122.1.nip.io
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

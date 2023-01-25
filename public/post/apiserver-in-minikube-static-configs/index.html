@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Make static configs available for apiserver in minikube - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Dealing with apiserver in minikube can be tricky">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Make static configs available for apiserver in minikube">
+<meta property="og:description" content="Dealing with apiserver in minikube can be tricky">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/apiserver-in-minikube-static-configs/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Make static configs available for apiserver in minikube">
-  <meta property="og:description" content="Dealing with apiserver in minikube can be tricky">
-  <meta property="description" content="Dealing with apiserver in minikube can be tricky">
-  <meta property="og:url" content="https://suraj.io/post/apiserver-in-minikube-static-configs/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2019-01-20 01:00:51 &#43;0530 IST">January 20, 2019</time>
+    <time datetime="2019-01-20 01:00:51 &#43;0530 &#43;0530">January 20, 2019</time>
     <p>Suraj Deshmukh</p>
     <p>3-Minute Read</p>
   </div>
@@ -238,53 +244,54 @@
       </div>
       <div class="content">
         
+        
         <p>If you want to provide extra flags to the <code>kube-apiserver</code> that runs inside minikube how do you do it? You can use the minikube&rsquo;s <code>--extra-config</code> flag with <code>apiserver.&lt;apiserver flag&gt;=&lt;value&gt;</code>, for e.g. if you want to enable <code>RBAC</code> authorization mode you do it as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">--extra-config<span style="color:#f92672">=</span>apiserver.authorization-mode<span style="color:#f92672">=</span>RBAC
-</code></pre></div><p>So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path. Because you will have to make that file available for apiserver. And this apiserver runs as a static pod inside minikube. How do you make the file available to that process inside pod inside minikube?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>--extra-config<span style="color:#f92672">=</span>apiserver.authorization-mode<span style="color:#f92672">=</span>RBAC
+</span></span></code></pre></div><p>So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path. Because you will have to make that file available for apiserver. And this apiserver runs as a static pod inside minikube. How do you make the file available to that process inside pod inside minikube?</p>
 <p>The solution is little tricky and not very straight forward. The api-server pod mounts minikube&rsquo;s <code>/var/lib/minikube/certs/</code> directory in the pod at location <code>/var/lib/minikube/certs/</code>. Make the file available at this location. When enabling that flag for apiserver provide file location of this directory.</p>
 <p>To make this step easier I have filed an issue in minikube upstream <a href="https://github.com/kubernetes/minikube/issues/3559">kubernetes/minikube/3559</a>.</p>
 <p>Follow this tutorial on how to do this. In this tutorial I want to make the <code>EncryptionConfiguration</code> file available for apiserver to enable encryption of secret data at rest. This is the first step to the tasks from kubernetes docs as mentioned <a href="https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#configuration-and-determining-whether-encryption-at-rest-is-already-enabled">here</a>.</p>
 <hr>
 <h3 id="start-minikube-normally">Start minikube normally</h3>
 <p>To make the file needed available in the machine start minikube normally. For that run following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">minikube start <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--vm-driver kvm2 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--kubernetes-version v1.13.2 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--cpus <span style="color:#ae81ff">3</span> --memory <span style="color:#ae81ff">3000</span>  <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--extra-config<span style="color:#f92672">=</span>apiserver.authorization-mode<span style="color:#f92672">=</span>RBAC <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--v <span style="color:#ae81ff">10</span>
-</code></pre></div><p>You can make required changes to the above commmand lke change the <code>--vm-driver</code> or <code>--cpus</code> or <code>--memory</code>, as per your needs.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>minikube start <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--vm-driver kvm2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--kubernetes-version v1.13.2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--cpus <span style="color:#ae81ff">3</span> --memory <span style="color:#ae81ff">3000</span>  <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--extra-config<span style="color:#f92672">=</span>apiserver.authorization-mode<span style="color:#f92672">=</span>RBAC <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--v <span style="color:#ae81ff">10</span>
+</span></span></code></pre></div><p>You can make required changes to the above commmand lke change the <code>--vm-driver</code> or <code>--cpus</code> or <code>--memory</code>, as per your needs.</p>
 <h3 id="make-file-available-inside-minikube">Make file available inside minikube</h3>
 <p>Run following command to go into machine</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">minikube ssh
-</code></pre></div><p>Once inside machine become root by running <code>sudo -i</code>. And then create the config file needed that will be passed to the apiserver. For my needs I wanted to create a <code>EncryptionConfiguration</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>minikube ssh
+</span></span></code></pre></div><p>Once inside machine become root by running <code>sudo -i</code>. And then create the config file needed that will be passed to the apiserver. For my needs I wanted to create a <code>EncryptionConfiguration</code>.</p>
 <p>Run following command to make the config file available.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;
-</span><span style="color:#e6db74">kind: EncryptionConfiguration
-</span><span style="color:#e6db74">apiVersion: apiserver.config.k8s.io/v1
-</span><span style="color:#e6db74">resources:
-</span><span style="color:#e6db74">  - resources:
-</span><span style="color:#e6db74">    - secrets
-</span><span style="color:#e6db74">    providers:
-</span><span style="color:#e6db74">    - aescbc:
-</span><span style="color:#e6db74">        keys:
-</span><span style="color:#e6db74">        - name: key1
-</span><span style="color:#e6db74">          secret: fPLrjJNkbuLmh2aqOsCR5sZV+/Wqhi8CdMrgceaKR3E=
-</span><span style="color:#e6db74">    - identity: {}
-</span><span style="color:#e6db74">&#34;</span> | tee /var/lib/minikube/certs/encryptionconfig.yaml
-</code></pre></div><p>See the location of the file it is in <code>/var/lib/minikube/certs</code>. In above command you can change it to the config you would want to make available for apiserver.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">kind: EncryptionConfiguration
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apiVersion: apiserver.config.k8s.io/v1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">resources:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - resources:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    - secrets
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    providers:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    - aescbc:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        keys:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - name: key1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          secret: fPLrjJNkbuLmh2aqOsCR5sZV+/Wqhi8CdMrgceaKR3E=
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    - identity: {}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span> | tee /var/lib/minikube/certs/encryptionconfig.yaml
+</span></span></code></pre></div><p>See the location of the file it is in <code>/var/lib/minikube/certs</code>. In above command you can change it to the config you would want to make available for apiserver.</p>
 <h3 id="restart-minikube">Restart minikube</h3>
 <p>Exit out of the minikube vm and get to your host machine and run following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">minikube stop
-
-minikube start <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--vm-driver kvm2 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--kubernetes-version v1.13.2 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--cpus <span style="color:#ae81ff">3</span> --memory <span style="color:#ae81ff">3000</span>  <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--extra-config<span style="color:#f92672">=</span>apiserver.authorization-mode<span style="color:#f92672">=</span>RBAC <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--extra-config<span style="color:#f92672">=</span>apiserver.encryption-provider-config<span style="color:#f92672">=</span>/var/lib/minikube/certs/encryptionconfig.yaml <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>--v <span style="color:#ae81ff">10</span>
-</code></pre></div><p>Again make changes to the apiserver flag and file name if needed according to your needs. Now you should have apiserver started without problems.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>minikube stop
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>minikube start <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--vm-driver kvm2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--kubernetes-version v1.13.2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--cpus <span style="color:#ae81ff">3</span> --memory <span style="color:#ae81ff">3000</span>  <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--extra-config<span style="color:#f92672">=</span>apiserver.authorization-mode<span style="color:#f92672">=</span>RBAC <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--extra-config<span style="color:#f92672">=</span>apiserver.encryption-provider-config<span style="color:#f92672">=</span>/var/lib/minikube/certs/encryptionconfig.yaml <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--v <span style="color:#ae81ff">10</span>
+</span></span></code></pre></div><p>Again make changes to the apiserver flag and file name if needed according to your needs. Now you should have apiserver started without problems.</p>
 
       </div>
       <footer>
@@ -322,7 +329,7 @@ minikube start <span style="color:#ae81ff">\
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -364,52 +371,52 @@ minikube start <span style="color:#ae81ff">\
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -646,14 +653,14 @@ minikube start <span style="color:#ae81ff">\
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

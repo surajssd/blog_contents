@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Writing your own Seccomp profiles for Docker - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Understanding the seccomp profile json format">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Writing your own Seccomp profiles for Docker">
+<meta property="og:description" content="Understanding the seccomp profile json format">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/docker-seccomp-manual/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Writing your own Seccomp profiles for Docker">
-  <meta property="og:description" content="Understanding the seccomp profile json format">
-  <meta property="description" content="Understanding the seccomp profile json format">
-  <meta property="og:url" content="https://suraj.io/post/docker-seccomp-manual/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2019-06-10 11:57:07 &#43;0530 IST">June 10, 2019</time>
+    <time datetime="2019-06-10 11:57:07 &#43;0530 &#43;0530">June 10, 2019</time>
     <p>Suraj Deshmukh</p>
     <p>3-Minute Read</p>
   </div>
@@ -238,6 +244,7 @@
       </div>
       <div class="content">
         
+        
         <h2 id="what-is-seccomp">What is Seccomp?</h2>
 <blockquote>
 <p>A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</p>
@@ -246,114 +253,114 @@
 <h2 id="seccomp-with-docker">Seccomp with Docker</h2>
 <p>Seccomp profile is attached with docker container by <a href="https://github.com/moby/moby/blob/master/profiles/seccomp/default.json">default</a>. But understanding the profile can be hard if you are new to it.</p>
 <p>Here is the snippet of syscalls allowed from the default profile:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;names&#34;</span>: [
-    <span style="color:#e6db74">&#34;bpf&#34;</span>,
-    <span style="color:#e6db74">&#34;clone&#34;</span>,
-    <span style="color:#e6db74">&#34;fanotify_init&#34;</span>,
-    <span style="color:#e6db74">&#34;lookup_dcookie&#34;</span>,
-    <span style="color:#e6db74">&#34;mount&#34;</span>,
-    <span style="color:#e6db74">&#34;name_to_handle_at&#34;</span>,
-    <span style="color:#e6db74">&#34;perf_event_open&#34;</span>,
-    <span style="color:#e6db74">&#34;quotactl&#34;</span>,
-    <span style="color:#e6db74">&#34;setdomainname&#34;</span>,
-    <span style="color:#e6db74">&#34;sethostname&#34;</span>,
-    <span style="color:#e6db74">&#34;setns&#34;</span>,
-    <span style="color:#e6db74">&#34;syslog&#34;</span>,
-    <span style="color:#e6db74">&#34;umount&#34;</span>,
-    <span style="color:#e6db74">&#34;umount2&#34;</span>,
-    <span style="color:#e6db74">&#34;unshare&#34;</span>
-  ],
-  <span style="color:#f92672">&#34;action&#34;</span>: <span style="color:#e6db74">&#34;SCMP_ACT_ALLOW&#34;</span>,
-  <span style="color:#f92672">&#34;args&#34;</span>: [],
-  <span style="color:#f92672">&#34;comment&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-  <span style="color:#f92672">&#34;includes&#34;</span>: {
-    <span style="color:#f92672">&#34;caps&#34;</span>: [
-        <span style="color:#e6db74">&#34;CAP_SYS_ADMIN&#34;</span>
-    ]
-  },
-  <span style="color:#f92672">&#34;excludes&#34;</span>: {}
-}<span style="color:#960050;background-color:#1e0010">,</span>
-</code></pre></div><p>Here the syscalls mentioned in the <code>names</code> list are allowed for container only if the container starting has the capability <code>CAP_SYS_ADMIN</code> included when starting it, using the flag <code>--cap-add=SYS_ADMIN</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;names&#34;</span>: [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;bpf&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;clone&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fanotify_init&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;lookup_dcookie&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;mount&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;name_to_handle_at&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;perf_event_open&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;quotactl&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;setdomainname&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;sethostname&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;setns&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;syslog&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;umount&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;umount2&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;unshare&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;action&#34;</span>: <span style="color:#e6db74">&#34;SCMP_ACT_ALLOW&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;args&#34;</span>: [],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;comment&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;includes&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;caps&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;CAP_SYS_ADMIN&#34;</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;excludes&#34;</span>: {}
+</span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span></code></pre></div><p>Here the syscalls mentioned in the <code>names</code> list are allowed for container only if the container starting has the capability <code>CAP_SYS_ADMIN</code> included when starting it, using the flag <code>--cap-add=SYS_ADMIN</code>.</p>
 <h2 id="experiment">Experiment</h2>
 <p>I have done my own experiment where I am tying the <code>chmod</code> syscall to the capability <code>CAP_WAKE_ALARM</code> (There is no serious thinking put behind tying <code>chmod</code> to this capability <code>CAP_WAKE_ALARM</code>, I chose it because this capability did not seem to be doing much important hence I picked it up).</p>
 <p>To try this out I have created a config of my own by changing the default config which looks like following diff:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">--- default.json                2019-06-10 14:23:11.688170627 +0530
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ chmod-wake-alarm.json       2019-06-10 14:19:25.706274172 +0530
-</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -62,7 +62,6 @@
-</span><span style="color:#75715e"></span>                                &#34;capget&#34;,
-                                &#34;capset&#34;,
-                                &#34;chdir&#34;,
-<span style="color:#f92672">-                               &#34;chmod&#34;,
-</span><span style="color:#f92672"></span>                                &#34;chown&#34;,
-                                &#34;chown32&#34;,
-                                &#34;clock_getres&#34;,
-<span style="color:#75715e">@@ -94,8 +93,6 @@
-</span><span style="color:#75715e"></span>                                &#34;fallocate&#34;,
-                                &#34;fanotify_mark&#34;,
-                                &#34;fchdir&#34;,
-<span style="color:#f92672">-                               &#34;fchmod&#34;,
-</span><span style="color:#f92672">-                               &#34;fchmodat&#34;,
-</span><span style="color:#f92672"></span>                                &#34;fchown&#34;,
-                                &#34;fchown32&#34;,
-                                &#34;fchownat&#34;,
-<span style="color:#75715e">@@ -381,6 +378,22 @@
-</span><span style="color:#75715e"></span>                },
-                {
-                        &#34;names&#34;: [
-<span style="color:#a6e22e">+                               &#34;chmod&#34;,
-</span><span style="color:#a6e22e">+                               &#34;fchmod&#34;,
-</span><span style="color:#a6e22e">+                               &#34;fchmodat&#34;
-</span><span style="color:#a6e22e">+                       ],
-</span><span style="color:#a6e22e">+                       &#34;action&#34;: &#34;SCMP_ACT_ALLOW&#34;,
-</span><span style="color:#a6e22e">+                       &#34;args&#34;: [],
-</span><span style="color:#a6e22e">+                       &#34;comment&#34;: &#34;&#34;,
-</span><span style="color:#a6e22e">+                       &#34;includes&#34;: {
-</span><span style="color:#a6e22e">+                               &#34;caps&#34;: [
-</span><span style="color:#a6e22e">+                                       &#34;CAP_WAKE_ALARM&#34;
-</span><span style="color:#a6e22e">+                               ]
-</span><span style="color:#a6e22e">+                       },
-</span><span style="color:#a6e22e">+                       &#34;excludes&#34;: {}
-</span><span style="color:#a6e22e">+               },
-</span><span style="color:#a6e22e">+               {
-</span><span style="color:#a6e22e">+                       &#34;names&#34;: [
-</span><span style="color:#a6e22e"></span>                                &#34;personality&#34;
-                        ],
-                        &#34;action&#34;: &#34;SCMP_ACT_ALLOW&#34;,
-<span style="color:#75715e">@@ -791,4 +804,4 @@
-</span><span style="color:#75715e"></span>                        &#34;excludes&#34;: {}
-                }
-        ]
-<span style="color:#f92672">-}
-</span><span style="color:#f92672"></span>\ No newline at end of file
-<span style="color:#a6e22e">+}
-</span></code></pre></div><p>To understand what has changed I first removed all the references to the <code>chmod</code> and then added following snippet to tie the <code>chmod</code> to <code>CAP_WAKE_ALARM</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-    <span style="color:#f92672">&#34;names&#34;</span>: [
-        <span style="color:#e6db74">&#34;chmod&#34;</span>,
-        <span style="color:#e6db74">&#34;fchmod&#34;</span>,
-        <span style="color:#e6db74">&#34;fchmodat&#34;</span>
-    ],
-    <span style="color:#f92672">&#34;action&#34;</span>: <span style="color:#e6db74">&#34;SCMP_ACT_ALLOW&#34;</span>,
-    <span style="color:#f92672">&#34;args&#34;</span>: [],
-    <span style="color:#f92672">&#34;comment&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-    <span style="color:#f92672">&#34;includes&#34;</span>: {
-        <span style="color:#f92672">&#34;caps&#34;</span>: [
-            <span style="color:#e6db74">&#34;CAP_WAKE_ALARM&#34;</span>
-        ]
-    },
-    <span style="color:#f92672">&#34;excludes&#34;</span>: {}
-}<span style="color:#960050;background-color:#1e0010">,</span>
-</code></pre></div><p>Now let&rsquo;s try this if it works:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker container run --rm -it --security-opt seccomp<span style="color:#f92672">=</span>chmod-wake-alarm.json alpine sh
-/ <span style="color:#75715e"># touch foo.sh</span>
-/ <span style="color:#75715e"># chmod +x foo.sh</span>
-chmod: foo.sh: Operation not permitted
-</code></pre></div><p>If you see with the newly created profile the container did not allow <code>chmod</code> to run.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker container run --cap-add<span style="color:#f92672">=</span>WAKE_ALARM --rm -it --security-opt seccomp<span style="color:#f92672">=</span>chmod-wake-alarm.json alpine sh
-/ <span style="color:#75715e"># touch foo.sh</span>
-/ <span style="color:#75715e"># chmod +x foo.sh</span>
-</code></pre></div><p>But in the above command I explicitly permitted this container to run with capability <code>CAP_WAKE_ALARM</code>, and now the container allows <code>chmod</code>. In this way you can create your own profile and tie it up with any capability you want.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span><span style="color:#f92672">--- default.json                2019-06-10 14:23:11.688170627 +0530
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ chmod-wake-alarm.json       2019-06-10 14:19:25.706274172 +0530
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -62,7 +62,6 @@
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                                &#34;capget&#34;,
+</span></span><span style="display:flex;"><span>                                &#34;capset&#34;,
+</span></span><span style="display:flex;"><span>                                &#34;chdir&#34;,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-                               &#34;chmod&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span>                                &#34;chown&#34;,
+</span></span><span style="display:flex;"><span>                                &#34;chown32&#34;,
+</span></span><span style="display:flex;"><span>                                &#34;clock_getres&#34;,
+</span></span><span style="display:flex;"><span><span style="color:#75715e">@@ -94,8 +93,6 @@
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                                &#34;fallocate&#34;,
+</span></span><span style="display:flex;"><span>                                &#34;fanotify_mark&#34;,
+</span></span><span style="display:flex;"><span>                                &#34;fchdir&#34;,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-                               &#34;fchmod&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672">-                               &#34;fchmodat&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span>                                &#34;fchown&#34;,
+</span></span><span style="display:flex;"><span>                                &#34;fchown32&#34;,
+</span></span><span style="display:flex;"><span>                                &#34;fchownat&#34;,
+</span></span><span style="display:flex;"><span><span style="color:#75715e">@@ -381,6 +378,22 @@
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                },
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                        &#34;names&#34;: [
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                               &#34;chmod&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                               &#34;fchmod&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                               &#34;fchmodat&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                       ],
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                       &#34;action&#34;: &#34;SCMP_ACT_ALLOW&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                       &#34;args&#34;: [],
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                       &#34;comment&#34;: &#34;&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                       &#34;includes&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                               &#34;caps&#34;: [
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                                       &#34;CAP_WAKE_ALARM&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                               ]
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                       },
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                       &#34;excludes&#34;: {}
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+               },
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+               {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                       &#34;names&#34;: [
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>                                &#34;personality&#34;
+</span></span><span style="display:flex;"><span>                        ],
+</span></span><span style="display:flex;"><span>                        &#34;action&#34;: &#34;SCMP_ACT_ALLOW&#34;,
+</span></span><span style="display:flex;"><span><span style="color:#75715e">@@ -791,4 +804,4 @@
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        &#34;excludes&#34;: {}
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-}
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span>\ No newline at end of file
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+}
+</span></span></span></code></pre></div><p>To understand what has changed I first removed all the references to the <code>chmod</code> and then added following snippet to tie the <code>chmod</code> to <code>CAP_WAKE_ALARM</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;names&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;chmod&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;fchmod&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;fchmodat&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;action&#34;</span>: <span style="color:#e6db74">&#34;SCMP_ACT_ALLOW&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;args&#34;</span>: [],
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;comment&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;includes&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;caps&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;CAP_WAKE_ALARM&#34;</span>
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;excludes&#34;</span>: {}
+</span></span><span style="display:flex;"><span>}<span style="color:#960050;background-color:#1e0010">,</span>
+</span></span></code></pre></div><p>Now let&rsquo;s try this if it works:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker container run --rm -it --security-opt seccomp<span style="color:#f92672">=</span>chmod-wake-alarm.json alpine sh
+</span></span><span style="display:flex;"><span>/ <span style="color:#75715e"># touch foo.sh</span>
+</span></span><span style="display:flex;"><span>/ <span style="color:#75715e"># chmod +x foo.sh</span>
+</span></span><span style="display:flex;"><span>chmod: foo.sh: Operation not permitted
+</span></span></code></pre></div><p>If you see with the newly created profile the container did not allow <code>chmod</code> to run.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker container run --cap-add<span style="color:#f92672">=</span>WAKE_ALARM --rm -it --security-opt seccomp<span style="color:#f92672">=</span>chmod-wake-alarm.json alpine sh
+</span></span><span style="display:flex;"><span>/ <span style="color:#75715e"># touch foo.sh</span>
+</span></span><span style="display:flex;"><span>/ <span style="color:#75715e"># chmod +x foo.sh</span>
+</span></span></code></pre></div><p>But in the above command I explicitly permitted this container to run with capability <code>CAP_WAKE_ALARM</code>, and now the container allows <code>chmod</code>. In this way you can create your own profile and tie it up with any capability you want.</p>
 <h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://docs.docker.com/engine/security/seccomp/">Docker Seccomp</a></li>
@@ -399,7 +406,7 @@ chmod: foo.sh: Operation not permitted
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -441,52 +448,52 @@ chmod: foo.sh: Operation not permitted
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -723,14 +730,14 @@ chmod: foo.sh: Operation not permitted
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

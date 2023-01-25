@@ -14,10 +14,10 @@
       
       <guid>https://suraj.io/post/intellij-shortcuts/</guid>
       <description>Note: This is a living document and will be updated as I discover new things.
-Shortcuts  Ctrl + Shift + A  Find any action in IDE
- Ctrl + Shift + F  Find in Path
- Alt + 1  Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
- Shift + Insert in Project window  Here you can add new file to the project.</description>
+Shortcuts Ctrl + Shift + A Find any action in IDE
+Ctrl + Shift + F Find in Path
+Alt + 1 Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
+Shift + Insert in Project window Here you can add new file to the project. The filename could be the entire path, so the intermediate directories will be created for you.</description>
     </item>
     
   </channel>

@@ -34,7 +34,7 @@ It is like running htop but where you can go back in history, unlike htop, which
       <guid>https://suraj.io/post/fedora-partitioning/</guid>
       <description>I use Fedora Linux as my primary desktop OS. Every time there is a fresh install, I find myself confounded on how to partition the OS. So I thought I might as well make a permanent note of how I do it so that I always have a place to come back to.
 Partitioning Scheme This is how I partition my Fedora during installation:
-   Partition Mounted On Size Encrypted Filesystem     Boot /boot 512M No ext4   Boot EFI /boot/efi 200M No vfat   Swap - 1.</description>
+Partition Mounted On Size Encrypted Filesystem Boot /boot 512M No ext4 Boot EFI /boot/efi 200M No vfat Swap - 1.</description>
     </item>
     
     <item>

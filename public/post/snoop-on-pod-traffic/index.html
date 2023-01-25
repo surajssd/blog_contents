@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Watch Container Traffic Without Exec - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How to watch the traffic of a container or a pod without execing into the pod/contaienr?">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Watch Container Traffic Without Exec">
+<meta property="og:description" content="How to watch the traffic of a container or a pod without execing into the pod/contaienr?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/snoop-on-pod-traffic/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Watch Container Traffic Without Exec">
-  <meta property="og:description" content="How to watch the traffic of a container or a pod without execing into the pod/contaienr?">
-  <meta property="description" content="How to watch the traffic of a container or a pod without execing into the pod/contaienr?">
-  <meta property="og:url" content="https://suraj.io/post/snoop-on-pod-traffic/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2020-06-06 20:30:07 &#43;0530 IST">June 6, 2020</time>
+    <time datetime="2020-06-06 20:30:07 &#43;0530 &#43;0530">June 6, 2020</time>
     <p>Suraj Deshmukh</p>
     <p>4-Minute Read</p>
   </div>
@@ -238,6 +244,7 @@
       </div>
       <div class="content">
         
+        
         <h2 id="introduction">Introduction</h2>
 <p>For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.</p>
 <p>But for the developers or operators of such applications, it is hard to debug. Since they lack essential tools or even <code>bash</code> for that matter, but the application&rsquo;s debugging ability should not dictate its production deployment and compromise its security posture.</p>
@@ -245,60 +252,60 @@
 <p>Now imagine a scenario where you have an application, statically built based on scratch image and running inside a container. How do you watch the traffic of such an app? You don&rsquo;t have any terminal in that container. You are not allowed to make changes to the environment of the application because this is a production setup. This barebone container image deployment is the exact scenario that this post helps in debugging.</p>
 <h2 id="container-scenario">Container Scenario</h2>
 <p>For the demo, I have a running application which is doing some networking.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker ps
-CONTAINER ID    IMAGE     COMMAND   CREATED         STATUS          PORTS    NAMES
-241bf66c36c6    fedora    <span style="color:#e6db74">&#34;bash&#34;</span>    <span style="color:#ae81ff">14</span> minutes ago  Up <span style="color:#ae81ff">14</span> minutes            upbeat_heisenberg
-</code></pre></div><p>The IP address of this application is <code>172.17.0.2</code> found using following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker inspect upbeat_heisenberg | grep IPAddress | tail -1
-                    <span style="color:#e6db74">&#34;IPAddress&#34;</span>: <span style="color:#e6db74">&#34;172.17.0.2&#34;</span>,
-</code></pre></div><p>And on the server-side I have the following simple HTTP server running on the host machine:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python3 -m http.server
-Serving HTTP on 0.0.0.0 port <span style="color:#ae81ff">8000</span> <span style="color:#f92672">(</span>http://0.0.0.0:8000/<span style="color:#f92672">)</span> ...
-172.17.0.2 - - <span style="color:#f92672">[</span>06/Jun/2020 18:53:18<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> -
-<span style="color:#f92672">[</span>REDACTED<span style="color:#f92672">]</span>
-</code></pre></div><p>The IP address of the server is <code>172.17.0.1</code> found using the following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ip address show docker0 | grep <span style="color:#e6db74">&#39;inet &#39;</span>
-    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
-</code></pre></div><h2 id="debugging">Debugging</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker ps
+</span></span><span style="display:flex;"><span>CONTAINER ID    IMAGE     COMMAND   CREATED         STATUS          PORTS    NAMES
+</span></span><span style="display:flex;"><span>241bf66c36c6    fedora    <span style="color:#e6db74">&#34;bash&#34;</span>    <span style="color:#ae81ff">14</span> minutes ago  Up <span style="color:#ae81ff">14</span> minutes            upbeat_heisenberg
+</span></span></code></pre></div><p>The IP address of this application is <code>172.17.0.2</code> found using following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker inspect upbeat_heisenberg | grep IPAddress | tail -1
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;IPAddress&#34;</span>: <span style="color:#e6db74">&#34;172.17.0.2&#34;</span>,
+</span></span></code></pre></div><p>And on the server-side I have the following simple HTTP server running on the host machine:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 -m http.server
+</span></span><span style="display:flex;"><span>Serving HTTP on 0.0.0.0 port <span style="color:#ae81ff">8000</span> <span style="color:#f92672">(</span>http://0.0.0.0:8000/<span style="color:#f92672">)</span> ...
+</span></span><span style="display:flex;"><span>172.17.0.2 - - <span style="color:#f92672">[</span>06/Jun/2020 18:53:18<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> -
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>REDACTED<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>The IP address of the server is <code>172.17.0.1</code> found using the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ip address show docker0 | grep <span style="color:#e6db74">&#39;inet &#39;</span>
+</span></span><span style="display:flex;"><span>    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+</span></span></code></pre></div><h2 id="debugging">Debugging</h2>
 <p>Now I cannot exec into the container, but I want to see what traffic sent by the application inside the container. Let&rsquo;s find out the PID of the process running inside the container:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker inspect --format <span style="color:#e6db74">&#39;{{.State.Pid}}&#39;</span> 241bf66c36c6
-<span style="color:#ae81ff">1371226</span>
-</code></pre></div><p>Alright, now we know that the process running inside has PID <code>1371226</code>. Now lets us try to enter into this process&rsquo;s network namespace and use the good old tcpdump.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo nsenter -t <span style="color:#ae81ff">1371226</span> -n tcpdump -A -s <span style="color:#ae81ff">0</span> <span style="color:#e6db74">&#39;(((ip[2:2] - ((ip[0]&amp;0xf)&lt;&lt;2)) - ((tcp[12]&amp;0xf0)&gt;&gt;2)) != 0)&#39;</span>
-dropped privs to tcpdump
-tcpdump: verbose output suppressed, use -v or -vv <span style="color:#66d9ef">for</span> full protocol decode
-listening on eth0, link-type EN10MB <span style="color:#f92672">(</span>Ethernet<span style="color:#f92672">)</span>, capture size <span style="color:#ae81ff">262144</span> bytes
-19:21:26.685275 IP thinkpad.36852 &gt; _gateway.irdmi: Flags <span style="color:#f92672">[</span>P.<span style="color:#f92672">]</span>, seq 2980991125:2980991212, ack 2001355994, win 502, options <span style="color:#f92672">[</span>nop,nop,TS val <span style="color:#ae81ff">3794513222</span> ecr 3920804277<span style="color:#f92672">]</span>, length <span style="color:#ae81ff">87</span>
-E.....@.@..............@..P.wJD.....X......
-.+.F....GET /file.txt HTTP/1.1
-Host: 172.17.0.1:8000
-User-Agent: curl/7.66.0
-Accept: */*
-
-
-19:21:26.686787 IP thinkpad.56338 &gt; XiaoQiang.domain: 8019+ PTR? 1.0.17.172.in-addr.arpa. <span style="color:#f92672">(</span>41<span style="color:#f92672">)</span>
-E..E..@.@..+...........5.1...S...........1.0.17.172.in-addr.arpa.....
-19:21:26.686958 IP _gateway.irdmi &gt; thinkpad.36852: Flags <span style="color:#f92672">[</span>P.<span style="color:#f92672">]</span>, seq 1:186, ack 87, win 509, options <span style="color:#f92672">[</span>nop,nop,TS val <span style="color:#ae81ff">3920804279</span> ecr 3794513222<span style="color:#f92672">]</span>, length <span style="color:#ae81ff">185</span>
-E.....@.@.9/.........@..wJD...P.....Y......
-.....+.FHTTP/1.0 <span style="color:#ae81ff">200</span> OK
-Server: SimpleHTTP/0.6 Python/3.7.7
-Date: Sat, <span style="color:#ae81ff">06</span> Jun <span style="color:#ae81ff">2020</span> 13:51:26 GMT
-Content-type: text/plain
-Content-Length: <span style="color:#ae81ff">12</span>
-Last-Modified: Sat, <span style="color:#ae81ff">06</span> Jun <span style="color:#ae81ff">2020</span> 13:22:34 GMT
-
-
-19:21:26.687101 IP _gateway.irdmi &gt; thinkpad.36852: Flags <span style="color:#f92672">[</span>P.<span style="color:#f92672">]</span>, seq 186:198, ack 87, win 509, options <span style="color:#f92672">[</span>nop,nop,TS val <span style="color:#ae81ff">3920804279</span> ecr 3794513224<span style="color:#f92672">]</span>, length <span style="color:#ae81ff">12</span>
-E..@..@.@.9..........@..wJE...P.....XX.....
-.....+.HI am Server
-
-<span style="color:#f92672">[</span>REDACTED<span style="color:#f92672">]</span>
-</code></pre></div><p>There you go, the output shows that the target server <code>172.17.0.1:8000</code> is responding over <code>HTTP</code> protocol <code>I am Server</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker inspect --format <span style="color:#e6db74">&#39;{{.State.Pid}}&#39;</span> 241bf66c36c6
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1371226</span>
+</span></span></code></pre></div><p>Alright, now we know that the process running inside has PID <code>1371226</code>. Now lets us try to enter into this process&rsquo;s network namespace and use the good old tcpdump.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo nsenter -t <span style="color:#ae81ff">1371226</span> -n tcpdump -A -s <span style="color:#ae81ff">0</span> <span style="color:#e6db74">&#39;(((ip[2:2] - ((ip[0]&amp;0xf)&lt;&lt;2)) - ((tcp[12]&amp;0xf0)&gt;&gt;2)) != 0)&#39;</span>
+</span></span><span style="display:flex;"><span>dropped privs to tcpdump
+</span></span><span style="display:flex;"><span>tcpdump: verbose output suppressed, use -v or -vv <span style="color:#66d9ef">for</span> full protocol decode
+</span></span><span style="display:flex;"><span>listening on eth0, link-type EN10MB <span style="color:#f92672">(</span>Ethernet<span style="color:#f92672">)</span>, capture size <span style="color:#ae81ff">262144</span> bytes
+</span></span><span style="display:flex;"><span>19:21:26.685275 IP thinkpad.36852 &gt; _gateway.irdmi: Flags <span style="color:#f92672">[</span>P.<span style="color:#f92672">]</span>, seq 2980991125:2980991212, ack 2001355994, win 502, options <span style="color:#f92672">[</span>nop,nop,TS val <span style="color:#ae81ff">3794513222</span> ecr 3920804277<span style="color:#f92672">]</span>, length <span style="color:#ae81ff">87</span>
+</span></span><span style="display:flex;"><span>E.....@.@..............@..P.wJD.....X......
+</span></span><span style="display:flex;"><span>.+.F....GET /file.txt HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: 172.17.0.1:8000
+</span></span><span style="display:flex;"><span>User-Agent: curl/7.66.0
+</span></span><span style="display:flex;"><span>Accept: */*
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>19:21:26.686787 IP thinkpad.56338 &gt; XiaoQiang.domain: 8019+ PTR? 1.0.17.172.in-addr.arpa. <span style="color:#f92672">(</span>41<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>E..E..@.@..+...........5.1...S...........1.0.17.172.in-addr.arpa.....
+</span></span><span style="display:flex;"><span>19:21:26.686958 IP _gateway.irdmi &gt; thinkpad.36852: Flags <span style="color:#f92672">[</span>P.<span style="color:#f92672">]</span>, seq 1:186, ack 87, win 509, options <span style="color:#f92672">[</span>nop,nop,TS val <span style="color:#ae81ff">3920804279</span> ecr 3794513222<span style="color:#f92672">]</span>, length <span style="color:#ae81ff">185</span>
+</span></span><span style="display:flex;"><span>E.....@.@.9/.........@..wJD...P.....Y......
+</span></span><span style="display:flex;"><span>.....+.FHTTP/1.0 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Server: SimpleHTTP/0.6 Python/3.7.7
+</span></span><span style="display:flex;"><span>Date: Sat, <span style="color:#ae81ff">06</span> Jun <span style="color:#ae81ff">2020</span> 13:51:26 GMT
+</span></span><span style="display:flex;"><span>Content-type: text/plain
+</span></span><span style="display:flex;"><span>Content-Length: <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>Last-Modified: Sat, <span style="color:#ae81ff">06</span> Jun <span style="color:#ae81ff">2020</span> 13:22:34 GMT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>19:21:26.687101 IP _gateway.irdmi &gt; thinkpad.36852: Flags <span style="color:#f92672">[</span>P.<span style="color:#f92672">]</span>, seq 186:198, ack 87, win 509, options <span style="color:#f92672">[</span>nop,nop,TS val <span style="color:#ae81ff">3920804279</span> ecr 3794513224<span style="color:#f92672">]</span>, length <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>E..@..@.@.9..........@..wJE...P.....XX.....
+</span></span><span style="display:flex;"><span>.....+.HI am Server
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>REDACTED<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>There you go, the output shows that the target server <code>172.17.0.1:8000</code> is responding over <code>HTTP</code> protocol <code>I am Server</code>.</p>
 <h2 id="with-kubernetes">With Kubernetes</h2>
 <p>The same can be achieved with Kubernetes as well. Follow these steps:</p>
 <pre tabindex="0"><code>docker ps | grep &lt;pod-initial&gt;
 ID= // take docker id by hand
-PID=`docker inspect --format '{{.State.Pid}}' $ID`
+PID=`docker inspect --format &#39;{{.State.Pid}}&#39; $ID`
 sudo nsenter -t $PID -n tcpdump
 </code></pre><h2 id="references-and-credits">References and Credits</h2>
 <ul>
@@ -345,7 +352,7 @@ sudo nsenter -t $PID -n tcpdump
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -387,52 +394,52 @@ sudo nsenter -t $PID -n tcpdump
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -669,14 +676,14 @@ sudo nsenter -t $PID -n tcpdump
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

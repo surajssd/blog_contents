@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Exec in container environment - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The correct way to use exec and the signal passing.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Exec in container environment">
+<meta property="og:description" content="The correct way to use exec and the signal passing.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/2021/01/shell-exec/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Exec in container environment">
-  <meta property="og:description" content="The correct way to use exec and the signal passing.">
-  <meta property="description" content="The correct way to use exec and the signal passing.">
-  <meta property="og:url" content="https://suraj.io/post/2021/01/shell-exec/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,9 +197,9 @@
     
   </div>
   <div class="meta">
-    <time datetime="2021-01-23 10:10:41 &#43;0530 IST">January 23, 2021</time>
+    <time datetime="2021-01-23 10:10:41 &#43;0530 &#43;0530">January 23, 2021</time>
     <p>Suraj Deshmukh</p>
-    <p>3-Minute Read</p>
+    <p>4-Minute Read</p>
   </div>
 </header>
 
@@ -238,6 +244,7 @@
       </div>
       <div class="content">
         
+        
         <p>If you use <code>exec</code> in your container script, then the container or Kubernetes pod might exit after the command that is exec-ed into has exited. But if that&rsquo;s what you wanted, then it&rsquo;s okay. This blog tries to explain how to pass the signals to the applications, how they work differently when invoked uniquely and what to do if the application does handle them.</p>
 <h2 id="what-are-the-signals">What are the &ldquo;Signals&rdquo;?</h2>
 <p>Signals are messages one process can send to another process, mostly used in UNIX like operating systems.</p>
@@ -246,28 +253,28 @@
 <p><img src="/post/2021/01/shell-exec/1-exec.png" alt="Exec Man Page" title="Exec Man Page"></p>
 <h2 id="an-application-spawned-by-a-shell-script">An application spawned by a shell script.</h2>
 <p>To ensure that the signals are passed effectively to the real application, spawned by a shell script, you can do something similar to what is done in this snippet. Use <code>trap</code> to call a function which does the cleanup after receiving any of the registered signals like <code>SIGHUP</code>, <code>SIGTERM</code> or <code>SIGINT</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">function</span> cleanup<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-  kill <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>pid<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-  exit
-<span style="color:#f92672">}</span>
-
-trap cleanup SIGHUP SIGTERM SIGINT
-
-echo <span style="color:#e6db74">&#34;sleeping&#34;</span>
-sleep infinity &amp;
-pid<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>!<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-
-wait <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>!<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-</code></pre></div><p>If a process runs in foreground spawned by a bash script, then the bash script does not respond to the signals, so the <code>trap</code> is rendered useless. Hence run it in the background and wait on it using <code>wait</code>.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> cleanup<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  kill <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>pid<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>  exit
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>trap cleanup SIGHUP SIGTERM SIGINT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;sleeping&#34;</span>
+</span></span><span style="display:flex;"><span>sleep infinity &amp;
+</span></span><span style="display:flex;"><span>pid<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>!<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wait <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>!<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>If a process runs in foreground spawned by a bash script, then the bash script does not respond to the signals, so the <code>trap</code> is rendered useless. Hence run it in the background and wait on it using <code>wait</code>.
 Make sure that the script is run via <code>ENTRYPOINT</code> the way it is done in this <code>Dockerfile</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> quay.io/surajd/fedora-networking</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./cleanup.sh /cleanup.sh<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> /cleanup.sh<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>Since the above script, <code>cleanup.sh</code> is listening on three types of signals: <code>SIGHUP</code>, <code>SIGTERM</code>, <code>SIGINT</code> if any of these is sent to the script the container will stop working. So the following commands will work just fine:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-docker" data-lang="docker"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> quay.io/surajd/fedora-networking</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./cleanup.sh /cleanup.sh<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> /cleanup.sh<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>Since the above script, <code>cleanup.sh</code> is listening on three types of signals: <code>SIGHUP</code>, <code>SIGTERM</code>, <code>SIGINT</code> if any of these is sent to the script the container will stop working. So the following commands will work just fine:</p>
 <p><img src="/post/2021/01/shell-exec/4-docker-commands.png" alt="Docker commands" title="Docker commands"></p>
 <p>Here is a video that shows how the above commands works:</p>
 
@@ -278,12 +285,12 @@ Make sure that the script is run via <code>ENTRYPOINT</code> the way it is done 
 <h2 id="an-application-spawned-directly">An application spawned directly.</h2>
 <p>Here is a golang application that handles signals. This golang app can be run directly via <code>ENTRYPOINT</code>.</p>
 <p><img src="/post/2021/01/shell-exec/5-golang-code.png" alt="Golang Signals App" title="Golang Signals App"></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> quay.io/surajd/fedora-networking</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./signals /signals<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> /signals<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>This golang code is also listening on the same signals: <code>SIGHUP</code>, <code>SIGTERM</code>, <code>SIGINT</code>. The code has a main goroutine which spawns another goroutine. The background goroutine is listening to the aforementioned signals. While the main goroutine is waiting (<code>←done</code>) for the background goroutine to receive signal and finally exit. In the <code>Dockerfile</code>, we have simply copied the binary directly and spawn it using <code>ENTRYPOINT</code>, this ensures that the application receives the signals directly. <code>ENTRYPOINT</code> is actually starting the given process using <code>exec</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-docker" data-lang="docker"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> quay.io/surajd/fedora-networking</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./signals /signals<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> /signals<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>This golang code is also listening on the same signals: <code>SIGHUP</code>, <code>SIGTERM</code>, <code>SIGINT</code>. The code has a main goroutine which spawns another goroutine. The background goroutine is listening to the aforementioned signals. While the main goroutine is waiting (<code>←done</code>) for the background goroutine to receive signal and finally exit. In the <code>Dockerfile</code>, we have simply copied the binary directly and spawn it using <code>ENTRYPOINT</code>, this ensures that the application receives the signals directly. <code>ENTRYPOINT</code> is actually starting the given process using <code>exec</code>.</p>
 <p>Watch the video below, which shows how the signals are passed to the application:</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -292,20 +299,20 @@ Make sure that the script is run via <code>ENTRYPOINT</code> the way it is done 
 
 <h2 id="when-should-you-use-exec">When should you use <code>exec</code>?</h2>
 <p>Now consider that you have an application which listens to those signals, but for some reason, you need to spawn that application via a shell script. This is when you use <code>exec</code>. We are using the same golang application as before but spawning it from a bash script. Notice that this script is invoking that golang binary using <code>exec</code>, this replaces the bash script with golang binary as <code>PID 1</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span>
-echo <span style="color:#e6db74">&#34;spawning the golang app&#34;</span>
-
-<span style="color:#75715e"># This app can handle the signals so no need to handle them on</span>
-<span style="color:#75715e"># behalf of the application here in the bash script.</span>
-exec ./signals
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> quay.io/surajd/fedora-networking</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./signals /signals<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./startup.sh /startup.sh<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> /startup.sh<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>If we get shell access of the container, you will see that the golang <code>signals</code> app has become <code>PID 1</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;spawning the golang app&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># This app can handle the signals so no need to handle them on</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># behalf of the application here in the bash script.</span>
+</span></span><span style="display:flex;"><span>exec ./signals
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-docker" data-lang="docker"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> quay.io/surajd/fedora-networking</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./signals /signals<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./startup.sh /startup.sh<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> /startup.sh<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>If we get shell access of the container, you will see that the golang <code>signals</code> app has become <code>PID 1</code>.</p>
 <p><img src="/post/2021/01/shell-exec/9-console-output.png" alt="Console output" title="Console output"></p>
 <p>Here is the video that shows these signals passing in action:</p>
 
@@ -365,7 +372,7 @@ exec ./signals
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -407,52 +414,52 @@ exec ./signals
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -689,14 +696,14 @@ exec ./signals
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

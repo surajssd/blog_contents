@@ -3,24 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>My Knowledge Management Journey - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The story of various tools I have used over last five years.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="My Knowledge Management Journey">
+<meta property="og:description" content="The story of various tools I have used over last five years.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/2021/02/kms-journey/">
+    <meta property="og:image" content="https://suraj.io/post/2021/02/kms-journey/knowledge.jpg">
+    <meta property="og:image:alt" content="Knowledge">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="My Knowledge Management Journey">
-  <meta property="og:description" content="The story of various tools I have used over last five years.">
-  <meta property="description" content="The story of various tools I have used over last five years.">
-  <meta property="og:url" content="https://suraj.io/post/2021/02/kms-journey/">
-  <meta property="og:type" content="article">
-  
-    
-      <meta property="og:image" content="https://suraj.io/post/2021/02/kms-journey/knowledge.jpg">
-      <meta property="og:image:alt" content="Knowledge">
-    
-  
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -194,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2021-02-23 09:07:07 &#43;0530 IST">February 23, 2021</time>
+    <time datetime="2021-02-23 09:07:07 &#43;0530 &#43;0530">February 23, 2021</time>
     <p>Suraj Deshmukh</p>
     <p>9-Minute Read</p>
   </div>
@@ -240,9 +243,10 @@
 
       </div>
       <div class="content">
-        <a href="/post/2021/02/kms-journey/" class="image" style="--bg-image: url('https://suraj.io/post/2021/02/kms-journey/knowledge.jpg');">
-    <img src="https://suraj.io/post/2021/02/kms-journey/knowledge.jpg" alt="Knowledge">
+        <a href="/post/2021/02/kms-journey/" class="image" style="--bg-image: url('/post/2021/02/kms-journey/knowledge.jpg');">
+    <img src="/post/2021/02/kms-journey/knowledge.jpg" alt="Knowledge">
   </a>
+        
         <p>Photo by <a href="https://unsplash.com/@impatrickt?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Patrick Tomasso</a> on <a href="https://unsplash.com/s/photos/learning?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.</p>
 <hr>
 <p>If you are reading this, you are definitely a <a href="https://en.wikipedia.org/wiki/Knowledge_worker">Knowledge Worker</a>. As Knowledge Workers, we rely a lot on the information we know or have access to for our day to day work. Occasionally, we will do the same thing twice, face the situation more than once, want to read that reference or try to understand the insights mentioned in that one particular blog. How do you keep track of such information? How do you find such information again after you have researched it once?! You need a <a href="https://en.wikipedia.org/wiki/Knowledge_management">knowledge management system</a> that aids you in revisiting such information.</p>
@@ -261,17 +265,17 @@
 <p>If I needed anything from my past tweets, I could simply go to my <a href="https://twitter.com/surajd_">&ldquo;Profile&rdquo;</a> and search for the problem statement. Once the tweets grew on my &ldquo;Profile&rdquo;, searching went out of hand. Also, the search feature of Twitter is cumbersome to use.</p>
 <h2 id="the-problem-of-searching-tweets">The Problem of searching tweets</h2>
 <p>To overcome the search-on-your-Profile problem, I wondered what if I can use Twitter API to download all the tweets from my account and store them in a plain text format to grep it later? To materialise that idea, I wrote <a href="https://github.com/surajssd/tweetbase/blob/master/tweetbase.go">this script (tweetbase)</a> that would download all the tweets and dump them into a file. The only downside was that I had to run it periodically so that the local file is up to date with the Twitter profile. This has served its purpose to date.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./run &gt; plain-text-tweets.txt
-2021/02/22 10:45:01 All clients ready
-2021/02/22 10:45:02 Credentials verified
-2021/02/22 10:45:03 Got max id: <span style="color:#ae81ff">1363704708418871301</span>
-2021/02/22 10:45:03 Tweets download started
-2021/02/22 10:45:13 Tweets download complete
-2021/02/22 10:45:13 Tweets dumped to ./alltweets.json
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ grep -i hostpath -A <span style="color:#ae81ff">1</span> plain-text-tweets.txt
-5683:Correction: Whitelisting <span style="color:#e6db74">`</span>allowedHostPath<span style="color:#e6db74">`</span> doesn<span style="color:#960050;background-color:#1e0010">&#39;</span>t help. Only way to get around it is to control permissions on PV… https://t.co/CETzBGf2MQ
-5684-URL: https://twitter.com/surajd_/status/1160967381100814342
-</code></pre></div><p>Now I could just open the above link pointing to my tweet.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ./run &gt; plain-text-tweets.txt
+</span></span><span style="display:flex;"><span>2021/02/22 10:45:01 All clients ready
+</span></span><span style="display:flex;"><span>2021/02/22 10:45:02 Credentials verified
+</span></span><span style="display:flex;"><span>2021/02/22 10:45:03 Got max id: <span style="color:#ae81ff">1363704708418871301</span>
+</span></span><span style="display:flex;"><span>2021/02/22 10:45:03 Tweets download started
+</span></span><span style="display:flex;"><span>2021/02/22 10:45:13 Tweets download complete
+</span></span><span style="display:flex;"><span>2021/02/22 10:45:13 Tweets dumped to ./alltweets.json
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ grep -i hostpath -A <span style="color:#ae81ff">1</span> plain-text-tweets.txt
+</span></span><span style="display:flex;"><span>5683:Correction: Whitelisting <span style="color:#e6db74">`</span>allowedHostPath<span style="color:#e6db74">`</span> doesn<span style="color:#960050;background-color:#1e0010">&#39;</span>t help. Only way to get around it is to control permissions on PV… https://t.co/CETzBGf2MQ
+</span></span><span style="display:flex;"><span>5684-URL: https://twitter.com/surajd_/status/1160967381100814342
+</span></span></code></pre></div><p>Now I could just open the above link pointing to my tweet.</p>
 <p>Sometimes I couldn&rsquo;t remember what &ldquo;Problem Statement&rdquo; I had written with the tweet; then, I would be just guessing various terms to search; hence a lot of time would be wasted. Also, Twitter API trims the tweet content, so even if you had typed detailed information, it might not be searchable in the plain text file. You can see that the text is redacted with an ellipsis (<code>...</code>).</p>
 <h2 id="write-a-script-to-automate">Write a script to automate</h2>
 <p>There are specific commands that you need again-and-again. I would automate that by putting them into a single script.</p>
@@ -280,22 +284,22 @@
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <p>I found myself visiting such websites multiple times. Thus, to copy the solution, I would see the Twitter profile page (until the page was searchable using <code>Ctrl + F</code>). Once the tweet on the profile got buried, I started digging (grepping) into the <a href="https://github.com/surajssd/tweetbase/blob/master/plain-text-tweets.txt">plain-text-tweets</a> file and then jumping to the tweet.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ grep -i paste -A <span style="color:#ae81ff">1</span> plain-text-tweets.txt
-470:Copy paste 👇
-471-
---
-773:var allowPaste <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span><span style="color:#f92672">(</span>e<span style="color:#f92672">){</span>
-774-  e.stopImmediatePropagation<span style="color:#f92672">()</span>;
---
-777:document.addEventListener<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;paste&#39;</span>, allowPaste, true<span style="color:#f92672">)</span>;
-778-URL: https://twitter.com/surajd_/status/1339602792143458304
-</code></pre></div><p>When this happened more than a couple of times, I decided to script this thing and make this affair faster. The script can be found <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/make-chrome-copy-pastable.sh">here</a>. Now I just run the script, and the contents are copied to the clipboard to be executed into the chrome tab.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ make-chrome-copy-pastable.sh
-The code has been copied into the clip board.
-Now goto chrome and press Ctrl + Shift + I and paste into the console window.
-</code></pre></div><p>I have explained <a href="https://suraj.io/post/framework-for-scripts-and-binaries/">in this blog</a> my scripts framework. I have used similar approaches to update the tools I need at their cutting edge. This way, I don&rsquo;t have to search for how to update them every time. I just run the script.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ grep -i paste -A <span style="color:#ae81ff">1</span> plain-text-tweets.txt
+</span></span><span style="display:flex;"><span>470:Copy paste 👇
+</span></span><span style="display:flex;"><span>471-
+</span></span><span style="display:flex;"><span>--
+</span></span><span style="display:flex;"><span>773:var allowPaste <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span><span style="color:#f92672">(</span>e<span style="color:#f92672">){</span>
+</span></span><span style="display:flex;"><span>774-  e.stopImmediatePropagation<span style="color:#f92672">()</span>;
+</span></span><span style="display:flex;"><span>--
+</span></span><span style="display:flex;"><span>777:document.addEventListener<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;paste&#39;</span>, allowPaste, true<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>778-URL: https://twitter.com/surajd_/status/1339602792143458304
+</span></span></code></pre></div><p>When this happened more than a couple of times, I decided to script this thing and make this affair faster. The script can be found <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/make-chrome-copy-pastable.sh">here</a>. Now I just run the script, and the contents are copied to the clipboard to be executed into the chrome tab.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ make-chrome-copy-pastable.sh
+</span></span><span style="display:flex;"><span>The code has been copied into the clip board.
+</span></span><span style="display:flex;"><span>Now goto chrome and press Ctrl + Shift + I and paste into the console window.
+</span></span></code></pre></div><p>I have explained <a href="https://suraj.io/post/framework-for-scripts-and-binaries/">in this blog</a> my scripts framework. I have used similar approaches to update the tools I need at their cutting edge. This way, I don&rsquo;t have to search for how to update them every time. I just run the script.</p>
 <h2 id="your-own-blog-should-be-easy-to-find">Your own blog should be easy to find</h2>
-<p>I started writing blogs where tweets did not serve the purpose. My blogs' nature was problem-oriented (the problems that I encountered and the solution that worked for me in my environment).
+<p>I started writing blogs where tweets did not serve the purpose. My blogs&rsquo; nature was problem-oriented (the problems that I encountered and the solution that worked for me in my environment).
 With blogs, I took an <a href="https://en.wikipedia.org/wiki/Not_invented_here">NIH</a> approach (even if there were blogs already written about that topic, I thought I might write it in my words). It served two purposes; they made it easier to search for information for which I had a readymade solution, and the process of writing made my understanding clear. When you write something to explain to others, you must understand all the nitty-gritty details to explain the topic to others in easy to understand language. Since the blogs were created for public consumption, I ensured that I did not make assumptions or tried to make it generic and think from various perspectives.</p>
 <p>With that being said, there&rsquo;s still a limit on how much one person can process and distil into writing. My reading volume was many folds greater than the content I was writing. To store information reliably, I needed something that can capture the entire web page and have a search facility, so if I just entered a term, it would fetch all the pages with that term. I gave serious thought to creating a scraper using Python&rsquo;s <a href="https://scrapy.org/">Scrapy framework</a> but then never got time to do it by myself.</p>
 <h2 id="save-to-read-later">Save to read later</h2>
@@ -356,7 +360,7 @@ With blogs, I took an <a href="https://en.wikipedia.org/wiki/Not_invented_here">
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -398,52 +402,52 @@ With blogs, I took an <a href="https://en.wikipedia.org/wiki/Not_invented_here">
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -680,14 +684,14 @@ With blogs, I took an <a href="https://en.wikipedia.org/wiki/Not_invented_here">
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

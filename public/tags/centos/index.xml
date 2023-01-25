@@ -25,7 +25,7 @@ $ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedor
       
       <guid>https://suraj.io/post/rpm-notes/</guid>
       <description>This post will get you through all the steps needed for doing RPM packaging.
-Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG My Notes  Start reading from: Fedora packager&amp;rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros.  $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch  To see all macros on the system:  $ rpm --showrc  Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package  $ rpm -qip .</description>
+Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG My Notes Start reading from: Fedora packager&amp;rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros. $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch To see all macros on the system: $ rpm --showrc Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package $ rpm -qip .</description>
     </item>
     
     <item>
@@ -37,7 +37,7 @@ Setup of the system for building rpms $ dnf -y install fedora-packager fedora-re
       <description>Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
 Setup your machine Install packages needed
-sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \  gcc byobu rpmlint rpmdevtools centos-packager Setup certs</description>
+sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager Setup certs</description>
     </item>
     
     <item>

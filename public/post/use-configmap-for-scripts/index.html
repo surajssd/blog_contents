@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Use Configmap for Scripts - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A new way to ship scripts to container images.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Use Configmap for Scripts">
+<meta property="og:description" content="A new way to ship scripts to container images.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/use-configmap-for-scripts/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Use Configmap for Scripts">
-  <meta property="og:description" content="A new way to ship scripts to container images.">
-  <meta property="description" content="A new way to ship scripts to container images.">
-  <meta property="og:url" content="https://suraj.io/post/use-configmap-for-scripts/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2020-08-22 21:00:51 &#43;0530 IST">August 22, 2020</time>
+    <time datetime="2020-08-22 21:00:51 &#43;0530 &#43;0530">August 22, 2020</time>
     <p>Suraj Deshmukh</p>
     <p>6-Minute Read</p>
   </div>
@@ -238,6 +244,7 @@
       </div>
       <div class="content">
         
+        
         <p>We generally use some sort of scripts in application container images. They serve various purposes. Some scripts might do an initial setup before the application starts, others may have the whole logic of the container image, etc. Whatever the goal may be the general pattern is to copy the script into the container image, build the image and then the script is available when you consume the image.</p>
 <h2 id="cons-of-the-traditional-method">Cons of the Traditional Method</h2>
 <p>The round trip time during development and testing of such script is very long. You make some change to the script, you need to build the image, push it and then it is downloaded again. On an average for every change adds a couple of minutes to your feedback loop. Bash scripts are generally precarious in nature. You have to hammer it down, consider edge cases and thereby make it robust. This, of course, takes a lot of iterations. And with iterations comes the added time. So the question is, how do we reduce this feedback loop?</p>
@@ -247,137 +254,137 @@
 <p>Here we will see how to convert a traditionally built container image with a script to configmap based script delivery mechanism.</p>
 <h3 id="traditional-method">Traditional Method</h3>
 <p>See the following directory structure. There is a helm chart in <code>echoscript</code> directory. Container image related configuration resides at the root of the project directory.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
-├── Dockerfile
-├── echoscript
-│   ├── Chart.yaml
-│   ├── templates
-│   │   └── deployment.yaml
-│   └── values.yaml
-└── run.sh
-
-<span style="color:#ae81ff">2</span> directories, <span style="color:#ae81ff">5</span> files
-</code></pre></div><p>The script does not do anything fancy, just prints some text and then sleeps, this is good for demo purposes. The docker file builds an image based on <code>fedora:32</code> base.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat Dockerfile
-FROM fedora:32
-COPY run.sh /
-ENTRYPOINT <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;/run.sh&#34;</span> <span style="color:#f92672">]</span>
-
-$ cat run.sh
-<span style="color:#75715e">#!/bin/bash</span>
-echo <span style="color:#e6db74">&#34;Hello from the script baked into the container&#34;</span>
-echo <span style="color:#e6db74">&#34;Sleeping for eternity!&#34;</span>
-sleep infinity
-</code></pre></div><p>Let us build and push the image so that when we deploy the chart, the image is pulled successfully: <code>docker build -t surajd/echoscript . &amp;&amp; docker push surajd/echoscript</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── Dockerfile
+</span></span><span style="display:flex;"><span>├── echoscript
+</span></span><span style="display:flex;"><span>│   ├── Chart.yaml
+</span></span><span style="display:flex;"><span>│   ├── templates
+</span></span><span style="display:flex;"><span>│   │   └── deployment.yaml
+</span></span><span style="display:flex;"><span>│   └── values.yaml
+</span></span><span style="display:flex;"><span>└── run.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span> directories, <span style="color:#ae81ff">5</span> files
+</span></span></code></pre></div><p>The script does not do anything fancy, just prints some text and then sleeps, this is good for demo purposes. The docker file builds an image based on <code>fedora:32</code> base.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat Dockerfile
+</span></span><span style="display:flex;"><span>FROM fedora:32
+</span></span><span style="display:flex;"><span>COPY run.sh /
+</span></span><span style="display:flex;"><span>ENTRYPOINT <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;/run.sh&#34;</span> <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cat run.sh
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Hello from the script baked into the container&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Sleeping for eternity!&#34;</span>
+</span></span><span style="display:flex;"><span>sleep infinity
+</span></span></code></pre></div><p>Let us build and push the image so that when we deploy the chart, the image is pulled successfully: <code>docker build -t surajd/echoscript . &amp;&amp; docker push surajd/echoscript</code>.</p>
 <p>The deployment configuration is generic and there is nothing noteworthy in it.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat echoscript/templates/deployment.yaml</span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">echoscript</span>
-  <span style="color:#f92672">labels</span>:
-    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">echoscript</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#f92672">selector</span>:
-    <span style="color:#f92672">matchLabels</span>:
-      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">echoscript</span>
-  <span style="color:#f92672">template</span>:
-    <span style="color:#f92672">metadata</span>:
-      <span style="color:#f92672">labels</span>:
-        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">echoscript</span>
-    <span style="color:#f92672">spec</span>:
-      <span style="color:#f92672">containers</span>:
-      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">echoscript</span>
-        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">surajd/echoscript</span>
-</code></pre></div><p>Deploy the chart using command <code>helm install test echoscript/</code> and see it working:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods
-NAME                         READY   STATUS    RESTARTS   AGE
-echoscript-f6499985c-tlr97   1/1     Running   <span style="color:#ae81ff">0</span>          57s
-
-$ kubectl logs -f echoscript-f6499985c-tlr97
-Hello from the script baked into the container
-Sleeping <span style="color:#66d9ef">for</span> eternity!
-^C
-</code></pre></div><p>Now every time you want to make changes to the <code>run.sh</code> script you will have to go through the build push cycle.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ae81ff">$ cat echoscript/templates/deployment.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">echoscript</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">echoscript</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">matchLabels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">echoscript</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">template</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">echoscript</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">echoscript</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">surajd/echoscript</span>
+</span></span></code></pre></div><p>Deploy the chart using command <code>helm install test echoscript/</code> and see it working:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl get pods
+</span></span><span style="display:flex;"><span>NAME                         READY   STATUS    RESTARTS   AGE
+</span></span><span style="display:flex;"><span>echoscript-f6499985c-tlr97   1/1     Running   <span style="color:#ae81ff">0</span>          57s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl logs -f echoscript-f6499985c-tlr97
+</span></span><span style="display:flex;"><span>Hello from the script baked into the container
+</span></span><span style="display:flex;"><span>Sleeping <span style="color:#66d9ef">for</span> eternity!
+</span></span><span style="display:flex;"><span>^C
+</span></span></code></pre></div><p>Now every time you want to make changes to the <code>run.sh</code> script you will have to go through the build push cycle.</p>
 <h3 id="configmap-method">Configmap method</h3>
 <p>Look at this new directory structure. There is no <code>Dockerfile</code>. It is because the script does not need anything other than built-in stuff from a container image if you need specific packages to be installed then build a container image. Also, see that the script <code>run.sh</code> is moved to <code>scripts</code> directory in the helm chart.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
-└── echoscript
-    ├── Chart.yaml
-    ├── scripts
-    │   └── run.sh
-    ├── templates
-    │   ├── configmap.yaml
-    │   └── deployment.yaml
-    └── values.yaml
-
-<span style="color:#ae81ff">3</span> directories, <span style="color:#ae81ff">5</span> files
-</code></pre></div><p>There is a new configuration file called <code>configmap.yaml</code>. Look at the contents of that file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ cat echoscript/templates/configmap.yaml</span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConfigMap</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">scripts-configmap</span>
-<span style="color:#f92672">data</span>:
-{{ <span style="color:#ae81ff">(.Files.Glob &#34;scripts/run.sh&#34;).AsConfig | indent 2 }}</span>
-</code></pre></div><p>So this will automatically load the <code>run.sh</code> from scripts directory into this configmap. I don&rsquo;t have to keep the bash script in a YAML file indented. In this way, I have the independence of editing and viewing file in its original format.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>└── echoscript
+</span></span><span style="display:flex;"><span>    ├── Chart.yaml
+</span></span><span style="display:flex;"><span>    ├── scripts
+</span></span><span style="display:flex;"><span>    │   └── run.sh
+</span></span><span style="display:flex;"><span>    ├── templates
+</span></span><span style="display:flex;"><span>    │   ├── configmap.yaml
+</span></span><span style="display:flex;"><span>    │   └── deployment.yaml
+</span></span><span style="display:flex;"><span>    └── values.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span> directories, <span style="color:#ae81ff">5</span> files
+</span></span></code></pre></div><p>There is a new configuration file called <code>configmap.yaml</code>. Look at the contents of that file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ae81ff">$ cat echoscript/templates/configmap.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConfigMap</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">scripts-configmap</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">data</span>:
+</span></span><span style="display:flex;"><span>{{ <span style="color:#ae81ff">(.Files.Glob &#34;scripts/run.sh&#34;).AsConfig | indent 2 }}</span>
+</span></span></code></pre></div><p>So this will automatically load the <code>run.sh</code> from scripts directory into this configmap. I don&rsquo;t have to keep the bash script in a YAML file indented. In this way, I have the independence of editing and viewing file in its original format.</p>
 <p>There are certain changes made to the deployment manifest as well. Like mentioned earlier there is no specially built image so I can use my base image from the Dockerfile as the container image here. Then there is a config to invoke this bash script. And then parameters to bring the file from configmap into the container image by using volume mount.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">$ git diff echoscript/templates/deployment.yaml
-diff --git echoscript/templates/deployment.yaml echoscript/templates/deployment.yaml
-index 34fa7cb..3a10ca2 100644
-<span style="color:#f92672">--- echoscript/templates/deployment.yaml
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ echoscript/templates/deployment.yaml
-</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -16,4 +16,13 @@ spec:
-</span><span style="color:#75715e"></span>     spec:
-       containers:
-       - name: echoscript
-<span style="color:#f92672">-        image: surajd/echoscript
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+        image: fedora:32
-</span><span style="color:#a6e22e">+        command: [&#34;/bin/bash&#34;]
-</span><span style="color:#a6e22e">+        args: [&#34;/scripts-dir/run.sh&#34;]
-</span><span style="color:#a6e22e">+        volumeMounts:
-</span><span style="color:#a6e22e">+        - name: scripts-vol
-</span><span style="color:#a6e22e">+          mountPath: /scripts-dir
-</span><span style="color:#a6e22e">+      volumes:
-</span><span style="color:#a6e22e">+      - name: scripts-vol
-</span><span style="color:#a6e22e">+        configMap:
-</span><span style="color:#a6e22e">+          name: scripts-configmap
-</span></code></pre></div><p>Let&rsquo;s install it using command <code>helm install configmapmethod echoscript/</code> again and see the result:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods
-NAME                          READY   STATUS    RESTARTS   AGE
-echoscript-6479bf46cd-8t2dj   1/1     Running   <span style="color:#ae81ff">0</span>          25s
-
-$ kubectl logs -f echoscript-6479bf46cd-8t2dj
-Hello from the script residing in helm chart.
-Sleeping <span style="color:#66d9ef">for</span> eternity!
-^C
-</code></pre></div><p>Now let&rsquo;s make changes to the <a href="http://run.sh"><code>run.sh</code></a> file. I have modified the file to look something like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span>echo <span style="color:#e6db74">&#34;Hello from the script residing in helm chart.&#34;</span>
-echo <span style="color:#e6db74">&#34;New line added here.&#34;</span>
-echo <span style="color:#e6db74">&#34;Sleeping for eternity!&#34;</span>
-sleep infinity
-</code></pre></div><p>Now apply these changes by running the command <code>helm upgrade configmapmethod echoscript/</code>. And kill the pod using command <code>kubectl delete pod echoscript-6479bf46cd-8t2dj</code>. Now let&rsquo;s see if the new line shows up:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods
-NAME                          READY   STATUS    RESTARTS   AGE
-echoscript-6479bf46cd-mzgn7   1/1     Running   <span style="color:#ae81ff">0</span>          38s
-
-$ kubectl logs -f echoscript-6479bf46cd-mzgn7
-Hello from the script residing in helm chart.
-New line added here.
-Sleeping <span style="color:#66d9ef">for</span> eternity!
-^C
-</code></pre></div><p>So you can see from making the change to witnessing its effects it took less than a couple of seconds.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>$ git diff echoscript/templates/deployment.yaml
+</span></span><span style="display:flex;"><span>diff --git echoscript/templates/deployment.yaml echoscript/templates/deployment.yaml
+</span></span><span style="display:flex;"><span>index 34fa7cb..3a10ca2 100644
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--- echoscript/templates/deployment.yaml
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ echoscript/templates/deployment.yaml
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -16,4 +16,13 @@ spec:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     spec:
+</span></span><span style="display:flex;"><span>       containers:
+</span></span><span style="display:flex;"><span>       - name: echoscript
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-        image: surajd/echoscript
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+        image: fedora:32
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        command: [&#34;/bin/bash&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        args: [&#34;/scripts-dir/run.sh&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        volumeMounts:
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        - name: scripts-vol
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+          mountPath: /scripts-dir
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+      volumes:
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+      - name: scripts-vol
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+        configMap:
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+          name: scripts-configmap
+</span></span></span></code></pre></div><p>Let&rsquo;s install it using command <code>helm install configmapmethod echoscript/</code> again and see the result:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl get pods
+</span></span><span style="display:flex;"><span>NAME                          READY   STATUS    RESTARTS   AGE
+</span></span><span style="display:flex;"><span>echoscript-6479bf46cd-8t2dj   1/1     Running   <span style="color:#ae81ff">0</span>          25s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl logs -f echoscript-6479bf46cd-8t2dj
+</span></span><span style="display:flex;"><span>Hello from the script residing in helm chart.
+</span></span><span style="display:flex;"><span>Sleeping <span style="color:#66d9ef">for</span> eternity!
+</span></span><span style="display:flex;"><span>^C
+</span></span></code></pre></div><p>Now let&rsquo;s make changes to the <a href="http://run.sh"><code>run.sh</code></a> file. I have modified the file to look something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>echo <span style="color:#e6db74">&#34;Hello from the script residing in helm chart.&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;New line added here.&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Sleeping for eternity!&#34;</span>
+</span></span><span style="display:flex;"><span>sleep infinity
+</span></span></code></pre></div><p>Now apply these changes by running the command <code>helm upgrade configmapmethod echoscript/</code>. And kill the pod using command <code>kubectl delete pod echoscript-6479bf46cd-8t2dj</code>. Now let&rsquo;s see if the new line shows up:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl get pods
+</span></span><span style="display:flex;"><span>NAME                          READY   STATUS    RESTARTS   AGE
+</span></span><span style="display:flex;"><span>echoscript-6479bf46cd-mzgn7   1/1     Running   <span style="color:#ae81ff">0</span>          38s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl logs -f echoscript-6479bf46cd-mzgn7
+</span></span><span style="display:flex;"><span>Hello from the script residing in helm chart.
+</span></span><span style="display:flex;"><span>New line added here.
+</span></span><span style="display:flex;"><span>Sleeping <span style="color:#66d9ef">for</span> eternity!
+</span></span><span style="display:flex;"><span>^C
+</span></span></code></pre></div><p>So you can see from making the change to witnessing its effects it took less than a couple of seconds.</p>
 <h2 id="cons-of-configmap-method">Cons of Configmap method</h2>
 <ul>
 <li><strong>Platform:</strong> The most significant assumption this method adds is that you are using Kubernetes.</li>
 <li><strong>Loose coupling:</strong> If the container image is used in multiple places, this requires that the user should create corresponding configmaps and volume mount configs.</li>
 <li><strong>Ease of update:</strong> If you are not using <code>helm</code> or <code>kustomize</code>, then making changes to the configmap can be cumbersome, well, you can always do something like this:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create cm scripts-configmap --from-file echoscript/scripts/run.sh <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>                   --dry-run<span style="color:#f92672">=</span>client -o yaml | kubectl apply -f -
-</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl create cm scripts-configmap --from-file echoscript/scripts/run.sh <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>                   --dry-run<span style="color:#f92672">=</span>client -o yaml | kubectl apply -f -
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>Both approaches have their own pros and cons. But to harness the benefits of both methods, create one config during development and use something else in deployment. That way, you will have the best of both worlds. You will have a faster round trip time in the development phase, and you don&rsquo;t have to repeat the config in the deployment phase. Let me know what is your productivity hack with scripts when iterating on them in this container-dominant world. Happy Hacking!</p>
 <h2 id="links">Links</h2>
 <ul>
@@ -424,7 +431,7 @@ Sleeping <span style="color:#66d9ef">for</span> eternity!
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -466,52 +473,52 @@ Sleeping <span style="color:#66d9ef">for</span> eternity!
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -748,14 +755,14 @@ Sleeping <span style="color:#66d9ef">for</span> eternity!
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

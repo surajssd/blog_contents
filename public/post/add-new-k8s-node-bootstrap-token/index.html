@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Add new Node to k8s cluster with Bootstrap token - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Add new Node to k8s cluster with Bootstrap token">
+<meta property="og:description" content="Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/add-new-k8s-node-bootstrap-token/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Add new Node to k8s cluster with Bootstrap token">
-  <meta property="og:description" content="Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver">
-  <meta property="description" content="Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver">
-  <meta property="og:url" content="https://suraj.io/post/add-new-k8s-node-bootstrap-token/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2018-10-24 01:00:51 &#43;0530 IST">October 24, 2018</time>
+    <time datetime="2018-10-24 01:00:51 &#43;0530 &#43;0530">October 24, 2018</time>
     <p>Suraj Deshmukh</p>
     <p>4-Minute Read</p>
   </div>
@@ -237,6 +243,7 @@
 
       </div>
       <div class="content">
+        
         
         <blockquote>
 <p><strong>NOTE</strong>: There is an updated version of this blog <a href="https://suraj.io/post/2021/02/k8s-bootstrap-token/">here</a>.</p>
@@ -324,38 +331,38 @@ EOF
 apiVersion: v1
 kind: Secret
 metadata:
-  # Name MUST be of form &quot;bootstrap-token-&lt;token id&gt;&quot;
+  # Name MUST be of form &#34;bootstrap-token-&lt;token id&gt;&#34;
   name: bootstrap-token-07401b
   namespace: kube-system
 
-# Type MUST be 'bootstrap.kubernetes.io/token'
+# Type MUST be &#39;bootstrap.kubernetes.io/token&#39;
 type: bootstrap.kubernetes.io/token
 stringData:
   # Human readable description. Optional.
-  description: &quot;Created for Kubernetes the Hard Way&quot;
+  description: &#34;Created for Kubernetes the Hard Way&#34;
 
   # Token ID and secret. Required.
   token-id: 07401b
   token-secret: f395accd246ae52d
 
   # Allowed usages.
-  usage-bootstrap-authentication: &quot;true&quot;
-  usage-bootstrap-signing: &quot;true&quot;
+  usage-bootstrap-authentication: &#34;true&#34;
+  usage-bootstrap-signing: &#34;true&#34;
 EOF
 </code></pre><h2 id="rbac-policies-to-enable-bootstrapping">RBAC policies to enable bootstrapping</h2>
 <p>The user authenticated by that token belongs to the group <code>system:bootstrappers</code>, that is why following permissions are given to that group.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create clusterrolebinding kubelet-bootstrap <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --clusterrole<span style="color:#f92672">=</span>system:node-bootstrapper <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --group<span style="color:#f92672">=</span>system:bootstrappers
-
-kubectl create clusterrolebinding node-autoapprove-bootstrap <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --clusterrole<span style="color:#f92672">=</span>system:certificates.k8s.io:certificatesigningrequests:nodeclient <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --group<span style="color:#f92672">=</span>system:bootstrappers
-
-kubectl create clusterrolebinding node-autoapprove-certificate-rotation <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --clusterrole<span style="color:#f92672">=</span>system:certificates.k8s.io:certificatesigningrequests:selfnodeclient <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --group<span style="color:#f92672">=</span>system:nodes
-</code></pre></div><h1 id="worker-node-changes">Worker node changes</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl create clusterrolebinding kubelet-bootstrap <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --clusterrole<span style="color:#f92672">=</span>system:node-bootstrapper <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --group<span style="color:#f92672">=</span>system:bootstrappers
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kubectl create clusterrolebinding node-autoapprove-bootstrap <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --clusterrole<span style="color:#f92672">=</span>system:certificates.k8s.io:certificatesigningrequests:nodeclient <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --group<span style="color:#f92672">=</span>system:bootstrappers
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kubectl create clusterrolebinding node-autoapprove-certificate-rotation <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --clusterrole<span style="color:#f92672">=</span>system:certificates.k8s.io:certificatesigningrequests:selfnodeclient <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --group<span style="color:#f92672">=</span>system:nodes
+</span></span></code></pre></div><h1 id="worker-node-changes">Worker node changes</h1>
 <h2 id="kubelet">Kubelet</h2>
 <p>Add this flag <code>--bootstrap-kubeconfig</code>, it is a path to kubeconfig which we will generate shortly, it contains bootstrap token and information to talk to the <code>kube-apiserver</code>. And also you don&rsquo;t need to provide <code>--kubeconfig</code> but provide a path to it, this will be auto-generated and saved at that path.</p>
 <p>Your kubelet service file should look like following:</p>
@@ -393,39 +400,39 @@ authentication:
   webhook:
     enabled: true
   x509:
-    clientCAFile: &quot;/home/vagrant/ca.pem&quot;
+    clientCAFile: &#34;/home/vagrant/ca.pem&#34;
 authorization:
   mode: Webhook
-clusterDomain: &quot;cluster.local&quot;
+clusterDomain: &#34;cluster.local&#34;
 clusterDNS:
-  - &quot;10.32.0.10&quot;
-podCIDR: &quot;${POD_CIDR}&quot;
+  - &#34;10.32.0.10&#34;
+podCIDR: &#34;${POD_CIDR}&#34;
 rotateCertificates: true
-runtimeRequestTimeout: &quot;15m&quot;
+runtimeRequestTimeout: &#34;15m&#34;
 serverTLSBootstrap: true
 EOF
 </code></pre><p>Provide appropriate path to <code>clientCAFile</code>. And add two more fields <code>rotateCertificates: true</code> &amp; <code>serverTLSBootstrap: true</code>, this will enable cert rotation.</p>
 <h2 id="create-bootstrap-kubeconfig">Create bootstrap kubeconfig</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># I have used the ip address of my kube kube-apiserver use yours</span>
-kubectl config set-cluster kthwkinvolk <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --certificate-authority<span style="color:#f92672">=</span>ca.pem <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --embed-certs<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --server<span style="color:#f92672">=</span>https://192.168.50.10:6443 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig
-
-<span style="color:#75715e"># this token is above generated</span>
-kubectl config set-credentials kubelet-bootstrap <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --token<span style="color:#f92672">=</span>07401b.f395accd246ae52d <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig
-
-kubectl config set-context default <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --cluster<span style="color:#f92672">=</span>kthwkinvolk <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --user<span style="color:#f92672">=</span>kubelet-bootstrap <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig
-
-kubectl config use-context default <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig
-</code></pre></div><p>This is the bootstrap config file which we referred earlier in kubelet service file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># I have used the ip address of my kube kube-apiserver use yours</span>
+</span></span><span style="display:flex;"><span>kubectl config set-cluster kthwkinvolk <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --certificate-authority<span style="color:#f92672">=</span>ca.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --embed-certs<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --server<span style="color:#f92672">=</span>https://192.168.50.10:6443 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># this token is above generated</span>
+</span></span><span style="display:flex;"><span>kubectl config set-credentials kubelet-bootstrap <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --token<span style="color:#f92672">=</span>07401b.f395accd246ae52d <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kubectl config set-context default <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --cluster<span style="color:#f92672">=</span>kthwkinvolk <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --user<span style="color:#f92672">=</span>kubelet-bootstrap <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kubectl config use-context default <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig
+</span></span></code></pre></div><p>This is the bootstrap config file which we referred earlier in kubelet service file.</p>
 <p>Now once you start <code>kubelet</code> service it will use the bootstrap token in the initial request and fetch the certificates.</p>
 <h1 id="trying-it-all-in-one-go">Trying it all in one go</h1>
 <p>Here is the <a href="https://gist.github.com/surajssd/71892b7a9c5c2cb175fd050cee45d495">link to the gist</a> where you can start a master and a node using Vagrant and create cluster using above setup.</p>
@@ -463,7 +470,7 @@ kubectl config use-context default <span style="color:#ae81ff">\
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -505,52 +512,52 @@ kubectl config use-context default <span style="color:#ae81ff">\
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -787,14 +794,14 @@ kubectl config use-context default <span style="color:#ae81ff">\
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

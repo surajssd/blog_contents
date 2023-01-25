@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Framework for managing random scripts and binaries - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="This is an explanation of the framework that I have created to manage scripts and binaries.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Framework for managing random scripts and binaries">
+<meta property="og:description" content="This is an explanation of the framework that I have created to manage scripts and binaries.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/framework-for-scripts-and-binaries/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Framework for managing random scripts and binaries">
-  <meta property="og:description" content="This is an explanation of the framework that I have created to manage scripts and binaries.">
-  <meta property="description" content="This is an explanation of the framework that I have created to manage scripts and binaries.">
-  <meta property="og:url" content="https://suraj.io/post/framework-for-scripts-and-binaries/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2020-07-18 19:00:51 &#43;0530 IST">July 18, 2020</time>
+    <time datetime="2020-07-18 19:00:51 &#43;0530 &#43;0530">July 18, 2020</time>
     <p>Suraj Deshmukh</p>
     <p>5-Minute Read</p>
   </div>
@@ -238,6 +244,7 @@
       </div>
       <div class="content">
         
+        
         <p>I always had a conundrum about how to manage the scripts and binaries downloaded randomly from the internet. One way is to put them in the global <code>PATH</code> directory like <code>/usr/local/bin</code>, but I am sceptical about it.</p>
 <p>There are a couple of things I wanted to solve. How do you update these scripts and binaries? How to do it consistently across all my machines? How to make it easier to have my setup available on any new Linux machine(or even container) I setup? How to do it without <code>sudo</code>?</p>
 <h2 id="managing-random-scripts">Managing random scripts</h2>
@@ -246,56 +253,56 @@
 <p>Now the problem with this copying approach was that if I had to make any corrections to the script because I found a bug. I had to make those changes in two places, one in the Github repository directory and other in the <code>~/.local/bin</code> directory. As a human would, I use to forget making changes to the Github repository and this use to go out of sync pretty quickly.</p>
 <p>That is when I thought of creating symlinks. Now all the files stay in the Github repository directory and then <a href="https://github.com/surajssd/dotfiles/blob/master/installers/install-local-bin.sh">this installer script</a> makes a symlink which is stored in <code>~/.local/bin</code>. Now when I make changes to the script, those changes are in fact, happening in the repository. And whenever I have time I <code>git commit</code> those changes and <code>git push</code> them to Github.</p>
 <p>For making changes to the scripts I just have to do this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi <span style="color:#66d9ef">$(</span>which start-minikube<span style="color:#66d9ef">)</span>
-</code></pre></div><h3 id="local-scripts">Local scripts</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vi <span style="color:#66d9ef">$(</span>which start-minikube<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><h3 id="local-scripts">Local scripts</h3>
 <p>There are scripts that you want to have only locally. Like syncing code to a remote server. These are the scripts you don&rsquo;t want to share with the whole world. For this problem, I have added <code>.scripts</code> directory to the <code>PATH</code> variable in <code>~/.bashrc</code>. Now anywhere I can create <code>.scripts</code> directory, it is automatically in <code>PATH</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat ~/.bashrc | grep scripts
-export PATH<span style="color:#f92672">=</span>$PATH:.scripts
-</code></pre></div><p>Now with this foundational setup in place, whenever I have a project-specific script, I create a <code>.scripts</code> directory at the root of the project and put that bespoke script in that directory. So it is available for me from the root of the project directory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat ~/.bashrc | grep scripts
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>$PATH:.scripts
+</span></span></code></pre></div><p>Now with this foundational setup in place, whenever I have a project-specific script, I create a <code>.scripts</code> directory at the root of the project and put that bespoke script in that directory. So it is available for me from the root of the project directory.</p>
 <p>Since I am creating such directories which are unrelated to the project and should not be committed. I have a <a href="https://github.com/surajssd/dotfiles/blob/master/configs/gitignore">global entry for ignoring</a> <code>.scripts</code> directory.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># ignore the local scripts directory</span>
-.scripts
-</code></pre></div><p>You can find my <code>~/.bashrc</code> file <a href="https://github.com/surajssd/dotfiles/blob/master/configs/bashrc">here</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># ignore the local scripts directory</span>
+</span></span><span style="display:flex;"><span>.scripts
+</span></span></code></pre></div><p>You can find my <code>~/.bashrc</code> file <a href="https://github.com/surajssd/dotfiles/blob/master/configs/bashrc">here</a>.</p>
 <h3 id="project-specific-scripts">Project Specific Scripts</h3>
 <p>There are specific scripts that you want to use only for a project. Now you might wonder why not contribute them to the project itself. There could be scripts to copy code to a remote server; you don&rsquo;t want to contribute such scripts to the project because they are particular to your workflow. In such a case, I have something called a project-specific <code>.scripts</code> directory in the root of the project. Read more about it in detail in this another blog post of mine <a href="https://suraj.io/post/project-specific-scripts/">here</a>.</p>
 <h2 id="managing-random-binaries">Managing random binaries</h2>
 <p>Now many projects ship their binaries off of their Github releases but don&rsquo;t have a package made for an operating system. Now packaging an application for every operating system could be a daunting task for the maintainers of the project, not everyone is willing to take that on their plate(I am grateful those maintainers already working on the open source project I don&rsquo;t expect them to do more work).</p>
 <p>To manage binaries of such projects, you need your own mechanism of downloading the new versions and replacing older ones. For this again, I rely on my <code>~/.local/bin</code> directory. Here I put such downloaded binaries. And for the tools that I need regularly, I have created scripts for them. These scripts are managed as explained in the <a href="#global-scripts"><strong>Global scripts</strong></a> section.</p>
 <p>For example, I use <code>helm</code> regularly, and I need it to be updated as new releases come. So I have <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/update-helm">a script with following code snippet</a>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -LO https://get.helm.sh/helm-<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>-linux-amd64.tar.gz
-tar -xvzf helm-<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>-linux-amd64.tar.gz
-mv linux-amd64/helm ~/.local/bin/
-</code></pre></div><p>Now in the above code snippet, I require the user to provide the version. But some tools have consistent naming off of the Github releases so for them I don&rsquo;t require the user to provide the version and finding version is automated as well. For example, the easiest way to find the latest version is using the Github API:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span> get_latest_release<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-  version<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl --silent <span style="color:#e6db74">&#34;https://api.github.com/repos/</span>$1<span style="color:#e6db74">/releases/latest&#34;</span> |
-    grep <span style="color:#e6db74">&#39;&#34;tag_name&#34;:&#39;</span> |
-    sed -E <span style="color:#e6db74">&#39;s/.*&#34;([^&#34;]+)&#34;.*/\1/&#39;</span><span style="color:#66d9ef">)</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><p>And use above <code>function</code> like this in <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/update-minikube#L9">my scripts</a>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">get_latest_release bash/minikube
-</code></pre></div><p>So if you compare the UX for both of them this is how it looks like. One that requires version:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ update-helm v3.2.4
-+ cd /tmp
-+ curl -LO https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-<span style="color:#ae81ff">100</span> 12.3M  <span style="color:#ae81ff">100</span> 12.3M    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>  3054k      <span style="color:#ae81ff">0</span>  0:00:04  0:00:04 --:--:-- 3055k
-+ tar -xvzf helm-v3.2.4-linux-amd64.tar.gz
-linux-amd64/
-linux-amd64/helm
-linux-amd64/README.md
-linux-amd64/LICENSE
-+ mv linux-amd64/helm /home/suraj/.local/bin/
-</code></pre></div><p>One that does not require version:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ update-minikube
-Downloading minikube v1.12.1
-Downloaded successfully in ~/.local/bin/
-</code></pre></div><h2 id="setting-up-a-new-machine">Setting up a new machine</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -LO https://get.helm.sh/helm-<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>-linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>tar -xvzf helm-<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>version<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>-linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>mv linux-amd64/helm ~/.local/bin/
+</span></span></code></pre></div><p>Now in the above code snippet, I require the user to provide the version. But some tools have consistent naming off of the Github releases so for them I don&rsquo;t require the user to provide the version and finding version is automated as well. For example, the easiest way to find the latest version is using the Github API:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> get_latest_release<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  version<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl --silent <span style="color:#e6db74">&#34;https://api.github.com/repos/</span>$1<span style="color:#e6db74">/releases/latest&#34;</span> |
+</span></span><span style="display:flex;"><span>    grep <span style="color:#e6db74">&#39;&#34;tag_name&#34;:&#39;</span> |
+</span></span><span style="display:flex;"><span>    sed -E <span style="color:#e6db74">&#39;s/.*&#34;([^&#34;]+)&#34;.*/\1/&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>And use above <code>function</code> like this in <a href="https://github.com/surajssd/dotfiles/blob/master/local-bin/update-minikube#L9">my scripts</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>get_latest_release bash/minikube
+</span></span></code></pre></div><p>So if you compare the UX for both of them this is how it looks like. One that requires version:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ update-helm v3.2.4
+</span></span><span style="display:flex;"><span>+ cd /tmp
+</span></span><span style="display:flex;"><span>+ curl -LO https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+</span></span><span style="display:flex;"><span>                                 Dload  Upload   Total   Spent    Left  Speed
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">100</span> 12.3M  <span style="color:#ae81ff">100</span> 12.3M    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>  3054k      <span style="color:#ae81ff">0</span>  0:00:04  0:00:04 --:--:-- 3055k
+</span></span><span style="display:flex;"><span>+ tar -xvzf helm-v3.2.4-linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>linux-amd64/
+</span></span><span style="display:flex;"><span>linux-amd64/helm
+</span></span><span style="display:flex;"><span>linux-amd64/README.md
+</span></span><span style="display:flex;"><span>linux-amd64/LICENSE
+</span></span><span style="display:flex;"><span>+ mv linux-amd64/helm /home/suraj/.local/bin/
+</span></span></code></pre></div><p>One that does not require version:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ update-minikube
+</span></span><span style="display:flex;"><span>Downloading minikube v1.12.1
+</span></span><span style="display:flex;"><span>Downloaded successfully in ~/.local/bin/
+</span></span></code></pre></div><h2 id="setting-up-a-new-machine">Setting up a new machine</h2>
 <p>With all that framework in place, whenever I setup a new machine all I need to do is run following commands:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/surajssd/dotfiles
-cd dotfiles
-make install-all
-</code></pre></div><p>That&rsquo;s it!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/surajssd/dotfiles
+</span></span><span style="display:flex;"><span>cd dotfiles
+</span></span><span style="display:flex;"><span>make install-all
+</span></span></code></pre></div><p>That&rsquo;s it!</p>
 <p>With this simplicity I get all the goodness of the scripts and since this repository also places my custom <code>~/.bashrc</code> I get all the aliases I use to be productive on shell.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>You can also setup a similar workflow for your scripts and binaries. This will provide you immense boost in productivity. Also if you have some better way to do same sripts and binaries management please share with me here or on Twitter. Happy Hacking!</p>
@@ -340,7 +347,7 @@ make install-all
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -382,52 +389,52 @@ make install-all
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -664,14 +671,14 @@ make install-all
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

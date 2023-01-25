@@ -3,24 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Kubernetes Cluster using Kubeadm on Flatcar Container Linux - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Simple steps to install the cluster based on Flatcar Container Linux">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Kubernetes Cluster using Kubeadm on Flatcar Container Linux">
+<meta property="og:description" content="Simple steps to install the cluster based on Flatcar Container Linux">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/2021/01/kubeadm-flatcar/">
+    <meta property="og:image" content="https://suraj.io/post/2021/01/kubeadm-flatcar/flatcar.jpg">
+    <meta property="og:image:alt" content="Flatcar">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Kubernetes Cluster using Kubeadm on Flatcar Container Linux">
-  <meta property="og:description" content="Simple steps to install the cluster based on Flatcar Container Linux">
-  <meta property="description" content="Simple steps to install the cluster based on Flatcar Container Linux">
-  <meta property="og:url" content="https://suraj.io/post/2021/01/kubeadm-flatcar/">
-  <meta property="og:type" content="article">
-  
-    
-      <meta property="og:image" content="https://suraj.io/post/2021/01/kubeadm-flatcar/flatcar.jpg">
-      <meta property="og:image:alt" content="Flatcar">
-    
-  
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -194,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2021-01-29 22:02:41 &#43;0530 IST">January 29, 2021</time>
+    <time datetime="2021-01-29 22:02:41 &#43;0530 &#43;0530">January 29, 2021</time>
     <p>Suraj Deshmukh</p>
     <p>4-Minute Read</p>
   </div>
@@ -240,9 +243,10 @@
 
       </div>
       <div class="content">
-        <a href="/post/2021/01/kubeadm-flatcar/" class="image" style="--bg-image: url('https://suraj.io/post/2021/01/kubeadm-flatcar/flatcar.jpg');">
-    <img src="https://suraj.io/post/2021/01/kubeadm-flatcar/flatcar.jpg" alt="Flatcar">
+        <a href="/post/2021/01/kubeadm-flatcar/" class="image" style="--bg-image: url('/post/2021/01/kubeadm-flatcar/flatcar.jpg');">
+    <img src="/post/2021/01/kubeadm-flatcar/flatcar.jpg" alt="Flatcar">
   </a>
+        
         <p><a href="https://kinvolk.io/blog/2018/04/flatcar-linux-is-now-open-to-the-public/">Image Source: Flatcar Linux is now open to the public.</a></p>
 <p>This blog shows a simple set of commands to install a Kubernetes cluster on <a href="https://www.flatcar-linux.org/">Flatcar Container Linux</a> based machines using <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/">Kubeadm</a>.</p>
 <p>You might wonder why this blog when one can go to the official documentation and follow the steps? Yep, you are right. You can choose to do that. But this blog has a collection of actions specific to Flatcar Container Linux. These steps have been tried and tested on Flatcar, so you don&rsquo;t need to recreate and test them yourself. There are some nuances related to the read-only partitions of Flatcar, and this blog takes care of them at the control plane level and the CNI level both.</p>
@@ -264,34 +268,34 @@ net.bridge.bridge-nf-call-iptables = 1
 EOF
 sysctl --system
 </code></pre><h3 id="12-download-binaries-and-start-kubelet">1.2. Download binaries and start Kubelet</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">CNI_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v1.0.1&#34;</span>
-CRICTL_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v1.23.0&#34;</span>
-RELEASE_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v0.4.0&#34;</span>
-DOWNLOAD_DIR<span style="color:#f92672">=</span>/opt/bin
-RELEASE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -sSL https://dl.k8s.io/release/stable.txt<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-
-mkdir -p /opt/cni/bin
-mkdir -p /etc/systemd/system/kubelet.service.d
-
-curl -sSL <span style="color:#e6db74">&#34;https://github.com/containernetworking/plugins/releases/download/</span><span style="color:#e6db74">${</span>CNI_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/cni-plugins-linux-amd64-</span><span style="color:#e6db74">${</span>CNI_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">.tgz&#34;</span> | tar -C /opt/cni/bin -xz
-curl -sSL <span style="color:#e6db74">&#34;https://github.com/kubernetes-sigs/cri-tools/releases/download/</span><span style="color:#e6db74">${</span>CRICTL_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/crictl-</span><span style="color:#e6db74">${</span>CRICTL_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">-linux-amd64.tar.gz&#34;</span> | tar -C $DOWNLOAD_DIR -xz
-curl -sSL <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/kubernetes/release/</span><span style="color:#e6db74">${</span>RELEASE_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/cmd/kubepkg/templates/latest/deb/kubelet/lib/systemd/system/kubelet.service&#34;</span> | sed <span style="color:#e6db74">&#34;s:/usr/bin:</span><span style="color:#e6db74">${</span>DOWNLOAD_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">:g&#34;</span> | tee /etc/systemd/system/kubelet.service
-curl -sSL <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/kubernetes/release/</span><span style="color:#e6db74">${</span>RELEASE_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/cmd/kubepkg/templates/latest/deb/kubeadm/10-kubeadm.conf&#34;</span> | sed <span style="color:#e6db74">&#34;s:/usr/bin:</span><span style="color:#e6db74">${</span>DOWNLOAD_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">:g&#34;</span> | tee /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-curl -sSL --remote-name-all https://storage.googleapis.com/kubernetes-release/release/<span style="color:#e6db74">${</span>RELEASE<span style="color:#e6db74">}</span>/bin/linux/amd64/<span style="color:#f92672">{</span>kubeadm,kubelet,kubectl<span style="color:#f92672">}</span>
-
-chmod +x <span style="color:#f92672">{</span>kubeadm,kubelet,kubectl<span style="color:#f92672">}</span>
-mv <span style="color:#f92672">{</span>kubeadm,kubelet,kubectl<span style="color:#f92672">}</span> $DOWNLOAD_DIR/
-
-systemctl enable --now kubelet
-systemctl status kubelet
-</code></pre></div><h3 id="13-update-flatcar">1.3. Update Flatcar</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CNI_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v1.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>CRICTL_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v1.23.0&#34;</span>
+</span></span><span style="display:flex;"><span>RELEASE_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v0.4.0&#34;</span>
+</span></span><span style="display:flex;"><span>DOWNLOAD_DIR<span style="color:#f92672">=</span>/opt/bin
+</span></span><span style="display:flex;"><span>RELEASE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -sSL https://dl.k8s.io/release/stable.txt<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir -p /opt/cni/bin
+</span></span><span style="display:flex;"><span>mkdir -p /etc/systemd/system/kubelet.service.d
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>curl -sSL <span style="color:#e6db74">&#34;https://github.com/containernetworking/plugins/releases/download/</span><span style="color:#e6db74">${</span>CNI_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/cni-plugins-linux-amd64-</span><span style="color:#e6db74">${</span>CNI_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">.tgz&#34;</span> | tar -C /opt/cni/bin -xz
+</span></span><span style="display:flex;"><span>curl -sSL <span style="color:#e6db74">&#34;https://github.com/kubernetes-sigs/cri-tools/releases/download/</span><span style="color:#e6db74">${</span>CRICTL_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/crictl-</span><span style="color:#e6db74">${</span>CRICTL_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">-linux-amd64.tar.gz&#34;</span> | tar -C $DOWNLOAD_DIR -xz
+</span></span><span style="display:flex;"><span>curl -sSL <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/kubernetes/release/</span><span style="color:#e6db74">${</span>RELEASE_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/cmd/kubepkg/templates/latest/deb/kubelet/lib/systemd/system/kubelet.service&#34;</span> | sed <span style="color:#e6db74">&#34;s:/usr/bin:</span><span style="color:#e6db74">${</span>DOWNLOAD_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">:g&#34;</span> | tee /etc/systemd/system/kubelet.service
+</span></span><span style="display:flex;"><span>curl -sSL <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/kubernetes/release/</span><span style="color:#e6db74">${</span>RELEASE_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/cmd/kubepkg/templates/latest/deb/kubeadm/10-kubeadm.conf&#34;</span> | sed <span style="color:#e6db74">&#34;s:/usr/bin:</span><span style="color:#e6db74">${</span>DOWNLOAD_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">:g&#34;</span> | tee /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+</span></span><span style="display:flex;"><span>curl -sSL --remote-name-all https://storage.googleapis.com/kubernetes-release/release/<span style="color:#e6db74">${</span>RELEASE<span style="color:#e6db74">}</span>/bin/linux/amd64/<span style="color:#f92672">{</span>kubeadm,kubelet,kubectl<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chmod +x <span style="color:#f92672">{</span>kubeadm,kubelet,kubectl<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>mv <span style="color:#f92672">{</span>kubeadm,kubelet,kubectl<span style="color:#f92672">}</span> $DOWNLOAD_DIR/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>systemctl enable --now kubelet
+</span></span><span style="display:flex;"><span>systemctl status kubelet
+</span></span></code></pre></div><h3 id="13-update-flatcar">1.3. Update Flatcar</h3>
 <p>Verify if you need to update Flatcar by running the following two commands:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -sSL https://stable.release.flatcar-linux.net/amd64-usr/current/version.txt | grep FLATCAR_VERSION
-cat /etc/os-release | grep VERSION
-</code></pre></div><p>If the output of the above two commands match, your Flatcar is already up to date, you don&rsquo;t need to run the following commands.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">update_engine_client -update
-systemctl reboot
-</code></pre></div><h2 id="2-setup-controller-node">2. Setup Controller Node</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -sSL https://stable.release.flatcar-linux.net/amd64-usr/current/version.txt | grep FLATCAR_VERSION
+</span></span><span style="display:flex;"><span>cat /etc/os-release | grep VERSION
+</span></span></code></pre></div><p>If the output of the above two commands match, your Flatcar is already up to date, you don&rsquo;t need to run the following commands.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>update_engine_client -update
+</span></span><span style="display:flex;"><span>systemctl reboot
+</span></span></code></pre></div><h2 id="2-setup-controller-node">2. Setup Controller Node</h2>
 <p>Run these steps only on the controller node.</p>
 <h3 id="21-initialise-kubeadm">2.1. Initialise Kubeadm</h3>
 <p>Here we are ensuring that the Kubelet volume-plugins directory is writable, the default path used is under <code>/usr</code> which is read-only on Flatcar, therefore we are setting it to writable path <code>/opt/libexec/kubernetes/kubelet-plugins/volume/exec/</code>.</p>
@@ -299,80 +303,80 @@ systemctl reboot
 <blockquote>
 <p>On Linux distributions such as Flatcar Container Linux, the directory <code>/usr</code> is mounted as a read-only filesystem. For flex-volume support, Kubernetes components like the kubelet and kube-controller-manager use the default path of <code>/usr/libexec/kubernetes/kubelet-plugins/volume/exec/</code>, yet the flex-volume directory <strong>must be writeable</strong> for the feature to work.</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF | tee kubeadm-config.yaml</span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta3</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">InitConfiguration</span>
-<span style="color:#f92672">nodeRegistration</span>:
-  <span style="color:#f92672">kubeletExtraArgs</span>:
-    <span style="color:#f92672">volume-plugin-dir</span>: <span style="color:#e6db74">&#34;/opt/libexec/kubernetes/kubelet-plugins/volume/exec/&#34;</span>
----
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta3</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterConfiguration</span>
-<span style="color:#f92672">networking</span>:
-  <span style="color:#f92672">podSubnet</span>: <span style="color:#ae81ff">192.168.0.0</span><span style="color:#ae81ff">/16</span>
-<span style="color:#f92672">controllerManager</span>:
-  <span style="color:#f92672">extraArgs</span>:
-    <span style="color:#f92672">flex-volume-plugin-dir</span>: <span style="color:#e6db74">&#34;/opt/libexec/kubernetes/kubelet-plugins/volume/exec/&#34;</span>
----
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">KubeletConfiguration</span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubelet.config.k8s.io/v1beta1</span>
-<span style="color:#f92672">cgroupDriver</span>: <span style="color:#ae81ff">$(docker info -f &#39;{{.CgroupDriver}}&#39;)</span>
-<span style="color:#ae81ff">EOF</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubeadm config images pull
-kubeadm init --config kubeadm-config.yaml
-
-mkdir -p $HOME/.kube
-cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-</code></pre></div><h3 id="22-install-cni">2.2. Install CNI</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ae81ff">cat &lt;&lt;EOF | tee kubeadm-config.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">InitConfiguration</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nodeRegistration</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">kubeletExtraArgs</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volume-plugin-dir</span>: <span style="color:#e6db74">&#34;/opt/libexec/kubernetes/kubelet-plugins/volume/exec/&#34;</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ClusterConfiguration</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">networking</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">podSubnet</span>: <span style="color:#ae81ff">192.168.0.0</span><span style="color:#ae81ff">/16</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">controllerManager</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">extraArgs</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">flex-volume-plugin-dir</span>: <span style="color:#e6db74">&#34;/opt/libexec/kubernetes/kubelet-plugins/volume/exec/&#34;</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">KubeletConfiguration</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubelet.config.k8s.io/v1beta1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">cgroupDriver</span>: <span style="color:#ae81ff">$(docker info -f &#39;{{.CgroupDriver}}&#39;)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubeadm config images pull
+</span></span><span style="display:flex;"><span>kubeadm init --config kubeadm-config.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir -p $HOME/.kube
+</span></span><span style="display:flex;"><span>cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+</span></span></code></pre></div><h3 id="22-install-cni">2.2. Install CNI</h3>
 <p>Here I have chosen <a href="https://www.projectcalico.org/">Calico</a> as the CNI to install because it is the one that I am familiar with, but you can choose to install any <a href="https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model">other CNI</a>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF | tee calico.yaml</span>
-<span style="color:#75715e"># Source: https://docs.projectcalico.org/manifests/custom-resources.yaml</span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">operator.tigera.io/v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Installation</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">default</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#75715e"># Configures Calico networking.</span>
-  <span style="color:#f92672">calicoNetwork</span>:
-    <span style="color:#75715e"># Note: The ipPools section cannot be modified post-install.</span>
-    <span style="color:#f92672">ipPools</span>:
-    - <span style="color:#f92672">blockSize</span>: <span style="color:#ae81ff">26</span>
-      <span style="color:#f92672">cidr</span>: <span style="color:#ae81ff">192.168.0.0</span><span style="color:#ae81ff">/16</span>
-      <span style="color:#f92672">encapsulation</span>: <span style="color:#ae81ff">VXLANCrossSubnet</span>
-      <span style="color:#f92672">natOutgoing</span>: <span style="color:#ae81ff">Enabled</span>
-      <span style="color:#f92672">nodeSelector</span>: <span style="color:#ae81ff">all()</span>
-  <span style="color:#f92672">flexVolumePath</span>: <span style="color:#ae81ff">/opt/libexec/kubernetes/kubelet-plugins/volume/exec/</span>
-<span style="color:#ae81ff">EOF</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
-kubectl apply -f calico.yaml
-kubectl taint nodes --all node-role.kubernetes.io/master-
-kubectl get pods -A
-kubectl get nodes -o wide
-</code></pre></div><h3 id="23-generate-worker-config">2.3. Generate worker config</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ae81ff">cat &lt;&lt;EOF | tee calico.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Source: https://docs.projectcalico.org/manifests/custom-resources.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">operator.tigera.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Installation</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">default</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Configures Calico networking.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">calicoNetwork</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Note: The ipPools section cannot be modified post-install.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ipPools</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">blockSize</span>: <span style="color:#ae81ff">26</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">cidr</span>: <span style="color:#ae81ff">192.168.0.0</span><span style="color:#ae81ff">/16</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">encapsulation</span>: <span style="color:#ae81ff">VXLANCrossSubnet</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">natOutgoing</span>: <span style="color:#ae81ff">Enabled</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">nodeSelector</span>: <span style="color:#ae81ff">all()</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">flexVolumePath</span>: <span style="color:#ae81ff">/opt/libexec/kubernetes/kubelet-plugins/volume/exec/</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">EOF</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+</span></span><span style="display:flex;"><span>kubectl apply -f calico.yaml
+</span></span><span style="display:flex;"><span>kubectl taint nodes --all node-role.kubernetes.io/master-
+</span></span><span style="display:flex;"><span>kubectl get pods -A
+</span></span><span style="display:flex;"><span>kubectl get nodes -o wide
+</span></span></code></pre></div><h3 id="23-generate-worker-config">2.3. Generate worker config</h3>
 <p>The general way to connect a worker to the control plane is by running the <code>kubeadm join</code> command generated at the end of the <code>kubeadm init</code> output. But you can run the following set of steps at any time to create a worker config.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">URL<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl config view -ojsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.clusters[0].cluster.server}&#39;</span><span style="color:#66d9ef">)</span>
-prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://&#34;</span>
-short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>URL#<span style="color:#e6db74">&#34;</span>$prefix<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">}</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">cat &lt;&lt;EOF</span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta3</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">JoinConfiguration</span>
-<span style="color:#f92672">discovery</span>:
-  <span style="color:#f92672">bootstrapToken</span>:
-    <span style="color:#f92672">apiServerEndpoint</span>: <span style="color:#ae81ff">$short_url</span>
-    <span style="color:#f92672">token</span>: <span style="color:#ae81ff">$(kubeadm token create)</span>
-    <span style="color:#f92672">caCertHashes</span>:
-    - <span style="color:#ae81ff">sha256:$(openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2&gt;/dev/null | openssl dgst -sha256 -hex | sed &#39;s/^.* //&#39;)</span>
-<span style="color:#f92672">controlPlane</span>:
-<span style="color:#f92672">nodeRegistration</span>:
-  <span style="color:#f92672">kubeletExtraArgs</span>:
-    <span style="color:#f92672">volume-plugin-dir</span>: <span style="color:#e6db74">&#34;/opt/libexec/kubernetes/kubelet-plugins/volume/exec/&#34;</span>
-<span style="color:#ae81ff">EOF</span>
-</code></pre></div><p>Copy the generated config to worker nodes and save it in a file named <code>worker-config.yaml</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>URL<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>kubectl config view -ojsonpath<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{.clusters[0].cluster.server}&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://&#34;</span>
+</span></span><span style="display:flex;"><span>short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>URL#<span style="color:#e6db74">&#34;</span>$prefix<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ae81ff">cat &lt;&lt;EOF</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">kubeadm.k8s.io/v1beta3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">JoinConfiguration</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">discovery</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">bootstrapToken</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">apiServerEndpoint</span>: <span style="color:#ae81ff">$short_url</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">token</span>: <span style="color:#ae81ff">$(kubeadm token create)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">caCertHashes</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">sha256:$(openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2&gt;/dev/null | openssl dgst -sha256 -hex | sed &#39;s/^.* //&#39;)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">controlPlane</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nodeRegistration</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">kubeletExtraArgs</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volume-plugin-dir</span>: <span style="color:#e6db74">&#34;/opt/libexec/kubernetes/kubelet-plugins/volume/exec/&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">EOF</span>
+</span></span></code></pre></div><p>Copy the generated config to worker nodes and save it in a file named <code>worker-config.yaml</code>.</p>
 <h2 id="3-join-workers-to-controllers">3. Join Workers to Controllers</h2>
 <p>Run the following steps only on worker nodes.</p>
 <h3 id="31-connect-to-control-plane">3.1. Connect to Control-Plane</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubeadm join --config worker-config.yaml
-</code></pre></div><h2 id="4-verify">4. Verify</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubeadm join --config worker-config.yaml
+</span></span></code></pre></div><h2 id="4-verify">4. Verify</h2>
 <p>Go to the controller node and run the command <code>kubectl get nodes</code> to verify if the worker has joined the cluster.</p>
 <h1 id="video">Video</h1>
 
@@ -432,7 +436,7 @@ short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</spa
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -474,52 +478,52 @@ short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</spa
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -756,14 +760,14 @@ short_url<span style="color:#f92672">=</span><span style="color:#e6db74">${</spa
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

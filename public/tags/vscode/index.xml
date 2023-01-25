@@ -14,11 +14,12 @@
       
       <guid>https://suraj.io/post/vscode-shortcuts/</guid>
       <description>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
-Shortcuts  Toggle side bar  Ctrl + B
- Project explorer in side bar  Ctrl + Shift + E
- Project wide search in side bar  Ctrl + Shift + F
- Source control in side bar  Ctrl + Shift + G
- Copy entire line  Ctrl + C (without any selection)</description>
+Shortcuts Toggle side bar Ctrl + B
+Project explorer in side bar Ctrl + Shift + E
+Project wide search in side bar Ctrl + Shift + F
+Source control in side bar Ctrl + Shift + G
+Copy entire line Ctrl + C (without any selection)
+Delete entire line Ctrl + Shift + K</description>
     </item>
     
   </channel>

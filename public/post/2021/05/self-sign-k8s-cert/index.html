@@ -3,24 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers? - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A simple binary to generate TLS x509 certificates.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?">
+<meta property="og:description" content="A simple binary to generate TLS x509 certificates.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/2021/05/self-sign-k8s-cert/">
+    <meta property="og:image" content="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png">
+    <meta property="og:image:alt" content="cert">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?">
-  <meta property="og:description" content="A simple binary to generate TLS x509 certificates.">
-  <meta property="description" content="A simple binary to generate TLS x509 certificates.">
-  <meta property="og:url" content="https://suraj.io/post/2021/05/self-sign-k8s-cert/">
-  <meta property="og:type" content="article">
-  
-    
-      <meta property="og:image" content="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png">
-      <meta property="og:image:alt" content="cert">
-    
-  
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -194,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2021-05-21 15:33:07 &#43;0530 IST">May 21, 2021</time>
+    <time datetime="2021-05-21 15:33:07 &#43;0530 &#43;0530">May 21, 2021</time>
     <p>Suraj Deshmukh</p>
     <p>2-Minute Read</p>
   </div>
@@ -240,9 +243,10 @@
 
       </div>
       <div class="content">
-        <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png');">
-    <img src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
+        <a href="/post/2021/05/self-sign-k8s-cert/" class="image" style="--bg-image: url('/post/2021/05/self-sign-k8s-cert/cert.png');">
+    <img src="/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
   </a>
+        
         <blockquote>
 <p><strong>UPDATE:</strong> There is a way to generate these certificates automatically. To find out how, <a href="https://suraj.io/post/2021/06/automatic-cert-gen/">read this post</a>.</p>
 </blockquote>
@@ -250,24 +254,24 @@
 <h2 id="self-signed-cert-generation">Self Signed Cert Generation</h2>
 <p>To avoid the added dependency of cert-manager and similar solutions, I chose to create a small tool to generate a certificate that you can use with your webhook server. The code for the tool is inspired by the Kubernetes test infra code. It takes in the service name and the namespace name and generates a private key and certificate in a temporary directory.</p>
 <p>Install the tool by following <a href="https://github.com/surajssd/self-signed-cert#install">these instructions</a>. And once installed in your <code>PATH</code>, you can generate certificates by simply running the following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ self-signed-cert --namespace<span style="color:#f92672">=</span>webhook --service-name<span style="color:#f92672">=</span>server
-/tmp/self-signed-certificate311397173
-</code></pre></div><p>And these three files generated in that directory:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ls /tmp/self-signed-certificate311397173
-ca.crt  server.crt  server.key
-</code></pre></div><h2 id="loading-certs-into-the-helm-chart">Loading certs into the Helm chart</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ self-signed-cert --namespace<span style="color:#f92672">=</span>webhook --service-name<span style="color:#f92672">=</span>server
+</span></span><span style="display:flex;"><span>/tmp/self-signed-certificate311397173
+</span></span></code></pre></div><p>And these three files generated in that directory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ls /tmp/self-signed-certificate311397173
+</span></span><span style="display:flex;"><span>ca.crt  server.crt  server.key
+</span></span></code></pre></div><h2 id="loading-certs-into-the-helm-chart">Loading certs into the Helm chart</h2>
 <p>Now your webhook server helm chart can load those certs from the temporary directory. Helm has an excellent provision to do so. For example, you can simply add them to your values file with a flag like <code>--set-file</code>.</p>
 <p>See the following flow of installation:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Generate certs and store the path to certs in a variable.</span>
-certs<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>self-signed-cert --namespace validate-secrets --service-name validate-secrets<span style="color:#66d9ef">)</span>
-
-<span style="color:#75715e"># Now load those certs into the helm chart.</span>
-helm install mywebhookserver <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --set-file key<span style="color:#f92672">=</span>$certs/server.key <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --set-file cert<span style="color:#f92672">=</span>$certs/server.crt .
-</code></pre></div><p>Note that the above certificates are not <code>base64</code> encoded, so ensure that you encode them in your helm templates. Add a snippet that looks like the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">key.pem</span>: <span style="color:#e6db74">&#34;{{ .Values.key | b64enc }}&#34;</span>
-</code></pre></div><h2 id="loading-certs-for-a-golang-web-server">Loading certs for a Golang web server</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Generate certs and store the path to certs in a variable.</span>
+</span></span><span style="display:flex;"><span>certs<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>self-signed-cert --namespace validate-secrets --service-name validate-secrets<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Now load those certs into the helm chart.</span>
+</span></span><span style="display:flex;"><span>helm install mywebhookserver <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --set-file key<span style="color:#f92672">=</span>$certs/server.key <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --set-file cert<span style="color:#f92672">=</span>$certs/server.crt .
+</span></span></code></pre></div><p>Note that the above certificates are not <code>base64</code> encoded, so ensure that you encode them in your helm templates. Add a snippet that looks like the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">key.pem</span>: <span style="color:#e6db74">&#34;{{ .Values.key | b64enc }}&#34;</span>
+</span></span></code></pre></div><h2 id="loading-certs-for-a-golang-web-server">Loading certs for a Golang web server</h2>
 <p>Here I am showing how to load those certificates for serving into a webserver written in golang. For other programming languages, you can follow the required steps to expose a server with HTTPS support.</p>
 <p><img src="/post/2021/05/self-sign-k8s-cert/gocode.png" alt="go code" title="go code"></p>
 <p>I have removed the error handling parts for simplicity of code, but please add them to your code.</p>
@@ -311,7 +315,7 @@ helm install mywebhookserver <span style="color:#ae81ff">\
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -353,52 +357,52 @@ helm install mywebhookserver <span style="color:#ae81ff">\
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -635,14 +639,14 @@ helm install mywebhookserver <span style="color:#ae81ff">\
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

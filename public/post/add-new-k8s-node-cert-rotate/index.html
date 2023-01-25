@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Add new Node to k8s cluster with cert rotation - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Use this technique to add node to the cluster without providing any certificates">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Add new Node to k8s cluster with cert rotation">
+<meta property="og:description" content="Use this technique to add node to the cluster without providing any certificates">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/add-new-k8s-node-cert-rotate/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Add new Node to k8s cluster with cert rotation">
-  <meta property="og:description" content="Use this technique to add node to the cluster without providing any certificates">
-  <meta property="description" content="Use this technique to add node to the cluster without providing any certificates">
-  <meta property="og:url" content="https://suraj.io/post/add-new-k8s-node-cert-rotate/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2018-10-16 01:00:51 &#43;0530 IST">October 16, 2018</time>
+    <time datetime="2018-10-16 01:00:51 &#43;0530 &#43;0530">October 16, 2018</time>
     <p>Suraj Deshmukh</p>
     <p>3-Minute Read</p>
   </div>
@@ -238,75 +244,76 @@
       </div>
       <div class="content">
         
+        
         <p>The setup here is created by following <a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/"><em>Kubernetes the Hard Way</em></a> by <a href="https://twitter.com/kelseyhightower"><strong>Kelsey Hightower</strong></a>. So if you are following along in this then do all the setup till the step <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/09-bootstrapping-kubernetes-workers.md"><em>Bootstrapping the Kubernetes Worker Nodes</em></a>. In this just don&rsquo;t start the <code>kubelet</code>, start other services like <code>containerd</code> and <code>kube-proxy</code>.</p>
 <h2 id="master-node">master node</h2>
 <p>Following the docs of <a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/"><em>TLS Bootstrapping</em></a>, let&rsquo;s first create the token authentication file. Create a file with following content:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat tokenfile 
-02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,<span style="color:#e6db74">&#34;system:bootstrappers&#34;</span>
-</code></pre></div><p>You should create the token which is as random as possible by running following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">head -c <span style="color:#ae81ff">16</span> /dev/urandom | od -An -t x | tr -d <span style="color:#e6db74">&#39; &#39;</span>
-</code></pre></div><p>Now we need to tell the <code>kube apiserver</code> about this file. So add following flag to the <code>kube-apiserver</code> service file, with the path to above token file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">--token-auth-file<span style="color:#f92672">=</span>/home/vagrant/tokenfile
-</code></pre></div><p>So my <code>kube-apiserver</code> service file looks like following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat /etc/systemd/system/kube-apiserver.service
-<span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
-Description<span style="color:#f92672">=</span>Kubernetes API Server
-Documentation<span style="color:#f92672">=</span>https://github.com/kubernetes/kubernetes
-
-<span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
-ExecStart<span style="color:#f92672">=</span>/usr/local/bin/kube-apiserver <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --advertise-address<span style="color:#f92672">=</span>192.168.50.10 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --allow-privileged<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --apiserver-count<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --audit-log-maxage<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --audit-log-maxbackup<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --audit-log-maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --audit-log-path<span style="color:#f92672">=</span>/var/log/audit.log <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --authorization-mode<span style="color:#f92672">=</span>Node,RBAC <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --bind-address<span style="color:#f92672">=</span>0.0.0.0 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --client-ca-file<span style="color:#f92672">=</span>/var/lib/kubernetes/ca.pem <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --enable-admission-plugins<span style="color:#f92672">=</span>Initializers,NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --enable-swagger-ui<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --etcd-cafile<span style="color:#f92672">=</span>/var/lib/kubernetes/ca.pem <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --etcd-certfile<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes.pem <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --etcd-keyfile<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes-key.pem <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --etcd-servers<span style="color:#f92672">=</span>https://192.168.50.10:2379 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --event-ttl<span style="color:#f92672">=</span>1h <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --experimental-encryption-provider-config<span style="color:#f92672">=</span>/var/lib/kubernetes/encryption-config.yaml <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --kubelet-certificate-authority<span style="color:#f92672">=</span>/var/lib/kubernetes/ca.pem <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --kubelet-client-certificate<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes.pem <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --kubelet-client-key<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes-key.pem <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --kubelet-https<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --runtime-config<span style="color:#f92672">=</span>api/all <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --service-account-key-file<span style="color:#f92672">=</span>/var/lib/kubernetes/service-account.pem <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --service-cluster-ip-range<span style="color:#f92672">=</span>10.32.0.0/24 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --service-node-port-range<span style="color:#f92672">=</span>30000-32767 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --tls-cert-file<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes.pem <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --tls-private-key-file<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes-key.pem <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --token-auth-file<span style="color:#f92672">=</span>/home/vagrant/tokenfile <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --v<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
-Restart<span style="color:#f92672">=</span>on-failure
-RestartSec<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>
-
-<span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
-WantedBy<span style="color:#f92672">=</span>multi-user.target
-</code></pre></div><p>Once this is done, just run following commands to restart the apiserver:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo systemctl daemon-reload
-sudo systemctl restart kube-apiserver
-sudo systemctl status kube-apiserver
-</code></pre></div><p>Now that api-server has restart we need to give permissions so that our worker node can ask for certs automatically, for that run following commands:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create clusterrolebinding kubelet-bootstrap <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --clusterrole<span style="color:#f92672">=</span>system:node-bootstrapper <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --user<span style="color:#f92672">=</span>kubelet-bootstrap
-
-kubectl create clusterrolebinding node-client-auto-approve-csr <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --clusterrole<span style="color:#f92672">=</span>system:certificates.k8s.io:certificatesigningrequests:nodeclient <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --group<span style="color:#f92672">=</span>system:node-bootstrappers
-
-kubectl create clusterrolebinding node-client-auto-renew-crt <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --clusterrole<span style="color:#f92672">=</span>system:certificates.k8s.io:certificatesigningrequests:selfnodeclient <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --group<span style="color:#f92672">=</span>system:nodes
-</code></pre></div><h2 id="worker-node">worker node</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat tokenfile 
+</span></span><span style="display:flex;"><span>02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,<span style="color:#e6db74">&#34;system:bootstrappers&#34;</span>
+</span></span></code></pre></div><p>You should create the token which is as random as possible by running following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>head -c <span style="color:#ae81ff">16</span> /dev/urandom | od -An -t x | tr -d <span style="color:#e6db74">&#39; &#39;</span>
+</span></span></code></pre></div><p>Now we need to tell the <code>kube apiserver</code> about this file. So add following flag to the <code>kube-apiserver</code> service file, with the path to above token file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>--token-auth-file<span style="color:#f92672">=</span>/home/vagrant/tokenfile
+</span></span></code></pre></div><p>So my <code>kube-apiserver</code> service file looks like following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat /etc/systemd/system/kube-apiserver.service
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Description<span style="color:#f92672">=</span>Kubernetes API Server
+</span></span><span style="display:flex;"><span>Documentation<span style="color:#f92672">=</span>https://github.com/kubernetes/kubernetes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>ExecStart<span style="color:#f92672">=</span>/usr/local/bin/kube-apiserver <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --advertise-address<span style="color:#f92672">=</span>192.168.50.10 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --allow-privileged<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --apiserver-count<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --audit-log-maxage<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --audit-log-maxbackup<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --audit-log-maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --audit-log-path<span style="color:#f92672">=</span>/var/log/audit.log <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --authorization-mode<span style="color:#f92672">=</span>Node,RBAC <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --bind-address<span style="color:#f92672">=</span>0.0.0.0 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --client-ca-file<span style="color:#f92672">=</span>/var/lib/kubernetes/ca.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --enable-admission-plugins<span style="color:#f92672">=</span>Initializers,NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --enable-swagger-ui<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --etcd-cafile<span style="color:#f92672">=</span>/var/lib/kubernetes/ca.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --etcd-certfile<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --etcd-keyfile<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes-key.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --etcd-servers<span style="color:#f92672">=</span>https://192.168.50.10:2379 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --event-ttl<span style="color:#f92672">=</span>1h <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --experimental-encryption-provider-config<span style="color:#f92672">=</span>/var/lib/kubernetes/encryption-config.yaml <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --kubelet-certificate-authority<span style="color:#f92672">=</span>/var/lib/kubernetes/ca.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --kubelet-client-certificate<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --kubelet-client-key<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes-key.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --kubelet-https<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --runtime-config<span style="color:#f92672">=</span>api/all <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --service-account-key-file<span style="color:#f92672">=</span>/var/lib/kubernetes/service-account.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --service-cluster-ip-range<span style="color:#f92672">=</span>10.32.0.0/24 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --service-node-port-range<span style="color:#f92672">=</span>30000-32767 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --tls-cert-file<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --tls-private-key-file<span style="color:#f92672">=</span>/var/lib/kubernetes/kubernetes-key.pem <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --token-auth-file<span style="color:#f92672">=</span>/home/vagrant/tokenfile <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --v<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>Restart<span style="color:#f92672">=</span>on-failure
+</span></span><span style="display:flex;"><span>RestartSec<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>WantedBy<span style="color:#f92672">=</span>multi-user.target
+</span></span></code></pre></div><p>Once this is done, just run following commands to restart the apiserver:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span><span style="display:flex;"><span>sudo systemctl restart kube-apiserver
+</span></span><span style="display:flex;"><span>sudo systemctl status kube-apiserver
+</span></span></code></pre></div><p>Now that api-server has restart we need to give permissions so that our worker node can ask for certs automatically, for that run following commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl create clusterrolebinding kubelet-bootstrap <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --clusterrole<span style="color:#f92672">=</span>system:node-bootstrapper <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --user<span style="color:#f92672">=</span>kubelet-bootstrap
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kubectl create clusterrolebinding node-client-auto-approve-csr <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --clusterrole<span style="color:#f92672">=</span>system:certificates.k8s.io:certificatesigningrequests:nodeclient <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --group<span style="color:#f92672">=</span>system:node-bootstrappers
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>kubectl create clusterrolebinding node-client-auto-renew-crt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --clusterrole<span style="color:#f92672">=</span>system:certificates.k8s.io:certificatesigningrequests:selfnodeclient <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --group<span style="color:#f92672">=</span>system:nodes
+</span></span></code></pre></div><h2 id="worker-node">worker node</h2>
 <p>First create a bootstrap kubeconfig file that will be used by <code>kubelet</code>. Run following commands to create it.</p>
 <pre tabindex="0"><code># I have used the ip address of my api-server use yours
 kubectl config set-cluster kthw \
@@ -328,73 +335,73 @@ kubectl config set-context default \
 kubectl config use-context default \
   --kubeconfig=bootstrap.kubeconfig 
 </code></pre><p>Now that we have this file, add following flags to the <code>kubelet</code> systemd service file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">--bootstrap-kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig
---kubeconfig<span style="color:#f92672">=</span>/home/vagrant/kubeconfig
---rotate-certificates<span style="color:#f92672">=</span>true
---rotate-server-certificates<span style="color:#f92672">=</span>true
-</code></pre></div><p>Provide path to the <code>bootstrap.kubeconfig</code> you have generated just before. And even if you don&rsquo;t have <code>kubeconfig</code> still provide some path where <code>kubelet</code> has permission to write. <code>kubelet</code> will create this file for you.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>--bootstrap-kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig
+</span></span><span style="display:flex;"><span>--kubeconfig<span style="color:#f92672">=</span>/home/vagrant/kubeconfig
+</span></span><span style="display:flex;"><span>--rotate-certificates<span style="color:#f92672">=</span>true
+</span></span><span style="display:flex;"><span>--rotate-server-certificates<span style="color:#f92672">=</span>true
+</span></span></code></pre></div><p>Provide path to the <code>bootstrap.kubeconfig</code> you have generated just before. And even if you don&rsquo;t have <code>kubeconfig</code> still provide some path where <code>kubelet</code> has permission to write. <code>kubelet</code> will create this file for you.</p>
 <p>So my <code>kubelet</code>, systemd file looks like following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat /etc/systemd/system/kubelet.service
-<span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
-Description<span style="color:#f92672">=</span>Kubernetes Kubelet
-Documentation<span style="color:#f92672">=</span>https://github.com/kubernetes/kubernetes
-After<span style="color:#f92672">=</span>containerd.service
-Requires<span style="color:#f92672">=</span>containerd.service
-
-<span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
-ExecStart<span style="color:#f92672">=</span>/usr/local/bin/kubelet <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --bootstrap-kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --config<span style="color:#f92672">=</span>/var/lib/kubelet/kubelet-config.yaml <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --container-runtime<span style="color:#f92672">=</span>remote <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --container-runtime-endpoint<span style="color:#f92672">=</span>unix:///var/run/containerd/containerd.sock <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --image-pull-progress-deadline<span style="color:#f92672">=</span>2m <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span>/home/vagrant/kubeconfig <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --network-plugin<span style="color:#f92672">=</span>cni <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --register-node<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --rotate-certificates<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --rotate-server-certificates<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --v<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
-Restart<span style="color:#f92672">=</span>on-failure
-RestartSec<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>
-
-<span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
-WantedBy<span style="color:#f92672">=</span>multi-user.target
-</code></pre></div><p>And <code>KubeletConfiguration</code> looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat /var/lib/kubelet/kubelet-config.yaml
-kind: KubeletConfiguration
-apiVersion: kubelet.config.k8s.io/v1beta1
-authentication:
-  anonymous:
-    enabled: false
-  webhook:
-    enabled: true
-  x509:
-    clientCAFile: <span style="color:#e6db74">&#34;/var/lib/kubernetes/ca.pem&#34;</span>
-authorization:
-  mode: Webhook
-clusterDomain: <span style="color:#e6db74">&#34;cluster.local&#34;</span>
-clusterDNS:
-  - <span style="color:#e6db74">&#34;10.32.0.10&#34;</span>
-podCIDR: <span style="color:#e6db74">&#34;10.200.0.0/24&#34;</span>
-resolvConf: <span style="color:#e6db74">&#34;/run/systemd/resolve/resolv.conf&#34;</span>
-runtimeRequestTimeout: <span style="color:#e6db74">&#34;15m&#34;</span>
-</code></pre></div><p>Once this is done, just run following commands to restart the kubelet:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo systemctl daemon-reload
-sudo systemctl restart kubelet
-sudo systemctl status kubelet
-</code></pre></div><h2 id="master-node-1">master node</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat /etc/systemd/system/kubelet.service
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Description<span style="color:#f92672">=</span>Kubernetes Kubelet
+</span></span><span style="display:flex;"><span>Documentation<span style="color:#f92672">=</span>https://github.com/kubernetes/kubernetes
+</span></span><span style="display:flex;"><span>After<span style="color:#f92672">=</span>containerd.service
+</span></span><span style="display:flex;"><span>Requires<span style="color:#f92672">=</span>containerd.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>ExecStart<span style="color:#f92672">=</span>/usr/local/bin/kubelet <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --bootstrap-kubeconfig<span style="color:#f92672">=</span>/home/vagrant/bootstrap.kubeconfig <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --config<span style="color:#f92672">=</span>/var/lib/kubelet/kubelet-config.yaml <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --container-runtime<span style="color:#f92672">=</span>remote <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --container-runtime-endpoint<span style="color:#f92672">=</span>unix:///var/run/containerd/containerd.sock <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --image-pull-progress-deadline<span style="color:#f92672">=</span>2m <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --kubeconfig<span style="color:#f92672">=</span>/home/vagrant/kubeconfig <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --network-plugin<span style="color:#f92672">=</span>cni <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --register-node<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --rotate-certificates<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --rotate-server-certificates<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --v<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>Restart<span style="color:#f92672">=</span>on-failure
+</span></span><span style="display:flex;"><span>RestartSec<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>WantedBy<span style="color:#f92672">=</span>multi-user.target
+</span></span></code></pre></div><p>And <code>KubeletConfiguration</code> looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat /var/lib/kubelet/kubelet-config.yaml
+</span></span><span style="display:flex;"><span>kind: KubeletConfiguration
+</span></span><span style="display:flex;"><span>apiVersion: kubelet.config.k8s.io/v1beta1
+</span></span><span style="display:flex;"><span>authentication:
+</span></span><span style="display:flex;"><span>  anonymous:
+</span></span><span style="display:flex;"><span>    enabled: false
+</span></span><span style="display:flex;"><span>  webhook:
+</span></span><span style="display:flex;"><span>    enabled: true
+</span></span><span style="display:flex;"><span>  x509:
+</span></span><span style="display:flex;"><span>    clientCAFile: <span style="color:#e6db74">&#34;/var/lib/kubernetes/ca.pem&#34;</span>
+</span></span><span style="display:flex;"><span>authorization:
+</span></span><span style="display:flex;"><span>  mode: Webhook
+</span></span><span style="display:flex;"><span>clusterDomain: <span style="color:#e6db74">&#34;cluster.local&#34;</span>
+</span></span><span style="display:flex;"><span>clusterDNS:
+</span></span><span style="display:flex;"><span>  - <span style="color:#e6db74">&#34;10.32.0.10&#34;</span>
+</span></span><span style="display:flex;"><span>podCIDR: <span style="color:#e6db74">&#34;10.200.0.0/24&#34;</span>
+</span></span><span style="display:flex;"><span>resolvConf: <span style="color:#e6db74">&#34;/run/systemd/resolve/resolv.conf&#34;</span>
+</span></span><span style="display:flex;"><span>runtimeRequestTimeout: <span style="color:#e6db74">&#34;15m&#34;</span>
+</span></span></code></pre></div><p>Once this is done, just run following commands to restart the kubelet:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span><span style="display:flex;"><span>sudo systemctl restart kubelet
+</span></span><span style="display:flex;"><span>sudo systemctl status kubelet
+</span></span></code></pre></div><h2 id="master-node-1">master node</h2>
 <p>List the request that node has made:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get csr
-NAME                                                   AGE   REQUESTOR           CONDITION
-node-csr-WXnon3AEhdxgZ1FZ2reqKRQmWS-pwP3x263YbwUAH9k   11m   kubelet-bootstrap   Pending
-</code></pre></div><p>Approve that request:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl certificate approve node-csr-WXnon3AEhdxgZ1FZ2reqKRQmWS-pwP3x263YbwUAH9k
-certificatesigningrequest.certificates.k8s.io/node-csr-WXnon3AEhdxgZ1FZ2reqKRQmWS-pwP3x263YbwUAH9k approved
-</code></pre></div><p>Now you can see that the node has been created and you can list by running:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get nodes
-NAME   STATUS   ROLES    AGE   VERSION
-node   Ready    &lt;none&gt;   27s   v1.12.0
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl get csr
+</span></span><span style="display:flex;"><span>NAME                                                   AGE   REQUESTOR           CONDITION
+</span></span><span style="display:flex;"><span>node-csr-WXnon3AEhdxgZ1FZ2reqKRQmWS-pwP3x263YbwUAH9k   11m   kubelet-bootstrap   Pending
+</span></span></code></pre></div><p>Approve that request:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl certificate approve node-csr-WXnon3AEhdxgZ1FZ2reqKRQmWS-pwP3x263YbwUAH9k
+</span></span><span style="display:flex;"><span>certificatesigningrequest.certificates.k8s.io/node-csr-WXnon3AEhdxgZ1FZ2reqKRQmWS-pwP3x263YbwUAH9k approved
+</span></span></code></pre></div><p>Now you can see that the node has been created and you can list by running:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl get nodes
+</span></span><span style="display:flex;"><span>NAME   STATUS   ROLES    AGE   VERSION
+</span></span><span style="display:flex;"><span>node   Ready    &lt;none&gt;   27s   v1.12.0
+</span></span></code></pre></div>
       </div>
       <footer>
         <div class="stats">
@@ -427,7 +434,7 @@ node   Ready    &lt;none&gt;   27s   v1.12.0
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -469,52 +476,52 @@ node   Ready    &lt;none&gt;   27s   v1.12.0
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -751,14 +758,14 @@ node   Ready    &lt;none&gt;   27s   v1.12.0
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

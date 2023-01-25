@@ -38,7 +38,7 @@ $ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f4
       <guid>https://suraj.io/post/copy-to-container-without-docker-cp/</guid>
       <description>This blog shows you how you can copy stuff from your host machine to the running container without the docker cp command that we usually use.
 Steps in text Here I have a script on the host, which looks following:
-#!/bin/bash  tput bold echo &amp;#34;OS Information:&amp;#34; tput sgr0 echo cat /etc/os-release After running which looks like following:
+#!/bin/bash tput bold echo &amp;#34;OS Information:&amp;#34; tput sgr0 echo cat /etc/os-release After running which looks like following:
 $ ls script.sh $ ./script.sh OS Information: NAME=&amp;#34;Flatcar Linux by Kinvolk&amp;#34; ID=flatcar ID_LIKE=coreos VERSION=2079.</description>
     </item>
     
@@ -48,7 +48,7 @@ $ ls script.sh $ ./script.sh OS Information: NAME=&amp;#34;Flatcar Linux by Kinv
       <pubDate>Mon, 10 Jun 2019 11:57:07 +0530</pubDate>
       
       <guid>https://suraj.io/post/docker-seccomp-manual/</guid>
-      <description>What is Seccomp?  A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</description>
+      <description>What is Seccomp? A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</description>
     </item>
     
   </channel>

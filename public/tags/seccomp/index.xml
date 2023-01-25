@@ -24,7 +24,7 @@ Almost all the pods that run as a part of Prometheus Operator viz. Prometheus Op
       <pubDate>Mon, 10 Jun 2019 11:57:07 +0530</pubDate>
       
       <guid>https://suraj.io/post/docker-seccomp-manual/</guid>
-      <description>What is Seccomp?  A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</description>
+      <description>What is Seccomp? A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</description>
     </item>
     
   </channel>

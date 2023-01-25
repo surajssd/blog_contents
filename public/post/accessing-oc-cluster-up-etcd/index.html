@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Access etcd in OpenShift origin - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Access the etcd in OpenShift started by oc cluster up">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Access etcd in OpenShift origin">
+<meta property="og:description" content="Access the etcd in OpenShift started by oc cluster up">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/accessing-oc-cluster-up-etcd/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Access etcd in OpenShift origin">
-  <meta property="og:description" content="Access the etcd in OpenShift started by oc cluster up">
-  <meta property="description" content="Access the etcd in OpenShift started by oc cluster up">
-  <meta property="og:url" content="https://suraj.io/post/accessing-oc-cluster-up-etcd/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2018-07-11 01:00:51 &#43;0530 IST">July 11, 2018</time>
+    <time datetime="2018-07-11 01:00:51 &#43;0530 &#43;0530">July 11, 2018</time>
     <p>Suraj Deshmukh</p>
     <p>1-Minute Read</p>
   </div>
@@ -238,39 +244,40 @@
       </div>
       <div class="content">
         
+        
         <p>How do you access the etcd that is being used by the OpenShift started by <code>oc cluster up</code> or using <a href="https://docs.openshift.org/latest/minishift/getting-started/index.html">minishift</a>.</p>
 <p>If you are using minishift then get docker environment access of the minishift VM by running following commands.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">eval <span style="color:#66d9ef">$(</span>minishift docker-env<span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> eval <span style="color:#66d9ef">$(</span>minishift oc-env<span style="color:#66d9ef">)</span>
-</code></pre></div><p>Exec into the container named <code>origin</code> that runs OpenShift and all the needed services.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker exec -it origin bash
-</code></pre></div><p>First install the <code>etcdctl</code> needed to talk to <code>etcd</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@surajd origin<span style="color:#f92672">]</span>$ yum -y install etcd
-</code></pre></div><p>Get into the directory where all the certs and keys are available.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@surajd origin<span style="color:#f92672">]</span>$ cd /var/lib/origin/openshift.local.config/master
-</code></pre></div><p>Now run following to connect to the <code>etcd</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@surajd master<span style="color:#f92672">]</span>$ export ETCDCTL_API<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>
-<span style="color:#f92672">[</span>root@surajd master<span style="color:#f92672">]</span>$ etcdctl --cacert ./ca.crt --cert ./master.etcd-client.crt <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> --key ./master.etcd-client.key <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> --endpoints<span style="color:#f92672">=[</span>https://127.0.0.1:4001<span style="color:#f92672">]</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> get --prefix --keys-only<span style="color:#f92672">=</span>true /
-
-/kubernetes.io/apiextensions.k8s.io/customresourcedefinitions/openshiftwebconsoleconfigs.webconsole.operator.openshift.io
-
-/kubernetes.io/apiservices/v1.
-
-/kubernetes.io/apiservices/v1.apps
-
-/kubernetes.io/apiservices/v1.apps.openshift.io
-...
-</code></pre></div><p>Now you can try to read about a specific object by looking at a specific key.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@surajd master<span style="color:#f92672">]</span>$ etcdctl --cacert ./ca.crt --cert ./master.etcd-client.crt --key ./master.etcd-client.key --endpoints<span style="color:#f92672">=[</span>https://127.0.0.1:4001<span style="color:#f92672">]</span> get --prefix  /openshift.io/users/developer
-/openshift.io/users/developer
-k8s
-
-user.openshift.io/v1Userb
-G
-        developer<span style="color:#e6db74">&#34;*</span>$a749b0bf<span style="color:#e6db74">-79ee-11e8-87db-507b9d785c9e2zanypassword:developer&#34;</span>
-</code></pre></div><p>This is a rpc binary data. You can use tools like <a href="https://github.com/golang/protobuf#installation"><code>protoc</code></a> to decode it. There is some discussion about <a href="https://groups.google.com/forum/#!topic/kubernetes-dev/GZuEOsYC95c">decoding</a> this data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>eval <span style="color:#66d9ef">$(</span>minishift docker-env<span style="color:#66d9ef">)</span> <span style="color:#f92672">&amp;&amp;</span> eval <span style="color:#66d9ef">$(</span>minishift oc-env<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><p>Exec into the container named <code>origin</code> that runs OpenShift and all the needed services.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker exec -it origin bash
+</span></span></code></pre></div><p>First install the <code>etcdctl</code> needed to talk to <code>etcd</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@surajd origin<span style="color:#f92672">]</span>$ yum -y install etcd
+</span></span></code></pre></div><p>Get into the directory where all the certs and keys are available.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@surajd origin<span style="color:#f92672">]</span>$ cd /var/lib/origin/openshift.local.config/master
+</span></span></code></pre></div><p>Now run following to connect to the <code>etcd</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@surajd master<span style="color:#f92672">]</span>$ export ETCDCTL_API<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@surajd master<span style="color:#f92672">]</span>$ etcdctl --cacert ./ca.crt --cert ./master.etcd-client.crt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> --key ./master.etcd-client.key <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> --endpoints<span style="color:#f92672">=[</span>https://127.0.0.1:4001<span style="color:#f92672">]</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span> get --prefix --keys-only<span style="color:#f92672">=</span>true /
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/kubernetes.io/apiextensions.k8s.io/customresourcedefinitions/openshiftwebconsoleconfigs.webconsole.operator.openshift.io
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/kubernetes.io/apiservices/v1.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/kubernetes.io/apiservices/v1.apps
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/kubernetes.io/apiservices/v1.apps.openshift.io
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>Now you can try to read about a specific object by looking at a specific key.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@surajd master<span style="color:#f92672">]</span>$ etcdctl --cacert ./ca.crt --cert ./master.etcd-client.crt --key ./master.etcd-client.key --endpoints<span style="color:#f92672">=[</span>https://127.0.0.1:4001<span style="color:#f92672">]</span> get --prefix  /openshift.io/users/developer
+</span></span><span style="display:flex;"><span>/openshift.io/users/developer
+</span></span><span style="display:flex;"><span>k8s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>user.openshift.io/v1Userb
+</span></span><span style="display:flex;"><span>G
+</span></span><span style="display:flex;"><span>        developer<span style="color:#e6db74">&#34;*</span>$a749b0bf<span style="color:#e6db74">-79ee-11e8-87db-507b9d785c9e2zanypassword:developer&#34;</span>
+</span></span></code></pre></div><p>This is a rpc binary data. You can use tools like <a href="https://github.com/golang/protobuf#installation"><code>protoc</code></a> to decode it. There is some discussion about <a href="https://groups.google.com/forum/#!topic/kubernetes-dev/GZuEOsYC95c">decoding</a> this data.</p>
 
       </div>
       <footer>
@@ -308,7 +315,7 @@ G
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -350,52 +357,52 @@ G
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -632,14 +639,14 @@ G
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

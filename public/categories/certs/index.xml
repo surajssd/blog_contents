@@ -14,7 +14,7 @@
       
       <guid>https://suraj.io/post/2021/02/k8s-bootstrap-token/</guid>
       <description>Photo by Jordan Harrison from Unsplash.
- This blog is a recap of my old blog &amp;ldquo;Add new node to Kubernetes cluster with bootstrap token&amp;rdquo;. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.</description>
+This blog is a recap of my old blog &amp;ldquo;Add new node to Kubernetes cluster with bootstrap token&amp;rdquo;. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.</description>
     </item>
     
     <item>

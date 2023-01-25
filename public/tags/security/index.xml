@@ -34,7 +34,7 @@ We will use a Helm chart, which has a couple of Kubernetes Jobs that generates t
       
       <guid>https://suraj.io/post/2021/05/self-sign-k8s-cert/</guid>
       <description>UPDATE: There is a way to generate these certificates automatically. To find out how, read this post.
- If you are writing a webhook server for Kubernetes Admission Controllers like ValidatingAdmissionWebhooks or MutatingAdmissionWebhooks, you must expose it over HTTPS. To run these servers on HTTPS, you need TLS certificates. There are solutions available which you can use to solve this problem, first and foremost that comes to my mind is cert-manager.</description>
+If you are writing a webhook server for Kubernetes Admission Controllers like ValidatingAdmissionWebhooks or MutatingAdmissionWebhooks, you must expose it over HTTPS. To run these servers on HTTPS, you need TLS certificates. There are solutions available which you can use to solve this problem, first and foremost that comes to my mind is cert-manager.</description>
     </item>
     
     <item>
@@ -117,7 +117,7 @@ $ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f4
       <pubDate>Mon, 10 Jun 2019 11:57:07 +0530</pubDate>
       
       <guid>https://suraj.io/post/docker-seccomp-manual/</guid>
-      <description>What is Seccomp?  A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</description>
+      <description>What is Seccomp? A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</description>
     </item>
     
     <item>
@@ -127,7 +127,7 @@ $ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f4
       
       <guid>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</guid>
       <description>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using emptyDir volume mount using subpath. The official description goes as follows:
- In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host&amp;rsquo;s filesystem.</description>
+In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host&amp;rsquo;s filesystem.</description>
     </item>
     
     <item>
@@ -137,7 +137,7 @@ $ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f4
       
       <guid>https://suraj.io/post/add-new-k8s-node-bootstrap-token/</guid>
       <description>NOTE: There is an updated version of this blog here.
- Few days back I wrote a blog about adding new node to the cluster using the static token file. The problem with that approach is that you need to restart kube-apiserver providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like secrets.</description>
+Few days back I wrote a blog about adding new node to the cluster using the static token file. The problem with that approach is that you need to restart kube-apiserver providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like secrets.</description>
     </item>
     
     <item>
@@ -147,7 +147,7 @@ $ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f4
       
       <guid>https://suraj.io/post/psp-on-existing-cluster/</guid>
       <description>I enabled PodSecurityPolicy on a minikube cluster by appending PodSecurityPolicy to the apiserver flag in minikube like this:
---extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\  LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\  NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\  ResourceQuota,PodSecurityPolicy Ideally when you have PSP enabled and if you don&amp;rsquo;t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.
+--extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\ LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\ NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\ ResourceQuota,PodSecurityPolicy Ideally when you have PSP enabled and if you don&amp;rsquo;t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.
 $ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h Which got me thinking what is wrong with the way PSPs work.</description>
     </item>
     
@@ -168,7 +168,7 @@ master node Following the docs of TLS Bootstrapping, let&amp;rsquo;s first creat
       
       <guid>https://suraj.io/post/single-node-k8s-fedora-selinux/</guid>
       <description>Start a single node fedora machine, using whatever method but I have used this Vagrantfile to do it:
-# -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(&amp;#34;2&amp;#34;) do |config| config.vm.define &amp;#34;fedora&amp;#34; do |fedora| fedora.vm.box = &amp;#34;fedora/28-cloud-base&amp;#34; config.vm.hostname = &amp;#34;fedora&amp;#34; end config.vm.provider &amp;#34;virtualbox&amp;#34; do |virtualbox, override| virtualbox.memory = 4096 virtualbox.cpus = 4 end config.vm.provision &amp;#34;shell&amp;#34;, privileged: false, inline: &amp;lt;&amp;lt;-SHELL  echo &amp;#39;127.0.0.1 localhost&amp;#39; | cat - /etc/hosts &amp;gt; temp &amp;amp;&amp;amp; sudo mv temp /etc/hosts SHELL end Now start it and ssh into it:</description>
+# -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(&amp;#34;2&amp;#34;) do |config| config.vm.define &amp;#34;fedora&amp;#34; do |fedora| fedora.vm.box = &amp;#34;fedora/28-cloud-base&amp;#34; config.vm.hostname = &amp;#34;fedora&amp;#34; end config.vm.provider &amp;#34;virtualbox&amp;#34; do |virtualbox, override| virtualbox.memory = 4096 virtualbox.cpus = 4 end config.vm.provision &amp;#34;shell&amp;#34;, privileged: false, inline: &amp;lt;&amp;lt;-SHELL echo &amp;#39;127.0.0.1 localhost&amp;#39; | cat - /etc/hosts &amp;gt; temp &amp;amp;&amp;amp; sudo mv temp /etc/hosts SHELL end Now start it and ssh into it:</description>
     </item>
     
     <item>

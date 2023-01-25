@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Methods that satisfy interfaces in golang - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="What receiver type methods satisfy which interface, can be understood here.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Methods that satisfy interfaces in golang">
+<meta property="og:description" content="What receiver type methods satisfy which interface, can be understood here.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/golang-methods-interfaces/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Methods that satisfy interfaces in golang">
-  <meta property="og:description" content="What receiver type methods satisfy which interface, can be understood here.">
-  <meta property="description" content="What receiver type methods satisfy which interface, can be understood here.">
-  <meta property="og:url" content="https://suraj.io/post/golang-methods-interfaces/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2018-02-23 08:00:51 &#43;0530 IST">February 23, 2018</time>
+    <time datetime="2018-02-23 08:00:51 &#43;0530 &#43;0530">February 23, 2018</time>
     <p>Suraj Deshmukh</p>
     <p>3-Minute Read</p>
   </div>
@@ -238,86 +244,87 @@
       </div>
       <div class="content">
         
+        
         <h2 id="pointer-receiver">Pointer receiver</h2>
 <p>For a struct <code>User</code> with a method <code>Work</code> with pointer receiver.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
-    <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
-    <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
-}
-
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Work</span>() {
-    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;has worked for&#34;</span>, <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Period</span>, <span style="color:#e6db74">&#34;hrs.&#34;</span>)
-}
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#a6e22e">uval</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserVal&#34;</span>, <span style="color:#ae81ff">5</span>}
-    <span style="color:#a6e22e">uval</span>.<span style="color:#a6e22e">Work</span>()
-
-    <span style="color:#a6e22e">pval</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserPtr&#34;</span>, <span style="color:#ae81ff">6</span>}
-    <span style="color:#a6e22e">pval</span>.<span style="color:#a6e22e">Work</span>()
-}
-</code></pre></div><p>See on <a href="https://play.golang.org/p/PDsMlrd3QXV">go playground</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Work</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;has worked for&#34;</span>, <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Period</span>, <span style="color:#e6db74">&#34;hrs.&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uval</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserVal&#34;</span>, <span style="color:#ae81ff">5</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uval</span>.<span style="color:#a6e22e">Work</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pval</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserPtr&#34;</span>, <span style="color:#ae81ff">6</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pval</span>.<span style="color:#a6e22e">Work</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>See on <a href="https://play.golang.org/p/PDsMlrd3QXV">go playground</a>.</p>
 <p>output:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
-UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">6</span> hrs.
-</code></pre></div><p>If we call this method on <strong>value</strong> type object <code>uval</code> it works, and obviously it works with <strong>pointer</strong> type object <code>pval</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
+</span></span><span style="display:flex;"><span>UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">6</span> hrs.
+</span></span></code></pre></div><p>If we call this method on <strong>value</strong> type object <code>uval</code> it works, and obviously it works with <strong>pointer</strong> type object <code>pval</code>.</p>
 <h2 id="value-receiver">Value receiver</h2>
 <p>Now we change the method receiver from pointer to value.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
-    <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
-    <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
-}
-
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Work</span>() {
-    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;has worked for&#34;</span>, <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Period</span>, <span style="color:#e6db74">&#34;hrs.&#34;</span>)
-}
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#a6e22e">uval</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserVal&#34;</span>, <span style="color:#ae81ff">5</span>}
-    <span style="color:#a6e22e">uval</span>.<span style="color:#a6e22e">Work</span>()
-
-    <span style="color:#a6e22e">pval</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserPtr&#34;</span>, <span style="color:#ae81ff">6</span>}
-    <span style="color:#a6e22e">pval</span>.<span style="color:#a6e22e">Work</span>()
-}
-</code></pre></div><p>See on <a href="https://play.golang.org/p/z7Q-B9PuzV2">go playground</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Work</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;has worked for&#34;</span>, <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Period</span>, <span style="color:#e6db74">&#34;hrs.&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uval</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserVal&#34;</span>, <span style="color:#ae81ff">5</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uval</span>.<span style="color:#a6e22e">Work</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pval</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserPtr&#34;</span>, <span style="color:#ae81ff">6</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pval</span>.<span style="color:#a6e22e">Work</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>See on <a href="https://play.golang.org/p/z7Q-B9PuzV2">go playground</a>.</p>
 <p>output:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
-UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">6</span> hrs.
-</code></pre></div><p>So this also worked on both <strong>value</strong> type object <code>uval</code> and with <strong>pointer</strong> type object <code>pval</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
+</span></span><span style="display:flex;"><span>UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">6</span> hrs.
+</span></span></code></pre></div><p>So this also worked on both <strong>value</strong> type object <code>uval</code> and with <strong>pointer</strong> type object <code>pval</code>.</p>
 <h2 id="interface-and-pointer-receiver">Interface and pointer receiver</h2>
 <p>Lets try to add interface in the mix and see what happens, so adding interface <code>Worker</code> to pointer receiver method:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
-    <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
-    <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
-}
-
-<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Worker</span> <span style="color:#66d9ef">interface</span> {
-    <span style="color:#a6e22e">Work</span>()
-}
-
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Work</span>() {
-    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;has worked for&#34;</span>, <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Period</span>, <span style="color:#e6db74">&#34;hrs.&#34;</span>)
-}
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#a6e22e">uval</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserVal&#34;</span>, <span style="color:#ae81ff">5</span>}
-    <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">uval</span>)
-
-    <span style="color:#a6e22e">pval</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserPtr&#34;</span>, <span style="color:#ae81ff">6</span>}
-    <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">pval</span>)
-}
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">Worker</span>) {
-    <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Work</span>()
-}
-</code></pre></div><p>See on <a href="https://play.golang.org/p/shQ4PT66VaY">go playground</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Worker</span> <span style="color:#66d9ef">interface</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Work</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Work</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;has worked for&#34;</span>, <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Period</span>, <span style="color:#e6db74">&#34;hrs.&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uval</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserVal&#34;</span>, <span style="color:#ae81ff">5</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">uval</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pval</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserPtr&#34;</span>, <span style="color:#ae81ff">6</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">pval</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">Worker</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Work</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>See on <a href="https://play.golang.org/p/shQ4PT66VaY">go playground</a>.</p>
 <p>output:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># command-line-arguments</span>
-tmp/main.go:20:8: cannot use uval <span style="color:#f92672">(</span>type User<span style="color:#f92672">)</span> as type Worker in argument to DoWork:
-        User does not implement Worker <span style="color:#f92672">(</span>Work method has pointer receiver<span style="color:#f92672">)</span>
-</code></pre></div><p>So <strong>pointer</strong> type object <code>pval</code> implements interface <code>Worker</code>, but <strong>value</strong> type object <code>uval</code> does not. Since the error clearly says</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">User does not implement Worker <span style="color:#f92672">(</span>Work method has pointer receiver<span style="color:#f92672">)</span>
-</code></pre></div><p>To understand why this above code fails, you need to understand the concept of method sets. <a href="https://golang.org/ref/spec#Method_sets">Golang spec</a> defines <strong>Method sets</strong> as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># command-line-arguments</span>
+</span></span><span style="display:flex;"><span>tmp/main.go:20:8: cannot use uval <span style="color:#f92672">(</span>type User<span style="color:#f92672">)</span> as type Worker in argument to DoWork:
+</span></span><span style="display:flex;"><span>        User does not implement Worker <span style="color:#f92672">(</span>Work method has pointer receiver<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>So <strong>pointer</strong> type object <code>pval</code> implements interface <code>Worker</code>, but <strong>value</strong> type object <code>uval</code> does not. Since the error clearly says</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>User does not implement Worker <span style="color:#f92672">(</span>Work method has pointer receiver<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>To understand why this above code fails, you need to understand the concept of method sets. <a href="https://golang.org/ref/spec#Method_sets">Golang spec</a> defines <strong>Method sets</strong> as:</p>
 <blockquote>
 <p>The method set of any other type T consists of all methods declared with receiver type T.</p>
 </blockquote>
@@ -332,35 +339,35 @@ tmp/main.go:20:8: cannot use uval <span style="color:#f92672">(</span>type User<
 <p>In above example the method with pointer receiver is not in method set of <strong>value</strong> type object <code>uval</code>.</p>
 <h2 id="interface-and-value-receiver">Interface and value receiver</h2>
 <p>Now lets try the same inteface but this time with value receiver:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
-    <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
-    <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
-}
-
-<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Worker</span> <span style="color:#66d9ef">interface</span> {
-    <span style="color:#a6e22e">Work</span>()
-}
-
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Work</span>() {
-    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;has worked for&#34;</span>, <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Period</span>, <span style="color:#e6db74">&#34;hrs.&#34;</span>)
-}
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-    <span style="color:#a6e22e">uval</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserVal&#34;</span>, <span style="color:#ae81ff">5</span>}
-    <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">uval</span>)
-
-    <span style="color:#a6e22e">pval</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserPtr&#34;</span>, <span style="color:#ae81ff">6</span>}
-    <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">pval</span>)
-}
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">Worker</span>) {
-    <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Work</span>()
-}
-</code></pre></div><p>See on <a href="https://play.golang.org/p/aW6kXdeNaqN">go playground</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Name</span>   <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Period</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Worker</span> <span style="color:#66d9ef">interface</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Work</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">u</span> <span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">Work</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Name</span>, <span style="color:#e6db74">&#34;has worked for&#34;</span>, <span style="color:#a6e22e">u</span>.<span style="color:#a6e22e">Period</span>, <span style="color:#e6db74">&#34;hrs.&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uval</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserVal&#34;</span>, <span style="color:#ae81ff">5</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">uval</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pval</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">User</span>{<span style="color:#e6db74">&#34;UserPtr&#34;</span>, <span style="color:#ae81ff">6</span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">pval</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DoWork</span>(<span style="color:#a6e22e">w</span> <span style="color:#a6e22e">Worker</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">Work</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>See on <a href="https://play.golang.org/p/aW6kXdeNaqN">go playground</a>.</p>
 <p>output:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
-UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">6</span> hrs.
-</code></pre></div><p>Meanwhile the method with value receiver worked for both type of objects <strong>pointer</strong> type object <code>pval</code> and <strong>value</strong> type object <code>uval</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>UserVal has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">5</span> hrs.
+</span></span><span style="display:flex;"><span>UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae81ff">6</span> hrs.
+</span></span></code></pre></div><p>Meanwhile the method with value receiver worked for both type of objects <strong>pointer</strong> type object <code>pval</code> and <strong>value</strong> type object <code>uval</code>.</p>
 <p>So here is a table which charts this behavior:</p>
 <table>
 <thead>
@@ -434,7 +441,7 @@ UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -476,52 +483,52 @@ UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -758,14 +765,14 @@ UserPtr has worked <span style="color:#66d9ef">for</span> <span style="color:#ae
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

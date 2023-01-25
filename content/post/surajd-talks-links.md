@@ -8,6 +8,12 @@ categories: ["talks", "notes"]
 tags: ["kubernetes", "meetup"]
 ---
 
+## Building Container Defences Executable at a Time
+
+{{< youtube WJcm3zvaCUw >}}
+
+---
+
 ## PSP and Beyond - Kubernetes Bangalore Meetup June 2021
 
 {{< youtube VwQ7_cnHSzM >}}

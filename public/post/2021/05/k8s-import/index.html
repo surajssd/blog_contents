@@ -3,24 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>How to import &#39;any&#39; Kubernetes package into your project? - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Blog">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="How to import &#39;any&#39; Kubernetes package into your project?">
+<meta property="og:description" content="Blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/2021/05/k8s-import/">
+    <meta property="og:image" content="https://suraj.io/post/2021/05/k8s-import/gok8s.jpg">
+    <meta property="og:image:alt" content="Golang and Kubernetes">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="How to import &#39;any&#39; Kubernetes package into your project?">
-  <meta property="og:description" content="Blog">
-  <meta property="description" content="Blog">
-  <meta property="og:url" content="https://suraj.io/post/2021/05/k8s-import/">
-  <meta property="og:type" content="article">
-  
-    
-      <meta property="og:image" content="https://suraj.io/post/2021/05/k8s-import/gok8s.jpg">
-      <meta property="og:image:alt" content="Golang and Kubernetes">
-    
-  
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -192,7 +195,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2021-05-30 09:40:00 &#43;0530 IST">May 30, 2021</time>
+    <time datetime="2021-05-30 09:40:00 &#43;0530 &#43;0530">May 30, 2021</time>
     <p>Suraj Deshmukh</p>
     <p>5-Minute Read</p>
   </div>
@@ -238,25 +241,26 @@
 
       </div>
       <div class="content">
-        <a href="/post/2021/05/k8s-import/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/k8s-import/gok8s.jpg');">
-    <img src="https://suraj.io/post/2021/05/k8s-import/gok8s.jpg" alt="Golang and Kubernetes">
+        <a href="/post/2021/05/k8s-import/" class="image" style="--bg-image: url('/post/2021/05/k8s-import/gok8s.jpg');">
+    <img src="/post/2021/05/k8s-import/gok8s.jpg" alt="Golang and Kubernetes">
   </a>
+        
         <p>The client libraries that Kubernetes ships are meant to be imported, and you definitely don&rsquo;t need this post explaining how to import them in your Golang based project. A simple <code>go get ...</code> should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of <em>&ldquo;technical reasons&rdquo;</em> ? Could you simply add them to your import statements in the <code>.go</code> file, and the <code>go</code> binary will do the right thing when you build the code? Well, let&rsquo;s find that out!</p>
 <h2 id="usecase">Usecase</h2>
 <p>I have a project, and in it, the imported packages look like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> (
-	<span style="color:#e6db74">&#34;crypto/x509&#34;</span>
-	<span style="color:#e6db74">&#34;fmt&#34;</span>
-	<span style="color:#e6db74">&#34;io/ioutil&#34;</span>
-	<span style="color:#e6db74">&#34;log&#34;</span>
-	<span style="color:#e6db74">&#34;path/filepath&#34;</span>
-
-	<span style="color:#e6db74">&#34;github.com/spf13/cobra&#34;</span>
-	<span style="color:#e6db74">&#34;k8s.io/client-go/util/cert&#34;</span>
-	<span style="color:#e6db74">&#34;k8s.io/client-go/util/keyutil&#34;</span>
-	<span style="color:#e6db74">&#34;k8s.io/kubernetes/test/utils&#34;</span>
-)
-</code></pre></div><p><a href="https://github.com/surajssd/self-signed-cert/blob/61a5c44ca2f4d6d951b361e1f271bd13ce355f9d/main.go#L3-L14">source</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;crypto/x509&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;io/ioutil&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;log&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;path/filepath&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;github.com/spf13/cobra&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;k8s.io/client-go/util/cert&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;k8s.io/client-go/util/keyutil&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;k8s.io/kubernetes/test/utils&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><a href="https://github.com/surajssd/self-signed-cert/blob/61a5c44ca2f4d6d951b361e1f271bd13ce355f9d/main.go#L3-L14">source</a></p>
 <p>So it consists of a couple of inbuilt packages, and then the CLI library <a href="https://github.com/spf13/cobra">Cobra</a>, a couple of <a href="https://github.com/kubernetes/client-go">client-go</a> packages. The only out of the ordinary thing is the <code>k8s.io/kubernetes/test/utils</code> package.</p>
 <h2 id="importing">Importing</h2>
 <p>Let us tidy up the dependencies before building the code:</p>
@@ -276,39 +280,39 @@ go get: k8s.io/kubernetes@v1.15.0-alpha.0 updating to
 </code></pre><h2 id="tldr-give-me-the-solution">tl;dr Give me the solution</h2>
 <p><strong>NOTE</strong>: Please read the &ldquo;Caveats&rdquo; section before you venture into using this solution.</p>
 <p>Save the following bash script in <code>download-deps.sh</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span>
-VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>1#<span style="color:#e6db74">&#34;v&#34;</span><span style="color:#e6db74">}</span>
-<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span>$VERSION<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-  echo <span style="color:#e6db74">&#34;Please specify the Kubernetes version: e.g.&#34;</span>
-  echo <span style="color:#e6db74">&#34;./download-deps.sh v1.21.0&#34;</span>
-  exit <span style="color:#ae81ff">1</span>
-<span style="color:#66d9ef">fi</span>
-
-set -euo pipefail
-
-<span style="color:#75715e"># Find out all the replaced imports, make a list of them.</span>
-MODS<span style="color:#f92672">=(</span><span style="color:#66d9ef">$(</span>
-  curl -sS <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/kubernetes/kubernetes/v</span><span style="color:#e6db74">${</span>VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/go.mod&#34;</span> |
-    sed -n <span style="color:#e6db74">&#39;s|.*k8s.io/\(.*\) =&gt; ./staging/src/k8s.io/.*|k8s.io/\1|p&#39;</span>
-<span style="color:#66d9ef">)</span><span style="color:#f92672">)</span>
-
-<span style="color:#75715e"># Now add those similar replace statements in the local go.mod file, but first find the version that</span>
-<span style="color:#75715e"># the Kubernetes is using for them.</span>
-<span style="color:#66d9ef">for</span> MOD in <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MODS[@]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">do</span>
-  V<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
-    go mod download -json <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MOD<span style="color:#e6db74">}</span><span style="color:#e6db74">@kubernetes-</span><span style="color:#e6db74">${</span>VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> |
-      sed -n <span style="color:#e6db74">&#39;s|.*&#34;Version&#34;: &#34;\(.*\)&#34;.*|\1|p&#39;</span>
-  <span style="color:#66d9ef">)</span>
-
-  go mod edit <span style="color:#e6db74">&#34;-replace=</span><span style="color:#e6db74">${</span>MOD<span style="color:#e6db74">}</span><span style="color:#e6db74">=</span><span style="color:#e6db74">${</span>MOD<span style="color:#e6db74">}</span><span style="color:#e6db74">@</span><span style="color:#e6db74">${</span>V<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-<span style="color:#66d9ef">done</span>
-
-go get <span style="color:#e6db74">&#34;k8s.io/kubernetes@v</span><span style="color:#e6db74">${</span>VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-go mod download
-</code></pre></div><p>Make the script usable:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod u+x download-deps.sh
-</code></pre></div><p>Use the following script. It will update the <code>go.mod</code> file with the required dependencies:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>1#<span style="color:#e6db74">&#34;v&#34;</span><span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span>$VERSION<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Please specify the Kubernetes version: e.g.&#34;</span>
+</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;./download-deps.sh v1.21.0&#34;</span>
+</span></span><span style="display:flex;"><span>  exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>set -euo pipefail
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Find out all the replaced imports, make a list of them.</span>
+</span></span><span style="display:flex;"><span>MODS<span style="color:#f92672">=(</span><span style="color:#66d9ef">$(</span>
+</span></span><span style="display:flex;"><span>  curl -sS <span style="color:#e6db74">&#34;https://raw.githubusercontent.com/kubernetes/kubernetes/v</span><span style="color:#e6db74">${</span>VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/go.mod&#34;</span> |
+</span></span><span style="display:flex;"><span>    sed -n <span style="color:#e6db74">&#39;s|.*k8s.io/\(.*\) =&gt; ./staging/src/k8s.io/.*|k8s.io/\1|p&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">)</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Now add those similar replace statements in the local go.mod file, but first find the version that</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># the Kubernetes is using for them.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> MOD in <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MODS[@]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  V<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>
+</span></span><span style="display:flex;"><span>    go mod download -json <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>MOD<span style="color:#e6db74">}</span><span style="color:#e6db74">@kubernetes-</span><span style="color:#e6db74">${</span>VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> |
+</span></span><span style="display:flex;"><span>      sed -n <span style="color:#e6db74">&#39;s|.*&#34;Version&#34;: &#34;\(.*\)&#34;.*|\1|p&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  go mod edit <span style="color:#e6db74">&#34;-replace=</span><span style="color:#e6db74">${</span>MOD<span style="color:#e6db74">}</span><span style="color:#e6db74">=</span><span style="color:#e6db74">${</span>MOD<span style="color:#e6db74">}</span><span style="color:#e6db74">@</span><span style="color:#e6db74">${</span>V<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>go get <span style="color:#e6db74">&#34;k8s.io/kubernetes@v</span><span style="color:#e6db74">${</span>VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>go mod download
+</span></span></code></pre></div><p>Make the script usable:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod u+x download-deps.sh
+</span></span></code></pre></div><p>Use the following script. It will update the <code>go.mod</code> file with the required dependencies:</p>
 <pre tabindex="0"><code class="language-consle" data-lang="consle">$ ./download-deps.sh v1.21.0
 go: downloading k8s.io/kubernetes v1.21.0
 go get: added k8s.io/kubernetes v1.21.0
@@ -318,24 +322,24 @@ go get: added k8s.io/kubernetes v1.21.0
 </blockquote>
 <h2 id="reasoning">Reasoning</h2>
 <p>The error <code>k8s.io/api@v0.0.0: reading k8s.io/api/go.mod at revision v0.0.0: unknown revision v0.0.0</code> is caused because, in Kubernetes&rsquo;s <a href="https://github.com/kubernetes/kubernetes/blob/e6136c0303028d68cac67290d94a60cec167ccdf/go.mod#L109-L120"><code>go.mod</code></a>, you will find the following snippet:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">require (</span>
-...
-	<span style="color:#ae81ff">k8s.io/api v0.0.0</span>
-	<span style="color:#ae81ff">k8s.io/apiextensions-apiserver v0.0.0</span>
-	<span style="color:#ae81ff">k8s.io/apimachinery v0.0.0</span>
-	<span style="color:#ae81ff">k8s.io/apiserver v0.0.0</span>
-...
-<span style="color:#ae81ff">)</span>
-
-<span style="color:#ae81ff">replace (</span>
-...
-	<span style="color:#ae81ff">k8s.io/api =&gt; ./staging/src/k8s.io/api</span>
-	<span style="color:#ae81ff">k8s.io/apiextensions-apiserver =&gt; ./staging/src/k8s.io/apiextensions-apiserver</span>
-	<span style="color:#ae81ff">k8s.io/apimachinery =&gt; ./staging/src/k8s.io/apimachinery</span>
-	<span style="color:#ae81ff">k8s.io/apiserver =&gt; ./staging/src/k8s.io/apiserver</span>
-...
-<span style="color:#ae81ff">)</span>
-</code></pre></div><p>In the Kubernetes repository, the packages listed under <code>require</code> directive are tagged with a pseudo-version <code>v0.0.0</code> but then are replaced with a local code in the <a href="https://github.com/kubernetes/kubernetes/tree/e8760b95bb0a0dfb5c184fd4e5ab95da3650a040/staging"><code>staging</code></a> directory. Now <code>replace</code> directive works fine when building Kubernetes itself but won&rsquo;t work when someone is importing it. The Golang documentation says the following about <code>replace</code> directive:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ae81ff">require (</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">k8s.io/api v0.0.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">k8s.io/apiextensions-apiserver v0.0.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">k8s.io/apimachinery v0.0.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">k8s.io/apiserver v0.0.0</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">replace (</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">k8s.io/api =&gt; ./staging/src/k8s.io/api</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">k8s.io/apiextensions-apiserver =&gt; ./staging/src/k8s.io/apiextensions-apiserver</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">k8s.io/apimachinery =&gt; ./staging/src/k8s.io/apimachinery</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">k8s.io/apiserver =&gt; ./staging/src/k8s.io/apiserver</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">)</span>
+</span></span></code></pre></div><p>In the Kubernetes repository, the packages listed under <code>require</code> directive are tagged with a pseudo-version <code>v0.0.0</code> but then are replaced with a local code in the <a href="https://github.com/kubernetes/kubernetes/tree/e8760b95bb0a0dfb5c184fd4e5ab95da3650a040/staging"><code>staging</code></a> directory. Now <code>replace</code> directive works fine when building Kubernetes itself but won&rsquo;t work when someone is importing it. The Golang documentation says the following about <code>replace</code> directive:</p>
 <blockquote>
 <p><code>replace</code> directives only apply in the main module&rsquo;s go.mod file and are ignored in other modules.</p>
 </blockquote>
@@ -345,31 +349,31 @@ go get: added k8s.io/kubernetes v1.21.0
 <p>This is precisely what the script is doing.</p>
 <h2 id="final-go-mod">Final Go Mod</h2>
 <p>So in our project, the <code>go.mod</code> looks like this from the successful imports before running the script:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">module foobar</span>
-
-<span style="color:#ae81ff">go 1.16</span>
-
-<span style="color:#ae81ff">require (</span>
-        <span style="color:#ae81ff">github.com/spf13/cobra v1.1.3 // indirect</span>
-        <span style="color:#ae81ff">k8s.io/client-go v0.21.1 // indirect</span>
-<span style="color:#ae81ff">)</span>
-</code></pre></div><p>After running the script, this is how it looks like:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">module foobar</span>
-
-<span style="color:#ae81ff">go 1.16</span>
-
-<span style="color:#ae81ff">require (</span>
-        <span style="color:#ae81ff">github.com/spf13/cobra v1.1.3 // indirect</span>
-        <span style="color:#ae81ff">k8s.io/client-go v0.21.1 // indirect</span>
-        <span style="color:#ae81ff">k8s.io/kubernetes v1.21.0 // indirect</span>
-<span style="color:#ae81ff">)</span>
-
-<span style="color:#ae81ff">replace k8s.io/api =&gt; k8s.io/api v0.21.0</span>
-<span style="color:#ae81ff">replace k8s.io/apiextensions-apiserver =&gt; k8s.io/apiextensions-apiserver v0.21.0</span>
-<span style="color:#ae81ff">replace k8s.io/apimachinery =&gt; k8s.io/apimachinery v0.21.1-rc.0</span>
-<span style="color:#ae81ff">replace k8s.io/apiserver =&gt; k8s.io/apiserver v0.21.0</span>
-...
-</code></pre></div><h2 id="caveats">Caveats</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ae81ff">module foobar</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">go 1.16</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">require (</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">github.com/spf13/cobra v1.1.3 // indirect</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">k8s.io/client-go v0.21.1 // indirect</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">)</span>
+</span></span></code></pre></div><p>After running the script, this is how it looks like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ae81ff">module foobar</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">go 1.16</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">require (</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">github.com/spf13/cobra v1.1.3 // indirect</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">k8s.io/client-go v0.21.1 // indirect</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">k8s.io/kubernetes v1.21.0 // indirect</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">replace k8s.io/api =&gt; k8s.io/api v0.21.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">replace k8s.io/apiextensions-apiserver =&gt; k8s.io/apiextensions-apiserver v0.21.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">replace k8s.io/apimachinery =&gt; k8s.io/apimachinery v0.21.1-rc.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">replace k8s.io/apiserver =&gt; k8s.io/apiserver v0.21.0</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><h2 id="caveats">Caveats</h2>
 <p>Kubernetes upstream cautions against using the packages as we have done in this blog (Thanks, <a href="https://twitter.com/dims/status/1398972850883682304">Dims</a>, for bringing this to my notice):</p>
 <blockquote>
 <p>To use Kubernetes code as a library in other applications, see the <a href="https://github.com/kubernetes/kubernetes/blob/master/staging/README.md">list of published components</a>. Use of the <code>k8s.io/kubernetes</code> module or <code>k8s.io/kubernetes/...</code> packages as libraries is not supported.</p>
@@ -412,7 +416,7 @@ go get: added k8s.io/kubernetes v1.21.0
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -454,52 +458,52 @@ go get: added k8s.io/kubernetes v1.21.0
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -736,14 +740,14 @@ go get: added k8s.io/kubernetes v1.21.0
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

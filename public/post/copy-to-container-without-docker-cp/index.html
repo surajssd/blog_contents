@@ -3,21 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Copying files to container the generic way - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="No docker cp needed to copy files from host to your container">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Copying files to container the generic way">
+<meta property="og:description" content="No docker cp needed to copy files from host to your container">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/copy-to-container-without-docker-cp/">
+  <meta property="og:image" content="https://github.com/surajssd.png">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Copying files to container the generic way">
-  <meta property="og:description" content="No docker cp needed to copy files from host to your container">
-  <meta property="description" content="No docker cp needed to copy files from host to your container">
-  <meta property="og:url" content="https://suraj.io/post/copy-to-container-without-docker-cp/">
-  <meta property="og:type" content="article">
-  
-    <meta property="og:image" content="https://github.com/surajssd.png">
-  
+
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -191,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2019-06-21 11:57:07 &#43;0530 IST">June 21, 2019</time>
+    <time datetime="2019-06-21 11:57:07 &#43;0530 &#43;0530">June 21, 2019</time>
     <p>Suraj Deshmukh</p>
     <p>2-Minute Read</p>
   </div>
@@ -238,68 +244,68 @@
       </div>
       <div class="content">
         
+        
         <p>This blog shows you how you can copy stuff from your host machine to the running container without the <code>docker cp</code> command that we usually use.</p>
 <h1 id="steps-in-text">Steps in text</h1>
 <p>Here I have a script on the host, which looks following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span>
-tput bold
-echo <span style="color:#e6db74">&#34;OS Information:&#34;</span>
-tput sgr0
-echo
-
-cat /etc/os-release
-</code></pre></div><p>After running which looks like following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ls
-script.sh
-
-$ ./script.sh
-OS Information:
-
-NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Flatcar Linux by Kinvolk&#34;</span>
-ID<span style="color:#f92672">=</span>flatcar
-ID_LIKE<span style="color:#f92672">=</span>coreos
-VERSION<span style="color:#f92672">=</span>2079.6.0
-VERSION_ID<span style="color:#f92672">=</span>2079.6.0
-BUILD_ID<span style="color:#f92672">=</span>2019-06-18-0855
-PRETTY_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Flatcar Linux by Kinvolk 2079.6.0 (Rhyolite)&#34;</span>
-ANSI_COLOR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;38;5;75&#34;</span>
-HOME_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://flatcar-linux.org/&#34;</span>
-BUG_REPORT_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://issues.flatcar-linux.org&#34;</span>
-FLATCAR_BOARD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;amd64-usr&#34;</span>
-</code></pre></div><p>And here is the running container in another tab to which I want to copy the file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker run -it fedora bash
-<span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e">#</span>
-</code></pre></div><p><strong>Note</strong>: All the console with shell prompt <code>[root@0d6d865626ff /]#</code> means that the command is run inside the container.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>tput bold
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;OS Information:&#34;</span>
+</span></span><span style="display:flex;"><span>tput sgr0
+</span></span><span style="display:flex;"><span>echo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cat /etc/os-release
+</span></span></code></pre></div><p>After running which looks like following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ls
+</span></span><span style="display:flex;"><span>script.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ ./script.sh
+</span></span><span style="display:flex;"><span>OS Information:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Flatcar Linux by Kinvolk&#34;</span>
+</span></span><span style="display:flex;"><span>ID<span style="color:#f92672">=</span>flatcar
+</span></span><span style="display:flex;"><span>ID_LIKE<span style="color:#f92672">=</span>coreos
+</span></span><span style="display:flex;"><span>VERSION<span style="color:#f92672">=</span>2079.6.0
+</span></span><span style="display:flex;"><span>VERSION_ID<span style="color:#f92672">=</span>2079.6.0
+</span></span><span style="display:flex;"><span>BUILD_ID<span style="color:#f92672">=</span>2019-06-18-0855
+</span></span><span style="display:flex;"><span>PRETTY_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Flatcar Linux by Kinvolk 2079.6.0 (Rhyolite)&#34;</span>
+</span></span><span style="display:flex;"><span>ANSI_COLOR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;38;5;75&#34;</span>
+</span></span><span style="display:flex;"><span>HOME_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://flatcar-linux.org/&#34;</span>
+</span></span><span style="display:flex;"><span>BUG_REPORT_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://issues.flatcar-linux.org&#34;</span>
+</span></span><span style="display:flex;"><span>FLATCAR_BOARD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;amd64-usr&#34;</span>
+</span></span></code></pre></div><p>And here is the running container in another tab to which I want to copy the file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker run -it fedora bash
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e">#</span>
+</span></span></code></pre></div><p><strong>Note</strong>: All the console with shell prompt <code>[root@0d6d865626ff /]#</code> means that the command is run inside the container.</p>
 <p>I can always run the <code>docker cp</code> command like following to copy file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker ps
-CONTAINER ID        IMAGE                                     COMMAND                  CREATED              STATUS              PORTS               NAMES
-0d6d865626ff        fedora                                    <span style="color:#e6db74">&#34;bash&#34;</span>                   About a minute ago   Up About a minute                       hardcore_roentgen
-$ docker cp script.sh hardcore_roentgen:/
-</code></pre></div><p>Now if I check it from the container:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># ls / | grep script</span>
-script.sh
-</code></pre></div><p>Let&rsquo;s clean up the file and use another easier and container runtime agnostic method to do the same.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># rm script.sh</span>
-rm: remove regular file <span style="color:#e6db74">&#39;script.sh&#39;</span>? y
-<span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># ls /</span>
-bin  boot  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-</code></pre></div><p>To figure out the file system root of the container process let&rsquo;s start a <code>sleep</code> process.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># sleep 3000</span>
-
-</code></pre></div><p>Now the <code>sleep</code> process will help us identify the PID of this process on the host.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ps aufx | grep sleep
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root      <span style="color:#ae81ff">1668</span>  0.0  0.0   <span style="color:#ae81ff">5252</span>   <span style="color:#ae81ff">692</span> pts/0    S+   16:47   0:00          <span style="color:#ae81ff">\_</span> sleep <span style="color:#ae81ff">3000</span>
-</code></pre></div><p>Since we figured out the PID of the process to be <code>1668</code>, now let&rsquo;s copy the file to the root of the container by running following command. Down here I have used the PID that I got output of above, replace it with the PID you get for your process.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo cp -v ./script.sh /proc/1668/root/
-<span style="color:#e6db74">&#39;./script.sh&#39;</span> -&gt; <span style="color:#e6db74">&#39;/proc/1668/root/script.sh&#39;</span>
-</code></pre></div><p>Now we can stop the sleep process we started earlier in the container see in the root that the file has been copied successfully.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># sleep 3000</span>
-^C
-<span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># ls / | grep script</span>
-script.sh
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker ps
+</span></span><span style="display:flex;"><span>CONTAINER ID        IMAGE                                     COMMAND                  CREATED              STATUS              PORTS               NAMES
+</span></span><span style="display:flex;"><span>0d6d865626ff        fedora                                    <span style="color:#e6db74">&#34;bash&#34;</span>                   About a minute ago   Up About a minute                       hardcore_roentgen
+</span></span><span style="display:flex;"><span>$ docker cp script.sh hardcore_roentgen:/
+</span></span></code></pre></div><p>Now if I check it from the container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># ls / | grep script</span>
+</span></span><span style="display:flex;"><span>script.sh
+</span></span></code></pre></div><p>Let&rsquo;s clean up the file and use another easier and container runtime agnostic method to do the same.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># rm script.sh</span>
+</span></span><span style="display:flex;"><span>rm: remove regular file <span style="color:#e6db74">&#39;script.sh&#39;</span>? y
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># ls /</span>
+</span></span><span style="display:flex;"><span>bin  boot  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+</span></span></code></pre></div><p>To figure out the file system root of the container process let&rsquo;s start a <code>sleep</code> process.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># sleep 3000</span>
+</span></span></code></pre></div><p>Now the <code>sleep</code> process will help us identify the PID of this process on the host.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ps aufx | grep sleep
+</span></span><span style="display:flex;"><span>USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+</span></span><span style="display:flex;"><span>root      <span style="color:#ae81ff">1668</span>  0.0  0.0   <span style="color:#ae81ff">5252</span>   <span style="color:#ae81ff">692</span> pts/0    S+   16:47   0:00          <span style="color:#ae81ff">\_</span> sleep <span style="color:#ae81ff">3000</span>
+</span></span></code></pre></div><p>Since we figured out the PID of the process to be <code>1668</code>, now let&rsquo;s copy the file to the root of the container by running following command. Down here I have used the PID that I got output of above, replace it with the PID you get for your process.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo cp -v ./script.sh /proc/1668/root/
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;./script.sh&#39;</span> -&gt; <span style="color:#e6db74">&#39;/proc/1668/root/script.sh&#39;</span>
+</span></span></code></pre></div><p>Now we can stop the sleep process we started earlier in the container see in the root that the file has been copied successfully.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># sleep 3000</span>
+</span></span><span style="display:flex;"><span>^C
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@0d6d865626ff /<span style="color:#f92672">]</span><span style="color:#75715e"># ls / | grep script</span>
+</span></span><span style="display:flex;"><span>script.sh
+</span></span></code></pre></div><hr>
 <h1 id="video-of-above-steps">Video of above steps</h1>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -349,7 +355,7 @@ script.sh
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -391,52 +397,52 @@ script.sh
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -673,14 +679,14 @@ script.sh
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;

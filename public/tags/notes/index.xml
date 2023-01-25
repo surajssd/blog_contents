@@ -14,7 +14,7 @@
       
       <guid>https://suraj.io/post/2021/02/k8s-bootstrap-token/</guid>
       <description>Photo by Jordan Harrison from Unsplash.
- This blog is a recap of my old blog &amp;ldquo;Add new node to Kubernetes cluster with bootstrap token&amp;rdquo;. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.</description>
+This blog is a recap of my old blog &amp;ldquo;Add new node to Kubernetes cluster with bootstrap token&amp;rdquo;. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.</description>
     </item>
     
     <item>
@@ -43,7 +43,7 @@ Cons of the Traditional Method The round trip time during development and testin
       <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
       
       <guid>https://suraj.io/post/being-productive-with-git/</guid>
-      <description>Contents  Introduction Bash Aliases  Configuration Installation   Global Git Configuration  Configuration Installation   Repository Specific Git Settings  Configuration Installation   Bash Git Prompt  Configuration Installation   Git Push PR Reviews  Configuration Installation   Demo Conclusion  Introduction Git is a day to day tool for version control. It has become a de facto method of source code versioning, it has become ubiquitous with development and its an essential skill for a programmer.</description>
+      <description>Contents Introduction Bash Aliases Configuration Installation Global Git Configuration Configuration Installation Repository Specific Git Settings Configuration Installation Bash Git Prompt Configuration Installation Git Push PR Reviews Configuration Installation Demo Conclusion Introduction Git is a day to day tool for version control. It has become a de facto method of source code versioning, it has become ubiquitous with development and its an essential skill for a programmer. I use it all the time.</description>
     </item>
     
     <item>
@@ -147,11 +147,12 @@ Downloading Kedge The configurations defined for setting up this cluster is writ
       
       <guid>https://suraj.io/post/vscode-shortcuts/</guid>
       <description>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
-Shortcuts  Toggle side bar  Ctrl + B
- Project explorer in side bar  Ctrl + Shift + E
- Project wide search in side bar  Ctrl + Shift + F
- Source control in side bar  Ctrl + Shift + G
- Copy entire line  Ctrl + C (without any selection)</description>
+Shortcuts Toggle side bar Ctrl + B
+Project explorer in side bar Ctrl + Shift + E
+Project wide search in side bar Ctrl + Shift + F
+Source control in side bar Ctrl + Shift + G
+Copy entire line Ctrl + C (without any selection)
+Delete entire line Ctrl + Shift + K</description>
     </item>
     
     <item>
@@ -172,7 +173,7 @@ mkdir &amp;#34;${HOME}/.npm-packages&amp;#34; echo &amp;#39;prefix=${HOME}/.npm-
       
       <guid>https://suraj.io/post/using-crio-with-k8s-single-node/</guid>
       <description>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
-Installing OS dependencies dnf -y install \  go \  git \  btrfs-progs-devel \  device-mapper-devel \  glib2-devel \  glibc-devel \  glibc-static \  gpgme-devel \  libassuan-devel \  libgpg-error-devel \  libseccomp-devel \  libselinux-devel \  pkgconfig \  wget \  etcd \  iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &amp;#39;GOPATH=~/go&amp;#39; &amp;gt;&amp;gt; ~/.</description>
+Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &amp;#39;GOPATH=~/go&amp;#39; &amp;gt;&amp;gt; ~/.</description>
     </item>
     
     <item>
@@ -182,11 +183,11 @@ Installing OS dependencies dnf -y install \  go \  git \  btrfs-progs-devel \  d
       
       <guid>https://suraj.io/post/git-notes/</guid>
       <description>Notes about using git.
-Tips and tricks  Switch branches $ git checkout &amp;lt;branch&amp;gt;  status $ git status -sb Show status in short format and also give branch info
- show $ git show Shows log message and diff about the commit you are on.
- log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go Get logs on file between line numbers.
+Tips and tricks Switch branches $ git checkout &amp;lt;branch&amp;gt; status $ git status -sb Show status in short format and also give branch info
+show $ git show Shows log message and diff about the commit you are on.
+log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go Get logs on file between line numbers.
 $ git log --graph --abbrev-commit Show graph in logs.
- commit $ git add -p Commit only parts of file.</description>
+commit $ git add -p Commit only parts of file.</description>
     </item>
     
     <item>
@@ -196,10 +197,10 @@ $ git log --graph --abbrev-commit Show graph in logs.
       
       <guid>https://suraj.io/post/intellij-shortcuts/</guid>
       <description>Note: This is a living document and will be updated as I discover new things.
-Shortcuts  Ctrl + Shift + A  Find any action in IDE
- Ctrl + Shift + F  Find in Path
- Alt + 1  Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
- Shift + Insert in Project window  Here you can add new file to the project.</description>
+Shortcuts Ctrl + Shift + A Find any action in IDE
+Ctrl + Shift + F Find in Path
+Alt + 1 Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
+Shift + Insert in Project window Here you can add new file to the project. The filename could be the entire path, so the intermediate directories will be created for you.</description>
     </item>
     
   </channel>

