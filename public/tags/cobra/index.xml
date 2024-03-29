@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>cobra on Suraj Deshmukh</title>
+    <title>Cobra on Suraj Deshmukh</title>
     <link>https://suraj.io/tags/cobra/</link>
-    <description>Recent content in cobra on Suraj Deshmukh</description>
+    <description>Recent content in Cobra on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 04 Jan 2019 01:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/cobra/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Jan 2019 01:00:51 +0530</lastBuildDate>
+    <atom:link href="https://suraj.io/tags/cobra/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cobra and Persistentflags gotchas</title>
       <link>https://suraj.io/post/cobra-persistent-flag/</link>
       <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/post/cobra-persistent-flag/</guid>
-      <description>If you are using cobra cmd line library for golang applications and it&amp;rsquo;s PersistentFlags and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.
-All the code referenced here can be found here https://github.</description>
+      <description>If you are using cobra cmd line library for golang applications and it&amp;rsquo;s PersistentFlags and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.&#xA;All the code referenced here can be found here https://github.</description>
     </item>
-    
   </channel>
 </rss>

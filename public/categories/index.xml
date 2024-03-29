@@ -6,438 +6,343 @@
     <description>Recent content in Categories on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 29 Oct 2021 11:05:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Oct 2021 11:05:07 +0530</lastBuildDate>
+    <atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>non-tech</title>
+      <title>Non-Tech</title>
       <link>https://suraj.io/categories/non-tech/</link>
       <pubDate>Fri, 29 Oct 2021 11:05:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/non-tech/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>book-review</title>
+      <title>Book-Review</title>
       <link>https://suraj.io/categories/book-review/</link>
       <pubDate>Tue, 26 Oct 2021 09:21:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/book-review/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>productivity</title>
+      <title>Productivity</title>
       <link>https://suraj.io/categories/productivity/</link>
       <pubDate>Sat, 11 Sep 2021 17:09:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/productivity/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>cka</title>
+      <title>Cka</title>
       <link>https://suraj.io/categories/cka/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/cka/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>cks</title>
+      <title>Cks</title>
       <link>https://suraj.io/categories/cks/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/cks/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>kubernetes</title>
+      <title>Kubernetes</title>
       <link>https://suraj.io/categories/kubernetes/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/kubernetes/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>security</title>
+      <title>Security</title>
       <link>https://suraj.io/categories/security/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/security/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>linux</title>
+      <title>Linux</title>
       <link>https://suraj.io/categories/linux/</link>
       <pubDate>Sat, 19 Jun 2021 16:16:00 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/linux/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>systemd</title>
+      <title>Systemd</title>
       <link>https://suraj.io/categories/systemd/</link>
       <pubDate>Sat, 19 Jun 2021 16:16:00 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/systemd/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>golang</title>
+      <title>Golang</title>
       <link>https://suraj.io/categories/golang/</link>
       <pubDate>Sun, 30 May 2021 09:40:00 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/golang/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>activism</title>
+      <title>Activism</title>
       <link>https://suraj.io/categories/activism/</link>
       <pubDate>Mon, 12 Apr 2021 07:07:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/activism/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>desktop</title>
+      <title>Desktop</title>
       <link>https://suraj.io/categories/desktop/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/desktop/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>monitoring</title>
+      <title>Monitoring</title>
       <link>https://suraj.io/categories/monitoring/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/monitoring/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>prometheus</title>
+      <title>Prometheus</title>
       <link>https://suraj.io/categories/prometheus/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/prometheus/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>meetup</title>
+      <title>Meetup</title>
       <link>https://suraj.io/categories/meetup/</link>
       <pubDate>Wed, 17 Mar 2021 07:07:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/meetup/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>KMS</title>
       <link>https://suraj.io/categories/kms/</link>
       <pubDate>Tue, 23 Feb 2021 09:07:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/kms/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>notion</title>
+      <title>Notion</title>
       <link>https://suraj.io/categories/notion/</link>
       <pubDate>Tue, 23 Feb 2021 09:07:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/notion/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>certs</title>
+      <title>Certs</title>
       <link>https://suraj.io/categories/certs/</link>
       <pubDate>Sat, 06 Feb 2021 10:25:41 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/certs/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>notes</title>
+      <title>Notes</title>
       <link>https://suraj.io/categories/notes/</link>
       <pubDate>Sat, 06 Feb 2021 10:25:41 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/notes/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>containers</title>
+      <title>Containers</title>
       <link>https://suraj.io/categories/containers/</link>
       <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/containers/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>flatcar</title>
+      <title>Flatcar</title>
       <link>https://suraj.io/categories/flatcar/</link>
       <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/flatcar/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>kubeadm</title>
+      <title>Kubeadm</title>
       <link>https://suraj.io/categories/kubeadm/</link>
       <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/kubeadm/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>bash</title>
+      <title>Bash</title>
       <link>https://suraj.io/categories/bash/</link>
       <pubDate>Sat, 23 Jan 2021 10:10:41 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/bash/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>programming</title>
+      <title>Programming</title>
       <link>https://suraj.io/categories/programming/</link>
       <pubDate>Sun, 17 Jan 2021 12:28:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/programming/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>lokomotive</title>
+      <title>Lokomotive</title>
       <link>https://suraj.io/categories/lokomotive/</link>
       <pubDate>Sat, 16 Jan 2021 13:10:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/lokomotive/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>fedora</title>
+      <title>Fedora</title>
       <link>https://suraj.io/categories/fedora/</link>
       <pubDate>Mon, 11 Jan 2021 17:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/fedora/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>configuration</title>
+      <title>Configuration</title>
       <link>https://suraj.io/categories/configuration/</link>
       <pubDate>Sat, 29 Aug 2020 15:33:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/configuration/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>jobs</title>
+      <title>Jobs</title>
       <link>https://suraj.io/categories/jobs/</link>
       <pubDate>Sat, 29 Aug 2020 15:33:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/jobs/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>git</title>
+      <title>Git</title>
       <link>https://suraj.io/categories/git/</link>
       <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/git/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>backup</title>
+      <title>Backup</title>
       <link>https://suraj.io/categories/backup/</link>
       <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/backup/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>packaging</title>
+      <title>Packaging</title>
       <link>https://suraj.io/categories/packaging/</link>
       <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/packaging/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>docker</title>
+      <title>Docker</title>
       <link>https://suraj.io/categories/docker/</link>
       <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/docker/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>host</title>
+      <title>Host</title>
       <link>https://suraj.io/categories/host/</link>
       <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/host/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>talks</title>
+      <title>Talks</title>
       <link>https://suraj.io/categories/talks/</link>
       <pubDate>Mon, 22 Apr 2019 01:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/talks/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>event_report</title>
+      <title>Event_report</title>
       <link>https://suraj.io/categories/event_report/</link>
       <pubDate>Thu, 21 Mar 2019 01:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/event_report/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>minikube</title>
+      <title>Minikube</title>
       <link>https://suraj.io/categories/minikube/</link>
       <pubDate>Sun, 20 Jan 2019 01:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/minikube/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gnome</title>
+      <title>Gnome</title>
       <link>https://suraj.io/categories/gnome/</link>
       <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/gnome/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>openshift</title>
+      <title>Openshift</title>
       <link>https://suraj.io/categories/openshift/</link>
       <pubDate>Sun, 23 Sep 2018 01:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/openshift/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>selinux</title>
+      <title>Selinux</title>
       <link>https://suraj.io/categories/selinux/</link>
       <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/selinux/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>https</title>
+      <title>Https</title>
       <link>https://suraj.io/categories/https/</link>
       <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/https/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>etcd</title>
+      <title>Etcd</title>
       <link>https://suraj.io/categories/etcd/</link>
       <pubDate>Wed, 11 Jul 2018 01:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/etcd/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>cmd-line</title>
+      <title>Cmd-Line</title>
       <link>https://suraj.io/categories/cmd-line/</link>
       <pubDate>Mon, 02 Jul 2018 08:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/cmd-line/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>ide</title>
+      <title>Ide</title>
       <link>https://suraj.io/categories/ide/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/ide/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>centos</title>
+      <title>Centos</title>
       <link>https://suraj.io/categories/centos/</link>
       <pubDate>Mon, 18 Sep 2017 10:43:46 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/centos/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>vagrant</title>
+      <title>Vagrant</title>
       <link>https://suraj.io/categories/vagrant/</link>
       <pubDate>Mon, 18 Sep 2017 10:43:46 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/vagrant/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gaming</title>
+      <title>Gaming</title>
       <link>https://suraj.io/categories/gaming/</link>
       <pubDate>Fri, 01 Sep 2017 16:03:58 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/gaming/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>kompose</title>
+      <title>Kompose</title>
       <link>https://suraj.io/categories/kompose/</link>
       <pubDate>Sun, 23 Apr 2017 15:57:07 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/kompose/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>project_management</title>
+      <title>Project_management</title>
       <link>https://suraj.io/categories/project_management/</link>
       <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
-      
       <guid>https://suraj.io/categories/project_management/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

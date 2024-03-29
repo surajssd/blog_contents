@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>cks on Suraj Deshmukh</title>
+    <title>Cks on Suraj Deshmukh</title>
     <link>https://suraj.io/tags/cks/</link>
-    <description>Recent content in cks on Suraj Deshmukh</description>
+    <description>Recent content in Cks on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Sep 2021 13:30:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/cks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Sep 2021 13:30:07 +0530</lastBuildDate>
+    <atom:link href="https://suraj.io/tags/cks/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Certified Kubernetes Security Specialist CKS exam tips</title>
       <link>https://suraj.io/post/2021/09/cks-tips/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
-      
       <guid>https://suraj.io/post/2021/09/cks-tips/</guid>
-      <description>I recently cleared the CKS certification exam. So it is incumbent upon me to help you navigate this stress-bound exam. All the tips that are provided are either from accrued knowledge or from personal experience.
-Study Material During the study of CKA almost three years ago, I studied everything from the documentation. Back then, the documentation had less content hence it was comprehensible. But now, to go through the entire documentation was not practical.</description>
+      <description>I recently cleared the CKS certification exam. So it is incumbent upon me to help you navigate this stress-bound exam. All the tips that are provided are either from accrued knowledge or from personal experience.&#xA;Study Material During the study of CKA almost three years ago, I studied everything from the documentation. Back then, the documentation had less content hence it was comprehensible. But now, to go through the entire documentation was not practical.</description>
     </item>
-    
   </channel>
 </rss>

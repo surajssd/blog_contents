@@ -1,51 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on Suraj Deshmukh</title>
+    <title>Linux on Suraj Deshmukh</title>
     <link>https://suraj.io/categories/linux/</link>
-    <description>Recent content in linux on Suraj Deshmukh</description>
+    <description>Recent content in Linux on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 19 Jun 2021 16:16:00 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 19 Jun 2021 16:16:00 +0530</lastBuildDate>
+    <atom:link href="https://suraj.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to create a Systemd daemon quickly?</title>
       <link>https://suraj.io/post/2021/06/systemd-service/</link>
       <pubDate>Sat, 19 Jun 2021 16:16:00 +0530</pubDate>
-      
       <guid>https://suraj.io/post/2021/06/systemd-service/</guid>
       <description>If you have a script or a binary and want to run it as a Systemd service, keep following. This blog will show you how to take any such executable code and run it using Systemd. Sure, you can do similar stuff using Docker as well. Although there are certain downsides of using Docker (alone) for managing the daemons. Systemd is good at log management on the node over a Docker container.</description>
     </item>
-    
     <item>
       <title>Monitor your PC with Prometheus Grafana stack</title>
       <link>https://suraj.io/post/2021/03/node-monitor/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      
       <guid>https://suraj.io/post/2021/03/node-monitor/</guid>
-      <description>How do you monitor your own computer? Of course, using Prometheus, node-exporter and Grafana. You might ask why would you wanna do that when you can simply use the operating system provided, &amp;ldquo;System Monitor&amp;rdquo;. Well, yes, you can use that. But the data you get from the OS System Monitor is coarse-grained. OS system monitor is not configurable, but this stack is.
-It is like running htop but where you can go back in history, unlike htop, which only shows the current state.</description>
+      <description>How do you monitor your own computer? Of course, using Prometheus, node-exporter and Grafana. You might ask why would you wanna do that when you can simply use the operating system provided, &amp;ldquo;System Monitor&amp;rdquo;. Well, yes, you can use that. But the data you get from the OS System Monitor is coarse-grained. OS system monitor is not configurable, but this stack is.&#xA;It is like running htop but where you can go back in history, unlike htop, which only shows the current state.</description>
     </item>
-    
     <item>
       <title>Linux Partitioning Guide</title>
       <link>https://suraj.io/post/fedora-partitioning/</link>
       <pubDate>Mon, 11 Jan 2021 17:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/post/fedora-partitioning/</guid>
-      <description>I use Fedora Linux as my primary desktop OS. Every time there is a fresh install, I find myself confounded on how to partition the OS. So I thought I might as well make a permanent note of how I do it so that I always have a place to come back to.
-Partitioning Scheme This is how I partition my Fedora during installation:
-Partition Mounted On Size Encrypted Filesystem Boot /boot 512M No ext4 Boot EFI /boot/efi 200M No vfat Swap - 1.</description>
+      <description>I use Fedora Linux as my primary desktop OS. Every time there is a fresh install, I find myself confounded on how to partition the OS. So I thought I might as well make a permanent note of how I do it so that I always have a place to come back to.&#xA;Partitioning Scheme This is how I partition my Fedora during installation:&#xA;Partition Mounted On Size Encrypted Filesystem Boot /boot 512M No ext4 Boot EFI /boot/efi 200M No vfat Swap - 1.</description>
     </item>
-    
     <item>
       <title>Project specific scripts</title>
       <link>https://suraj.io/post/project-specific-scripts/</link>
       <pubDate>Sun, 23 Jun 2019 11:57:07 +0530</pubDate>
-      
       <guid>https://suraj.io/post/project-specific-scripts/</guid>
-      <description>There are always scripts that you write to automate some mundane tasks. And then you put that script in a directory that is in your PATH. But what this does is that it pollutes your system global PATH and shows up in places you wouldn&amp;rsquo;t want it to be in.
-I was struggling with this issue for a while and struggling to get a proper solution. But there is a very simple and clever trick to solve this problem.</description>
+      <description>There are always scripts that you write to automate some mundane tasks. And then you put that script in a directory that is in your PATH. But what this does is that it pollutes your system global PATH and shows up in places you wouldn&amp;rsquo;t want it to be in.&#xA;I was struggling with this issue for a while and struggling to get a proper solution. But there is a very simple and clever trick to solve this problem.</description>
     </item>
-    
   </channel>
 </rss>

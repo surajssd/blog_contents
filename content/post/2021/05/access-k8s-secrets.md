@@ -11,8 +11,7 @@ images:
   alt: "Forbidden"
 ---
 
-Photo by [Kyle Glenn]("https://unsplash.com/@kylejglenn") on [Unsplash]("https://unsplash.com").
-
+Photo by [Kyle Glenn](https://unsplash.com/@kylejglenn) on [Unsplash](https://unsplash.com).
 
 You can gain access to any secret that you want in Kubernetes even if you don't have RBAC permissions to get, list or view that secret. All you need is permission that allows you to do anything on pods and an ability to guess the names of secrets. With these two ingredients, here is how you can access any secret out there.
 
@@ -63,11 +62,12 @@ selfsubjectrulesreviews.authorization.k8s.io    []                  []          
 
 **NOTE:** How you gain access to a kubeconfig that has the aforementioned authorisation is out of the scope of this blog. It is possible to gain access somehow to the host and fortuitously gain access to the service account token secret that has previously mentioned permissions.
 
-## Do what you can!
+## Do what you can
 
 Now how do you gain access to secrets with RBAC permissions only for pods? Your social skills and guesswork is going to help you find the name of the secrets. But even if you guess the name of the secret, you cannot access the secret the kubectl way since RBAC won't let you do that. So you will use the only permission you have on the Kubernetes cluster, which is creating pods.
 
 > If you don't have access to the Kubernetes secret but know the name of the Kubernetes secret, you can simply
+>
 > 1) Create a pod.
 > 2) Mount that secret into the pod.
 > 3) Kubelet will happily give it to you regardless of your RBAC permissions to access the secret.

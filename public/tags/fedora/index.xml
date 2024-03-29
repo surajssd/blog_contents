@@ -1,87 +1,61 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>fedora on Suraj Deshmukh</title>
+    <title>Fedora on Suraj Deshmukh</title>
     <link>https://suraj.io/tags/fedora/</link>
-    <description>Recent content in fedora on Suraj Deshmukh</description>
+    <description>Recent content in Fedora on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 11 Jan 2021 17:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/fedora/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Jan 2021 17:00:51 +0530</lastBuildDate>
+    <atom:link href="https://suraj.io/tags/fedora/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux Partitioning Guide</title>
       <link>https://suraj.io/post/fedora-partitioning/</link>
       <pubDate>Mon, 11 Jan 2021 17:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/post/fedora-partitioning/</guid>
-      <description>I use Fedora Linux as my primary desktop OS. Every time there is a fresh install, I find myself confounded on how to partition the OS. So I thought I might as well make a permanent note of how I do it so that I always have a place to come back to.
-Partitioning Scheme This is how I partition my Fedora during installation:
-Partition Mounted On Size Encrypted Filesystem Boot /boot 512M No ext4 Boot EFI /boot/efi 200M No vfat Swap - 1.</description>
+      <description>I use Fedora Linux as my primary desktop OS. Every time there is a fresh install, I find myself confounded on how to partition the OS. So I thought I might as well make a permanent note of how I do it so that I always have a place to come back to.&#xA;Partitioning Scheme This is how I partition my Fedora during installation:&#xA;Partition Mounted On Size Encrypted Filesystem Boot /boot 512M No ext4 Boot EFI /boot/efi 200M No vfat Swap - 1.</description>
     </item>
-    
     <item>
       <title>How to disable your Chrome Ctrl &#43; W keybinding</title>
       <link>https://suraj.io/post/disable-ctrl-w/</link>
       <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/post/disable-ctrl-w/</guid>
       <description>I am about to attempt the CKA exam and it has a browser based terminal. And I am used to this terminal shortcut Ctrl + W which deletes a word. But the same shortcut in browser can close a tab. Since this exam is combination of both I am afraid I might close my exam tab while deleting a word in terminal. Now the only solution to this is disabling the shortcut in chrome.</description>
     </item>
-    
     <item>
       <title>Single node Kubernetes Cluster on Fedora with SELinux enabled</title>
       <link>https://suraj.io/post/single-node-k8s-fedora-selinux/</link>
       <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/post/single-node-k8s-fedora-selinux/</guid>
-      <description>Start a single node fedora machine, using whatever method but I have used this Vagrantfile to do it:
-# -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(&amp;#34;2&amp;#34;) do |config| config.vm.define &amp;#34;fedora&amp;#34; do |fedora| fedora.vm.box = &amp;#34;fedora/28-cloud-base&amp;#34; config.vm.hostname = &amp;#34;fedora&amp;#34; end config.vm.provider &amp;#34;virtualbox&amp;#34; do |virtualbox, override| virtualbox.memory = 4096 virtualbox.cpus = 4 end config.vm.provision &amp;#34;shell&amp;#34;, privileged: false, inline: &amp;lt;&amp;lt;-SHELL echo &amp;#39;127.0.0.1 localhost&amp;#39; | cat - /etc/hosts &amp;gt; temp &amp;amp;&amp;amp; sudo mv temp /etc/hosts SHELL end Now start it and ssh into it:</description>
+      <description>Start a single node fedora machine, using whatever method but I have used this Vagrantfile to do it:&#xA;# -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(&amp;#34;2&amp;#34;) do |config| config.vm.define &amp;#34;fedora&amp;#34; do |fedora| fedora.vm.box = &amp;#34;fedora/28-cloud-base&amp;#34; config.vm.hostname = &amp;#34;fedora&amp;#34; end config.vm.provider &amp;#34;virtualbox&amp;#34; do |virtualbox, override| virtualbox.memory = 4096 virtualbox.cpus = 4 end config.vm.provision &amp;#34;shell&amp;#34;, privileged: false, inline: &amp;lt;&amp;lt;-SHELL echo &amp;#39;127.0.0.1 localhost&amp;#39; | cat - /etc/hosts &amp;gt; temp &amp;amp;&amp;amp; sudo mv temp /etc/hosts SHELL end Now start it and ssh into it:</description>
     </item>
-    
     <item>
       <title>Sharing Vagrant Box offline</title>
       <link>https://suraj.io/post/move-vagrant-boxes/</link>
       <pubDate>Mon, 18 Sep 2017 10:43:46 +0530</pubDate>
-      
       <guid>https://suraj.io/post/move-vagrant-boxes/</guid>
-      <description>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don&amp;rsquo;t have internet to download it, how do you share it?
-You will need to export the box from machine that has it downloaded already. So on machine with boxes:
-$ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705) I wanted to share fedora/26-cloud-base box to another machine.</description>
+      <description>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don&amp;rsquo;t have internet to download it, how do you share it?&#xA;You will need to export the box from machine that has it downloaded already. So on machine with boxes:&#xA;$ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705) I wanted to share fedora/26-cloud-base box to another machine.</description>
     </item>
-    
     <item>
       <title>rpm Notes</title>
       <link>https://suraj.io/post/rpm-notes/</link>
       <pubDate>Fri, 24 Mar 2017 10:35:54 +0530</pubDate>
-      
       <guid>https://suraj.io/post/rpm-notes/</guid>
-      <description>This post will get you through all the steps needed for doing RPM packaging.
-Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG My Notes Start reading from: Fedora packager&amp;rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros. $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch To see all macros on the system: $ rpm --showrc Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package $ rpm -qip .</description>
+      <description>This post will get you through all the steps needed for doing RPM packaging.&#xA;Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG My Notes Start reading from: Fedora packager&amp;rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros. $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch To see all macros on the system: $ rpm --showrc Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package $ rpm -qip .</description>
     </item>
-    
     <item>
       <title>Packaging &#39;kompose&#39; for centos paas sig</title>
       <link>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</link>
       <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
-      
       <guid>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</guid>
-      <description>Note: This is a living document and will be updated from time to time.
-Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
-Setup your machine Install packages needed
-sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager Setup certs</description>
+      <description>Note: This is a living document and will be updated from time to time.&#xA;Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.&#xA;Setup your machine Install packages needed&#xA;sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager Setup certs</description>
     </item>
-    
     <item>
       <title>Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</title>
       <link>https://suraj.io/post/test-kompose/</link>
       <pubDate>Tue, 14 Mar 2017 00:31:57 +0530</pubDate>
-      
       <guid>https://suraj.io/post/test-kompose/</guid>
-      <description>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
-Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
-Starting the environment:
-docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
-# Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.</description>
+      <description>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.&#xA;Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.&#xA;Starting the environment:&#xA;docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:&#xA;# Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.</description>
     </item>
-    
   </channel>
 </rss>

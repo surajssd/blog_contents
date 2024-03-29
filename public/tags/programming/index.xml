@@ -1,80 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>programming on Suraj Deshmukh</title>
+    <title>Programming on Suraj Deshmukh</title>
     <link>https://suraj.io/tags/programming/</link>
-    <description>Recent content in programming on Suraj Deshmukh</description>
+    <description>Recent content in Programming on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 17 Jan 2021 12:28:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Jan 2021 12:28:51 +0530</lastBuildDate>
+    <atom:link href="https://suraj.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monitor releases of your favourite software</title>
       <link>https://suraj.io/post/monitor-releases-of-your-favourite-software/</link>
       <pubDate>Sun, 17 Jan 2021 12:28:51 +0530</pubDate>
-      
       <guid>https://suraj.io/post/monitor-releases-of-your-favourite-software/</guid>
-      <description>There are various ways to know about the release of your favourite new software, follow the mailing list, check the Github release page periodically, follow the project&amp;rsquo;s Twitter handle, etc. But do you know there is even more reliable way to track the releases of your favourite software released on Github.
-Github Releases and RSS feeds For every repository on Github, if the project is posting their releases, you can follow the RSS feed of that project&amp;rsquo;s release.</description>
+      <description>There are various ways to know about the release of your favourite new software, follow the mailing list, check the Github release page periodically, follow the project&amp;rsquo;s Twitter handle, etc. But do you know there is even more reliable way to track the releases of your favourite software released on Github.&#xA;Github Releases and RSS feeds For every repository on Github, if the project is posting their releases, you can follow the RSS feed of that project&amp;rsquo;s release.</description>
     </item>
-    
     <item>
       <title>Cobra and Persistentflags gotchas</title>
       <link>https://suraj.io/post/cobra-persistent-flag/</link>
       <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/post/cobra-persistent-flag/</guid>
-      <description>If you are using cobra cmd line library for golang applications and it&amp;rsquo;s PersistentFlags and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.
-All the code referenced here can be found here https://github.</description>
+      <description>If you are using cobra cmd line library for golang applications and it&amp;rsquo;s PersistentFlags and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.&#xA;All the code referenced here can be found here https://github.</description>
     </item>
-    
     <item>
       <title>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</title>
       <link>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</link>
       <pubDate>Wed, 07 Mar 2018 02:21:49 +0530</pubDate>
-      
       <guid>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</guid>
       <description>Test Fixtures &amp;ldquo;go test&amp;rdquo; sets pwd as package directory Test Helpers should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures Configurability Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It&amp;rsquo;s ok to make these configs unexported so only tests can set them.</description>
     </item>
-    
     <item>
       <title>Methods that satisfy interfaces in golang</title>
       <link>https://suraj.io/post/golang-methods-interfaces/</link>
       <pubDate>Fri, 23 Feb 2018 08:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/post/golang-methods-interfaces/</guid>
-      <description>Pointer receiver For a struct User with a method Work with pointer receiver.
-type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &amp;#34;has worked for&amp;#34;, u.Period, &amp;#34;hrs.&amp;#34;) } func main() { uval := User{&amp;#34;UserVal&amp;#34;, 5} uval.Work() pval := &amp;amp;User{&amp;#34;UserPtr&amp;#34;, 6} pval.Work() } See on go playground.
-output:
-UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</description>
+      <description>Pointer receiver For a struct User with a method Work with pointer receiver.&#xA;type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &amp;#34;has worked for&amp;#34;, u.Period, &amp;#34;hrs.&amp;#34;) } func main() { uval := User{&amp;#34;UserVal&amp;#34;, 5} uval.Work() pval := &amp;amp;User{&amp;#34;UserPtr&amp;#34;, 6} pval.Work() } See on go playground.&#xA;output:&#xA;UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</description>
     </item>
-    
     <item>
       <title>vscode Shortcuts</title>
       <link>https://suraj.io/post/vscode-shortcuts/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/post/vscode-shortcuts/</guid>
-      <description>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
-Shortcuts Toggle side bar Ctrl + B
-Project explorer in side bar Ctrl + Shift + E
-Project wide search in side bar Ctrl + Shift + F
-Source control in side bar Ctrl + Shift + G
-Copy entire line Ctrl + C (without any selection)
-Delete entire line Ctrl + Shift + K</description>
+      <description>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.&#xA;Shortcuts Toggle side bar Ctrl + B&#xA;Project explorer in side bar Ctrl + Shift + E&#xA;Project wide search in side bar Ctrl + Shift + F&#xA;Source control in side bar Ctrl + Shift + G&#xA;Copy entire line Ctrl + C (without any selection)&#xA;Delete entire line Ctrl + Shift + K</description>
     </item>
-    
     <item>
       <title>Intellij Shortcuts</title>
       <link>https://suraj.io/post/intellij-shortcuts/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
-      
       <guid>https://suraj.io/post/intellij-shortcuts/</guid>
-      <description>Note: This is a living document and will be updated as I discover new things.
-Shortcuts Ctrl + Shift + A Find any action in IDE
-Ctrl + Shift + F Find in Path
-Alt + 1 Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
-Shift + Insert in Project window Here you can add new file to the project. The filename could be the entire path, so the intermediate directories will be created for you.</description>
+      <description>Note: This is a living document and will be updated as I discover new things.&#xA;Shortcuts Ctrl + Shift + A Find any action in IDE&#xA;Ctrl + Shift + F Find in Path&#xA;Alt + 1 Open project navigator. You can search here, just start typing here, after the project navigator window is opened.&#xA;Shift + Insert in Project window Here you can add new file to the project. The filename could be the entire path, so the intermediate directories will be created for you.</description>
     </item>
-    
   </channel>
 </rss>

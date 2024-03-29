@@ -1,44 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>openshift on Suraj Deshmukh</title>
+    <title>Openshift on Suraj Deshmukh</title>
     <link>https://suraj.io/categories/openshift/</link>
-    <description>Recent content in openshift on Suraj Deshmukh</description>
+    <description>Recent content in Openshift on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Sep 2018 01:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/openshift/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Sep 2018 01:00:51 +0530</lastBuildDate>
+    <atom:link href="https://suraj.io/categories/openshift/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adding new worker to existing Kubernetes cluster</title>
       <link>https://suraj.io/post/add-new-k8s-node-manually/</link>
       <pubDate>Sun, 23 Sep 2018 01:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/post/add-new-k8s-node-manually/</guid>
-      <description>To setup a multi-node Kubernetes cluster just run this script and you will have a cluster with 3 masters and 3 workers.
-$ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.20 &amp;lt;none&amp;gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.21 &amp;lt;none&amp;gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.22 &amp;lt;none&amp;gt; Ubuntu 18.</description>
+      <description>To setup a multi-node Kubernetes cluster just run this script and you will have a cluster with 3 masters and 3 workers.&#xA;$ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.20 &amp;lt;none&amp;gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.21 &amp;lt;none&amp;gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.22 &amp;lt;none&amp;gt; Ubuntu 18.</description>
     </item>
-    
     <item>
       <title>HostPath volumes and it&#39;s problems</title>
       <link>https://suraj.io/post/k8s-hostpat-nuke-nodes/</link>
       <pubDate>Mon, 10 Sep 2018 01:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/post/k8s-hostpat-nuke-nodes/</guid>
-      <description>This post will demonstrate how Kubernetes HostPath volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.
-I have a 3-master and 3-node cluster and setup using this script, running in a Vagrant environment.
-All the nodes are in ready state:</description>
+      <description>This post will demonstrate how Kubernetes HostPath volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.&#xA;I have a 3-master and 3-node cluster and setup using this script, running in a Vagrant environment.&#xA;All the nodes are in ready state:</description>
     </item>
-    
     <item>
       <title>Access etcd in OpenShift origin</title>
       <link>https://suraj.io/post/accessing-oc-cluster-up-etcd/</link>
       <pubDate>Wed, 11 Jul 2018 01:00:51 +0530</pubDate>
-      
       <guid>https://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
-      <description>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
-If you are using minishift then get docker environment access of the minishift VM by running following commands.
-eval $(minishift docker-env) &amp;amp;&amp;amp; eval $(minishift oc-env) Exec into the container named origin that runs OpenShift and all the needed services.
-$ docker exec -it origin bash First install the etcdctl needed to talk to etcd.</description>
+      <description>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.&#xA;If you are using minishift then get docker environment access of the minishift VM by running following commands.&#xA;eval $(minishift docker-env) &amp;amp;&amp;amp; eval $(minishift oc-env) Exec into the container named origin that runs OpenShift and all the needed services.&#xA;$ docker exec -it origin bash First install the etcdctl needed to talk to etcd.</description>
     </item>
-    
   </channel>
 </rss>

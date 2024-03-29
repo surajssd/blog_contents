@@ -29,7 +29,7 @@ Don't read something because someone recommended a book. Read things that intere
 
 The reading does not have to be restricted to books only, but blogs can also work. But the benefits that a book provides are immense, it is not condensed like a blog, and you understand concepts with contexts that blogs might not have. The bottom line is knowledge is power. Knowledge comes from reading. Power helps you propel upwards.
 
-{{< tweet 1002068699761659905 >}}
+{{< twitter user="naval" id="1002068699761659905" >}}
 
 ## ✍ Writing
 
@@ -53,7 +53,7 @@ Once you have such a system in place, you will be confident of finishing and see
 
 Since this system acts as a guard rail on what you are doing, it helps you focus and not get distracted by every new shiny thing that comes along and distracts you from your work.
 
-{{< tweet 1159871663460085760 >}}
+{{< twitter user="kelseyhightower" id="1159871663460085760" >}}
 
 Reading the book ["Getting things done by David Allen"](https://suraj.io/post/book-review-getting-things-done/) is a great first thing to do in this direction.
 
