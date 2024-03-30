@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Intellij on Suraj Deshmukh</title>
+    <title>intellij on Suraj Deshmukh</title>
     <link>https://suraj.io/tags/intellij/</link>
-    <description>Recent content in Intellij on Suraj Deshmukh</description>
+    <description>Recent content in intellij on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 17 Mar 2017 14:41:51 +0530</lastBuildDate>
-    <atom:link href="https://suraj.io/tags/intellij/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Mar 2017 14:41:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/intellij/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Intellij Shortcuts</title>
       <link>https://suraj.io/post/intellij-shortcuts/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/intellij-shortcuts/</guid>
-      <description>Note: This is a living document and will be updated as I discover new things.&#xA;Shortcuts Ctrl + Shift + A Find any action in IDE&#xA;Ctrl + Shift + F Find in Path&#xA;Alt + 1 Open project navigator. You can search here, just start typing here, after the project navigator window is opened.&#xA;Shift + Insert in Project window Here you can add new file to the project. The filename could be the entire path, so the intermediate directories will be created for you.</description>
+      <description>Note: This is a living document and will be updated as I discover new things.
+Shortcuts  Ctrl + Shift + A  Find any action in IDE
+ Ctrl + Shift + F  Find in Path
+ Alt + 1  Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
+ Shift + Insert in Project window  Here you can add new file to the project.</description>
     </item>
+    
   </channel>
 </rss>

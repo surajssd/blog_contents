@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Git on Suraj Deshmukh</title>
+    <title>git on Suraj Deshmukh</title>
     <link>https://suraj.io/categories/git/</link>
-    <description>Recent content in Git on Suraj Deshmukh</description>
+    <description>Recent content in git on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 16 Aug 2020 22:00:51 +0530</lastBuildDate>
-    <atom:link href="https://suraj.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Aug 2020 22:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Being Productive with Git</title>
       <link>https://suraj.io/post/being-productive-with-git/</link>
       <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/being-productive-with-git/</guid>
-      <description>Contents Introduction Bash Aliases Configuration Installation Global Git Configuration Configuration Installation Repository Specific Git Settings Configuration Installation Bash Git Prompt Configuration Installation Git Push PR Reviews Configuration Installation Demo Conclusion Introduction Git is a day to day tool for version control. It has become a de facto method of source code versioning, it has become ubiquitous with development and its an essential skill for a programmer. I use it all the time.</description>
+      <description>Contents  Introduction Bash Aliases  Configuration Installation   Global Git Configuration  Configuration Installation   Repository Specific Git Settings  Configuration Installation   Bash Git Prompt  Configuration Installation   Git Push PR Reviews  Configuration Installation   Demo Conclusion  Introduction Git is a day to day tool for version control. It has become a de facto method of source code versioning, it has become ubiquitous with development and its an essential skill for a programmer.</description>
     </item>
+    
     <item>
       <title>Git Notes</title>
       <link>https://suraj.io/post/git-notes/</link>
       <pubDate>Tue, 21 Mar 2017 22:03:48 +0530</pubDate>
+      
       <guid>https://suraj.io/post/git-notes/</guid>
-      <description>Notes about using git.&#xA;Tips and tricks Switch branches $ git checkout &amp;lt;branch&amp;gt; status $ git status -sb Show status in short format and also give branch info&#xA;show $ git show Shows log message and diff about the commit you are on.&#xA;log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go Get logs on file between line numbers.&#xA;$ git log --graph --abbrev-commit Show graph in logs.&#xA;commit $ git add -p Commit only parts of file.</description>
+      <description>Notes about using git.
+Tips and tricks  Switch branches $ git checkout &amp;lt;branch&amp;gt;  status $ git status -sb Show status in short format and also give branch info
+ show $ git show Shows log message and diff about the commit you are on.
+ log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go Get logs on file between line numbers.
+$ git log --graph --abbrev-commit Show graph in logs.
+ commit $ git add -p Commit only parts of file.</description>
     </item>
+    
   </channel>
 </rss>

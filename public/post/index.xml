@@ -6,616 +6,915 @@
     <description>Recent content in Post on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 29 Oct 2021 11:05:07 +0530</lastBuildDate>
-    <atom:link href="https://suraj.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Mar 2024 01:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Suraj Deshmukh&#39;s talks at conferences</title>
+      <link>https://suraj.io/post/surajd-talks-links/</link>
+      <pubDate>Sat, 30 Mar 2024 01:00:51 +0530</pubDate>
+      
+      <guid>https://suraj.io/post/surajd-talks-links/</guid>
+      <description>Fortifying AI Security in Kubernetes with Confidential Containers (CoCo) - Kubecon Europe 2024    Memory Armor for SPIRE: Fortifying SPIRE with Confidential Containers (CoCo) - Kubecon Europe 2024    Confidential Containers: The Next Frontier in Cloud-NativeSecurity - Cloud Native Rejekts 2023    Building Container Defences Executable at a Time - KCD Bangalore 2022    PSP and Beyond - Kubernetes Bangalore Meetup June 2021    Hardening Kubernetes by Securing Pods - Rootconf 2019    State of Kubernetes Meetups - DevOpsDays India 2017    Making Kubernetes Simple For Developers - Rootconf 2017    Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s</description>
+    </item>
+    
     <item>
       <title>Fight Your Instincts — Your Default Behaviour is Hurting You</title>
       <link>https://suraj.io/post/2021/10/dont-be-default/</link>
       <pubDate>Fri, 29 Oct 2021 11:05:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/10/dont-be-default/</guid>
-      <description>Photo by Johannes Plenio on Unsplash.&#xA;We behave in a certain way. It is shaped by various factors like our upbringing, environment, privilege, etc. But most of the time, it is shaped by our instincts. Until pointed out, we continue to act with our instincts. This instinct-driven behavior is our default behavior.&#xA;I am making a case that anyone who has never rebelled against or resisted their default behavior will find it hard to achieve success in this world.</description>
+      <description>Photo by Johannes Plenio on Unsplash.
+We behave in a certain way. It is shaped by various factors like our upbringing, environment, privilege, etc. But most of the time, it is shaped by our instincts. Until pointed out, we continue to act with our instincts. This instinct-driven behavior is our default behavior.
+I am making a case that anyone who has never rebelled against or resisted their default behavior will find it hard to achieve success in this world.</description>
     </item>
+    
     <item>
       <title>Learnings from &#39;Atomic Habits&#39;</title>
       <link>https://suraj.io/post/2021/10/atomic-habits/</link>
       <pubDate>Tue, 26 Oct 2021 09:21:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/10/atomic-habits/</guid>
-      <description>Yet again, this is not a book review, instead, go ahead and read the book Atomic Habits. I can&amp;rsquo;t recommend it enough.&#xA;Written by James Clear, the book is not a theoretical text just talking about habits. Rather, it is a handbook that goes into the depth of how habits form, how they can be fostered, how human evolution hinders good habit formation in today&amp;rsquo;s world, etc. It gives you practical tips and actions on setting good habits and breaking bad ones.</description>
+      <description>Yet again, this is not a book review, instead, go ahead and read the book Atomic Habits. I can&amp;rsquo;t recommend it enough.
+Written by James Clear, the book is not a theoretical text just talking about habits. Rather, it is a handbook that goes into the depth of how habits form, how they can be fostered, how human evolution hinders good habit formation in today&amp;rsquo;s world, etc. It gives you practical tips and actions on setting good habits and breaking bad ones.</description>
     </item>
+    
     <item>
       <title>Unchanging Contexts and Degrading Productivity</title>
       <link>https://suraj.io/post/2021/09/unchanging-context/</link>
       <pubDate>Sat, 11 Sep 2021 17:09:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/09/unchanging-context/</guid>
-      <description>Photo by daan evers on Unsplash.&#xA;Everything feels like work since the pandemic began. But the feeling has been more gnawing for the last couple of months. I have been working from home since 2018, but that was different! The work from home since the pandemic began is pretty adverse.&#xA;The Tragedy of Lost Contexts Everything happens from the same place, things like work, seeing friends, entertainment, conferences, meetup, reading for fun, side project, etc.</description>
+      <description>Photo by daan evers on Unsplash.
+Everything feels like work since the pandemic began. But the feeling has been more gnawing for the last couple of months. I have been working from home since 2018, but that was different! The work from home since the pandemic began is pretty adverse.
+The Tragedy of Lost Contexts Everything happens from the same place, things like work, seeing friends, entertainment, conferences, meetup, reading for fun, side project, etc.</description>
     </item>
+    
     <item>
       <title>Certified Kubernetes Security Specialist CKS exam tips</title>
       <link>https://suraj.io/post/2021/09/cks-tips/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/09/cks-tips/</guid>
-      <description>I recently cleared the CKS certification exam. So it is incumbent upon me to help you navigate this stress-bound exam. All the tips that are provided are either from accrued knowledge or from personal experience.&#xA;Study Material During the study of CKA almost three years ago, I studied everything from the documentation. Back then, the documentation had less content hence it was comprehensible. But now, to go through the entire documentation was not practical.</description>
+      <description>I recently cleared the CKS certification exam. So it is incumbent upon me to help you navigate this stress-bound exam. All the tips that are provided are either from accrued knowledge or from personal experience.
+Study Material During the study of CKA almost three years ago, I studied everything from the documentation. Back then, the documentation had less content hence it was comprehensible. But now, to go through the entire documentation was not practical.</description>
     </item>
+    
     <item>
       <title>Learnings from &#39;Sapiens&#39;</title>
       <link>https://suraj.io/post/2021/08/sapiens/</link>
       <pubDate>Sat, 14 Aug 2021 10:45:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/08/sapiens/</guid>
       <description>This is not a book review. Instead, this is a book recommendation. Please go ahead and buy this book. If you cannot afford to buy the book, please reach out to me. I will help you buy it⁕. This blog will give you a general idea of what this book is about. I will provide some background about the book and the author, followed by the notes from the book.</description>
     </item>
+    
     <item>
       <title>Reading Devices</title>
       <link>https://suraj.io/post/2021/06/reading-devices/</link>
       <pubDate>Wed, 30 Jun 2021 01:45:00 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/06/reading-devices/</guid>
-      <description>Photo by Alvan Nee on Unsplash.&#xA;I use different devices for consuming content from disparate streams, even for books. This post discusses each method&amp;rsquo;s various pros and cons and what fits best in what kind of circumstance.&#xA;You can refer to the table at the end of the post, where I have broken down each comparison aspect.&#xA;Physical Books This method of consuming knowledge became prevalent with Gutenburg&amp;rsquo;s printing press. Getting a new book always gives you that dopamine rush since it has a sense of newness, new cover, the smell of paper, etc.</description>
+      <description>Photo by Alvan Nee on Unsplash.
+I use different devices for consuming content from disparate streams, even for books. This post discusses each method&amp;rsquo;s various pros and cons and what fits best in what kind of circumstance.
+You can refer to the table at the end of the post, where I have broken down each comparison aspect.
+Physical Books This method of consuming knowledge became prevalent with Gutenburg&amp;rsquo;s printing press. Getting a new book always gives you that dopamine rush since it has a sense of newness, new cover, the smell of paper, etc.</description>
     </item>
+    
     <item>
       <title>How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</title>
       <link>https://suraj.io/post/2021/06/automatic-cert-gen/</link>
       <pubDate>Fri, 25 Jun 2021 09:00:00 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/06/automatic-cert-gen/</guid>
-      <description>The previous blog talked about generating self-signed certificates using a binary. It was a manual, cumbersome process where you had to generate the certificates using a tool, embed them into a Kubernetes Secret via Helm chart, and then use it. There is a better way of doing it! Which is what this blog will discuss.&#xA;We will use a Helm chart, which has a couple of Kubernetes Jobs that generates the self-signed certificate, embed them in a Kubernetes Secret and finally update the ValidatingWebhookConfiguration or MutatingWebhookConfiguration of your choice.</description>
+      <description>The previous blog talked about generating self-signed certificates using a binary. It was a manual, cumbersome process where you had to generate the certificates using a tool, embed them into a Kubernetes Secret via Helm chart, and then use it. There is a better way of doing it! Which is what this blog will discuss.
+We will use a Helm chart, which has a couple of Kubernetes Jobs that generates the self-signed certificate, embed them in a Kubernetes Secret and finally update the ValidatingWebhookConfiguration or MutatingWebhookConfiguration of your choice.</description>
     </item>
+    
     <item>
       <title>How to create a Systemd daemon quickly?</title>
       <link>https://suraj.io/post/2021/06/systemd-service/</link>
       <pubDate>Sat, 19 Jun 2021 16:16:00 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/06/systemd-service/</guid>
       <description>If you have a script or a binary and want to run it as a Systemd service, keep following. This blog will show you how to take any such executable code and run it using Systemd. Sure, you can do similar stuff using Docker as well. Although there are certain downsides of using Docker (alone) for managing the daemons. Systemd is good at log management on the node over a Docker container.</description>
     </item>
+    
     <item>
       <title>How to import &#39;any&#39; Kubernetes package into your project?</title>
       <link>https://suraj.io/post/2021/05/k8s-import/</link>
       <pubDate>Sun, 30 May 2021 09:40:00 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/05/k8s-import/</guid>
       <description>The client libraries that Kubernetes ships are meant to be imported, and you definitely don&amp;rsquo;t need this post explaining how to import them in your Golang based project. A simple go get ... should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of &amp;ldquo;technical reasons&amp;rdquo; ? Could you simply add them to your import statements in the .</description>
     </item>
+    
     <item>
       <title>How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</title>
       <link>https://suraj.io/post/2021/05/self-sign-k8s-cert/</link>
       <pubDate>Fri, 21 May 2021 15:33:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/05/self-sign-k8s-cert/</guid>
-      <description>UPDATE: There is a way to generate these certificates automatically. To find out how, read this post.&#xA;If you are writing a webhook server for Kubernetes Admission Controllers like ValidatingAdmissionWebhooks or MutatingAdmissionWebhooks, you must expose it over HTTPS. To run these servers on HTTPS, you need TLS certificates. There are solutions available which you can use to solve this problem, first and foremost that comes to my mind is cert-manager.</description>
+      <description>UPDATE: There is a way to generate these certificates automatically. To find out how, read this post.
+ If you are writing a webhook server for Kubernetes Admission Controllers like ValidatingAdmissionWebhooks or MutatingAdmissionWebhooks, you must expose it over HTTPS. To run these servers on HTTPS, you need TLS certificates. There are solutions available which you can use to solve this problem, first and foremost that comes to my mind is cert-manager.</description>
     </item>
+    
     <item>
       <title>Learnings from &#39;The Psychology of Money&#39;</title>
       <link>https://suraj.io/post/2021/05/learnings-psychology-of-money/</link>
       <pubDate>Thu, 20 May 2021 12:15:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/05/learnings-psychology-of-money/</guid>
-      <description>Photo by Morgan Housel on Unsplash.&#xA;Synopsis of the Book The Psychology of Money, written by Morgan Housel, published in 2020, could be categorised under Psychology, Finance, and Nonfiction. The author wrote an article three years ago which got a lot of traffic hence decided to write a book out of it. Last year I saw that the book was recommended by many folks in my network and on Twitter. All of the recommenders were highly impressed by the book and spoke intensely of it.</description>
+      <description>Photo by Morgan Housel on Unsplash.
+Synopsis of the Book The Psychology of Money, written by Morgan Housel, published in 2020, could be categorised under Psychology, Finance, and Nonfiction. The author wrote an article three years ago which got a lot of traffic hence decided to write a book out of it. Last year I saw that the book was recommended by many folks in my network and on Twitter. All of the recommenders were highly impressed by the book and spoke intensely of it.</description>
     </item>
+    
     <item>
       <title>Mitigation of: Access Any Kubernetes Secret</title>
       <link>https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/</link>
       <pubDate>Thu, 20 May 2021 08:47:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/</guid>
-      <description>In the previous blog, we discussed how any user without RBAC access to a Kubernetes secret can use a trick to access that secret. To mitigate that problem, we will use a validating admission webhook. But before looking at what sorcery this validating admission webhook server is, let us understand how Kubernetes handles the API requests.&#xA;What are admission controllers? All requests going to the Kubernetes API server go through the following four steps:</description>
+      <description>In the previous blog, we discussed how any user without RBAC access to a Kubernetes secret can use a trick to access that secret. To mitigate that problem, we will use a validating admission webhook. But before looking at what sorcery this validating admission webhook server is, let us understand how Kubernetes handles the API requests.
+What are admission controllers? All requests going to the Kubernetes API server go through the following four steps:</description>
     </item>
+    
     <item>
       <title>Access Any Kubernetes Secret</title>
       <link>https://suraj.io/post/2021/05/access-k8s-secrets/</link>
       <pubDate>Sat, 08 May 2021 12:17:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/05/access-k8s-secrets/</guid>
-      <description>Photo by Kyle Glenn on Unsplash.&#xA;You can gain access to any secret that you want in Kubernetes even if you don&amp;rsquo;t have RBAC permissions to get, list or view that secret. All you need is permission that allows you to do anything on pods and an ability to guess the names of secrets. With these two ingredients, here is how you can access any secret out there.&#xA;Nasty User Here is a user called nastyuser who can only do stuff on pod objects.</description>
+      <description>Photo by Kyle Glenn on Unsplash.
+You can gain access to any secret that you want in Kubernetes even if you don&amp;rsquo;t have RBAC permissions to get, list or view that secret. All you need is permission that allows you to do anything on pods and an ability to guess the names of secrets. With these two ingredients, here is how you can access any secret out there.
+Nasty User Here is a user called nastyuser who can only do stuff on pod objects.</description>
     </item>
+    
     <item>
       <title>Religious Rituals Don&#39;t Scale With Population</title>
       <link>https://suraj.io/post/2021/04/rituals-dont-scale/</link>
       <pubDate>Mon, 12 Apr 2021 07:07:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/04/rituals-dont-scale/</guid>
-      <description>There are numerous Hindu festivals celebrated throughout the year. The rituals associated with each festival differ to the extent these festivals are celebrated. I am here to recount the environmental impact of the customs Hindus are involved in.&#xA;Although a ritual associated with each festival and its effect on the environment is insignificant on a small scale. But with Hindus in India being close to a billion (966 million as per the 2011 census, with the population growth rate that might be almost a billion), these rituals don&amp;rsquo;t scale very well.</description>
+      <description>There are numerous Hindu festivals celebrated throughout the year. The rituals associated with each festival differ to the extent these festivals are celebrated. I am here to recount the environmental impact of the customs Hindus are involved in.
+Although a ritual associated with each festival and its effect on the environment is insignificant on a small scale. But with Hindus in India being close to a billion (966 million as per the 2011 census, with the population growth rate that might be almost a billion), these rituals don&amp;rsquo;t scale very well.</description>
     </item>
+    
     <item>
       <title>Monitor your PC with Prometheus Grafana stack</title>
       <link>https://suraj.io/post/2021/03/node-monitor/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/03/node-monitor/</guid>
-      <description>How do you monitor your own computer? Of course, using Prometheus, node-exporter and Grafana. You might ask why would you wanna do that when you can simply use the operating system provided, &amp;ldquo;System Monitor&amp;rdquo;. Well, yes, you can use that. But the data you get from the OS System Monitor is coarse-grained. OS system monitor is not configurable, but this stack is.&#xA;It is like running htop but where you can go back in history, unlike htop, which only shows the current state.</description>
+      <description>How do you monitor your own computer? Of course, using Prometheus, node-exporter and Grafana. You might ask why would you wanna do that when you can simply use the operating system provided, &amp;ldquo;System Monitor&amp;rdquo;. Well, yes, you can use that. But the data you get from the OS System Monitor is coarse-grained. OS system monitor is not configurable, but this stack is.
+It is like running htop but where you can go back in history, unlike htop, which only shows the current state.</description>
     </item>
+    
     <item>
       <title>Kubernetes The Hard Way in &#34;Vagrant&#34;?</title>
       <link>https://suraj.io/post/2021/03/kthw-vagrant/</link>
       <pubDate>Tue, 23 Mar 2021 07:07:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/03/kthw-vagrant/</guid>
-      <description>If you are studying for the Certified Kubernetes Administrator (CKA) exam, you might have come across folks recommending Kelsey Hightower&amp;rsquo;s Kubernetes the Hard Way. It is an excellent first step for someone who has no idea about the components that form a Kubernetes cluster. As the name suggests, it is created so that you learn the Kubernetes building blocks the &amp;ldquo;hard way&amp;rdquo;.&#xA;But all that can be intimidating to someone who hasn&amp;rsquo;t played with Kubernetes ever.</description>
+      <description>If you are studying for the Certified Kubernetes Administrator (CKA) exam, you might have come across folks recommending Kelsey Hightower&amp;rsquo;s Kubernetes the Hard Way. It is an excellent first step for someone who has no idea about the components that form a Kubernetes cluster. As the name suggests, it is created so that you learn the Kubernetes building blocks the &amp;ldquo;hard way&amp;rdquo;.
+But all that can be intimidating to someone who hasn&amp;rsquo;t played with Kubernetes ever.</description>
     </item>
+    
     <item>
       <title>How we manage Kubernetes Bangalore Meetup?</title>
       <link>https://suraj.io/post/2021/03/k8s-blr-meetup/</link>
       <pubDate>Wed, 17 Mar 2021 07:07:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/03/k8s-blr-meetup/</guid>
       <description>I took the reins of the Kubernetes Bangalore Meetup back in 2017. I have been organising the meetup since then. Earlier with Suraj Narwade, Aditya Konarde and now with Prakash Mishra. Over time the meetup has grown a lot, now it boasts about 5000 members. Organising meetup earlier was a straightforward affair, especially with Narwade and Konarde being my colleagues and friends. We could chat about the upcoming meetup at any time we would like, and it was all spontaneous.</description>
     </item>
+    
     <item>
       <title>On Compounder Skills</title>
       <link>https://suraj.io/post/2021/03/compounder-skills/</link>
       <pubDate>Tue, 16 Mar 2021 07:07:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/03/compounder-skills/</guid>
       <description>There are specific skills which you should acquire early on in your life. These skills are the foundational skills. Everything you do after developing these skills becomes better, faster and easier. I call these skills Compounder Skills. Derived from the term &amp;ldquo;Compound Interest&amp;rdquo;. The idea is that once you are laced with a particular compounder skill, you can apply it in various fields of your life. An example of a compounder skill that most humans get exposed to is &amp;ldquo;school education&amp;rdquo;.</description>
     </item>
+    
     <item>
       <title>Importance of Typing Skills</title>
       <link>https://suraj.io/post/2021/02/typing-skills/</link>
       <pubDate>Sun, 28 Feb 2021 07:07:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/02/typing-skills/</guid>
-      <description>Yes, today&amp;rsquo;s topic is typing skills. I think not many people stress about it, but it is a very underrated skill, yet useful in our daily lives.&#xA;I typed the most organic way anybody starts doing it. Look at the keyboard when you are typing and fix mistakes after looking at the monitor. I moved my hand around on the keyboard and only used index fingers to touch the keys as if other fingers were glued together away from the keyboard.</description>
+      <description>Yes, today&amp;rsquo;s topic is typing skills. I think not many people stress about it, but it is a very underrated skill, yet useful in our daily lives.
+I typed the most organic way anybody starts doing it. Look at the keyboard when you are typing and fix mistakes after looking at the monitor. I moved my hand around on the keyboard and only used index fingers to touch the keys as if other fingers were glued together away from the keyboard.</description>
     </item>
+    
     <item>
       <title>My Knowledge Management Journey</title>
       <link>https://suraj.io/post/2021/02/kms-journey/</link>
       <pubDate>Tue, 23 Feb 2021 09:07:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/02/kms-journey/</guid>
-      <description>Photo by Patrick Tomasso on Unsplash.&#xA;If you are reading this, you are definitely a Knowledge Worker. As Knowledge Workers, we rely a lot on the information we know or have access to for our day to day work. Occasionally, we will do the same thing twice, face the situation more than once, want to read that reference or try to understand the insights mentioned in that one particular blog. How do you keep track of such information?</description>
+      <description>Photo by Patrick Tomasso on Unsplash.
+ If you are reading this, you are definitely a Knowledge Worker. As Knowledge Workers, we rely a lot on the information we know or have access to for our day to day work. Occasionally, we will do the same thing twice, face the situation more than once, want to read that reference or try to understand the insights mentioned in that one particular blog.</description>
     </item>
+    
     <item>
       <title>Book: How Innovation Works</title>
       <link>https://suraj.io/post/2021/02/book-hiw-learnings/</link>
       <pubDate>Wed, 10 Feb 2021 21:43:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/02/book-hiw-learnings/</guid>
-      <description>Introduction I recently finished reading the book: &amp;ldquo;How Innovation Works: And Why It Flourishes in Freedom&amp;rdquo; by Matt Ridley. The book was published less than a year ago in May 2020, and it is a short read of fewer than four hundred pages. I am not sure how to categorise this book, it probably falls into business, science and/or technological history.&#xA;While listening to Naval Ravikant&amp;rsquo;s podcast, I found this book when Matt Ridley, the author, was a guest in one episode.</description>
+      <description>Introduction I recently finished reading the book: &amp;ldquo;How Innovation Works: And Why It Flourishes in Freedom&amp;rdquo; by Matt Ridley. The book was published less than a year ago in May 2020, and it is a short read of fewer than four hundred pages. I am not sure how to categorise this book, it probably falls into business, science and/or technological history.
+While listening to Naval Ravikant&amp;rsquo;s podcast, I found this book when Matt Ridley, the author, was a guest in one episode.</description>
     </item>
+    
     <item>
       <title>Enable TLS bootstrapping in a Kubernetes cluster</title>
       <link>https://suraj.io/post/2021/02/k8s-bootstrap-token/</link>
       <pubDate>Sat, 06 Feb 2021 10:25:41 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/02/k8s-bootstrap-token/</guid>
-      <description>Photo by Jordan Harrison from Unsplash.&#xA;This blog is a recap of my old blog &amp;ldquo;Add new node to Kubernetes cluster with bootstrap token&amp;rdquo;. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.</description>
+      <description>Photo by Jordan Harrison from Unsplash.
+ This blog is a recap of my old blog &amp;ldquo;Add new node to Kubernetes cluster with bootstrap token&amp;rdquo;. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.</description>
     </item>
+    
     <item>
       <title>Kubernetes Cluster using Kubeadm on Flatcar Container Linux</title>
       <link>https://suraj.io/post/2021/01/kubeadm-flatcar/</link>
       <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/01/kubeadm-flatcar/</guid>
-      <description>Image Source: Flatcar Linux is now open to the public.&#xA;This blog shows a simple set of commands to install a Kubernetes cluster on Flatcar Container Linux based machines using Kubeadm.&#xA;You might wonder why this blog when one can go to the official documentation and follow the steps? Yep, you are right. You can choose to do that. But this blog has a collection of actions specific to Flatcar Container Linux.</description>
+      <description>Image Source: Flatcar Linux is now open to the public.
+This blog shows a simple set of commands to install a Kubernetes cluster on Flatcar Container Linux based machines using Kubeadm.
+You might wonder why this blog when one can go to the official documentation and follow the steps? Yep, you are right. You can choose to do that. But this blog has a collection of actions specific to Flatcar Container Linux.</description>
     </item>
+    
     <item>
       <title>Exec in container environment</title>
       <link>https://suraj.io/post/2021/01/shell-exec/</link>
       <pubDate>Sat, 23 Jan 2021 10:10:41 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/01/shell-exec/</guid>
-      <description>If you use exec in your container script, then the container or Kubernetes pod might exit after the command that is exec-ed into has exited. But if that&amp;rsquo;s what you wanted, then it&amp;rsquo;s okay. This blog tries to explain how to pass the signals to the applications, how they work differently when invoked uniquely and what to do if the application does handle them.&#xA;What are the &amp;ldquo;Signals&amp;rdquo;? Signals are messages one process can send to another process, mostly used in UNIX like operating systems.</description>
+      <description>If you use exec in your container script, then the container or Kubernetes pod might exit after the command that is exec-ed into has exited. But if that&amp;rsquo;s what you wanted, then it&amp;rsquo;s okay. This blog tries to explain how to pass the signals to the applications, how they work differently when invoked uniquely and what to do if the application does handle them.
+What are the &amp;ldquo;Signals&amp;rdquo;? Signals are messages one process can send to another process, mostly used in UNIX like operating systems.</description>
     </item>
+    
     <item>
       <title>Monitor releases of your favourite software</title>
       <link>https://suraj.io/post/monitor-releases-of-your-favourite-software/</link>
       <pubDate>Sun, 17 Jan 2021 12:28:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/monitor-releases-of-your-favourite-software/</guid>
-      <description>There are various ways to know about the release of your favourite new software, follow the mailing list, check the Github release page periodically, follow the project&amp;rsquo;s Twitter handle, etc. But do you know there is even more reliable way to track the releases of your favourite software released on Github.&#xA;Github Releases and RSS feeds For every repository on Github, if the project is posting their releases, you can follow the RSS feed of that project&amp;rsquo;s release.</description>
+      <description>There are various ways to know about the release of your favourite new software, follow the mailing list, check the Github release page periodically, follow the project&amp;rsquo;s Twitter handle, etc. But do you know there is even more reliable way to track the releases of your favourite software released on Github.
+Github Releases and RSS feeds For every repository on Github, if the project is posting their releases, you can follow the RSS feed of that project&amp;rsquo;s release.</description>
     </item>
+    
     <item>
       <title>Mental models for understanding Kubernetes Pod Security Policy</title>
       <link>https://suraj.io/post/mental-models-for-understanding-kubernetes-pod-security-policy/</link>
       <pubDate>Sat, 16 Jan 2021 13:10:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/mental-models-for-understanding-kubernetes-pod-security-policy/</guid>
       <description>PodSecurityPolicy (PSP) is hard to get right in the first attempt. There has never been a situation when I haven&amp;rsquo;t banged my head to get it working on the cluster. It is a frustrating experience, but it is one of the essential security features of Kubernetes. Some applications have started shipping the PSP configs with their helm charts, but if a helm chart does not ship a PSP config, it must be handcrafted by the cluster-admin to make the application work reliably in the cluster.</description>
     </item>
+    
     <item>
       <title>Linux Partitioning Guide</title>
       <link>https://suraj.io/post/fedora-partitioning/</link>
       <pubDate>Mon, 11 Jan 2021 17:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/fedora-partitioning/</guid>
-      <description>I use Fedora Linux as my primary desktop OS. Every time there is a fresh install, I find myself confounded on how to partition the OS. So I thought I might as well make a permanent note of how I do it so that I always have a place to come back to.&#xA;Partitioning Scheme This is how I partition my Fedora during installation:&#xA;Partition Mounted On Size Encrypted Filesystem Boot /boot 512M No ext4 Boot EFI /boot/efi 200M No vfat Swap - 1.</description>
+      <description>I use Fedora Linux as my primary desktop OS. Every time there is a fresh install, I find myself confounded on how to partition the OS. So I thought I might as well make a permanent note of how I do it so that I always have a place to come back to.
+Partitioning Scheme This is how I partition my Fedora during installation:
+   Partition Mounted On Size Encrypted Filesystem     Boot /boot 512M No ext4   Boot EFI /boot/efi 200M No vfat   Swap - 1.</description>
     </item>
+    
     <item>
       <title>Book Review: How to Take Smart Notes</title>
       <link>https://suraj.io/post/book-review-how-to-take-smart-notes/</link>
       <pubDate>Sat, 28 Nov 2020 21:30:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/book-review-how-to-take-smart-notes/</guid>
       <description>Introduction How to Take Smart Notes: One Simple Technique to Boost Writing, Learning and Thinking – for Students, Academics and Nonfiction Book Writers by Sönke Ahrens is a small (171 pages) non-fiction genre book. The book is a manual explaining Zettlekasten method designed by Niklas Luhmann. Sönke has used straightforward and simple English to explain the concepts. For anyone who is a knowledge curator or wishes to publish non-fictional content in any form (text, video or audio), this book is a must-read.</description>
     </item>
+    
     <item>
       <title>Book Review: Algorithms to Live by — The Computer Science of Human Decisions</title>
       <link>https://suraj.io/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</link>
       <pubDate>Sun, 11 Oct 2020 17:30:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</guid>
       <description>Introduction The book &amp;ldquo;Algorithms to Live by — The Computer Science of Human Decisions&amp;rdquo; is written by &amp;ldquo;Brian Christian and Tom Griffiths&amp;rdquo;. It fits into the genre non-fiction, psychology and computer science. The book is written lucidly. If you have a background in computer science, then this book is easy to follow. The book creates analogies of computer science algorithms with real-life situations. I felt that some metaphors sound good in reading than their application, so if you plan on applying the things explained in the book directly to your life, they might not work.</description>
     </item>
+    
     <item>
       <title>How to gracefully kill Kubernetes Jobs with a sidecar?</title>
       <link>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</link>
       <pubDate>Sat, 29 Aug 2020 15:33:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</guid>
-      <description>Have you ever had a sidecar in your Kubernetes Job? If no, then trust me that you are lucky. If yes, then you will have the frustration of your life. The thing is Kubernetes Jobs are meant to exit on completion. But if you have a long-running sidecar, then that might twist things for Kubernetes and in turn of you.&#xA;Why would you even want a sidecar for Job? Well, one of the most prevalent use case is when using service mesh proxy.</description>
+      <description>Have you ever had a sidecar in your Kubernetes Job? If no, then trust me that you are lucky. If yes, then you will have the frustration of your life. The thing is Kubernetes Jobs are meant to exit on completion. But if you have a long-running sidecar, then that might twist things for Kubernetes and in turn of you.
+Why would you even want a sidecar for Job? Well, one of the most prevalent use case is when using service mesh proxy.</description>
     </item>
+    
     <item>
       <title>Use Configmap for Scripts</title>
       <link>https://suraj.io/post/use-configmap-for-scripts/</link>
       <pubDate>Sat, 22 Aug 2020 21:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/use-configmap-for-scripts/</guid>
-      <description>We generally use some sort of scripts in application container images. They serve various purposes. Some scripts might do an initial setup before the application starts, others may have the whole logic of the container image, etc. Whatever the goal may be the general pattern is to copy the script into the container image, build the image and then the script is available when you consume the image.&#xA;Cons of the Traditional Method The round trip time during development and testing of such script is very long.</description>
+      <description>We generally use some sort of scripts in application container images. They serve various purposes. Some scripts might do an initial setup before the application starts, others may have the whole logic of the container image, etc. Whatever the goal may be the general pattern is to copy the script into the container image, build the image and then the script is available when you consume the image.
+Cons of the Traditional Method The round trip time during development and testing of such script is very long.</description>
     </item>
+    
     <item>
       <title>Being Productive with Git</title>
       <link>https://suraj.io/post/being-productive-with-git/</link>
       <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/being-productive-with-git/</guid>
-      <description>Contents Introduction Bash Aliases Configuration Installation Global Git Configuration Configuration Installation Repository Specific Git Settings Configuration Installation Bash Git Prompt Configuration Installation Git Push PR Reviews Configuration Installation Demo Conclusion Introduction Git is a day to day tool for version control. It has become a de facto method of source code versioning, it has become ubiquitous with development and its an essential skill for a programmer. I use it all the time.</description>
+      <description>Contents  Introduction Bash Aliases  Configuration Installation   Global Git Configuration  Configuration Installation   Repository Specific Git Settings  Configuration Installation   Bash Git Prompt  Configuration Installation   Git Push PR Reviews  Configuration Installation   Demo Conclusion  Introduction Git is a day to day tool for version control. It has become a de facto method of source code versioning, it has become ubiquitous with development and its an essential skill for a programmer.</description>
     </item>
+    
     <item>
       <title>Being Productive with Kubectl</title>
       <link>https://suraj.io/post/being-productive-with-kubectl/</link>
       <pubDate>Sun, 02 Aug 2020 16:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/being-productive-with-kubectl/</guid>
-      <description>This blog will showcase my productivity tips with kubectl . This does not venture into any plugins per se. But only using bash aliases to achieve it.&#xA;Bash Aliases # k8s alias alias k=kubectl alias kg=&amp;#34;kubectl get&amp;#34; alias kgp=&amp;#34;kubectl get pods&amp;#34; alias kgs=&amp;#34;kubectl get services&amp;#34; alias kge=&amp;#34;kubectl get events&amp;#34; alias kgpvc=&amp;#34;kubectl get pvc&amp;#34; alias kgpv=&amp;#34;kubectl get pv&amp;#34; alias kd=&amp;#34;kubectl describe&amp;#34; alias kl=&amp;#34;kubectl logs -f&amp;#34; alias kc=&amp;#34;kubectl create -f&amp;#34; I have above aliases setup in the ~/.</description>
+      <description>This blog will showcase my productivity tips with kubectl . This does not venture into any plugins per se. But only using bash aliases to achieve it.
+Bash Aliases # k8s alias alias k=kubectl alias kg=&amp;#34;kubectl get&amp;#34; alias kgp=&amp;#34;kubectl get pods&amp;#34; alias kgs=&amp;#34;kubectl get services&amp;#34; alias kge=&amp;#34;kubectl get events&amp;#34; alias kgpvc=&amp;#34;kubectl get pvc&amp;#34; alias kgpv=&amp;#34;kubectl get pv&amp;#34; alias kd=&amp;#34;kubectl describe&amp;#34; alias kl=&amp;#34;kubectl logs -f&amp;#34; alias kc=&amp;#34;kubectl create -f&amp;#34; I have above aliases setup in the ~/.</description>
     </item>
+    
     <item>
       <title>How to backup and restore Prometheus?</title>
       <link>https://suraj.io/post/how-to-backup-and-restore-prometheus/</link>
       <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/how-to-backup-and-restore-prometheus/</guid>
-      <description>This blog will show you how to take a backup from a running Prometheus and restore it in some other Prometheus instance. You might ask why would you even want to do something like that? Well, sometimes you want the Prometheus metrics because they were collected for some particular purpose and you want to do some analysis later.&#xA;Prerequisites/Assumptions This blog assumes that you have a Prometheus running that is deployed using prometheus-operator in monitoring namespace.</description>
+      <description>This blog will show you how to take a backup from a running Prometheus and restore it in some other Prometheus instance. You might ask why would you even want to do something like that? Well, sometimes you want the Prometheus metrics because they were collected for some particular purpose and you want to do some analysis later.
+Prerequisites/Assumptions This blog assumes that you have a Prometheus running that is deployed using prometheus-operator in monitoring namespace.</description>
     </item>
+    
     <item>
       <title>Book Review: Getting Things Done</title>
       <link>https://suraj.io/post/book-review-getting-things-done/</link>
       <pubDate>Thu, 30 Jul 2020 16:00:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/book-review-getting-things-done/</guid>
-      <description>Introduction Recently I completed the book called Getting Things Done: The Art of Stress-free Productivity by David Allen. I read the book on my kindle e-reader device, and as the name suggests, it is a self-help category book and about three hundred pages long.&#xA;The book is an extraordinary walkthrough of how to set up a system that will help you navigate your daily tasks without missing any of them. This system then enables you to patch up the crevices of your memory from which day-to-day tasks fall through.</description>
+      <description>Introduction Recently I completed the book called Getting Things Done: The Art of Stress-free Productivity by David Allen. I read the book on my kindle e-reader device, and as the name suggests, it is a self-help category book and about three hundred pages long.
+The book is an extraordinary walkthrough of how to set up a system that will help you navigate your daily tasks without missing any of them. This system then enables you to patch up the crevices of your memory from which day-to-day tasks fall through.</description>
     </item>
+    
     <item>
       <title>Framework for managing random scripts and binaries</title>
       <link>https://suraj.io/post/framework-for-scripts-and-binaries/</link>
       <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/framework-for-scripts-and-binaries/</guid>
-      <description>I always had a conundrum about how to manage the scripts and binaries downloaded randomly from the internet. One way is to put them in the global PATH directory like /usr/local/bin, but I am sceptical about it.&#xA;There are a couple of things I wanted to solve. How do you update these scripts and binaries? How to do it consistently across all my machines? How to make it easier to have my setup available on any new Linux machine(or even container) I setup?</description>
+      <description>I always had a conundrum about how to manage the scripts and binaries downloaded randomly from the internet. One way is to put them in the global PATH directory like /usr/local/bin, but I am sceptical about it.
+There are a couple of things I wanted to solve. How do you update these scripts and binaries? How to do it consistently across all my machines? How to make it easier to have my setup available on any new Linux machine(or even container) I setup?</description>
     </item>
+    
     <item>
       <title>Opinion: Contemporary world vis-à-vis 1984 by George Orwell</title>
       <link>https://suraj.io/post/opinion-contemporary-world-1984-by-george-orwell/</link>
       <pubDate>Sun, 05 Jul 2020 11:30:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/opinion-contemporary-world-1984-by-george-orwell/</guid>
       <description>The book 1984 was written by Geroge Orwell in 1949 as an attempt to demonstrate how democraries can also fall into the trap of totalitarianism. The story in the book showcases a dystopian world in the year 1984, where there are only three countries in the world, and all of them are in a constant power struggle. All three countries have a totalitarian, oligarchic government of their own. But the story in the book is from a country called Oceania, which is ruled by a party called Ingsoc or English Socialism.</description>
     </item>
+    
     <item>
       <title>Book Review of Einstein: His Life and Universe</title>
       <link>https://suraj.io/post/book-review-einstein/</link>
       <pubDate>Sat, 20 Jun 2020 11:30:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/book-review-einstein/</guid>
-      <description>I recently finished this book Einstein: His Life and Universe by Walter Isaacson. And here are my thoughts on the book.&#xA;It&amp;rsquo;s a book that brings the image of Einstein to life.&#xA;Although the book is a biography, it makes a reasonable effort in explaining the physics behind his theories of relativity, photoelectric effect and quantum physics. Physics in the book can be intimidating to someone coming from the non-Scientific background.</description>
+      <description>I recently finished this book Einstein: His Life and Universe by Walter Isaacson. And here are my thoughts on the book.
+It&amp;rsquo;s a book that brings the image of Einstein to life.
+Although the book is a biography, it makes a reasonable effort in explaining the physics behind his theories of relativity, photoelectric effect and quantum physics. Physics in the book can be intimidating to someone coming from the non-Scientific background.</description>
     </item>
+    
     <item>
       <title>Watch Container Traffic Without Exec</title>
       <link>https://suraj.io/post/snoop-on-pod-traffic/</link>
       <pubDate>Sat, 06 Jun 2020 20:30:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/snoop-on-pod-traffic/</guid>
-      <description>Introduction For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.&#xA;But for the developers or operators of such applications, it is hard to debug. Since they lack essential tools or even bash for that matter, but the application&amp;rsquo;s debugging ability should not dictate its production deployment and compromise its security posture.</description>
+      <description>Introduction For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.
+But for the developers or operators of such applications, it is hard to debug. Since they lack essential tools or even bash for that matter, but the application&amp;rsquo;s debugging ability should not dictate its production deployment and compromise its security posture.</description>
     </item>
+    
     <item>
       <title>Enabling Seccomp on your Prometheus Operator and related Pods</title>
       <link>https://suraj.io/post/seccomp-in-kube-state-metrics/</link>
       <pubDate>Tue, 14 Apr 2020 11:57:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/seccomp-in-kube-state-metrics/</guid>
-      <description>Seccomp helps us limit the system calls the process inside container can make. And PodSecurityPolicy is the way to enable it on pods in Kubernetes.&#xA;Prometheus Operator Prometheus Operator makes it really easy to monitor your Kubernetes cluster. To deploy this behemoth, helm chart is the easiest way to do it.&#xA;Almost all the pods that run as a part of Prometheus Operator viz. Prometheus Operator, Prometheus, Alertmanager, Grafana, Kube State Metrics don’t need to run with elevated privileges except Node Exporter.</description>
+      <description>Seccomp helps us limit the system calls the process inside container can make. And PodSecurityPolicy is the way to enable it on pods in Kubernetes.
+Prometheus Operator Prometheus Operator makes it really easy to monitor your Kubernetes cluster. To deploy this behemoth, helm chart is the easiest way to do it.
+Almost all the pods that run as a part of Prometheus Operator viz. Prometheus Operator, Prometheus, Alertmanager, Grafana, Kube State Metrics don’t need to run with elevated privileges except Node Exporter.</description>
     </item>
+    
     <item>
       <title>Capabilities on executables</title>
       <link>https://suraj.io/post/linux-cap-note/</link>
       <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/linux-cap-note/</guid>
-      <description>File capabilities allow users to execute programs with higher privileges. Best example is network utility ping.&#xA;A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn&amp;rsquo;t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.&#xA;$ getcap `which ping` /usr/bin/ping = cap_net_admin,cap_net_raw+p Which normally works as follows:&#xA;$ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1.</description>
+      <description>File capabilities allow users to execute programs with higher privileges. Best example is network utility ping.
+A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn&amp;rsquo;t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.
+$ getcap `which ping` /usr/bin/ping = cap_net_admin,cap_net_raw+p Which normally works as follows:
+$ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1.</description>
     </item>
+    
     <item>
       <title>Root user inside container is root on the host</title>
       <link>https://suraj.io/post/root-in-container-root-on-host/</link>
       <pubDate>Tue, 25 Jun 2019 11:57:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/root-in-container-root-on-host/</guid>
-      <description>Here are simple steps that you can follow to prove that the root user inside container is also root on the host. And how to mitigate this.&#xA;Root in container, root on host I have a host with docker daemon running on it. I start a normal container on it with sleep process as PID1. See in the following output that the container clever_lalande started with sleep process.&#xA;$ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &amp;#34;sleep 9999&amp;#34; 12 seconds ago Up 11 seconds clever_lalande Now let&amp;rsquo;s find out the process sleep on the host.</description>
+      <description>Here are simple steps that you can follow to prove that the root user inside container is also root on the host. And how to mitigate this.
+Root in container, root on host I have a host with docker daemon running on it. I start a normal container on it with sleep process as PID1. See in the following output that the container clever_lalande started with sleep process.
+$ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b  $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &amp;#34;sleep 9999&amp;#34; 12 seconds ago Up 11 seconds clever_lalande Now let&amp;rsquo;s find out the process sleep on the host.</description>
     </item>
+    
     <item>
       <title>Project specific scripts</title>
       <link>https://suraj.io/post/project-specific-scripts/</link>
       <pubDate>Sun, 23 Jun 2019 11:57:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/project-specific-scripts/</guid>
-      <description>There are always scripts that you write to automate some mundane tasks. And then you put that script in a directory that is in your PATH. But what this does is that it pollutes your system global PATH and shows up in places you wouldn&amp;rsquo;t want it to be in.&#xA;I was struggling with this issue for a while and struggling to get a proper solution. But there is a very simple and clever trick to solve this problem.</description>
+      <description>There are always scripts that you write to automate some mundane tasks. And then you put that script in a directory that is in your PATH. But what this does is that it pollutes your system global PATH and shows up in places you wouldn&amp;rsquo;t want it to be in.
+I was struggling with this issue for a while and struggling to get a proper solution. But there is a very simple and clever trick to solve this problem.</description>
     </item>
+    
     <item>
       <title>Copying files to container the generic way</title>
       <link>https://suraj.io/post/copy-to-container-without-docker-cp/</link>
       <pubDate>Fri, 21 Jun 2019 11:57:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/copy-to-container-without-docker-cp/</guid>
-      <description>This blog shows you how you can copy stuff from your host machine to the running container without the docker cp command that we usually use.&#xA;Steps in text Here I have a script on the host, which looks following:&#xA;#!/bin/bash tput bold echo &amp;#34;OS Information:&amp;#34; tput sgr0 echo cat /etc/os-release After running which looks like following:&#xA;$ ls script.sh $ ./script.sh OS Information: NAME=&amp;#34;Flatcar Linux by Kinvolk&amp;#34; ID=flatcar ID_LIKE=coreos VERSION=2079.</description>
+      <description>This blog shows you how you can copy stuff from your host machine to the running container without the docker cp command that we usually use.
+Steps in text Here I have a script on the host, which looks following:
+#!/bin/bash  tput bold echo &amp;#34;OS Information:&amp;#34; tput sgr0 echo  cat /etc/os-release After running which looks like following:
+$ ls script.sh  $ ./script.sh OS Information:  NAME=&amp;#34;Flatcar Linux by Kinvolk&amp;#34; ID=flatcar ID_LIKE=coreos VERSION=2079.</description>
     </item>
+    
     <item>
       <title>Writing your own Seccomp profiles for Docker</title>
       <link>https://suraj.io/post/docker-seccomp-manual/</link>
       <pubDate>Mon, 10 Jun 2019 11:57:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/docker-seccomp-manual/</guid>
-      <description>What is Seccomp? A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</description>
+      <description>What is Seccomp?  A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</description>
     </item>
-    <item>
-      <title>Suraj Deshmukh&#39;s talks at conferences</title>
-      <link>https://suraj.io/post/surajd-talks-links/</link>
-      <pubDate>Mon, 22 Apr 2019 01:00:51 +0530</pubDate>
-      <guid>https://suraj.io/post/surajd-talks-links/</guid>
-      <description>Building Container Defences Executable at a Time PSP and Beyond - Kubernetes Bangalore Meetup June 2021 Hardening Kubernetes by Securing Pods - Rootconf 2019 State of Kubernetes Meetups - DevOpsDays India 2017 Making Kubernetes Simple For Developers - Rootconf 2017 Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s</description>
-    </item>
+    
     <item>
       <title>Kubernetes Bangalore March 2019 Event Report</title>
       <link>https://suraj.io/post/k8s-blr-event-report-2019-03-16/</link>
       <pubDate>Thu, 21 Mar 2019 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/k8s-blr-event-report-2019-03-16/</guid>
-      <description>The Kubernetes Bangalore Meetup was organized at Arvind Internet on Feb 16th 2019. The agenda for the meetup was to teach Kubernetes to the beginners.&#xA;Meetup agenda can be found here.&#xA;The moments from Meetup:&#xA;We go online in sometime here https://t.co/FkwgOx0Tm4&#xA;&amp;mdash; Kubernetes Bangalore (@k8sBLR) March 16, 2019 .@pmishra1598 kick started the Meetup by explaining what #Kubernetes is! Currently clarifying what a pod is. pic.twitter.com/Ny7bN9c62x&#xA;&amp;mdash; Kubernetes Bangalore (@k8sBLR) March 16, 2019 Huge turnout at today&amp;#39;s meetup it&amp;#39;s on 🔥🔥 pic.</description>
+      <description>The Kubernetes Bangalore Meetup was organized at Arvind Internet on Feb 16th 2019. The agenda for the meetup was to teach Kubernetes to the beginners.
+Meetup agenda can be found here.
+The moments from Meetup:
+We go online in sometime here https://t.co/FkwgOx0Tm4
+&amp;mdash; Kubernetes Bangalore (@k8sBLR) March 16, 2019  .@pmishra1598 kick started the Meetup by explaining what #Kubernetes is! Currently clarifying what a pod is. pic.twitter.com/Ny7bN9c62x
+&amp;mdash; Kubernetes Bangalore (@k8sBLR) March 16, 2019  Huge turnout at today&amp;#39;s meetup it&amp;#39;s on 🔥🔥 pic.</description>
     </item>
+    
     <item>
       <title>Make static configs available for apiserver in minikube</title>
       <link>https://suraj.io/post/apiserver-in-minikube-static-configs/</link>
       <pubDate>Sun, 20 Jan 2019 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/apiserver-in-minikube-static-configs/</guid>
-      <description>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube&amp;rsquo;s --extra-config flag with apiserver.&amp;lt;apiserver flag&amp;gt;=&amp;lt;value&amp;gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:&#xA;--extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</description>
+      <description>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube&amp;rsquo;s --extra-config flag with apiserver.&amp;lt;apiserver flag&amp;gt;=&amp;lt;value&amp;gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
+--extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</description>
     </item>
+    
     <item>
       <title>Recreate Kubernetes CVE-2017-1002101</title>
       <link>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</link>
       <pubDate>Mon, 14 Jan 2019 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</guid>
-      <description>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using emptyDir volume mount using subpath. The official description goes as follows:&#xA;In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host&amp;rsquo;s filesystem.</description>
+      <description>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using emptyDir volume mount using subpath. The official description goes as follows:
+ In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host&amp;rsquo;s filesystem.</description>
     </item>
+    
     <item>
       <title>Cobra and Persistentflags gotchas</title>
       <link>https://suraj.io/post/cobra-persistent-flag/</link>
       <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/cobra-persistent-flag/</guid>
-      <description>If you are using cobra cmd line library for golang applications and it&amp;rsquo;s PersistentFlags and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.&#xA;All the code referenced here can be found here https://github.</description>
+      <description>If you are using cobra cmd line library for golang applications and it&amp;rsquo;s PersistentFlags and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.
+All the code referenced here can be found here https://github.</description>
     </item>
+    
     <item>
       <title>Old laptop setup reference</title>
       <link>https://suraj.io/post/old-laptop-setup/</link>
       <pubDate>Sun, 30 Dec 2018 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/old-laptop-setup/</guid>
-      <description>I have this old PC Dell Inspiron 1525 with 2GB RAM and 32 bit dual core processor and I wanted to install fedora on it, but I cam accross few problems which I am documenting for further reference.&#xA;Wifi device not detected The wifi drivers are not loaded by default, so followed this blog, basically do following:&#xA;export FIRMWARE_INSTALL_DIR=&amp;#34;/lib/firmware&amp;#34; wget http://mirror2.openwrt.org/sources/broadcom-wl-5.100.138.tar.bz2 tar xjf broadcom-wl-5.100.138.tar.bz2 cd broadcom-wl-5.100.138/linux/ sudo b43-fwcutter -w /lib/firmware wl_apsta.</description>
+      <description>I have this old PC Dell Inspiron 1525 with 2GB RAM and 32 bit dual core processor and I wanted to install fedora on it, but I cam accross few problems which I am documenting for further reference.
+Wifi device not detected The wifi drivers are not loaded by default, so followed this blog, basically do following:
+export FIRMWARE_INSTALL_DIR=&amp;#34;/lib/firmware&amp;#34; wget http://mirror2.openwrt.org/sources/broadcom-wl-5.100.138.tar.bz2 tar xjf broadcom-wl-5.100.138.tar.bz2 cd broadcom-wl-5.100.138/linux/ sudo b43-fwcutter -w /lib/firmware wl_apsta.</description>
     </item>
+    
     <item>
       <title>Add new Node to k8s cluster with Bootstrap token</title>
       <link>https://suraj.io/post/add-new-k8s-node-bootstrap-token/</link>
       <pubDate>Wed, 24 Oct 2018 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/add-new-k8s-node-bootstrap-token/</guid>
-      <description>NOTE: There is an updated version of this blog here.&#xA;Few days back I wrote a blog about adding new node to the cluster using the static token file. The problem with that approach is that you need to restart kube-apiserver providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like secrets.</description>
+      <description>NOTE: There is an updated version of this blog here.
+ Few days back I wrote a blog about adding new node to the cluster using the static token file. The problem with that approach is that you need to restart kube-apiserver providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like secrets.</description>
     </item>
+    
     <item>
       <title>PodSecurityPolicy on existing Kubernetes clusters</title>
       <link>https://suraj.io/post/psp-on-existing-cluster/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/psp-on-existing-cluster/</guid>
-      <description>I enabled PodSecurityPolicy on a minikube cluster by appending PodSecurityPolicy to the apiserver flag in minikube like this:&#xA;--extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\ LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\ NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\ ResourceQuota,PodSecurityPolicy Ideally when you have PSP enabled and if you don&amp;rsquo;t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.&#xA;$ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h Which got me thinking what is wrong with the way PSPs work.</description>
+      <description>I enabled PodSecurityPolicy on a minikube cluster by appending PodSecurityPolicy to the apiserver flag in minikube like this:
+--extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\  LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\  NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\  ResourceQuota,PodSecurityPolicy Ideally when you have PSP enabled and if you don&amp;rsquo;t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.
+$ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h Which got me thinking what is wrong with the way PSPs work.</description>
     </item>
+    
     <item>
       <title>Road to CKA</title>
       <link>https://suraj.io/post/road-to-cka/</link>
       <pubDate>Sun, 21 Oct 2018 00:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/road-to-cka/</guid>
-      <description>I passed CKA exam with 92% marks on 19th October 2018.&#xA;A lot of folks are curious about how to prepare and what resources to follow. Here is my list of things to do and list of resources that might help you on successful CKA exam.&#xA;The duration of exam is three hours, which is enough time if you do good practice. The exam is pretty straight forward and tests your Kubernetes hands-on knowledge, so whatever you read please try to do it on a real cluster.</description>
+      <description>I passed CKA exam with 92% marks on 19th October 2018.
+A lot of folks are curious about how to prepare and what resources to follow. Here is my list of things to do and list of resources that might help you on successful CKA exam.
+The duration of exam is three hours, which is enough time if you do good practice. The exam is pretty straight forward and tests your Kubernetes hands-on knowledge, so whatever you read please try to do it on a real cluster.</description>
     </item>
+    
     <item>
       <title>How to disable your Chrome Ctrl &#43; W keybinding</title>
       <link>https://suraj.io/post/disable-ctrl-w/</link>
       <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/disable-ctrl-w/</guid>
       <description>I am about to attempt the CKA exam and it has a browser based terminal. And I am used to this terminal shortcut Ctrl + W which deletes a word. But the same shortcut in browser can close a tab. Since this exam is combination of both I am afraid I might close my exam tab while deleting a word in terminal. Now the only solution to this is disabling the shortcut in chrome.</description>
     </item>
+    
     <item>
       <title>Add new Node to k8s cluster with cert rotation</title>
       <link>https://suraj.io/post/add-new-k8s-node-cert-rotate/</link>
       <pubDate>Tue, 16 Oct 2018 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/add-new-k8s-node-cert-rotate/</guid>
-      <description>The setup here is created by following Kubernetes the Hard Way by Kelsey Hightower. So if you are following along in this then do all the setup till the step Bootstrapping the Kubernetes Worker Nodes. In this just don&amp;rsquo;t start the kubelet, start other services like containerd and kube-proxy.&#xA;master node Following the docs of TLS Bootstrapping, let&amp;rsquo;s first create the token authentication file. Create a file with following content:</description>
+      <description>The setup here is created by following Kubernetes the Hard Way by Kelsey Hightower. So if you are following along in this then do all the setup till the step Bootstrapping the Kubernetes Worker Nodes. In this just don&amp;rsquo;t start the kubelet, start other services like containerd and kube-proxy.
+master node Following the docs of TLS Bootstrapping, let&amp;rsquo;s first create the token authentication file. Create a file with following content:</description>
     </item>
+    
     <item>
       <title>Adding new worker to existing Kubernetes cluster</title>
       <link>https://suraj.io/post/add-new-k8s-node-manually/</link>
       <pubDate>Sun, 23 Sep 2018 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/add-new-k8s-node-manually/</guid>
-      <description>To setup a multi-node Kubernetes cluster just run this script and you will have a cluster with 3 masters and 3 workers.&#xA;$ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.20 &amp;lt;none&amp;gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.21 &amp;lt;none&amp;gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.22 &amp;lt;none&amp;gt; Ubuntu 18.</description>
+      <description>To setup a multi-node Kubernetes cluster just run this script and you will have a cluster with 3 masters and 3 workers.
+$ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.20 &amp;lt;none&amp;gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.21 &amp;lt;none&amp;gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &amp;lt;none&amp;gt; 1h v1.11.2 192.168.199.22 &amp;lt;none&amp;gt; Ubuntu 18.</description>
     </item>
+    
     <item>
       <title>Single node Kubernetes Cluster on Fedora with SELinux enabled</title>
       <link>https://suraj.io/post/single-node-k8s-fedora-selinux/</link>
       <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/single-node-k8s-fedora-selinux/</guid>
-      <description>Start a single node fedora machine, using whatever method but I have used this Vagrantfile to do it:&#xA;# -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(&amp;#34;2&amp;#34;) do |config| config.vm.define &amp;#34;fedora&amp;#34; do |fedora| fedora.vm.box = &amp;#34;fedora/28-cloud-base&amp;#34; config.vm.hostname = &amp;#34;fedora&amp;#34; end config.vm.provider &amp;#34;virtualbox&amp;#34; do |virtualbox, override| virtualbox.memory = 4096 virtualbox.cpus = 4 end config.vm.provision &amp;#34;shell&amp;#34;, privileged: false, inline: &amp;lt;&amp;lt;-SHELL echo &amp;#39;127.0.0.1 localhost&amp;#39; | cat - /etc/hosts &amp;gt; temp &amp;amp;&amp;amp; sudo mv temp /etc/hosts SHELL end Now start it and ssh into it:</description>
+      <description>Start a single node fedora machine, using whatever method but I have used this Vagrantfile to do it:
+# -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(&amp;#34;2&amp;#34;) do |config|   config.vm.define &amp;#34;fedora&amp;#34; do |fedora|  fedora.vm.box = &amp;#34;fedora/28-cloud-base&amp;#34;  config.vm.hostname = &amp;#34;fedora&amp;#34;  end   config.vm.provider &amp;#34;virtualbox&amp;#34; do |virtualbox, override|  virtualbox.memory = 4096  virtualbox.cpus = 4  end   config.vm.provision &amp;#34;shell&amp;#34;, privileged: false, inline: &amp;lt;&amp;lt;-SHELL  echo &amp;#39;127.</description>
     </item>
+    
     <item>
       <title>HostPath volumes and it&#39;s problems</title>
       <link>https://suraj.io/post/k8s-hostpat-nuke-nodes/</link>
       <pubDate>Mon, 10 Sep 2018 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/k8s-hostpat-nuke-nodes/</guid>
-      <description>This post will demonstrate how Kubernetes HostPath volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.&#xA;I have a 3-master and 3-node cluster and setup using this script, running in a Vagrant environment.&#xA;All the nodes are in ready state:</description>
+      <description>This post will demonstrate how Kubernetes HostPath volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.
+I have a 3-master and 3-node cluster and setup using this script, running in a Vagrant environment.
+All the nodes are in ready state:</description>
     </item>
+    
     <item>
       <title>HTTPS during development using &#39;mkcert&#39;</title>
       <link>https://suraj.io/post/mkcert-using-python-http-server/</link>
       <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/mkcert-using-python-http-server/</guid>
-      <description>It&amp;rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.&#xA;Once installed just run:&#xA;$ mkcert -install Created a new local CA at &amp;#34;/home/hummer/.local/share/mkcert&amp;#34; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</description>
+      <description>It&amp;rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
+Once installed just run:
+$ mkcert -install Created a new local CA at &amp;#34;/home/hummer/.local/share/mkcert&amp;#34; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</description>
     </item>
+    
     <item>
       <title>Golang struct tags gotchas</title>
       <link>https://suraj.io/post/golang-struct-tags-space/</link>
       <pubDate>Sun, 12 Aug 2018 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/golang-struct-tags-space/</guid>
-      <description>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.&#xA;type PodStatus struct { Status string `json: &amp;#34;,status&amp;#34;` } If you run go vet on this piece of code you will get following error:&#xA;$ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &amp;#34;,status&amp;#34;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value Now this does not tell us what is wrong with the struct tag, json: &amp;quot;,status&amp;quot;.</description>
+      <description>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
+type PodStatus struct { 	Status string `json: &amp;#34;,status&amp;#34;` } If you run go vet on this piece of code you will get following error:
+$ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &amp;#34;,status&amp;#34;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value Now this does not tell us what is wrong with the struct tag, json: &amp;quot;,status&amp;quot;.</description>
     </item>
+    
     <item>
       <title>Access etcd in OpenShift origin</title>
       <link>https://suraj.io/post/accessing-oc-cluster-up-etcd/</link>
       <pubDate>Wed, 11 Jul 2018 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
-      <description>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.&#xA;If you are using minishift then get docker environment access of the minishift VM by running following commands.&#xA;eval $(minishift docker-env) &amp;amp;&amp;amp; eval $(minishift oc-env) Exec into the container named origin that runs OpenShift and all the needed services.&#xA;$ docker exec -it origin bash First install the etcdctl needed to talk to etcd.</description>
+      <description>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
+If you are using minishift then get docker environment access of the minishift VM by running following commands.
+eval $(minishift docker-env) &amp;amp;&amp;amp; eval $(minishift oc-env) Exec into the container named origin that runs OpenShift and all the needed services.
+$ docker exec -it origin bash First install the etcdctl needed to talk to etcd.</description>
     </item>
+    
     <item>
       <title>Change namespaces in Kubernetes</title>
       <link>https://suraj.io/post/changing-k8s-ns/</link>
       <pubDate>Mon, 02 Jul 2018 08:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/changing-k8s-ns/</guid>
-      <description>There is no easy way to change namespace in Kubernetes using kubectl command line utility. But here are some commands that you can alias in your bashrc file so that it&amp;rsquo;s just a single command that you can use to change the namespace in the Kubernetes cluster.&#xA;Change namespace Let&amp;rsquo;s see step by step what goes in to change the namespace. So the first step is to find the context.</description>
+      <description>There is no easy way to change namespace in Kubernetes using kubectl command line utility. But here are some commands that you can alias in your bashrc file so that it&amp;rsquo;s just a single command that you can use to change the namespace in the Kubernetes cluster.
+Change namespace Let&amp;rsquo;s see step by step what goes in to change the namespace. So the first step is to find the context.</description>
     </item>
+    
     <item>
       <title>Prometheus with existing application on OpenShift</title>
       <link>https://suraj.io/post/using-prometheus/</link>
       <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/using-prometheus/</guid>
-      <description>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.&#xA;Requirements Setting up cluster I have done it using the oc cluster up, read about how to do this here. You could also setup a local OpenShift cluster by running minishift, read about setting up minishift here.&#xA;Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge.</description>
+      <description>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.
+Requirements Setting up cluster I have done it using the oc cluster up, read about how to do this here. You could also setup a local OpenShift cluster by running minishift, read about setting up minishift here.
+Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge.</description>
     </item>
+    
     <item>
       <title>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</title>
       <link>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</link>
       <pubDate>Wed, 07 Mar 2018 02:21:49 +0530</pubDate>
+      
       <guid>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</guid>
-      <description>Test Fixtures &amp;ldquo;go test&amp;rdquo; sets pwd as package directory Test Helpers should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures Configurability Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It&amp;rsquo;s ok to make these configs unexported so only tests can set them.</description>
+      <description>Test Fixtures  &amp;ldquo;go test&amp;rdquo; sets pwd as package directory  Test Helpers  should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures  Configurability  Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It&amp;rsquo;s ok to make these configs unexported so only tests can set them.</description>
     </item>
+    
     <item>
       <title>Methods that satisfy interfaces in golang</title>
       <link>https://suraj.io/post/golang-methods-interfaces/</link>
       <pubDate>Fri, 23 Feb 2018 08:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/golang-methods-interfaces/</guid>
-      <description>Pointer receiver For a struct User with a method Work with pointer receiver.&#xA;type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &amp;#34;has worked for&amp;#34;, u.Period, &amp;#34;hrs.&amp;#34;) } func main() { uval := User{&amp;#34;UserVal&amp;#34;, 5} uval.Work() pval := &amp;amp;User{&amp;#34;UserPtr&amp;#34;, 6} pval.Work() } See on go playground.&#xA;output:&#xA;UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</description>
+      <description>Pointer receiver For a struct User with a method Work with pointer receiver.
+type User struct {  Name string  Period int }  func (u *User) Work() {  fmt.Println(u.Name, &amp;#34;has worked for&amp;#34;, u.Period, &amp;#34;hrs.&amp;#34;) }  func main() {  uval := User{&amp;#34;UserVal&amp;#34;, 5}  uval.Work()   pval := &amp;amp;User{&amp;#34;UserPtr&amp;#34;, 6}  pval.Work() } See on go playground.
+output:
+UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.</description>
     </item>
+    
     <item>
       <title>vscode Shortcuts</title>
       <link>https://suraj.io/post/vscode-shortcuts/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/vscode-shortcuts/</guid>
-      <description>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.&#xA;Shortcuts Toggle side bar Ctrl + B&#xA;Project explorer in side bar Ctrl + Shift + E&#xA;Project wide search in side bar Ctrl + Shift + F&#xA;Source control in side bar Ctrl + Shift + G&#xA;Copy entire line Ctrl + C (without any selection)&#xA;Delete entire line Ctrl + Shift + K</description>
+      <description>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
+Shortcuts  Toggle side bar  Ctrl + B
+ Project explorer in side bar  Ctrl + Shift + E
+ Project wide search in side bar  Ctrl + Shift + F
+ Source control in side bar  Ctrl + Shift + G
+ Copy entire line  Ctrl + C (without any selection)</description>
     </item>
+    
     <item>
       <title>Using private container registries from minikube</title>
       <link>https://suraj.io/post/private-registry-from-minikube/</link>
       <pubDate>Fri, 06 Oct 2017 19:32:33 +0530</pubDate>
+      
       <guid>https://suraj.io/post/private-registry-from-minikube/</guid>
-      <description>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.&#xA;On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.</description>
+      <description>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
+On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.</description>
     </item>
+    
     <item>
       <title>Static Pods using Kubelet on Fedora</title>
       <link>https://suraj.io/post/static-pods/</link>
       <pubDate>Sat, 23 Sep 2017 13:10:14 +0530</pubDate>
+      
       <guid>https://suraj.io/post/static-pods/</guid>
-      <description>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.&#xA;This blog is only replacement of section Install the Standalone Kubelet in tutorial.</description>
+      <description>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.
+This blog is only replacement of section Install the Standalone Kubelet in tutorial.</description>
     </item>
+    
     <item>
       <title>Sharing Vagrant Box offline</title>
       <link>https://suraj.io/post/move-vagrant-boxes/</link>
       <pubDate>Mon, 18 Sep 2017 10:43:46 +0530</pubDate>
+      
       <guid>https://suraj.io/post/move-vagrant-boxes/</guid>
-      <description>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don&amp;rsquo;t have internet to download it, how do you share it?&#xA;You will need to export the box from machine that has it downloaded already. So on machine with boxes:&#xA;$ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705) I wanted to share fedora/26-cloud-base box to another machine.</description>
+      <description>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don&amp;rsquo;t have internet to download it, how do you share it?
+You will need to export the box from machine that has it downloaded already. So on machine with boxes:
+$ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705) I wanted to share fedora/26-cloud-base box to another machine.</description>
     </item>
+    
     <item>
       <title>Add new Maps to Counter Strike</title>
       <link>https://suraj.io/post/add-new-map-to-cs/</link>
       <pubDate>Fri, 01 Sep 2017 16:03:58 +0530</pubDate>
+      
       <guid>https://suraj.io/post/add-new-map-to-cs/</guid>
-      <description>If you are playing Counter Strike on Steam on linux you might be wondering how do I install new maps in the game. So here are steps to install maps.&#xA;All the game maps for Counter Strike - Condition Zero are stored in following path:&#xA;~/.local/share/Steam/steamapps/common/Half-Life/czero/maps Format of the map files is .bsp.&#xA;So download the map files from over internet and then put in this location and now you should be able to see the maps in game.</description>
+      <description>If you are playing Counter Strike on Steam on linux you might be wondering how do I install new maps in the game. So here are steps to install maps.
+All the game maps for Counter Strike - Condition Zero are stored in following path:
+~/.local/share/Steam/steamapps/common/Half-Life/czero/maps Format of the map files is .bsp.
+So download the map files from over internet and then put in this location and now you should be able to see the maps in game.</description>
     </item>
+    
     <item>
       <title>List of Kubernetes Bangalore meetup event report</title>
       <link>https://suraj.io/post/list-all-k8s-meetups/</link>
       <pubDate>Fri, 01 Sep 2017 15:51:16 +0530</pubDate>
+      
       <guid>https://suraj.io/post/list-all-k8s-meetups/</guid>
-      <description>List of all the event reports from Kubernetes Bangalore meetup.&#xA;April 2017 May 2017 June 2017 July 2017 Kubernetes 2nd Birthday Celebration August 2017 September 2017 October 2017 November 2017 </description>
+      <description>List of all the event reports from Kubernetes Bangalore meetup.
+ April 2017 May 2017 June 2017 July 2017 Kubernetes 2nd Birthday Celebration August 2017 September 2017 October 2017 November 2017  </description>
     </item>
+    
     <item>
       <title>Kubernetes Learning resources</title>
       <link>https://suraj.io/post/k8s-learning-resources/</link>
       <pubDate>Thu, 17 Aug 2017 23:12:18 +0530</pubDate>
+      
       <guid>https://suraj.io/post/k8s-learning-resources/</guid>
-      <description>Following is the list of all the places you can learn Kubernetes from:&#xA;Scalable Microservices with Kubernetes - Video tutorial Fundamentals of Containers, Kubernetes, and Red Hat OpenShift - Video tutorial Kubernetes By Example - DIY tutorial Learn Kubernetes using Interactive Browser-Based Scenarios - DIY tutorial in your own web browser Interactive Learning Portal for OpenShift - DIY tutorial in your own web browser Kubernetes docs - Textual DIY docs Kubernetes API reference v1.</description>
+      <description>Following is the list of all the places you can learn Kubernetes from:
+ Scalable Microservices with Kubernetes - Video tutorial Fundamentals of Containers, Kubernetes, and Red Hat OpenShift - Video tutorial Kubernetes By Example - DIY tutorial Learn Kubernetes using Interactive Browser-Based Scenarios - DIY tutorial in your own web browser Interactive Learning Portal for OpenShift - DIY tutorial in your own web browser Kubernetes docs - Textual DIY docs Kubernetes API reference v1.</description>
     </item>
+    
     <item>
       <title>Bangalore Kubernetes Meetup July 2017</title>
       <link>https://suraj.io/post/blr-k8s-meetup-july-2017/</link>
       <pubDate>Thu, 13 Jul 2017 22:46:40 +0530</pubDate>
+      
       <guid>https://suraj.io/post/blr-k8s-meetup-july-2017/</guid>
-      <description>This edition of meetup was held at Nexus Ventures by folks at OpenEBS on July 8th 2017, which started on a lovely Saturday morning.&#xA;Kiran Mova set the floor rolling with his talk on Hyperconverged version of OpenEBS with Kubernetes. Where he talked about containerized storage vs traditional storage, instead of building clustering into OpenEBS how they are leveraging Kubernetes&amp;rsquo;s capabilities to do clustering.&#xA;He also explained difference between various storage providers viz.</description>
+      <description>This edition of meetup was held at Nexus Ventures by folks at OpenEBS on July 8th 2017, which started on a lovely Saturday morning.
+Kiran Mova set the floor rolling with his talk on Hyperconverged version of OpenEBS with Kubernetes. Where he talked about containerized storage vs traditional storage, instead of building clustering into OpenEBS how they are leveraging Kubernetes&amp;rsquo;s capabilities to do clustering.
+He also explained difference between various storage providers viz.</description>
     </item>
+    
     <item>
       <title>Clean Node setup</title>
       <link>https://suraj.io/post/node-no-sudo/</link>
       <pubDate>Tue, 04 Jul 2017 22:50:43 +0530</pubDate>
+      
       <guid>https://suraj.io/post/node-no-sudo/</guid>
-      <description>Make sure you have npm installed.&#xA;$ sudo dnf -y install npm Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping. Dependencies resolved. Nothing to do. Complete! Taken from this post.&#xA;mkdir &amp;#34;${HOME}/.npm-packages&amp;#34; echo &amp;#39;prefix=${HOME}/.npm-packages&amp;#39; | tee -a ~/.npmrc echo &amp;#39; #====================================== # npm related stuff NPM_PACKAGES=&amp;#34;${HOME}/.npm-packages&amp;#34; PATH=&amp;#34;$NPM_PACKAGES/bin:$PATH&amp;#34; # Unset manpath so we can inherit from /etc/manpath via the `manpath` command unset MANPATH # delete if you already modified MANPATH elsewhere in your config export MANPATH=&amp;#34;$NPM_PACKAGES/share/man:$(manpath)&amp;#34; #====================================== &amp;#39; | tee -a ~/.</description>
+      <description>Make sure you have npm installed.
+$ sudo dnf -y install npm Package npm-1:3.10.10-1.6.10.3.1.fc25.x86_64 is already installed, skipping. Dependencies resolved. Nothing to do. Complete! Taken from this post.
+mkdir &amp;#34;${HOME}/.npm-packages&amp;#34; echo &amp;#39;prefix=${HOME}/.npm-packages&amp;#39; | tee -a ~/.npmrc  echo &amp;#39; #====================================== # npm related stuff NPM_PACKAGES=&amp;#34;${HOME}/.npm-packages&amp;#34; PATH=&amp;#34;$NPM_PACKAGES/bin:$PATH&amp;#34; # Unset manpath so we can inherit from /etc/manpath via the `manpath` command unset MANPATH # delete if you already modified MANPATH elsewhere in your config export MANPATH=&amp;#34;$NPM_PACKAGES/share/man:$(manpath)&amp;#34; #====================================== &amp;#39; | tee -a ~/.</description>
     </item>
+    
     <item>
       <title>Bangalore Kubernetes Meetup May 2017</title>
       <link>https://suraj.io/post/blr-k8s-meetup-may-2017/</link>
       <pubDate>Wed, 24 May 2017 02:21:49 +0530</pubDate>
+      
       <guid>https://suraj.io/post/blr-k8s-meetup-may-2017/</guid>
-      <description>&amp;ldquo;One does not simply deploy containers to production&amp;rdquo;&#xA;With the rising craze around the container community in Bangalore and relative lack in awareness around different container technologies like Kubernetes and OpenShift, an effort was made in imparting knowledge in this direction.&#xA;So, this time around newbies were targeted for the Kubernetes Meetup.&#xA;With the above objective, it was decided to have a Kubernetes 101 workshop at Red Hat Bangalore office on May 21, 2017 to familiarize people with concepts of Kubernetes and OpenShift and their usage and relevance as container orchestration tools for managing application deployments.</description>
+      <description>&amp;ldquo;One does not simply deploy containers to production&amp;rdquo;
+With the rising craze around the container community in Bangalore and relative lack in awareness around different container technologies like Kubernetes and OpenShift, an effort was made in imparting knowledge in this direction.
+So, this time around newbies were targeted for the Kubernetes Meetup.
+With the above objective, it was decided to have a Kubernetes 101 workshop at Red Hat Bangalore office on May 21, 2017 to familiarize people with concepts of Kubernetes and OpenShift and their usage and relevance as container orchestration tools for managing application deployments.</description>
     </item>
+    
     <item>
       <title>Enabling local development with Kubernetes</title>
       <link>https://suraj.io/post/enabling-local-development-with-k8s/</link>
       <pubDate>Sun, 23 Apr 2017 15:57:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/enabling-local-development-with-k8s/</guid>
-      <description>I want to show how you can enable Kubernetes in your day to day development workflow. So that you get the feel of production deployment locally from day 1.&#xA;I have a flask application which I am working on. The basic directory structure looks like this:&#xA;$ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo foo 201 Apr 23 16:55 docker-compose.yml -rw-rw-r--. 1 foo foo 363 Apr 23 16:21 Dockerfile -rwxrwxr-x.</description>
+      <description>I want to show how you can enable Kubernetes in your day to day development workflow. So that you get the feel of production deployment locally from day 1.
+I have a flask application which I am working on. The basic directory structure looks like this:
+$ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo foo 201 Apr 23 16:55 docker-compose.yml -rw-rw-r--. 1 foo foo 363 Apr 23 16:21 Dockerfile -rwxrwxr-x.</description>
     </item>
+    
     <item>
       <title>Quick PV for local Kubernetes cluster</title>
       <link>https://suraj.io/post/quick-pv-for-local-k8s/</link>
       <pubDate>Tue, 18 Apr 2017 23:56:15 +0530</pubDate>
+      
       <guid>https://suraj.io/post/quick-pv-for-local-k8s/</guid>
-      <description>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.&#xA;Enter into the machine running k8s If using minikube you can do&#xA;minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following</description>
+      <description>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
+Enter into the machine running k8s If using minikube you can do
+minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following</description>
     </item>
+    
     <item>
       <title>Bangalore Kubernetes Meetup April 2017</title>
       <link>https://suraj.io/post/blr-k8s-meetup-april-2017/</link>
       <pubDate>Sat, 08 Apr 2017 14:31:33 +0530</pubDate>
+      
       <guid>https://suraj.io/post/blr-k8s-meetup-april-2017/</guid>
-      <description>Like many Saturday mornings, Red Hat Bangalore office was once again abuzz with enthusiasm on 8th of April, for hosting yet another successful chapter of Bangalore Kubernetes Meetup. The Meetup had a good turnaround of about 40 people who gave up on their early morning saturday sleep to attend it despite the sweltering hot season and in line were four awesome talks.&#xA;Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc.</description>
+      <description>Like many Saturday mornings, Red Hat Bangalore office was once again abuzz with enthusiasm on 8th of April, for hosting yet another successful chapter of Bangalore Kubernetes Meetup. The Meetup had a good turnaround of about 40 people who gave up on their early morning saturday sleep to attend it despite the sweltering hot season and in line were four awesome talks.
+Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc.</description>
     </item>
+    
     <item>
       <title>k8s on CRI-O - single node</title>
       <link>https://suraj.io/post/using-crio-with-k8s-single-node/</link>
       <pubDate>Sat, 08 Apr 2017 00:11:37 +0530</pubDate>
+      
       <guid>https://suraj.io/post/using-crio-with-k8s-single-node/</guid>
-      <description>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.&#xA;Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &amp;#39;GOPATH=~/go&amp;#39; &amp;gt;&amp;gt; ~/.</description>
+      <description>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
+Installing OS dependencies dnf -y install \  go \  git \  btrfs-progs-devel \  device-mapper-devel \  glib2-devel \  glibc-devel \  glibc-static \  gpgme-devel \  libassuan-devel \  libgpg-error-devel \  libseccomp-devel \  libselinux-devel \  pkgconfig \  wget \  etcd \  iptables Creating go environment cd ~ mkdir -p ~/go  export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN  echo &amp;#39;GOPATH=~/go&amp;#39; &amp;gt;&amp;gt; ~/.</description>
     </item>
+    
     <item>
       <title>TODOs for new project</title>
       <link>https://suraj.io/post/starting-a-new-opensource-project-requirements/</link>
       <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
+      
       <guid>https://suraj.io/post/starting-a-new-opensource-project-requirements/</guid>
-      <description>When starting a new open source project, apart from coding following are the things that need to be done.&#xA;Docs README LICENSE How to install? How to use? Code of conduct guidelines Copyright Issue template like .github in repo. Developer docs How to install for developer? Developer docs Contribution guidelines Team meetings info Team communication channels Issue label guidelines Coding standards Code placement doc, or something that explains the way code is ordered Design document Development Makefile Unit tests Functional tests Coverage check CI for automatic tests Distro based package This is just few things that I could think of, please suggest if you know more in comments.</description>
+      <description>When starting a new open source project, apart from coding following are the things that need to be done.
+Docs  README LICENSE How to install? How to use? Code of conduct guidelines Copyright Issue template like .github in repo.  Developer docs  How to install for developer? Developer docs Contribution guidelines Team meetings info Team communication channels Issue label guidelines Coding standards Code placement doc, or something that explains the way code is ordered Design document  Development  Makefile Unit tests Functional tests Coverage check CI for automatic tests Distro based package  This is just few things that I could think of, please suggest if you know more in comments.</description>
     </item>
+    
     <item>
       <title>rpm Notes</title>
       <link>https://suraj.io/post/rpm-notes/</link>
       <pubDate>Fri, 24 Mar 2017 10:35:54 +0530</pubDate>
+      
       <guid>https://suraj.io/post/rpm-notes/</guid>
-      <description>This post will get you through all the steps needed for doing RPM packaging.&#xA;Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG My Notes Start reading from: Fedora packager&amp;rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros. $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch To see all macros on the system: $ rpm --showrc Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package $ rpm -qip .</description>
+      <description>This post will get you through all the steps needed for doing RPM packaging.
+Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG My Notes  Start reading from: Fedora packager&amp;rsquo;s guide Some macros come from redhat-rpm-config and fedora-rpm-macros.  $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch  To see all macros on the system:  $ rpm --showrc  Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package  $ rpm -qip .</description>
     </item>
+    
     <item>
       <title>Git Notes</title>
       <link>https://suraj.io/post/git-notes/</link>
       <pubDate>Tue, 21 Mar 2017 22:03:48 +0530</pubDate>
+      
       <guid>https://suraj.io/post/git-notes/</guid>
-      <description>Notes about using git.&#xA;Tips and tricks Switch branches $ git checkout &amp;lt;branch&amp;gt; status $ git status -sb Show status in short format and also give branch info&#xA;show $ git show Shows log message and diff about the commit you are on.&#xA;log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go Get logs on file between line numbers.&#xA;$ git log --graph --abbrev-commit Show graph in logs.&#xA;commit $ git add -p Commit only parts of file.</description>
+      <description>Notes about using git.
+Tips and tricks  Switch branches $ git checkout &amp;lt;branch&amp;gt;  status $ git status -sb Show status in short format and also give branch info
+ show $ git show Shows log message and diff about the commit you are on.
+ log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go Get logs on file between line numbers.
+$ git log --graph --abbrev-commit Show graph in logs.
+ commit $ git add -p Commit only parts of file.</description>
     </item>
+    
     <item>
       <title>Intellij Shortcuts</title>
       <link>https://suraj.io/post/intellij-shortcuts/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/intellij-shortcuts/</guid>
-      <description>Note: This is a living document and will be updated as I discover new things.&#xA;Shortcuts Ctrl + Shift + A Find any action in IDE&#xA;Ctrl + Shift + F Find in Path&#xA;Alt + 1 Open project navigator. You can search here, just start typing here, after the project navigator window is opened.&#xA;Shift + Insert in Project window Here you can add new file to the project. The filename could be the entire path, so the intermediate directories will be created for you.</description>
+      <description>Note: This is a living document and will be updated as I discover new things.
+Shortcuts  Ctrl + Shift + A  Find any action in IDE
+ Ctrl + Shift + F  Find in Path
+ Alt + 1  Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
+ Shift + Insert in Project window  Here you can add new file to the project.</description>
     </item>
+    
     <item>
       <title>Packaging &#39;kompose&#39; for centos paas sig</title>
       <link>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</link>
       <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
+      
       <guid>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</guid>
-      <description>Note: This is a living document and will be updated from time to time.&#xA;Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.&#xA;Setup your machine Install packages needed&#xA;sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager Setup certs</description>
+      <description>Note: This is a living document and will be updated from time to time.
+Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
+Setup your machine Install packages needed
+sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \  gcc byobu rpmlint rpmdevtools centos-packager Setup certs</description>
     </item>
+    
     <item>
       <title>Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</title>
       <link>https://suraj.io/post/test-kompose/</link>
       <pubDate>Tue, 14 Mar 2017 00:31:57 +0530</pubDate>
+      
       <guid>https://suraj.io/post/test-kompose/</guid>
-      <description>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.&#xA;Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.&#xA;Starting the environment:&#xA;docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:&#xA;# Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.</description>
+      <description>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
+Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
+Starting the environment:
+docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
+# Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose  # Check the kompose version kompose version  # Install the testing dependencies dnf install -y jq make  # Pull the git repository to run the functional tests git clone https://github.</description>
     </item>
+    
     <item>
       <title>First post</title>
       <link>https://suraj.io/post/first-post/</link>
       <pubDate>Mon, 13 Mar 2017 00:31:57 +0530</pubDate>
+      
       <guid>https://suraj.io/post/first-post/</guid>
       <description>This is the new home for my blog. I use to write on wordpress before. You can find the older blog at https://deshmukhsuraj.wordpress.com. But I wanted to have my own domain and wordpress was charging exorbitantly to connect a custom domain to wordpress, so I just ditched it and started writing here. This is much more convenient.</description>
     </item>
+    
   </channel>
 </rss>

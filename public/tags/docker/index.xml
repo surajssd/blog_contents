@@ -1,40 +1,55 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker on Suraj Deshmukh</title>
+    <title>docker on Suraj Deshmukh</title>
     <link>https://suraj.io/tags/docker/</link>
-    <description>Recent content in Docker on Suraj Deshmukh</description>
+    <description>Recent content in docker on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 25 Jun 2019 15:15:07 +0530</lastBuildDate>
-    <atom:link href="https://suraj.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Jun 2019 15:15:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Capabilities on executables</title>
       <link>https://suraj.io/post/linux-cap-note/</link>
       <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/linux-cap-note/</guid>
-      <description>File capabilities allow users to execute programs with higher privileges. Best example is network utility ping.&#xA;A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn&amp;rsquo;t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.&#xA;$ getcap `which ping` /usr/bin/ping = cap_net_admin,cap_net_raw+p Which normally works as follows:&#xA;$ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1.</description>
+      <description>File capabilities allow users to execute programs with higher privileges. Best example is network utility ping.
+A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn&amp;rsquo;t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.
+$ getcap `which ping` /usr/bin/ping = cap_net_admin,cap_net_raw+p Which normally works as follows:
+$ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1.</description>
     </item>
+    
     <item>
       <title>Root user inside container is root on the host</title>
       <link>https://suraj.io/post/root-in-container-root-on-host/</link>
       <pubDate>Tue, 25 Jun 2019 11:57:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/root-in-container-root-on-host/</guid>
-      <description>Here are simple steps that you can follow to prove that the root user inside container is also root on the host. And how to mitigate this.&#xA;Root in container, root on host I have a host with docker daemon running on it. I start a normal container on it with sleep process as PID1. See in the following output that the container clever_lalande started with sleep process.&#xA;$ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &amp;#34;sleep 9999&amp;#34; 12 seconds ago Up 11 seconds clever_lalande Now let&amp;rsquo;s find out the process sleep on the host.</description>
+      <description>Here are simple steps that you can follow to prove that the root user inside container is also root on the host. And how to mitigate this.
+Root in container, root on host I have a host with docker daemon running on it. I start a normal container on it with sleep process as PID1. See in the following output that the container clever_lalande started with sleep process.
+$ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b  $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &amp;#34;sleep 9999&amp;#34; 12 seconds ago Up 11 seconds clever_lalande Now let&amp;rsquo;s find out the process sleep on the host.</description>
     </item>
+    
     <item>
       <title>Copying files to container the generic way</title>
       <link>https://suraj.io/post/copy-to-container-without-docker-cp/</link>
       <pubDate>Fri, 21 Jun 2019 11:57:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/copy-to-container-without-docker-cp/</guid>
-      <description>This blog shows you how you can copy stuff from your host machine to the running container without the docker cp command that we usually use.&#xA;Steps in text Here I have a script on the host, which looks following:&#xA;#!/bin/bash tput bold echo &amp;#34;OS Information:&amp;#34; tput sgr0 echo cat /etc/os-release After running which looks like following:&#xA;$ ls script.sh $ ./script.sh OS Information: NAME=&amp;#34;Flatcar Linux by Kinvolk&amp;#34; ID=flatcar ID_LIKE=coreos VERSION=2079.</description>
+      <description>This blog shows you how you can copy stuff from your host machine to the running container without the docker cp command that we usually use.
+Steps in text Here I have a script on the host, which looks following:
+#!/bin/bash  tput bold echo &amp;#34;OS Information:&amp;#34; tput sgr0 echo  cat /etc/os-release After running which looks like following:
+$ ls script.sh  $ ./script.sh OS Information:  NAME=&amp;#34;Flatcar Linux by Kinvolk&amp;#34; ID=flatcar ID_LIKE=coreos VERSION=2079.</description>
     </item>
+    
     <item>
       <title>Writing your own Seccomp profiles for Docker</title>
       <link>https://suraj.io/post/docker-seccomp-manual/</link>
       <pubDate>Mon, 10 Jun 2019 11:57:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/docker-seccomp-manual/</guid>
-      <description>What is Seccomp? A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</description>
+      <description>What is Seccomp?  A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</description>
     </item>
+    
   </channel>
 </rss>

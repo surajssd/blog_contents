@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ide on Suraj Deshmukh</title>
+    <title>ide on Suraj Deshmukh</title>
     <link>https://suraj.io/categories/ide/</link>
-    <description>Recent content in Ide on Suraj Deshmukh</description>
+    <description>Recent content in ide on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 22 Feb 2018 08:00:51 +0530</lastBuildDate>
-    <atom:link href="https://suraj.io/categories/ide/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Feb 2018 08:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/ide/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>vscode Shortcuts</title>
       <link>https://suraj.io/post/vscode-shortcuts/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/vscode-shortcuts/</guid>
-      <description>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.&#xA;Shortcuts Toggle side bar Ctrl + B&#xA;Project explorer in side bar Ctrl + Shift + E&#xA;Project wide search in side bar Ctrl + Shift + F&#xA;Source control in side bar Ctrl + Shift + G&#xA;Copy entire line Ctrl + C (without any selection)&#xA;Delete entire line Ctrl + Shift + K</description>
+      <description>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
+Shortcuts  Toggle side bar  Ctrl + B
+ Project explorer in side bar  Ctrl + Shift + E
+ Project wide search in side bar  Ctrl + Shift + F
+ Source control in side bar  Ctrl + Shift + G
+ Copy entire line  Ctrl + C (without any selection)</description>
     </item>
+    
     <item>
       <title>Intellij Shortcuts</title>
       <link>https://suraj.io/post/intellij-shortcuts/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/intellij-shortcuts/</guid>
-      <description>Note: This is a living document and will be updated as I discover new things.&#xA;Shortcuts Ctrl + Shift + A Find any action in IDE&#xA;Ctrl + Shift + F Find in Path&#xA;Alt + 1 Open project navigator. You can search here, just start typing here, after the project navigator window is opened.&#xA;Shift + Insert in Project window Here you can add new file to the project. The filename could be the entire path, so the intermediate directories will be created for you.</description>
+      <description>Note: This is a living document and will be updated as I discover new things.
+Shortcuts  Ctrl + Shift + A  Find any action in IDE
+ Ctrl + Shift + F  Find in Path
+ Alt + 1  Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
+ Shift + Insert in Project window  Here you can add new file to the project.</description>
     </item>
+    
   </channel>
 </rss>

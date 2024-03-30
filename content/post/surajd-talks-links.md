@@ -1,6 +1,6 @@
 ---
 author: "Suraj Deshmukh"
-date: "2019-04-22T01:00:51+05:30"
+date: "2024-03-30T01:00:51+05:30"
 title: "Suraj Deshmukh's talks at conferences"
 description: "List of all the talks presented by me"
 draft: false
@@ -8,7 +8,25 @@ categories: ["talks", "notes"]
 tags: ["kubernetes", "meetup"]
 ---
 
-## Building Container Defences Executable at a Time
+## Fortifying AI Security in Kubernetes with Confidential Containers (CoCo) - Kubecon Europe 2024
+
+{{< youtube Ko0o5_hpmxI >}}
+
+---
+
+## Memory Armor for SPIRE: Fortifying SPIRE with Confidential Containers (CoCo) - Kubecon Europe 2024
+
+{{< youtube g0uBBGvf9w4 >}}
+
+---
+
+## Confidential Containers: The Next Frontier in Cloud-NativeSecurity - Cloud Native Rejekts 2023
+
+{{< youtube ERu288Kv4pw >}}
+
+---
+
+## Building Container Defences Executable at a Time - KCD Bangalore 2022
 
 {{< youtube WJcm3zvaCUw >}}
 

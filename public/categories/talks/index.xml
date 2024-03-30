@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Talks on Suraj Deshmukh</title>
+    <title>talks on Suraj Deshmukh</title>
     <link>https://suraj.io/categories/talks/</link>
-    <description>Recent content in Talks on Suraj Deshmukh</description>
+    <description>Recent content in talks on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 22 Apr 2019 01:00:51 +0530</lastBuildDate>
-    <atom:link href="https://suraj.io/categories/talks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Mar 2024 01:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/talks/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Suraj Deshmukh&#39;s talks at conferences</title>
       <link>https://suraj.io/post/surajd-talks-links/</link>
-      <pubDate>Mon, 22 Apr 2019 01:00:51 +0530</pubDate>
+      <pubDate>Sat, 30 Mar 2024 01:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/surajd-talks-links/</guid>
-      <description>Building Container Defences Executable at a Time PSP and Beyond - Kubernetes Bangalore Meetup June 2021 Hardening Kubernetes by Securing Pods - Rootconf 2019 State of Kubernetes Meetups - DevOpsDays India 2017 Making Kubernetes Simple For Developers - Rootconf 2017 Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s</description>
+      <description>Fortifying AI Security in Kubernetes with Confidential Containers (CoCo) - Kubecon Europe 2024    Memory Armor for SPIRE: Fortifying SPIRE with Confidential Containers (CoCo) - Kubecon Europe 2024    Confidential Containers: The Next Frontier in Cloud-NativeSecurity - Cloud Native Rejekts 2023    Building Container Defences Executable at a Time - KCD Bangalore 2022    PSP and Beyond - Kubernetes Bangalore Meetup June 2021    Hardening Kubernetes by Securing Pods - Rootconf 2019    State of Kubernetes Meetups - DevOpsDays India 2017    Making Kubernetes Simple For Developers - Rootconf 2017    Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s</description>
     </item>
+    
   </channel>
 </rss>

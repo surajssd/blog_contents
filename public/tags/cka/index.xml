@@ -1,40 +1,51 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cka on Suraj Deshmukh</title>
+    <title>cka on Suraj Deshmukh</title>
     <link>https://suraj.io/tags/cka/</link>
-    <description>Recent content in Cka on Suraj Deshmukh</description>
+    <description>Recent content in cka on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Sep 2021 13:30:07 +0530</lastBuildDate>
-    <atom:link href="https://suraj.io/tags/cka/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Sep 2021 13:30:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/cka/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Certified Kubernetes Security Specialist CKS exam tips</title>
       <link>https://suraj.io/post/2021/09/cks-tips/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/09/cks-tips/</guid>
-      <description>I recently cleared the CKS certification exam. So it is incumbent upon me to help you navigate this stress-bound exam. All the tips that are provided are either from accrued knowledge or from personal experience.&#xA;Study Material During the study of CKA almost three years ago, I studied everything from the documentation. Back then, the documentation had less content hence it was comprehensible. But now, to go through the entire documentation was not practical.</description>
+      <description>I recently cleared the CKS certification exam. So it is incumbent upon me to help you navigate this stress-bound exam. All the tips that are provided are either from accrued knowledge or from personal experience.
+Study Material During the study of CKA almost three years ago, I studied everything from the documentation. Back then, the documentation had less content hence it was comprehensible. But now, to go through the entire documentation was not practical.</description>
     </item>
+    
     <item>
       <title>Kubernetes The Hard Way in &#34;Vagrant&#34;?</title>
       <link>https://suraj.io/post/2021/03/kthw-vagrant/</link>
       <pubDate>Tue, 23 Mar 2021 07:07:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/03/kthw-vagrant/</guid>
-      <description>If you are studying for the Certified Kubernetes Administrator (CKA) exam, you might have come across folks recommending Kelsey Hightower&amp;rsquo;s Kubernetes the Hard Way. It is an excellent first step for someone who has no idea about the components that form a Kubernetes cluster. As the name suggests, it is created so that you learn the Kubernetes building blocks the &amp;ldquo;hard way&amp;rdquo;.&#xA;But all that can be intimidating to someone who hasn&amp;rsquo;t played with Kubernetes ever.</description>
+      <description>If you are studying for the Certified Kubernetes Administrator (CKA) exam, you might have come across folks recommending Kelsey Hightower&amp;rsquo;s Kubernetes the Hard Way. It is an excellent first step for someone who has no idea about the components that form a Kubernetes cluster. As the name suggests, it is created so that you learn the Kubernetes building blocks the &amp;ldquo;hard way&amp;rdquo;.
+But all that can be intimidating to someone who hasn&amp;rsquo;t played with Kubernetes ever.</description>
     </item>
+    
     <item>
       <title>Road to CKA</title>
       <link>https://suraj.io/post/road-to-cka/</link>
       <pubDate>Sun, 21 Oct 2018 00:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/road-to-cka/</guid>
-      <description>I passed CKA exam with 92% marks on 19th October 2018.&#xA;A lot of folks are curious about how to prepare and what resources to follow. Here is my list of things to do and list of resources that might help you on successful CKA exam.&#xA;The duration of exam is three hours, which is enough time if you do good practice. The exam is pretty straight forward and tests your Kubernetes hands-on knowledge, so whatever you read please try to do it on a real cluster.</description>
+      <description>I passed CKA exam with 92% marks on 19th October 2018.
+A lot of folks are curious about how to prepare and what resources to follow. Here is my list of things to do and list of resources that might help you on successful CKA exam.
+The duration of exam is three hours, which is enough time if you do good practice. The exam is pretty straight forward and tests your Kubernetes hands-on knowledge, so whatever you read please try to do it on a real cluster.</description>
     </item>
+    
     <item>
       <title>How to disable your Chrome Ctrl &#43; W keybinding</title>
       <link>https://suraj.io/post/disable-ctrl-w/</link>
       <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/disable-ctrl-w/</guid>
       <description>I am about to attempt the CKA exam and it has a browser based terminal. And I am used to this terminal shortcut Ctrl + W which deletes a word. But the same shortcut in browser can close a tab. Since this exam is combination of both I am afraid I might close my exam tab while deleting a word in terminal. Now the only solution to this is disabling the shortcut in chrome.</description>
     </item>
+    
   </channel>
 </rss>

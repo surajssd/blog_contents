@@ -1,33 +1,42 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Programming on Suraj Deshmukh</title>
+    <title>programming on Suraj Deshmukh</title>
     <link>https://suraj.io/categories/programming/</link>
-    <description>Recent content in Programming on Suraj Deshmukh</description>
+    <description>Recent content in programming on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 17 Jan 2021 12:28:51 +0530</lastBuildDate>
-    <atom:link href="https://suraj.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Jan 2021 12:28:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monitor releases of your favourite software</title>
       <link>https://suraj.io/post/monitor-releases-of-your-favourite-software/</link>
       <pubDate>Sun, 17 Jan 2021 12:28:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/monitor-releases-of-your-favourite-software/</guid>
-      <description>There are various ways to know about the release of your favourite new software, follow the mailing list, check the Github release page periodically, follow the project&amp;rsquo;s Twitter handle, etc. But do you know there is even more reliable way to track the releases of your favourite software released on Github.&#xA;Github Releases and RSS feeds For every repository on Github, if the project is posting their releases, you can follow the RSS feed of that project&amp;rsquo;s release.</description>
+      <description>There are various ways to know about the release of your favourite new software, follow the mailing list, check the Github release page periodically, follow the project&amp;rsquo;s Twitter handle, etc. But do you know there is even more reliable way to track the releases of your favourite software released on Github.
+Github Releases and RSS feeds For every repository on Github, if the project is posting their releases, you can follow the RSS feed of that project&amp;rsquo;s release.</description>
     </item>
+    
     <item>
       <title>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</title>
       <link>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</link>
       <pubDate>Wed, 07 Mar 2018 02:21:49 +0530</pubDate>
+      
       <guid>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</guid>
-      <description>Test Fixtures &amp;ldquo;go test&amp;rdquo; sets pwd as package directory Test Helpers should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures Configurability Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It&amp;rsquo;s ok to make these configs unexported so only tests can set them.</description>
+      <description>Test Fixtures  &amp;ldquo;go test&amp;rdquo; sets pwd as package directory  Test Helpers  should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures  Configurability  Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It&amp;rsquo;s ok to make these configs unexported so only tests can set them.</description>
     </item>
+    
     <item>
       <title>Methods that satisfy interfaces in golang</title>
       <link>https://suraj.io/post/golang-methods-interfaces/</link>
       <pubDate>Fri, 23 Feb 2018 08:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/golang-methods-interfaces/</guid>
-      <description>Pointer receiver For a struct User with a method Work with pointer receiver.&#xA;type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &amp;#34;has worked for&amp;#34;, u.Period, &amp;#34;hrs.&amp;#34;) } func main() { uval := User{&amp;#34;UserVal&amp;#34;, 5} uval.Work() pval := &amp;amp;User{&amp;#34;UserPtr&amp;#34;, 6} pval.Work() } See on go playground.&#xA;output:&#xA;UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval.</description>
+      <description>Pointer receiver For a struct User with a method Work with pointer receiver.
+type User struct {  Name string  Period int }  func (u *User) Work() {  fmt.Println(u.Name, &amp;#34;has worked for&amp;#34;, u.Period, &amp;#34;hrs.&amp;#34;) }  func main() {  uval := User{&amp;#34;UserVal&amp;#34;, 5}  uval.Work()   pval := &amp;amp;User{&amp;#34;UserPtr&amp;#34;, 6}  pval.Work() } See on go playground.
+output:
+UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.</description>
     </item>
+    
   </channel>
 </rss>

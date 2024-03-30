@@ -1,33 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kompose on Suraj Deshmukh</title>
+    <title>kompose on Suraj Deshmukh</title>
     <link>https://suraj.io/categories/kompose/</link>
-    <description>Recent content in Kompose on Suraj Deshmukh</description>
+    <description>Recent content in kompose on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Apr 2017 15:57:07 +0530</lastBuildDate>
-    <atom:link href="https://suraj.io/categories/kompose/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Apr 2017 15:57:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/kompose/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Enabling local development with Kubernetes</title>
       <link>https://suraj.io/post/enabling-local-development-with-k8s/</link>
       <pubDate>Sun, 23 Apr 2017 15:57:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/enabling-local-development-with-k8s/</guid>
-      <description>I want to show how you can enable Kubernetes in your day to day development workflow. So that you get the feel of production deployment locally from day 1.&#xA;I have a flask application which I am working on. The basic directory structure looks like this:&#xA;$ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo foo 201 Apr 23 16:55 docker-compose.yml -rw-rw-r--. 1 foo foo 363 Apr 23 16:21 Dockerfile -rwxrwxr-x.</description>
+      <description>I want to show how you can enable Kubernetes in your day to day development workflow. So that you get the feel of production deployment locally from day 1.
+I have a flask application which I am working on. The basic directory structure looks like this:
+$ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo foo 201 Apr 23 16:55 docker-compose.yml -rw-rw-r--. 1 foo foo 363 Apr 23 16:21 Dockerfile -rwxrwxr-x.</description>
     </item>
+    
     <item>
       <title>Packaging &#39;kompose&#39; for centos paas sig</title>
       <link>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</link>
       <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
+      
       <guid>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</guid>
-      <description>Note: This is a living document and will be updated from time to time.&#xA;Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.&#xA;Setup your machine Install packages needed&#xA;sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager Setup certs</description>
+      <description>Note: This is a living document and will be updated from time to time.
+Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
+Setup your machine Install packages needed
+sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \  gcc byobu rpmlint rpmdevtools centos-packager Setup certs</description>
     </item>
+    
     <item>
       <title>Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</title>
       <link>https://suraj.io/post/test-kompose/</link>
       <pubDate>Tue, 14 Mar 2017 00:31:57 +0530</pubDate>
+      
       <guid>https://suraj.io/post/test-kompose/</guid>
-      <description>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.&#xA;Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.&#xA;Starting the environment:&#xA;docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:&#xA;# Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.</description>
+      <description>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
+Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
+Starting the environment:
+docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
+# Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose  # Check the kompose version kompose version  # Install the testing dependencies dnf install -y jq make  # Pull the git repository to run the functional tests git clone https://github.</description>
     </item>
+    
   </channel>
 </rss>

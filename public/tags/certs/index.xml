@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Certs on Suraj Deshmukh</title>
+    <title>certs on Suraj Deshmukh</title>
     <link>https://suraj.io/tags/certs/</link>
-    <description>Recent content in Certs on Suraj Deshmukh</description>
+    <description>Recent content in certs on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Feb 2021 10:25:41 +0530</lastBuildDate>
-    <atom:link href="https://suraj.io/tags/certs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Feb 2021 10:25:41 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/certs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Enable TLS bootstrapping in a Kubernetes cluster</title>
       <link>https://suraj.io/post/2021/02/k8s-bootstrap-token/</link>
       <pubDate>Sat, 06 Feb 2021 10:25:41 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/02/k8s-bootstrap-token/</guid>
-      <description>Photo by Jordan Harrison from Unsplash.&#xA;This blog is a recap of my old blog &amp;ldquo;Add new node to Kubernetes cluster with bootstrap token&amp;rdquo;. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.</description>
+      <description>Photo by Jordan Harrison from Unsplash.
+ This blog is a recap of my old blog &amp;ldquo;Add new node to Kubernetes cluster with bootstrap token&amp;rdquo;. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.</description>
     </item>
+    
   </channel>
 </rss>

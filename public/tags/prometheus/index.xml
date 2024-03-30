@@ -1,33 +1,42 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Prometheus on Suraj Deshmukh</title>
+    <title>prometheus on Suraj Deshmukh</title>
     <link>https://suraj.io/tags/prometheus/</link>
-    <description>Recent content in Prometheus on Suraj Deshmukh</description>
+    <description>Recent content in prometheus on Suraj Deshmukh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 02 Apr 2021 07:07:07 +0530</lastBuildDate>
-    <atom:link href="https://suraj.io/tags/prometheus/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Apr 2021 07:07:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/prometheus/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monitor your PC with Prometheus Grafana stack</title>
       <link>https://suraj.io/post/2021/03/node-monitor/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
+      
       <guid>https://suraj.io/post/2021/03/node-monitor/</guid>
-      <description>How do you monitor your own computer? Of course, using Prometheus, node-exporter and Grafana. You might ask why would you wanna do that when you can simply use the operating system provided, &amp;ldquo;System Monitor&amp;rdquo;. Well, yes, you can use that. But the data you get from the OS System Monitor is coarse-grained. OS system monitor is not configurable, but this stack is.&#xA;It is like running htop but where you can go back in history, unlike htop, which only shows the current state.</description>
+      <description>How do you monitor your own computer? Of course, using Prometheus, node-exporter and Grafana. You might ask why would you wanna do that when you can simply use the operating system provided, &amp;ldquo;System Monitor&amp;rdquo;. Well, yes, you can use that. But the data you get from the OS System Monitor is coarse-grained. OS system monitor is not configurable, but this stack is.
+It is like running htop but where you can go back in history, unlike htop, which only shows the current state.</description>
     </item>
+    
     <item>
       <title>How to backup and restore Prometheus?</title>
       <link>https://suraj.io/post/how-to-backup-and-restore-prometheus/</link>
       <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/how-to-backup-and-restore-prometheus/</guid>
-      <description>This blog will show you how to take a backup from a running Prometheus and restore it in some other Prometheus instance. You might ask why would you even want to do something like that? Well, sometimes you want the Prometheus metrics because they were collected for some particular purpose and you want to do some analysis later.&#xA;Prerequisites/Assumptions This blog assumes that you have a Prometheus running that is deployed using prometheus-operator in monitoring namespace.</description>
+      <description>This blog will show you how to take a backup from a running Prometheus and restore it in some other Prometheus instance. You might ask why would you even want to do something like that? Well, sometimes you want the Prometheus metrics because they were collected for some particular purpose and you want to do some analysis later.
+Prerequisites/Assumptions This blog assumes that you have a Prometheus running that is deployed using prometheus-operator in monitoring namespace.</description>
     </item>
+    
     <item>
       <title>Prometheus with existing application on OpenShift</title>
       <link>https://suraj.io/post/using-prometheus/</link>
       <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
+      
       <guid>https://suraj.io/post/using-prometheus/</guid>
-      <description>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.&#xA;Requirements Setting up cluster I have done it using the oc cluster up, read about how to do this here. You could also setup a local OpenShift cluster by running minishift, read about setting up minishift here.&#xA;Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge.</description>
+      <description>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.
+Requirements Setting up cluster I have done it using the oc cluster up, read about how to do this here. You could also setup a local OpenShift cluster by running minishift, read about setting up minishift here.
+Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge.</description>
     </item>
+    
   </channel>
 </rss>
