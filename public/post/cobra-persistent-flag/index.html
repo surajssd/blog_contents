@@ -1,711 +1,530 @@
-<!doctype html>
-<html lang="en">
-  <head>
-  <meta charset="utf-8">
-<title>Cobra and Persistentflags gotchas - Suraj Deshmukh</title>
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Cobra and Persistentflags gotchas | Suraj Deshmukh</title>
+<meta name="keywords" content="cobra, notes, golang, programming">
 <meta name="description" content="How wrong usage of persistent flags can burn you">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="twitter:card" content="summary_large_image">
-
-<meta property="og:site_name" content="Suraj Deshmukh">
-<meta property="og:title" content="Cobra and Persistentflags gotchas">
-<meta property="og:description" content="How wrong usage of persistent flags can burn you">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://suraj.io/post/cobra-persistent-flag/">
-  <meta property="og:image" content="https://github.com/surajssd.png">
-
-
-
-  <link rel="shortcut icon" href="/favicon.ico?v=1">
-
-
-  <meta name="generator" content="Hugo 0.97.3" />
-  
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/github.min.css">
-          <link rel="stylesheet" href="/css/bundle.min.2b4e36cd6a81be0237f8d8f3ce0d239eb39d356f5e3b6c33140b8108476a2beb.css" integrity="sha256-K042zWqBvgI3&#43;Njzzg0jnrOdNW9eO2wzFAuBCEdqK&#43;s="><link rel="stylesheet" href="/css/add-on.css">
-</head>
-
-  <body>
-    
-
-<header id="site-header">
-  <nav id="site-nav">
-    <h1 class="nav-title">
-      <a href="/" class="nav">
-        
-          Cobra and Persistentflags gotchas
-        
-      </a>
-    </h1>
-    <menu id="site-nav-menu" class="flyout-menu menu">
-      
-        
-          
-          <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
-        
-      
-        
-          
-          <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
-        
-      
-        
-          
-          <a href="/post/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
-        
-      
-        
-          
-          <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
-        
-      
-      <a href="#share-menu" class="nav link share-toggle"><i class="fas fa-share-alt">&nbsp;</i>Share</a>
-      <a href="#search-input" class="nav link search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
-    </menu>
-    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
-    <a href="#share-menu" class="nav share-toggle"><i class="fas fa-share-alt fa-2x">&nbsp;</i></a>
-    <a href="#lang-menu" class="nav lang-toggle" lang="en">en</a>
-    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
-  </nav>
-  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
-  <menu id="lang-menu" class="flyout-menu menu">
-  <a href="#" lang="en" class="nav link active">English (en)</a>
-  
-    
-      
-    
-  
-</menu>
-
-  
-    <menu id="share-menu" class="flyout-menu menu">
-      <h1>Share Post</h1>
-      
-
-
-
-
-  
-    
-    <a href="//twitter.com/share?text=Cobra%20and%20Persistentflags%20gotchas&amp;url=https%3a%2f%2fsuraj.io%2fpost%2fcobra-persistent-flag%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
-        <p>Twitter</p>
-      </a>
-  
-
-  
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fcobra-persistent-flag%2f&amp;title=Cobra%20and%20Persistentflags%20gotchas" target="_blank" rel="noopener" class="nav share-btn reddit">
-          <p>Reddit</p>
-        </a>
-  
-
-  
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fcobra-persistent-flag%2f&amp;title=Cobra%20and%20Persistentflags%20gotchas" target="_blank" rel="noopener" class="nav share-btn linkedin">
-            <p>LinkedIn</p>
-          </a>
-  
-
-  
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fcobra-persistent-flag%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
-        <p>Facebook</p>
-        </a>
-  
-
-  
-        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2fcobra-persistent-flag%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
-          <p>Email</p>
-        </a>
-  
-
-
-    </menu>
-  
-</header>
-
-    <div id="wrapper">
-      <section id="site-intro" >
-  <a href="/"><img src="https://github.com/surajssd.png" class="square" width="100" alt="Suraj Deshmukh" /></a>
-  <header>
-    <h1>Blog</h1>
-  </header>
-  <main>
-    <p>containers, programming, golang, hacks, kubernetes, productivity, books</p>
-  </main>
-  
-    <footer>
-      <ul class="socnet-icons">
-        
-
-        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
-
-<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
-
-
-
-
-
-
-
-<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
-
-<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
-
-
-
-<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
-
-
-
-<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
-
-
-
-
-
-
-
-<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
-
-
-
-
-
-
-
-
-
-
-
-<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
-
-      </ul>
-    </footer>
-  
-</section>
-
-      <main id="site-main">
-        
-  <article>
-    <div class="post">
-      <header>
-  <div class="title">
-    
-      <h2><a href="/post/cobra-persistent-flag/">Cobra and Persistentflags gotchas</a></h2>
-    
-    
-      <p>How wrong usage of persistent flags can burn you</p>
-    
-  </div>
-  <div class="meta">
-    <time datetime="2019-01-04 01:00:51 &#43;0530 &#43;0530">January 4, 2019</time>
-    <p>Suraj Deshmukh</p>
-    <p>3-Minute Read</p>
-  </div>
-</header>
-
-      <div id="socnet-share">
-        
-
-
-
-
-  
-    
-    <a href="//twitter.com/share?text=Cobra%20and%20Persistentflags%20gotchas&amp;url=https%3a%2f%2fsuraj.io%2fpost%2fcobra-persistent-flag%2f" target="_blank" rel="noopener" class="nav share-btn twitter">
-        <p>Twitter</p>
-      </a>
-  
-
-  
-    <a href="//www.reddit.com/submit?url=https%3a%2f%2fsuraj.io%2fpost%2fcobra-persistent-flag%2f&amp;title=Cobra%20and%20Persistentflags%20gotchas" target="_blank" rel="noopener" class="nav share-btn reddit">
-          <p>Reddit</p>
-        </a>
-  
-
-  
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fsuraj.io%2fpost%2fcobra-persistent-flag%2f&amp;title=Cobra%20and%20Persistentflags%20gotchas" target="_blank" rel="noopener" class="nav share-btn linkedin">
-            <p>LinkedIn</p>
-          </a>
-  
-
-  
-      <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fsuraj.io%2fpost%2fcobra-persistent-flag%2f" target="_blank" rel="noopener" class="nav share-btn facebook">
-        <p>Facebook</p>
-        </a>
-  
-
-  
-        <a href="mailto:?subject=Check%20out%20this%20post%20by Suraj%20Deshmukh&amp;body=https%3a%2f%2fsuraj.io%2fpost%2fcobra-persistent-flag%2f" target="_blank" class="nav share-btn email" data-proofer-ignore>
-          <p>Email</p>
-        </a>
-  
-
-
-      </div>
-      <div class="content">
-        
-        
-        <p>If you are using <a href="https://github.com/spf13/cobra">cobra</a> cmd line library for golang applications and it&rsquo;s <code>PersistentFlags</code> and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.</p>
-<p>All the code referenced here can be found here <a href="https://github.com/surajssd/cobrademo">https://github.com/surajssd/cobrademo</a>.</p>
-<p><img src="/images/cobra-persistent-flag/cobra.png" alt="" title=""></p>
-<p>The cmd line tool built with cobra has following structure. The main tool is called <code>cobrademo</code>. And the sub-commands are <code>alpha</code> and <code>num</code>. Sub-command <code>num</code> has one more sub-command called <code>one</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cobrademo
-</span></span><span style="display:flex;"><span>├── alpha
-</span></span><span style="display:flex;"><span>└── num
-</span></span><span style="display:flex;"><span>    └── one
-</span></span></code></pre></div><p>Now I want a persistent flag <code>--config</code> to be availabe under sub-command <code>one</code> and <code>alpha</code> both. So I created a func that allows me to add this flag under any command, which looked like following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">addConfig</span>(<span style="color:#a6e22e">cmd</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">cobra</span>.<span style="color:#a6e22e">Command</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// add config flag
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">cmd</span>.<span style="color:#a6e22e">PersistentFlags</span>().<span style="color:#a6e22e">String</span>(
-</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;config&#34;</span>,
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">ExpandEnv</span>(<span style="color:#e6db74">&#34;$HOME/.config&#34;</span>),
-</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Path to config file&#34;</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">viper</span>.<span style="color:#a6e22e">BindPFlag</span>(<span style="color:#e6db74">&#34;config&#34;</span>, <span style="color:#a6e22e">cmd</span>.<span style="color:#a6e22e">PersistentFlags</span>().<span style="color:#a6e22e">Lookup</span>(<span style="color:#e6db74">&#34;config&#34;</span>))
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Above code is <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/root.go#L29-L36">here</a>.</p>
-<p>Now this is called from <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/one.go#L18"><code>one.go</code></a> and <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/alpha.go#L18"><code>alpha.go</code></a> to add the flag under those sub-command.</p>
-<p>Now the command structure for <code>alpha</code> sub-command looks like following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ go run main.go alpha -h
-</span></span><span style="display:flex;"><span>All the alphabet related commands
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Usage:
-</span></span><span style="display:flex;"><span>  cobrademo alpha <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Flags:
-</span></span><span style="display:flex;"><span>      --config string   Path to config file <span style="color:#f92672">(</span>default <span style="color:#e6db74">&#34;/home/hummer/.config&#34;</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>  -h, --help            help <span style="color:#66d9ef">for</span> alpha
-</span></span></code></pre></div><p>For sub-command <code>one</code> it looks like following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ go run main.go num -h
-</span></span><span style="display:flex;"><span>All the numeric related commands
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Usage:
-</span></span><span style="display:flex;"><span>  cobrademo num <span style="color:#f92672">[</span>command<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Available Commands:
-</span></span><span style="display:flex;"><span>  one         first subcommand in numerics
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Flags:
-</span></span><span style="display:flex;"><span>  -h, --help   help <span style="color:#66d9ef">for</span> num
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Use <span style="color:#e6db74">&#34;cobrademo num [command] --help&#34;</span> <span style="color:#66d9ef">for</span> more information about a command.
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ go run main.go num one -h
-</span></span><span style="display:flex;"><span>first subcommand in numerics
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Usage:
-</span></span><span style="display:flex;"><span>  cobrademo num one <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Flags:
-</span></span><span style="display:flex;"><span>      --config string   Path to config file <span style="color:#f92672">(</span>default <span style="color:#e6db74">&#34;/home/hummer/.config&#34;</span><span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>  -h, --help            help <span style="color:#66d9ef">for</span> one
-</span></span></code></pre></div><p>But if you look at the functionality it does not work as expected.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ go run main.go num one --config<span style="color:#f92672">=</span>foobar
-</span></span><span style="display:flex;"><span>inside one, config value:  foobar
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$ go run main.go alpha --config<span style="color:#f92672">=</span>foobar
-</span></span><span style="display:flex;"><span>inside alpha, config value:  /home/hummer/.config
-</span></span></code></pre></div><p>If you see the output of both the commands it is different. While it should have been same i.e. <code>foobar</code>. What made it work in case of sub-command <code>one</code> and it did not work in case of sub-command <code>alpha</code>?</p>
-<p>Now we are registering a persistent flag twice once for sub-command <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/one.go#L16-L19"><code>one</code></a> and again for <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/alpha.go#L16-L19"><code>alpha</code></a>. And these calls happen from the <code>init</code> func of those files. If you look at the order of the evaluation of those <code>init</code> functions then it happens in alphabetical order.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree cmd/
-</span></span><span style="display:flex;"><span>cmd/
-</span></span><span style="display:flex;"><span>├── alpha.go
-</span></span><span style="display:flex;"><span>├── num.go
-</span></span><span style="display:flex;"><span>├── one.go
-</span></span><span style="display:flex;"><span>└── root.go
-</span></span></code></pre></div><p>Hence the <code>init</code> func of <code>alpha</code> is called first and the flag <code>config</code> is registered there first and again it is registered for <code>one</code>. So the final flag is just registered for <code>one</code>. Hence the functionality works correctly for <code>one</code> and not for <code>alpha</code>.</p>
-<p>So the right way to work with persistent flags is to register them only once. If any particular sub-command tree needs that flag then only register at it&rsquo;s root. In our case most of the sub-commands will need it, so the right way to use it is to add it to the <a href="https://github.com/surajssd/cobrademo/blob/ab3fe4d7ecec26ca5c02cffa861941708f89a5de/cmd/root.go#L10-L13"><code>rootCmd</code></a>.</p>
-<p>In above code I removed the function <code>addConfig</code> and all it&rsquo;s references(see the changes <a href="https://github.com/surajssd/cobrademo/commit/ab3fe4d7ecec26ca5c02cffa861941708f89a5de">here</a>). And added following code snippet to the <code>init</code> func of <code>root.go</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>	<span style="color:#75715e">// add config flag
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">rootCmd</span>.<span style="color:#a6e22e">PersistentFlags</span>().<span style="color:#a6e22e">String</span>(
-</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;config&#34;</span>,
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">ExpandEnv</span>(<span style="color:#e6db74">&#34;$HOME/.config&#34;</span>),
-</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;Path to config file&#34;</span>)
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">viper</span>.<span style="color:#a6e22e">BindPFlag</span>(<span style="color:#e6db74">&#34;config&#34;</span>, <span style="color:#a6e22e">rootCmd</span>.<span style="color:#a6e22e">PersistentFlags</span>().<span style="color:#a6e22e">Lookup</span>(<span style="color:#e6db74">&#34;config&#34;</span>))
-</span></span></code></pre></div><p>And now after running the code again with above changes it works absolutely fine:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ go run main.go num one --config<span style="color:#f92672">=</span>foobar
-</span></span><span style="display:flex;"><span>inside one, config value:  foobar
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$ go run main.go alpha --config<span style="color:#f92672">=</span>foobar
-</span></span><span style="display:flex;"><span>inside alpha, config value:  foobar
-</span></span></code></pre></div><p>There are other cobra gotchas that exist but then that is for another post.</p>
-
-      </div>
-      <footer>
-        <div class="stats">
-  
-    <ul class="categories">
-      
-        
-          <li><a class="article-terms-link" href="/categories/golang/">golang</a></li>
-        
-      
-    </ul>
-  
-  
-    <ul class="tags">
-      
-        
-          <li><a class="article-terms-link" href="/tags/cobra/">cobra</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/notes/">notes</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/golang/">golang</a></li>
-        
-          <li><a class="article-terms-link" href="/tags/programming/">programming</a></li>
-        
-      
-    </ul>
-  
-</div>
-
-      </footer>
-    </div>
-    
-      
-  <div class='post'>
-    <div id="disqus_thread"></div>
-<script type="application/javascript">
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
+<meta name="author" content="Suraj Deshmukh">
+<link rel="canonical" href="http://localhost:1313/post/cobra-persistent-flag/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/cobra-persistent-flag/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
         }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "suraj-io" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-  </div>
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
+            .list {
+                background: var(--theme);
+            }
 
-    
-  </article>
-  <div class="pagination">
-    
-      <a href="/post/cve-2017-1002101-subpath-volume-mount-recreate/" class="button left"><span>Recreate Kubernetes CVE-2017-1002101</span></a>
-    
-    
-      <a href="/post/old-laptop-setup/" class="button right"><span>Old laptop setup reference</span></a>
-    
-  </div>
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-      </main>
-      <section id="site-sidebar">
-  
-    <section id="recent-posts">
-      <header>
-        <h1>Recent Posts</h1>
-      </header>
-      
-      <article class="mini-post">
-          
-        <header>
-          <h2><a href="/post/surajd-talks-links/">Suraj Deshmukh&#39;s talks at conferences</a></h2>
-          <time class="published" datetime="2024-03-30 01:00:51 &#43;0530 &#43;0530">March 30, 2024</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-          <a href="/post/2021/10/dont-be-default/" class="image" style="--bg-image: url('/post/2021/10/dont-be-default/human-evolution.jpg');">
-    <img src="/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
-  </a>
-        <header>
-          <h2><a href="/post/2021/10/dont-be-default/">Fight Your Instincts — Your Default Behaviour is Hurting You</a></h2>
-          <time class="published" datetime="2021-10-29 11:05:07 &#43;0530 &#43;0530">October 29, 2021</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-          <a href="/post/2021/10/atomic-habits/" class="image" style="--bg-image: url('/post/2021/10/atomic-habits/logo.jpg');">
-    <img src="/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
-  </a>
-        <header>
-          <h2><a href="/post/2021/10/atomic-habits/">Learnings from &#39;Atomic Habits&#39;</a></h2>
-          <time class="published" datetime="2021-10-26 09:21:07 &#43;0530 &#43;0530">October 26, 2021</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-          <a href="/post/2021/09/unchanging-context/" class="image" style="--bg-image: url('/post/2021/09/unchanging-context/cafe.jpg');">
-    <img src="/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
-  </a>
-        <header>
-          <h2><a href="/post/2021/09/unchanging-context/">Unchanging Contexts and Degrading Productivity</a></h2>
-          <time class="published" datetime="2021-09-11 17:09:07 &#43;0530 &#43;0530">September 11, 2021</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-          <a href="/post/2021/09/cks-tips/" class="image" style="--bg-image: url('/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png');">
-    <img src="/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
-  </a>
-        <header>
-          <h2><a href="/post/2021/09/cks-tips/">Certified Kubernetes Security Specialist CKS exam tips</a></h2>
-          <time class="published" datetime="2021-09-04 13:30:07 &#43;0530 &#43;0530">September 4, 2021</time>
-        </header>
-      </article>
-      
-      
-        <footer>
-          <a href="/post/" class="button">See More</a>
-        </footer>
-      
-    </section>
-  
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-  
-    
-
-      <section id="categories">
-        <header>
-          <h1><a href="/categories">Categories</a></h1>
-        </header>
-        <ul>
-          
-          
-          <li>
-              <a href="/categories/kubernetes/">kubernetes<span class="count">34</span></a>
-          
-          <li>
-              <a href="/categories/notes/">notes<span class="count">21</span></a>
-          
-          <li>
-              <a href="/categories/non-tech/">non-tech<span class="count">17</span></a>
-          
-          <li>
-              <a href="/categories/security/">security<span class="count">13</span></a>
-          
-          <li>
-              <a href="/categories/productivity/">productivity<span class="count">10</span></a>
-          
-          <li>
-              <a href="/categories/book-review/">book-review<span class="count">9</span></a>
-          
-          <li>
-              <a href="/categories/containers/">containers<span class="count">7</span></a>
-          
-          <li>
-              <a href="/categories/bash/">bash<span class="count">5</span></a>
-          
-          <li>
-              <a href="/categories/event_report/">event_report<span class="count">5</span></a>
-          
-          <li>
-              <a href="/categories/golang/">golang<span class="count">5</span></a>
-          
-          <li>
-              <a href="/categories/packaging/">packaging<span class="count">5</span></a>
-          
-          <li>
-              <a href="/categories/docker/">docker<span class="count">4</span></a>
-          
-          <li>
-              <a href="/categories/host/">host<span class="count">4</span></a>
-          
-          <li>
-              <a href="/categories/linux/">linux<span class="count">4</span></a>
-          
-          <li>
-              <a href="/categories/cka/">cka<span class="count">3</span></a>
-          
-          <li>
-              <a href="/categories/fedora/">fedora<span class="count">3</span></a>
-          
-          <li>
-              <a href="/categories/kompose/">kompose<span class="count">3</span></a>
-          
-          <li>
-              <a href="/categories/monitoring/">monitoring<span class="count">3</span></a>
-          
-          <li>
-              <a href="/categories/notion/">notion<span class="count">3</span></a>
-          
-          <li>
-              <a href="/categories/openshift/">openshift<span class="count">3</span></a>
-          
-          <li>
-              <a href="/categories/programming/">programming<span class="count">3</span></a>
-          
-          <li>
-              <a href="/categories/prometheus/">prometheus<span class="count">3</span></a>
-          
-          <li>
-              <a href="/categories/certs/">certs<span class="count">2</span></a>
-          
-          <li>
-              <a href="/categories/configuration/">configuration<span class="count">2</span></a>
-          
-          <li>
-              <a href="/categories/desktop/">desktop<span class="count">2</span></a>
-          
-          <li>
-              <a href="/categories/git/">git<span class="count">2</span></a>
-          
-          <li>
-              <a href="/categories/ide/">ide<span class="count">2</span></a>
-          
-          <li>
-              <a href="/categories/kms/">kms<span class="count">2</span></a>
-          
-          <li>
-              <a href="/categories/minikube/">minikube<span class="count">2</span></a>
-          
-          <li>
-              <a href="/categories/activism/">activism<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/backup/">backup<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/centos/">centos<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/cks/">cks<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/cmd-line/">cmd-line<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/etcd/">etcd<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/flatcar/">flatcar<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/gaming/">gaming<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/gnome/">gnome<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/https/">https<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/jobs/">jobs<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/kubeadm/">kubeadm<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/lokomotive/">lokomotive<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/meetup/">meetup<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/project_management/">project_management<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/selinux/">selinux<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/systemd/">systemd<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/talks/">talks<span class="count">1</span></a>
-          
-          <li>
-              <a href="/categories/vagrant/">vagrant<span class="count">1</span></a>
-          
-          </li>
-        </ul>
-      </section>
-    
-  
-
-  
-    <section id="mini-bio">
-      <header>
-        <h1>About</h1>
-      </header>
-      <p>I am a Senior Software Engineer at Microsoft, working on various tooling around container technology like Docker, Kubernetes, etc.</p>
-      <footer>
-        <a href="/about" class="button">Learn More</a>
-      </footer>
-    </section>
-  
-</section>
-
-      <footer id="site-footer">
-  
-      <ul class="socnet-icons">
-        
-
-        <li><a href="//github.com/surajssd" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
-
-<li><a href="//stackoverflow.com/users/3848679/surajd" target="_blank" rel="noopener" title="Stack Overflow" class="fab fa-stack-overflow"></a></li>
-
-
-
-
-
-
-
-<li><a href="//deshmukhsuraj.wordpress.com" target="_blank" rel="noopener" title="WordPress" class="fab fa-wordpress"></a></li>
-
-<li><a href="//www.linkedin.com/in/suraj-deshmukh-0205b834" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
-
-
-
-<li><a href="//slideshare.com/surajssd009005" target="_blank" rel="noopener" title="SlideShare" class="fab fa-slideshare"></a></li>
-
-
-
-<li><a href="//youtube.com/surajssd009005" target="_blank" rel="noopener" title="YouTube" class="fab fa-youtube"></a></li>
-
-
-
-
-
-
-
-<li><a href="//twitter.com/surajd_" target="_blank" rel="noopener" title="Twitter" class="fab fa-twitter"></a></li>
-
-
-
-
-
-
-
-
-
-
-
-<li><a href="mailto:surajd.service@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
-
-      </ul>
-  
-  <p class="copyright">
-    © 2024 Suraj Deshmukh
-      <br>
-    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.97.3' target='_blank' rel='noopener'>Hugo</a>
-  </p>
-</footer>
-<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
-
-      <script src="/js/highlight.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/html.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/css.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/js.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/toml.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/shell.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/bash.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
-    <script>hljs.highlightAll();</script><script src="/js/bundle.min.750964e5338b63ade13cb0fbf9ac9317aff418009b734237ae2941f41a79d11f.js" integrity="sha256-dQlk5TOLY63hPLD7&#43;ayTF6/0GACbc0I3rilB9Bp50R8="></script>
-    <script src="/js/add-on.js"></script>
-<script type="application/javascript">
+    </style>
+</noscript>
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 	ga('create', 'UA-97006720-1', 'auto');
 	
 	ga('send', 'pageview');
 }
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+</script><meta property="og:title" content="Cobra and Persistentflags gotchas" />
+<meta property="og:description" content="How wrong usage of persistent flags can burn you" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/cobra-persistent-flag/" />
+<meta property="og:image" content="http://localhost:1313/images/papermod-cover.png" />
+<meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-01-04T01:00:51+05:30" />
+<meta property="article:modified_time" content="2019-01-04T01:00:51+05:30" />
 
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/images/papermod-cover.png" />
+<meta name="twitter:title" content="Cobra and Persistentflags gotchas"/>
+<meta name="twitter:description" content="How wrong usage of persistent flags can burn you"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Cobra and Persistentflags gotchas",
+      "item": "http://localhost:1313/post/cobra-persistent-flag/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cobra and Persistentflags gotchas",
+  "name": "Cobra and Persistentflags gotchas",
+  "description": "How wrong usage of persistent flags can burn you",
+  "keywords": [
+    "cobra", "notes", "golang", "programming"
+  ],
+  "articleBody": "If you are using cobra cmd line library for golang applications and it’s PersistentFlags and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.\nAll the code referenced here can be found here https://github.com/surajssd/cobrademo.\nThe cmd line tool built with cobra has following structure. The main tool is called cobrademo. And the sub-commands are alpha and num. Sub-command num has one more sub-command called one.\ncobrademo ├── alpha └── num └── one Now I want a persistent flag --config to be availabe under sub-command one and alpha both. So I created a func that allows me to add this flag under any command, which looked like following:\nfunc addConfig(cmd *cobra.Command) { // add config flag cmd.PersistentFlags().String( \"config\", os.ExpandEnv(\"$HOME/.config\"), \"Path to config file\") viper.BindPFlag(\"config\", cmd.PersistentFlags().Lookup(\"config\")) } Above code is here.\nNow this is called from one.go and alpha.go to add the flag under those sub-command.\nNow the command structure for alpha sub-command looks like following:\n$ go run main.go alpha -h All the alphabet related commands Usage: cobrademo alpha [flags] Flags: --config string Path to config file (default \"/home/hummer/.config\") -h, --help help for alpha For sub-command one it looks like following:\n$ go run main.go num -h All the numeric related commands Usage: cobrademo num [command] Available Commands: one first subcommand in numerics Flags: -h, --help help for num Use \"cobrademo num [command] --help\" for more information about a command. $ go run main.go num one -h first subcommand in numerics Usage: cobrademo num one [flags] Flags: --config string Path to config file (default \"/home/hummer/.config\") -h, --help help for one But if you look at the functionality it does not work as expected.\n$ go run main.go num one --config=foobar inside one, config value: foobar $ go run main.go alpha --config=foobar inside alpha, config value: /home/hummer/.config If you see the output of both the commands it is different. While it should have been same i.e. foobar. What made it work in case of sub-command one and it did not work in case of sub-command alpha?\nNow we are registering a persistent flag twice once for sub-command one and again for alpha. And these calls happen from the init func of those files. If you look at the order of the evaluation of those init functions then it happens in alphabetical order.\n$ tree cmd/ cmd/ ├── alpha.go ├── num.go ├── one.go └── root.go Hence the init func of alpha is called first and the flag config is registered there first and again it is registered for one. So the final flag is just registered for one. Hence the functionality works correctly for one and not for alpha.\nSo the right way to work with persistent flags is to register them only once. If any particular sub-command tree needs that flag then only register at it’s root. In our case most of the sub-commands will need it, so the right way to use it is to add it to the rootCmd.\nIn above code I removed the function addConfig and all it’s references(see the changes here). And added following code snippet to the init func of root.go.\n// add config flag rootCmd.PersistentFlags().String( \"config\", os.ExpandEnv(\"$HOME/.config\"), \"Path to config file\") viper.BindPFlag(\"config\", rootCmd.PersistentFlags().Lookup(\"config\")) And now after running the code again with above changes it works absolutely fine:\n$ go run main.go num one --config=foobar inside one, config value: foobar $ go run main.go alpha --config=foobar inside alpha, config value: foobar There are other cobra gotchas that exist but then that is for another post.\n",
+  "wordCount" : "622",
+  "inLanguage": "en",
+  "image": "http://localhost:1313/images/papermod-cover.png","datePublished": "2019-01-04T01:00:51+05:30",
+  "dateModified": "2019-01-04T01:00:51+05:30",
+  "author":{
+    "@type": "Person",
+    "name": "Suraj Deshmukh"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/post/cobra-persistent-flag/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Suraj Deshmukh",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/post" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/series" title="Series">
+                    <span>Series</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search" title="Search 🔍">
+                    <span>Search 🔍</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Cobra and Persistentflags gotchas
+    </h1>
+    <div class="post-description">
+      How wrong usage of persistent flags can burn you
     </div>
-  </body>
+    <div class="post-meta"><span title='2019-01-04 01:00:51 +0530 +0530'>January 4, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/cobra-persistent-flag.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> 
+
+  <div class="post-content"><p>If you are using <a href="https://github.com/spf13/cobra">cobra</a> cmd line library for golang applications and it&rsquo;s <code>PersistentFlags</code> and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.</p>
+<p>All the code referenced here can be found here <a href="https://github.com/surajssd/cobrademo">https://github.com/surajssd/cobrademo</a>.</p>
+<p><img loading="lazy" src="/images/cobra-persistent-flag/cobra.png" alt=""  />
+</p>
+<p>The cmd line tool built with cobra has following structure. The main tool is called <code>cobrademo</code>. And the sub-commands are <code>alpha</code> and <code>num</code>. Sub-command <code>num</code> has one more sub-command called <code>one</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cobrademo
+</span></span><span class="line"><span class="cl">├── alpha
+</span></span><span class="line"><span class="cl">└── num
+</span></span><span class="line"><span class="cl">    └── one
+</span></span></code></pre></div><p>Now I want a persistent flag <code>--config</code> to be availabe under sub-command <code>one</code> and <code>alpha</code> both. So I created a func that allows me to add this flag under any command, which looked like following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">addConfig</span><span class="p">(</span><span class="nx">cmd</span> <span class="o">*</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// add config flag
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">cmd</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">().</span><span class="nf">String</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">		<span class="s">&#34;config&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">os</span><span class="p">.</span><span class="nf">ExpandEnv</span><span class="p">(</span><span class="s">&#34;$HOME/.config&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">		<span class="s">&#34;Path to config file&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">viper</span><span class="p">.</span><span class="nf">BindPFlag</span><span class="p">(</span><span class="s">&#34;config&#34;</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">().</span><span class="nf">Lookup</span><span class="p">(</span><span class="s">&#34;config&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Above code is <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/root.go#L29-L36">here</a>.</p>
+<p>Now this is called from <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/one.go#L18"><code>one.go</code></a> and <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/alpha.go#L18"><code>alpha.go</code></a> to add the flag under those sub-command.</p>
+<p>Now the command structure for <code>alpha</code> sub-command looks like following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ go run main.go alpha -h
+</span></span><span class="line"><span class="cl">All the alphabet related commands
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Usage:
+</span></span><span class="line"><span class="cl">  cobrademo alpha <span class="o">[</span>flags<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Flags:
+</span></span><span class="line"><span class="cl">      --config string   Path to config file <span class="o">(</span>default <span class="s2">&#34;/home/hummer/.config&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  -h, --help            <span class="nb">help</span> <span class="k">for</span> alpha
+</span></span></code></pre></div><p>For sub-command <code>one</code> it looks like following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ go run main.go num -h
+</span></span><span class="line"><span class="cl">All the numeric related commands
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Usage:
+</span></span><span class="line"><span class="cl">  cobrademo num <span class="o">[</span>command<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Available Commands:
+</span></span><span class="line"><span class="cl">  one         first subcommand in numerics
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Flags:
+</span></span><span class="line"><span class="cl">  -h, --help   <span class="nb">help</span> <span class="k">for</span> num
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Use <span class="s2">&#34;cobrademo num [command] --help&#34;</span> <span class="k">for</span> more information about a command.
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ go run main.go num one -h
+</span></span><span class="line"><span class="cl">first subcommand in numerics
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Usage:
+</span></span><span class="line"><span class="cl">  cobrademo num one <span class="o">[</span>flags<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Flags:
+</span></span><span class="line"><span class="cl">      --config string   Path to config file <span class="o">(</span>default <span class="s2">&#34;/home/hummer/.config&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  -h, --help            <span class="nb">help</span> <span class="k">for</span> one
+</span></span></code></pre></div><p>But if you look at the functionality it does not work as expected.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ go run main.go num one --config<span class="o">=</span>foobar
+</span></span><span class="line"><span class="cl">inside one, config value:  foobar
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ go run main.go alpha --config<span class="o">=</span>foobar
+</span></span><span class="line"><span class="cl">inside alpha, config value:  /home/hummer/.config
+</span></span></code></pre></div><p>If you see the output of both the commands it is different. While it should have been same i.e. <code>foobar</code>. What made it work in case of sub-command <code>one</code> and it did not work in case of sub-command <code>alpha</code>?</p>
+<p>Now we are registering a persistent flag twice once for sub-command <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/one.go#L16-L19"><code>one</code></a> and again for <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/alpha.go#L16-L19"><code>alpha</code></a>. And these calls happen from the <code>init</code> func of those files. If you look at the order of the evaluation of those <code>init</code> functions then it happens in alphabetical order.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ tree cmd/
+</span></span><span class="line"><span class="cl">cmd/
+</span></span><span class="line"><span class="cl">├── alpha.go
+</span></span><span class="line"><span class="cl">├── num.go
+</span></span><span class="line"><span class="cl">├── one.go
+</span></span><span class="line"><span class="cl">└── root.go
+</span></span></code></pre></div><p>Hence the <code>init</code> func of <code>alpha</code> is called first and the flag <code>config</code> is registered there first and again it is registered for <code>one</code>. So the final flag is just registered for <code>one</code>. Hence the functionality works correctly for <code>one</code> and not for <code>alpha</code>.</p>
+<p>So the right way to work with persistent flags is to register them only once. If any particular sub-command tree needs that flag then only register at it&rsquo;s root. In our case most of the sub-commands will need it, so the right way to use it is to add it to the <a href="https://github.com/surajssd/cobrademo/blob/ab3fe4d7ecec26ca5c02cffa861941708f89a5de/cmd/root.go#L10-L13"><code>rootCmd</code></a>.</p>
+<p>In above code I removed the function <code>addConfig</code> and all it&rsquo;s references(see the changes <a href="https://github.com/surajssd/cobrademo/commit/ab3fe4d7ecec26ca5c02cffa861941708f89a5de">here</a>). And added following code snippet to the <code>init</code> func of <code>root.go</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">	<span class="c1">// add config flag
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">rootCmd</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">().</span><span class="nf">String</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">		<span class="s">&#34;config&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">os</span><span class="p">.</span><span class="nf">ExpandEnv</span><span class="p">(</span><span class="s">&#34;$HOME/.config&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">		<span class="s">&#34;Path to config file&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">viper</span><span class="p">.</span><span class="nf">BindPFlag</span><span class="p">(</span><span class="s">&#34;config&#34;</span><span class="p">,</span> <span class="nx">rootCmd</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">().</span><span class="nf">Lookup</span><span class="p">(</span><span class="s">&#34;config&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><p>And now after running the code again with above changes it works absolutely fine:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ go run main.go num one --config<span class="o">=</span>foobar
+</span></span><span class="line"><span class="cl">inside one, config value:  foobar
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ go run main.go alpha --config<span class="o">=</span>foobar
+</span></span><span class="line"><span class="cl">inside alpha, config value:  foobar
+</span></span></code></pre></div><p>There are other cobra gotchas that exist but then that is for another post.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/cobra/">Cobra</a></li>
+      <li><a href="http://localhost:1313/tags/notes/">Notes</a></li>
+      <li><a href="http://localhost:1313/tags/golang/">Golang</a></li>
+      <li><a href="http://localhost:1313/tags/programming/">Programming</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/post/cve-2017-1002101-subpath-volume-mount-recreate/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Recreate Kubernetes CVE-2017-1002101</span>
+  </a>
+  <a class="next" href="http://localhost:1313/post/old-laptop-setup/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Old laptop setup reference</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cobra and Persistentflags gotchas on x"
+            href="https://x.com/intent/tweet/?text=Cobra%20and%20Persistentflags%20gotchas&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2fcobra-persistent-flag%2f&amp;hashtags=cobra%2cnotes%2cgolang%2cprogramming">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cobra and Persistentflags gotchas on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2fcobra-persistent-flag%2f&amp;title=Cobra%20and%20Persistentflags%20gotchas&amp;summary=Cobra%20and%20Persistentflags%20gotchas&amp;source=http%3a%2f%2flocalhost%3a1313%2fpost%2fcobra-persistent-flag%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cobra and Persistentflags gotchas on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fpost%2fcobra-persistent-flag%2f&title=Cobra%20and%20Persistentflags%20gotchas">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cobra and Persistentflags gotchas on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fpost%2fcobra-persistent-flag%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cobra and Persistentflags gotchas on whatsapp"
+            href="https://api.whatsapp.com/send?text=Cobra%20and%20Persistentflags%20gotchas%20-%20http%3a%2f%2flocalhost%3a1313%2fpost%2fcobra-persistent-flag%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cobra and Persistentflags gotchas on telegram"
+            href="https://telegram.me/share/url?text=Cobra%20and%20Persistentflags%20gotchas&amp;url=http%3a%2f%2flocalhost%3a1313%2fpost%2fcobra-persistent-flag%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Cobra and Persistentflags gotchas on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Cobra%20and%20Persistentflags%20gotchas&u=http%3a%2f%2flocalhost%3a1313%2fpost%2fcobra-persistent-flag%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="http://localhost:1313/">Suraj Deshmukh</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
 </html>

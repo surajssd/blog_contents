@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>crio on Suraj Deshmukh</title>
-    <link>https://suraj.io/tags/crio/</link>
-    <description>Recent content in crio on Suraj Deshmukh</description>
+    <title>Crio on Suraj Deshmukh</title>
+    <link>http://localhost:1313/tags/crio/</link>
+    <description>Recent content in Crio on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 08 Apr 2017 00:11:37 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/crio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Apr 2017 00:11:37 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/crio/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>k8s on CRI-O - single node</title>
-      <link>https://suraj.io/post/using-crio-with-k8s-single-node/</link>
+      <link>http://localhost:1313/post/using-crio-with-k8s-single-node/</link>
       <pubDate>Sat, 08 Apr 2017 00:11:37 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/using-crio-with-k8s-single-node/</guid>
-      <description>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
-Installing OS dependencies dnf -y install \  go \  git \  btrfs-progs-devel \  device-mapper-devel \  glib2-devel \  glibc-devel \  glibc-static \  gpgme-devel \  libassuan-devel \  libgpg-error-devel \  libseccomp-devel \  libselinux-devel \  pkgconfig \  wget \  etcd \  iptables Creating go environment cd ~ mkdir -p ~/go  export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN  echo &amp;#39;GOPATH=~/go&amp;#39; &amp;gt;&amp;gt; ~/.</description>
+      <guid>http://localhost:1313/post/using-crio-with-k8s-single-node/</guid>
+      <description>How to make kubernetes use CRI-O as container runtime</description>
     </item>
-    
   </channel>
 </rss>

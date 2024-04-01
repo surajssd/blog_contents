@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>desktop on Suraj Deshmukh</title>
-    <link>https://suraj.io/tags/desktop/</link>
-    <description>Recent content in desktop on Suraj Deshmukh</description>
+    <title>Desktop on Suraj Deshmukh</title>
+    <link>http://localhost:1313/tags/desktop/</link>
+    <description>Recent content in Desktop on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 02 Apr 2021 07:07:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/desktop/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Apr 2021 07:07:07 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/desktop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monitor your PC with Prometheus Grafana stack</title>
-      <link>https://suraj.io/post/2021/03/node-monitor/</link>
+      <link>http://localhost:1313/post/2021/03/node-monitor/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/03/node-monitor/</guid>
-      <description>How do you monitor your own computer? Of course, using Prometheus, node-exporter and Grafana. You might ask why would you wanna do that when you can simply use the operating system provided, &amp;ldquo;System Monitor&amp;rdquo;. Well, yes, you can use that. But the data you get from the OS System Monitor is coarse-grained. OS system monitor is not configurable, but this stack is.
-It is like running htop but where you can go back in history, unlike htop, which only shows the current state.</description>
+      <guid>http://localhost:1313/post/2021/03/node-monitor/</guid>
+      <description>Get a fine grained view of the happenings on your system!</description>
     </item>
-    
     <item>
       <title>Project specific scripts</title>
-      <link>https://suraj.io/post/project-specific-scripts/</link>
+      <link>http://localhost:1313/post/project-specific-scripts/</link>
       <pubDate>Sun, 23 Jun 2019 11:57:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/project-specific-scripts/</guid>
-      <description>There are always scripts that you write to automate some mundane tasks. And then you put that script in a directory that is in your PATH. But what this does is that it pollutes your system global PATH and shows up in places you wouldn&amp;rsquo;t want it to be in.
-I was struggling with this issue for a while and struggling to get a proper solution. But there is a very simple and clever trick to solve this problem.</description>
+      <guid>http://localhost:1313/post/project-specific-scripts/</guid>
+      <description>Instead of polluting your PATH the easier way to put project specific scripts</description>
     </item>
-    
     <item>
       <title>How to disable your Chrome Ctrl &#43; W keybinding</title>
-      <link>https://suraj.io/post/disable-ctrl-w/</link>
+      <link>http://localhost:1313/post/disable-ctrl-w/</link>
       <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/disable-ctrl-w/</guid>
-      <description>I am about to attempt the CKA exam and it has a browser based terminal. And I am used to this terminal shortcut Ctrl + W which deletes a word. But the same shortcut in browser can close a tab. Since this exam is combination of both I am afraid I might close my exam tab while deleting a word in terminal. Now the only solution to this is disabling the shortcut in chrome.</description>
+      <guid>http://localhost:1313/post/disable-ctrl-w/</guid>
+      <description>Learn how to disable the shortcut Ctrl &#43; W altogether on your GNOME</description>
     </item>
-    
   </channel>
 </rss>

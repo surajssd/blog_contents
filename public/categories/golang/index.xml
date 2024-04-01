@@ -1,62 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>golang on Suraj Deshmukh</title>
-    <link>https://suraj.io/categories/golang/</link>
-    <description>Recent content in golang on Suraj Deshmukh</description>
+    <title>Golang on Suraj Deshmukh</title>
+    <link>http://localhost:1313/categories/golang/</link>
+    <description>Recent content in Golang on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 30 May 2021 09:40:00 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 May 2021 09:40:00 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to import &#39;any&#39; Kubernetes package into your project?</title>
-      <link>https://suraj.io/post/2021/05/k8s-import/</link>
+      <link>http://localhost:1313/post/2021/05/k8s-import/</link>
       <pubDate>Sun, 30 May 2021 09:40:00 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/05/k8s-import/</guid>
+      <guid>http://localhost:1313/post/2021/05/k8s-import/</guid>
       <description>The client libraries that Kubernetes ships are meant to be imported, and you definitely don&amp;rsquo;t need this post explaining how to import them in your Golang based project. A simple go get ... should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of &amp;ldquo;technical reasons&amp;rdquo; ? Could you simply add them to your import statements in the .</description>
     </item>
-    
     <item>
       <title>Cobra and Persistentflags gotchas</title>
-      <link>https://suraj.io/post/cobra-persistent-flag/</link>
+      <link>http://localhost:1313/post/cobra-persistent-flag/</link>
       <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/cobra-persistent-flag/</guid>
-      <description>If you are using cobra cmd line library for golang applications and it&amp;rsquo;s PersistentFlags and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.
-All the code referenced here can be found here https://github.</description>
+      <guid>http://localhost:1313/post/cobra-persistent-flag/</guid>
+      <description>How wrong usage of persistent flags can burn you</description>
     </item>
-    
     <item>
       <title>Golang struct tags gotchas</title>
-      <link>https://suraj.io/post/golang-struct-tags-space/</link>
+      <link>http://localhost:1313/post/golang-struct-tags-space/</link>
       <pubDate>Sun, 12 Aug 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/golang-struct-tags-space/</guid>
-      <description>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
-type PodStatus struct { 	Status string `json: &amp;#34;,status&amp;#34;` } If you run go vet on this piece of code you will get following error:
-$ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &amp;#34;,status&amp;#34;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value Now this does not tell us what is wrong with the struct tag, json: &amp;quot;,status&amp;quot;.</description>
+      <guid>http://localhost:1313/post/golang-struct-tags-space/</guid>
+      <description>Struct tags can give you problems you didn&amp;#39;t see coming ;-)</description>
     </item>
-    
     <item>
       <title>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</title>
-      <link>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</link>
+      <link>http://localhost:1313/post/advanced-golang-testing-mitchellh-talk-notes/</link>
       <pubDate>Wed, 07 Mar 2018 02:21:49 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</guid>
-      <description>Test Fixtures  &amp;ldquo;go test&amp;rdquo; sets pwd as package directory  Test Helpers  should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9+) for things reqiuiring clean up return closures  Configurability  Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It&amp;rsquo;s ok to make these configs unexported so only tests can set them.</description>
+      <guid>http://localhost:1313/post/advanced-golang-testing-mitchellh-talk-notes/</guid>
+      <description>This talk has really great takeaways which are worth considering while writing your tests</description>
     </item>
-    
     <item>
       <title>Methods that satisfy interfaces in golang</title>
-      <link>https://suraj.io/post/golang-methods-interfaces/</link>
+      <link>http://localhost:1313/post/golang-methods-interfaces/</link>
       <pubDate>Fri, 23 Feb 2018 08:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/golang-methods-interfaces/</guid>
-      <description>Pointer receiver For a struct User with a method Work with pointer receiver.
-type User struct {  Name string  Period int }  func (u *User) Work() {  fmt.Println(u.Name, &amp;#34;has worked for&amp;#34;, u.Period, &amp;#34;hrs.&amp;#34;) }  func main() {  uval := User{&amp;#34;UserVal&amp;#34;, 5}  uval.Work()   pval := &amp;amp;User{&amp;#34;UserPtr&amp;#34;, 6}  pval.Work() } See on go playground.
-output:
-UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs.</description>
+      <guid>http://localhost:1313/post/golang-methods-interfaces/</guid>
+      <description>What receiver type methods satisfy which interface, can be understood here.</description>
     </item>
-    
   </channel>
 </rss>

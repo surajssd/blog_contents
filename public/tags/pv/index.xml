@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>pv on Suraj Deshmukh</title>
-    <link>https://suraj.io/tags/pv/</link>
-    <description>Recent content in pv on Suraj Deshmukh</description>
+    <title>Pv on Suraj Deshmukh</title>
+    <link>http://localhost:1313/tags/pv/</link>
+    <description>Recent content in Pv on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 18 Apr 2017 23:56:15 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/pv/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Apr 2017 23:56:15 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/pv/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quick PV for local Kubernetes cluster</title>
-      <link>https://suraj.io/post/quick-pv-for-local-k8s/</link>
+      <link>http://localhost:1313/post/quick-pv-for-local-k8s/</link>
       <pubDate>Tue, 18 Apr 2017 23:56:15 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/quick-pv-for-local-k8s/</guid>
-      <description>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
-Enter into the machine running k8s If using minikube you can do
-minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following</description>
+      <guid>http://localhost:1313/post/quick-pv-for-local-k8s/</guid>
+      <description>A hostPath based local PV creation process for using via PVC</description>
     </item>
-    
   </channel>
 </rss>

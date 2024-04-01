@@ -1,111 +1,87 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>productivity on Suraj Deshmukh</title>
-    <link>https://suraj.io/categories/productivity/</link>
-    <description>Recent content in productivity on Suraj Deshmukh</description>
+    <title>Productivity on Suraj Deshmukh</title>
+    <link>http://localhost:1313/categories/productivity/</link>
+    <description>Recent content in Productivity on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 11 Sep 2021 17:09:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Sep 2021 17:09:07 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/productivity/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Unchanging Contexts and Degrading Productivity</title>
-      <link>https://suraj.io/post/2021/09/unchanging-context/</link>
+      <link>http://localhost:1313/post/2021/09/unchanging-context/</link>
       <pubDate>Sat, 11 Sep 2021 17:09:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/09/unchanging-context/</guid>
-      <description>Photo by daan evers on Unsplash.
-Everything feels like work since the pandemic began. But the feeling has been more gnawing for the last couple of months. I have been working from home since 2018, but that was different! The work from home since the pandemic began is pretty adverse.
-The Tragedy of Lost Contexts Everything happens from the same place, things like work, seeing friends, entertainment, conferences, meetup, reading for fun, side project, etc.</description>
+      <guid>http://localhost:1313/post/2021/09/unchanging-context/</guid>
+      <description>How doing everything from the same place has affected the the productivity of everything.</description>
     </item>
-    
     <item>
       <title>Reading Devices</title>
-      <link>https://suraj.io/post/2021/06/reading-devices/</link>
+      <link>http://localhost:1313/post/2021/06/reading-devices/</link>
       <pubDate>Wed, 30 Jun 2021 01:45:00 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/06/reading-devices/</guid>
-      <description>Photo by Alvan Nee on Unsplash.
-I use different devices for consuming content from disparate streams, even for books. This post discusses each method&amp;rsquo;s various pros and cons and what fits best in what kind of circumstance.
-You can refer to the table at the end of the post, where I have broken down each comparison aspect.
-Physical Books This method of consuming knowledge became prevalent with Gutenburg&amp;rsquo;s printing press. Getting a new book always gives you that dopamine rush since it has a sense of newness, new cover, the smell of paper, etc.</description>
+      <guid>http://localhost:1313/post/2021/06/reading-devices/</guid>
+      <description>Pros and Cons of various reading devices</description>
     </item>
-    
     <item>
       <title>How we manage Kubernetes Bangalore Meetup?</title>
-      <link>https://suraj.io/post/2021/03/k8s-blr-meetup/</link>
+      <link>http://localhost:1313/post/2021/03/k8s-blr-meetup/</link>
       <pubDate>Wed, 17 Mar 2021 07:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/03/k8s-blr-meetup/</guid>
-      <description>I took the reins of the Kubernetes Bangalore Meetup back in 2017. I have been organising the meetup since then. Earlier with Suraj Narwade, Aditya Konarde and now with Prakash Mishra. Over time the meetup has grown a lot, now it boasts about 5000 members. Organising meetup earlier was a straightforward affair, especially with Narwade and Konarde being my colleagues and friends. We could chat about the upcoming meetup at any time we would like, and it was all spontaneous.</description>
+      <guid>http://localhost:1313/post/2021/03/k8s-blr-meetup/</guid>
+      <description>The method of stress-free event management!</description>
     </item>
-    
     <item>
       <title>On Compounder Skills</title>
-      <link>https://suraj.io/post/2021/03/compounder-skills/</link>
+      <link>http://localhost:1313/post/2021/03/compounder-skills/</link>
       <pubDate>Tue, 16 Mar 2021 07:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/03/compounder-skills/</guid>
-      <description>There are specific skills which you should acquire early on in your life. These skills are the foundational skills. Everything you do after developing these skills becomes better, faster and easier. I call these skills Compounder Skills. Derived from the term &amp;ldquo;Compound Interest&amp;rdquo;. The idea is that once you are laced with a particular compounder skill, you can apply it in various fields of your life. An example of a compounder skill that most humans get exposed to is &amp;ldquo;school education&amp;rdquo;.</description>
+      <guid>http://localhost:1313/post/2021/03/compounder-skills/</guid>
+      <description>The foundational skills which improves everything else.</description>
     </item>
-    
     <item>
       <title>Importance of Typing Skills</title>
-      <link>https://suraj.io/post/2021/02/typing-skills/</link>
+      <link>http://localhost:1313/post/2021/02/typing-skills/</link>
       <pubDate>Sun, 28 Feb 2021 07:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/02/typing-skills/</guid>
-      <description>Yes, today&amp;rsquo;s topic is typing skills. I think not many people stress about it, but it is a very underrated skill, yet useful in our daily lives.
-I typed the most organic way anybody starts doing it. Look at the keyboard when you are typing and fix mistakes after looking at the monitor. I moved my hand around on the keyboard and only used index fingers to touch the keys as if other fingers were glued together away from the keyboard.</description>
+      <guid>http://localhost:1313/post/2021/02/typing-skills/</guid>
+      <description>The foundational skill which improves everything else.</description>
     </item>
-    
     <item>
       <title>My Knowledge Management Journey</title>
-      <link>https://suraj.io/post/2021/02/kms-journey/</link>
+      <link>http://localhost:1313/post/2021/02/kms-journey/</link>
       <pubDate>Tue, 23 Feb 2021 09:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/02/kms-journey/</guid>
-      <description>Photo by Patrick Tomasso on Unsplash.
- If you are reading this, you are definitely a Knowledge Worker. As Knowledge Workers, we rely a lot on the information we know or have access to for our day to day work. Occasionally, we will do the same thing twice, face the situation more than once, want to read that reference or try to understand the insights mentioned in that one particular blog.</description>
+      <guid>http://localhost:1313/post/2021/02/kms-journey/</guid>
+      <description>The story of various tools I have used over last five years.</description>
     </item>
-    
     <item>
       <title>Monitor releases of your favourite software</title>
-      <link>https://suraj.io/post/monitor-releases-of-your-favourite-software/</link>
+      <link>http://localhost:1313/post/monitor-releases-of-your-favourite-software/</link>
       <pubDate>Sun, 17 Jan 2021 12:28:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/monitor-releases-of-your-favourite-software/</guid>
-      <description>There are various ways to know about the release of your favourite new software, follow the mailing list, check the Github release page periodically, follow the project&amp;rsquo;s Twitter handle, etc. But do you know there is even more reliable way to track the releases of your favourite software released on Github.
-Github Releases and RSS feeds For every repository on Github, if the project is posting their releases, you can follow the RSS feed of that project&amp;rsquo;s release.</description>
+      <guid>http://localhost:1313/post/monitor-releases-of-your-favourite-software/</guid>
+      <description>Be on top of the releases of the software you rely upon!</description>
     </item>
-    
     <item>
       <title>Being Productive with Git</title>
-      <link>https://suraj.io/post/being-productive-with-git/</link>
+      <link>http://localhost:1313/post/being-productive-with-git/</link>
       <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/being-productive-with-git/</guid>
-      <description>Contents  Introduction Bash Aliases  Configuration Installation   Global Git Configuration  Configuration Installation   Repository Specific Git Settings  Configuration Installation   Bash Git Prompt  Configuration Installation   Git Push PR Reviews  Configuration Installation   Demo Conclusion  Introduction Git is a day to day tool for version control. It has become a de facto method of source code versioning, it has become ubiquitous with development and its an essential skill for a programmer.</description>
+      <guid>http://localhost:1313/post/being-productive-with-git/</guid>
+      <description>Tips and tricks to make your day to day usage easier.</description>
     </item>
-    
     <item>
       <title>Being Productive with Kubectl</title>
-      <link>https://suraj.io/post/being-productive-with-kubectl/</link>
+      <link>http://localhost:1313/post/being-productive-with-kubectl/</link>
       <pubDate>Sun, 02 Aug 2020 16:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/being-productive-with-kubectl/</guid>
-      <description>This blog will showcase my productivity tips with kubectl . This does not venture into any plugins per se. But only using bash aliases to achieve it.
-Bash Aliases # k8s alias alias k=kubectl alias kg=&amp;#34;kubectl get&amp;#34; alias kgp=&amp;#34;kubectl get pods&amp;#34; alias kgs=&amp;#34;kubectl get services&amp;#34; alias kge=&amp;#34;kubectl get events&amp;#34; alias kgpvc=&amp;#34;kubectl get pvc&amp;#34; alias kgpv=&amp;#34;kubectl get pv&amp;#34; alias kd=&amp;#34;kubectl describe&amp;#34; alias kl=&amp;#34;kubectl logs -f&amp;#34; alias kc=&amp;#34;kubectl create -f&amp;#34; I have above aliases setup in the ~/.</description>
+      <guid>http://localhost:1313/post/being-productive-with-kubectl/</guid>
+      <description>Tips and tricks to make your day to day usage easier</description>
     </item>
-    
     <item>
       <title>Framework for managing random scripts and binaries</title>
-      <link>https://suraj.io/post/framework-for-scripts-and-binaries/</link>
+      <link>http://localhost:1313/post/framework-for-scripts-and-binaries/</link>
       <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/framework-for-scripts-and-binaries/</guid>
-      <description>I always had a conundrum about how to manage the scripts and binaries downloaded randomly from the internet. One way is to put them in the global PATH directory like /usr/local/bin, but I am sceptical about it.
-There are a couple of things I wanted to solve. How do you update these scripts and binaries? How to do it consistently across all my machines? How to make it easier to have my setup available on any new Linux machine(or even container) I setup?</description>
+      <guid>http://localhost:1313/post/framework-for-scripts-and-binaries/</guid>
+      <description>This is an explanation of the framework that I have created to manage scripts and binaries.</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,147 +1,108 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>security on Suraj Deshmukh</title>
-    <link>https://suraj.io/categories/security/</link>
-    <description>Recent content in security on Suraj Deshmukh</description>
+    <title>Security on Suraj Deshmukh</title>
+    <link>http://localhost:1313/categories/security/</link>
+    <description>Recent content in Security on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Sep 2021 13:30:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Sep 2021 13:30:07 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Certified Kubernetes Security Specialist CKS exam tips</title>
-      <link>https://suraj.io/post/2021/09/cks-tips/</link>
+      <link>http://localhost:1313/post/2021/09/cks-tips/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/09/cks-tips/</guid>
-      <description>I recently cleared the CKS certification exam. So it is incumbent upon me to help you navigate this stress-bound exam. All the tips that are provided are either from accrued knowledge or from personal experience.
-Study Material During the study of CKA almost three years ago, I studied everything from the documentation. Back then, the documentation had less content hence it was comprehensible. But now, to go through the entire documentation was not practical.</description>
+      <guid>http://localhost:1313/post/2021/09/cks-tips/</guid>
+      <description>Things to keep in mind to clear exam effortlessly.</description>
     </item>
-    
     <item>
       <title>How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</title>
-      <link>https://suraj.io/post/2021/06/automatic-cert-gen/</link>
+      <link>http://localhost:1313/post/2021/06/automatic-cert-gen/</link>
       <pubDate>Fri, 25 Jun 2021 09:00:00 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/06/automatic-cert-gen/</guid>
-      <description>The previous blog talked about generating self-signed certificates using a binary. It was a manual, cumbersome process where you had to generate the certificates using a tool, embed them into a Kubernetes Secret via Helm chart, and then use it. There is a better way of doing it! Which is what this blog will discuss.
-We will use a Helm chart, which has a couple of Kubernetes Jobs that generates the self-signed certificate, embed them in a Kubernetes Secret and finally update the ValidatingWebhookConfiguration or MutatingWebhookConfiguration of your choice.</description>
+      <guid>http://localhost:1313/post/2021/06/automatic-cert-gen/</guid>
+      <description>A simple Helm chart to generate TLS x509 certificates.</description>
     </item>
-    
     <item>
       <title>How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</title>
-      <link>https://suraj.io/post/2021/05/self-sign-k8s-cert/</link>
+      <link>http://localhost:1313/post/2021/05/self-sign-k8s-cert/</link>
       <pubDate>Fri, 21 May 2021 15:33:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/05/self-sign-k8s-cert/</guid>
-      <description>UPDATE: There is a way to generate these certificates automatically. To find out how, read this post.
- If you are writing a webhook server for Kubernetes Admission Controllers like ValidatingAdmissionWebhooks or MutatingAdmissionWebhooks, you must expose it over HTTPS. To run these servers on HTTPS, you need TLS certificates. There are solutions available which you can use to solve this problem, first and foremost that comes to my mind is cert-manager.</description>
+      <guid>http://localhost:1313/post/2021/05/self-sign-k8s-cert/</guid>
+      <description>A simple binary to generate TLS x509 certificates.</description>
     </item>
-    
     <item>
       <title>Mitigation of: Access Any Kubernetes Secret</title>
-      <link>https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/</link>
+      <link>http://localhost:1313/post/2021/05/access-k8s-secrets-mitigation/</link>
       <pubDate>Thu, 20 May 2021 08:47:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/</guid>
-      <description>In the previous blog, we discussed how any user without RBAC access to a Kubernetes secret can use a trick to access that secret. To mitigate that problem, we will use a validating admission webhook. But before looking at what sorcery this validating admission webhook server is, let us understand how Kubernetes handles the API requests.
-What are admission controllers? All requests going to the Kubernetes API server go through the following four steps:</description>
+      <guid>http://localhost:1313/post/2021/05/access-k8s-secrets-mitigation/</guid>
+      <description>A Validating Admission Webhook Server to deny anyone accessing forbidden Kubernetes Secrets!</description>
     </item>
-    
     <item>
       <title>Access Any Kubernetes Secret</title>
-      <link>https://suraj.io/post/2021/05/access-k8s-secrets/</link>
+      <link>http://localhost:1313/post/2021/05/access-k8s-secrets/</link>
       <pubDate>Sat, 08 May 2021 12:17:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/05/access-k8s-secrets/</guid>
-      <description>Photo by Kyle Glenn on Unsplash.
-You can gain access to any secret that you want in Kubernetes even if you don&amp;rsquo;t have RBAC permissions to get, list or view that secret. All you need is permission that allows you to do anything on pods and an ability to guess the names of secrets. With these two ingredients, here is how you can access any secret out there.
-Nasty User Here is a user called nastyuser who can only do stuff on pod objects.</description>
+      <guid>http://localhost:1313/post/2021/05/access-k8s-secrets/</guid>
+      <description>A little trickery and access any Kubernetes Secret!</description>
     </item>
-    
     <item>
       <title>Watch Container Traffic Without Exec</title>
-      <link>https://suraj.io/post/snoop-on-pod-traffic/</link>
+      <link>http://localhost:1313/post/snoop-on-pod-traffic/</link>
       <pubDate>Sat, 06 Jun 2020 20:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/snoop-on-pod-traffic/</guid>
-      <description>Introduction For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.
-But for the developers or operators of such applications, it is hard to debug. Since they lack essential tools or even bash for that matter, but the application&amp;rsquo;s debugging ability should not dictate its production deployment and compromise its security posture.</description>
+      <guid>http://localhost:1313/post/snoop-on-pod-traffic/</guid>
+      <description>How to watch the traffic of a container or a pod without execing into the pod/contaienr?</description>
     </item>
-    
     <item>
       <title>Enabling Seccomp on your Prometheus Operator and related Pods</title>
-      <link>https://suraj.io/post/seccomp-in-kube-state-metrics/</link>
+      <link>http://localhost:1313/post/seccomp-in-kube-state-metrics/</link>
       <pubDate>Tue, 14 Apr 2020 11:57:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/seccomp-in-kube-state-metrics/</guid>
-      <description>Seccomp helps us limit the system calls the process inside container can make. And PodSecurityPolicy is the way to enable it on pods in Kubernetes.
-Prometheus Operator Prometheus Operator makes it really easy to monitor your Kubernetes cluster. To deploy this behemoth, helm chart is the easiest way to do it.
-Almost all the pods that run as a part of Prometheus Operator viz. Prometheus Operator, Prometheus, Alertmanager, Grafana, Kube State Metrics don’t need to run with elevated privileges except Node Exporter.</description>
+      <guid>http://localhost:1313/post/seccomp-in-kube-state-metrics/</guid>
+      <description>This post shows how you can enable seccomp on all the Pods that are deployed with Prometheus Operator</description>
     </item>
-    
     <item>
       <title>Capabilities on executables</title>
-      <link>https://suraj.io/post/linux-cap-note/</link>
+      <link>http://localhost:1313/post/linux-cap-note/</link>
       <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/linux-cap-note/</guid>
-      <description>File capabilities allow users to execute programs with higher privileges. Best example is network utility ping.
-A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn&amp;rsquo;t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.
-$ getcap `which ping` /usr/bin/ping = cap_net_admin,cap_net_raw+p Which normally works as follows:
-$ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1.</description>
+      <guid>http://localhost:1313/post/linux-cap-note/</guid>
+      <description>Note on Linux Kernel capabilities</description>
     </item>
-    
     <item>
       <title>Root user inside container is root on the host</title>
-      <link>https://suraj.io/post/root-in-container-root-on-host/</link>
+      <link>http://localhost:1313/post/root-in-container-root-on-host/</link>
       <pubDate>Tue, 25 Jun 2019 11:57:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/root-in-container-root-on-host/</guid>
-      <description>Here are simple steps that you can follow to prove that the root user inside container is also root on the host. And how to mitigate this.
-Root in container, root on host I have a host with docker daemon running on it. I start a normal container on it with sleep process as PID1. See in the following output that the container clever_lalande started with sleep process.
-$ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b  $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &amp;#34;sleep 9999&amp;#34; 12 seconds ago Up 11 seconds clever_lalande Now let&amp;rsquo;s find out the process sleep on the host.</description>
+      <guid>http://localhost:1313/post/root-in-container-root-on-host/</guid>
+      <description>The easiest way to prove that root inside the container is also root on the host</description>
     </item>
-    
     <item>
       <title>Writing your own Seccomp profiles for Docker</title>
-      <link>https://suraj.io/post/docker-seccomp-manual/</link>
+      <link>http://localhost:1313/post/docker-seccomp-manual/</link>
       <pubDate>Mon, 10 Jun 2019 11:57:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/docker-seccomp-manual/</guid>
-      <description>What is Seccomp?  A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</description>
+      <guid>http://localhost:1313/post/docker-seccomp-manual/</guid>
+      <description>Understanding the seccomp profile json format</description>
     </item>
-    
     <item>
       <title>Recreate Kubernetes CVE-2017-1002101</title>
-      <link>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</link>
+      <link>http://localhost:1313/post/cve-2017-1002101-subpath-volume-mount-recreate/</link>
       <pubDate>Mon, 14 Jan 2019 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</guid>
-      <description>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using emptyDir volume mount using subpath. The official description goes as follows:
- In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host&amp;rsquo;s filesystem.</description>
+      <guid>http://localhost:1313/post/cve-2017-1002101-subpath-volume-mount-recreate/</guid>
+      <description>Subpath Volume Mount could give you access to node</description>
     </item>
-    
     <item>
       <title>PodSecurityPolicy on existing Kubernetes clusters</title>
-      <link>https://suraj.io/post/psp-on-existing-cluster/</link>
+      <link>http://localhost:1313/post/psp-on-existing-cluster/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/psp-on-existing-cluster/</guid>
-      <description>I enabled PodSecurityPolicy on a minikube cluster by appending PodSecurityPolicy to the apiserver flag in minikube like this:
---extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\  LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\  NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\  ResourceQuota,PodSecurityPolicy Ideally when you have PSP enabled and if you don&amp;rsquo;t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.
-$ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h Which got me thinking what is wrong with the way PSPs work.</description>
+      <guid>http://localhost:1313/post/psp-on-existing-cluster/</guid>
+      <description>Burnt by enabling PSPs on existing Kubernetes and wondering why everything still works</description>
     </item>
-    
     <item>
       <title>HTTPS during development using &#39;mkcert&#39;</title>
-      <link>https://suraj.io/post/mkcert-using-python-http-server/</link>
+      <link>http://localhost:1313/post/mkcert-using-python-http-server/</link>
       <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/mkcert-using-python-http-server/</guid>
-      <description>It&amp;rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
-Once installed just run:
-$ mkcert -install Created a new local CA at &amp;#34;/home/hummer/.local/share/mkcert&amp;#34; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</description>
+      <guid>http://localhost:1313/post/mkcert-using-python-http-server/</guid>
+      <description>Use https even during your development</description>
     </item>
-    
   </channel>
 </rss>

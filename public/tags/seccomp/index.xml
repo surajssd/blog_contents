@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>seccomp on Suraj Deshmukh</title>
-    <link>https://suraj.io/tags/seccomp/</link>
-    <description>Recent content in seccomp on Suraj Deshmukh</description>
+    <title>Seccomp on Suraj Deshmukh</title>
+    <link>http://localhost:1313/tags/seccomp/</link>
+    <description>Recent content in Seccomp on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 14 Apr 2020 11:57:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/seccomp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Apr 2020 11:57:07 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/seccomp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Enabling Seccomp on your Prometheus Operator and related Pods</title>
-      <link>https://suraj.io/post/seccomp-in-kube-state-metrics/</link>
+      <link>http://localhost:1313/post/seccomp-in-kube-state-metrics/</link>
       <pubDate>Tue, 14 Apr 2020 11:57:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/seccomp-in-kube-state-metrics/</guid>
-      <description>Seccomp helps us limit the system calls the process inside container can make. And PodSecurityPolicy is the way to enable it on pods in Kubernetes.
-Prometheus Operator Prometheus Operator makes it really easy to monitor your Kubernetes cluster. To deploy this behemoth, helm chart is the easiest way to do it.
-Almost all the pods that run as a part of Prometheus Operator viz. Prometheus Operator, Prometheus, Alertmanager, Grafana, Kube State Metrics don’t need to run with elevated privileges except Node Exporter.</description>
+      <guid>http://localhost:1313/post/seccomp-in-kube-state-metrics/</guid>
+      <description>This post shows how you can enable seccomp on all the Pods that are deployed with Prometheus Operator</description>
     </item>
-    
     <item>
       <title>Writing your own Seccomp profiles for Docker</title>
-      <link>https://suraj.io/post/docker-seccomp-manual/</link>
+      <link>http://localhost:1313/post/docker-seccomp-manual/</link>
       <pubDate>Mon, 10 Jun 2019 11:57:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/docker-seccomp-manual/</guid>
-      <description>What is Seccomp?  A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.</description>
+      <guid>http://localhost:1313/post/docker-seccomp-manual/</guid>
+      <description>Understanding the seccomp profile json format</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>lokomotive on Suraj Deshmukh</title>
-    <link>https://suraj.io/tags/lokomotive/</link>
-    <description>Recent content in lokomotive on Suraj Deshmukh</description>
+    <title>Lokomotive on Suraj Deshmukh</title>
+    <link>http://localhost:1313/tags/lokomotive/</link>
+    <description>Recent content in Lokomotive on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 16 Jan 2021 13:10:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/lokomotive/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Jan 2021 13:10:51 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/lokomotive/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mental models for understanding Kubernetes Pod Security Policy</title>
-      <link>https://suraj.io/post/mental-models-for-understanding-kubernetes-pod-security-policy/</link>
+      <link>http://localhost:1313/post/mental-models-for-understanding-kubernetes-pod-security-policy/</link>
       <pubDate>Sat, 16 Jan 2021 13:10:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/mental-models-for-understanding-kubernetes-pod-security-policy/</guid>
-      <description>PodSecurityPolicy (PSP) is hard to get right in the first attempt. There has never been a situation when I haven&amp;rsquo;t banged my head to get it working on the cluster. It is a frustrating experience, but it is one of the essential security features of Kubernetes. Some applications have started shipping the PSP configs with their helm charts, but if a helm chart does not ship a PSP config, it must be handcrafted by the cluster-admin to make the application work reliably in the cluster.</description>
+      <guid>http://localhost:1313/post/mental-models-for-understanding-kubernetes-pod-security-policy/</guid>
+      <description>Getting the game of PSP right!</description>
     </item>
-    
   </channel>
 </rss>

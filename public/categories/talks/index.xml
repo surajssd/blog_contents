@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>talks on Suraj Deshmukh</title>
-    <link>https://suraj.io/categories/talks/</link>
-    <description>Recent content in talks on Suraj Deshmukh</description>
+    <title>Talks on Suraj Deshmukh</title>
+    <link>http://localhost:1313/categories/talks/</link>
+    <description>Recent content in Talks on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Mar 2024 01:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/talks/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Mar 2024 01:00:51 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/talks/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Suraj Deshmukh&#39;s talks at conferences</title>
-      <link>https://suraj.io/post/surajd-talks-links/</link>
+      <link>http://localhost:1313/post/surajd-talks-links/</link>
       <pubDate>Sat, 30 Mar 2024 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/surajd-talks-links/</guid>
-      <description>Fortifying AI Security in Kubernetes with Confidential Containers (CoCo) - Kubecon Europe 2024    Memory Armor for SPIRE: Fortifying SPIRE with Confidential Containers (CoCo) - Kubecon Europe 2024    Confidential Containers: The Next Frontier in Cloud-NativeSecurity - Cloud Native Rejekts 2023    Building Container Defences Executable at a Time - KCD Bangalore 2022    PSP and Beyond - Kubernetes Bangalore Meetup June 2021    Hardening Kubernetes by Securing Pods - Rootconf 2019    State of Kubernetes Meetups - DevOpsDays India 2017    Making Kubernetes Simple For Developers - Rootconf 2017    Taking docker-compose to Production - Gophercon 2017 Lightening talk Watch from 55m59s</description>
+      <guid>http://localhost:1313/post/surajd-talks-links/</guid>
+      <description>List of all the talks presented by me</description>
     </item>
-    
   </channel>
 </rss>

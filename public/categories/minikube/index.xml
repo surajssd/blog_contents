@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>minikube on Suraj Deshmukh</title>
-    <link>https://suraj.io/categories/minikube/</link>
-    <description>Recent content in minikube on Suraj Deshmukh</description>
+    <title>Minikube on Suraj Deshmukh</title>
+    <link>http://localhost:1313/categories/minikube/</link>
+    <description>Recent content in Minikube on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 20 Jan 2019 01:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/minikube/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 20 Jan 2019 01:00:51 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/minikube/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Make static configs available for apiserver in minikube</title>
-      <link>https://suraj.io/post/apiserver-in-minikube-static-configs/</link>
+      <link>http://localhost:1313/post/apiserver-in-minikube-static-configs/</link>
       <pubDate>Sun, 20 Jan 2019 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/apiserver-in-minikube-static-configs/</guid>
-      <description>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube&amp;rsquo;s --extra-config flag with apiserver.&amp;lt;apiserver flag&amp;gt;=&amp;lt;value&amp;gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
---extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path.</description>
+      <guid>http://localhost:1313/post/apiserver-in-minikube-static-configs/</guid>
+      <description>Dealing with apiserver in minikube can be tricky</description>
     </item>
-    
     <item>
       <title>Using private container registries from minikube</title>
-      <link>https://suraj.io/post/private-registry-from-minikube/</link>
+      <link>http://localhost:1313/post/private-registry-from-minikube/</link>
       <pubDate>Fri, 06 Oct 2017 19:32:33 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/private-registry-from-minikube/</guid>
-      <description>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
-On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.</description>
+      <guid>http://localhost:1313/post/private-registry-from-minikube/</guid>
+      <description>A guide to how would you download image from private container registry in minikube</description>
     </item>
-    
   </channel>
 </rss>

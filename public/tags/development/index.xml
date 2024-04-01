@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>development on Suraj Deshmukh</title>
-    <link>https://suraj.io/tags/development/</link>
-    <description>Recent content in development on Suraj Deshmukh</description>
+    <title>Development on Suraj Deshmukh</title>
+    <link>http://localhost:1313/tags/development/</link>
+    <description>Recent content in Development on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 14 Aug 2018 01:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Aug 2018 01:00:51 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/development/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HTTPS during development using &#39;mkcert&#39;</title>
-      <link>https://suraj.io/post/mkcert-using-python-http-server/</link>
+      <link>http://localhost:1313/post/mkcert-using-python-http-server/</link>
       <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/mkcert-using-python-http-server/</guid>
-      <description>It&amp;rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
-Once installed just run:
-$ mkcert -install Created a new local CA at &amp;#34;/home/hummer/.local/share/mkcert&amp;#34; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</description>
+      <guid>http://localhost:1313/post/mkcert-using-python-http-server/</guid>
+      <description>Use https even during your development</description>
     </item>
-    
     <item>
       <title>Enabling local development with Kubernetes</title>
-      <link>https://suraj.io/post/enabling-local-development-with-k8s/</link>
+      <link>http://localhost:1313/post/enabling-local-development-with-k8s/</link>
       <pubDate>Sun, 23 Apr 2017 15:57:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/enabling-local-development-with-k8s/</guid>
-      <description>I want to show how you can enable Kubernetes in your day to day development workflow. So that you get the feel of production deployment locally from day 1.
-I have a flask application which I am working on. The basic directory structure looks like this:
-$ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo foo 201 Apr 23 16:55 docker-compose.yml -rw-rw-r--. 1 foo foo 363 Apr 23 16:21 Dockerfile -rwxrwxr-x.</description>
+      <guid>http://localhost:1313/post/enabling-local-development-with-k8s/</guid>
+      <description>If you are doing development and want to use kubernetes for it, then here is how you can do it.</description>
     </item>
-    
   </channel>
 </rss>

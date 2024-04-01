@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>gaming on Suraj Deshmukh</title>
-    <link>https://suraj.io/categories/gaming/</link>
-    <description>Recent content in gaming on Suraj Deshmukh</description>
+    <title>Gaming on Suraj Deshmukh</title>
+    <link>http://localhost:1313/categories/gaming/</link>
+    <description>Recent content in Gaming on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 01 Sep 2017 16:03:58 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/gaming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Sep 2017 16:03:58 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/gaming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Add new Maps to Counter Strike</title>
-      <link>https://suraj.io/post/add-new-map-to-cs/</link>
+      <link>http://localhost:1313/post/add-new-map-to-cs/</link>
       <pubDate>Fri, 01 Sep 2017 16:03:58 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/add-new-map-to-cs/</guid>
-      <description>If you are playing Counter Strike on Steam on linux you might be wondering how do I install new maps in the game. So here are steps to install maps.
-All the game maps for Counter Strike - Condition Zero are stored in following path:
-~/.local/share/Steam/steamapps/common/Half-Life/czero/maps Format of the map files is .bsp.
-So download the map files from over internet and then put in this location and now you should be able to see the maps in game.</description>
+      <guid>http://localhost:1313/post/add-new-map-to-cs/</guid>
+      <description>Steps to add new maps to CS</description>
     </item>
-    
   </channel>
 </rss>

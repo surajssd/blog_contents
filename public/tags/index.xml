@@ -1,560 +1,444 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Suraj Deshmukh</title>
-    <link>https://suraj.io/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Mar 2024 01:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Mar 2024 01:00:51 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>kubernetes</title>
-      <link>https://suraj.io/tags/kubernetes/</link>
+      <title>Kubernetes</title>
+      <link>http://localhost:1313/tags/kubernetes/</link>
       <pubDate>Sat, 30 Mar 2024 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/kubernetes/</guid>
+      <guid>http://localhost:1313/tags/kubernetes/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>meetup</title>
-      <link>https://suraj.io/tags/meetup/</link>
+      <title>Meetup</title>
+      <link>http://localhost:1313/tags/meetup/</link>
       <pubDate>Sat, 30 Mar 2024 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/meetup/</guid>
+      <guid>http://localhost:1313/tags/meetup/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>non-tech</title>
-      <link>https://suraj.io/tags/non-tech/</link>
+      <title>Non-Tech</title>
+      <link>http://localhost:1313/tags/non-tech/</link>
       <pubDate>Fri, 29 Oct 2021 11:05:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/non-tech/</guid>
+      <guid>http://localhost:1313/tags/non-tech/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>book-review</title>
-      <link>https://suraj.io/tags/book-review/</link>
+      <title>Book-Review</title>
+      <link>http://localhost:1313/tags/book-review/</link>
       <pubDate>Tue, 26 Oct 2021 09:21:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/book-review/</guid>
+      <guid>http://localhost:1313/tags/book-review/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>productivity</title>
-      <link>https://suraj.io/tags/productivity/</link>
+      <title>Productivity</title>
+      <link>http://localhost:1313/tags/productivity/</link>
       <pubDate>Sat, 11 Sep 2021 17:09:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/productivity/</guid>
+      <guid>http://localhost:1313/tags/productivity/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>cka</title>
-      <link>https://suraj.io/tags/cka/</link>
+      <title>Cka</title>
+      <link>http://localhost:1313/tags/cka/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/cka/</guid>
+      <guid>http://localhost:1313/tags/cka/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>cks</title>
-      <link>https://suraj.io/tags/cks/</link>
+      <title>Cks</title>
+      <link>http://localhost:1313/tags/cks/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/cks/</guid>
+      <guid>http://localhost:1313/tags/cks/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>security</title>
-      <link>https://suraj.io/tags/security/</link>
+      <title>Security</title>
+      <link>http://localhost:1313/tags/security/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/security/</guid>
+      <guid>http://localhost:1313/tags/security/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>linux</title>
-      <link>https://suraj.io/tags/linux/</link>
+      <title>Linux</title>
+      <link>http://localhost:1313/tags/linux/</link>
       <pubDate>Sat, 19 Jun 2021 16:16:00 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/linux/</guid>
+      <guid>http://localhost:1313/tags/linux/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>systemd</title>
-      <link>https://suraj.io/tags/systemd/</link>
+      <title>Systemd</title>
+      <link>http://localhost:1313/tags/systemd/</link>
       <pubDate>Sat, 19 Jun 2021 16:16:00 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/systemd/</guid>
+      <guid>http://localhost:1313/tags/systemd/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>golang</title>
-      <link>https://suraj.io/tags/golang/</link>
+      <title>Golang</title>
+      <link>http://localhost:1313/tags/golang/</link>
       <pubDate>Sun, 30 May 2021 09:40:00 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/golang/</guid>
+      <guid>http://localhost:1313/tags/golang/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>activism</title>
-      <link>https://suraj.io/tags/activism/</link>
+      <title>Activism</title>
+      <link>http://localhost:1313/tags/activism/</link>
       <pubDate>Mon, 12 Apr 2021 07:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/activism/</guid>
+      <guid>http://localhost:1313/tags/activism/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>desktop</title>
-      <link>https://suraj.io/tags/desktop/</link>
+      <title>Desktop</title>
+      <link>http://localhost:1313/tags/desktop/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/desktop/</guid>
+      <guid>http://localhost:1313/tags/desktop/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>monitoring</title>
-      <link>https://suraj.io/tags/monitoring/</link>
+      <title>Monitoring</title>
+      <link>http://localhost:1313/tags/monitoring/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/monitoring/</guid>
+      <guid>http://localhost:1313/tags/monitoring/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>prometheus</title>
-      <link>https://suraj.io/tags/prometheus/</link>
+      <title>Prometheus</title>
+      <link>http://localhost:1313/tags/prometheus/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/prometheus/</guid>
+      <guid>http://localhost:1313/tags/prometheus/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>KMS</title>
-      <link>https://suraj.io/tags/kms/</link>
+      <link>http://localhost:1313/tags/kms/</link>
       <pubDate>Tue, 23 Feb 2021 09:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/kms/</guid>
+      <guid>http://localhost:1313/tags/kms/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>notion</title>
-      <link>https://suraj.io/tags/notion/</link>
+      <title>Notion</title>
+      <link>http://localhost:1313/tags/notion/</link>
       <pubDate>Tue, 23 Feb 2021 09:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/notion/</guid>
+      <guid>http://localhost:1313/tags/notion/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>certs</title>
-      <link>https://suraj.io/tags/certs/</link>
+      <title>Certs</title>
+      <link>http://localhost:1313/tags/certs/</link>
       <pubDate>Sat, 06 Feb 2021 10:25:41 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/certs/</guid>
+      <guid>http://localhost:1313/tags/certs/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>notes</title>
-      <link>https://suraj.io/tags/notes/</link>
+      <title>Notes</title>
+      <link>http://localhost:1313/tags/notes/</link>
       <pubDate>Sat, 06 Feb 2021 10:25:41 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/notes/</guid>
+      <guid>http://localhost:1313/tags/notes/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>containers</title>
-      <link>https://suraj.io/tags/containers/</link>
+      <title>Containers</title>
+      <link>http://localhost:1313/tags/containers/</link>
       <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/containers/</guid>
+      <guid>http://localhost:1313/tags/containers/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>flatcar</title>
-      <link>https://suraj.io/tags/flatcar/</link>
+      <title>Flatcar</title>
+      <link>http://localhost:1313/tags/flatcar/</link>
       <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/flatcar/</guid>
+      <guid>http://localhost:1313/tags/flatcar/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>kubeadm</title>
-      <link>https://suraj.io/tags/kubeadm/</link>
+      <title>Kubeadm</title>
+      <link>http://localhost:1313/tags/kubeadm/</link>
       <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/kubeadm/</guid>
+      <guid>http://localhost:1313/tags/kubeadm/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>bash</title>
-      <link>https://suraj.io/tags/bash/</link>
+      <title>Bash</title>
+      <link>http://localhost:1313/tags/bash/</link>
       <pubDate>Sat, 23 Jan 2021 10:10:41 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/bash/</guid>
+      <guid>http://localhost:1313/tags/bash/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>programming</title>
-      <link>https://suraj.io/tags/programming/</link>
+      <title>Programming</title>
+      <link>http://localhost:1313/tags/programming/</link>
       <pubDate>Sun, 17 Jan 2021 12:28:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/programming/</guid>
+      <guid>http://localhost:1313/tags/programming/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>lokomotive</title>
-      <link>https://suraj.io/tags/lokomotive/</link>
+      <title>Lokomotive</title>
+      <link>http://localhost:1313/tags/lokomotive/</link>
       <pubDate>Sat, 16 Jan 2021 13:10:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/lokomotive/</guid>
+      <guid>http://localhost:1313/tags/lokomotive/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>fedora</title>
-      <link>https://suraj.io/tags/fedora/</link>
+      <title>Fedora</title>
+      <link>http://localhost:1313/tags/fedora/</link>
       <pubDate>Mon, 11 Jan 2021 17:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/fedora/</guid>
+      <guid>http://localhost:1313/tags/fedora/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>sysadmin</title>
-      <link>https://suraj.io/tags/sysadmin/</link>
+      <title>Sysadmin</title>
+      <link>http://localhost:1313/tags/sysadmin/</link>
       <pubDate>Mon, 11 Jan 2021 17:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/sysadmin/</guid>
+      <guid>http://localhost:1313/tags/sysadmin/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>configuration</title>
-      <link>https://suraj.io/tags/configuration/</link>
+      <title>Configuration</title>
+      <link>http://localhost:1313/tags/configuration/</link>
       <pubDate>Sat, 29 Aug 2020 15:33:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/configuration/</guid>
+      <guid>http://localhost:1313/tags/configuration/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>git</title>
-      <link>https://suraj.io/tags/git/</link>
+      <title>Git</title>
+      <link>http://localhost:1313/tags/git/</link>
       <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/git/</guid>
+      <guid>http://localhost:1313/tags/git/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>backup</title>
-      <link>https://suraj.io/tags/backup/</link>
+      <title>Backup</title>
+      <link>http://localhost:1313/tags/backup/</link>
       <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/backup/</guid>
+      <guid>http://localhost:1313/tags/backup/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>seccomp</title>
-      <link>https://suraj.io/tags/seccomp/</link>
+      <title>Seccomp</title>
+      <link>http://localhost:1313/tags/seccomp/</link>
       <pubDate>Tue, 14 Apr 2020 11:57:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/seccomp/</guid>
+      <guid>http://localhost:1313/tags/seccomp/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>docker</title>
-      <link>https://suraj.io/tags/docker/</link>
+      <title>Docker</title>
+      <link>http://localhost:1313/tags/docker/</link>
       <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/docker/</guid>
+      <guid>http://localhost:1313/tags/docker/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>host</title>
-      <link>https://suraj.io/tags/host/</link>
+      <title>Host</title>
+      <link>http://localhost:1313/tags/host/</link>
       <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/host/</guid>
+      <guid>http://localhost:1313/tags/host/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>proc</title>
-      <link>https://suraj.io/tags/proc/</link>
+      <title>Proc</title>
+      <link>http://localhost:1313/tags/proc/</link>
       <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/proc/</guid>
+      <guid>http://localhost:1313/tags/proc/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>minikube</title>
-      <link>https://suraj.io/tags/minikube/</link>
+      <title>Minikube</title>
+      <link>http://localhost:1313/tags/minikube/</link>
       <pubDate>Sun, 20 Jan 2019 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/minikube/</guid>
+      <guid>http://localhost:1313/tags/minikube/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>cve</title>
-      <link>https://suraj.io/tags/cve/</link>
+      <title>Cve</title>
+      <link>http://localhost:1313/tags/cve/</link>
       <pubDate>Mon, 14 Jan 2019 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/cve/</guid>
+      <guid>http://localhost:1313/tags/cve/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>cobra</title>
-      <link>https://suraj.io/tags/cobra/</link>
+      <title>Cobra</title>
+      <link>http://localhost:1313/tags/cobra/</link>
       <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/cobra/</guid>
+      <guid>http://localhost:1313/tags/cobra/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>dell</title>
-      <link>https://suraj.io/tags/dell/</link>
+      <title>Dell</title>
+      <link>http://localhost:1313/tags/dell/</link>
       <pubDate>Sun, 30 Dec 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/dell/</guid>
+      <guid>http://localhost:1313/tags/dell/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>laptop</title>
-      <link>https://suraj.io/tags/laptop/</link>
+      <title>Laptop</title>
+      <link>http://localhost:1313/tags/laptop/</link>
       <pubDate>Sun, 30 Dec 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/laptop/</guid>
+      <guid>http://localhost:1313/tags/laptop/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gnome</title>
-      <link>https://suraj.io/tags/gnome/</link>
+      <title>Gnome</title>
+      <link>http://localhost:1313/tags/gnome/</link>
       <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/gnome/</guid>
+      <guid>http://localhost:1313/tags/gnome/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>openshift</title>
-      <link>https://suraj.io/tags/openshift/</link>
+      <title>Openshift</title>
+      <link>http://localhost:1313/tags/openshift/</link>
       <pubDate>Sun, 23 Sep 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/openshift/</guid>
+      <guid>http://localhost:1313/tags/openshift/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>selinux</title>
-      <link>https://suraj.io/tags/selinux/</link>
+      <title>Selinux</title>
+      <link>http://localhost:1313/tags/selinux/</link>
       <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/selinux/</guid>
+      <guid>http://localhost:1313/tags/selinux/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>hostpath</title>
-      <link>https://suraj.io/tags/hostpath/</link>
+      <title>Hostpath</title>
+      <link>http://localhost:1313/tags/hostpath/</link>
       <pubDate>Mon, 10 Sep 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/hostpath/</guid>
+      <guid>http://localhost:1313/tags/hostpath/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>certificates</title>
-      <link>https://suraj.io/tags/certificates/</link>
+      <title>Certificates</title>
+      <link>http://localhost:1313/tags/certificates/</link>
       <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/certificates/</guid>
+      <guid>http://localhost:1313/tags/certificates/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>development</title>
-      <link>https://suraj.io/tags/development/</link>
+      <title>Development</title>
+      <link>http://localhost:1313/tags/development/</link>
       <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/development/</guid>
+      <guid>http://localhost:1313/tags/development/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>https</title>
-      <link>https://suraj.io/tags/https/</link>
+      <title>Https</title>
+      <link>http://localhost:1313/tags/https/</link>
       <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/https/</guid>
+      <guid>http://localhost:1313/tags/https/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>secure</title>
-      <link>https://suraj.io/tags/secure/</link>
+      <title>Secure</title>
+      <link>http://localhost:1313/tags/secure/</link>
       <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/secure/</guid>
+      <guid>http://localhost:1313/tags/secure/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>editor</title>
-      <link>https://suraj.io/tags/editor/</link>
+      <title>Editor</title>
+      <link>http://localhost:1313/tags/editor/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/editor/</guid>
+      <guid>http://localhost:1313/tags/editor/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>vscode</title>
-      <link>https://suraj.io/tags/vscode/</link>
+      <title>Vscode</title>
+      <link>http://localhost:1313/tags/vscode/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/vscode/</guid>
+      <guid>http://localhost:1313/tags/vscode/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>centos</title>
-      <link>https://suraj.io/tags/centos/</link>
+      <title>Centos</title>
+      <link>http://localhost:1313/tags/centos/</link>
       <pubDate>Mon, 18 Sep 2017 10:43:46 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/centos/</guid>
+      <guid>http://localhost:1313/tags/centos/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>vagrant</title>
-      <link>https://suraj.io/tags/vagrant/</link>
+      <title>Vagrant</title>
+      <link>http://localhost:1313/tags/vagrant/</link>
       <pubDate>Mon, 18 Sep 2017 10:43:46 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/vagrant/</guid>
+      <guid>http://localhost:1313/tags/vagrant/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>gaming</title>
-      <link>https://suraj.io/tags/gaming/</link>
+      <title>Gaming</title>
+      <link>http://localhost:1313/tags/gaming/</link>
       <pubDate>Fri, 01 Sep 2017 16:03:58 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/gaming/</guid>
+      <guid>http://localhost:1313/tags/gaming/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>pv</title>
-      <link>https://suraj.io/tags/pv/</link>
+      <title>Pv</title>
+      <link>http://localhost:1313/tags/pv/</link>
       <pubDate>Tue, 18 Apr 2017 23:56:15 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/pv/</guid>
+      <guid>http://localhost:1313/tags/pv/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>crio</title>
-      <link>https://suraj.io/tags/crio/</link>
+      <title>Crio</title>
+      <link>http://localhost:1313/tags/crio/</link>
       <pubDate>Sat, 08 Apr 2017 00:11:37 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/crio/</guid>
+      <guid>http://localhost:1313/tags/crio/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>github</title>
-      <link>https://suraj.io/tags/github/</link>
+      <title>Github</title>
+      <link>http://localhost:1313/tags/github/</link>
       <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/github/</guid>
+      <guid>http://localhost:1313/tags/github/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>open source</title>
-      <link>https://suraj.io/tags/open-source/</link>
+      <title>Open Source</title>
+      <link>http://localhost:1313/tags/open-source/</link>
       <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/open-source/</guid>
+      <guid>http://localhost:1313/tags/open-source/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>project</title>
-      <link>https://suraj.io/tags/project/</link>
+      <title>Project</title>
+      <link>http://localhost:1313/tags/project/</link>
       <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/project/</guid>
+      <guid>http://localhost:1313/tags/project/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>rpm</title>
-      <link>https://suraj.io/tags/rpm/</link>
+      <title>Rpm</title>
+      <link>http://localhost:1313/tags/rpm/</link>
       <pubDate>Fri, 24 Mar 2017 10:35:54 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/rpm/</guid>
+      <guid>http://localhost:1313/tags/rpm/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>ide</title>
-      <link>https://suraj.io/tags/ide/</link>
+      <title>Ide</title>
+      <link>http://localhost:1313/tags/ide/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/ide/</guid>
+      <guid>http://localhost:1313/tags/ide/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>intellij</title>
-      <link>https://suraj.io/tags/intellij/</link>
+      <title>Intellij</title>
+      <link>http://localhost:1313/tags/intellij/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/intellij/</guid>
+      <guid>http://localhost:1313/tags/intellij/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>intro</title>
-      <link>https://suraj.io/tags/intro/</link>
+      <title>Intro</title>
+      <link>http://localhost:1313/tags/intro/</link>
       <pubDate>Mon, 13 Mar 2017 00:31:57 +0530</pubDate>
-      
-      <guid>https://suraj.io/tags/intro/</guid>
+      <guid>http://localhost:1313/tags/intro/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

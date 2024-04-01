@@ -1,87 +1,66 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>containers on Suraj Deshmukh</title>
-    <link>https://suraj.io/tags/containers/</link>
-    <description>Recent content in containers on Suraj Deshmukh</description>
+    <title>Containers on Suraj Deshmukh</title>
+    <link>http://localhost:1313/tags/containers/</link>
+    <description>Recent content in Containers on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 29 Jan 2021 22:02:41 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/containers/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Jan 2021 22:02:41 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/containers/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kubernetes Cluster using Kubeadm on Flatcar Container Linux</title>
-      <link>https://suraj.io/post/2021/01/kubeadm-flatcar/</link>
+      <link>http://localhost:1313/post/2021/01/kubeadm-flatcar/</link>
       <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/01/kubeadm-flatcar/</guid>
-      <description>Image Source: Flatcar Linux is now open to the public.
-This blog shows a simple set of commands to install a Kubernetes cluster on Flatcar Container Linux based machines using Kubeadm.
-You might wonder why this blog when one can go to the official documentation and follow the steps? Yep, you are right. You can choose to do that. But this blog has a collection of actions specific to Flatcar Container Linux.</description>
+      <guid>http://localhost:1313/post/2021/01/kubeadm-flatcar/</guid>
+      <description>Simple steps to install the cluster based on Flatcar Container Linux</description>
     </item>
-    
     <item>
       <title>Exec in container environment</title>
-      <link>https://suraj.io/post/2021/01/shell-exec/</link>
+      <link>http://localhost:1313/post/2021/01/shell-exec/</link>
       <pubDate>Sat, 23 Jan 2021 10:10:41 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/01/shell-exec/</guid>
-      <description>If you use exec in your container script, then the container or Kubernetes pod might exit after the command that is exec-ed into has exited. But if that&amp;rsquo;s what you wanted, then it&amp;rsquo;s okay. This blog tries to explain how to pass the signals to the applications, how they work differently when invoked uniquely and what to do if the application does handle them.
-What are the &amp;ldquo;Signals&amp;rdquo;? Signals are messages one process can send to another process, mostly used in UNIX like operating systems.</description>
+      <guid>http://localhost:1313/post/2021/01/shell-exec/</guid>
+      <description>The correct way to use exec and the signal passing.</description>
     </item>
-    
     <item>
       <title>Watch Container Traffic Without Exec</title>
-      <link>https://suraj.io/post/snoop-on-pod-traffic/</link>
+      <link>http://localhost:1313/post/snoop-on-pod-traffic/</link>
       <pubDate>Sat, 06 Jun 2020 20:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/snoop-on-pod-traffic/</guid>
-      <description>Introduction For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.
-But for the developers or operators of such applications, it is hard to debug. Since they lack essential tools or even bash for that matter, but the application&amp;rsquo;s debugging ability should not dictate its production deployment and compromise its security posture.</description>
+      <guid>http://localhost:1313/post/snoop-on-pod-traffic/</guid>
+      <description>How to watch the traffic of a container or a pod without execing into the pod/contaienr?</description>
     </item>
-    
     <item>
       <title>Capabilities on executables</title>
-      <link>https://suraj.io/post/linux-cap-note/</link>
+      <link>http://localhost:1313/post/linux-cap-note/</link>
       <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/linux-cap-note/</guid>
-      <description>File capabilities allow users to execute programs with higher privileges. Best example is network utility ping.
-A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn&amp;rsquo;t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.
-$ getcap `which ping` /usr/bin/ping = cap_net_admin,cap_net_raw+p Which normally works as follows:
-$ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1.</description>
+      <guid>http://localhost:1313/post/linux-cap-note/</guid>
+      <description>Note on Linux Kernel capabilities</description>
     </item>
-    
     <item>
       <title>Root user inside container is root on the host</title>
-      <link>https://suraj.io/post/root-in-container-root-on-host/</link>
+      <link>http://localhost:1313/post/root-in-container-root-on-host/</link>
       <pubDate>Tue, 25 Jun 2019 11:57:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/root-in-container-root-on-host/</guid>
-      <description>Here are simple steps that you can follow to prove that the root user inside container is also root on the host. And how to mitigate this.
-Root in container, root on host I have a host with docker daemon running on it. I start a normal container on it with sleep process as PID1. See in the following output that the container clever_lalande started with sleep process.
-$ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b  $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &amp;#34;sleep 9999&amp;#34; 12 seconds ago Up 11 seconds clever_lalande Now let&amp;rsquo;s find out the process sleep on the host.</description>
+      <guid>http://localhost:1313/post/root-in-container-root-on-host/</guid>
+      <description>The easiest way to prove that root inside the container is also root on the host</description>
     </item>
-    
     <item>
       <title>Copying files to container the generic way</title>
-      <link>https://suraj.io/post/copy-to-container-without-docker-cp/</link>
+      <link>http://localhost:1313/post/copy-to-container-without-docker-cp/</link>
       <pubDate>Fri, 21 Jun 2019 11:57:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/copy-to-container-without-docker-cp/</guid>
-      <description>This blog shows you how you can copy stuff from your host machine to the running container without the docker cp command that we usually use.
-Steps in text Here I have a script on the host, which looks following:
-#!/bin/bash  tput bold echo &amp;#34;OS Information:&amp;#34; tput sgr0 echo  cat /etc/os-release After running which looks like following:
-$ ls script.sh  $ ./script.sh OS Information:  NAME=&amp;#34;Flatcar Linux by Kinvolk&amp;#34; ID=flatcar ID_LIKE=coreos VERSION=2079.</description>
+      <guid>http://localhost:1313/post/copy-to-container-without-docker-cp/</guid>
+      <description>No docker cp needed to copy files from host to your container</description>
     </item>
-    
     <item>
       <title>Using private container registries from minikube</title>
-      <link>https://suraj.io/post/private-registry-from-minikube/</link>
+      <link>http://localhost:1313/post/private-registry-from-minikube/</link>
       <pubDate>Fri, 06 Oct 2017 19:32:33 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/private-registry-from-minikube/</guid>
-      <description>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
-On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.</description>
+      <guid>http://localhost:1313/post/private-registry-from-minikube/</guid>
+      <description>A guide to how would you download image from private container registry in minikube</description>
     </item>
-    
   </channel>
 </rss>

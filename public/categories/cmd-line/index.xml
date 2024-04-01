@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>cmd-line on Suraj Deshmukh</title>
-    <link>https://suraj.io/categories/cmd-line/</link>
-    <description>Recent content in cmd-line on Suraj Deshmukh</description>
+    <title>Cmd-Line on Suraj Deshmukh</title>
+    <link>http://localhost:1313/categories/cmd-line/</link>
+    <description>Recent content in Cmd-Line on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 02 Jul 2018 08:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/cmd-line/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Jul 2018 08:00:51 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/cmd-line/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Change namespaces in Kubernetes</title>
-      <link>https://suraj.io/post/changing-k8s-ns/</link>
+      <link>http://localhost:1313/post/changing-k8s-ns/</link>
       <pubDate>Mon, 02 Jul 2018 08:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/changing-k8s-ns/</guid>
-      <description>There is no easy way to change namespace in Kubernetes using kubectl command line utility. But here are some commands that you can alias in your bashrc file so that it&amp;rsquo;s just a single command that you can use to change the namespace in the Kubernetes cluster.
-Change namespace Let&amp;rsquo;s see step by step what goes in to change the namespace. So the first step is to find the context.</description>
+      <guid>http://localhost:1313/post/changing-k8s-ns/</guid>
+      <description>Easy way to change namespace in Kubernetes</description>
     </item>
-    
   </channel>
 </rss>

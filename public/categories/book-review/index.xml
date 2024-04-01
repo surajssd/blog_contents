@@ -1,98 +1,80 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>book-review on Suraj Deshmukh</title>
-    <link>https://suraj.io/categories/book-review/</link>
-    <description>Recent content in book-review on Suraj Deshmukh</description>
+    <title>Book-Review on Suraj Deshmukh</title>
+    <link>http://localhost:1313/categories/book-review/</link>
+    <description>Recent content in Book-Review on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 26 Oct 2021 09:21:07 +0530</lastBuildDate><atom:link href="https://suraj.io/categories/book-review/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Oct 2021 09:21:07 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/book-review/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Learnings from &#39;Atomic Habits&#39;</title>
-      <link>https://suraj.io/post/2021/10/atomic-habits/</link>
+      <link>http://localhost:1313/post/2021/10/atomic-habits/</link>
       <pubDate>Tue, 26 Oct 2021 09:21:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/10/atomic-habits/</guid>
-      <description>Yet again, this is not a book review, instead, go ahead and read the book Atomic Habits. I can&amp;rsquo;t recommend it enough.
-Written by James Clear, the book is not a theoretical text just talking about habits. Rather, it is a handbook that goes into the depth of how habits form, how they can be fostered, how human evolution hinders good habit formation in today&amp;rsquo;s world, etc. It gives you practical tips and actions on setting good habits and breaking bad ones.</description>
+      <guid>http://localhost:1313/post/2021/10/atomic-habits/</guid>
+      <description>Atomic Habits: An Easy &amp;amp; Proven Way to Build Good Habits &amp;amp; Break Bad Ones</description>
     </item>
-    
     <item>
       <title>Learnings from &#39;Sapiens&#39;</title>
-      <link>https://suraj.io/post/2021/08/sapiens/</link>
+      <link>http://localhost:1313/post/2021/08/sapiens/</link>
       <pubDate>Sat, 14 Aug 2021 10:45:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/08/sapiens/</guid>
-      <description>This is not a book review. Instead, this is a book recommendation. Please go ahead and buy this book. If you cannot afford to buy the book, please reach out to me. I will help you buy it⁕. This blog will give you a general idea of what this book is about. I will provide some background about the book and the author, followed by the notes from the book.</description>
+      <guid>http://localhost:1313/post/2021/08/sapiens/</guid>
+      <description>Sapiens: A Brief History of Humankind</description>
     </item>
-    
     <item>
       <title>Learnings from &#39;The Psychology of Money&#39;</title>
-      <link>https://suraj.io/post/2021/05/learnings-psychology-of-money/</link>
+      <link>http://localhost:1313/post/2021/05/learnings-psychology-of-money/</link>
       <pubDate>Thu, 20 May 2021 12:15:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/05/learnings-psychology-of-money/</guid>
-      <description>Photo by Morgan Housel on Unsplash.
-Synopsis of the Book The Psychology of Money, written by Morgan Housel, published in 2020, could be categorised under Psychology, Finance, and Nonfiction. The author wrote an article three years ago which got a lot of traffic hence decided to write a book out of it. Last year I saw that the book was recommended by many folks in my network and on Twitter. All of the recommenders were highly impressed by the book and spoke intensely of it.</description>
+      <guid>http://localhost:1313/post/2021/05/learnings-psychology-of-money/</guid>
+      <description>Synopsis of the Book The Psychology of Money, written by Morgan Housel, published in 2020, could be categorised under Psychology, Finance, and Nonfiction. The author wrote an article three years ago which got a lot of traffic hence decided to write a book out of it. Last year I saw that the book was recommended by many folks in my network and on Twitter. All of the recommenders were highly impressed by the book and spoke intensely of it.</description>
     </item>
-    
     <item>
       <title>Book: How Innovation Works</title>
-      <link>https://suraj.io/post/2021/02/book-hiw-learnings/</link>
+      <link>http://localhost:1313/post/2021/02/book-hiw-learnings/</link>
       <pubDate>Wed, 10 Feb 2021 21:43:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/02/book-hiw-learnings/</guid>
-      <description>Introduction I recently finished reading the book: &amp;ldquo;How Innovation Works: And Why It Flourishes in Freedom&amp;rdquo; by Matt Ridley. The book was published less than a year ago in May 2020, and it is a short read of fewer than four hundred pages. I am not sure how to categorise this book, it probably falls into business, science and/or technological history.
-While listening to Naval Ravikant&amp;rsquo;s podcast, I found this book when Matt Ridley, the author, was a guest in one episode.</description>
+      <guid>http://localhost:1313/post/2021/02/book-hiw-learnings/</guid>
+      <description>And Why It Flourishes in Freedom by Matt Ridley</description>
     </item>
-    
     <item>
       <title>Book Review: How to Take Smart Notes</title>
-      <link>https://suraj.io/post/book-review-how-to-take-smart-notes/</link>
+      <link>http://localhost:1313/post/book-review-how-to-take-smart-notes/</link>
       <pubDate>Sat, 28 Nov 2020 21:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/book-review-how-to-take-smart-notes/</guid>
-      <description>Introduction How to Take Smart Notes: One Simple Technique to Boost Writing, Learning and Thinking – for Students, Academics and Nonfiction Book Writers by Sönke Ahrens is a small (171 pages) non-fiction genre book. The book is a manual explaining Zettlekasten method designed by Niklas Luhmann. Sönke has used straightforward and simple English to explain the concepts. For anyone who is a knowledge curator or wishes to publish non-fictional content in any form (text, video or audio), this book is a must-read.</description>
+      <guid>http://localhost:1313/post/book-review-how-to-take-smart-notes/</guid>
+      <description>One Simple Technique to Boost Writing, Learning and Thinking – for Students, Academics and Nonfiction Book Writers by Sönke Ahrens</description>
     </item>
-    
     <item>
       <title>Book Review: Algorithms to Live by — The Computer Science of Human Decisions</title>
-      <link>https://suraj.io/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</link>
+      <link>http://localhost:1313/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</link>
       <pubDate>Sun, 11 Oct 2020 17:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</guid>
-      <description>Introduction The book &amp;ldquo;Algorithms to Live by — The Computer Science of Human Decisions&amp;rdquo; is written by &amp;ldquo;Brian Christian and Tom Griffiths&amp;rdquo;. It fits into the genre non-fiction, psychology and computer science. The book is written lucidly. If you have a background in computer science, then this book is easy to follow. The book creates analogies of computer science algorithms with real-life situations. I felt that some metaphors sound good in reading than their application, so if you plan on applying the things explained in the book directly to your life, they might not work.</description>
+      <guid>http://localhost:1313/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</guid>
+      <description>Authors: Brian Christian and Tom Griffiths</description>
     </item>
-    
     <item>
       <title>Book Review: Getting Things Done</title>
-      <link>https://suraj.io/post/book-review-getting-things-done/</link>
+      <link>http://localhost:1313/post/book-review-getting-things-done/</link>
       <pubDate>Thu, 30 Jul 2020 16:00:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/book-review-getting-things-done/</guid>
-      <description>Introduction Recently I completed the book called Getting Things Done: The Art of Stress-free Productivity by David Allen. I read the book on my kindle e-reader device, and as the name suggests, it is a self-help category book and about three hundred pages long.
-The book is an extraordinary walkthrough of how to set up a system that will help you navigate your daily tasks without missing any of them. This system then enables you to patch up the crevices of your memory from which day-to-day tasks fall through.</description>
+      <guid>http://localhost:1313/post/book-review-getting-things-done/</guid>
+      <description>The Art of Stress-free Productivity - David Allen</description>
     </item>
-    
     <item>
       <title>Opinion: Contemporary world vis-à-vis 1984 by George Orwell</title>
-      <link>https://suraj.io/post/opinion-contemporary-world-1984-by-george-orwell/</link>
+      <link>http://localhost:1313/post/opinion-contemporary-world-1984-by-george-orwell/</link>
       <pubDate>Sun, 05 Jul 2020 11:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/opinion-contemporary-world-1984-by-george-orwell/</guid>
-      <description>The book 1984 was written by Geroge Orwell in 1949 as an attempt to demonstrate how democraries can also fall into the trap of totalitarianism. The story in the book showcases a dystopian world in the year 1984, where there are only three countries in the world, and all of them are in a constant power struggle. All three countries have a totalitarian, oligarchic government of their own. But the story in the book is from a country called Oceania, which is ruled by a party called Ingsoc or English Socialism.</description>
+      <guid>http://localhost:1313/post/opinion-contemporary-world-1984-by-george-orwell/</guid>
+      <description>The Unsettling Similarity of Timeless Dystopian Novel.</description>
     </item>
-    
     <item>
       <title>Book Review of Einstein: His Life and Universe</title>
-      <link>https://suraj.io/post/book-review-einstein/</link>
+      <link>http://localhost:1313/post/book-review-einstein/</link>
       <pubDate>Sat, 20 Jun 2020 11:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/book-review-einstein/</guid>
-      <description>I recently finished this book Einstein: His Life and Universe by Walter Isaacson. And here are my thoughts on the book.
-It&amp;rsquo;s a book that brings the image of Einstein to life.
-Although the book is a biography, it makes a reasonable effort in explaining the physics behind his theories of relativity, photoelectric effect and quantum physics. Physics in the book can be intimidating to someone coming from the non-Scientific background.</description>
+      <guid>http://localhost:1313/post/book-review-einstein/</guid>
+      <description>Authored by Walter Isaacson</description>
     </item>
-    
   </channel>
 </rss>

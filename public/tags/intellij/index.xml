@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>intellij on Suraj Deshmukh</title>
-    <link>https://suraj.io/tags/intellij/</link>
-    <description>Recent content in intellij on Suraj Deshmukh</description>
+    <title>Intellij on Suraj Deshmukh</title>
+    <link>http://localhost:1313/tags/intellij/</link>
+    <description>Recent content in Intellij on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 17 Mar 2017 14:41:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/intellij/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Mar 2017 14:41:51 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/intellij/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Intellij Shortcuts</title>
-      <link>https://suraj.io/post/intellij-shortcuts/</link>
+      <link>http://localhost:1313/post/intellij-shortcuts/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/intellij-shortcuts/</guid>
-      <description>Note: This is a living document and will be updated as I discover new things.
-Shortcuts  Ctrl + Shift + A  Find any action in IDE
- Ctrl + Shift + F  Find in Path
- Alt + 1  Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
- Shift + Insert in Project window  Here you can add new file to the project.</description>
+      <guid>http://localhost:1313/post/intellij-shortcuts/</guid>
+      <description>Shortcuts of intellij and also some short notes</description>
     </item>
-    
   </channel>
 </rss>

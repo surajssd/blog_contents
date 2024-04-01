@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>secure on Suraj Deshmukh</title>
-    <link>https://suraj.io/tags/secure/</link>
-    <description>Recent content in secure on Suraj Deshmukh</description>
+    <title>Secure on Suraj Deshmukh</title>
+    <link>http://localhost:1313/tags/secure/</link>
+    <description>Recent content in Secure on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 14 Aug 2018 01:00:51 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/secure/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Aug 2018 01:00:51 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/secure/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HTTPS during development using &#39;mkcert&#39;</title>
-      <link>https://suraj.io/post/mkcert-using-python-http-server/</link>
+      <link>http://localhost:1313/post/mkcert-using-python-http-server/</link>
       <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/mkcert-using-python-http-server/</guid>
-      <description>It&amp;rsquo;s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
-Once installed just run:
-$ mkcert -install Created a new local CA at &amp;#34;/home/hummer/.local/share/mkcert&amp;#34; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!</description>
+      <guid>http://localhost:1313/post/mkcert-using-python-http-server/</guid>
+      <description>Use https even during your development</description>
     </item>
-    
   </channel>
 </rss>

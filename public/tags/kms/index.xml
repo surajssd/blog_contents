@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>KMS on Suraj Deshmukh</title>
-    <link>https://suraj.io/tags/kms/</link>
+    <link>http://localhost:1313/tags/kms/</link>
     <description>Recent content in KMS on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Feb 2021 09:07:07 +0530</lastBuildDate><atom:link href="https://suraj.io/tags/kms/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Feb 2021 09:07:07 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/kms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My Knowledge Management Journey</title>
-      <link>https://suraj.io/post/2021/02/kms-journey/</link>
+      <link>http://localhost:1313/post/2021/02/kms-journey/</link>
       <pubDate>Tue, 23 Feb 2021 09:07:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/2021/02/kms-journey/</guid>
-      <description>Photo by Patrick Tomasso on Unsplash.
- If you are reading this, you are definitely a Knowledge Worker. As Knowledge Workers, we rely a lot on the information we know or have access to for our day to day work. Occasionally, we will do the same thing twice, face the situation more than once, want to read that reference or try to understand the insights mentioned in that one particular blog.</description>
+      <guid>http://localhost:1313/post/2021/02/kms-journey/</guid>
+      <description>The story of various tools I have used over last five years.</description>
     </item>
-    
     <item>
       <title>Book Review: How to Take Smart Notes</title>
-      <link>https://suraj.io/post/book-review-how-to-take-smart-notes/</link>
+      <link>http://localhost:1313/post/book-review-how-to-take-smart-notes/</link>
       <pubDate>Sat, 28 Nov 2020 21:30:07 +0530</pubDate>
-      
-      <guid>https://suraj.io/post/book-review-how-to-take-smart-notes/</guid>
-      <description>Introduction How to Take Smart Notes: One Simple Technique to Boost Writing, Learning and Thinking – for Students, Academics and Nonfiction Book Writers by Sönke Ahrens is a small (171 pages) non-fiction genre book. The book is a manual explaining Zettlekasten method designed by Niklas Luhmann. Sönke has used straightforward and simple English to explain the concepts. For anyone who is a knowledge curator or wishes to publish non-fictional content in any form (text, video or audio), this book is a must-read.</description>
+      <guid>http://localhost:1313/post/book-review-how-to-take-smart-notes/</guid>
+      <description>One Simple Technique to Boost Writing, Learning and Thinking – for Students, Academics and Nonfiction Book Writers by Sönke Ahrens</description>
     </item>
-    
   </channel>
 </rss>
