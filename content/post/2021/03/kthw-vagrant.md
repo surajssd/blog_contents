@@ -6,8 +6,8 @@ description: "The first step in your CKA preparation!"
 draft: false
 categories: ["kubernetes", "cka"]
 tags: ["kubernetes", "cka"]
-images:
-- src: "/post/2021/03/kthw-vagrant/cert.png"
+cover:
+  image: "/post/2021/03/kthw-vagrant/cert.png"
   alt: "CKA logo"
 ---
 

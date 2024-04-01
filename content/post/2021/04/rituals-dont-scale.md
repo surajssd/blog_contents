@@ -6,8 +6,8 @@ description: "How Hindus need to introspect and evolve!"
 draft: false
 categories: ["non-tech", "activism"]
 tags: ["non-tech", "activism"]
-images:
-- src: "/post/2021/04/rituals-dont-scale/earth.jpg"
+cover:
+  image: "/post/2021/04/rituals-dont-scale/earth.jpg"
   alt: "Earth"
 ---
 
@@ -38,7 +38,6 @@ Let us not politicise this issue and look at the long term. Since this practice 
 ![Holi](/post/2021/04/rituals-dont-scale/holi.jpg "Holi")
 
 Photo by [Yogendra Singh](https://unsplash.com/@yogendras31) from [Unsplash](https://unsplash.com).
-
 
 Now on the face of it all, some like to waste water uselessly.
 

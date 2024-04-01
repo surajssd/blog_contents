@@ -6,12 +6,11 @@ description: "A little trickery and access any Kubernetes Secret!"
 draft: false
 categories: ["kubernetes", "security"]
 tags: ["kubernetes", "security"]
-images:
-- src: "/post/2021/05/access-k8s-secrets/forbidden.jpg"
+cover:
+  image: "/post/2021/05/access-k8s-secrets/forbidden.jpg"
   alt: "Forbidden"
+  caption: Photo by [Kyle Glenn](https://unsplash.com/@kylejglenn) on [Unsplash](https://unsplash.com).
 ---
-
-Photo by [Kyle Glenn](https://unsplash.com/@kylejglenn) on [Unsplash](https://unsplash.com).
 
 You can gain access to any secret that you want in Kubernetes even if you don't have RBAC permissions to get, list or view that secret. All you need is permission that allows you to do anything on pods and an ability to guess the names of secrets. With these two ingredients, here is how you can access any secret out there.
 

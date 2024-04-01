@@ -6,8 +6,8 @@ description: ""
 draft: false
 categories: ["linux", "systemd"]
 tags: ["linux", "systemd"]
-images:
-- src: "/post/2021/06/systemd-service/systemd.png"
+cover:
+  image: "/post/2021/06/systemd-service/systemd.png"
   alt: "Systemd"
 ---
 

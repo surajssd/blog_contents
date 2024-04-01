@@ -6,8 +6,8 @@ description: "The foundational skill which improves everything else."
 draft: false
 categories: ["non-tech", "productivity"]
 tags: ["non-tech", "productivity"]
-images:
-- src: "/post/2021/02/typing-skills/keyboard.jpg"
+cover:
+  image: "/post/2021/02/typing-skills/keyboard.jpg"
   alt: "Keyboard"
 ---
 

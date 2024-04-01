@@ -6,8 +6,8 @@ description: ""
 draft: false
 categories: ["kubernetes", "golang"]
 tags: ["kubernetes", "golang"]
-images:
-- src: "/post/2021/05/k8s-import/gok8s.jpg"
+cover:
+  image: "/post/2021/05/k8s-import/gok8s.jpg"
   alt: "Golang and Kubernetes"
 ---
 
@@ -19,16 +19,16 @@ I have a project, and in it, the imported packages look like this:
 
 ```go
 import (
-	"crypto/x509"
-	"fmt"
-	"io/ioutil"
-	"log"
-	"path/filepath"
+ "crypto/x509"
+ "fmt"
+ "io/ioutil"
+ "log"
+ "path/filepath"
 
-	"github.com/spf13/cobra"
-	"k8s.io/client-go/util/cert"
-	"k8s.io/client-go/util/keyutil"
-	"k8s.io/kubernetes/test/utils"
+ "github.com/spf13/cobra"
+ "k8s.io/client-go/util/cert"
+ "k8s.io/client-go/util/keyutil"
+ "k8s.io/kubernetes/test/utils"
 )
 ```
 
@@ -124,19 +124,19 @@ The error `k8s.io/api@v0.0.0: reading k8s.io/api/go.mod at revision v0.0.0: unkn
 ```yaml
 require (
 ...
-	k8s.io/api v0.0.0
-	k8s.io/apiextensions-apiserver v0.0.0
-	k8s.io/apimachinery v0.0.0
-	k8s.io/apiserver v0.0.0
+ k8s.io/api v0.0.0
+ k8s.io/apiextensions-apiserver v0.0.0
+ k8s.io/apimachinery v0.0.0
+ k8s.io/apiserver v0.0.0
 ...
 )
 
 replace (
 ...
-	k8s.io/api => ./staging/src/k8s.io/api
-	k8s.io/apiextensions-apiserver => ./staging/src/k8s.io/apiextensions-apiserver
-	k8s.io/apimachinery => ./staging/src/k8s.io/apimachinery
-	k8s.io/apiserver => ./staging/src/k8s.io/apiserver
+ k8s.io/api => ./staging/src/k8s.io/api
+ k8s.io/apiextensions-apiserver => ./staging/src/k8s.io/apiextensions-apiserver
+ k8s.io/apimachinery => ./staging/src/k8s.io/apimachinery
+ k8s.io/apiserver => ./staging/src/k8s.io/apiserver
 ...
 )
 ```

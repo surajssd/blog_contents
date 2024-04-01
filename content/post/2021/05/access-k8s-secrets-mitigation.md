@@ -6,8 +6,8 @@ description: "A Validating Admission Webhook Server to deny anyone accessing for
 draft: false
 categories: ["kubernetes", "security"]
 tags: ["kubernetes", "security"]
-images:
-- src: "/post/2021/05/access-k8s-secrets-mitigation/config.png"
+cover:
+  image: "/post/2021/05/access-k8s-secrets-mitigation/config.png"
   alt: "Config"
 ---
 
@@ -34,13 +34,11 @@ As the name suggests, the job of the admission controller is to perform certain 
 
 For our situation, we are going to use an admission controller called [ValidatingAdmissionWebhook](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#validatingadmissionwebhook). This allows us to dynamically load any new webserver with logic to process the requests sent by the ValidatingAdmissionWebhook admission controller. The expectation from these dynamically loaded webservers is to only respond with yes or no.
 
-
 This admission controller sends a webhook to the specified endpoints when a given condition is met. We can ask things like send all the requests to a particular URL after encountering a resource called `pods` of apiVersion `v1` when someone is trying to `CREATE` them. Now all the pod create requests will be sent to your webserver.
 
 ![Admission Controllers Zoomed in](/post/2021/05/access-k8s-secrets-mitigation/admission-controller-phases.png "Admission Controllers Zoomed in")
 
 [Image Source: A Guide to Kubernetes Admission Controllers](https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/)
-
 
 ## Kubernetes Secret Access Validator
 

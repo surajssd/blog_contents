@@ -6,8 +6,8 @@ description: "Things to keep in mind to clear exam effortlessly."
 draft: false
 categories: ["kubernetes", "security", "cka", "cks"]
 tags: ["kubernetes", "security", "cka", "cks"]
-images:
-- src: "/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png"
+cover:
+  image: "/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png"
   alt: "cert"
 ---
 
@@ -49,36 +49,36 @@ Another good resource to study or read from is [Walid Shaari's Github repository
 ## Exam Tips
 
 - By heart the following config and set it up before the exam:
-    - Create a `~/.vimrc` and enter the following config:
+  - Create a `~/.vimrc` and enter the following config:
 
-        ```bash
-        set expandtab
-        set tabstop=2
-        set shiftwidth=2
-        set paste
-        ```
+    ```bash
+    set expandtab
+    set tabstop=2
+    set shiftwidth=2
+    set paste
+    ```
 
-    - Update `~/.bashrc` with the aliases and auto-completion:
+  - Update `~/.bashrc` with the aliases and auto-completion:
 
-        ```bash
-        source <(kubectl completion bash)
-        alias k=kubectl
-        complete -F __start_kubectl k
+    ```bash
+    source <(kubectl completion bash)
+    alias k=kubectl
+    complete -F __start_kubectl k
 
-        alias kg='kubectl get'
-        alias kgp='kubectl get pods'
-        alias kl='kubectl logs -f'
-        alias kd='kubectl describe'
-        export do="--dry-run=client -o yaml"
-        export del="--wait=0 --timeout=0 --force"
+    alias kg='kubectl get'
+    alias kgp='kubectl get pods'
+    alias kl='kubectl logs -f'
+    alias kd='kubectl describe'
+    export do="--dry-run=client -o yaml"
+    export del="--wait=0 --timeout=0 --force"
 
-        change-ns ()
-        {
-            kubectl config set-context $(kubectl config current-context) --namespace $1
-        }
-        ```
+    change-ns ()
+    {
+        kubectl config set-context $(kubectl config current-context) --namespace $1
+    }
+    ```
 
-        **NOTE**: Use the aliases of your choice. These are what I use. You can copy the auto-completion config during the exam from these [k8s docs here](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash).
+    **NOTE**: Use the aliases of your choice. These are what I use. You can copy the auto-completion config during the exam from these [k8s docs here](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash).
 
 - During the exam, whenever a question is presented to you. The question also gives you a command to change the context. Along with changing the context using the command provided, also switch to the appropriate namespace. This reduces the time to type `-n namespace-name` on every namespaced command. It also reduces the anxiety of wondering if you typed the command in the correct namespace. Add the following alias to the exam terminal's `.bashrc`.
 

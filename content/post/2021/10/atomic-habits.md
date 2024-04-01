@@ -6,8 +6,8 @@ description: "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break B
 draft: false
 categories: ["book-review", "non-tech"]
 tags: ["book-review", "non-tech"]
-images:
-- src: "/post/2021/10/atomic-habits/logo.jpg"
+cover:
+  image: "/post/2021/10/atomic-habits/logo.jpg"
   alt: "Atomic Habits"
 ---
 
@@ -108,9 +108,9 @@ I won't recommend reading this book cover-to-cover. Take this three hundred-page
 > When changing your habits means challenging the tribe, change is unattractive. When changing your habits means fitting in with the tribe, change is very attractive.
 
 - Most of our actions are like a reconciliation loop.
-    - All day long, we are running a simulation based on cues. What will happen if I do X or not do X. Based on these simulations, we are constantly predicting.
-    - These predictions create the desired state possibly different from our current state.
-    - There is a current state and the desired state. We continually strive to achieve our desired state through our actions.
+  - All day long, we are running a simulation based on cues. What will happen if I do X or not do X. Based on these simulations, we are constantly predicting.
+  - These predictions create the desired state possibly different from our current state.
+  - There is a current state and the desired state. We continually strive to achieve our desired state through our actions.
 
 - The whole idea of doing something now that will make something else convenient later is what I have been doing I don't remember since when. I don't know how I got into that habit either. Maybe it was from Mummy. Like when I used to go cycling, I kept shoes and cycling outfit ready and wiped the dust off of the cycle the night before cycling. When I was in school, I prepared my school bag with all the books necessary for the next day's classes to never miss the books needed for a class.
 

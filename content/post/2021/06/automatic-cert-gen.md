@@ -6,8 +6,8 @@ description: "A simple Helm chart to generate TLS x509 certificates."
 draft: false
 categories: ["kubernetes", "security"]
 tags: ["kubernetes", "security"]
-images:
-- src: "/post/2021/06/automatic-cert-gen/obama.jpg"
+cover:
+  image: "/post/2021/06/automatic-cert-gen/obama.jpg"
   alt: "Self Signed Certificates"
 ---
 

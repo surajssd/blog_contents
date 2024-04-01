@@ -6,8 +6,8 @@ description: "Sapiens: A Brief History of Humankind"
 draft: false
 categories: ["book-review", "non-tech"]
 tags: ["book-review", "non-tech"]
-images:
-- src: "/post/2021/08/sapiens/logo.png"
+cover:
+  image: "/post/2021/08/sapiens/logo.png"
   alt: "Sapiens"
 ---
 
@@ -57,12 +57,12 @@ The book is a mix of facts and insights. Not a lot of facts because it is a hist
 - "If you tell a lie big enough and keep repeating it, people will eventually come to believe it." - Joseph Goebbels (chief propagandist for the Nazi Party, and then Reich Minister of Propaganda). This is very true for the religions and gods that humans have created.
 - We have developed various hierarchies in our societies. These imagined orders need continuous work to keep them in place. These orders are based on myths, and myths are valid as long as there are believers of the legend.
 - Here is a recipe for creating an imagined order:
-    - First, don't say it is an imagined order.
-    - Explain how the imagined order is as accurate as it gets since it was created by God or nature.
-    - Indoctrinate individuals from birth. Make the material forms of imagined reality so ubiquitous that you can later prove imagined order from these material things. Create more content about this imagined reality.
+  - First, don't say it is an imagined order.
+  - Explain how the imagined order is as accurate as it gets since it was created by God or nature.
+  - Indoctrinate individuals from birth. Make the material forms of imagined reality so ubiquitous that you can later prove imagined order from these material things. Create more content about this imagined reality.
 - Understand what keeps the imagined order sustainable:
-    - The tokens of imagined reality are so embedded in our material world that the believers seldom question its authenticity.
-    - The imagined order works on the consensus, as in we always need enough people of the group to believe the imagined order so that others also fall into the trap. If there are not enough people, then the imagined order will collapse.
+  - The tokens of imagined reality are so embedded in our material world that the believers seldom question its authenticity.
+  - The imagined order works on the consensus, as in we always need enough people of the group to believe the imagined order so that others also fall into the trap. If there are not enough people, then the imagined order will collapse.
 - Unlike honey bees, whose social order is developed due to evolution, ours is a result of our imagination.
 - The agricultural revolution caused many problems for humans. The deeply rooted hierarchies that we see in societies today were first forged due to the Agricultural revolution. This does not mean that we can go back to the hunter-gatherer lifestyle. We can't feed so many people with that approach.
 - Imagined hierarchies, just like imagined orders, are about placing humans at various strata of the social pyramid. So think of it like in an imagined order there could be multiple imagined hierarchies.

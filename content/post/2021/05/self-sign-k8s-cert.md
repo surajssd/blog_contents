@@ -6,8 +6,8 @@ description: "A simple binary to generate TLS x509 certificates."
 draft: false
 categories: ["kubernetes", "security"]
 tags: ["kubernetes", "security"]
-images:
-- src: "/post/2021/05/self-sign-k8s-cert/cert.png"
+cover:
+  image: "/post/2021/05/self-sign-k8s-cert/cert.png"
   alt: "cert"
 ---
 

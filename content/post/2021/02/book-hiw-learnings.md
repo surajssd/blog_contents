@@ -6,8 +6,8 @@ description: "And Why It Flourishes in Freedom by Matt Ridley"
 draft: false
 categories: ["book-review", "non-tech"]
 tags: ["book-review", "non-tech"]
-images:
-- src: "/post/2021/02/hiw/hiw.jpg"
+cover:
+  image: "/post/2021/02/hiw/hiw.jpg"
   alt: "Book Review"
 ---
 

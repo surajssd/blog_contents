@@ -6,6 +6,9 @@ description: "List of all the talks presented by me"
 draft: false
 categories: ["talks", "notes"]
 tags: ["kubernetes", "meetup"]
+weight: 1
+cover:
+  image: /images/talks/talks.jpeg
 ---
 
 ## Fortifying AI Security in Kubernetes with Confidential Containers (CoCo) - Kubecon Europe 2024

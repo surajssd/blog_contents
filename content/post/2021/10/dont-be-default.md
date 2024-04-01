@@ -6,12 +6,12 @@ description: ""
 draft: false
 categories: ["non-tech"]
 tags: ["non-tech"]
-images:
-- src: "/post/2021/10/dont-be-default/human-evolution.jpg"
+cover:
+  image: "/post/2021/10/dont-be-default/human-evolution.jpg"
   alt: "Human Evolution"
+  caption: Photo by [Johannes Plenio](https://unsplash.com/@jplenio) on [Unsplash](https://unsplash.com).
 ---
 
-Photo by [Johannes Plenio](https://unsplash.com/@jplenio) on [Unsplash](https://unsplash.com).
 
 We behave in a certain way. It is shaped by various factors like our upbringing, environment, privilege, etc. But most of the time, it is shaped by our instincts. Until pointed out, we continue to act with our instincts. This instinct-driven behavior is our default behavior.
 
@@ -34,7 +34,6 @@ On the other hand, those who show resistance to this default behavior of over-ea
 We are genetically hardwired to be pessimists. Pessimists draw a lot of attention than optimists. Not listening to a pessimist sounds like a bad idea, even if it turns out to be a farce in the future. No wonder the shamans, Jyotish (fortune-tellers), stock market speculators are still in business. They are constantly predicting doomsday scenarios.
 
 In our ancestor's world, the optimists did not survive. If an optimist person, in a feat of bravado, did something reckless (like trying to fight an unknown predator), the immediate outcome was death, if not an instant,  but a slow one. It is only pessimists who survived to pass on their genes.
-
 
 It is hard to get killed easily in today’s world, where we are shielded from most life-threatening things. But we still carry that instinctual fear and pessimism in our decision-making where there is no fear of dying. People play it safe with life decisions like whether to pursue a passion or do a secure job? People avoid taking risks thinking the risks are not worth it.
 
@@ -75,15 +74,17 @@ If we were to resist the temptation of eating these unhygienic foods, we would l
 **NOTE:** I am not sure of the source of the following instincts, but wherever they come from, resisting them will benefit the individual.
 
 ## Comparing
+
 We are constantly comparing ourselves to others. We are always trying to look good. This behavior creates a "be good" mindset, and thus most folks focus on coming across as good at something.
 
 This is the default behavior, while if we resist this compulsion to compare with others and start comparing to our old selves, we start working on the "get better" mindset. This way, we are improving and not just showing off.
 
 ## Cognitive Biases
+
 They are faults in our thinking. If ignorant of them, they cause one to make erroneous decisions.
 
 Once one is aware of them and starts actively counteracting these biases during the decision-making process, they enable themselves to take superior decisions in whatever decision-making setup they are in.
 
 ## Conclusion
-Make a habit of investigating the default behavior you are a prey to, then work to supersede them actively. Because more often than not, these default behaviors give us default mediocre results. To get extraordinary results, very few have, be willing to do what few do.
 
+Make a habit of investigating the default behavior you are a prey to, then work to supersede them actively. Because more often than not, these default behaviors give us default mediocre results. To get extraordinary results, very few have, be willing to do what few do.

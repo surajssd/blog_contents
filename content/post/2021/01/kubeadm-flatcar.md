@@ -6,12 +6,10 @@ description: "Simple steps to install the cluster based on Flatcar Container Lin
 draft: false
 categories: ["kubernetes", "flatcar", "containers", "kubeadm"]
 tags: ["kubernetes", "flatcar", "containers", "kubeadm"]
-images:
-- src: "/post/2021/01/kubeadm-flatcar/flatcar.jpg"
-  alt: "Flatcar"
+cover:
+  image: /post/2021/01/kubeadm-flatcar/flatcar.jpg
+  caption: "Image Source: [Flatcar Linux is now open to the public.](https://kinvolk.io/blog/2018/04/flatcar-linux-is-now-open-to-the-public/)"
 ---
-
-[Image Source: Flatcar Linux is now open to the public.](https://kinvolk.io/blog/2018/04/flatcar-linux-is-now-open-to-the-public/)
 
 This blog shows a simple set of commands to install a Kubernetes cluster on [Flatcar Container Linux](https://www.flatcar-linux.org/) based machines using [Kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/).
 

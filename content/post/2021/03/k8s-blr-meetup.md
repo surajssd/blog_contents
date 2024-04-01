@@ -6,8 +6,8 @@ description: "The method of stress-free event management!"
 draft: false
 categories: ["non-tech", "productivity", "meetup"]
 tags: ["non-tech", "productivity", "meetup"]
-images:
-- src: "/post/2021/03/k8s-blr-meetup/meetup.jpeg"
+cover:
+  image: "/post/2021/03/k8s-blr-meetup/meetup.jpeg"
   alt: "Kubernetes Bangalore Meetup"
 ---
 

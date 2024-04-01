@@ -6,8 +6,8 @@ description: "Get a fine grained view of the happenings on your system!"
 draft: false
 categories: ["kubernetes", "prometheus", "monitoring", "linux", "desktop"]
 tags: ["kubernetes", "prometheus", "monitoring", "linux", "desktop"]
-images:
-- src: "/post/2021/03/node-monitor/node-exporter-2.png"
+cover:
+  image: "/post/2021/03/node-monitor/node-exporter-2.png"
   alt: "Node Exporter"
 ---
 

@@ -6,12 +6,10 @@ description: "The story of various tools I have used over last five years."
 draft: false
 categories: ["non-tech", "KMS", "productivity", "notion"]
 tags: ["non-tech", "KMS", "productivity", "notion"]
-images:
-- src: "/post/2021/02/kms-journey/knowledge.jpg"
+cover:
+  image: "/post/2021/02/kms-journey/knowledge.jpg"
   alt: "Knowledge"
----
-
-Photo by [Patrick Tomasso](https://unsplash.com/@impatrickt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/learning?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
+  caption: Photo by [Patrick Tomasso](https://unsplash.com/@impatrickt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/learning?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 
 ---
 

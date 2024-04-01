@@ -6,12 +6,12 @@ description: ""
 draft: false
 categories: ["book-review", "non-tech"]
 tags: ["book-review", "non-tech"]
-images:
-- src: "/post/2021/05/learnings-psychology-of-money/logo.jpg"
+cover:
+  image: "/post/2021/05/learnings-psychology-of-money/logo.jpg"
   alt: "TPOM"
+  caption: Photo by [Morgan Housel](https://unsplash.com/@morganhousel) on [Unsplash](https://unsplash.com).
 ---
 
-Photo by [Morgan Housel](https://unsplash.com/@morganhousel) on [Unsplash](https://unsplash.com).
 
 ## Synopsis of the Book
 

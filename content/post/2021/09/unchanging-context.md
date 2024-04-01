@@ -6,12 +6,11 @@ description: "How doing everything from the same place has affected the the prod
 draft: false
 categories: ["productivity", "non-tech"]
 tags: ["productivity", "non-tech"]
-images:
-- src: "/post/2021/09/unchanging-context/cafe.jpg"
+cover:
+  image: "/post/2021/09/unchanging-context/cafe.jpg"
   alt: "cafe"
+  caption: Photo by [daan evers](https://unsplash.com/@daanelise) on [Unsplash](https://unsplash.com).
 ---
-
-Photo by [daan evers](https://unsplash.com/@daanelise) on [Unsplash](https://unsplash.com).
 
 
 Everything feels like work since the pandemic began. But the feeling has been more gnawing for the last couple of months. I have been working from home since 2018, but that was different! The work from home since the pandemic began is pretty adverse.

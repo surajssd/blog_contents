@@ -6,8 +6,8 @@ description: "The foundational skills which improves everything else."
 draft: false
 categories: ["non-tech", "productivity"]
 tags: ["non-tech", "productivity"]
-images:
-- src: "/post/2021/03/compounder-skills/compound.png"
+cover:
+  image: "/post/2021/03/compounder-skills/compound.png"
   alt: "Compounding Chart"
 ---
 
