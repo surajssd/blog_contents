@@ -1,17 +1,27 @@
-+++
-title = "About me"
-layout = "about"
-+++
+---
+title: "About me"
+layout: "about"
+cover:
+  image: https://github.com/surajssd.png
+---
 
-![Suraj Deshmukh](https://github.com/surajssd.png)
+## Bio
 
-- I am an open-source systems software enthusiast, productivity nerd, Bangalore Kubernetes Meetup organiser and knowledge sharer on Twitter.
-- I contribute to various Container & Kubernetes related technologies like Lokomotive, Contour, Rook, etc.
-- I work for [Microsoft](https://twitter.com/microsoft) as a Senior Software Engineer. Previously worked for [kinvolk](https://twitter.com/kinvolkio) and [Red Hat](https://twitter.com/redhat).
+I am a Senior Software Engineer at Microsoft, where I work on the Confidential Containers project, a CNCF sandbox initiative that aims to provide a secure and private way to run containerized workloads on Kubernetes. I have been involved in the Kubernetes space for over six years and has worked for Red Hat and [Kinvolk](https://twitter.com/kinvolkio) on various Kubernetes technologies such as OpenShift, service-meshes, Helm, Lokomotive, etc. I have also contributed to several Kubernetes upstream projects, including Kubernetes, Kubernetes docs, Contour, Podman, and Crio. I hold CKA and CKS certifications, and I was also an organizer of the Kubernetes Bangalore meetup group from 2017 to 2022. I have spoken at numerous conferences and events, such as Kubecon, Pycon India, DevOpsDays Bangalore, FOSDEM, Cloud Native Rejekts, and DevConf.
 
-## Contact
+I am a bibliophile, tech enthusiast, open-source contributor, productivity geek, hiker, etc.
 
-- Github: [surajssd](https://github.com/surajssd/)
-- Twitter: [@surajd_](https://twitter.com/surajd_)
-- Email: `surajd.service@gmail.com` & `suraj@kinvolk.io`
-- Stackoverflow: [surajd](https://stackoverflow.com/users/3848679/surajd)
+## Find me on your favorite
+
+| Social Media | Handle|
+| ----|---|
+| Twitter | [@surajd_](https://twitter.com/surajd_) |
+| YouTube | [@surajssd](https://www.youtube.com/@surajssd) |
+| LinkedIn | [suraj-deshmukh-0205b834](https://www.linkedin.com/in/suraj-deshmukh-0205b834/) |
+| BlueSky | [@surajd.bsky.social](https://bsky.app/profile/surajd.bsky.social) |
+| Mastodon | [@surajd@fosstodon.org](https://fosstodon.org/@surajd) |
+| Threads | [@itssurajd](https://www.threads.net/@itssurajd) |
+| Github | [surajssd](https://github.com/surajssd/) |
+| Linktree | [surajssd](https://linktr.ee/surajssd) |
+| Email | `surajd.service@gmail.com` |
+| Stackoverflow | [surajd](https://stackoverflow.com/users/3848679/surajd) |
