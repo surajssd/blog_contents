@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Lokomotive on Suraj Deshmukh</title>
-    <link>http://localhost:1313/tags/lokomotive/</link>
+    <link>https://suraj.io/tags/lokomotive/</link>
     <description>Recent content in Lokomotive on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 16 Jan 2021 13:10:51 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/lokomotive/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/tags/lokomotive/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mental models for understanding Kubernetes Pod Security Policy</title>
-      <link>http://localhost:1313/post/mental-models-for-understanding-kubernetes-pod-security-policy/</link>
+      <link>https://suraj.io/post/mental-models-for-understanding-kubernetes-pod-security-policy/</link>
       <pubDate>Sat, 16 Jan 2021 13:10:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/mental-models-for-understanding-kubernetes-pod-security-policy/</guid>
+      <guid>https://suraj.io/post/mental-models-for-understanding-kubernetes-pod-security-policy/</guid>
       <description>Getting the game of PSP right!</description>
     </item>
   </channel>

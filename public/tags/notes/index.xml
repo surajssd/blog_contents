@@ -2,141 +2,141 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Notes on Suraj Deshmukh</title>
-    <link>http://localhost:1313/tags/notes/</link>
+    <link>https://suraj.io/tags/notes/</link>
     <description>Recent content in Notes on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 06 Feb 2021 10:25:41 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/notes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/tags/notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Enable TLS bootstrapping in a Kubernetes cluster</title>
-      <link>http://localhost:1313/post/2021/02/k8s-bootstrap-token/</link>
+      <link>https://suraj.io/post/2021/02/k8s-bootstrap-token/</link>
       <pubDate>Sat, 06 Feb 2021 10:25:41 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/02/k8s-bootstrap-token/</guid>
+      <guid>https://suraj.io/post/2021/02/k8s-bootstrap-token/</guid>
       <description>Add a new node using a bootstrap token to Kubernetes</description>
     </item>
     <item>
       <title>How to gracefully kill Kubernetes Jobs with a sidecar?</title>
-      <link>http://localhost:1313/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</link>
+      <link>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</link>
       <pubDate>Sat, 29 Aug 2020 15:33:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</guid>
+      <guid>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</guid>
       <description>A sidecar in a Kubernetes Job, what? Yeah you might need one and here is how to shut it.</description>
     </item>
     <item>
       <title>Use Configmap for Scripts</title>
-      <link>http://localhost:1313/post/use-configmap-for-scripts/</link>
+      <link>https://suraj.io/post/use-configmap-for-scripts/</link>
       <pubDate>Sat, 22 Aug 2020 21:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/use-configmap-for-scripts/</guid>
+      <guid>https://suraj.io/post/use-configmap-for-scripts/</guid>
       <description>A new way to ship scripts to container images.</description>
     </item>
     <item>
       <title>Being Productive with Git</title>
-      <link>http://localhost:1313/post/being-productive-with-git/</link>
+      <link>https://suraj.io/post/being-productive-with-git/</link>
       <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/being-productive-with-git/</guid>
+      <guid>https://suraj.io/post/being-productive-with-git/</guid>
       <description>Tips and tricks to make your day to day usage easier.</description>
     </item>
     <item>
       <title>Being Productive with Kubectl</title>
-      <link>http://localhost:1313/post/being-productive-with-kubectl/</link>
+      <link>https://suraj.io/post/being-productive-with-kubectl/</link>
       <pubDate>Sun, 02 Aug 2020 16:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/being-productive-with-kubectl/</guid>
+      <guid>https://suraj.io/post/being-productive-with-kubectl/</guid>
       <description>Tips and tricks to make your day to day usage easier</description>
     </item>
     <item>
       <title>How to backup and restore Prometheus?</title>
-      <link>http://localhost:1313/post/how-to-backup-and-restore-prometheus/</link>
+      <link>https://suraj.io/post/how-to-backup-and-restore-prometheus/</link>
       <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/how-to-backup-and-restore-prometheus/</guid>
+      <guid>https://suraj.io/post/how-to-backup-and-restore-prometheus/</guid>
       <description>Backing up Prometheus??!!</description>
     </item>
     <item>
       <title>Framework for managing random scripts and binaries</title>
-      <link>http://localhost:1313/post/framework-for-scripts-and-binaries/</link>
+      <link>https://suraj.io/post/framework-for-scripts-and-binaries/</link>
       <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/framework-for-scripts-and-binaries/</guid>
+      <guid>https://suraj.io/post/framework-for-scripts-and-binaries/</guid>
       <description>This is an explanation of the framework that I have created to manage scripts and binaries.</description>
     </item>
     <item>
       <title>Cobra and Persistentflags gotchas</title>
-      <link>http://localhost:1313/post/cobra-persistent-flag/</link>
+      <link>https://suraj.io/post/cobra-persistent-flag/</link>
       <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/cobra-persistent-flag/</guid>
+      <guid>https://suraj.io/post/cobra-persistent-flag/</guid>
       <description>How wrong usage of persistent flags can burn you</description>
     </item>
     <item>
       <title>Adding new worker to existing Kubernetes cluster</title>
-      <link>http://localhost:1313/post/add-new-k8s-node-manually/</link>
+      <link>https://suraj.io/post/add-new-k8s-node-manually/</link>
       <pubDate>Sun, 23 Sep 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/add-new-k8s-node-manually/</guid>
+      <guid>https://suraj.io/post/add-new-k8s-node-manually/</guid>
       <description>Step by step guide to add new node</description>
     </item>
     <item>
       <title>Golang struct tags gotchas</title>
-      <link>http://localhost:1313/post/golang-struct-tags-space/</link>
+      <link>https://suraj.io/post/golang-struct-tags-space/</link>
       <pubDate>Sun, 12 Aug 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/golang-struct-tags-space/</guid>
+      <guid>https://suraj.io/post/golang-struct-tags-space/</guid>
       <description>Struct tags can give you problems you didn&amp;#39;t see coming ;-)</description>
     </item>
     <item>
       <title>Access etcd in OpenShift origin</title>
-      <link>http://localhost:1313/post/accessing-oc-cluster-up-etcd/</link>
+      <link>https://suraj.io/post/accessing-oc-cluster-up-etcd/</link>
       <pubDate>Wed, 11 Jul 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/accessing-oc-cluster-up-etcd/</guid>
+      <guid>https://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
       <description>Access the etcd in OpenShift started by oc cluster up</description>
     </item>
     <item>
       <title>Change namespaces in Kubernetes</title>
-      <link>http://localhost:1313/post/changing-k8s-ns/</link>
+      <link>https://suraj.io/post/changing-k8s-ns/</link>
       <pubDate>Mon, 02 Jul 2018 08:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/changing-k8s-ns/</guid>
+      <guid>https://suraj.io/post/changing-k8s-ns/</guid>
       <description>Easy way to change namespace in Kubernetes</description>
     </item>
     <item>
       <title>Prometheus with existing application on OpenShift</title>
-      <link>http://localhost:1313/post/using-prometheus/</link>
+      <link>https://suraj.io/post/using-prometheus/</link>
       <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/using-prometheus/</guid>
+      <guid>https://suraj.io/post/using-prometheus/</guid>
       <description>Setting up Prometheus with any application</description>
     </item>
     <item>
       <title>vscode Shortcuts</title>
-      <link>http://localhost:1313/post/vscode-shortcuts/</link>
+      <link>https://suraj.io/post/vscode-shortcuts/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/vscode-shortcuts/</guid>
+      <guid>https://suraj.io/post/vscode-shortcuts/</guid>
       <description>Shortcuts for vscode and some notes</description>
     </item>
     <item>
       <title>Clean Node setup</title>
-      <link>http://localhost:1313/post/node-no-sudo/</link>
+      <link>https://suraj.io/post/node-no-sudo/</link>
       <pubDate>Tue, 04 Jul 2017 22:50:43 +0530</pubDate>
-      <guid>http://localhost:1313/post/node-no-sudo/</guid>
+      <guid>https://suraj.io/post/node-no-sudo/</guid>
       <description>This will help in intalling node without sudo</description>
     </item>
     <item>
       <title>k8s on CRI-O - single node</title>
-      <link>http://localhost:1313/post/using-crio-with-k8s-single-node/</link>
+      <link>https://suraj.io/post/using-crio-with-k8s-single-node/</link>
       <pubDate>Sat, 08 Apr 2017 00:11:37 +0530</pubDate>
-      <guid>http://localhost:1313/post/using-crio-with-k8s-single-node/</guid>
+      <guid>https://suraj.io/post/using-crio-with-k8s-single-node/</guid>
       <description>How to make kubernetes use CRI-O as container runtime</description>
     </item>
     <item>
       <title>Git Notes</title>
-      <link>http://localhost:1313/post/git-notes/</link>
+      <link>https://suraj.io/post/git-notes/</link>
       <pubDate>Tue, 21 Mar 2017 22:03:48 +0530</pubDate>
-      <guid>http://localhost:1313/post/git-notes/</guid>
+      <guid>https://suraj.io/post/git-notes/</guid>
       <description>Contains notes about using git</description>
     </item>
     <item>
       <title>Intellij Shortcuts</title>
-      <link>http://localhost:1313/post/intellij-shortcuts/</link>
+      <link>https://suraj.io/post/intellij-shortcuts/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/intellij-shortcuts/</guid>
+      <guid>https://suraj.io/post/intellij-shortcuts/</guid>
       <description>Shortcuts of intellij and also some short notes</description>
     </item>
   </channel>

@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Git on Suraj Deshmukh</title>
-    <link>http://localhost:1313/categories/git/</link>
+    <link>https://suraj.io/categories/git/</link>
     <description>Recent content in Git on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 16 Aug 2020 22:00:51 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Being Productive with Git</title>
-      <link>http://localhost:1313/post/being-productive-with-git/</link>
+      <link>https://suraj.io/post/being-productive-with-git/</link>
       <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/being-productive-with-git/</guid>
+      <guid>https://suraj.io/post/being-productive-with-git/</guid>
       <description>Tips and tricks to make your day to day usage easier.</description>
     </item>
     <item>
       <title>Git Notes</title>
-      <link>http://localhost:1313/post/git-notes/</link>
+      <link>https://suraj.io/post/git-notes/</link>
       <pubDate>Tue, 21 Mar 2017 22:03:48 +0530</pubDate>
-      <guid>http://localhost:1313/post/git-notes/</guid>
+      <guid>https://suraj.io/post/git-notes/</guid>
       <description>Contains notes about using git</description>
     </item>
   </channel>

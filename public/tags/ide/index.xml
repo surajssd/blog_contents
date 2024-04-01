@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Ide on Suraj Deshmukh</title>
-    <link>http://localhost:1313/tags/ide/</link>
+    <link>https://suraj.io/tags/ide/</link>
     <description>Recent content in Ide on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 17 Mar 2017 14:41:51 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/ide/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/tags/ide/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Intellij Shortcuts</title>
-      <link>http://localhost:1313/post/intellij-shortcuts/</link>
+      <link>https://suraj.io/post/intellij-shortcuts/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/intellij-shortcuts/</guid>
+      <guid>https://suraj.io/post/intellij-shortcuts/</guid>
       <description>Shortcuts of intellij and also some short notes</description>
     </item>
   </channel>

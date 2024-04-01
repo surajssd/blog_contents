@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Programming on Suraj Deshmukh</title>
-    <link>http://localhost:1313/tags/programming/</link>
+    <link>https://suraj.io/tags/programming/</link>
     <description>Recent content in Programming on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 17 Jan 2021 12:28:51 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monitor releases of your favourite software</title>
-      <link>http://localhost:1313/post/monitor-releases-of-your-favourite-software/</link>
+      <link>https://suraj.io/post/monitor-releases-of-your-favourite-software/</link>
       <pubDate>Sun, 17 Jan 2021 12:28:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/monitor-releases-of-your-favourite-software/</guid>
+      <guid>https://suraj.io/post/monitor-releases-of-your-favourite-software/</guid>
       <description>Be on top of the releases of the software you rely upon!</description>
     </item>
     <item>
       <title>Cobra and Persistentflags gotchas</title>
-      <link>http://localhost:1313/post/cobra-persistent-flag/</link>
+      <link>https://suraj.io/post/cobra-persistent-flag/</link>
       <pubDate>Fri, 04 Jan 2019 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/cobra-persistent-flag/</guid>
+      <guid>https://suraj.io/post/cobra-persistent-flag/</guid>
       <description>How wrong usage of persistent flags can burn you</description>
     </item>
     <item>
       <title>Notes on talk - Advanced testing in golang by Mitchell Hashimoto</title>
-      <link>http://localhost:1313/post/advanced-golang-testing-mitchellh-talk-notes/</link>
+      <link>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</link>
       <pubDate>Wed, 07 Mar 2018 02:21:49 +0530</pubDate>
-      <guid>http://localhost:1313/post/advanced-golang-testing-mitchellh-talk-notes/</guid>
+      <guid>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</guid>
       <description>This talk has really great takeaways which are worth considering while writing your tests</description>
     </item>
     <item>
       <title>Methods that satisfy interfaces in golang</title>
-      <link>http://localhost:1313/post/golang-methods-interfaces/</link>
+      <link>https://suraj.io/post/golang-methods-interfaces/</link>
       <pubDate>Fri, 23 Feb 2018 08:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/golang-methods-interfaces/</guid>
+      <guid>https://suraj.io/post/golang-methods-interfaces/</guid>
       <description>What receiver type methods satisfy which interface, can be understood here.</description>
     </item>
     <item>
       <title>vscode Shortcuts</title>
-      <link>http://localhost:1313/post/vscode-shortcuts/</link>
+      <link>https://suraj.io/post/vscode-shortcuts/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/vscode-shortcuts/</guid>
+      <guid>https://suraj.io/post/vscode-shortcuts/</guid>
       <description>Shortcuts for vscode and some notes</description>
     </item>
     <item>
       <title>Intellij Shortcuts</title>
-      <link>http://localhost:1313/post/intellij-shortcuts/</link>
+      <link>https://suraj.io/post/intellij-shortcuts/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/intellij-shortcuts/</guid>
+      <guid>https://suraj.io/post/intellij-shortcuts/</guid>
       <description>Shortcuts of intellij and also some short notes</description>
     </item>
   </channel>

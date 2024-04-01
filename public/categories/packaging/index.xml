@@ -2,36 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Packaging on Suraj Deshmukh</title>
-    <link>http://localhost:1313/categories/packaging/</link>
+    <link>https://suraj.io/categories/packaging/</link>
     <description>Recent content in Packaging on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 18 Jul 2020 19:00:51 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/packaging/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/categories/packaging/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Framework for managing random scripts and binaries</title>
-      <link>http://localhost:1313/post/framework-for-scripts-and-binaries/</link>
+      <link>https://suraj.io/post/framework-for-scripts-and-binaries/</link>
       <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/framework-for-scripts-and-binaries/</guid>
+      <guid>https://suraj.io/post/framework-for-scripts-and-binaries/</guid>
       <description>This is an explanation of the framework that I have created to manage scripts and binaries.</description>
     </item>
     <item>
       <title>rpm Notes</title>
-      <link>http://localhost:1313/post/rpm-notes/</link>
+      <link>https://suraj.io/post/rpm-notes/</link>
       <pubDate>Fri, 24 Mar 2017 10:35:54 +0530</pubDate>
-      <guid>http://localhost:1313/post/rpm-notes/</guid>
+      <guid>https://suraj.io/post/rpm-notes/</guid>
       <description>General notes about rpm packaging and references to upstream docs</description>
     </item>
     <item>
       <title>Packaging &#39;kompose&#39; for centos paas sig</title>
-      <link>http://localhost:1313/post/packaging-kompose-for-centos-paas-sig/</link>
+      <link>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</link>
       <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
-      <guid>http://localhost:1313/post/packaging-kompose-for-centos-paas-sig/</guid>
+      <guid>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</guid>
       <description>Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
 Setup your machine Install packages needed
@@ -39,9 +39,9 @@ sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;am
     </item>
     <item>
       <title>Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</title>
-      <link>http://localhost:1313/post/test-kompose/</link>
+      <link>https://suraj.io/post/test-kompose/</link>
       <pubDate>Tue, 14 Mar 2017 00:31:57 +0530</pubDate>
-      <guid>http://localhost:1313/post/test-kompose/</guid>
+      <guid>https://suraj.io/post/test-kompose/</guid>
       <description>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
 Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
 Starting the environment:
@@ -50,9 +50,9 @@ docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
     </item>
     <item>
       <title>First post</title>
-      <link>http://localhost:1313/post/first-post/</link>
+      <link>https://suraj.io/post/first-post/</link>
       <pubDate>Mon, 13 Mar 2017 00:31:57 +0530</pubDate>
-      <guid>http://localhost:1313/post/first-post/</guid>
+      <guid>https://suraj.io/post/first-post/</guid>
       <description>This is the new home for my blog. I use to write on wordpress before. You can find the older blog at https://deshmukhsuraj.wordpress.com. But I wanted to have my own domain and wordpress was charging exorbitantly to connect a custom domain to wordpress, so I just ditched it and started writing here. This is much more convenient.</description>
     </item>
   </channel>

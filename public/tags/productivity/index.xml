@@ -2,99 +2,99 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Productivity on Suraj Deshmukh</title>
-    <link>http://localhost:1313/tags/productivity/</link>
+    <link>https://suraj.io/tags/productivity/</link>
     <description>Recent content in Productivity on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 11 Sep 2021 17:09:07 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Unchanging Contexts and Degrading Productivity</title>
-      <link>http://localhost:1313/post/2021/09/unchanging-context/</link>
+      <link>https://suraj.io/post/2021/09/unchanging-context/</link>
       <pubDate>Sat, 11 Sep 2021 17:09:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/09/unchanging-context/</guid>
+      <guid>https://suraj.io/post/2021/09/unchanging-context/</guid>
       <description>How doing everything from the same place has affected the the productivity of everything.</description>
     </item>
     <item>
       <title>Reading Devices</title>
-      <link>http://localhost:1313/post/2021/06/reading-devices/</link>
+      <link>https://suraj.io/post/2021/06/reading-devices/</link>
       <pubDate>Wed, 30 Jun 2021 01:45:00 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/06/reading-devices/</guid>
+      <guid>https://suraj.io/post/2021/06/reading-devices/</guid>
       <description>Pros and Cons of various reading devices</description>
     </item>
     <item>
       <title>How we manage Kubernetes Bangalore Meetup?</title>
-      <link>http://localhost:1313/post/2021/03/k8s-blr-meetup/</link>
+      <link>https://suraj.io/post/2021/03/k8s-blr-meetup/</link>
       <pubDate>Wed, 17 Mar 2021 07:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/03/k8s-blr-meetup/</guid>
+      <guid>https://suraj.io/post/2021/03/k8s-blr-meetup/</guid>
       <description>The method of stress-free event management!</description>
     </item>
     <item>
       <title>On Compounder Skills</title>
-      <link>http://localhost:1313/post/2021/03/compounder-skills/</link>
+      <link>https://suraj.io/post/2021/03/compounder-skills/</link>
       <pubDate>Tue, 16 Mar 2021 07:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/03/compounder-skills/</guid>
+      <guid>https://suraj.io/post/2021/03/compounder-skills/</guid>
       <description>The foundational skills which improves everything else.</description>
     </item>
     <item>
       <title>Importance of Typing Skills</title>
-      <link>http://localhost:1313/post/2021/02/typing-skills/</link>
+      <link>https://suraj.io/post/2021/02/typing-skills/</link>
       <pubDate>Sun, 28 Feb 2021 07:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/02/typing-skills/</guid>
+      <guid>https://suraj.io/post/2021/02/typing-skills/</guid>
       <description>The foundational skill which improves everything else.</description>
     </item>
     <item>
       <title>My Knowledge Management Journey</title>
-      <link>http://localhost:1313/post/2021/02/kms-journey/</link>
+      <link>https://suraj.io/post/2021/02/kms-journey/</link>
       <pubDate>Tue, 23 Feb 2021 09:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/02/kms-journey/</guid>
+      <guid>https://suraj.io/post/2021/02/kms-journey/</guid>
       <description>The story of various tools I have used over last five years.</description>
     </item>
     <item>
       <title>Monitor releases of your favourite software</title>
-      <link>http://localhost:1313/post/monitor-releases-of-your-favourite-software/</link>
+      <link>https://suraj.io/post/monitor-releases-of-your-favourite-software/</link>
       <pubDate>Sun, 17 Jan 2021 12:28:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/monitor-releases-of-your-favourite-software/</guid>
+      <guid>https://suraj.io/post/monitor-releases-of-your-favourite-software/</guid>
       <description>Be on top of the releases of the software you rely upon!</description>
     </item>
     <item>
       <title>Being Productive with Git</title>
-      <link>http://localhost:1313/post/being-productive-with-git/</link>
+      <link>https://suraj.io/post/being-productive-with-git/</link>
       <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/being-productive-with-git/</guid>
+      <guid>https://suraj.io/post/being-productive-with-git/</guid>
       <description>Tips and tricks to make your day to day usage easier.</description>
     </item>
     <item>
       <title>Being Productive with Kubectl</title>
-      <link>http://localhost:1313/post/being-productive-with-kubectl/</link>
+      <link>https://suraj.io/post/being-productive-with-kubectl/</link>
       <pubDate>Sun, 02 Aug 2020 16:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/being-productive-with-kubectl/</guid>
+      <guid>https://suraj.io/post/being-productive-with-kubectl/</guid>
       <description>Tips and tricks to make your day to day usage easier</description>
     </item>
     <item>
       <title>Framework for managing random scripts and binaries</title>
-      <link>http://localhost:1313/post/framework-for-scripts-and-binaries/</link>
+      <link>https://suraj.io/post/framework-for-scripts-and-binaries/</link>
       <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/framework-for-scripts-and-binaries/</guid>
+      <guid>https://suraj.io/post/framework-for-scripts-and-binaries/</guid>
       <description>This is an explanation of the framework that I have created to manage scripts and binaries.</description>
     </item>
     <item>
       <title>vscode Shortcuts</title>
-      <link>http://localhost:1313/post/vscode-shortcuts/</link>
+      <link>https://suraj.io/post/vscode-shortcuts/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/vscode-shortcuts/</guid>
+      <guid>https://suraj.io/post/vscode-shortcuts/</guid>
       <description>Shortcuts for vscode and some notes</description>
     </item>
     <item>
       <title>Intellij Shortcuts</title>
-      <link>http://localhost:1313/post/intellij-shortcuts/</link>
+      <link>https://suraj.io/post/intellij-shortcuts/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/intellij-shortcuts/</guid>
+      <guid>https://suraj.io/post/intellij-shortcuts/</guid>
       <description>Shortcuts of intellij and also some short notes</description>
     </item>
   </channel>

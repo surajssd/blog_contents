@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Gnome on Suraj Deshmukh</title>
-    <link>http://localhost:1313/tags/gnome/</link>
+    <link>https://suraj.io/tags/gnome/</link>
     <description>Recent content in Gnome on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 16 Oct 2018 22:00:51 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/gnome/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/tags/gnome/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to disable your Chrome Ctrl &#43; W keybinding</title>
-      <link>http://localhost:1313/post/disable-ctrl-w/</link>
+      <link>https://suraj.io/post/disable-ctrl-w/</link>
       <pubDate>Tue, 16 Oct 2018 22:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/disable-ctrl-w/</guid>
+      <guid>https://suraj.io/post/disable-ctrl-w/</guid>
       <description>Learn how to disable the shortcut Ctrl &#43; W altogether on your GNOME</description>
     </item>
   </channel>

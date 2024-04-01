@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Desktop on Suraj Deshmukh</title>
-    <link>http://localhost:1313/categories/desktop/</link>
+    <link>https://suraj.io/categories/desktop/</link>
     <description>Recent content in Desktop on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 02 Apr 2021 07:07:07 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/desktop/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/categories/desktop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monitor your PC with Prometheus Grafana stack</title>
-      <link>http://localhost:1313/post/2021/03/node-monitor/</link>
+      <link>https://suraj.io/post/2021/03/node-monitor/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/03/node-monitor/</guid>
+      <guid>https://suraj.io/post/2021/03/node-monitor/</guid>
       <description>Get a fine grained view of the happenings on your system!</description>
     </item>
     <item>
       <title>Project specific scripts</title>
-      <link>http://localhost:1313/post/project-specific-scripts/</link>
+      <link>https://suraj.io/post/project-specific-scripts/</link>
       <pubDate>Sun, 23 Jun 2019 11:57:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/project-specific-scripts/</guid>
+      <guid>https://suraj.io/post/project-specific-scripts/</guid>
       <description>Instead of polluting your PATH the easier way to put project specific scripts</description>
     </item>
   </channel>

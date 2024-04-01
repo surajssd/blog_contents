@@ -2,36 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Cka on Suraj Deshmukh</title>
-    <link>http://localhost:1313/categories/cka/</link>
+    <link>https://suraj.io/categories/cka/</link>
     <description>Recent content in Cka on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 04 Sep 2021 13:30:07 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/cka/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/categories/cka/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Certified Kubernetes Security Specialist CKS exam tips</title>
-      <link>http://localhost:1313/post/2021/09/cks-tips/</link>
+      <link>https://suraj.io/post/2021/09/cks-tips/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/09/cks-tips/</guid>
+      <guid>https://suraj.io/post/2021/09/cks-tips/</guid>
       <description>Things to keep in mind to clear exam effortlessly.</description>
     </item>
     <item>
       <title>Kubernetes The Hard Way in &#34;Vagrant&#34;?</title>
-      <link>http://localhost:1313/post/2021/03/kthw-vagrant/</link>
+      <link>https://suraj.io/post/2021/03/kthw-vagrant/</link>
       <pubDate>Tue, 23 Mar 2021 07:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/03/kthw-vagrant/</guid>
+      <guid>https://suraj.io/post/2021/03/kthw-vagrant/</guid>
       <description>The first step in your CKA preparation!</description>
     </item>
     <item>
       <title>Road to CKA</title>
-      <link>http://localhost:1313/post/road-to-cka/</link>
+      <link>https://suraj.io/post/road-to-cka/</link>
       <pubDate>Sun, 21 Oct 2018 00:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/road-to-cka/</guid>
+      <guid>https://suraj.io/post/road-to-cka/</guid>
       <description>My experience with CKA exam preparation</description>
     </item>
   </channel>

@@ -2,155 +2,155 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Notes on Suraj Deshmukh</title>
-    <link>http://localhost:1313/categories/notes/</link>
+    <link>https://suraj.io/categories/notes/</link>
     <description>Recent content in Notes on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 30 Mar 2024 01:00:51 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/notes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/categories/notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Suraj Deshmukh&#39;s talks at conferences</title>
-      <link>http://localhost:1313/post/surajd-talks-links/</link>
+      <link>https://suraj.io/post/surajd-talks-links/</link>
       <pubDate>Sat, 30 Mar 2024 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/surajd-talks-links/</guid>
+      <guid>https://suraj.io/post/surajd-talks-links/</guid>
       <description>List of all the talks presented by me</description>
     </item>
     <item>
       <title>Enable TLS bootstrapping in a Kubernetes cluster</title>
-      <link>http://localhost:1313/post/2021/02/k8s-bootstrap-token/</link>
+      <link>https://suraj.io/post/2021/02/k8s-bootstrap-token/</link>
       <pubDate>Sat, 06 Feb 2021 10:25:41 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/02/k8s-bootstrap-token/</guid>
+      <guid>https://suraj.io/post/2021/02/k8s-bootstrap-token/</guid>
       <description>Add a new node using a bootstrap token to Kubernetes</description>
     </item>
     <item>
       <title>How to gracefully kill Kubernetes Jobs with a sidecar?</title>
-      <link>http://localhost:1313/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</link>
+      <link>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</link>
       <pubDate>Sat, 29 Aug 2020 15:33:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</guid>
+      <guid>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</guid>
       <description>A sidecar in a Kubernetes Job, what? Yeah you might need one and here is how to shut it.</description>
     </item>
     <item>
       <title>Use Configmap for Scripts</title>
-      <link>http://localhost:1313/post/use-configmap-for-scripts/</link>
+      <link>https://suraj.io/post/use-configmap-for-scripts/</link>
       <pubDate>Sat, 22 Aug 2020 21:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/use-configmap-for-scripts/</guid>
+      <guid>https://suraj.io/post/use-configmap-for-scripts/</guid>
       <description>A new way to ship scripts to container images.</description>
     </item>
     <item>
       <title>Being Productive with Git</title>
-      <link>http://localhost:1313/post/being-productive-with-git/</link>
+      <link>https://suraj.io/post/being-productive-with-git/</link>
       <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/being-productive-with-git/</guid>
+      <guid>https://suraj.io/post/being-productive-with-git/</guid>
       <description>Tips and tricks to make your day to day usage easier.</description>
     </item>
     <item>
       <title>Being Productive with Kubectl</title>
-      <link>http://localhost:1313/post/being-productive-with-kubectl/</link>
+      <link>https://suraj.io/post/being-productive-with-kubectl/</link>
       <pubDate>Sun, 02 Aug 2020 16:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/being-productive-with-kubectl/</guid>
+      <guid>https://suraj.io/post/being-productive-with-kubectl/</guid>
       <description>Tips and tricks to make your day to day usage easier</description>
     </item>
     <item>
       <title>How to backup and restore Prometheus?</title>
-      <link>http://localhost:1313/post/how-to-backup-and-restore-prometheus/</link>
+      <link>https://suraj.io/post/how-to-backup-and-restore-prometheus/</link>
       <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/how-to-backup-and-restore-prometheus/</guid>
+      <guid>https://suraj.io/post/how-to-backup-and-restore-prometheus/</guid>
       <description>Backing up Prometheus??!!</description>
     </item>
     <item>
       <title>Framework for managing random scripts and binaries</title>
-      <link>http://localhost:1313/post/framework-for-scripts-and-binaries/</link>
+      <link>https://suraj.io/post/framework-for-scripts-and-binaries/</link>
       <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/framework-for-scripts-and-binaries/</guid>
+      <guid>https://suraj.io/post/framework-for-scripts-and-binaries/</guid>
       <description>This is an explanation of the framework that I have created to manage scripts and binaries.</description>
     </item>
     <item>
       <title>Make static configs available for apiserver in minikube</title>
-      <link>http://localhost:1313/post/apiserver-in-minikube-static-configs/</link>
+      <link>https://suraj.io/post/apiserver-in-minikube-static-configs/</link>
       <pubDate>Sun, 20 Jan 2019 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/apiserver-in-minikube-static-configs/</guid>
+      <guid>https://suraj.io/post/apiserver-in-minikube-static-configs/</guid>
       <description>Dealing with apiserver in minikube can be tricky</description>
     </item>
     <item>
       <title>Recreate Kubernetes CVE-2017-1002101</title>
-      <link>http://localhost:1313/post/cve-2017-1002101-subpath-volume-mount-recreate/</link>
+      <link>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</link>
       <pubDate>Mon, 14 Jan 2019 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/cve-2017-1002101-subpath-volume-mount-recreate/</guid>
+      <guid>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</guid>
       <description>Subpath Volume Mount could give you access to node</description>
     </item>
     <item>
       <title>Old laptop setup reference</title>
-      <link>http://localhost:1313/post/old-laptop-setup/</link>
+      <link>https://suraj.io/post/old-laptop-setup/</link>
       <pubDate>Sun, 30 Dec 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/old-laptop-setup/</guid>
+      <guid>https://suraj.io/post/old-laptop-setup/</guid>
       <description>Links and things to do while setting up older Dell Inspiron 1525</description>
     </item>
     <item>
       <title>HTTPS during development using &#39;mkcert&#39;</title>
-      <link>http://localhost:1313/post/mkcert-using-python-http-server/</link>
+      <link>https://suraj.io/post/mkcert-using-python-http-server/</link>
       <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/mkcert-using-python-http-server/</guid>
+      <guid>https://suraj.io/post/mkcert-using-python-http-server/</guid>
       <description>Use https even during your development</description>
     </item>
     <item>
       <title>vscode Shortcuts</title>
-      <link>http://localhost:1313/post/vscode-shortcuts/</link>
+      <link>https://suraj.io/post/vscode-shortcuts/</link>
       <pubDate>Thu, 22 Feb 2018 08:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/vscode-shortcuts/</guid>
+      <guid>https://suraj.io/post/vscode-shortcuts/</guid>
       <description>Shortcuts for vscode and some notes</description>
     </item>
     <item>
       <title>Static Pods using Kubelet on Fedora</title>
-      <link>http://localhost:1313/post/static-pods/</link>
+      <link>https://suraj.io/post/static-pods/</link>
       <pubDate>Sat, 23 Sep 2017 13:10:14 +0530</pubDate>
-      <guid>http://localhost:1313/post/static-pods/</guid>
+      <guid>https://suraj.io/post/static-pods/</guid>
       <description>Extension to the Kelsey Hightower&amp;#39;s tutorial on &amp;#39;Standalone Kubelet&amp;#39;</description>
     </item>
     <item>
       <title>Clean Node setup</title>
-      <link>http://localhost:1313/post/node-no-sudo/</link>
+      <link>https://suraj.io/post/node-no-sudo/</link>
       <pubDate>Tue, 04 Jul 2017 22:50:43 +0530</pubDate>
-      <guid>http://localhost:1313/post/node-no-sudo/</guid>
+      <guid>https://suraj.io/post/node-no-sudo/</guid>
       <description>This will help in intalling node without sudo</description>
     </item>
     <item>
       <title>Quick PV for local Kubernetes cluster</title>
-      <link>http://localhost:1313/post/quick-pv-for-local-k8s/</link>
+      <link>https://suraj.io/post/quick-pv-for-local-k8s/</link>
       <pubDate>Tue, 18 Apr 2017 23:56:15 +0530</pubDate>
-      <guid>http://localhost:1313/post/quick-pv-for-local-k8s/</guid>
+      <guid>https://suraj.io/post/quick-pv-for-local-k8s/</guid>
       <description>A hostPath based local PV creation process for using via PVC</description>
     </item>
     <item>
       <title>k8s on CRI-O - single node</title>
-      <link>http://localhost:1313/post/using-crio-with-k8s-single-node/</link>
+      <link>https://suraj.io/post/using-crio-with-k8s-single-node/</link>
       <pubDate>Sat, 08 Apr 2017 00:11:37 +0530</pubDate>
-      <guid>http://localhost:1313/post/using-crio-with-k8s-single-node/</guid>
+      <guid>https://suraj.io/post/using-crio-with-k8s-single-node/</guid>
       <description>How to make kubernetes use CRI-O as container runtime</description>
     </item>
     <item>
       <title>rpm Notes</title>
-      <link>http://localhost:1313/post/rpm-notes/</link>
+      <link>https://suraj.io/post/rpm-notes/</link>
       <pubDate>Fri, 24 Mar 2017 10:35:54 +0530</pubDate>
-      <guid>http://localhost:1313/post/rpm-notes/</guid>
+      <guid>https://suraj.io/post/rpm-notes/</guid>
       <description>General notes about rpm packaging and references to upstream docs</description>
     </item>
     <item>
       <title>Intellij Shortcuts</title>
-      <link>http://localhost:1313/post/intellij-shortcuts/</link>
+      <link>https://suraj.io/post/intellij-shortcuts/</link>
       <pubDate>Fri, 17 Mar 2017 14:41:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/intellij-shortcuts/</guid>
+      <guid>https://suraj.io/post/intellij-shortcuts/</guid>
       <description>Shortcuts of intellij and also some short notes</description>
     </item>
     <item>
       <title>Packaging &#39;kompose&#39; for centos paas sig</title>
-      <link>http://localhost:1313/post/packaging-kompose-for-centos-paas-sig/</link>
+      <link>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</link>
       <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
-      <guid>http://localhost:1313/post/packaging-kompose-for-centos-paas-sig/</guid>
+      <guid>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</guid>
       <description>Note: This is a living document and will be updated from time to time.
 Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
 Setup your machine Install packages needed
@@ -158,9 +158,9 @@ sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;am
     </item>
     <item>
       <title>Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</title>
-      <link>http://localhost:1313/post/test-kompose/</link>
+      <link>https://suraj.io/post/test-kompose/</link>
       <pubDate>Tue, 14 Mar 2017 00:31:57 +0530</pubDate>
-      <guid>http://localhost:1313/post/test-kompose/</guid>
+      <guid>https://suraj.io/post/test-kompose/</guid>
       <description>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
 Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
 Starting the environment:

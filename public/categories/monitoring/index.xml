@@ -2,36 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Monitoring on Suraj Deshmukh</title>
-    <link>http://localhost:1313/categories/monitoring/</link>
+    <link>https://suraj.io/categories/monitoring/</link>
     <description>Recent content in Monitoring on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 02 Apr 2021 07:07:07 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/monitoring/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/categories/monitoring/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monitor your PC with Prometheus Grafana stack</title>
-      <link>http://localhost:1313/post/2021/03/node-monitor/</link>
+      <link>https://suraj.io/post/2021/03/node-monitor/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/03/node-monitor/</guid>
+      <guid>https://suraj.io/post/2021/03/node-monitor/</guid>
       <description>Get a fine grained view of the happenings on your system!</description>
     </item>
     <item>
       <title>How to backup and restore Prometheus?</title>
-      <link>http://localhost:1313/post/how-to-backup-and-restore-prometheus/</link>
+      <link>https://suraj.io/post/how-to-backup-and-restore-prometheus/</link>
       <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/how-to-backup-and-restore-prometheus/</guid>
+      <guid>https://suraj.io/post/how-to-backup-and-restore-prometheus/</guid>
       <description>Backing up Prometheus??!!</description>
     </item>
     <item>
       <title>Prometheus with existing application on OpenShift</title>
-      <link>http://localhost:1313/post/using-prometheus/</link>
+      <link>https://suraj.io/post/using-prometheus/</link>
       <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/using-prometheus/</guid>
+      <guid>https://suraj.io/post/using-prometheus/</guid>
       <description>Setting up Prometheus with any application</description>
     </item>
   </channel>

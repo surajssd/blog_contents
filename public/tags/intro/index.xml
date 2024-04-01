@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Intro on Suraj Deshmukh</title>
-    <link>http://localhost:1313/tags/intro/</link>
+    <link>https://suraj.io/tags/intro/</link>
     <description>Recent content in Intro on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 13 Mar 2017 00:31:57 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/intro/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/tags/intro/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>First post</title>
-      <link>http://localhost:1313/post/first-post/</link>
+      <link>https://suraj.io/post/first-post/</link>
       <pubDate>Mon, 13 Mar 2017 00:31:57 +0530</pubDate>
-      <guid>http://localhost:1313/post/first-post/</guid>
+      <guid>https://suraj.io/post/first-post/</guid>
       <description>This is the new home for my blog. I use to write on wordpress before. You can find the older blog at https://deshmukhsuraj.wordpress.com. But I wanted to have my own domain and wordpress was charging exorbitantly to connect a custom domain to wordpress, so I just ditched it and started writing here. This is much more convenient.</description>
     </item>
   </channel>

@@ -2,310 +2,310 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Kubernetes on Suraj Deshmukh</title>
-    <link>http://localhost:1313/tags/kubernetes/</link>
+    <link>https://suraj.io/tags/kubernetes/</link>
     <description>Recent content in Kubernetes on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 30 Mar 2024 01:00:51 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Suraj Deshmukh&#39;s talks at conferences</title>
-      <link>http://localhost:1313/post/surajd-talks-links/</link>
+      <link>https://suraj.io/post/surajd-talks-links/</link>
       <pubDate>Sat, 30 Mar 2024 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/surajd-talks-links/</guid>
+      <guid>https://suraj.io/post/surajd-talks-links/</guid>
       <description>List of all the talks presented by me</description>
     </item>
     <item>
       <title>Certified Kubernetes Security Specialist CKS exam tips</title>
-      <link>http://localhost:1313/post/2021/09/cks-tips/</link>
+      <link>https://suraj.io/post/2021/09/cks-tips/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/09/cks-tips/</guid>
+      <guid>https://suraj.io/post/2021/09/cks-tips/</guid>
       <description>Things to keep in mind to clear exam effortlessly.</description>
     </item>
     <item>
       <title>How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</title>
-      <link>http://localhost:1313/post/2021/06/automatic-cert-gen/</link>
+      <link>https://suraj.io/post/2021/06/automatic-cert-gen/</link>
       <pubDate>Fri, 25 Jun 2021 09:00:00 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/06/automatic-cert-gen/</guid>
+      <guid>https://suraj.io/post/2021/06/automatic-cert-gen/</guid>
       <description>A simple Helm chart to generate TLS x509 certificates.</description>
     </item>
     <item>
       <title>How to import &#39;any&#39; Kubernetes package into your project?</title>
-      <link>http://localhost:1313/post/2021/05/k8s-import/</link>
+      <link>https://suraj.io/post/2021/05/k8s-import/</link>
       <pubDate>Sun, 30 May 2021 09:40:00 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/05/k8s-import/</guid>
+      <guid>https://suraj.io/post/2021/05/k8s-import/</guid>
       <description>The client libraries that Kubernetes ships are meant to be imported, and you definitely don&amp;rsquo;t need this post explaining how to import them in your Golang based project. A simple go get ... should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of &amp;ldquo;technical reasons&amp;rdquo; ? Could you simply add them to your import statements in the .</description>
     </item>
     <item>
       <title>How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</title>
-      <link>http://localhost:1313/post/2021/05/self-sign-k8s-cert/</link>
+      <link>https://suraj.io/post/2021/05/self-sign-k8s-cert/</link>
       <pubDate>Fri, 21 May 2021 15:33:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/05/self-sign-k8s-cert/</guid>
+      <guid>https://suraj.io/post/2021/05/self-sign-k8s-cert/</guid>
       <description>A simple binary to generate TLS x509 certificates.</description>
     </item>
     <item>
       <title>Mitigation of: Access Any Kubernetes Secret</title>
-      <link>http://localhost:1313/post/2021/05/access-k8s-secrets-mitigation/</link>
+      <link>https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/</link>
       <pubDate>Thu, 20 May 2021 08:47:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/05/access-k8s-secrets-mitigation/</guid>
+      <guid>https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/</guid>
       <description>A Validating Admission Webhook Server to deny anyone accessing forbidden Kubernetes Secrets!</description>
     </item>
     <item>
       <title>Access Any Kubernetes Secret</title>
-      <link>http://localhost:1313/post/2021/05/access-k8s-secrets/</link>
+      <link>https://suraj.io/post/2021/05/access-k8s-secrets/</link>
       <pubDate>Sat, 08 May 2021 12:17:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/05/access-k8s-secrets/</guid>
+      <guid>https://suraj.io/post/2021/05/access-k8s-secrets/</guid>
       <description>A little trickery and access any Kubernetes Secret!</description>
     </item>
     <item>
       <title>Monitor your PC with Prometheus Grafana stack</title>
-      <link>http://localhost:1313/post/2021/03/node-monitor/</link>
+      <link>https://suraj.io/post/2021/03/node-monitor/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/03/node-monitor/</guid>
+      <guid>https://suraj.io/post/2021/03/node-monitor/</guid>
       <description>Get a fine grained view of the happenings on your system!</description>
     </item>
     <item>
       <title>Kubernetes The Hard Way in &#34;Vagrant&#34;?</title>
-      <link>http://localhost:1313/post/2021/03/kthw-vagrant/</link>
+      <link>https://suraj.io/post/2021/03/kthw-vagrant/</link>
       <pubDate>Tue, 23 Mar 2021 07:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/03/kthw-vagrant/</guid>
+      <guid>https://suraj.io/post/2021/03/kthw-vagrant/</guid>
       <description>The first step in your CKA preparation!</description>
     </item>
     <item>
       <title>Enable TLS bootstrapping in a Kubernetes cluster</title>
-      <link>http://localhost:1313/post/2021/02/k8s-bootstrap-token/</link>
+      <link>https://suraj.io/post/2021/02/k8s-bootstrap-token/</link>
       <pubDate>Sat, 06 Feb 2021 10:25:41 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/02/k8s-bootstrap-token/</guid>
+      <guid>https://suraj.io/post/2021/02/k8s-bootstrap-token/</guid>
       <description>Add a new node using a bootstrap token to Kubernetes</description>
     </item>
     <item>
       <title>Kubernetes Cluster using Kubeadm on Flatcar Container Linux</title>
-      <link>http://localhost:1313/post/2021/01/kubeadm-flatcar/</link>
+      <link>https://suraj.io/post/2021/01/kubeadm-flatcar/</link>
       <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/01/kubeadm-flatcar/</guid>
+      <guid>https://suraj.io/post/2021/01/kubeadm-flatcar/</guid>
       <description>Simple steps to install the cluster based on Flatcar Container Linux</description>
     </item>
     <item>
       <title>Exec in container environment</title>
-      <link>http://localhost:1313/post/2021/01/shell-exec/</link>
+      <link>https://suraj.io/post/2021/01/shell-exec/</link>
       <pubDate>Sat, 23 Jan 2021 10:10:41 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/01/shell-exec/</guid>
+      <guid>https://suraj.io/post/2021/01/shell-exec/</guid>
       <description>The correct way to use exec and the signal passing.</description>
     </item>
     <item>
       <title>Mental models for understanding Kubernetes Pod Security Policy</title>
-      <link>http://localhost:1313/post/mental-models-for-understanding-kubernetes-pod-security-policy/</link>
+      <link>https://suraj.io/post/mental-models-for-understanding-kubernetes-pod-security-policy/</link>
       <pubDate>Sat, 16 Jan 2021 13:10:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/mental-models-for-understanding-kubernetes-pod-security-policy/</guid>
+      <guid>https://suraj.io/post/mental-models-for-understanding-kubernetes-pod-security-policy/</guid>
       <description>Getting the game of PSP right!</description>
     </item>
     <item>
       <title>How to gracefully kill Kubernetes Jobs with a sidecar?</title>
-      <link>http://localhost:1313/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</link>
+      <link>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</link>
       <pubDate>Sat, 29 Aug 2020 15:33:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</guid>
+      <guid>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</guid>
       <description>A sidecar in a Kubernetes Job, what? Yeah you might need one and here is how to shut it.</description>
     </item>
     <item>
       <title>Use Configmap for Scripts</title>
-      <link>http://localhost:1313/post/use-configmap-for-scripts/</link>
+      <link>https://suraj.io/post/use-configmap-for-scripts/</link>
       <pubDate>Sat, 22 Aug 2020 21:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/use-configmap-for-scripts/</guid>
+      <guid>https://suraj.io/post/use-configmap-for-scripts/</guid>
       <description>A new way to ship scripts to container images.</description>
     </item>
     <item>
       <title>Being Productive with Kubectl</title>
-      <link>http://localhost:1313/post/being-productive-with-kubectl/</link>
+      <link>https://suraj.io/post/being-productive-with-kubectl/</link>
       <pubDate>Sun, 02 Aug 2020 16:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/being-productive-with-kubectl/</guid>
+      <guid>https://suraj.io/post/being-productive-with-kubectl/</guid>
       <description>Tips and tricks to make your day to day usage easier</description>
     </item>
     <item>
       <title>How to backup and restore Prometheus?</title>
-      <link>http://localhost:1313/post/how-to-backup-and-restore-prometheus/</link>
+      <link>https://suraj.io/post/how-to-backup-and-restore-prometheus/</link>
       <pubDate>Fri, 31 Jul 2020 19:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/how-to-backup-and-restore-prometheus/</guid>
+      <guid>https://suraj.io/post/how-to-backup-and-restore-prometheus/</guid>
       <description>Backing up Prometheus??!!</description>
     </item>
     <item>
       <title>Watch Container Traffic Without Exec</title>
-      <link>http://localhost:1313/post/snoop-on-pod-traffic/</link>
+      <link>https://suraj.io/post/snoop-on-pod-traffic/</link>
       <pubDate>Sat, 06 Jun 2020 20:30:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/snoop-on-pod-traffic/</guid>
+      <guid>https://suraj.io/post/snoop-on-pod-traffic/</guid>
       <description>How to watch the traffic of a container or a pod without execing into the pod/contaienr?</description>
     </item>
     <item>
       <title>Enabling Seccomp on your Prometheus Operator and related Pods</title>
-      <link>http://localhost:1313/post/seccomp-in-kube-state-metrics/</link>
+      <link>https://suraj.io/post/seccomp-in-kube-state-metrics/</link>
       <pubDate>Tue, 14 Apr 2020 11:57:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/seccomp-in-kube-state-metrics/</guid>
+      <guid>https://suraj.io/post/seccomp-in-kube-state-metrics/</guid>
       <description>This post shows how you can enable seccomp on all the Pods that are deployed with Prometheus Operator</description>
     </item>
     <item>
       <title>Kubernetes Bangalore March 2019 Event Report</title>
-      <link>http://localhost:1313/post/k8s-blr-event-report-2019-03-16/</link>
+      <link>https://suraj.io/post/k8s-blr-event-report-2019-03-16/</link>
       <pubDate>Thu, 21 Mar 2019 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/k8s-blr-event-report-2019-03-16/</guid>
+      <guid>https://suraj.io/post/k8s-blr-event-report-2019-03-16/</guid>
       <description>Event Report for Kubernetes Bangalore Meetup</description>
     </item>
     <item>
       <title>Make static configs available for apiserver in minikube</title>
-      <link>http://localhost:1313/post/apiserver-in-minikube-static-configs/</link>
+      <link>https://suraj.io/post/apiserver-in-minikube-static-configs/</link>
       <pubDate>Sun, 20 Jan 2019 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/apiserver-in-minikube-static-configs/</guid>
+      <guid>https://suraj.io/post/apiserver-in-minikube-static-configs/</guid>
       <description>Dealing with apiserver in minikube can be tricky</description>
     </item>
     <item>
       <title>Recreate Kubernetes CVE-2017-1002101</title>
-      <link>http://localhost:1313/post/cve-2017-1002101-subpath-volume-mount-recreate/</link>
+      <link>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</link>
       <pubDate>Mon, 14 Jan 2019 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/cve-2017-1002101-subpath-volume-mount-recreate/</guid>
+      <guid>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</guid>
       <description>Subpath Volume Mount could give you access to node</description>
     </item>
     <item>
       <title>Add new Node to k8s cluster with Bootstrap token</title>
-      <link>http://localhost:1313/post/add-new-k8s-node-bootstrap-token/</link>
+      <link>https://suraj.io/post/add-new-k8s-node-bootstrap-token/</link>
       <pubDate>Wed, 24 Oct 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/add-new-k8s-node-bootstrap-token/</guid>
+      <guid>https://suraj.io/post/add-new-k8s-node-bootstrap-token/</guid>
       <description>Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver</description>
     </item>
     <item>
       <title>PodSecurityPolicy on existing Kubernetes clusters</title>
-      <link>http://localhost:1313/post/psp-on-existing-cluster/</link>
+      <link>https://suraj.io/post/psp-on-existing-cluster/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/psp-on-existing-cluster/</guid>
+      <guid>https://suraj.io/post/psp-on-existing-cluster/</guid>
       <description>Burnt by enabling PSPs on existing Kubernetes and wondering why everything still works</description>
     </item>
     <item>
       <title>Road to CKA</title>
-      <link>http://localhost:1313/post/road-to-cka/</link>
+      <link>https://suraj.io/post/road-to-cka/</link>
       <pubDate>Sun, 21 Oct 2018 00:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/road-to-cka/</guid>
+      <guid>https://suraj.io/post/road-to-cka/</guid>
       <description>My experience with CKA exam preparation</description>
     </item>
     <item>
       <title>Add new Node to k8s cluster with cert rotation</title>
-      <link>http://localhost:1313/post/add-new-k8s-node-cert-rotate/</link>
+      <link>https://suraj.io/post/add-new-k8s-node-cert-rotate/</link>
       <pubDate>Tue, 16 Oct 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/add-new-k8s-node-cert-rotate/</guid>
+      <guid>https://suraj.io/post/add-new-k8s-node-cert-rotate/</guid>
       <description>Use this technique to add node to the cluster without providing any certificates</description>
     </item>
     <item>
       <title>Adding new worker to existing Kubernetes cluster</title>
-      <link>http://localhost:1313/post/add-new-k8s-node-manually/</link>
+      <link>https://suraj.io/post/add-new-k8s-node-manually/</link>
       <pubDate>Sun, 23 Sep 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/add-new-k8s-node-manually/</guid>
+      <guid>https://suraj.io/post/add-new-k8s-node-manually/</guid>
       <description>Step by step guide to add new node</description>
     </item>
     <item>
       <title>Single node Kubernetes Cluster on Fedora with SELinux enabled</title>
-      <link>http://localhost:1313/post/single-node-k8s-fedora-selinux/</link>
+      <link>https://suraj.io/post/single-node-k8s-fedora-selinux/</link>
       <pubDate>Tue, 11 Sep 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/single-node-k8s-fedora-selinux/</guid>
+      <guid>https://suraj.io/post/single-node-k8s-fedora-selinux/</guid>
       <description>Kubeadm to install Single Node K8S with SELinux</description>
     </item>
     <item>
       <title>HostPath volumes and it&#39;s problems</title>
-      <link>http://localhost:1313/post/k8s-hostpat-nuke-nodes/</link>
+      <link>https://suraj.io/post/k8s-hostpat-nuke-nodes/</link>
       <pubDate>Mon, 10 Sep 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/k8s-hostpat-nuke-nodes/</guid>
+      <guid>https://suraj.io/post/k8s-hostpat-nuke-nodes/</guid>
       <description>Kubernetes HostPath volume good way to nuke your Kubernetes Nodes</description>
     </item>
     <item>
       <title>Access etcd in OpenShift origin</title>
-      <link>http://localhost:1313/post/accessing-oc-cluster-up-etcd/</link>
+      <link>https://suraj.io/post/accessing-oc-cluster-up-etcd/</link>
       <pubDate>Wed, 11 Jul 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/accessing-oc-cluster-up-etcd/</guid>
+      <guid>https://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
       <description>Access the etcd in OpenShift started by oc cluster up</description>
     </item>
     <item>
       <title>Change namespaces in Kubernetes</title>
-      <link>http://localhost:1313/post/changing-k8s-ns/</link>
+      <link>https://suraj.io/post/changing-k8s-ns/</link>
       <pubDate>Mon, 02 Jul 2018 08:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/changing-k8s-ns/</guid>
+      <guid>https://suraj.io/post/changing-k8s-ns/</guid>
       <description>Easy way to change namespace in Kubernetes</description>
     </item>
     <item>
       <title>Prometheus with existing application on OpenShift</title>
-      <link>http://localhost:1313/post/using-prometheus/</link>
+      <link>https://suraj.io/post/using-prometheus/</link>
       <pubDate>Wed, 04 Apr 2018 08:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/using-prometheus/</guid>
+      <guid>https://suraj.io/post/using-prometheus/</guid>
       <description>Setting up Prometheus with any application</description>
     </item>
     <item>
       <title>Using private container registries from minikube</title>
-      <link>http://localhost:1313/post/private-registry-from-minikube/</link>
+      <link>https://suraj.io/post/private-registry-from-minikube/</link>
       <pubDate>Fri, 06 Oct 2017 19:32:33 +0530</pubDate>
-      <guid>http://localhost:1313/post/private-registry-from-minikube/</guid>
+      <guid>https://suraj.io/post/private-registry-from-minikube/</guid>
       <description>A guide to how would you download image from private container registry in minikube</description>
     </item>
     <item>
       <title>Static Pods using Kubelet on Fedora</title>
-      <link>http://localhost:1313/post/static-pods/</link>
+      <link>https://suraj.io/post/static-pods/</link>
       <pubDate>Sat, 23 Sep 2017 13:10:14 +0530</pubDate>
-      <guid>http://localhost:1313/post/static-pods/</guid>
+      <guid>https://suraj.io/post/static-pods/</guid>
       <description>Extension to the Kelsey Hightower&amp;#39;s tutorial on &amp;#39;Standalone Kubelet&amp;#39;</description>
     </item>
     <item>
       <title>List of Kubernetes Bangalore meetup event report</title>
-      <link>http://localhost:1313/post/list-all-k8s-meetups/</link>
+      <link>https://suraj.io/post/list-all-k8s-meetups/</link>
       <pubDate>Fri, 01 Sep 2017 15:51:16 +0530</pubDate>
-      <guid>http://localhost:1313/post/list-all-k8s-meetups/</guid>
+      <guid>https://suraj.io/post/list-all-k8s-meetups/</guid>
       <description>List of all the Kubernetes and OpenShift meetup event reports</description>
     </item>
     <item>
       <title>Kubernetes Learning resources</title>
-      <link>http://localhost:1313/post/k8s-learning-resources/</link>
+      <link>https://suraj.io/post/k8s-learning-resources/</link>
       <pubDate>Thu, 17 Aug 2017 23:12:18 +0530</pubDate>
-      <guid>http://localhost:1313/post/k8s-learning-resources/</guid>
+      <guid>https://suraj.io/post/k8s-learning-resources/</guid>
       <description>Places you can find learning material for Kubernetes</description>
     </item>
     <item>
       <title>Bangalore Kubernetes Meetup July 2017</title>
-      <link>http://localhost:1313/post/blr-k8s-meetup-july-2017/</link>
+      <link>https://suraj.io/post/blr-k8s-meetup-july-2017/</link>
       <pubDate>Thu, 13 Jul 2017 22:46:40 +0530</pubDate>
-      <guid>http://localhost:1313/post/blr-k8s-meetup-july-2017/</guid>
+      <guid>https://suraj.io/post/blr-k8s-meetup-july-2017/</guid>
       <description>Kubernetes Meetup presentation and talks</description>
     </item>
     <item>
       <title>Bangalore Kubernetes Meetup May 2017</title>
-      <link>http://localhost:1313/post/blr-k8s-meetup-may-2017/</link>
+      <link>https://suraj.io/post/blr-k8s-meetup-may-2017/</link>
       <pubDate>Wed, 24 May 2017 02:21:49 +0530</pubDate>
-      <guid>http://localhost:1313/post/blr-k8s-meetup-may-2017/</guid>
+      <guid>https://suraj.io/post/blr-k8s-meetup-may-2017/</guid>
       <description>Kubernetes and OpenShift 101 hands-on workshop</description>
     </item>
     <item>
       <title>Enabling local development with Kubernetes</title>
-      <link>http://localhost:1313/post/enabling-local-development-with-k8s/</link>
+      <link>https://suraj.io/post/enabling-local-development-with-k8s/</link>
       <pubDate>Sun, 23 Apr 2017 15:57:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/enabling-local-development-with-k8s/</guid>
+      <guid>https://suraj.io/post/enabling-local-development-with-k8s/</guid>
       <description>If you are doing development and want to use kubernetes for it, then here is how you can do it.</description>
     </item>
     <item>
       <title>Quick PV for local Kubernetes cluster</title>
-      <link>http://localhost:1313/post/quick-pv-for-local-k8s/</link>
+      <link>https://suraj.io/post/quick-pv-for-local-k8s/</link>
       <pubDate>Tue, 18 Apr 2017 23:56:15 +0530</pubDate>
-      <guid>http://localhost:1313/post/quick-pv-for-local-k8s/</guid>
+      <guid>https://suraj.io/post/quick-pv-for-local-k8s/</guid>
       <description>A hostPath based local PV creation process for using via PVC</description>
     </item>
     <item>
       <title>Bangalore Kubernetes Meetup April 2017</title>
-      <link>http://localhost:1313/post/blr-k8s-meetup-april-2017/</link>
+      <link>https://suraj.io/post/blr-k8s-meetup-april-2017/</link>
       <pubDate>Sat, 08 Apr 2017 14:31:33 +0530</pubDate>
-      <guid>http://localhost:1313/post/blr-k8s-meetup-april-2017/</guid>
+      <guid>https://suraj.io/post/blr-k8s-meetup-april-2017/</guid>
       <description>Like many Saturday mornings, Red Hat Bangalore office was once again abuzz with enthusiasm on 8th of April, for hosting yet another successful chapter of Bangalore Kubernetes Meetup. The Meetup had a good turnaround of about 40 people who gave up on their early morning saturday sleep to attend it despite the sweltering hot season and in line were four awesome talks.
 Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc.</description>
     </item>
     <item>
       <title>k8s on CRI-O - single node</title>
-      <link>http://localhost:1313/post/using-crio-with-k8s-single-node/</link>
+      <link>https://suraj.io/post/using-crio-with-k8s-single-node/</link>
       <pubDate>Sat, 08 Apr 2017 00:11:37 +0530</pubDate>
-      <guid>http://localhost:1313/post/using-crio-with-k8s-single-node/</guid>
+      <guid>https://suraj.io/post/using-crio-with-k8s-single-node/</guid>
       <description>How to make kubernetes use CRI-O as container runtime</description>
     </item>
   </channel>

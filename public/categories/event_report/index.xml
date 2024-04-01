@@ -2,50 +2,50 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Event_report on Suraj Deshmukh</title>
-    <link>http://localhost:1313/categories/event_report/</link>
+    <link>https://suraj.io/categories/event_report/</link>
     <description>Recent content in Event_report on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 21 Mar 2019 01:00:51 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/event_report/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/categories/event_report/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kubernetes Bangalore March 2019 Event Report</title>
-      <link>http://localhost:1313/post/k8s-blr-event-report-2019-03-16/</link>
+      <link>https://suraj.io/post/k8s-blr-event-report-2019-03-16/</link>
       <pubDate>Thu, 21 Mar 2019 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/k8s-blr-event-report-2019-03-16/</guid>
+      <guid>https://suraj.io/post/k8s-blr-event-report-2019-03-16/</guid>
       <description>Event Report for Kubernetes Bangalore Meetup</description>
     </item>
     <item>
       <title>List of Kubernetes Bangalore meetup event report</title>
-      <link>http://localhost:1313/post/list-all-k8s-meetups/</link>
+      <link>https://suraj.io/post/list-all-k8s-meetups/</link>
       <pubDate>Fri, 01 Sep 2017 15:51:16 +0530</pubDate>
-      <guid>http://localhost:1313/post/list-all-k8s-meetups/</guid>
+      <guid>https://suraj.io/post/list-all-k8s-meetups/</guid>
       <description>List of all the Kubernetes and OpenShift meetup event reports</description>
     </item>
     <item>
       <title>Bangalore Kubernetes Meetup July 2017</title>
-      <link>http://localhost:1313/post/blr-k8s-meetup-july-2017/</link>
+      <link>https://suraj.io/post/blr-k8s-meetup-july-2017/</link>
       <pubDate>Thu, 13 Jul 2017 22:46:40 +0530</pubDate>
-      <guid>http://localhost:1313/post/blr-k8s-meetup-july-2017/</guid>
+      <guid>https://suraj.io/post/blr-k8s-meetup-july-2017/</guid>
       <description>Kubernetes Meetup presentation and talks</description>
     </item>
     <item>
       <title>Bangalore Kubernetes Meetup May 2017</title>
-      <link>http://localhost:1313/post/blr-k8s-meetup-may-2017/</link>
+      <link>https://suraj.io/post/blr-k8s-meetup-may-2017/</link>
       <pubDate>Wed, 24 May 2017 02:21:49 +0530</pubDate>
-      <guid>http://localhost:1313/post/blr-k8s-meetup-may-2017/</guid>
+      <guid>https://suraj.io/post/blr-k8s-meetup-may-2017/</guid>
       <description>Kubernetes and OpenShift 101 hands-on workshop</description>
     </item>
     <item>
       <title>Bangalore Kubernetes Meetup April 2017</title>
-      <link>http://localhost:1313/post/blr-k8s-meetup-april-2017/</link>
+      <link>https://suraj.io/post/blr-k8s-meetup-april-2017/</link>
       <pubDate>Sat, 08 Apr 2017 14:31:33 +0530</pubDate>
-      <guid>http://localhost:1313/post/blr-k8s-meetup-april-2017/</guid>
+      <guid>https://suraj.io/post/blr-k8s-meetup-april-2017/</guid>
       <description>Like many Saturday mornings, Red Hat Bangalore office was once again abuzz with enthusiasm on 8th of April, for hosting yet another successful chapter of Bangalore Kubernetes Meetup. The Meetup had a good turnaround of about 40 people who gave up on their early morning saturday sleep to attend it despite the sweltering hot season and in line were four awesome talks.
 Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc.</description>
     </item>

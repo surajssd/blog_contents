@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Dell on Suraj Deshmukh</title>
-    <link>http://localhost:1313/tags/dell/</link>
+    <link>https://suraj.io/tags/dell/</link>
     <description>Recent content in Dell on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 30 Dec 2018 01:00:51 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/dell/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/tags/dell/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Old laptop setup reference</title>
-      <link>http://localhost:1313/post/old-laptop-setup/</link>
+      <link>https://suraj.io/post/old-laptop-setup/</link>
       <pubDate>Sun, 30 Dec 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/old-laptop-setup/</guid>
+      <guid>https://suraj.io/post/old-laptop-setup/</guid>
       <description>Links and things to do while setting up older Dell Inspiron 1525</description>
     </item>
   </channel>

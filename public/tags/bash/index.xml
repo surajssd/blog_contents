@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Bash on Suraj Deshmukh</title>
-    <link>http://localhost:1313/tags/bash/</link>
+    <link>https://suraj.io/tags/bash/</link>
     <description>Recent content in Bash on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 23 Jan 2021 10:10:41 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Exec in container environment</title>
-      <link>http://localhost:1313/post/2021/01/shell-exec/</link>
+      <link>https://suraj.io/post/2021/01/shell-exec/</link>
       <pubDate>Sat, 23 Jan 2021 10:10:41 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/01/shell-exec/</guid>
+      <guid>https://suraj.io/post/2021/01/shell-exec/</guid>
       <description>The correct way to use exec and the signal passing.</description>
     </item>
     <item>
       <title>Framework for managing random scripts and binaries</title>
-      <link>http://localhost:1313/post/framework-for-scripts-and-binaries/</link>
+      <link>https://suraj.io/post/framework-for-scripts-and-binaries/</link>
       <pubDate>Sat, 18 Jul 2020 19:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/framework-for-scripts-and-binaries/</guid>
+      <guid>https://suraj.io/post/framework-for-scripts-and-binaries/</guid>
       <description>This is an explanation of the framework that I have created to manage scripts and binaries.</description>
     </item>
   </channel>

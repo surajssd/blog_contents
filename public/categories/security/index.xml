@@ -2,106 +2,106 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Security on Suraj Deshmukh</title>
-    <link>http://localhost:1313/categories/security/</link>
+    <link>https://suraj.io/categories/security/</link>
     <description>Recent content in Security on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 04 Sep 2021 13:30:07 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/categories/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Certified Kubernetes Security Specialist CKS exam tips</title>
-      <link>http://localhost:1313/post/2021/09/cks-tips/</link>
+      <link>https://suraj.io/post/2021/09/cks-tips/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/09/cks-tips/</guid>
+      <guid>https://suraj.io/post/2021/09/cks-tips/</guid>
       <description>Things to keep in mind to clear exam effortlessly.</description>
     </item>
     <item>
       <title>How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</title>
-      <link>http://localhost:1313/post/2021/06/automatic-cert-gen/</link>
+      <link>https://suraj.io/post/2021/06/automatic-cert-gen/</link>
       <pubDate>Fri, 25 Jun 2021 09:00:00 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/06/automatic-cert-gen/</guid>
+      <guid>https://suraj.io/post/2021/06/automatic-cert-gen/</guid>
       <description>A simple Helm chart to generate TLS x509 certificates.</description>
     </item>
     <item>
       <title>How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</title>
-      <link>http://localhost:1313/post/2021/05/self-sign-k8s-cert/</link>
+      <link>https://suraj.io/post/2021/05/self-sign-k8s-cert/</link>
       <pubDate>Fri, 21 May 2021 15:33:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/05/self-sign-k8s-cert/</guid>
+      <guid>https://suraj.io/post/2021/05/self-sign-k8s-cert/</guid>
       <description>A simple binary to generate TLS x509 certificates.</description>
     </item>
     <item>
       <title>Mitigation of: Access Any Kubernetes Secret</title>
-      <link>http://localhost:1313/post/2021/05/access-k8s-secrets-mitigation/</link>
+      <link>https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/</link>
       <pubDate>Thu, 20 May 2021 08:47:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/05/access-k8s-secrets-mitigation/</guid>
+      <guid>https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/</guid>
       <description>A Validating Admission Webhook Server to deny anyone accessing forbidden Kubernetes Secrets!</description>
     </item>
     <item>
       <title>Access Any Kubernetes Secret</title>
-      <link>http://localhost:1313/post/2021/05/access-k8s-secrets/</link>
+      <link>https://suraj.io/post/2021/05/access-k8s-secrets/</link>
       <pubDate>Sat, 08 May 2021 12:17:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/05/access-k8s-secrets/</guid>
+      <guid>https://suraj.io/post/2021/05/access-k8s-secrets/</guid>
       <description>A little trickery and access any Kubernetes Secret!</description>
     </item>
     <item>
       <title>Watch Container Traffic Without Exec</title>
-      <link>http://localhost:1313/post/snoop-on-pod-traffic/</link>
+      <link>https://suraj.io/post/snoop-on-pod-traffic/</link>
       <pubDate>Sat, 06 Jun 2020 20:30:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/snoop-on-pod-traffic/</guid>
+      <guid>https://suraj.io/post/snoop-on-pod-traffic/</guid>
       <description>How to watch the traffic of a container or a pod without execing into the pod/contaienr?</description>
     </item>
     <item>
       <title>Enabling Seccomp on your Prometheus Operator and related Pods</title>
-      <link>http://localhost:1313/post/seccomp-in-kube-state-metrics/</link>
+      <link>https://suraj.io/post/seccomp-in-kube-state-metrics/</link>
       <pubDate>Tue, 14 Apr 2020 11:57:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/seccomp-in-kube-state-metrics/</guid>
+      <guid>https://suraj.io/post/seccomp-in-kube-state-metrics/</guid>
       <description>This post shows how you can enable seccomp on all the Pods that are deployed with Prometheus Operator</description>
     </item>
     <item>
       <title>Capabilities on executables</title>
-      <link>http://localhost:1313/post/linux-cap-note/</link>
+      <link>https://suraj.io/post/linux-cap-note/</link>
       <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/linux-cap-note/</guid>
+      <guid>https://suraj.io/post/linux-cap-note/</guid>
       <description>Note on Linux Kernel capabilities</description>
     </item>
     <item>
       <title>Root user inside container is root on the host</title>
-      <link>http://localhost:1313/post/root-in-container-root-on-host/</link>
+      <link>https://suraj.io/post/root-in-container-root-on-host/</link>
       <pubDate>Tue, 25 Jun 2019 11:57:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/root-in-container-root-on-host/</guid>
+      <guid>https://suraj.io/post/root-in-container-root-on-host/</guid>
       <description>The easiest way to prove that root inside the container is also root on the host</description>
     </item>
     <item>
       <title>Writing your own Seccomp profiles for Docker</title>
-      <link>http://localhost:1313/post/docker-seccomp-manual/</link>
+      <link>https://suraj.io/post/docker-seccomp-manual/</link>
       <pubDate>Mon, 10 Jun 2019 11:57:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/docker-seccomp-manual/</guid>
+      <guid>https://suraj.io/post/docker-seccomp-manual/</guid>
       <description>Understanding the seccomp profile json format</description>
     </item>
     <item>
       <title>Recreate Kubernetes CVE-2017-1002101</title>
-      <link>http://localhost:1313/post/cve-2017-1002101-subpath-volume-mount-recreate/</link>
+      <link>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</link>
       <pubDate>Mon, 14 Jan 2019 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/cve-2017-1002101-subpath-volume-mount-recreate/</guid>
+      <guid>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</guid>
       <description>Subpath Volume Mount could give you access to node</description>
     </item>
     <item>
       <title>PodSecurityPolicy on existing Kubernetes clusters</title>
-      <link>http://localhost:1313/post/psp-on-existing-cluster/</link>
+      <link>https://suraj.io/post/psp-on-existing-cluster/</link>
       <pubDate>Tue, 23 Oct 2018 00:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/psp-on-existing-cluster/</guid>
+      <guid>https://suraj.io/post/psp-on-existing-cluster/</guid>
       <description>Burnt by enabling PSPs on existing Kubernetes and wondering why everything still works</description>
     </item>
     <item>
       <title>HTTPS during development using &#39;mkcert&#39;</title>
-      <link>http://localhost:1313/post/mkcert-using-python-http-server/</link>
+      <link>https://suraj.io/post/mkcert-using-python-http-server/</link>
       <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/mkcert-using-python-http-server/</guid>
+      <guid>https://suraj.io/post/mkcert-using-python-http-server/</guid>
       <description>Use https even during your development</description>
     </item>
   </channel>

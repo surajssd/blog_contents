@@ -2,43 +2,43 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Linux on Suraj Deshmukh</title>
-    <link>http://localhost:1313/categories/linux/</link>
+    <link>https://suraj.io/categories/linux/</link>
     <description>Recent content in Linux on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 19 Jun 2021 16:16:00 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to create a Systemd daemon quickly?</title>
-      <link>http://localhost:1313/post/2021/06/systemd-service/</link>
+      <link>https://suraj.io/post/2021/06/systemd-service/</link>
       <pubDate>Sat, 19 Jun 2021 16:16:00 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/06/systemd-service/</guid>
+      <guid>https://suraj.io/post/2021/06/systemd-service/</guid>
       <description>If you have a script or a binary and want to run it as a Systemd service, keep following. This blog will show you how to take any such executable code and run it using Systemd. Sure, you can do similar stuff using Docker as well. Although there are certain downsides of using Docker (alone) for managing the daemons. Systemd is good at log management on the node over a Docker container.</description>
     </item>
     <item>
       <title>Monitor your PC with Prometheus Grafana stack</title>
-      <link>http://localhost:1313/post/2021/03/node-monitor/</link>
+      <link>https://suraj.io/post/2021/03/node-monitor/</link>
       <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/03/node-monitor/</guid>
+      <guid>https://suraj.io/post/2021/03/node-monitor/</guid>
       <description>Get a fine grained view of the happenings on your system!</description>
     </item>
     <item>
       <title>Linux Partitioning Guide</title>
-      <link>http://localhost:1313/post/fedora-partitioning/</link>
+      <link>https://suraj.io/post/fedora-partitioning/</link>
       <pubDate>Mon, 11 Jan 2021 17:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/fedora-partitioning/</guid>
+      <guid>https://suraj.io/post/fedora-partitioning/</guid>
       <description>How to create partitions for Linux?</description>
     </item>
     <item>
       <title>Project specific scripts</title>
-      <link>http://localhost:1313/post/project-specific-scripts/</link>
+      <link>https://suraj.io/post/project-specific-scripts/</link>
       <pubDate>Sun, 23 Jun 2019 11:57:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/project-specific-scripts/</guid>
+      <guid>https://suraj.io/post/project-specific-scripts/</guid>
       <description>Instead of polluting your PATH the easier way to put project specific scripts</description>
     </item>
   </channel>

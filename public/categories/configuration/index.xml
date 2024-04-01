@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Configuration on Suraj Deshmukh</title>
-    <link>http://localhost:1313/categories/configuration/</link>
+    <link>https://suraj.io/categories/configuration/</link>
     <description>Recent content in Configuration on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 29 Aug 2020 15:33:51 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/configuration/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/categories/configuration/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to gracefully kill Kubernetes Jobs with a sidecar?</title>
-      <link>http://localhost:1313/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</link>
+      <link>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</link>
       <pubDate>Sat, 29 Aug 2020 15:33:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</guid>
+      <guid>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</guid>
       <description>A sidecar in a Kubernetes Job, what? Yeah you might need one and here is how to shut it.</description>
     </item>
     <item>
       <title>Use Configmap for Scripts</title>
-      <link>http://localhost:1313/post/use-configmap-for-scripts/</link>
+      <link>https://suraj.io/post/use-configmap-for-scripts/</link>
       <pubDate>Sat, 22 Aug 2020 21:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/use-configmap-for-scripts/</guid>
+      <guid>https://suraj.io/post/use-configmap-for-scripts/</guid>
       <description>A new way to ship scripts to container images.</description>
     </item>
   </channel>

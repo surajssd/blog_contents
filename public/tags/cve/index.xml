@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Cve on Suraj Deshmukh</title>
-    <link>http://localhost:1313/tags/cve/</link>
+    <link>https://suraj.io/tags/cve/</link>
     <description>Recent content in Cve on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 14 Jan 2019 01:00:51 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/cve/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/tags/cve/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Recreate Kubernetes CVE-2017-1002101</title>
-      <link>http://localhost:1313/post/cve-2017-1002101-subpath-volume-mount-recreate/</link>
+      <link>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</link>
       <pubDate>Mon, 14 Jan 2019 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/cve-2017-1002101-subpath-volume-mount-recreate/</guid>
+      <guid>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</guid>
       <description>Subpath Volume Mount could give you access to node</description>
     </item>
   </channel>

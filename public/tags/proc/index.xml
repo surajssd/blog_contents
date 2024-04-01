@@ -2,36 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Proc on Suraj Deshmukh</title>
-    <link>http://localhost:1313/tags/proc/</link>
+    <link>https://suraj.io/tags/proc/</link>
     <description>Recent content in Proc on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 25 Jun 2019 15:15:07 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/proc/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/tags/proc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Capabilities on executables</title>
-      <link>http://localhost:1313/post/linux-cap-note/</link>
+      <link>https://suraj.io/post/linux-cap-note/</link>
       <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/linux-cap-note/</guid>
+      <guid>https://suraj.io/post/linux-cap-note/</guid>
       <description>Note on Linux Kernel capabilities</description>
     </item>
     <item>
       <title>Root user inside container is root on the host</title>
-      <link>http://localhost:1313/post/root-in-container-root-on-host/</link>
+      <link>https://suraj.io/post/root-in-container-root-on-host/</link>
       <pubDate>Tue, 25 Jun 2019 11:57:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/root-in-container-root-on-host/</guid>
+      <guid>https://suraj.io/post/root-in-container-root-on-host/</guid>
       <description>The easiest way to prove that root inside the container is also root on the host</description>
     </item>
     <item>
       <title>Copying files to container the generic way</title>
-      <link>http://localhost:1313/post/copy-to-container-without-docker-cp/</link>
+      <link>https://suraj.io/post/copy-to-container-without-docker-cp/</link>
       <pubDate>Fri, 21 Jun 2019 11:57:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/copy-to-container-without-docker-cp/</guid>
+      <guid>https://suraj.io/post/copy-to-container-without-docker-cp/</guid>
       <description>No docker cp needed to copy files from host to your container</description>
     </item>
   </channel>

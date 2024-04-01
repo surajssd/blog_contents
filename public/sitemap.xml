@@ -2,612 +2,612 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/post/surajd-talks-links/</loc>
+    <loc>https://suraj.io/post/surajd-talks-links/</loc>
     <lastmod>2024-03-30T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://suraj.io/categories/</loc>
     <lastmod>2024-03-30T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/kubernetes/</loc>
+    <loc>https://suraj.io/tags/kubernetes/</loc>
     <lastmod>2024-03-30T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/meetup/</loc>
+    <loc>https://suraj.io/tags/meetup/</loc>
     <lastmod>2024-03-30T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/notes/</loc>
+    <loc>https://suraj.io/categories/notes/</loc>
     <lastmod>2024-03-30T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>https://suraj.io/post/</loc>
     <lastmod>2024-03-30T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://suraj.io/</loc>
     <lastmod>2024-03-30T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://suraj.io/tags/</loc>
     <lastmod>2024-03-30T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/talks/</loc>
+    <loc>https://suraj.io/categories/talks/</loc>
     <lastmod>2024-03-30T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/10/dont-be-default/</loc>
+    <loc>https://suraj.io/post/2021/10/dont-be-default/</loc>
     <lastmod>2021-10-29T11:05:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/non-tech/</loc>
+    <loc>https://suraj.io/tags/non-tech/</loc>
     <lastmod>2021-10-29T11:05:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/non-tech/</loc>
+    <loc>https://suraj.io/categories/non-tech/</loc>
     <lastmod>2021-10-29T11:05:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/book-review/</loc>
+    <loc>https://suraj.io/tags/book-review/</loc>
     <lastmod>2021-10-26T09:21:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/book-review/</loc>
+    <loc>https://suraj.io/categories/book-review/</loc>
     <lastmod>2021-10-26T09:21:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/10/atomic-habits/</loc>
+    <loc>https://suraj.io/post/2021/10/atomic-habits/</loc>
     <lastmod>2021-10-26T09:21:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/productivity/</loc>
+    <loc>https://suraj.io/tags/productivity/</loc>
     <lastmod>2021-09-11T17:09:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/productivity/</loc>
+    <loc>https://suraj.io/categories/productivity/</loc>
     <lastmod>2021-09-11T17:09:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/09/unchanging-context/</loc>
+    <loc>https://suraj.io/post/2021/09/unchanging-context/</loc>
     <lastmod>2021-09-11T17:09:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/09/cks-tips/</loc>
+    <loc>https://suraj.io/post/2021/09/cks-tips/</loc>
     <lastmod>2021-09-04T13:30:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cka/</loc>
+    <loc>https://suraj.io/tags/cka/</loc>
     <lastmod>2021-09-04T13:30:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/cka/</loc>
+    <loc>https://suraj.io/categories/cka/</loc>
     <lastmod>2021-09-04T13:30:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cks/</loc>
+    <loc>https://suraj.io/tags/cks/</loc>
     <lastmod>2021-09-04T13:30:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/cks/</loc>
+    <loc>https://suraj.io/categories/cks/</loc>
     <lastmod>2021-09-04T13:30:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/kubernetes/</loc>
+    <loc>https://suraj.io/categories/kubernetes/</loc>
     <lastmod>2021-09-04T13:30:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/security/</loc>
+    <loc>https://suraj.io/tags/security/</loc>
     <lastmod>2021-09-04T13:30:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/security/</loc>
+    <loc>https://suraj.io/categories/security/</loc>
     <lastmod>2021-09-04T13:30:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/08/sapiens/</loc>
+    <loc>https://suraj.io/post/2021/08/sapiens/</loc>
     <lastmod>2021-08-14T10:45:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/06/reading-devices/</loc>
+    <loc>https://suraj.io/post/2021/06/reading-devices/</loc>
     <lastmod>2021-06-30T01:45:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/06/automatic-cert-gen/</loc>
+    <loc>https://suraj.io/post/2021/06/automatic-cert-gen/</loc>
     <lastmod>2021-06-25T09:00:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/06/systemd-service/</loc>
+    <loc>https://suraj.io/post/2021/06/systemd-service/</loc>
     <lastmod>2021-06-19T16:16:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/linux/</loc>
+    <loc>https://suraj.io/tags/linux/</loc>
     <lastmod>2021-06-19T16:16:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/linux/</loc>
+    <loc>https://suraj.io/categories/linux/</loc>
     <lastmod>2021-06-19T16:16:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/systemd/</loc>
+    <loc>https://suraj.io/tags/systemd/</loc>
     <lastmod>2021-06-19T16:16:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/systemd/</loc>
+    <loc>https://suraj.io/categories/systemd/</loc>
     <lastmod>2021-06-19T16:16:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/golang/</loc>
+    <loc>https://suraj.io/tags/golang/</loc>
     <lastmod>2021-05-30T09:40:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/golang/</loc>
+    <loc>https://suraj.io/categories/golang/</loc>
     <lastmod>2021-05-30T09:40:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/05/k8s-import/</loc>
+    <loc>https://suraj.io/post/2021/05/k8s-import/</loc>
     <lastmod>2021-05-30T09:40:00+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/05/self-sign-k8s-cert/</loc>
+    <loc>https://suraj.io/post/2021/05/self-sign-k8s-cert/</loc>
     <lastmod>2021-05-21T15:33:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/05/learnings-psychology-of-money/</loc>
+    <loc>https://suraj.io/post/2021/05/learnings-psychology-of-money/</loc>
     <lastmod>2021-05-20T12:15:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/05/access-k8s-secrets-mitigation/</loc>
+    <loc>https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/</loc>
     <lastmod>2021-05-20T08:47:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/05/access-k8s-secrets/</loc>
+    <loc>https://suraj.io/post/2021/05/access-k8s-secrets/</loc>
     <lastmod>2021-05-08T12:17:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/activism/</loc>
+    <loc>https://suraj.io/tags/activism/</loc>
     <lastmod>2021-04-12T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/activism/</loc>
+    <loc>https://suraj.io/categories/activism/</loc>
     <lastmod>2021-04-12T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/04/rituals-dont-scale/</loc>
+    <loc>https://suraj.io/post/2021/04/rituals-dont-scale/</loc>
     <lastmod>2021-04-12T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/desktop/</loc>
+    <loc>https://suraj.io/tags/desktop/</loc>
     <lastmod>2021-04-02T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/desktop/</loc>
+    <loc>https://suraj.io/categories/desktop/</loc>
     <lastmod>2021-04-02T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/03/node-monitor/</loc>
+    <loc>https://suraj.io/post/2021/03/node-monitor/</loc>
     <lastmod>2021-04-02T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/monitoring/</loc>
+    <loc>https://suraj.io/tags/monitoring/</loc>
     <lastmod>2021-04-02T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/monitoring/</loc>
+    <loc>https://suraj.io/categories/monitoring/</loc>
     <lastmod>2021-04-02T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/prometheus/</loc>
+    <loc>https://suraj.io/tags/prometheus/</loc>
     <lastmod>2021-04-02T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/prometheus/</loc>
+    <loc>https://suraj.io/categories/prometheus/</loc>
     <lastmod>2021-04-02T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/03/kthw-vagrant/</loc>
+    <loc>https://suraj.io/post/2021/03/kthw-vagrant/</loc>
     <lastmod>2021-03-23T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/03/k8s-blr-meetup/</loc>
+    <loc>https://suraj.io/post/2021/03/k8s-blr-meetup/</loc>
     <lastmod>2021-03-17T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/meetup/</loc>
+    <loc>https://suraj.io/categories/meetup/</loc>
     <lastmod>2021-03-17T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/03/compounder-skills/</loc>
+    <loc>https://suraj.io/post/2021/03/compounder-skills/</loc>
     <lastmod>2021-03-16T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/02/typing-skills/</loc>
+    <loc>https://suraj.io/post/2021/02/typing-skills/</loc>
     <lastmod>2021-02-28T07:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/kms/</loc>
+    <loc>https://suraj.io/tags/kms/</loc>
     <lastmod>2021-02-23T09:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/kms/</loc>
+    <loc>https://suraj.io/categories/kms/</loc>
     <lastmod>2021-02-23T09:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/02/kms-journey/</loc>
+    <loc>https://suraj.io/post/2021/02/kms-journey/</loc>
     <lastmod>2021-02-23T09:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/notion/</loc>
+    <loc>https://suraj.io/tags/notion/</loc>
     <lastmod>2021-02-23T09:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/notion/</loc>
+    <loc>https://suraj.io/categories/notion/</loc>
     <lastmod>2021-02-23T09:07:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/02/book-hiw-learnings/</loc>
+    <loc>https://suraj.io/post/2021/02/book-hiw-learnings/</loc>
     <lastmod>2021-02-10T21:43:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/certs/</loc>
+    <loc>https://suraj.io/tags/certs/</loc>
     <lastmod>2021-02-06T10:25:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/certs/</loc>
+    <loc>https://suraj.io/categories/certs/</loc>
     <lastmod>2021-02-06T10:25:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/02/k8s-bootstrap-token/</loc>
+    <loc>https://suraj.io/post/2021/02/k8s-bootstrap-token/</loc>
     <lastmod>2021-02-06T10:25:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/notes/</loc>
+    <loc>https://suraj.io/tags/notes/</loc>
     <lastmod>2021-02-06T10:25:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/containers/</loc>
+    <loc>https://suraj.io/tags/containers/</loc>
     <lastmod>2021-01-29T22:02:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/containers/</loc>
+    <loc>https://suraj.io/categories/containers/</loc>
     <lastmod>2021-01-29T22:02:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/flatcar/</loc>
+    <loc>https://suraj.io/tags/flatcar/</loc>
     <lastmod>2021-01-29T22:02:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/flatcar/</loc>
+    <loc>https://suraj.io/categories/flatcar/</loc>
     <lastmod>2021-01-29T22:02:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/kubeadm/</loc>
+    <loc>https://suraj.io/tags/kubeadm/</loc>
     <lastmod>2021-01-29T22:02:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/kubeadm/</loc>
+    <loc>https://suraj.io/categories/kubeadm/</loc>
     <lastmod>2021-01-29T22:02:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/01/kubeadm-flatcar/</loc>
+    <loc>https://suraj.io/post/2021/01/kubeadm-flatcar/</loc>
     <lastmod>2021-01-29T22:02:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/bash/</loc>
+    <loc>https://suraj.io/tags/bash/</loc>
     <lastmod>2021-01-23T10:10:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/bash/</loc>
+    <loc>https://suraj.io/categories/bash/</loc>
     <lastmod>2021-01-23T10:10:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2021/01/shell-exec/</loc>
+    <loc>https://suraj.io/post/2021/01/shell-exec/</loc>
     <lastmod>2021-01-23T10:10:41+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/monitor-releases-of-your-favourite-software/</loc>
+    <loc>https://suraj.io/post/monitor-releases-of-your-favourite-software/</loc>
     <lastmod>2021-01-17T12:28:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/programming/</loc>
+    <loc>https://suraj.io/tags/programming/</loc>
     <lastmod>2021-01-17T12:28:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/programming/</loc>
+    <loc>https://suraj.io/categories/programming/</loc>
     <lastmod>2021-01-17T12:28:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/lokomotive/</loc>
+    <loc>https://suraj.io/tags/lokomotive/</loc>
     <lastmod>2021-01-16T13:10:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/lokomotive/</loc>
+    <loc>https://suraj.io/categories/lokomotive/</loc>
     <lastmod>2021-01-16T13:10:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/mental-models-for-understanding-kubernetes-pod-security-policy/</loc>
+    <loc>https://suraj.io/post/mental-models-for-understanding-kubernetes-pod-security-policy/</loc>
     <lastmod>2021-01-16T13:10:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/fedora/</loc>
+    <loc>https://suraj.io/tags/fedora/</loc>
     <lastmod>2021-01-11T17:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/fedora/</loc>
+    <loc>https://suraj.io/categories/fedora/</loc>
     <lastmod>2021-01-11T17:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/fedora-partitioning/</loc>
+    <loc>https://suraj.io/post/fedora-partitioning/</loc>
     <lastmod>2021-01-11T17:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/sysadmin/</loc>
+    <loc>https://suraj.io/tags/sysadmin/</loc>
     <lastmod>2021-01-11T17:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/book-review-how-to-take-smart-notes/</loc>
+    <loc>https://suraj.io/post/book-review-how-to-take-smart-notes/</loc>
     <lastmod>2020-11-28T21:30:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</loc>
+    <loc>https://suraj.io/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</loc>
     <lastmod>2020-10-11T17:30:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/configuration/</loc>
+    <loc>https://suraj.io/tags/configuration/</loc>
     <lastmod>2020-08-29T15:33:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/configuration/</loc>
+    <loc>https://suraj.io/categories/configuration/</loc>
     <lastmod>2020-08-29T15:33:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</loc>
+    <loc>https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/</loc>
     <lastmod>2020-08-29T15:33:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/jobs/</loc>
+    <loc>https://suraj.io/categories/jobs/</loc>
     <lastmod>2020-08-29T15:33:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/use-configmap-for-scripts/</loc>
+    <loc>https://suraj.io/post/use-configmap-for-scripts/</loc>
     <lastmod>2020-08-22T21:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/being-productive-with-git/</loc>
+    <loc>https://suraj.io/post/being-productive-with-git/</loc>
     <lastmod>2020-08-16T22:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/git/</loc>
+    <loc>https://suraj.io/tags/git/</loc>
     <lastmod>2020-08-16T22:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/git/</loc>
+    <loc>https://suraj.io/categories/git/</loc>
     <lastmod>2020-08-16T22:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/being-productive-with-kubectl/</loc>
+    <loc>https://suraj.io/post/being-productive-with-kubectl/</loc>
     <lastmod>2020-08-02T16:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/backup/</loc>
+    <loc>https://suraj.io/tags/backup/</loc>
     <lastmod>2020-07-31T19:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/backup/</loc>
+    <loc>https://suraj.io/categories/backup/</loc>
     <lastmod>2020-07-31T19:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/how-to-backup-and-restore-prometheus/</loc>
+    <loc>https://suraj.io/post/how-to-backup-and-restore-prometheus/</loc>
     <lastmod>2020-07-31T19:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/book-review-getting-things-done/</loc>
+    <loc>https://suraj.io/post/book-review-getting-things-done/</loc>
     <lastmod>2020-07-30T16:00:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/framework-for-scripts-and-binaries/</loc>
+    <loc>https://suraj.io/post/framework-for-scripts-and-binaries/</loc>
     <lastmod>2020-07-18T19:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/packaging/</loc>
+    <loc>https://suraj.io/categories/packaging/</loc>
     <lastmod>2020-07-18T19:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/opinion-contemporary-world-1984-by-george-orwell/</loc>
+    <loc>https://suraj.io/post/opinion-contemporary-world-1984-by-george-orwell/</loc>
     <lastmod>2020-07-05T11:30:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/book-review-einstein/</loc>
+    <loc>https://suraj.io/post/book-review-einstein/</loc>
     <lastmod>2020-06-20T11:30:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/snoop-on-pod-traffic/</loc>
+    <loc>https://suraj.io/post/snoop-on-pod-traffic/</loc>
     <lastmod>2020-06-06T20:30:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/seccomp-in-kube-state-metrics/</loc>
+    <loc>https://suraj.io/post/seccomp-in-kube-state-metrics/</loc>
     <lastmod>2020-04-14T11:57:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/seccomp/</loc>
+    <loc>https://suraj.io/tags/seccomp/</loc>
     <lastmod>2020-04-14T11:57:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/linux-cap-note/</loc>
+    <loc>https://suraj.io/post/linux-cap-note/</loc>
     <lastmod>2019-06-25T15:15:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/docker/</loc>
+    <loc>https://suraj.io/tags/docker/</loc>
     <lastmod>2019-06-25T15:15:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/docker/</loc>
+    <loc>https://suraj.io/categories/docker/</loc>
     <lastmod>2019-06-25T15:15:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/host/</loc>
+    <loc>https://suraj.io/tags/host/</loc>
     <lastmod>2019-06-25T15:15:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/host/</loc>
+    <loc>https://suraj.io/categories/host/</loc>
     <lastmod>2019-06-25T15:15:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/proc/</loc>
+    <loc>https://suraj.io/tags/proc/</loc>
     <lastmod>2019-06-25T15:15:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/root-in-container-root-on-host/</loc>
+    <loc>https://suraj.io/post/root-in-container-root-on-host/</loc>
     <lastmod>2019-06-25T11:57:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/project-specific-scripts/</loc>
+    <loc>https://suraj.io/post/project-specific-scripts/</loc>
     <lastmod>2019-06-23T11:57:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/copy-to-container-without-docker-cp/</loc>
+    <loc>https://suraj.io/post/copy-to-container-without-docker-cp/</loc>
     <lastmod>2019-06-21T11:57:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/docker-seccomp-manual/</loc>
+    <loc>https://suraj.io/post/docker-seccomp-manual/</loc>
     <lastmod>2019-06-10T11:57:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/event_report/</loc>
+    <loc>https://suraj.io/categories/event_report/</loc>
     <lastmod>2019-03-21T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/k8s-blr-event-report-2019-03-16/</loc>
+    <loc>https://suraj.io/post/k8s-blr-event-report-2019-03-16/</loc>
     <lastmod>2019-03-21T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/apiserver-in-minikube-static-configs/</loc>
+    <loc>https://suraj.io/post/apiserver-in-minikube-static-configs/</loc>
     <lastmod>2019-01-20T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/minikube/</loc>
+    <loc>https://suraj.io/tags/minikube/</loc>
     <lastmod>2019-01-20T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/minikube/</loc>
+    <loc>https://suraj.io/categories/minikube/</loc>
     <lastmod>2019-01-20T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cve/</loc>
+    <loc>https://suraj.io/tags/cve/</loc>
     <lastmod>2019-01-14T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/cve-2017-1002101-subpath-volume-mount-recreate/</loc>
+    <loc>https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/</loc>
     <lastmod>2019-01-14T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cobra/</loc>
+    <loc>https://suraj.io/tags/cobra/</loc>
     <lastmod>2019-01-04T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/cobra-persistent-flag/</loc>
+    <loc>https://suraj.io/post/cobra-persistent-flag/</loc>
     <lastmod>2019-01-04T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/dell/</loc>
+    <loc>https://suraj.io/tags/dell/</loc>
     <lastmod>2018-12-30T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/laptop/</loc>
+    <loc>https://suraj.io/tags/laptop/</loc>
     <lastmod>2018-12-30T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/old-laptop-setup/</loc>
+    <loc>https://suraj.io/post/old-laptop-setup/</loc>
     <lastmod>2018-12-30T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/add-new-k8s-node-bootstrap-token/</loc>
+    <loc>https://suraj.io/post/add-new-k8s-node-bootstrap-token/</loc>
     <lastmod>2018-10-24T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/psp-on-existing-cluster/</loc>
+    <loc>https://suraj.io/post/psp-on-existing-cluster/</loc>
     <lastmod>2018-10-23T00:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/road-to-cka/</loc>
+    <loc>https://suraj.io/post/road-to-cka/</loc>
     <lastmod>2018-10-21T00:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/gnome/</loc>
+    <loc>https://suraj.io/tags/gnome/</loc>
     <lastmod>2018-10-16T22:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/gnome/</loc>
+    <loc>https://suraj.io/categories/gnome/</loc>
     <lastmod>2018-10-16T22:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/disable-ctrl-w/</loc>
+    <loc>https://suraj.io/post/disable-ctrl-w/</loc>
     <lastmod>2018-10-16T22:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/add-new-k8s-node-cert-rotate/</loc>
+    <loc>https://suraj.io/post/add-new-k8s-node-cert-rotate/</loc>
     <lastmod>2018-10-16T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/add-new-k8s-node-manually/</loc>
+    <loc>https://suraj.io/post/add-new-k8s-node-manually/</loc>
     <lastmod>2018-09-23T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/openshift/</loc>
+    <loc>https://suraj.io/tags/openshift/</loc>
     <lastmod>2018-09-23T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/openshift/</loc>
+    <loc>https://suraj.io/categories/openshift/</loc>
     <lastmod>2018-09-23T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/selinux/</loc>
+    <loc>https://suraj.io/tags/selinux/</loc>
     <lastmod>2018-09-11T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/selinux/</loc>
+    <loc>https://suraj.io/categories/selinux/</loc>
     <lastmod>2018-09-11T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/single-node-k8s-fedora-selinux/</loc>
+    <loc>https://suraj.io/post/single-node-k8s-fedora-selinux/</loc>
     <lastmod>2018-09-11T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hostpath/</loc>
+    <loc>https://suraj.io/tags/hostpath/</loc>
     <lastmod>2018-09-10T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/k8s-hostpat-nuke-nodes/</loc>
+    <loc>https://suraj.io/post/k8s-hostpat-nuke-nodes/</loc>
     <lastmod>2018-09-10T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/certificates/</loc>
+    <loc>https://suraj.io/tags/certificates/</loc>
     <lastmod>2018-08-14T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/development/</loc>
+    <loc>https://suraj.io/tags/development/</loc>
     <lastmod>2018-08-14T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/https/</loc>
+    <loc>https://suraj.io/tags/https/</loc>
     <lastmod>2018-08-14T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/https/</loc>
+    <loc>https://suraj.io/categories/https/</loc>
     <lastmod>2018-08-14T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/mkcert-using-python-http-server/</loc>
+    <loc>https://suraj.io/post/mkcert-using-python-http-server/</loc>
     <lastmod>2018-08-14T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/secure/</loc>
+    <loc>https://suraj.io/tags/secure/</loc>
     <lastmod>2018-08-14T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/golang-struct-tags-space/</loc>
+    <loc>https://suraj.io/post/golang-struct-tags-space/</loc>
     <lastmod>2018-08-12T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/accessing-oc-cluster-up-etcd/</loc>
+    <loc>https://suraj.io/post/accessing-oc-cluster-up-etcd/</loc>
     <lastmod>2018-07-11T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/etcd/</loc>
+    <loc>https://suraj.io/categories/etcd/</loc>
     <lastmod>2018-07-11T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/changing-k8s-ns/</loc>
+    <loc>https://suraj.io/post/changing-k8s-ns/</loc>
     <lastmod>2018-07-02T08:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/cmd-line/</loc>
+    <loc>https://suraj.io/categories/cmd-line/</loc>
     <lastmod>2018-07-02T08:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/using-prometheus/</loc>
+    <loc>https://suraj.io/post/using-prometheus/</loc>
     <lastmod>2018-04-04T08:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/advanced-golang-testing-mitchellh-talk-notes/</loc>
+    <loc>https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/</loc>
     <lastmod>2018-03-07T02:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/golang-methods-interfaces/</loc>
+    <loc>https://suraj.io/post/golang-methods-interfaces/</loc>
     <lastmod>2018-02-23T08:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/editor/</loc>
+    <loc>https://suraj.io/tags/editor/</loc>
     <lastmod>2018-02-22T08:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/ide/</loc>
+    <loc>https://suraj.io/categories/ide/</loc>
     <lastmod>2018-02-22T08:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/vscode/</loc>
+    <loc>https://suraj.io/tags/vscode/</loc>
     <lastmod>2018-02-22T08:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/vscode-shortcuts/</loc>
+    <loc>https://suraj.io/post/vscode-shortcuts/</loc>
     <lastmod>2018-02-22T08:00:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/private-registry-from-minikube/</loc>
+    <loc>https://suraj.io/post/private-registry-from-minikube/</loc>
     <lastmod>2017-10-06T19:32:33+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/static-pods/</loc>
+    <loc>https://suraj.io/post/static-pods/</loc>
     <lastmod>2017-09-23T13:10:14+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/centos/</loc>
+    <loc>https://suraj.io/tags/centos/</loc>
     <lastmod>2017-09-18T10:43:46+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/centos/</loc>
+    <loc>https://suraj.io/categories/centos/</loc>
     <lastmod>2017-09-18T10:43:46+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/move-vagrant-boxes/</loc>
+    <loc>https://suraj.io/post/move-vagrant-boxes/</loc>
     <lastmod>2017-09-18T10:43:46+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/vagrant/</loc>
+    <loc>https://suraj.io/tags/vagrant/</loc>
     <lastmod>2017-09-18T10:43:46+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/vagrant/</loc>
+    <loc>https://suraj.io/categories/vagrant/</loc>
     <lastmod>2017-09-18T10:43:46+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/add-new-map-to-cs/</loc>
+    <loc>https://suraj.io/post/add-new-map-to-cs/</loc>
     <lastmod>2017-09-01T16:03:58+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/gaming/</loc>
+    <loc>https://suraj.io/tags/gaming/</loc>
     <lastmod>2017-09-01T16:03:58+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/gaming/</loc>
+    <loc>https://suraj.io/categories/gaming/</loc>
     <lastmod>2017-09-01T16:03:58+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/list-all-k8s-meetups/</loc>
+    <loc>https://suraj.io/post/list-all-k8s-meetups/</loc>
     <lastmod>2017-09-01T15:51:16+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/k8s-learning-resources/</loc>
+    <loc>https://suraj.io/post/k8s-learning-resources/</loc>
     <lastmod>2017-08-17T23:12:18+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/blr-k8s-meetup-july-2017/</loc>
+    <loc>https://suraj.io/post/blr-k8s-meetup-july-2017/</loc>
     <lastmod>2017-07-13T22:46:40+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/node-no-sudo/</loc>
+    <loc>https://suraj.io/post/node-no-sudo/</loc>
     <lastmod>2017-07-04T22:50:43+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/blr-k8s-meetup-may-2017/</loc>
+    <loc>https://suraj.io/post/blr-k8s-meetup-may-2017/</loc>
     <lastmod>2017-05-24T02:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/enabling-local-development-with-k8s/</loc>
+    <loc>https://suraj.io/post/enabling-local-development-with-k8s/</loc>
     <lastmod>2017-04-23T15:57:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/kompose/</loc>
+    <loc>https://suraj.io/categories/kompose/</loc>
     <lastmod>2017-04-23T15:57:07+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/pv/</loc>
+    <loc>https://suraj.io/tags/pv/</loc>
     <lastmod>2017-04-18T23:56:15+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/quick-pv-for-local-k8s/</loc>
+    <loc>https://suraj.io/post/quick-pv-for-local-k8s/</loc>
     <lastmod>2017-04-18T23:56:15+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/blr-k8s-meetup-april-2017/</loc>
+    <loc>https://suraj.io/post/blr-k8s-meetup-april-2017/</loc>
     <lastmod>2017-04-08T14:31:33+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/crio/</loc>
+    <loc>https://suraj.io/tags/crio/</loc>
     <lastmod>2017-04-08T00:11:37+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/using-crio-with-k8s-single-node/</loc>
+    <loc>https://suraj.io/post/using-crio-with-k8s-single-node/</loc>
     <lastmod>2017-04-08T00:11:37+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/github/</loc>
+    <loc>https://suraj.io/tags/github/</loc>
     <lastmod>2017-03-26T18:19:15+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/open-source/</loc>
+    <loc>https://suraj.io/tags/open-source/</loc>
     <lastmod>2017-03-26T18:19:15+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/project/</loc>
+    <loc>https://suraj.io/tags/project/</loc>
     <lastmod>2017-03-26T18:19:15+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/project_management/</loc>
+    <loc>https://suraj.io/categories/project_management/</loc>
     <lastmod>2017-03-26T18:19:15+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/starting-a-new-opensource-project-requirements/</loc>
+    <loc>https://suraj.io/post/starting-a-new-opensource-project-requirements/</loc>
     <lastmod>2017-03-26T18:19:15+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/rpm/</loc>
+    <loc>https://suraj.io/tags/rpm/</loc>
     <lastmod>2017-03-24T10:35:54+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/rpm-notes/</loc>
+    <loc>https://suraj.io/post/rpm-notes/</loc>
     <lastmod>2017-03-24T10:35:54+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/git-notes/</loc>
+    <loc>https://suraj.io/post/git-notes/</loc>
     <lastmod>2017-03-21T22:03:48+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ide/</loc>
+    <loc>https://suraj.io/tags/ide/</loc>
     <lastmod>2017-03-17T14:41:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/intellij/</loc>
+    <loc>https://suraj.io/tags/intellij/</loc>
     <lastmod>2017-03-17T14:41:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/intellij-shortcuts/</loc>
+    <loc>https://suraj.io/post/intellij-shortcuts/</loc>
     <lastmod>2017-03-17T14:41:51+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/packaging-kompose-for-centos-paas-sig/</loc>
+    <loc>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</loc>
     <lastmod>2017-03-15T14:16:43+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/test-kompose/</loc>
+    <loc>https://suraj.io/post/test-kompose/</loc>
     <lastmod>2017-03-14T00:31:57+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/first-post/</loc>
+    <loc>https://suraj.io/post/first-post/</loc>
     <lastmod>2017-03-13T00:31:57+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/intro/</loc>
+    <loc>https://suraj.io/tags/intro/</loc>
     <lastmod>2017-03-13T00:31:57+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://suraj.io/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://suraj.io/archives/</loc>
   </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://suraj.io/search/</loc>
   </url><url>
-    <loc>http://localhost:1313/series/</loc>
+    <loc>https://suraj.io/series/</loc>
   </url>
 </urlset>

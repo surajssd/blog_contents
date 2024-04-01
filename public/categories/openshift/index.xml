@@ -2,36 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Openshift on Suraj Deshmukh</title>
-    <link>http://localhost:1313/categories/openshift/</link>
+    <link>https://suraj.io/categories/openshift/</link>
     <description>Recent content in Openshift on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 23 Sep 2018 01:00:51 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/openshift/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/categories/openshift/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Adding new worker to existing Kubernetes cluster</title>
-      <link>http://localhost:1313/post/add-new-k8s-node-manually/</link>
+      <link>https://suraj.io/post/add-new-k8s-node-manually/</link>
       <pubDate>Sun, 23 Sep 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/add-new-k8s-node-manually/</guid>
+      <guid>https://suraj.io/post/add-new-k8s-node-manually/</guid>
       <description>Step by step guide to add new node</description>
     </item>
     <item>
       <title>HostPath volumes and it&#39;s problems</title>
-      <link>http://localhost:1313/post/k8s-hostpat-nuke-nodes/</link>
+      <link>https://suraj.io/post/k8s-hostpat-nuke-nodes/</link>
       <pubDate>Mon, 10 Sep 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/k8s-hostpat-nuke-nodes/</guid>
+      <guid>https://suraj.io/post/k8s-hostpat-nuke-nodes/</guid>
       <description>Kubernetes HostPath volume good way to nuke your Kubernetes Nodes</description>
     </item>
     <item>
       <title>Access etcd in OpenShift origin</title>
-      <link>http://localhost:1313/post/accessing-oc-cluster-up-etcd/</link>
+      <link>https://suraj.io/post/accessing-oc-cluster-up-etcd/</link>
       <pubDate>Wed, 11 Jul 2018 01:00:51 +0530</pubDate>
-      <guid>http://localhost:1313/post/accessing-oc-cluster-up-etcd/</guid>
+      <guid>https://suraj.io/post/accessing-oc-cluster-up-etcd/</guid>
       <description>Access the etcd in OpenShift started by oc cluster up</description>
     </item>
   </channel>

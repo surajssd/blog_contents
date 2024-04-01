@@ -2,135 +2,135 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Non-Tech on Suraj Deshmukh</title>
-    <link>http://localhost:1313/categories/non-tech/</link>
+    <link>https://suraj.io/categories/non-tech/</link>
     <description>Recent content in Non-Tech on Suraj Deshmukh</description>
     <image>
       <title>Suraj Deshmukh</title>
-      <url>http://localhost:1313/images/papermod-cover.png</url>
-      <link>http://localhost:1313/images/papermod-cover.png</link>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Fri, 29 Oct 2021 11:05:07 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/non-tech/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.io/categories/non-tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fight Your Instincts — Your Default Behaviour is Hurting You</title>
-      <link>http://localhost:1313/post/2021/10/dont-be-default/</link>
+      <link>https://suraj.io/post/2021/10/dont-be-default/</link>
       <pubDate>Fri, 29 Oct 2021 11:05:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/10/dont-be-default/</guid>
+      <guid>https://suraj.io/post/2021/10/dont-be-default/</guid>
       <description>We behave in a certain way. It is shaped by various factors like our upbringing, environment, privilege, etc. But most of the time, it is shaped by our instincts. Until pointed out, we continue to act with our instincts. This instinct-driven behavior is our default behavior.
 I am making a case that anyone who has never rebelled against or resisted their default behavior will find it hard to achieve success in this world.</description>
     </item>
     <item>
       <title>Learnings from &#39;Atomic Habits&#39;</title>
-      <link>http://localhost:1313/post/2021/10/atomic-habits/</link>
+      <link>https://suraj.io/post/2021/10/atomic-habits/</link>
       <pubDate>Tue, 26 Oct 2021 09:21:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/10/atomic-habits/</guid>
+      <guid>https://suraj.io/post/2021/10/atomic-habits/</guid>
       <description>Atomic Habits: An Easy &amp;amp; Proven Way to Build Good Habits &amp;amp; Break Bad Ones</description>
     </item>
     <item>
       <title>Unchanging Contexts and Degrading Productivity</title>
-      <link>http://localhost:1313/post/2021/09/unchanging-context/</link>
+      <link>https://suraj.io/post/2021/09/unchanging-context/</link>
       <pubDate>Sat, 11 Sep 2021 17:09:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/09/unchanging-context/</guid>
+      <guid>https://suraj.io/post/2021/09/unchanging-context/</guid>
       <description>How doing everything from the same place has affected the the productivity of everything.</description>
     </item>
     <item>
       <title>Learnings from &#39;Sapiens&#39;</title>
-      <link>http://localhost:1313/post/2021/08/sapiens/</link>
+      <link>https://suraj.io/post/2021/08/sapiens/</link>
       <pubDate>Sat, 14 Aug 2021 10:45:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/08/sapiens/</guid>
+      <guid>https://suraj.io/post/2021/08/sapiens/</guid>
       <description>Sapiens: A Brief History of Humankind</description>
     </item>
     <item>
       <title>Reading Devices</title>
-      <link>http://localhost:1313/post/2021/06/reading-devices/</link>
+      <link>https://suraj.io/post/2021/06/reading-devices/</link>
       <pubDate>Wed, 30 Jun 2021 01:45:00 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/06/reading-devices/</guid>
+      <guid>https://suraj.io/post/2021/06/reading-devices/</guid>
       <description>Pros and Cons of various reading devices</description>
     </item>
     <item>
       <title>Learnings from &#39;The Psychology of Money&#39;</title>
-      <link>http://localhost:1313/post/2021/05/learnings-psychology-of-money/</link>
+      <link>https://suraj.io/post/2021/05/learnings-psychology-of-money/</link>
       <pubDate>Thu, 20 May 2021 12:15:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/05/learnings-psychology-of-money/</guid>
+      <guid>https://suraj.io/post/2021/05/learnings-psychology-of-money/</guid>
       <description>Synopsis of the Book The Psychology of Money, written by Morgan Housel, published in 2020, could be categorised under Psychology, Finance, and Nonfiction. The author wrote an article three years ago which got a lot of traffic hence decided to write a book out of it. Last year I saw that the book was recommended by many folks in my network and on Twitter. All of the recommenders were highly impressed by the book and spoke intensely of it.</description>
     </item>
     <item>
       <title>Religious Rituals Don&#39;t Scale With Population</title>
-      <link>http://localhost:1313/post/2021/04/rituals-dont-scale/</link>
+      <link>https://suraj.io/post/2021/04/rituals-dont-scale/</link>
       <pubDate>Mon, 12 Apr 2021 07:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/04/rituals-dont-scale/</guid>
+      <guid>https://suraj.io/post/2021/04/rituals-dont-scale/</guid>
       <description>How Hindus need to introspect and evolve!</description>
     </item>
     <item>
       <title>How we manage Kubernetes Bangalore Meetup?</title>
-      <link>http://localhost:1313/post/2021/03/k8s-blr-meetup/</link>
+      <link>https://suraj.io/post/2021/03/k8s-blr-meetup/</link>
       <pubDate>Wed, 17 Mar 2021 07:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/03/k8s-blr-meetup/</guid>
+      <guid>https://suraj.io/post/2021/03/k8s-blr-meetup/</guid>
       <description>The method of stress-free event management!</description>
     </item>
     <item>
       <title>On Compounder Skills</title>
-      <link>http://localhost:1313/post/2021/03/compounder-skills/</link>
+      <link>https://suraj.io/post/2021/03/compounder-skills/</link>
       <pubDate>Tue, 16 Mar 2021 07:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/03/compounder-skills/</guid>
+      <guid>https://suraj.io/post/2021/03/compounder-skills/</guid>
       <description>The foundational skills which improves everything else.</description>
     </item>
     <item>
       <title>Importance of Typing Skills</title>
-      <link>http://localhost:1313/post/2021/02/typing-skills/</link>
+      <link>https://suraj.io/post/2021/02/typing-skills/</link>
       <pubDate>Sun, 28 Feb 2021 07:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/02/typing-skills/</guid>
+      <guid>https://suraj.io/post/2021/02/typing-skills/</guid>
       <description>The foundational skill which improves everything else.</description>
     </item>
     <item>
       <title>My Knowledge Management Journey</title>
-      <link>http://localhost:1313/post/2021/02/kms-journey/</link>
+      <link>https://suraj.io/post/2021/02/kms-journey/</link>
       <pubDate>Tue, 23 Feb 2021 09:07:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/02/kms-journey/</guid>
+      <guid>https://suraj.io/post/2021/02/kms-journey/</guid>
       <description>The story of various tools I have used over last five years.</description>
     </item>
     <item>
       <title>Book: How Innovation Works</title>
-      <link>http://localhost:1313/post/2021/02/book-hiw-learnings/</link>
+      <link>https://suraj.io/post/2021/02/book-hiw-learnings/</link>
       <pubDate>Wed, 10 Feb 2021 21:43:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/2021/02/book-hiw-learnings/</guid>
+      <guid>https://suraj.io/post/2021/02/book-hiw-learnings/</guid>
       <description>And Why It Flourishes in Freedom by Matt Ridley</description>
     </item>
     <item>
       <title>Book Review: How to Take Smart Notes</title>
-      <link>http://localhost:1313/post/book-review-how-to-take-smart-notes/</link>
+      <link>https://suraj.io/post/book-review-how-to-take-smart-notes/</link>
       <pubDate>Sat, 28 Nov 2020 21:30:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/book-review-how-to-take-smart-notes/</guid>
+      <guid>https://suraj.io/post/book-review-how-to-take-smart-notes/</guid>
       <description>One Simple Technique to Boost Writing, Learning and Thinking – for Students, Academics and Nonfiction Book Writers by Sönke Ahrens</description>
     </item>
     <item>
       <title>Book Review: Algorithms to Live by — The Computer Science of Human Decisions</title>
-      <link>http://localhost:1313/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</link>
+      <link>https://suraj.io/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</link>
       <pubDate>Sun, 11 Oct 2020 17:30:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</guid>
+      <guid>https://suraj.io/post/book-review-algorithms-to-live-by-the-computer-science-of-human-decisions/</guid>
       <description>Authors: Brian Christian and Tom Griffiths</description>
     </item>
     <item>
       <title>Book Review: Getting Things Done</title>
-      <link>http://localhost:1313/post/book-review-getting-things-done/</link>
+      <link>https://suraj.io/post/book-review-getting-things-done/</link>
       <pubDate>Thu, 30 Jul 2020 16:00:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/book-review-getting-things-done/</guid>
+      <guid>https://suraj.io/post/book-review-getting-things-done/</guid>
       <description>The Art of Stress-free Productivity - David Allen</description>
     </item>
     <item>
       <title>Opinion: Contemporary world vis-à-vis 1984 by George Orwell</title>
-      <link>http://localhost:1313/post/opinion-contemporary-world-1984-by-george-orwell/</link>
+      <link>https://suraj.io/post/opinion-contemporary-world-1984-by-george-orwell/</link>
       <pubDate>Sun, 05 Jul 2020 11:30:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/opinion-contemporary-world-1984-by-george-orwell/</guid>
+      <guid>https://suraj.io/post/opinion-contemporary-world-1984-by-george-orwell/</guid>
       <description>The Unsettling Similarity of Timeless Dystopian Novel.</description>
     </item>
     <item>
       <title>Book Review of Einstein: His Life and Universe</title>
-      <link>http://localhost:1313/post/book-review-einstein/</link>
+      <link>https://suraj.io/post/book-review-einstein/</link>
       <pubDate>Sat, 20 Jun 2020 11:30:07 +0530</pubDate>
-      <guid>http://localhost:1313/post/book-review-einstein/</guid>
+      <guid>https://suraj.io/post/book-review-einstein/</guid>
       <description>Authored by Walter Isaacson</description>
     </item>
   </channel>
