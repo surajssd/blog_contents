@@ -138,6 +138,11 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://suraj.io/search" title="Search 🔍">
+                    <span>Search 🔍</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://suraj.io/tags" title="Tags">
                     <span>Tags</span>
                 </a>
@@ -150,11 +155,6 @@ if (!doNotTrack) {
             <li>
                 <a href="https://suraj.io/series" title="Series">
                     <span>Series</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://suraj.io/search" title="Search 🔍">
-                    <span>Search 🔍</span>
                 </a>
             </li>
         </ul>
@@ -174,37 +174,6 @@ if (!doNotTrack) {
     </a>
   </h1>
 </header>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">vscode Shortcuts
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
-Shortcuts Toggle side bar Ctrl &#43; B
-Project explorer in side bar Ctrl &#43; Shift &#43; E
-Project wide search in side bar Ctrl &#43; Shift &#43; F
-Source control in side bar Ctrl &#43; Shift &#43; G
-Copy entire line Ctrl &#43; C (without any selection)
-Delete entire line Ctrl &#43; Shift &#43; K...</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-02-22 08:00:51 +0530 +0530'>February 22, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to vscode Shortcuts" href="https://suraj.io/post/vscode-shortcuts/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Static Pods using Kubelet on Fedora
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.
-This blog is only replacement of section Install the Standalone Kubelet in tutorial....</p>
-  </div>
-  <footer class="entry-footer"><span title='2017-09-23 13:10:14 +0530 +0530'>September 23, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Static Pods using Kubelet on Fedora" href="https://suraj.io/post/static-pods/"></a>
-</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -259,12 +228,57 @@ Setup of the system for building rpms $ dnf -y install fedora-packager fedora-re
   <footer class="entry-footer"><span title='2017-03-24 10:35:54 +0530 +0530'>March 24, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to rpm Notes" href="https://suraj.io/post/rpm-notes/"></a>
 </article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Intellij Shortcuts
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Note: This is a living document and will be updated as I discover new things.
+Shortcuts Ctrl &#43; Shift &#43; A Find any action in IDE
+Ctrl &#43; Shift &#43; F Find in Path
+Alt &#43; 1 Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
+Shift &#43; Insert in Project window Here you can add new file to the project. The filename could be the entire path, so the intermediate directories will be created for you....</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-03-17 14:41:51 +0530 +0530'>March 17, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Intellij Shortcuts" href="https://suraj.io/post/intellij-shortcuts/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Packaging &#39;kompose&#39; for centos paas sig
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Note: This is a living document and will be updated from time to time.
+Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
+Setup your machine Install packages needed
+sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager Setup certs...</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-03-15 14:16:43 +0530 +0530'>March 15, 2017</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Packaging &#39;kompose&#39; for centos paas sig" href="https://suraj.io/post/packaging-kompose-for-centos-paas-sig/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
+Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
+Starting the environment:
+docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
+# Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github....</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-03-14 00:31:57 +0530 +0530'>March 14, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package" href="https://suraj.io/post/test-kompose/"></a>
+</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://suraj.io/categories/notes/page/2/">
-      «&nbsp;Prev&nbsp;2/4
-    </a>
-    <a class="next" href="https://suraj.io/categories/notes/page/4/">Next&nbsp;4/4&nbsp;»
+      «&nbsp;Prev&nbsp;2/3
     </a>
   </nav>
 </footer>

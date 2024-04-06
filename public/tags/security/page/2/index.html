@@ -138,6 +138,11 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://suraj.io/search" title="Search 🔍">
+                    <span>Search 🔍</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://suraj.io/tags" title="Tags">
                     <span>Tags</span>
                 </a>
@@ -150,11 +155,6 @@ if (!doNotTrack) {
             <li>
                 <a href="https://suraj.io/series" title="Series">
                     <span>Series</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://suraj.io/search" title="Search 🔍">
-                    <span>Search 🔍</span>
                 </a>
             </li>
         </ul>
@@ -174,18 +174,6 @@ if (!doNotTrack) {
     </a>
   </h1>
 </header>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Mental models for understanding Kubernetes Pod Security Policy
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>PodSecurityPolicy (PSP) is hard to get right in the first attempt. There has never been a situation when I haven’t banged my head to get it working on the cluster. It is a frustrating experience, but it is one of the essential security features of Kubernetes. Some applications have started shipping the PSP configs with their helm charts, but if a helm chart does not ship a PSP config, it must be handcrafted by the cluster-admin to make the application work reliably in the cluster....</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-01-16 13:10:51 +0530 +0530'>January 16, 2021</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Mental models for understanding Kubernetes Pod Security Policy" href="https://suraj.io/post/mental-models-for-understanding-kubernetes-pod-security-policy/"></a>
-</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -253,6 +241,32 @@ $ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f4
   </div>
   <footer class="entry-footer"><span title='2019-06-10 11:57:07 +0530 +0530'>June 10, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Writing your own Seccomp profiles for Docker" href="https://suraj.io/post/docker-seccomp-manual/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Recreate Kubernetes CVE-2017-1002101
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using emptyDir volume mount using subpath. The official description goes as follows:
+In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host’s filesystem....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-01-14 01:00:51 +0530 +0530'>January 14, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Recreate Kubernetes CVE-2017-1002101" href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Add new Node to k8s cluster with Bootstrap token
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>NOTE: There is an updated version of this blog here.
+Few days back I wrote a blog about adding new node to the cluster using the static token file. The problem with that approach is that you need to restart kube-apiserver providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like secrets....</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-10-24 01:00:51 +0530 +0530'>October 24, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Add new Node to k8s cluster with Bootstrap token" href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

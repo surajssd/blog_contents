@@ -138,6 +138,11 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://suraj.io/search" title="Search 🔍">
+                    <span>Search 🔍</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://suraj.io/tags" title="Tags">
                     <span>Tags</span>
                 </a>
@@ -150,11 +155,6 @@ if (!doNotTrack) {
             <li>
                 <a href="https://suraj.io/series" title="Series">
                     <span>Series</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://suraj.io/search" title="Search 🔍">
-                    <span>Search 🔍</span>
                 </a>
             </li>
         </ul>
@@ -255,12 +255,22 @@ sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ su
   <footer class="entry-footer"><span title='2017-03-15 14:16:43 +0530 +0530'>March 15, 2017</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Packaging &#39;kompose&#39; for centos paas sig" href="https://suraj.io/post/packaging-kompose-for-centos-paas-sig/"></a>
 </article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="next" href="https://suraj.io/tags/fedora/page/2/">Next&nbsp;2/2&nbsp;»
-    </a>
-  </nav>
-</footer>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
+Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
+Starting the environment:
+docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
+# Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github....</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-03-14 00:31:57 +0530 +0530'>March 14, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package" href="https://suraj.io/post/test-kompose/"></a>
+</article>
     </main>
     
 <footer class="footer">

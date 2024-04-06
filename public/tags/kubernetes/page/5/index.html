@@ -138,6 +138,11 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://suraj.io/search" title="Search 🔍">
+                    <span>Search 🔍</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://suraj.io/tags" title="Tags">
                     <span>Tags</span>
                 </a>
@@ -150,11 +155,6 @@ if (!doNotTrack) {
             <li>
                 <a href="https://suraj.io/series" title="Series">
                     <span>Series</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://suraj.io/search" title="Search 🔍">
-                    <span>Search 🔍</span>
                 </a>
             </li>
         </ul>
@@ -174,60 +174,6 @@ if (!doNotTrack) {
     </a>
   </h1>
 </header>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">PodSecurityPolicy on existing Kubernetes clusters
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I enabled PodSecurityPolicy on a minikube cluster by appending PodSecurityPolicy to the apiserver flag in minikube like this:
---extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\ LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\ NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\ ResourceQuota,PodSecurityPolicy Ideally when you have PSP enabled and if you don’t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.
-$ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h Which got me thinking what is wrong with the way PSPs work....</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-10-23 00:00:51 +0530 +0530'>October 23, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to PodSecurityPolicy on existing Kubernetes clusters" href="https://suraj.io/post/psp-on-existing-cluster/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Road to CKA
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I passed CKA exam with 92% marks on 19th October 2018.
-A lot of folks are curious about how to prepare and what resources to follow. Here is my list of things to do and list of resources that might help you on successful CKA exam.
-The duration of exam is three hours, which is enough time if you do good practice. The exam is pretty straight forward and tests your Kubernetes hands-on knowledge, so whatever you read please try to do it on a real cluster....</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-10-21 00:00:51 +0530 +0530'>October 21, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Road to CKA" href="https://suraj.io/post/road-to-cka/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Add new Node to k8s cluster with cert rotation
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>The setup here is created by following Kubernetes the Hard Way by Kelsey Hightower. So if you are following along in this then do all the setup till the step Bootstrapping the Kubernetes Worker Nodes. In this just don’t start the kubelet, start other services like containerd and kube-proxy.
-master node Following the docs of TLS Bootstrapping, let’s first create the token authentication file. Create a file with following content:...</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-10-16 01:00:51 +0530 +0530'>October 16, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Add new Node to k8s cluster with cert rotation" href="https://suraj.io/post/add-new-k8s-node-cert-rotate/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Adding new worker to existing Kubernetes cluster
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>To setup a multi-node Kubernetes cluster just run this script and you will have a cluster with 3 masters and 3 workers.
-$ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &lt;none&gt; 1h v1.11.2 192.168.199.20 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &lt;none&gt; 1h v1.11.2 192.168.199.21 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &lt;none&gt; 1h v1.11.2 192.168.199.22 &lt;none&gt; Ubuntu 18....</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-09-23 01:00:51 +0530 +0530'>September 23, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Adding new worker to existing Kubernetes cluster" href="https://suraj.io/post/add-new-k8s-node-manually/"></a>
-</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -255,12 +201,80 @@ All the nodes are in ready state:...</p>
   <footer class="entry-footer"><span title='2018-09-10 01:00:51 +0530 +0530'>September 10, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to HostPath volumes and it&#39;s problems" href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"></a>
 </article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Access etcd in OpenShift origin
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
+If you are using minishift then get docker environment access of the minishift VM by running following commands.
+eval $(minishift docker-env) &amp;&amp; eval $(minishift oc-env) Exec into the container named origin that runs OpenShift and all the needed services.
+$ docker exec -it origin bash First install the etcdctl needed to talk to etcd....</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-07-11 01:00:51 +0530 +0530'>July 11, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Access etcd in OpenShift origin" href="https://suraj.io/post/accessing-oc-cluster-up-etcd/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Change namespaces in Kubernetes
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>There is no easy way to change namespace in Kubernetes using kubectl command line utility. But here are some commands that you can alias in your bashrc file so that it’s just a single command that you can use to change the namespace in the Kubernetes cluster.
+Change namespace Let’s see step by step what goes in to change the namespace. So the first step is to find the context....</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-07-02 08:00:51 +0530 +0530'>July 2, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Change namespaces in Kubernetes" href="https://suraj.io/post/changing-k8s-ns/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Prometheus with existing application on OpenShift
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.
+Requirements Setting up cluster I have done it using the oc cluster up, read about how to do this here. You could also setup a local OpenShift cluster by running minishift, read about setting up minishift here.
+Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge....</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-04-04 08:00:51 +0530 +0530'>April 4, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Prometheus with existing application on OpenShift" href="https://suraj.io/post/using-prometheus/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Using private container registries from minikube
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
+On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry....</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-10-06 19:32:33 +0530 +0530'>October 6, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Using private container registries from minikube" href="https://suraj.io/post/private-registry-from-minikube/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Static Pods using Kubelet on Fedora
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.
+This blog is only replacement of section Install the Standalone Kubelet in tutorial....</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-09-23 13:10:14 +0530 +0530'>September 23, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Static Pods using Kubelet on Fedora" href="https://suraj.io/post/static-pods/"></a>
+</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://suraj.io/tags/kubernetes/page/4/">
-      «&nbsp;Prev&nbsp;4/8
+      «&nbsp;Prev&nbsp;4/7
     </a>
-    <a class="next" href="https://suraj.io/tags/kubernetes/page/6/">Next&nbsp;6/8&nbsp;»
+    <a class="next" href="https://suraj.io/tags/kubernetes/page/6/">Next&nbsp;6/7&nbsp;»
     </a>
   </nav>
 </footer>

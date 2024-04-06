@@ -153,6 +153,11 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://suraj.io/search" title="Search 🔍">
+                    <span>Search 🔍</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://suraj.io/tags" title="Tags">
                     <span>Tags</span>
                 </a>
@@ -165,11 +170,6 @@ if (!doNotTrack) {
             <li>
                 <a href="https://suraj.io/series" title="Series">
                     <span>Series</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://suraj.io/search" title="Search 🔍">
-                    <span>Search 🔍</span>
                 </a>
             </li>
         </ul>
@@ -192,95 +192,102 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Capabilities on executables
+    <h2 class="entry-hint-parent">Recreate Kubernetes CVE-2017-1002101
     </h2>
   </header>
   <div class="entry-content">
-    <p>File capabilities allow users to execute programs with higher privileges. Best example is network utility ping.
-A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn’t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.
-$ getcap `which ping` /usr/bin/ping = cap_net_admin,cap_net_raw&#43;p Which normally works as follows:
-$ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1....</p>
+    <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using emptyDir volume mount using subpath. The official description goes as follows:
+In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host’s filesystem....</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-25 15:15:07 +0530 +0530'>June 25, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Capabilities on executables" href="https://suraj.io/post/linux-cap-note/"></a>
+  <footer class="entry-footer"><span title='2019-01-14 01:00:51 +0530 +0530'>January 14, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Recreate Kubernetes CVE-2017-1002101" href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Root user inside container is root on the host
+    <h2 class="entry-hint-parent">Cobra and Persistentflags gotchas
     </h2>
   </header>
   <div class="entry-content">
-    <p>Here are simple steps that you can follow to prove that the root user inside container is also root on the host. And how to mitigate this.
-Root in container, root on host I have a host with docker daemon running on it. I start a normal container on it with sleep process as PID1. See in the following output that the container clever_lalande started with sleep process.
-$ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &#34;sleep 9999&#34; 12 seconds ago Up 11 seconds clever_lalande Now let’s find out the process sleep on the host....</p>
+    <p>If you are using cobra cmd line library for golang applications and it’s PersistentFlags and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.
+All the code referenced here can be found here https://github....</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-25 11:57:07 +0530 +0530'>June 25, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Root user inside container is root on the host" href="https://suraj.io/post/root-in-container-root-on-host/"></a>
+  <footer class="entry-footer"><span title='2019-01-04 01:00:51 +0530 +0530'>January 4, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Cobra and Persistentflags gotchas" href="https://suraj.io/post/cobra-persistent-flag/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Project specific scripts
+    <h2 class="entry-hint-parent">Old laptop setup reference
     </h2>
   </header>
   <div class="entry-content">
-    <p>There are always scripts that you write to automate some mundane tasks. And then you put that script in a directory that is in your PATH. But what this does is that it pollutes your system global PATH and shows up in places you wouldn’t want it to be in.
-I was struggling with this issue for a while and struggling to get a proper solution. But there is a very simple and clever trick to solve this problem....</p>
+    <p>I have this old PC Dell Inspiron 1525 with 2GB RAM and 32 bit dual core processor and I wanted to install fedora on it, but I cam accross few problems which I am documenting for further reference.
+Wifi device not detected The wifi drivers are not loaded by default, so followed this blog, basically do following:
+export FIRMWARE_INSTALL_DIR=&#34;/lib/firmware&#34; wget http://mirror2.openwrt.org/sources/broadcom-wl-5.100.138.tar.bz2 tar xjf broadcom-wl-5.100.138.tar.bz2 cd broadcom-wl-5.100.138/linux/ sudo b43-fwcutter -w /lib/firmware wl_apsta....</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-23 11:57:07 +0530 +0530'>June 23, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Project specific scripts" href="https://suraj.io/post/project-specific-scripts/"></a>
+  <footer class="entry-footer"><span title='2018-12-30 01:00:51 +0530 +0530'>December 30, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Old laptop setup reference" href="https://suraj.io/post/old-laptop-setup/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Copying files to container the generic way
+    <h2 class="entry-hint-parent">Add new Node to k8s cluster with Bootstrap token
     </h2>
   </header>
   <div class="entry-content">
-    <p>This blog shows you how you can copy stuff from your host machine to the running container without the docker cp command that we usually use.
-Steps in text Here I have a script on the host, which looks following:
-#!/bin/bash tput bold echo &#34;OS Information:&#34; tput sgr0 echo cat /etc/os-release After running which looks like following:
-$ ls script.sh $ ./script.sh OS Information: NAME=&#34;Flatcar Linux by Kinvolk&#34; ID=flatcar ID_LIKE=coreos VERSION=2079....</p>
+    <p>NOTE: There is an updated version of this blog here.
+Few days back I wrote a blog about adding new node to the cluster using the static token file. The problem with that approach is that you need to restart kube-apiserver providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like secrets....</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-21 11:57:07 +0530 +0530'>June 21, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Copying files to container the generic way" href="https://suraj.io/post/copy-to-container-without-docker-cp/"></a>
+  <footer class="entry-footer"><span title='2018-10-24 01:00:51 +0530 +0530'>October 24, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Add new Node to k8s cluster with Bootstrap token" href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Writing your own Seccomp profiles for Docker
+    <h2 class="entry-hint-parent">PodSecurityPolicy on existing Kubernetes clusters
     </h2>
   </header>
   <div class="entry-content">
-    <p>What is Seccomp? A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls....</p>
+    <p>I enabled PodSecurityPolicy on a minikube cluster by appending PodSecurityPolicy to the apiserver flag in minikube like this:
+--extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\ LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\ NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\ ResourceQuota,PodSecurityPolicy Ideally when you have PSP enabled and if you don’t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.
+$ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h Which got me thinking what is wrong with the way PSPs work....</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-10 11:57:07 +0530 +0530'>June 10, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Writing your own Seccomp profiles for Docker" href="https://suraj.io/post/docker-seccomp-manual/"></a>
+  <footer class="entry-footer"><span title='2018-10-23 00:00:51 +0530 +0530'>October 23, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to PodSecurityPolicy on existing Kubernetes clusters" href="https://suraj.io/post/psp-on-existing-cluster/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Kubernetes Bangalore March 2019 Event Report
+    <h2 class="entry-hint-parent">Road to CKA
     </h2>
   </header>
   <div class="entry-content">
-    <p>The Kubernetes Bangalore Meetup was organized at Arvind Internet on Feb 16th 2019. The agenda for the meetup was to teach Kubernetes to the beginners.
-Meetup agenda can be found here.
-The moments from Meetup:
-We go online in sometime here https://t.co/FkwgOx0Tm4
-— Kubernetes Bangalore (@k8sBLR) March 16, 2019 .@pmishra1598 kick started the Meetup by explaining what #Kubernetes is! Currently clarifying what a pod is. pic.twitter.com/Ny7bN9c62x
-— Kubernetes Bangalore (@k8sBLR) March 16, 2019 Huge turnout at today&#39;s meetup it&#39;s on 🔥🔥 pic....</p>
+    <p>I passed CKA exam with 92% marks on 19th October 2018.
+A lot of folks are curious about how to prepare and what resources to follow. Here is my list of things to do and list of resources that might help you on successful CKA exam.
+The duration of exam is three hours, which is enough time if you do good practice. The exam is pretty straight forward and tests your Kubernetes hands-on knowledge, so whatever you read please try to do it on a real cluster....</p>
   </div>
-  <footer class="entry-footer"><span title='2019-03-21 01:00:51 +0530 +0530'>March 21, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Kubernetes Bangalore March 2019 Event Report" href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/"></a>
+  <footer class="entry-footer"><span title='2018-10-21 00:00:51 +0530 +0530'>October 21, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Road to CKA" href="https://suraj.io/post/road-to-cka/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">How to disable your Chrome Ctrl &#43; W keybinding
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I am about to attempt the CKA exam and it has a browser based terminal. And I am used to this terminal shortcut Ctrl &#43; W which deletes a word. But the same shortcut in browser can close a tab. Since this exam is combination of both I am afraid I might close my exam tab while deleting a word in terminal. Now the only solution to this is disabling the shortcut in chrome....</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-10-16 22:00:51 +0530 +0530'>October 16, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to How to disable your Chrome Ctrl &#43; W keybinding" href="https://suraj.io/post/disable-ctrl-w/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://suraj.io/post/page/7/">
-      «&nbsp;Prev&nbsp;7/15
+      «&nbsp;Prev&nbsp;7/13
     </a>
-    <a class="next" href="https://suraj.io/post/page/9/">Next&nbsp;9/15&nbsp;»
+    <a class="next" href="https://suraj.io/post/page/9/">Next&nbsp;9/13&nbsp;»
     </a>
   </nav>
 </footer>

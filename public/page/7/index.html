@@ -153,6 +153,11 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://suraj.io/search" title="Search 🔍">
+                    <span>Search 🔍</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://suraj.io/tags" title="Tags">
                     <span>Tags</span>
                 </a>
@@ -167,11 +172,6 @@ if (!doNotTrack) {
                     <span>Series</span>
                 </a>
             </li>
-            <li>
-                <a href="https://suraj.io/search" title="Search 🔍">
-                    <span>Search 🔍</span>
-                </a>
-            </li>
         </ul>
     </nav>
 </header>
@@ -179,88 +179,108 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Book Review: Getting Things Done
+    <h2 class="entry-hint-parent">Capabilities on executables
     </h2>
   </header>
   <div class="entry-content">
-    <p>Introduction Recently I completed the book called Getting Things Done: The Art of Stress-free Productivity by David Allen. I read the book on my kindle e-reader device, and as the name suggests, it is a self-help category book and about three hundred pages long.
-The book is an extraordinary walkthrough of how to set up a system that will help you navigate your daily tasks without missing any of them. This system then enables you to patch up the crevices of your memory from which day-to-day tasks fall through....</p>
+    <p>File capabilities allow users to execute programs with higher privileges. Best example is network utility ping.
+A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn’t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.
+$ getcap `which ping` /usr/bin/ping = cap_net_admin,cap_net_raw&#43;p Which normally works as follows:
+$ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1....</p>
   </div>
-  <footer class="entry-footer"><span title='2020-07-30 16:00:07 +0530 +0530'>July 30, 2020</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Book Review: Getting Things Done" href="https://suraj.io/post/book-review-getting-things-done/"></a>
+  <footer class="entry-footer"><span title='2019-06-25 15:15:07 +0530 +0530'>June 25, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Capabilities on executables" href="https://suraj.io/post/linux-cap-note/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Framework for managing random scripts and binaries
+    <h2 class="entry-hint-parent">Root user inside container is root on the host
     </h2>
   </header>
   <div class="entry-content">
-    <p>I always had a conundrum about how to manage the scripts and binaries downloaded randomly from the internet. One way is to put them in the global PATH directory like /usr/local/bin, but I am sceptical about it.
-There are a couple of things I wanted to solve. How do you update these scripts and binaries? How to do it consistently across all my machines? How to make it easier to have my setup available on any new Linux machine(or even container) I setup?...</p>
+    <p>Here are simple steps that you can follow to prove that the root user inside container is also root on the host. And how to mitigate this.
+Root in container, root on host I have a host with docker daemon running on it. I start a normal container on it with sleep process as PID1. See in the following output that the container clever_lalande started with sleep process.
+$ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &#34;sleep 9999&#34; 12 seconds ago Up 11 seconds clever_lalande Now let’s find out the process sleep on the host....</p>
   </div>
-  <footer class="entry-footer"><span title='2020-07-18 19:00:51 +0530 +0530'>July 18, 2020</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Framework for managing random scripts and binaries" href="https://suraj.io/post/framework-for-scripts-and-binaries/"></a>
+  <footer class="entry-footer"><span title='2019-06-25 11:57:07 +0530 +0530'>June 25, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Root user inside container is root on the host" href="https://suraj.io/post/root-in-container-root-on-host/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Opinion: Contemporary world vis-à-vis 1984 by George Orwell
+    <h2 class="entry-hint-parent">Project specific scripts
     </h2>
   </header>
   <div class="entry-content">
-    <p>The book 1984 was written by Geroge Orwell in 1949 as an attempt to demonstrate how democraries can also fall into the trap of totalitarianism. The story in the book showcases a dystopian world in the year 1984, where there are only three countries in the world, and all of them are in a constant power struggle. All three countries have a totalitarian, oligarchic government of their own. But the story in the book is from a country called Oceania, which is ruled by a party called Ingsoc or English Socialism....</p>
+    <p>There are always scripts that you write to automate some mundane tasks. And then you put that script in a directory that is in your PATH. But what this does is that it pollutes your system global PATH and shows up in places you wouldn’t want it to be in.
+I was struggling with this issue for a while and struggling to get a proper solution. But there is a very simple and clever trick to solve this problem....</p>
   </div>
-  <footer class="entry-footer"><span title='2020-07-05 11:30:07 +0530 +0530'>July 5, 2020</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Opinion: Contemporary world vis-à-vis 1984 by George Orwell" href="https://suraj.io/post/opinion-contemporary-world-1984-by-george-orwell/"></a>
+  <footer class="entry-footer"><span title='2019-06-23 11:57:07 +0530 +0530'>June 23, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Project specific scripts" href="https://suraj.io/post/project-specific-scripts/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Book Review of Einstein: His Life and Universe
+    <h2 class="entry-hint-parent">Copying files to container the generic way
     </h2>
   </header>
   <div class="entry-content">
-    <p>I recently finished this book Einstein: His Life and Universe by Walter Isaacson. And here are my thoughts on the book.
-It’s a book that brings the image of Einstein to life.
-Although the book is a biography, it makes a reasonable effort in explaining the physics behind his theories of relativity, photoelectric effect and quantum physics. Physics in the book can be intimidating to someone coming from the non-Scientific background....</p>
+    <p>This blog shows you how you can copy stuff from your host machine to the running container without the docker cp command that we usually use.
+Steps in text Here I have a script on the host, which looks following:
+#!/bin/bash tput bold echo &#34;OS Information:&#34; tput sgr0 echo cat /etc/os-release After running which looks like following:
+$ ls script.sh $ ./script.sh OS Information: NAME=&#34;Flatcar Linux by Kinvolk&#34; ID=flatcar ID_LIKE=coreos VERSION=2079....</p>
   </div>
-  <footer class="entry-footer"><span title='2020-06-20 11:30:07 +0530 +0530'>June 20, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Book Review of Einstein: His Life and Universe" href="https://suraj.io/post/book-review-einstein/"></a>
+  <footer class="entry-footer"><span title='2019-06-21 11:57:07 +0530 +0530'>June 21, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Copying files to container the generic way" href="https://suraj.io/post/copy-to-container-without-docker-cp/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Watch Container Traffic Without Exec
+    <h2 class="entry-hint-parent">Writing your own Seccomp profiles for Docker
     </h2>
   </header>
   <div class="entry-content">
-    <p>Introduction For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.
-But for the developers or operators of such applications, it is hard to debug. Since they lack essential tools or even bash for that matter, but the application’s debugging ability should not dictate its production deployment and compromise its security posture....</p>
+    <p>What is Seccomp? A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls....</p>
   </div>
-  <footer class="entry-footer"><span title='2020-06-06 20:30:07 +0530 +0530'>June 6, 2020</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Watch Container Traffic Without Exec" href="https://suraj.io/post/snoop-on-pod-traffic/"></a>
+  <footer class="entry-footer"><span title='2019-06-10 11:57:07 +0530 +0530'>June 10, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Writing your own Seccomp profiles for Docker" href="https://suraj.io/post/docker-seccomp-manual/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Enabling Seccomp on your Prometheus Operator and related Pods
+    <h2 class="entry-hint-parent">Kubernetes Bangalore March 2019 Event Report
     </h2>
   </header>
   <div class="entry-content">
-    <p>Seccomp helps us limit the system calls the process inside container can make. And PodSecurityPolicy is the way to enable it on pods in Kubernetes.
-Prometheus Operator Prometheus Operator makes it really easy to monitor your Kubernetes cluster. To deploy this behemoth, helm chart is the easiest way to do it.
-Almost all the pods that run as a part of Prometheus Operator viz. Prometheus Operator, Prometheus, Alertmanager, Grafana, Kube State Metrics don’t need to run with elevated privileges except Node Exporter....</p>
+    <p>The Kubernetes Bangalore Meetup was organized at Arvind Internet on Feb 16th 2019. The agenda for the meetup was to teach Kubernetes to the beginners.
+Meetup agenda can be found here.
+The moments from Meetup:
+We go online in sometime here https://t.co/FkwgOx0Tm4
+— Kubernetes Bangalore (@k8sBLR) March 16, 2019 .@pmishra1598 kick started the Meetup by explaining what #Kubernetes is! Currently clarifying what a pod is. pic.twitter.com/Ny7bN9c62x
+— Kubernetes Bangalore (@k8sBLR) March 16, 2019 Huge turnout at today&#39;s meetup it&#39;s on 🔥🔥 pic....</p>
   </div>
-  <footer class="entry-footer"><span title='2020-04-14 11:57:07 +0530 +0530'>April 14, 2020</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Enabling Seccomp on your Prometheus Operator and related Pods" href="https://suraj.io/post/seccomp-in-kube-state-metrics/"></a>
+  <footer class="entry-footer"><span title='2019-03-21 01:00:51 +0530 +0530'>March 21, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Kubernetes Bangalore March 2019 Event Report" href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Make static configs available for apiserver in minikube
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube’s --extra-config flag with apiserver.&lt;apiserver flag&gt;=&lt;value&gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
+--extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-01-20 01:00:51 +0530 +0530'>January 20, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Make static configs available for apiserver in minikube" href="https://suraj.io/post/apiserver-in-minikube-static-configs/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://suraj.io/page/6/">
-      «&nbsp;Prev&nbsp;6/15
+      «&nbsp;Prev&nbsp;6/13
     </a>
-    <a class="next" href="https://suraj.io/page/8/">Next&nbsp;8/15&nbsp;»
+    <a class="next" href="https://suraj.io/page/8/">Next&nbsp;8/13&nbsp;»
     </a>
   </nav>
 </footer>

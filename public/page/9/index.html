@@ -153,6 +153,11 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://suraj.io/search" title="Search 🔍">
+                    <span>Search 🔍</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://suraj.io/tags" title="Tags">
                     <span>Tags</span>
                 </a>
@@ -167,11 +172,6 @@ if (!doNotTrack) {
                     <span>Series</span>
                 </a>
             </li>
-            <li>
-                <a href="https://suraj.io/search" title="Search 🔍">
-                    <span>Search 🔍</span>
-                </a>
-            </li>
         </ul>
     </nav>
 </header>
@@ -179,89 +179,105 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Make static configs available for apiserver in minikube
+    <h2 class="entry-hint-parent">Add new Node to k8s cluster with cert rotation
     </h2>
   </header>
   <div class="entry-content">
-    <p>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube’s --extra-config flag with apiserver.&lt;apiserver flag&gt;=&lt;value&gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
---extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path....</p>
+    <p>The setup here is created by following Kubernetes the Hard Way by Kelsey Hightower. So if you are following along in this then do all the setup till the step Bootstrapping the Kubernetes Worker Nodes. In this just don’t start the kubelet, start other services like containerd and kube-proxy.
+master node Following the docs of TLS Bootstrapping, let’s first create the token authentication file. Create a file with following content:...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-01-20 01:00:51 +0530 +0530'>January 20, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Make static configs available for apiserver in minikube" href="https://suraj.io/post/apiserver-in-minikube-static-configs/"></a>
+  <footer class="entry-footer"><span title='2018-10-16 01:00:51 +0530 +0530'>October 16, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Add new Node to k8s cluster with cert rotation" href="https://suraj.io/post/add-new-k8s-node-cert-rotate/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Recreate Kubernetes CVE-2017-1002101
+    <h2 class="entry-hint-parent">Adding new worker to existing Kubernetes cluster
     </h2>
   </header>
   <div class="entry-content">
-    <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using emptyDir volume mount using subpath. The official description goes as follows:
-In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host’s filesystem....</p>
+    <p>To setup a multi-node Kubernetes cluster just run this script and you will have a cluster with 3 masters and 3 workers.
+$ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &lt;none&gt; 1h v1.11.2 192.168.199.20 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &lt;none&gt; 1h v1.11.2 192.168.199.21 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &lt;none&gt; 1h v1.11.2 192.168.199.22 &lt;none&gt; Ubuntu 18....</p>
   </div>
-  <footer class="entry-footer"><span title='2019-01-14 01:00:51 +0530 +0530'>January 14, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Recreate Kubernetes CVE-2017-1002101" href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"></a>
+  <footer class="entry-footer"><span title='2018-09-23 01:00:51 +0530 +0530'>September 23, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Adding new worker to existing Kubernetes cluster" href="https://suraj.io/post/add-new-k8s-node-manually/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Cobra and Persistentflags gotchas
+    <h2 class="entry-hint-parent">Single node Kubernetes Cluster on Fedora with SELinux enabled
     </h2>
   </header>
   <div class="entry-content">
-    <p>If you are using cobra cmd line library for golang applications and it’s PersistentFlags and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.
-All the code referenced here can be found here https://github....</p>
+    <p>Start a single node fedora machine, using whatever method but I have used this Vagrantfile to do it:
+# -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(&#34;2&#34;) do |config| config.vm.define &#34;fedora&#34; do |fedora| fedora.vm.box = &#34;fedora/28-cloud-base&#34; config.vm.hostname = &#34;fedora&#34; end config.vm.provider &#34;virtualbox&#34; do |virtualbox, override| virtualbox.memory = 4096 virtualbox.cpus = 4 end config.vm.provision &#34;shell&#34;, privileged: false, inline: &lt;&lt;-SHELL echo &#39;127.0.0.1 localhost&#39; | cat - /etc/hosts &gt; temp &amp;&amp; sudo mv temp /etc/hosts SHELL end Now start it and ssh into it:...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-01-04 01:00:51 +0530 +0530'>January 4, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Cobra and Persistentflags gotchas" href="https://suraj.io/post/cobra-persistent-flag/"></a>
+  <footer class="entry-footer"><span title='2018-09-11 01:00:51 +0530 +0530'>September 11, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Single node Kubernetes Cluster on Fedora with SELinux enabled" href="https://suraj.io/post/single-node-k8s-fedora-selinux/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Old laptop setup reference
+    <h2 class="entry-hint-parent">HostPath volumes and it&#39;s problems
     </h2>
   </header>
   <div class="entry-content">
-    <p>I have this old PC Dell Inspiron 1525 with 2GB RAM and 32 bit dual core processor and I wanted to install fedora on it, but I cam accross few problems which I am documenting for further reference.
-Wifi device not detected The wifi drivers are not loaded by default, so followed this blog, basically do following:
-export FIRMWARE_INSTALL_DIR=&#34;/lib/firmware&#34; wget http://mirror2.openwrt.org/sources/broadcom-wl-5.100.138.tar.bz2 tar xjf broadcom-wl-5.100.138.tar.bz2 cd broadcom-wl-5.100.138/linux/ sudo b43-fwcutter -w /lib/firmware wl_apsta....</p>
+    <p>This post will demonstrate how Kubernetes HostPath volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.
+I have a 3-master and 3-node cluster and setup using this script, running in a Vagrant environment.
+All the nodes are in ready state:...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-12-30 01:00:51 +0530 +0530'>December 30, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Old laptop setup reference" href="https://suraj.io/post/old-laptop-setup/"></a>
+  <footer class="entry-footer"><span title='2018-09-10 01:00:51 +0530 +0530'>September 10, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to HostPath volumes and it&#39;s problems" href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Add new Node to k8s cluster with Bootstrap token
+    <h2 class="entry-hint-parent">HTTPS during development using &#39;mkcert&#39;
     </h2>
   </header>
   <div class="entry-content">
-    <p>NOTE: There is an updated version of this blog here.
-Few days back I wrote a blog about adding new node to the cluster using the static token file. The problem with that approach is that you need to restart kube-apiserver providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like secrets....</p>
+    <p>It’s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
+Once installed just run:
+$ mkcert -install Created a new local CA at &#34;/home/hummer/.local/share/mkcert&#34; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-10-24 01:00:51 +0530 +0530'>October 24, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Add new Node to k8s cluster with Bootstrap token" href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/"></a>
+  <footer class="entry-footer"><span title='2018-08-14 01:00:51 +0530 +0530'>August 14, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to HTTPS during development using &#39;mkcert&#39;" href="https://suraj.io/post/mkcert-using-python-http-server/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">PodSecurityPolicy on existing Kubernetes clusters
+    <h2 class="entry-hint-parent">Golang struct tags gotchas
     </h2>
   </header>
   <div class="entry-content">
-    <p>I enabled PodSecurityPolicy on a minikube cluster by appending PodSecurityPolicy to the apiserver flag in minikube like this:
---extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\ LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\ NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\ ResourceQuota,PodSecurityPolicy Ideally when you have PSP enabled and if you don’t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.
-$ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h Which got me thinking what is wrong with the way PSPs work....</p>
+    <p>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
+type PodStatus struct { Status string `json: &#34;,status&#34;` } If you run go vet on this piece of code you will get following error:
+$ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &#34;,status&#34;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value Now this does not tell us what is wrong with the struct tag, json: &#34;,status&#34;....</p>
   </div>
-  <footer class="entry-footer"><span title='2018-10-23 00:00:51 +0530 +0530'>October 23, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to PodSecurityPolicy on existing Kubernetes clusters" href="https://suraj.io/post/psp-on-existing-cluster/"></a>
+  <footer class="entry-footer"><span title='2018-08-12 01:00:51 +0530 +0530'>August 12, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Golang struct tags gotchas" href="https://suraj.io/post/golang-struct-tags-space/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Access etcd in OpenShift origin
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
+If you are using minishift then get docker environment access of the minishift VM by running following commands.
+eval $(minishift docker-env) &amp;&amp; eval $(minishift oc-env) Exec into the container named origin that runs OpenShift and all the needed services.
+$ docker exec -it origin bash First install the etcdctl needed to talk to etcd....</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-07-11 01:00:51 +0530 +0530'>July 11, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Access etcd in OpenShift origin" href="https://suraj.io/post/accessing-oc-cluster-up-etcd/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://suraj.io/page/8/">
-      «&nbsp;Prev&nbsp;8/15
+      «&nbsp;Prev&nbsp;8/13
     </a>
-    <a class="next" href="https://suraj.io/page/10/">Next&nbsp;10/15&nbsp;»
+    <a class="next" href="https://suraj.io/page/10/">Next&nbsp;10/13&nbsp;»
     </a>
   </nav>
 </footer>

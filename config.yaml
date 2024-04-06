@@ -1,6 +1,6 @@
 baseURL: "https://suraj.io"
 title: "Suraj Deshmukh"
-paginate: 6
+paginate: 7
 # theme:
 # - PaperMod
 
@@ -37,17 +37,17 @@ languages:
       - name: Archives
         url: archives
         weight: 3
-      - name: Tags
-        url: tags
-        weight: 4
-      - name: Categories
-        url: categories
-        weight: 5
-      - name: Series
-        url: series
-        weight: 6
       - name: Search 🔍
         url: search
+        weight: 4
+      - name: Tags
+        url: tags
+        weight: 5
+      - name: Categories
+        url: categories
+        weight: 6
+      - name: Series
+        url: series
         weight: 7
 
 outputs:

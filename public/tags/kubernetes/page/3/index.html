@@ -138,6 +138,11 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://suraj.io/search" title="Search 🔍">
+                    <span>Search 🔍</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://suraj.io/tags" title="Tags">
                     <span>Tags</span>
                 </a>
@@ -150,11 +155,6 @@ if (!doNotTrack) {
             <li>
                 <a href="https://suraj.io/series" title="Series">
                     <span>Series</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://suraj.io/search" title="Search 🔍">
-                    <span>Search 🔍</span>
                 </a>
             </li>
         </ul>
@@ -174,31 +174,6 @@ if (!doNotTrack) {
     </a>
   </h1>
 </header>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Exec in container environment
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>If you use exec in your container script, then the container or Kubernetes pod might exit after the command that is exec-ed into has exited. But if that’s what you wanted, then it’s okay. This blog tries to explain how to pass the signals to the applications, how they work differently when invoked uniquely and what to do if the application does handle them.
-What are the “Signals”? Signals are messages one process can send to another process, mostly used in UNIX like operating systems....</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-01-23 10:10:41 +0530 +0530'>January 23, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Exec in container environment" href="https://suraj.io/post/2021/01/shell-exec/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Mental models for understanding Kubernetes Pod Security Policy
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>PodSecurityPolicy (PSP) is hard to get right in the first attempt. There has never been a situation when I haven’t banged my head to get it working on the cluster. It is a frustrating experience, but it is one of the essential security features of Kubernetes. Some applications have started shipping the PSP configs with their helm charts, but if a helm chart does not ship a PSP config, it must be handcrafted by the cluster-admin to make the application work reliably in the cluster....</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-01-16 13:10:51 +0530 +0530'>January 16, 2021</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Mental models for understanding Kubernetes Pod Security Policy" href="https://suraj.io/post/mental-models-for-understanding-kubernetes-pod-security-policy/"></a>
-</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -251,12 +226,56 @@ Prerequisites/Assumptions This blog assumes that you have a Prometheus running t
   <footer class="entry-footer"><span title='2020-07-31 19:00:51 +0530 +0530'>July 31, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to How to backup and restore Prometheus?" href="https://suraj.io/post/how-to-backup-and-restore-prometheus/"></a>
 </article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Watch Container Traffic Without Exec
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Introduction For the reasons of security, many container deployments nowadays run their workloads in a scratch based image. This form of implementation helps reduce the attack surface since there is no shell to gain access to, especially if someone were to break out of the application.
+But for the developers or operators of such applications, it is hard to debug. Since they lack essential tools or even bash for that matter, but the application’s debugging ability should not dictate its production deployment and compromise its security posture....</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-06-06 20:30:07 +0530 +0530'>June 6, 2020</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Watch Container Traffic Without Exec" href="https://suraj.io/post/snoop-on-pod-traffic/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Enabling Seccomp on your Prometheus Operator and related Pods
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Seccomp helps us limit the system calls the process inside container can make. And PodSecurityPolicy is the way to enable it on pods in Kubernetes.
+Prometheus Operator Prometheus Operator makes it really easy to monitor your Kubernetes cluster. To deploy this behemoth, helm chart is the easiest way to do it.
+Almost all the pods that run as a part of Prometheus Operator viz. Prometheus Operator, Prometheus, Alertmanager, Grafana, Kube State Metrics don’t need to run with elevated privileges except Node Exporter....</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-04-14 11:57:07 +0530 +0530'>April 14, 2020</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Enabling Seccomp on your Prometheus Operator and related Pods" href="https://suraj.io/post/seccomp-in-kube-state-metrics/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Kubernetes Bangalore March 2019 Event Report
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The Kubernetes Bangalore Meetup was organized at Arvind Internet on Feb 16th 2019. The agenda for the meetup was to teach Kubernetes to the beginners.
+Meetup agenda can be found here.
+The moments from Meetup:
+We go online in sometime here https://t.co/FkwgOx0Tm4
+— Kubernetes Bangalore (@k8sBLR) March 16, 2019 .@pmishra1598 kick started the Meetup by explaining what #Kubernetes is! Currently clarifying what a pod is. pic.twitter.com/Ny7bN9c62x
+— Kubernetes Bangalore (@k8sBLR) March 16, 2019 Huge turnout at today&#39;s meetup it&#39;s on 🔥🔥 pic....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-03-21 01:00:51 +0530 +0530'>March 21, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Kubernetes Bangalore March 2019 Event Report" href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/"></a>
+</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://suraj.io/tags/kubernetes/page/2/">
-      «&nbsp;Prev&nbsp;2/8
+      «&nbsp;Prev&nbsp;2/7
     </a>
-    <a class="next" href="https://suraj.io/tags/kubernetes/page/4/">Next&nbsp;4/8&nbsp;»
+    <a class="next" href="https://suraj.io/tags/kubernetes/page/4/">Next&nbsp;4/7&nbsp;»
     </a>
   </nav>
 </footer>

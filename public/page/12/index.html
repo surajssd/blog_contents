@@ -153,6 +153,11 @@ if (!doNotTrack) {
                 </a>
             </li>
             <li>
+                <a href="https://suraj.io/search" title="Search 🔍">
+                    <span>Search 🔍</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://suraj.io/tags" title="Tags">
                     <span>Tags</span>
                 </a>
@@ -167,11 +172,6 @@ if (!doNotTrack) {
                     <span>Series</span>
                 </a>
             </li>
-            <li>
-                <a href="https://suraj.io/search" title="Search 🔍">
-                    <span>Search 🔍</span>
-                </a>
-            </li>
         </ul>
     </nav>
 </header>
@@ -179,97 +179,106 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Methods that satisfy interfaces in golang
+    <h2 class="entry-hint-parent">Enabling local development with Kubernetes
     </h2>
   </header>
   <div class="entry-content">
-    <p>Pointer receiver For a struct User with a method Work with pointer receiver.
-type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &#34;has worked for&#34;, u.Period, &#34;hrs.&#34;) } func main() { uval := User{&#34;UserVal&#34;, 5} uval.Work() pval := &amp;User{&#34;UserPtr&#34;, 6} pval.Work() } See on go playground.
-output:
-UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval....</p>
+    <p>I want to show how you can enable Kubernetes in your day to day development workflow. So that you get the feel of production deployment locally from day 1.
+I have a flask application which I am working on. The basic directory structure looks like this:
+$ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo foo 201 Apr 23 16:55 docker-compose.yml -rw-rw-r--. 1 foo foo 363 Apr 23 16:21 Dockerfile -rwxrwxr-x....</p>
   </div>
-  <footer class="entry-footer"><span title='2018-02-23 08:00:51 +0530 +0530'>February 23, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Methods that satisfy interfaces in golang" href="https://suraj.io/post/golang-methods-interfaces/"></a>
+  <footer class="entry-footer"><span title='2017-04-23 15:57:07 +0530 +0530'>April 23, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Enabling local development with Kubernetes" href="https://suraj.io/post/enabling-local-development-with-k8s/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">vscode Shortcuts
+    <h2 class="entry-hint-parent">Quick PV for local Kubernetes cluster
     </h2>
   </header>
   <div class="entry-content">
-    <p>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
-Shortcuts Toggle side bar Ctrl &#43; B
-Project explorer in side bar Ctrl &#43; Shift &#43; E
-Project wide search in side bar Ctrl &#43; Shift &#43; F
-Source control in side bar Ctrl &#43; Shift &#43; G
-Copy entire line Ctrl &#43; C (without any selection)
-Delete entire line Ctrl &#43; Shift &#43; K...</p>
+    <p>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
+Enter into the machine running k8s If using minikube you can do
+minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-02-22 08:00:51 +0530 +0530'>February 22, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to vscode Shortcuts" href="https://suraj.io/post/vscode-shortcuts/"></a>
+  <footer class="entry-footer"><span title='2017-04-18 23:56:15 +0530 +0530'>April 18, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Quick PV for local Kubernetes cluster" href="https://suraj.io/post/quick-pv-for-local-k8s/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Using private container registries from minikube
+    <h2 class="entry-hint-parent">Bangalore Kubernetes Meetup April 2017
     </h2>
   </header>
   <div class="entry-content">
-    <p>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
-On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry....</p>
+    <p>Like many Saturday mornings, Red Hat Bangalore office was once again abuzz with enthusiasm on 8th of April, for hosting yet another successful chapter of Bangalore Kubernetes Meetup. The Meetup had a good turnaround of about 40 people who gave up on their early morning saturday sleep to attend it despite the sweltering hot season and in line were four awesome talks.
+Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc....</p>
   </div>
-  <footer class="entry-footer"><span title='2017-10-06 19:32:33 +0530 +0530'>October 6, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Using private container registries from minikube" href="https://suraj.io/post/private-registry-from-minikube/"></a>
+  <footer class="entry-footer"><span title='2017-04-08 14:31:33 +0530 +0530'>April 8, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Bangalore Kubernetes Meetup April 2017" href="https://suraj.io/post/blr-k8s-meetup-april-2017/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Static Pods using Kubelet on Fedora
+    <h2 class="entry-hint-parent">k8s on CRI-O - single node
     </h2>
   </header>
   <div class="entry-content">
-    <p>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.
-This blog is only replacement of section Install the Standalone Kubelet in tutorial....</p>
+    <p>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
+Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &#39;GOPATH=~/go&#39; &gt;&gt; ~/....</p>
   </div>
-  <footer class="entry-footer"><span title='2017-09-23 13:10:14 +0530 +0530'>September 23, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Static Pods using Kubelet on Fedora" href="https://suraj.io/post/static-pods/"></a>
+  <footer class="entry-footer"><span title='2017-04-08 00:11:37 +0530 +0530'>April 8, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to k8s on CRI-O - single node" href="https://suraj.io/post/using-crio-with-k8s-single-node/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Sharing Vagrant Box offline
+    <h2 class="entry-hint-parent">TODOs for new project
     </h2>
   </header>
   <div class="entry-content">
-    <p>If you have some box that was downloaded on your machine from Atlas but now you wanna share it on other machines and you don’t have internet to download it, how do you share it?
-You will need to export the box from machine that has it downloaded already. So on machine with boxes:
-$ vagrant box list centos/7 (libvirt, 1610.01) centos/7 (libvirt, 1704.01) fedora/25-cloud-base (libvirt, 20161122) fedora/26-cloud-base (libvirt, 20170705) I wanted to share fedora/26-cloud-base box to another machine....</p>
+    <p>When starting a new open source project, apart from coding following are the things that need to be done.
+Docs README LICENSE How to install? How to use? Code of conduct guidelines Copyright Issue template like .github in repo. Developer docs How to install for developer? Developer docs Contribution guidelines Team meetings info Team communication channels Issue label guidelines Coding standards Code placement doc, or something that explains the way code is ordered Design document Development Makefile Unit tests Functional tests Coverage check CI for automatic tests Distro based package This is just few things that I could think of, please suggest if you know more in comments....</p>
   </div>
-  <footer class="entry-footer"><span title='2017-09-18 10:43:46 +0530 +0530'>September 18, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Sharing Vagrant Box offline" href="https://suraj.io/post/move-vagrant-boxes/"></a>
+  <footer class="entry-footer"><span title='2017-03-26 18:19:15 +0530 +0530'>March 26, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to TODOs for new project" href="https://suraj.io/post/starting-a-new-opensource-project-requirements/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Add new Maps to Counter Strike
+    <h2 class="entry-hint-parent">rpm Notes
     </h2>
   </header>
   <div class="entry-content">
-    <p>If you are playing Counter Strike on Steam on linux you might be wondering how do I install new maps in the game. So here are steps to install maps.
-All the game maps for Counter Strike - Condition Zero are stored in following path:
-~/.local/share/Steam/steamapps/common/Half-Life/czero/maps Format of the map files is .bsp.
-So download the map files from over internet and then put in this location and now you should be able to see the maps in game....</p>
+    <p>This post will get you through all the steps needed for doing RPM packaging.
+Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG My Notes Start reading from: Fedora packager’s guide Some macros come from redhat-rpm-config and fedora-rpm-macros. $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch To see all macros on the system: $ rpm --showrc Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package $ rpm -qip ....</p>
   </div>
-  <footer class="entry-footer"><span title='2017-09-01 16:03:58 +0530 +0530'>September 1, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Add new Maps to Counter Strike" href="https://suraj.io/post/add-new-map-to-cs/"></a>
+  <footer class="entry-footer"><span title='2017-03-24 10:35:54 +0530 +0530'>March 24, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to rpm Notes" href="https://suraj.io/post/rpm-notes/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Git Notes
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Notes about using git.
+Tips and tricks Switch branches $ git checkout &lt;branch&gt; status $ git status -sb Show status in short format and also give branch info
+show $ git show Shows log message and diff about the commit you are on.
+log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go Get logs on file between line numbers.
+$ git log --graph --abbrev-commit Show graph in logs.
+commit $ git add -p Commit only parts of file....</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-03-21 22:03:48 +0530 +0530'>March 21, 2017</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Git Notes" href="https://suraj.io/post/git-notes/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://suraj.io/page/11/">
-      «&nbsp;Prev&nbsp;11/15
+      «&nbsp;Prev&nbsp;11/13
     </a>
-    <a class="next" href="https://suraj.io/page/13/">Next&nbsp;13/15&nbsp;»
+    <a class="next" href="https://suraj.io/page/13/">Next&nbsp;13/13&nbsp;»
     </a>
   </nav>
 </footer>
