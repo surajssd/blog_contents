@@ -177,6 +177,19 @@ if (!doNotTrack) {
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Recreate Kubernetes CVE-2017-1002101
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>A volume mount CVE was discovered in Kubernetes 1.9 and older which allowed access to node file system using emptyDir volume mount using subpath. The official description goes as follows:
+In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host’s filesystem....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-01-14 01:00:51 +0530 +0530'>January 14, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Recreate Kubernetes CVE-2017-1002101" href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Add new Node to k8s cluster with Bootstrap token
     </h2>
   </header>

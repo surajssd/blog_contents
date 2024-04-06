@@ -176,6 +176,21 @@ if (!doNotTrack) {
 </header>
 
 <article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png" alt="Config">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Mitigation of: Access Any Kubernetes Secret
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In the previous blog, we discussed how any user without RBAC access to a Kubernetes secret can use a trick to access that secret. To mitigate that problem, we will use a validating admission webhook. But before looking at what sorcery this validating admission webhook server is, let us understand how Kubernetes handles the API requests.
+What are admission controllers? All requests going to the Kubernetes API server go through the following four steps:...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-05-20 08:47:07 +0530 +0530'>May 20, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Mitigation of: Access Any Kubernetes Secret" href="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
 <figure class="entry-cover"><img loading="lazy" src="https://suraj.io/post/2021/05/access-k8s-secrets/forbidden.jpg" alt="Forbidden">
 </figure>
   <header class="entry-header">
@@ -248,25 +263,12 @@ You might wonder why this blog when one can go to the official documentation and
   <footer class="entry-footer"><span title='2021-01-29 22:02:41 +0530 +0530'>January 29, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Kubernetes Cluster using Kubeadm on Flatcar Container Linux" href="https://suraj.io/post/2021/01/kubeadm-flatcar/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Exec in container environment
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>If you use exec in your container script, then the container or Kubernetes pod might exit after the command that is exec-ed into has exited. But if that’s what you wanted, then it’s okay. This blog tries to explain how to pass the signals to the applications, how they work differently when invoked uniquely and what to do if the application does handle them.
-What are the “Signals”? Signals are messages one process can send to another process, mostly used in UNIX like operating systems....</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-01-23 10:10:41 +0530 +0530'>January 23, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Exec in container environment" href="https://suraj.io/post/2021/01/shell-exec/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://suraj.io/tags/kubernetes/">
-      «&nbsp;Prev&nbsp;1/7
+      «&nbsp;Prev&nbsp;1/8
     </a>
-    <a class="next" href="https://suraj.io/tags/kubernetes/page/3/">Next&nbsp;3/7&nbsp;»
+    <a class="next" href="https://suraj.io/tags/kubernetes/page/3/">Next&nbsp;3/8&nbsp;»
     </a>
   </nav>
 </footer>

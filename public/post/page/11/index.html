@@ -192,6 +192,20 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">HTTPS during development using &#39;mkcert&#39;
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>It’s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
+Once installed just run:
+$ mkcert -install Created a new local CA at &#34;/home/hummer/.local/share/mkcert&#34; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)!...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-08-14 01:00:51 +0530 +0530'>August 14, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to HTTPS during development using &#39;mkcert&#39;" href="https://suraj.io/post/mkcert-using-python-http-server/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Golang struct tags gotchas
     </h2>
   </header>
@@ -256,21 +270,6 @@ Downloading Kedge The configurations defined for setting up this cluster is writ
   </div>
   <footer class="entry-footer"><span title='2018-03-07 02:21:49 +0530 +0530'>March 7, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Notes on talk - Advanced testing in golang by Mitchell Hashimoto" href="https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Methods that satisfy interfaces in golang
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Pointer receiver For a struct User with a method Work with pointer receiver.
-type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &#34;has worked for&#34;, u.Period, &#34;hrs.&#34;) } func main() { uval := User{&#34;UserVal&#34;, 5} uval.Work() pval := &amp;User{&#34;UserPtr&#34;, 6} pval.Work() } See on go playground.
-output:
-UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval....</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-02-23 08:00:51 +0530 +0530'>February 23, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Methods that satisfy interfaces in golang" href="https://suraj.io/post/golang-methods-interfaces/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

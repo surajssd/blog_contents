@@ -177,6 +177,20 @@ if (!doNotTrack) {
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">PodSecurityPolicy on existing Kubernetes clusters
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I enabled PodSecurityPolicy on a minikube cluster by appending PodSecurityPolicy to the apiserver flag in minikube like this:
+--extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\ LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\ NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\ ResourceQuota,PodSecurityPolicy Ideally when you have PSP enabled and if you don’t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.
+$ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h Which got me thinking what is wrong with the way PSPs work....</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-10-23 00:00:51 +0530 +0530'>October 23, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to PodSecurityPolicy on existing Kubernetes clusters" href="https://suraj.io/post/psp-on-existing-cluster/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">HTTPS during development using &#39;mkcert&#39;
     </h2>
   </header>

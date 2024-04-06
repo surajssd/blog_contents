@@ -11,13 +11,27 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Mar 2024 01:00:51 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 05 Apr 2024 09:21:07 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Coco</title>
+      <link>https://suraj.io/tags/coco/</link>
+      <pubDate>Fri, 05 Apr 2024 09:21:07 +0530</pubDate>
+      <guid>https://suraj.io/tags/coco/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Kubernetes</title>
       <link>https://suraj.io/tags/kubernetes/</link>
-      <pubDate>Sat, 30 Mar 2024 01:00:51 +0530</pubDate>
+      <pubDate>Fri, 05 Apr 2024 09:21:07 +0530</pubDate>
       <guid>https://suraj.io/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>https://suraj.io/tags/security/</link>
+      <pubDate>Fri, 05 Apr 2024 09:21:07 +0530</pubDate>
+      <guid>https://suraj.io/tags/security/</guid>
       <description></description>
     </item>
     <item>
@@ -60,13 +74,6 @@
       <link>https://suraj.io/tags/cks/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
       <guid>https://suraj.io/tags/cks/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security</title>
-      <link>https://suraj.io/tags/security/</link>
-      <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
-      <guid>https://suraj.io/tags/security/</guid>
       <description></description>
     </item>
     <item>

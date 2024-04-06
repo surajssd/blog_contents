@@ -179,6 +179,21 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Capabilities on executables
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>File capabilities allow users to execute programs with higher privileges. Best example is network utility ping.
+A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn’t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.
+$ getcap `which ping` /usr/bin/ping = cap_net_admin,cap_net_raw&#43;p Which normally works as follows:
+$ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-06-25 15:15:07 +0530 +0530'>June 25, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Capabilities on executables" href="https://suraj.io/post/linux-cap-note/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Root user inside container is root on the host
     </h2>
   </header>
@@ -246,19 +261,6 @@ We go online in sometime here https://t.co/FkwgOx0Tm4
   </div>
   <footer class="entry-footer"><span title='2019-03-21 01:00:51 +0530 +0530'>March 21, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Kubernetes Bangalore March 2019 Event Report" href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Make static configs available for apiserver in minikube
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube’s --extra-config flag with apiserver.&lt;apiserver flag&gt;=&lt;value&gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
---extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path....</p>
-  </div>
-  <footer class="entry-footer"><span title='2019-01-20 01:00:51 +0530 +0530'>January 20, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Make static configs available for apiserver in minikube" href="https://suraj.io/post/apiserver-in-minikube-static-configs/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

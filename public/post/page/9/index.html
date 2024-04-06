@@ -192,6 +192,19 @@ if (!doNotTrack) {
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Make static configs available for apiserver in minikube
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube’s --extra-config flag with apiserver.&lt;apiserver flag&gt;=&lt;value&gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
+--extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-01-20 01:00:51 +0530 +0530'>January 20, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Make static configs available for apiserver in minikube" href="https://suraj.io/post/apiserver-in-minikube-static-configs/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Recreate Kubernetes CVE-2017-1002101
     </h2>
   </header>
@@ -255,20 +268,6 @@ $ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf4
   </div>
   <footer class="entry-footer"><span title='2018-10-23 00:00:51 +0530 +0530'>October 23, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to PodSecurityPolicy on existing Kubernetes clusters" href="https://suraj.io/post/psp-on-existing-cluster/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Road to CKA
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I passed CKA exam with 92% marks on 19th October 2018.
-A lot of folks are curious about how to prepare and what resources to follow. Here is my list of things to do and list of resources that might help you on successful CKA exam.
-The duration of exam is three hours, which is enough time if you do good practice. The exam is pretty straight forward and tests your Kubernetes hands-on knowledge, so whatever you read please try to do it on a real cluster....</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-10-21 00:00:51 +0530 +0530'>October 21, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Road to CKA" href="https://suraj.io/post/road-to-cka/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

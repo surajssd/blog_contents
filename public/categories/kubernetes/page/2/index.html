@@ -176,6 +176,21 @@ if (!doNotTrack) {
 </header>
 
 <article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://suraj.io/post/2021/05/access-k8s-secrets/forbidden.jpg" alt="Forbidden">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Access Any Kubernetes Secret
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>You can gain access to any secret that you want in Kubernetes even if you don’t have RBAC permissions to get, list or view that secret. All you need is permission that allows you to do anything on pods and an ability to guess the names of secrets. With these two ingredients, here is how you can access any secret out there.
+Nasty User Here is a user called nastyuser who can only do stuff on pod objects....</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-05-08 12:17:07 +0530 +0530'>May 8, 2021</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Access Any Kubernetes Secret" href="https://suraj.io/post/2021/05/access-k8s-secrets/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
 <figure class="entry-cover"><img loading="lazy" src="https://suraj.io/post/2021/03/node-monitor/node-exporter-2.png" alt="Node Exporter">
 </figure>
   <header class="entry-header">
@@ -245,18 +260,6 @@ What are the “Signals”? Signals are messages one process can send to another
   </div>
   <footer class="entry-footer"><span title='2021-01-23 10:10:41 +0530 +0530'>January 23, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Exec in container environment" href="https://suraj.io/post/2021/01/shell-exec/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Mental models for understanding Kubernetes Pod Security Policy
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>PodSecurityPolicy (PSP) is hard to get right in the first attempt. There has never been a situation when I haven’t banged my head to get it working on the cluster. It is a frustrating experience, but it is one of the essential security features of Kubernetes. Some applications have started shipping the PSP configs with their helm charts, but if a helm chart does not ship a PSP config, it must be handcrafted by the cluster-admin to make the application work reliably in the cluster....</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-01-16 13:10:51 +0530 +0530'>January 16, 2021</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Mental models for understanding Kubernetes Pod Security Policy" href="https://suraj.io/post/mental-models-for-understanding-kubernetes-pod-security-policy/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

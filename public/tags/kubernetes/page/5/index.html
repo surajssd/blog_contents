@@ -177,6 +177,20 @@ if (!doNotTrack) {
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">PodSecurityPolicy on existing Kubernetes clusters
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I enabled PodSecurityPolicy on a minikube cluster by appending PodSecurityPolicy to the apiserver flag in minikube like this:
+--extra-config=apiserver.enable-admission-plugins=Initializers,NamespaceLifecycle,\ LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,\ NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,\ ResourceQuota,PodSecurityPolicy Ideally when you have PSP enabled and if you don’t define any PSP and authorize it with right RBAC no pod will start in the cluster. But what I saw was that there were some pods still running in kube-system namespace.
+$ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h Which got me thinking what is wrong with the way PSPs work....</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-10-23 00:00:51 +0530 +0530'>October 23, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to PodSecurityPolicy on existing Kubernetes clusters" href="https://suraj.io/post/psp-on-existing-cluster/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Road to CKA
     </h2>
   </header>
@@ -241,27 +255,12 @@ All the nodes are in ready state:...</p>
   <footer class="entry-footer"><span title='2018-09-10 01:00:51 +0530 +0530'>September 10, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to HostPath volumes and it&#39;s problems" href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Access etcd in OpenShift origin
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
-If you are using minishift then get docker environment access of the minishift VM by running following commands.
-eval $(minishift docker-env) &amp;&amp; eval $(minishift oc-env) Exec into the container named origin that runs OpenShift and all the needed services.
-$ docker exec -it origin bash First install the etcdctl needed to talk to etcd....</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-07-11 01:00:51 +0530 +0530'>July 11, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Access etcd in OpenShift origin" href="https://suraj.io/post/accessing-oc-cluster-up-etcd/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://suraj.io/tags/kubernetes/page/4/">
-      «&nbsp;Prev&nbsp;4/7
+      «&nbsp;Prev&nbsp;4/8
     </a>
-    <a class="next" href="https://suraj.io/tags/kubernetes/page/6/">Next&nbsp;6/7&nbsp;»
+    <a class="next" href="https://suraj.io/tags/kubernetes/page/6/">Next&nbsp;6/8&nbsp;»
     </a>
   </nav>
 </footer>
