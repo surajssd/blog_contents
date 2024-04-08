@@ -23,6 +23,12 @@ cover:
 
 ---
 
+## Misfits - Feat. ContainerSSH and Confidential Containers (You Choose!, Ch. 3, Ep. 10)
+
+{{< youtubestartend AKmDmhd5hpQ 1245 >}}
+
+---
+
 ## Confidential Containers: The Next Frontier in Cloud-NativeSecurity - Cloud Native Rejekts 2023
 
 {{< youtube ERu288Kv4pw >}}
@@ -61,6 +67,4 @@ cover:
 
 ## Taking docker-compose to Production - Gophercon 2017 Lightening talk
 
-Watch from [55m59s](https://www.youtube.com/watch?v=1BAIOUON2Uo&t=3357s)
-
-{{< youtube 1BAIOUON2Uo >}}
+{{< youtubestartend 1BAIOUON2Uo 3357 >}}
