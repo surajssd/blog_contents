@@ -54,7 +54,9 @@ export VM_SIZE="Standard_DC8as_cc_v5"
 
 [^3]: DCas_cc_v5 and DCads_cc_v5-series (Preview) [https://learn.microsoft.com/en-us/azure/virtual-machines/dcasccv5-dcadsccv5-series](https://learn.microsoft.com/en-us/azure/virtual-machines/dcasccv5-dcadsccv5-series)
 
-> _Kudos to [Jeremi Piotrowski](https://github.com/jepio) for building the host OS image._
+> _Kudos 🎉 to [Jeremi Piotrowski](https://github.com/jepio) for building the worker node / host OS VM-image. You can find instructions to build this image here<cite>[^4]</cite>_
+
+[^4]: Build Worker Node / host OS VM Image [https://github.com/jepio/AMDSEV/tree/sev-snp-devel/packer](https://github.com/jepio/AMDSEV/tree/sev-snp-devel/packer)
 
 ### 1.2: Create Azure Resource Group
 
@@ -81,6 +83,7 @@ az vm create \
   --public-ip-address-dns-name "${VM_NAME}" \
   --os-disk-size-gb 300 \
   --accelerated-networking true \
+  --security-type standard \
   --accept-term
 ```
 
@@ -92,10 +95,10 @@ eval "ssh -i ${SSH_PRIV_KEY} ${USER_NAME}@${VM_NAME}.${LOCATION}.cloudapp.azure.
 
 ## 2: Install Single-Node Kubernetes Cluster
 
-Following instructions were created based on the official [Kubernetes documentation](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)<cite>[^4]</cite> and [Docker documentation](https://docs.docker.com/engine/install/ubuntu/)<cite>[^5]</cite>.
+Following instructions were created based on the official [Kubernetes documentation](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)<cite>[^5]</cite> and [Docker documentation](https://docs.docker.com/engine/install/ubuntu/)<cite>[^6]</cite>.
 
-[^4]: Installing kubeadm [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
-[^5]: Install Docker Engine on Ubuntu
+[^5]: Installing kubeadm [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+[^6]: Install Docker Engine on Ubuntu
  [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
 
 ### 2.1: Install Prerequisites
@@ -203,9 +206,9 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ### 2.10: Install CNI
 
-Following Calico installation steps were taken from the official [Calico documentation](https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart#install-calico)<cite>[^6]</cite>.
+Following Calico installation steps were taken from the official [Calico documentation](https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart#install-calico)<cite>[^7]</cite>.
 
-[^6]: Quickstart for Calico on Kubernetes [https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart#install-calico](https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart#install-calico)
+[^7]: Quickstart for Calico on Kubernetes [https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart#install-calico](https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart#install-calico)
 
 ```bash
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.3/manifests/tigera-operator.yaml
@@ -222,9 +225,9 @@ kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 
 ### 3.1: Install Operator
 
-CoCo operator installation steps are taken from [this official documentation](https://github.com/confidential-containers/operator/blob/main/docs/INSTALL.md)<cite>[^7]<cite>.
+CoCo operator installation steps are taken from [this official documentation](https://github.com/confidential-containers/operator/blob/main/docs/INSTALL.md)<cite>[^8]<cite>.
 
-[^7]: Confidential Containers Operator Installation: [https://github.com/confidential-containers/operator/blob/main/docs/INSTALL.md](https://github.com/confidential-containers/operator/blob/main/docs/INSTALL.md)
+[^8]: Confidential Containers Operator Installation: [https://github.com/confidential-containers/operator/blob/main/docs/INSTALL.md](https://github.com/confidential-containers/operator/blob/main/docs/INSTALL.md)
 
 ```bash
 export COCO_OPERATOR_VERSION="0.8.0"
@@ -233,9 +236,9 @@ kubectl apply -k "github.com/confidential-containers/operator/config/samples/ccr
 kubectl label nodes --all node.kubernetes.io/worker=
 ```
 
-> **Note**: Find the latest release of the Confidential Containers from the [project release page](https://github.com/confidential-containers/operator/releases)<cite>[^8]<cite>.
+> **Note**: Find the latest release of the Confidential Containers from the [project release page](https://github.com/confidential-containers/operator/releases)<cite>[^9]<cite>.
 
-[^8]: Confidential Containers Operator Release Page [https://github.com/confidential-containers/operator/releases](https://github.com/confidential-containers/operator/releases)
+[^9]: Confidential Containers Operator Release Page [https://github.com/confidential-containers/operator/releases](https://github.com/confidential-containers/operator/releases)
 
 ### 3.2: Verify Runtimeclasses Availability
 
