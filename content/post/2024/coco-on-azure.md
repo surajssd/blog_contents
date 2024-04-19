@@ -4,8 +4,8 @@ date: "2024-04-05T09:21:07+05:30"
 title: "Open Source Confidential Containers (CoCo) on Azure"
 description: "Explore how Azure’s support for nested confidential compute unlocks a straightforward path to deploying Confidential Containers (CoCo), ensuring enhanced data security in the cloud with ease."
 draft: false
-categories: ["kubernetes", "security", "coco"]
-tags: ["kubernetes", "security", "coco"]
+categories: ["kubernetes", "security", "coco", "azure"]
+tags: ["kubernetes", "security", "coco", "azure"]
 cover:
   image: "/post/2024/images/coco-on-azure.png"
   alt: "CoCo on Azure"
