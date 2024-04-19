@@ -6,10 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Open Source Confidential Containers (CoCo) on Azure | Suraj Deshmukh</title>
-<meta name="keywords" content="kubernetes, security, coco">
+<meta name="keywords" content="kubernetes, security, coco, azure">
 <meta name="description" content="Explore how Azure’s support for nested confidential compute unlocks a straightforward path to deploying Confidential Containers (CoCo), ensuring enhanced data security in the cloud with ease.">
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/2024/coco-on-azure/">
+<meta name="google-site-verification" content="G-PYJ0C1KVD7">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
@@ -109,7 +110,7 @@ if (!doNotTrack) {
   "name": "Open Source Confidential Containers (CoCo) on Azure",
   "description": "Explore how Azure’s support for nested confidential compute unlocks a straightforward path to deploying Confidential Containers (CoCo), ensuring enhanced data security in the cloud with ease.",
   "keywords": [
-    "kubernetes", "security", "coco"
+    "kubernetes", "security", "coco", "azure"
   ],
   "articleBody": "Introduction In the realm of cloud computing, ensuring data privacy and security is paramount, yet profoundly challenging. One innovative solution to this challenge is Confidential Containers (CoCo)1, designed to provide an extra layer of security for data in use. However, deploying CoCo requires access to specialized hardware, which adds complexity. Beyond just finding the right hardware, the setup involves navigating a maze of technical specifications – from BIOS configurations to kernel versions – making the process daunting.\nEnter Azure’s nested confidential compute2 for AMD SEV-SNP, a breakthrough in making CoCo more accessible and manageable. This blog post will guide you through leveraging Azure’s support to deploy CoCo-based workloads with ease. You’ll learn not only how to navigate the setup process but also how Azure simplifies the deployment. Whether you’re a seasoned cloud professional or new to the concept of confidential computing, this post will provide valuable insights into making the most of CoCo on Azure.\nHere is how we will achieve this installation:\nProcure an Azure VM capable of running nested confidential compute Install single-node Kubernetes cluster Install CoCo Run sample workload 1: Nested Confidential Compute Capable VM 1.1: Export Environment Variables Export the following environment variables, you can make changes as you deem necessary:\nexport RESOURCE_GROUP=\"coco-on-azure\" export VM_NAME=\"${RESOURCE_GROUP}\" export SSH_PRIV_KEY=\"~/.ssh/id_rsa\" export SSH_KEY=\"${SSH_PRIV_KEY}.pub\" export USER_NAME=\"azure\" Export these environment variables as necessary:\nNote: You can choose a bigger machine type exported in the environment variable VM_SIZE. You can find other machine types here3.\nexport VM_IMAGE=\"/CommunityGalleries/cocopreview-91c44057-c3ab-4652-bf00-9242d5a90170/Images/ubuntu2004-snp-host/Versions/latest\" export LOCATION=\"eastus\" export VM_SIZE=\"Standard_DC8as_cc_v5\" Kudos 🎉 to Jeremi Piotrowski for building the worker node / host OS VM-image. You can find instructions to build this image here4\n1.2: Create Azure Resource Group Note: You can skip this step if you already have a resource group you use.\naz group create \\ --name \"${RESOURCE_GROUP}\" \\ --location \"${LOCATION}\" 1.3: Deploy the VM az vm create \\ --resource-group \"${RESOURCE_GROUP}\" \\ --size \"${VM_SIZE}\" \\ --name \"${VM_NAME}\" \\ --location \"${LOCATION}\" \\ --admin-username \"${USER_NAME}\" \\ --ssh-key-values \"${SSH_KEY}\" \\ --authentication-type ssh \\ --image \"${VM_IMAGE}\" \\ --public-ip-address-dns-name \"${VM_NAME}\" \\ --os-disk-size-gb 300 \\ --accelerated-networking true \\ --security-type standard \\ --accept-term 1.4: SSH into the VM eval \"ssh -i ${SSH_PRIV_KEY} ${USER_NAME}@${VM_NAME}.${LOCATION}.cloudapp.azure.com\" 2: Install Single-Node Kubernetes Cluster Following instructions were created based on the official Kubernetes documentation5 and Docker documentation6.\n2.1: Install Prerequisites sudo apt-get update sudo apt-get install -y gdb binutils apt-transport-https ca-certificates curl gpg 2.2: Configure Docker Repository sudo install -m 0755 -d /etc/apt/keyrings sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc sudo chmod a+r /etc/apt/keyrings/docker.asc echo \\ \"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \\ $(. /etc/os-release \u0026\u0026 echo \"$VERSION_CODENAME\") stable\" | sudo tee /etc/apt/sources.list.d/docker.list \u003e/dev/null 2.3: Configure Kubernetes Repository curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list 2.4: Install Docker \u0026 Kubernetes sudo apt-get update sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin kubelet kubeadm kubectl sudo apt-mark hold kubelet kubeadm kubectl 2.5: Start Containerd Daemon containerd config default | sudo tee /etc/containerd/config.toml sudo systemctl restart containerd sudo systemctl enable --now containerd sudo systemctl enable --now docker sudo docker run hello-world 2.6: Disable Swap Since this machine is acting as both control-plane and the worker node, so disable swap.\nsudo swapoff -a sudo cp /etc/fstab /etc/fstab.bak sudo sed -i '/\\bswap\\b/d' /etc/fstab 2.7: Ensure Networking is Configured sudo modprobe overlay sudo modprobe br_netfilter cat \u003c",
   "wordCount" : "1055",
@@ -559,6 +560,7 @@ if (!doNotTrack) {
       <li><a href="https://suraj.io/tags/kubernetes/">Kubernetes</a></li>
       <li><a href="https://suraj.io/tags/security/">Security</a></li>
       <li><a href="https://suraj.io/tags/coco/">Coco</a></li>
+      <li><a href="https://suraj.io/tags/azure/">Azure</a></li>
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://suraj.io/post/surajd-talks-links/">
@@ -577,7 +579,7 @@ if (!doNotTrack) {
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Open Source Confidential Containers (CoCo) on Azure on x"
-            href="https://x.com/intent/tweet/?text=Open%20Source%20Confidential%20Containers%20%28CoCo%29%20on%20Azure&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2024%2fcoco-on-azure%2f&amp;hashtags=kubernetes%2csecurity%2ccoco">
+            href="https://x.com/intent/tweet/?text=Open%20Source%20Confidential%20Containers%20%28CoCo%29%20on%20Azure&amp;url=https%3a%2f%2fsuraj.io%2fpost%2f2024%2fcoco-on-azure%2f&amp;hashtags=kubernetes%2csecurity%2ccoco%2cazure">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -665,7 +667,8 @@ if (!doNotTrack) {
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="https://suraj.io/">Suraj Deshmukh</a></span>
+        <span>&copy; 2024 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
