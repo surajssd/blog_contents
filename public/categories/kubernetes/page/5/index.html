@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/categories/kubernetes/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -57,29 +57,17 @@
         }
 
     </style>
-</noscript>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-97006720-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script><meta property="og:title" content="Kubernetes" />
-<meta property="og:description" content="Suraj Deshmukh - Personal Blog" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://suraj.io/categories/kubernetes/" />
-<meta property="og:image" content="https://suraj.io/images/papermod-cover.png" />
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://suraj.io/images/papermod-cover.png" />
-<meta name="twitter:title" content="Kubernetes"/>
-<meta name="twitter:description" content="Suraj Deshmukh - Personal Blog"/>
+</noscript><meta property="og:url" content="https://suraj.io/categories/kubernetes/">
+  <meta property="og:site_name" content="Suraj Deshmukh">
+  <meta property="og:title" content="Kubernetes">
+  <meta property="og:description" content="Suraj Deshmukh - Personal Blog">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://suraj.io/images/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://suraj.io/images/papermod-cover.png">
+<meta name="twitter:title" content="Kubernetes">
+<meta name="twitter:description" content="Suraj Deshmukh - Personal Blog">
 
 </head>
 
@@ -183,9 +171,11 @@ if (!doNotTrack) {
   </header>
   <div class="entry-content">
     <p>There is no easy way to change namespace in Kubernetes using kubectl command line utility. But here are some commands that you can alias in your bashrc file so that it’s just a single command that you can use to change the namespace in the Kubernetes cluster.
-Change namespace Let’s see step by step what goes in to change the namespace. So the first step is to find the context....</p>
+Change namespace Let’s see step by step what goes in to change the namespace. So the first step is to find the context.
+A context element in a kubeconfig file is used to group access parameters under a convenient name. Each context has three parameters: cluster, namespace, and user. By default, the kubectl command-line tool uses parameters from the current context to communicate with the cluster. Read more.
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-07-02 08:00:51 +0530 +0530'>July 2, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-07-02 08:00:51 +0530 IST'>July 2, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Change namespaces in Kubernetes" href="https://suraj.io/post/changing-k8s-ns/"></a>
 </article>
 
@@ -196,9 +186,10 @@ Change namespace Let’s see step by step what goes in to change the namespace. 
   </header>
   <div class="entry-content">
     <p>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
-On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry....</p>
+On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-10-06 19:32:33 +0530 +0530'>October 6, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-10-06 19:32:33 +0530 IST'>October 6, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Using private container registries from minikube" href="https://suraj.io/post/private-registry-from-minikube/"></a>
 </article>
 
@@ -209,9 +200,10 @@ On the configuration side of doing that you will need to create Kubernetes Secre
   </header>
   <div class="entry-content">
     <p>I wanted to try out Standalone Kubelet Tutorial of Kelsey Hightower by myself but I could not follow it as it is, because it was firstly on GCE and secondly it uses CoreOS, but since I am very familiar to Fedora I thought of following that tutorial on it. To get a quick setup of a fresh Fedora machine use Vagrant. I have used Vagrantfile available here.
-This blog is only replacement of section Install the Standalone Kubelet in tutorial....</p>
+This blog is only replacement of section Install the Standalone Kubelet in tutorial.
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-09-23 13:10:14 +0530 +0530'>September 23, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-09-23 13:10:14 +0530 IST'>September 23, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Static Pods using Kubelet on Fedora" href="https://suraj.io/post/static-pods/"></a>
 </article>
 
@@ -222,9 +214,9 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
   </header>
   <div class="entry-content">
     <p>Following is the list of all the places you can learn Kubernetes from:
-Scalable Microservices with Kubernetes - Video tutorial Fundamentals of Containers, Kubernetes, and Red Hat OpenShift - Video tutorial Kubernetes By Example - DIY tutorial Learn Kubernetes using Interactive Browser-Based Scenarios - DIY tutorial in your own web browser Interactive Learning Portal for OpenShift - DIY tutorial in your own web browser Kubernetes docs - Textual DIY docs Kubernetes API reference v1....</p>
+Scalable Microservices with Kubernetes - Video tutorial Fundamentals of Containers, Kubernetes, and Red Hat OpenShift - Video tutorial Kubernetes By Example - DIY tutorial Learn Kubernetes using Interactive Browser-Based Scenarios - DIY tutorial in your own web browser Interactive Learning Portal for OpenShift - DIY tutorial in your own web browser Kubernetes docs - Textual DIY docs Kubernetes API reference v1.6 OpenShift docs - Textual DIY docs </p>
   </div>
-  <footer class="entry-footer"><span title='2017-08-17 23:12:18 +0530 +0530'>August 17, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-08-17 23:12:18 +0530 IST'>August 17, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Kubernetes Learning resources" href="https://suraj.io/post/k8s-learning-resources/"></a>
 </article>
 
@@ -236,9 +228,10 @@ Scalable Microservices with Kubernetes - Video tutorial Fundamentals of Containe
   <div class="entry-content">
     <p>I want to show how you can enable Kubernetes in your day to day development workflow. So that you get the feel of production deployment locally from day 1.
 I have a flask application which I am working on. The basic directory structure looks like this:
-$ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo foo 201 Apr 23 16:55 docker-compose.yml -rw-rw-r--. 1 foo foo 363 Apr 23 16:21 Dockerfile -rwxrwxr-x....</p>
+$ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo foo 201 Apr 23 16:55 docker-compose.yml -rw-rw-r--. 1 foo foo 363 Apr 23 16:21 Dockerfile -rwxrwxr-x. 1 foo foo 82 Dec 5 19:41 entrypoint.sh -rw-rw-r--. 1 foo foo 3010 Dec 5 19:41 README.adoc -rw-rw-r--. 1 foo foo 11 Dec 5 19:41 requirements.txt You can find all of these files in this github repo.
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-04-23 15:57:07 +0530 +0530'>April 23, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-04-23 15:57:07 +0530 IST'>April 23, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Enabling local development with Kubernetes" href="https://suraj.io/post/enabling-local-development-with-k8s/"></a>
 </article>
 
@@ -250,9 +243,10 @@ $ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo fo
   <div class="entry-content">
     <p>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
 Enter into the machine running k8s If using minikube you can do
-minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following...</p>
+minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-04-18 23:56:15 +0530 +0530'>April 18, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-04-18 23:56:15 +0530 IST'>April 18, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Quick PV for local Kubernetes cluster" href="https://suraj.io/post/quick-pv-for-local-k8s/"></a>
 </article>
 
@@ -263,9 +257,10 @@ minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /t
   </header>
   <div class="entry-content">
     <p>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
-Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &#39;GOPATH=~/go&#39; &gt;&gt; ~/....</p>
+Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &#39;GOPATH=~/go&#39; &gt;&gt; ~/.bashrc echo &#39;GOBIN=$GOPATH/bin&#39; &gt;&gt; ~/.bashrc echo &#39;PATH=$PATH:$GOBIN&#39; &gt;&gt; ~/.bashrc Pull all the code dependencies go get -d k8s.io/kubernetes go get -u github.com/cloudflare/cfssl/cmd/... Install runc go get -d github.com/opencontainers/runc cd $GOPATH/src/github.com/opencontainers/runc git reset --hard v1.0.0-rc3 make BUILDTAGS=&#39;seccomp selinux&#39; &amp;&amp; make install Build cri-o cd go get -d github.com/kubernetes-incubator/cri-o cd $GOPATH/src/github.com/kubernetes-incubator/cri-o make install.tools make &amp;&amp; make install make install.config Set up CNI go get -d github.com/containernetworking/cni cd $GOPATH/src/github.com/containernetworking/cni ./build.sh mkdir -p /opt/cni/bin cp bin/* /opt/cni/bin/ mkdir -p /etc/cni/net.d/ cat &gt; /etc/cni/net.d/10-ocid-bridge.conf &lt;&lt;EOF { &#34;cniVersion&#34;: &#34;0.2.0&#34;, &#34;name&#34;: &#34;ocid-bridge&#34;, &#34;type&#34;: &#34;bridge&#34;, &#34;bridge&#34;: &#34;cni0&#34;, &#34;isGateway&#34;: true, &#34;ipMasq&#34;: true, &#34;ipam&#34;: { &#34;type&#34;: &#34;host-local&#34;, &#34;subnet&#34;: &#34;10.88.0.0/16&#34;, &#34;routes&#34;: [ { &#34;dst&#34;: &#34;0.0.0.0/0&#34; } ] } } EOF cat &gt; /etc/cni/net.d/99-loopback.conf &lt;&lt;EOF { &#34;cniVersion&#34;: &#34;0.2.0&#34;, &#34;type&#34;: &#34;loopback&#34; } EOF Create policy.json mkdir -p /etc/containers cat &gt; /etc/containers/policy.json &lt;&lt;EOF { &#34;default&#34;: [ { &#34;type&#34;: &#34;insecureAcceptAnything&#34; } ] } EOF Make SELinux happy mkdir -p /var/lib/containers/ chcon -Rt svirt_sandbox_file_t /var/lib/containers/ Start ocid service export PATH=$PATH:/usr/local/bin/ echo &#39;PATH=$PATH:/usr/local/bin/&#39; &gt;&gt; ~/.bashrc ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug --selinux true Start k8s cluster with crio cd $GOPATH/src/k8s.io/kubernetes/ CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT=&#39;/var/run/ocid.sock --runtime-request-timeout=15m&#39; ./hack/local-up-cluster.sh To use kubectl (in new terminal)
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-04-08 00:11:37 +0530 +0530'>April 8, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-04-08 00:11:37 +0530 IST'>April 8, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to k8s on CRI-O - single node" href="https://suraj.io/post/using-crio-with-k8s-single-node/"></a>
 </article>
 <footer class="page-footer">

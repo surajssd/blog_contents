@@ -9,7 +9,7 @@
       <url>https://suraj.io/images/papermod-cover.png</url>
       <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.124.1</generator>
+    <generator>Hugo -- 0.139.0</generator>
     <language>en</language>
     <lastBuildDate>Sun, 30 May 2021 09:40:00 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +18,7 @@
       <link>https://suraj.io/post/2021/05/k8s-import/</link>
       <pubDate>Sun, 30 May 2021 09:40:00 +0530</pubDate>
       <guid>https://suraj.io/post/2021/05/k8s-import/</guid>
-      <description>The client libraries that Kubernetes ships are meant to be imported, and you definitely don&amp;rsquo;t need this post explaining how to import them in your Golang based project. A simple go get ... should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of &amp;ldquo;technical reasons&amp;rdquo; ? Could you simply add them to your import statements in the .</description>
+      <description>&lt;p&gt;The client libraries that Kubernetes ships are meant to be imported, and you definitely don&amp;rsquo;t need this post explaining how to import them in your Golang based project. A simple &lt;code&gt;go get ...&lt;/code&gt; should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of &lt;em&gt;&amp;ldquo;technical reasons&amp;rdquo;&lt;/em&gt; ? Could you simply add them to your import statements in the &lt;code&gt;.go&lt;/code&gt; file, and the &lt;code&gt;go&lt;/code&gt; binary will do the right thing when you build the code? Well, let&amp;rsquo;s find that out!&lt;/p&gt;</description>
     </item>
     <item>
       <title>Cobra and Persistentflags gotchas</title>

@@ -11,6 +11,12 @@ cover:
   image: /images/talks/talks.jpeg
 ---
 
+## Confidential Containers 101: A Hands-on Workshop - Kubecon North America 2024
+
+{{< youtube n2M_vvUGO4U >}}
+
+---
+
 ## Fortifying AI Security in Kubernetes with Confidential Containers (CoCo) - Kubecon Europe 2024
 
 {{< youtube Ko0o5_hpmxI >}}

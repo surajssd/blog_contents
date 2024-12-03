@@ -9,7 +9,7 @@
       <url>https://suraj.io/images/papermod-cover.png</url>
       <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.124.1</generator>
+    <generator>Hugo -- 0.139.0</generator>
     <language>en</language>
     <lastBuildDate>Mon, 13 Mar 2017 00:31:57 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/tags/intro/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +18,7 @@
       <link>https://suraj.io/post/first-post/</link>
       <pubDate>Mon, 13 Mar 2017 00:31:57 +0530</pubDate>
       <guid>https://suraj.io/post/first-post/</guid>
-      <description>This is the new home for my blog. I use to write on wordpress before. You can find the older blog at https://deshmukhsuraj.wordpress.com. But I wanted to have my own domain and wordpress was charging exorbitantly to connect a custom domain to wordpress, so I just ditched it and started writing here. This is much more convenient.</description>
+      <description>&lt;p&gt;This is the new home for my blog. I use to write on wordpress before. You can find the older blog at &lt;a href=&#34;https://deshmukhsuraj.wordpress.com/&#34;&gt;https://deshmukhsuraj.wordpress.com&lt;/a&gt;. But I wanted to have my own domain and wordpress was charging exorbitantly to connect a custom domain to wordpress, so I just ditched it and started writing here. This is much more convenient.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

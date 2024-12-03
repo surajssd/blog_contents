@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/tags/golang/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -57,29 +57,17 @@
         }
 
     </style>
-</noscript>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-97006720-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script><meta property="og:title" content="Golang" />
-<meta property="og:description" content="Suraj Deshmukh - Personal Blog" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://suraj.io/tags/golang/" />
-<meta property="og:image" content="https://suraj.io/images/papermod-cover.png" />
-
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://suraj.io/images/papermod-cover.png" />
-<meta name="twitter:title" content="Golang"/>
-<meta name="twitter:description" content="Suraj Deshmukh - Personal Blog"/>
+</noscript><meta property="og:url" content="https://suraj.io/tags/golang/">
+  <meta property="og:site_name" content="Suraj Deshmukh">
+  <meta property="og:title" content="Golang">
+  <meta property="og:description" content="Suraj Deshmukh - Personal Blog">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://suraj.io/images/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://suraj.io/images/papermod-cover.png">
+<meta name="twitter:title" content="Golang">
+<meta name="twitter:description" content="Suraj Deshmukh - Personal Blog">
 
 </head>
 
@@ -184,9 +172,10 @@ if (!doNotTrack) {
     </h2>
   </header>
   <div class="entry-content">
-    <p>The client libraries that Kubernetes ships are meant to be imported, and you definitely don’t need this post explaining how to import them in your Golang based project. A simple go get ... should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of “technical reasons” ? Could you simply add them to your import statements in the ....</p>
+    <p>The client libraries that Kubernetes ships are meant to be imported, and you definitely don’t need this post explaining how to import them in your Golang based project. A simple go get ... should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of “technical reasons” ? Could you simply add them to your import statements in the .go file, and the go binary will do the right thing when you build the code? Well, let’s find that out!
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-30 09:40:00 +0530 +0530'>May 30, 2021</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-05-30 09:40:00 +0530 IST'>May 30, 2021</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to How to import &#39;any&#39; Kubernetes package into your project?" href="https://suraj.io/post/2021/05/k8s-import/"></a>
 </article>
 
@@ -197,9 +186,10 @@ if (!doNotTrack) {
   </header>
   <div class="entry-content">
     <p>If you are using cobra cmd line library for golang applications and it’s PersistentFlags and if you have a use case where you are adding same kind of flag in multiple places. You might burn your fingers in that case, if you keep adding it in multiple sub-commands without giving it a second thought. To understand what is really happening and why it is happening follow along.
-All the code referenced here can be found here https://github....</p>
+All the code referenced here can be found here https://github.com/surajssd/cobrademo.
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-01-04 01:00:51 +0530 +0530'>January 4, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2019-01-04 01:00:51 +0530 IST'>January 4, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Cobra and Persistentflags gotchas" href="https://suraj.io/post/cobra-persistent-flag/"></a>
 </article>
 
@@ -211,9 +201,10 @@ All the code referenced here can be found here https://github....</p>
   <div class="entry-content">
     <p>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
 type PodStatus struct { Status string `json: &#34;,status&#34;` } If you run go vet on this piece of code you will get following error:
-$ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &#34;,status&#34;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value Now this does not tell us what is wrong with the struct tag, json: &#34;,status&#34;....</p>
+$ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &#34;,status&#34;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value Now this does not tell us what is wrong with the struct tag, json: &#34;,status&#34;. The problem with this struct tag is that the extra space can be interpreted as delimiter so provide key-value pair without space.
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-08-12 01:00:51 +0530 +0530'>August 12, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-08-12 01:00:51 +0530 IST'>August 12, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Golang struct tags gotchas" href="https://suraj.io/post/golang-struct-tags-space/"></a>
 </article>
 
@@ -223,9 +214,9 @@ $ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json
     </h2>
   </header>
   <div class="entry-content">
-    <p>Test Fixtures “go test” sets pwd as package directory Test Helpers should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9&#43;) for things reqiuiring clean up return closures Configurability Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It’s ok to make these configs unexported so only tests can set them....</p>
+    <p>Test Fixtures “go test” sets pwd as package directory Test Helpers should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9&#43;) for things reqiuiring clean up return closures Configurability Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It’s ok to make these configs unexported so only tests can set them. Slides Video GopherCon 2017: Mitchell Hashimoto - Advanced Testing with Go by Mitchell Hashimoto </p>
   </div>
-  <footer class="entry-footer"><span title='2018-03-07 02:21:49 +0530 +0530'>March 7, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-03-07 02:21:49 +0530 IST'>March 7, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Notes on talk - Advanced testing in golang by Mitchell Hashimoto" href="https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/"></a>
 </article>
 
@@ -238,9 +229,11 @@ $ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json
     <p>Pointer receiver For a struct User with a method Work with pointer receiver.
 type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &#34;has worked for&#34;, u.Period, &#34;hrs.&#34;) } func main() { uval := User{&#34;UserVal&#34;, 5} uval.Work() pval := &amp;User{&#34;UserPtr&#34;, 6} pval.Work() } See on go playground.
 output:
-UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval....</p>
+UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval.
+Value receiver Now we change the method receiver from pointer to value.
+...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-02-23 08:00:51 +0530 +0530'>February 23, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-02-23 08:00:51 +0530 IST'>February 23, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Methods that satisfy interfaces in golang" href="https://suraj.io/post/golang-methods-interfaces/"></a>
 </article>
     </main>

@@ -9,7 +9,7 @@
       <url>https://suraj.io/images/papermod-cover.png</url>
       <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.124.1</generator>
+    <generator>Hugo -- 0.139.0</generator>
     <language>en</language>
     <lastBuildDate>Sat, 19 Jun 2021 16:16:00 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +18,7 @@
       <link>https://suraj.io/post/2021/06/systemd-service/</link>
       <pubDate>Sat, 19 Jun 2021 16:16:00 +0530</pubDate>
       <guid>https://suraj.io/post/2021/06/systemd-service/</guid>
-      <description>If you have a script or a binary and want to run it as a Systemd service, keep following. This blog will show you how to take any such executable code and run it using Systemd. Sure, you can do similar stuff using Docker as well. Although there are certain downsides of using Docker (alone) for managing the daemons. Systemd is good at log management on the node over a Docker container.</description>
+      <description>&lt;p&gt;If you have a script or a binary and want to run it as a Systemd service, keep following. This blog will show you how to take any such executable code and run it using Systemd. Sure, you can do similar stuff using Docker as well. Although there are certain downsides of using Docker (alone) for managing the daemons. Systemd is good at log management on the node over a Docker container. If a container fails, you may or may not have access to the logs. Systemd provides constructs in managing dependencies quite well. And finally, you may not be using Docker on the machine, while Systemd is quite ubiquitous on any Linux.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Monitor your PC with Prometheus Grafana stack</title>

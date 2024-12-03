@@ -9,7 +9,7 @@
       <url>https://suraj.io/images/papermod-cover.png</url>
       <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.124.1</generator>
+    <generator>Hugo -- 0.139.0</generator>
     <language>en</language>
     <lastBuildDate>Fri, 05 Apr 2024 09:21:07 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/index.xml" rel="self" type="application/rss+xml" />
@@ -32,8 +32,8 @@
       <link>https://suraj.io/post/2021/10/dont-be-default/</link>
       <pubDate>Fri, 29 Oct 2021 11:05:07 +0530</pubDate>
       <guid>https://suraj.io/post/2021/10/dont-be-default/</guid>
-      <description>We behave in a certain way. It is shaped by various factors like our upbringing, environment, privilege, etc. But most of the time, it is shaped by our instincts. Until pointed out, we continue to act with our instincts. This instinct-driven behavior is our default behavior.
-I am making a case that anyone who has never rebelled against or resisted their default behavior will find it hard to achieve success in this world.</description>
+      <description>&lt;p&gt;We behave in a certain way. It is shaped by various factors like our upbringing, environment, privilege, etc. But most of the time, it is shaped by our instincts. Until pointed out, we continue to act with our instincts. This instinct-driven behavior is our default behavior.&lt;/p&gt;
+&lt;p&gt;I am making a case that &lt;strong&gt;anyone who has never rebelled against or resisted their default behavior will find it hard to achieve success in this world. All the successful people we see have done something that required fighting the default behavior, which led them to achieve something exceptional and become successful.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Learnings from &#39;Atomic Habits&#39;</title>
@@ -82,14 +82,14 @@ I am making a case that anyone who has never rebelled against or resisted their 
       <link>https://suraj.io/post/2021/06/systemd-service/</link>
       <pubDate>Sat, 19 Jun 2021 16:16:00 +0530</pubDate>
       <guid>https://suraj.io/post/2021/06/systemd-service/</guid>
-      <description>If you have a script or a binary and want to run it as a Systemd service, keep following. This blog will show you how to take any such executable code and run it using Systemd. Sure, you can do similar stuff using Docker as well. Although there are certain downsides of using Docker (alone) for managing the daemons. Systemd is good at log management on the node over a Docker container.</description>
+      <description>&lt;p&gt;If you have a script or a binary and want to run it as a Systemd service, keep following. This blog will show you how to take any such executable code and run it using Systemd. Sure, you can do similar stuff using Docker as well. Although there are certain downsides of using Docker (alone) for managing the daemons. Systemd is good at log management on the node over a Docker container. If a container fails, you may or may not have access to the logs. Systemd provides constructs in managing dependencies quite well. And finally, you may not be using Docker on the machine, while Systemd is quite ubiquitous on any Linux.&lt;/p&gt;</description>
     </item>
     <item>
       <title>How to import &#39;any&#39; Kubernetes package into your project?</title>
       <link>https://suraj.io/post/2021/05/k8s-import/</link>
       <pubDate>Sun, 30 May 2021 09:40:00 +0530</pubDate>
       <guid>https://suraj.io/post/2021/05/k8s-import/</guid>
-      <description>The client libraries that Kubernetes ships are meant to be imported, and you definitely don&amp;rsquo;t need this post explaining how to import them in your Golang based project. A simple go get ... should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of &amp;ldquo;technical reasons&amp;rdquo; ? Could you simply add them to your import statements in the .</description>
+      <description>&lt;p&gt;The client libraries that Kubernetes ships are meant to be imported, and you definitely don&amp;rsquo;t need this post explaining how to import them in your Golang based project. A simple &lt;code&gt;go get ...&lt;/code&gt; should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of &lt;em&gt;&amp;ldquo;technical reasons&amp;rdquo;&lt;/em&gt; ? Could you simply add them to your import statements in the &lt;code&gt;.go&lt;/code&gt; file, and the &lt;code&gt;go&lt;/code&gt; binary will do the right thing when you build the code? Well, let&amp;rsquo;s find that out!&lt;/p&gt;</description>
     </item>
     <item>
       <title>How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?</title>
@@ -103,7 +103,8 @@ I am making a case that anyone who has never rebelled against or resisted their 
       <link>https://suraj.io/post/2021/05/learnings-psychology-of-money/</link>
       <pubDate>Thu, 20 May 2021 12:15:07 +0530</pubDate>
       <guid>https://suraj.io/post/2021/05/learnings-psychology-of-money/</guid>
-      <description>Synopsis of the Book The Psychology of Money, written by Morgan Housel, published in 2020, could be categorised under Psychology, Finance, and Nonfiction. The author wrote an article three years ago which got a lot of traffic hence decided to write a book out of it. Last year I saw that the book was recommended by many folks in my network and on Twitter. All of the recommenders were highly impressed by the book and spoke intensely of it.</description>
+      <description>&lt;h2 id=&#34;synopsis-of-the-book&#34;&gt;Synopsis of the Book&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://amzn.to/3B383Cl&#34;&gt;The Psychology of Money&lt;/a&gt;, written by &lt;a href=&#34;https://twitter.com/morganhousel&#34;&gt;Morgan Housel&lt;/a&gt;, published in 2020, could be categorised under Psychology, Finance, and Nonfiction. The author wrote &lt;a href=&#34;https://www.collaborativefund.com/blog/the-psychology-of-money/&#34;&gt;an article&lt;/a&gt; three years ago which got a lot of traffic hence decided to write a book out of it. Last year I saw that the book was recommended by many folks in my network and on Twitter. All of the recommenders were highly impressed by the book and spoke intensely of it. Now that I have finished it, I can understand why!&lt;/p&gt;</description>
     </item>
     <item>
       <title>Mitigation of: Access Any Kubernetes Secret</title>
@@ -572,8 +573,18 @@ I am making a case that anyone who has never rebelled against or resisted their 
       <link>https://suraj.io/post/blr-k8s-meetup-april-2017/</link>
       <pubDate>Sat, 08 Apr 2017 14:31:33 +0530</pubDate>
       <guid>https://suraj.io/post/blr-k8s-meetup-april-2017/</guid>
-      <description>Like many Saturday mornings, Red Hat Bangalore office was once again abuzz with enthusiasm on 8th of April, for hosting yet another successful chapter of Bangalore Kubernetes Meetup. The Meetup had a good turnaround of about 40 people who gave up on their early morning saturday sleep to attend it despite the sweltering hot season and in line were four awesome talks.
-Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc.</description>
+      <description>&lt;p&gt;Like many Saturday mornings, &lt;a href=&#34;https://www.google.co.in/search?q=red+hat+bangalore&amp;oq=red+ha&amp;aqs=chrome.0.69i59j69i61l3j69i57j69i59.5776j0j7&amp;sourceid=chrome&amp;ie=UTF-8#q=red+hat+bangalore&amp;rflfq=1&amp;rlha=0&amp;rllag=12949018,77600064,1885&amp;tbm=lcl&amp;tbs=lf_pqs:EAE,lf:1,lf_ui:3&amp;rldoc=1&amp;rlfi=hd:;si:1155840882052252649;mv:!1m3!1d18064.656204115003!2d77.600064!3d12.949018050000001!2m3!1f0!2f0!3f0!3m2!1i91!2i446!4f13.1;tbs:lf_pqs:EAE,lf:1,lf_ui:3&#34;&gt;Red Hat Bangalore&lt;/a&gt;
+office was once again abuzz with enthusiasm on 8th of April, for hosting yet
+another successful chapter of &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/238335903/&#34;&gt;Bangalore Kubernetes Meetup&lt;/a&gt;.
+The Meetup had a good turnaround of about 40 people who gave up on their
+early morning saturday sleep to attend it despite the sweltering hot
+season and in line were four awesome talks.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;Suraj Deshmukh&lt;/a&gt; set the stage with his opening
+talk, &lt;em&gt;Kubernetes on CRI-O&lt;/em&gt;, wherein he explained different jargons like
+OCI, CRI, etc., introduced CRI-O and it’s architecture. Explaining how it
+glues Kubernetes and OCI compliant runtimes and concluding it with a demo
+showing how Kubernetes uses CRI-O. Link to &lt;a href=&#34;https://docs.google.com/presentation/d/1tP7b1e1fy-n3_v5bilDLjOAheZGu602B3WK-1kxXkVo/edit?usp=sharing&#34;&gt;slides&lt;/a&gt;,
+&lt;a href=&#34;https://youtu.be/_E7foB4kVGM&#34;&gt;video&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>k8s on CRI-O - single node</title>
@@ -615,35 +626,61 @@ Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein
       <link>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</link>
       <pubDate>Wed, 15 Mar 2017 14:16:43 +0530</pubDate>
       <guid>https://suraj.io/post/packaging-kompose-for-centos-paas-sig/</guid>
-      <description>Note: This is a living document and will be updated from time to time.
-Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
-Setup your machine Install packages needed
-sudo yum update -y &amp;amp;&amp;amp; \ sudo yum install -y epel-release &amp;amp;&amp;amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager Setup certs</description>
+      <description>&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: This is a living document and will be updated from time to time.&lt;/p&gt;
+&lt;p&gt;Following are steps to package kompose for &lt;a href=&#34;https://wiki.centos.org/SpecialInterestGroup/PaaS&#34;&gt;CentOS PAAS SIG&lt;/a&gt;. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.&lt;/p&gt;
+&lt;h2 id=&#34;setup-your-machine&#34;&gt;Setup your machine&lt;/h2&gt;
+&lt;p&gt;Install packages needed&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo yum update -y &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;sudo yum install -y epel-release &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;sudo yum install -y rpm-build go redhat-rpm-config make koji &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;                    gcc byobu rpmlint rpmdevtools centos-packager
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Setup certs&lt;/p&gt;</description>
     </item>
     <item>
       <title>Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package</title>
       <link>https://suraj.io/post/test-kompose/</link>
       <pubDate>Tue, 14 Mar 2017 00:31:57 +0530</pubDate>
       <guid>https://suraj.io/post/test-kompose/</guid>
-      <description>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
-Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
-Starting the environment:
-docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
-# Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.</description>
+      <description>&lt;p&gt;I generally do &lt;code&gt;kompose&lt;/code&gt; package testing for &lt;code&gt;fedora&lt;/code&gt; and &lt;code&gt;CentOS&lt;/code&gt;. So here are the steps I follow.&lt;/p&gt;
+&lt;h2 id=&#34;fedora&#34;&gt;Fedora&lt;/h2&gt;
+&lt;p&gt;For respective fedora version use the tag respectively for e.g. &lt;code&gt;25&lt;/code&gt; for &lt;code&gt;fedora 25&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Starting the environment:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run -it registry.fedoraproject.org/fedora:26 bash
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Running tests:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Inside the container&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Pull packages from the testing repository&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dnf --enablerepo updates-testing -y install kompose
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Check the kompose version&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;kompose version
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Install the testing dependencies&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dnf install -y jq make
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Pull the git repository to run the functional tests&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/kubernetes/kompose/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; kompose
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git reset --hard &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;kompose version &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; cut -d &lt;span class=&#34;s2&#34;&gt;&amp;#34;(&amp;#34;&lt;/span&gt; -f2 &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; cut -d &lt;span class=&#34;s2&#34;&gt;&amp;#34;)&amp;#34;&lt;/span&gt; -f1&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Run cmd tests&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make test-cmd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;centos-epel-repo&#34;&gt;CentOS &lt;code&gt;epel&lt;/code&gt; repo&lt;/h2&gt;
+&lt;p&gt;Spin the CentOS environment in container.&lt;/p&gt;</description>
     </item>
     <item>
       <title>First post</title>
       <link>https://suraj.io/post/first-post/</link>
       <pubDate>Mon, 13 Mar 2017 00:31:57 +0530</pubDate>
       <guid>https://suraj.io/post/first-post/</guid>
-      <description>This is the new home for my blog. I use to write on wordpress before. You can find the older blog at https://deshmukhsuraj.wordpress.com. But I wanted to have my own domain and wordpress was charging exorbitantly to connect a custom domain to wordpress, so I just ditched it and started writing here. This is much more convenient.</description>
+      <description>&lt;p&gt;This is the new home for my blog. I use to write on wordpress before. You can find the older blog at &lt;a href=&#34;https://deshmukhsuraj.wordpress.com/&#34;&gt;https://deshmukhsuraj.wordpress.com&lt;/a&gt;. But I wanted to have my own domain and wordpress was charging exorbitantly to connect a custom domain to wordpress, so I just ditched it and started writing here. This is much more convenient.&lt;/p&gt;</description>
     </item>
     <item>
       <title>About me</title>
       <link>https://suraj.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://suraj.io/about/</guid>
-      <description>Bio I am a Senior Software Engineer at Microsoft, where I work on the Confidential Containers project, a CNCF sandbox initiative that aims to provide a secure and private way to run containerized workloads on Kubernetes. I have been involved in the Kubernetes space for over six years and has worked for Red Hat and Kinvolk on various Kubernetes technologies such as OpenShift, service-meshes, Helm, Lokomotive, etc. I have also contributed to several Kubernetes upstream projects, including Kubernetes, Kubernetes docs, Contour, Podman, and Crio.</description>
+      <description>&lt;h2 id=&#34;bio&#34;&gt;Bio&lt;/h2&gt;
+&lt;p&gt;I am a Senior Software Engineer at Microsoft, where I work on the Confidential Containers project, a CNCF sandbox initiative that aims to provide a secure and private way to run containerized workloads on Kubernetes. I have been involved in the Kubernetes space for over six years and has worked for Red Hat and &lt;a href=&#34;https://twitter.com/kinvolkio&#34;&gt;Kinvolk&lt;/a&gt; on various Kubernetes technologies such as OpenShift, service-meshes, Helm, Lokomotive, etc. I have also contributed to several Kubernetes upstream projects, including Kubernetes, Kubernetes docs, Contour, Podman, and Crio. I hold CKA and CKS certifications, and I was also an organizer of the Kubernetes Bangalore meetup group from 2017 to 2022. I have spoken at numerous conferences and events, such as Kubecon, Pycon India, DevOpsDays Bangalore, FOSDEM, Cloud Native Rejekts, and DevConf.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

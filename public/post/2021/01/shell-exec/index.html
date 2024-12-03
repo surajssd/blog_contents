@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/2021/01/shell-exec/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -56,31 +56,23 @@
         }
 
     </style>
-</noscript>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-97006720-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script><meta property="og:title" content="Exec in container environment" />
-<meta property="og:description" content="The correct way to use exec and the signal passing." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://suraj.io/post/2021/01/shell-exec/" />
-<meta property="og:image" content="https://suraj.io/images/papermod-cover.png" />
-<meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-01-23T10:10:41+05:30" />
-<meta property="article:modified_time" content="2021-01-23T10:10:41+05:30" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://suraj.io/images/papermod-cover.png" />
-<meta name="twitter:title" content="Exec in container environment"/>
-<meta name="twitter:description" content="The correct way to use exec and the signal passing."/>
+</noscript><meta property="og:url" content="https://suraj.io/post/2021/01/shell-exec/">
+  <meta property="og:site_name" content="Suraj Deshmukh">
+  <meta property="og:title" content="Exec in container environment">
+  <meta property="og:description" content="The correct way to use exec and the signal passing.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-01-23T10:10:41+05:30">
+    <meta property="article:modified_time" content="2021-01-23T10:10:41+05:30">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="Containers">
+    <meta property="article:tag" content="Bash">
+      <meta property="og:image" content="https://suraj.io/images/papermod-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://suraj.io/images/papermod-cover.png">
+<meta name="twitter:title" content="Exec in container environment">
+<meta name="twitter:description" content="The correct way to use exec and the signal passing.">
 
 
 <script type="application/ld+json">
@@ -227,7 +219,7 @@ if (!doNotTrack) {
     <div class="post-description">
       The correct way to use exec and the signal passing.
     </div>
-    <div class="post-meta"><span title='2021-01-23 10:10:41 +0530 +0530'>January 23, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/01/shell-exec.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2021-01-23 10:10:41 +0530 IST'>January 23, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/01/shell-exec.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
   </header> <div class="toc">
@@ -262,8 +254,7 @@ if (!doNotTrack) {
 <p>Signals are messages one process can send to another process, mostly used in UNIX like operating systems.</p>
 <h2 id="how-exec-works-in-linux">How exec works in Linux?<a hidden class="anchor" aria-hidden="true" href="#how-exec-works-in-linux">#</a></h2>
 <p>This is copied from the man page:</p>
-<p><img loading="lazy" src="/post/2021/01/shell-exec/1-exec.png" alt="Exec Man Page"  title="Exec Man Page"  />
-</p>
+<p><img alt="Exec Man Page" loading="lazy" src="/post/2021/01/shell-exec/1-exec.png" title="Exec Man Page"></p>
 <h2 id="an-application-spawned-by-a-shell-script">An application spawned by a shell script.<a hidden class="anchor" aria-hidden="true" href="#an-application-spawned-by-a-shell-script">#</a></h2>
 <p>To ensure that the signals are passed effectively to the real application, spawned by a shell script, you can do something similar to what is done in this snippet. Use <code>trap</code> to call a function which does the cleanup after receiving any of the registered signals like <code>SIGHUP</code>, <code>SIGTERM</code> or <code>SIGINT</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
@@ -288,18 +279,19 @@ Make sure that the script is run via <code>ENTRYPOINT</code> the way it is done 
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> /cleanup.sh<span class="err">
 </span></span></span></code></pre></div><p>Since the above script, <code>cleanup.sh</code> is listening on three types of signals: <code>SIGHUP</code>, <code>SIGTERM</code>, <code>SIGINT</code> if any of these is sent to the script the container will stop working. So the following commands will work just fine:</p>
-<p><img loading="lazy" src="/post/2021/01/shell-exec/4-docker-commands.png" alt="Docker commands"  title="Docker commands"  />
-</p>
+<p><img alt="Docker commands" loading="lazy" src="/post/2021/01/shell-exec/4-docker-commands.png" title="Docker commands"></p>
 <p>Here is a video that shows how the above commands works:</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/IygRbOeJPGQ" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/IygRbOeJPGQ?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 <h2 id="an-application-spawned-directly">An application spawned directly.<a hidden class="anchor" aria-hidden="true" href="#an-application-spawned-directly">#</a></h2>
 <p>Here is a golang application that handles signals. This golang app can be run directly via <code>ENTRYPOINT</code>.</p>
-<p><img loading="lazy" src="/post/2021/01/shell-exec/5-golang-code.png" alt="Golang Signals App"  title="Golang Signals App"  />
-</p>
+<p><img alt="Golang Signals App" loading="lazy" src="/post/2021/01/shell-exec/5-golang-code.png" title="Golang Signals App"></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-docker" data-lang="docker"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> quay.io/surajd/fedora-networking</span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">COPY</span> ./signals /signals<span class="err">
@@ -308,9 +300,12 @@ Make sure that the script is run via <code>ENTRYPOINT</code> the way it is done 
 </span></span></span></code></pre></div><p>This golang code is also listening on the same signals: <code>SIGHUP</code>, <code>SIGTERM</code>, <code>SIGINT</code>. The code has a main goroutine which spawns another goroutine. The background goroutine is listening to the aforementioned signals. While the main goroutine is waiting (<code>←done</code>) for the background goroutine to receive signal and finally exit. In the <code>Dockerfile</code>, we have simply copied the binary directly and spawn it using <code>ENTRYPOINT</code>, this ensures that the application receives the signals directly. <code>ENTRYPOINT</code> is actually starting the given process using <code>exec</code>.</p>
 <p>Watch the video below, which shows how the signals are passed to the application:</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/z60M7FwYFJM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/z60M7FwYFJM?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 <h2 id="when-should-you-use-exec">When should you use <code>exec</code>?<a hidden class="anchor" aria-hidden="true" href="#when-should-you-use-exec">#</a></h2>
 <p>Now consider that you have an application which listens to those signals, but for some reason, you need to spawn that application via a shell script. This is when you use <code>exec</code>. We are using the same golang application as before but spawning it from a bash script. Notice that this script is invoking that golang binary using <code>exec</code>, this replaces the bash script with golang binary as <code>PID 1</code>.</p>
@@ -328,13 +323,15 @@ Make sure that the script is run via <code>ENTRYPOINT</code> the way it is done 
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ENTRYPOINT</span> /startup.sh<span class="err">
 </span></span></span></code></pre></div><p>If we get shell access of the container, you will see that the golang <code>signals</code> app has become <code>PID 1</code>.</p>
-<p><img loading="lazy" src="/post/2021/01/shell-exec/9-console-output.png" alt="Console output"  title="Console output"  />
-</p>
+<p><img alt="Console output" loading="lazy" src="/post/2021/01/shell-exec/9-console-output.png" title="Console output"></p>
 <p>Here is the video that shows these signals passing in action:</p>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/r8QWTeFm4QY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/r8QWTeFm4QY?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
 
 <h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
 <p>I hope this gives you some clearer picture on how to use <code>exec</code> sanely and make sure that the applications are spawned correctly to get the signals sent by their environment be it systemd, docker or Kubernetes.</p>
