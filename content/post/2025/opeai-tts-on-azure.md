@@ -2,7 +2,7 @@
 author: "Suraj Deshmukh"
 date: "2025-05-31T09:21:07-08:00"
 title: "Deploying OpenAI Text-to-Speech (TTS) Model on Azure: A Step-by-Step Guide"
-description: ""
+description: "Learn how to quickly and effectively deploy an OpenAI text-to-speech (TTS) model on Azure with easy-to-follow Azure CLI commands. Boost your applications with advanced speech generation capabilities."
 draft: false
 categories: ["openai", "ai", "llm", "azure", "tts"]
 tags: ["openai", "ai", "llm", "azure", "tts"]
