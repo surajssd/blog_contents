@@ -1,6 +1,5 @@
 baseURL: "https://suraj.io"
 title: "Suraj Deshmukh"
-paginate: 7
 # theme:
 # - PaperMod
 
@@ -193,7 +192,7 @@ services:
     ID: UA-97006720-1
   instagram:
     disableInlineCSS: true
-  twitter:
+  x:
     disableInlineCSS: true
 
 module:
