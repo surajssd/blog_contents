@@ -25,11 +25,11 @@ If you find yourself googling, again and again, it is a clear sign you want that
 
 In my early days on Twitter, I was only a [leecher](https://en.wikipedia.org/wiki/Leecher_(computing)). Once I struggled with the information storage problem, Twitter turned out to be the best platform to change my leecher hat for a seeder. I decided to tweet any new information I learnt with a tweet. The tweet format used to be something like `Problem Statement: <solution link>`.
 
-{{< twitter user="surajd_" id="1332302641083269126" >}}
+{{< x user="surajd_" id="1332302641083269126" >}}
 
 Or if it is a command-line thing, then the structure would be `Problem Statement: <solution commands in monospace> Source link: <link>`.
 
-{{< twitter user="surajd_" id="1159026822568222721" >}}
+{{< x user="surajd_" id="1159026822568222721" >}}
 
 If I needed anything from my past tweets, I could simply go to my ["Profile"](https://twitter.com/surajd_) and search for the problem statement. Once the tweets grew on my "Profile", searching went out of hand. Also, the search feature of Twitter is cumbersome to use.
 
@@ -63,7 +63,7 @@ There are specific commands that you need again-and-again. I would automate that
 
 For, e.g. certain websites disable pasting text into text boxes, and I found a solution to enable pasting. When I discovered it first, I tweeted about it.
 
-{{< twitter user="surajd_" id="1339602696999845890" >}}
+{{< x user="surajd_" id="1339602696999845890" >}}
 
 I found myself visiting such websites multiple times. Thus, to copy the solution, I would see the Twitter profile page (until the page was searchable using `Ctrl + F`). Once the tweet on the profile got buried, I started digging (grepping) into the [plain-text-tweets](https://github.com/surajssd/tweetbase/blob/master/plain-text-tweets.txt) file and then jumping to the tweet.
 

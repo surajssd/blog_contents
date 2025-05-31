@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/tags/containers/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -88,7 +88,7 @@
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -165,7 +165,8 @@
 </header>
 
 <article class="post-entry tag-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://suraj.io/post/2021/01/kubeadm-flatcar/flatcar.jpg" alt="Image Source: [Flatcar Linux is now open to the public.](https://kinvolk.io/blog/2018/04/flatcar-linux-is-now-open-to-the-public/)">
+<figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/post/2021/01/kubeadm-flatcar/flatcar.jpg" alt="Image Source: [Flatcar Linux is now open to the public.](https://kinvolk.io/blog/2018/04/flatcar-linux-is-now-open-to-the-public/)">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">Kubernetes Cluster using Kubeadm on Flatcar Container Linux
@@ -176,7 +177,7 @@
 You might wonder why this blog when one can go to the official documentation and follow the steps? Yep, you are right. You can choose to do that. But this blog has a collection of actions specific to Flatcar Container Linux. These steps have been tried and tested on Flatcar, so you don’t need to recreate and test them yourself. There are some nuances related to the read-only partitions of Flatcar, and this blog takes care of them at the control plane level and the CNI level both.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-01-29 22:02:41 +0530 IST'>January 29, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-01-29 22:02:41 +0530 +0530'>January 29, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Kubernetes Cluster using Kubeadm on Flatcar Container Linux" href="https://suraj.io/post/2021/01/kubeadm-flatcar/"></a>
 </article>
 
@@ -190,7 +191,7 @@ You might wonder why this blog when one can go to the official documentation and
 What are the “Signals”? Signals are messages one process can send to another process, mostly used in UNIX like operating systems.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-01-23 10:10:41 +0530 IST'>January 23, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-01-23 10:10:41 +0530 +0530'>January 23, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Exec in container environment" href="https://suraj.io/post/2021/01/shell-exec/"></a>
 </article>
 
@@ -204,7 +205,7 @@ What are the “Signals”? Signals are messages one process can send to another
 But for the developers or operators of such applications, it is hard to debug. Since they lack essential tools or even bash for that matter, but the application’s debugging ability should not dictate its production deployment and compromise its security posture.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2020-06-06 20:30:07 +0530 IST'>June 6, 2020</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2020-06-06 20:30:07 +0530 +0530'>June 6, 2020</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Watch Container Traffic Without Exec" href="https://suraj.io/post/snoop-on-pod-traffic/"></a>
 </article>
 
@@ -220,7 +221,7 @@ $ getcap `which ping` /usr/bin/ping = cap_net_admin,cap_net_raw&#43;p Which norm
 $ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1.1.1.1: icmp_seq=1 ttl=55 time=36.9 ms --- 1.1.1.1 ping statistics --- 1 packets transmitted, 1 received, 0% packet loss, time 0ms rtt min/avg/max/mdev = 36.885/36.885/36.885/0.000 ms If you copy file as a normal user the binary loses its privilege and the command ceases to work:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-25 15:15:07 +0530 IST'>June 25, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2019-06-25 15:15:07 +0530 +0530'>June 25, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Capabilities on executables" href="https://suraj.io/post/linux-cap-note/"></a>
 </article>
 
@@ -235,7 +236,7 @@ Root in container, root on host I have a host with docker daemon running on it. 
 $ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &#34;sleep 9999&#34; 12 seconds ago Up 11 seconds clever_lalande Now let’s find out the process sleep on the host. Here in the following output you can see that the process sleep is running as user root.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-25 11:57:07 +0530 IST'>June 25, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2019-06-25 11:57:07 +0530 +0530'>June 25, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Root user inside container is root on the host" href="https://suraj.io/post/root-in-container-root-on-host/"></a>
 </article>
 
@@ -251,7 +252,7 @@ Steps in text Here I have a script on the host, which looks following:
 $ ls script.sh $ ./script.sh OS Information: NAME=&#34;Flatcar Linux by Kinvolk&#34; ID=flatcar ID_LIKE=coreos VERSION=2079.6.0 VERSION_ID=2079.6.0 BUILD_ID=2019-06-18-0855 PRETTY_NAME=&#34;Flatcar Linux by Kinvolk 2079.6.0 (Rhyolite)&#34; ANSI_COLOR=&#34;38;5;75&#34; HOME_URL=&#34;https://flatcar-linux.org/&#34; BUG_REPORT_URL=&#34;https://issues.flatcar-linux.org&#34; FLATCAR_BOARD=&#34;amd64-usr&#34; And here is the running container in another tab to which I want to copy the file.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-21 11:57:07 +0530 IST'>June 21, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2019-06-21 11:57:07 +0530 +0530'>June 21, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Copying files to container the generic way" href="https://suraj.io/post/copy-to-container-without-docker-cp/"></a>
 </article>
 
@@ -265,13 +266,13 @@ $ ls script.sh $ ./script.sh OS Information: NAME=&#34;Flatcar Linux by Kinvolk&
 On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-10-06 19:32:33 +0530 IST'>October 6, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-10-06 19:32:33 +0530 +0530'>October 6, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Using private container registries from minikube" href="https://suraj.io/post/private-registry-from-minikube/"></a>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

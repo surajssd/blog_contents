@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/cobra-persistent-flag/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -148,7 +148,7 @@
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -220,7 +220,7 @@
     <div class="post-description">
       How wrong usage of persistent flags can burn you
     </div>
-    <div class="post-meta"><span title='2019-01-04 01:00:51 +0530 IST'>January 4, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/cobra-persistent-flag.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2019-01-04 01:00:51 +0530 +0530'>January 4, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/cobra-persistent-flag.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
@@ -235,8 +235,8 @@
 </span></span><span class="line"><span class="cl">    └── one
 </span></span></code></pre></div><p>Now I want a persistent flag <code>--config</code> to be availabe under sub-command <code>one</code> and <code>alpha</code> both. So I created a func that allows me to add this flag under any command, which looked like following:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">addConfig</span><span class="p">(</span><span class="nx">cmd</span> <span class="o">*</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// add config flag
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">cmd</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">().</span><span class="nf">String</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// add config flag</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">cmd</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">().</span><span class="nf">String</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">		<span class="s">&#34;config&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">os</span><span class="p">.</span><span class="nf">ExpandEnv</span><span class="p">(</span><span class="s">&#34;$HOME/.config&#34;</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">		<span class="s">&#34;Path to config file&#34;</span><span class="p">)</span>
@@ -294,8 +294,8 @@
 </span></span></code></pre></div><p>Hence the <code>init</code> func of <code>alpha</code> is called first and the flag <code>config</code> is registered there first and again it is registered for <code>one</code>. So the final flag is just registered for <code>one</code>. Hence the functionality works correctly for <code>one</code> and not for <code>alpha</code>.</p>
 <p>So the right way to work with persistent flags is to register them only once. If any particular sub-command tree needs that flag then only register at it&rsquo;s root. In our case most of the sub-commands will need it, so the right way to use it is to add it to the <a href="https://github.com/surajssd/cobrademo/blob/ab3fe4d7ecec26ca5c02cffa861941708f89a5de/cmd/root.go#L10-L13"><code>rootCmd</code></a>.</p>
 <p>In above code I removed the function <code>addConfig</code> and all it&rsquo;s references(see the changes <a href="https://github.com/surajssd/cobrademo/commit/ab3fe4d7ecec26ca5c02cffa861941708f89a5de">here</a>). And added following code snippet to the <code>init</code> func of <code>root.go</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">	<span class="c1">// add config flag
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">rootCmd</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">().</span><span class="nf">String</span><span class="p">(</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl">	<span class="c1">// add config flag</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">rootCmd</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">().</span><span class="nf">String</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">		<span class="s">&#34;config&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">os</span><span class="p">.</span><span class="nf">ExpandEnv</span><span class="p">(</span><span class="s">&#34;$HOME/.config&#34;</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">		<span class="s">&#34;Path to config file&#34;</span><span class="p">)</span>
@@ -423,7 +423,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

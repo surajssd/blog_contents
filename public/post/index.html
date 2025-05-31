@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -103,7 +103,7 @@
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -180,7 +180,8 @@
 </header>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://suraj.io/images/talks/talks.jpeg" alt="">
+<figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/images/talks/talks.jpeg" alt="">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">Suraj Deshmukh&#39;s talks at conferences
@@ -189,12 +190,31 @@
   <div class="entry-content">
     <p>Confidential Containers 101: A Hands-on Workshop - Kubecon North America 2024 Fortifying AI Security in Kubernetes with Confidential Containers (CoCo) - Kubecon Europe 2024 Memory Armor for SPIRE: Fortifying SPIRE with Confidential Containers (CoCo) - Kubecon Europe 2024 Misfits - Feat. ContainerSSH and Confidential Containers (You Choose!, Ch. 3, Ep. 10) Confidential Containers: The Next Frontier in Cloud-NativeSecurity - Cloud Native Rejekts 2023 Building Container Defences Executable at a Time - KCD Bangalore 2022 PSP and Beyond - Kubernetes Bangalore Meetup June 2021 Hardening Kubernetes by Securing Pods - Rootconf 2019 State of Kubernetes Meetups - DevOpsDays India 2017 Making Kubernetes Simple For Developers - Rootconf 2017 Taking docker-compose to Production - Gophercon 2017 Lightening talk </p>
   </div>
-  <footer class="entry-footer"><span title='2024-03-30 01:00:51 +0530 IST'>March 30, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2024-03-30 01:00:51 +0530 +0530'>March 30, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Suraj Deshmukh&#39;s talks at conferences" href="https://suraj.io/post/surajd-talks-links/"></a>
 </article>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://suraj.io/post/2024/images/coco-on-azure.png" alt="CoCo on Azure">
+<figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/post/2025/images/azure-openai-tts.png" alt="TTS on Azure">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Deploying OpenAI Text-to-Speech (TTS) Model on Azure: A Step-by-Step Guide
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Deploying OpenAI Text-to-Speech (TTS) Model on Azure: A Step-by-Step Guide Azure Cognitive Services provides a straightforward way to deploy OpenAI models, including powerful text-to-speech capabilities. In this guide, I’ll demonstrate how to deploy a text-to-speech model using Azure CLI commands.
+Prerequisites An Azure subscription Azure CLI installed and logged in (az login) Step 1: Define Environment Variables Set your environment variables to simplify and standardize deployments.
+export AZURE_RESOURCE_GROUP=&#34;example-rg&#34; export AZURE_REGION=&#34;eastus&#34; export OPENAI_NAME=&#34;example-openai&#34; export AZURE_SUBSCRIPTION_ID=&#34;your-subscription-id&#34; # Keep these variables as is. export AUDIO_MODEL=&#34;gpt-4o-mini-tts&#34; export AUDIO_MODEL_VERSION=&#34;2025-03-20&#34; Explanation:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-05-31 09:21:07 -0800 -0800'>May 31, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Deploying OpenAI Text-to-Speech (TTS) Model on Azure: A Step-by-Step Guide" href="https://suraj.io/post/2025/opeai-tts-on-azure/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/post/2024/images/coco-on-azure.png" alt="CoCo on Azure">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">Open Source Confidential Containers (CoCo) on Azure
@@ -204,12 +224,13 @@
     <p>Introduction In the realm of cloud computing, ensuring data privacy and security is paramount, yet profoundly challenging. One innovative solution to this challenge is Confidential Containers (CoCo)1, designed to provide an extra layer of security for data in use. However, deploying CoCo requires access to specialized hardware, which adds complexity. Beyond just finding the right hardware, the setup involves navigating a maze of technical specifications – from BIOS configurations to kernel versions – making the process daunting.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-04-05 09:21:07 +0530 IST'>April 5, 2024</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2024-04-05 09:21:07 +0530 +0530'>April 5, 2024</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Open Source Confidential Containers (CoCo) on Azure" href="https://suraj.io/post/2024/coco-on-azure/"></a>
 </article>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
+<figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/post/2021/10/dont-be-default/human-evolution.jpg" alt="Human Evolution">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">Fight Your Instincts — Your Default Behaviour is Hurting You
@@ -220,12 +241,13 @@
 I am making a case that anyone who has never rebelled against or resisted their default behavior will find it hard to achieve success in this world. All the successful people we see have done something that required fighting the default behavior, which led them to achieve something exceptional and become successful.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-10-29 11:05:07 +0530 IST'>October 29, 2021</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-10-29 11:05:07 +0530 +0530'>October 29, 2021</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Fight Your Instincts — Your Default Behaviour is Hurting You" href="https://suraj.io/post/2021/10/dont-be-default/"></a>
 </article>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
+<figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/post/2021/10/atomic-habits/logo.jpg" alt="Atomic Habits">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">Learnings from &#39;Atomic Habits&#39;
@@ -236,12 +258,13 @@ I am making a case that anyone who has never rebelled against or resisted their 
 Written by James Clear, the book is not a theoretical text just talking about habits. Rather, it is a handbook that goes into the depth of how habits form, how they can be fostered, how human evolution hinders good habit formation in today’s world, etc. It gives you practical tips and actions on setting good habits and breaking bad ones.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-10-26 09:21:07 +0530 IST'>October 26, 2021</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-10-26 09:21:07 +0530 +0530'>October 26, 2021</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Learnings from &#39;Atomic Habits&#39;" href="https://suraj.io/post/2021/10/atomic-habits/"></a>
 </article>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
+<figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/post/2021/09/unchanging-context/cafe.jpg" alt="cafe">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">Unchanging Contexts and Degrading Productivity
@@ -252,12 +275,13 @@ Written by James Clear, the book is not a theoretical text just talking about ha
 The Tragedy of Lost Contexts Everything happens from the same place, things like work, seeing friends, entertainment, conferences, meetup, reading for fun, side project, etc. Earlier, there was a context and a place for each and everything. All of these other things have encroached on my workplace. Seeing friends in person is replaced by meeting them on Zoom. Watching movies in theater has been replaced by Netflix or Prime Video. Conferences had a special place for them in big convention centers in distant places. Now there are online platforms for organizing that too. A different company would host us for the meetup. There was a novelty in seeing new company spaces, a joy of talking tech for hours, that was fun. But now that too is only on Zoom, and it feels like yet another meeting. Cafes were for side projects and reading, but alas, that too happens in the same room, the same place.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-09-11 17:09:07 +0530 IST'>September 11, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-09-11 17:09:07 +0530 +0530'>September 11, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Unchanging Contexts and Degrading Productivity" href="https://suraj.io/post/2021/09/unchanging-context/"></a>
 </article>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
+<figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/post/2021/09/cks-tips/kubernetes-security-specialist-logo-300x285.png" alt="cert">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">Certified Kubernetes Security Specialist CKS exam tips
@@ -268,12 +292,13 @@ The Tragedy of Lost Contexts Everything happens from the same place, things like
 Study Material During the study of CKA almost three years ago, I studied everything from the documentation. Back then, the documentation had less content hence it was comprehensible. But now, to go through the entire documentation was not practical. So I did the course by the killer.sh. This course is rich in information, exercises and tries to explain the basics. At the end of each section in the course, the trainer provides resources to read more on the given topic. I would recommend going through each and every resource provided. Don’t skip these. These resources will help you familiarize yourself with the Kubernetes documentation and support you during the exam.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-09-04 13:30:07 +0530 IST'>September 4, 2021</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-09-04 13:30:07 +0530 +0530'>September 4, 2021</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Certified Kubernetes Security Specialist CKS exam tips" href="https://suraj.io/post/2021/09/cks-tips/"></a>
 </article>
 
 <article class="post-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
+<figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/post/2021/08/sapiens/logo.png" alt="Sapiens">
 </figure>
   <header class="entry-header">
     <h2 class="entry-hint-parent">Learnings from &#39;Sapiens&#39;
@@ -283,19 +308,54 @@ Study Material During the study of CKA almost three years ago, I studied everyth
     <p>This is not a book review. Instead, this is a book recommendation. Please go ahead and buy this book. If you cannot afford to buy the book, please reach out to me. I will help you buy it⁕. This blog will give you a general idea of what this book is about. I will provide some background about the book and the author, followed by the notes from the book.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-08-14 10:45:07 +0530 IST'>August 14, 2021</span>&nbsp;·&nbsp;23 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-08-14 10:45:07 +0530 +0530'>August 14, 2021</span>&nbsp;·&nbsp;23 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Learnings from &#39;Sapiens&#39;" href="https://suraj.io/post/2021/08/sapiens/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/post/2021/06/reading-devices/devices.jpg" alt="Devices">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Reading Devices
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I use different devices for consuming content from disparate streams, even for books. This post discusses each method’s various pros and cons and what fits best in what kind of circumstance.
+You can refer to the table at the end of the post, where I have broken down each comparison aspect.
+Physical Books This method of consuming knowledge became prevalent with Gutenburg’s printing press. Getting a new book always gives you that dopamine rush since it has a sense of newness, new cover, the smell of paper, etc.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-06-30 01:45:00 +0530 +0530'>June 30, 2021</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Reading Devices" href="https://suraj.io/post/2021/06/reading-devices/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/post/2021/06/automatic-cert-gen/obama.jpg" alt="Self Signed Certificates">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The previous blog talked about generating self-signed certificates using a binary. It was a manual, cumbersome process where you had to generate the certificates using a tool, embed them into a Kubernetes Secret via Helm chart, and then use it. There is a better way of doing it! Which is what this blog will discuss.
+We will use a Helm chart, which has a couple of Kubernetes Jobs that generates the self-signed certificate, embed them in a Kubernetes Secret and finally update the ValidatingWebhookConfiguration or MutatingWebhookConfiguration of your choice. And that’s it. Life is simpler!
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-06-25 09:00:00 +0530 +0530'>June 25, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?" href="https://suraj.io/post/2021/06/automatic-cert-gen/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="next" href="https://suraj.io/post/page/2/">Next&nbsp;2/13&nbsp;»
+    <a class="next" href="https://suraj.io/post/page/2/">Next&nbsp;2/9&nbsp;»
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

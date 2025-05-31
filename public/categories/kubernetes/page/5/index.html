@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/categories/kubernetes/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -88,7 +88,7 @@
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -175,7 +175,7 @@ Change namespace Let’s see step by step what goes in to change the namespace. 
 A context element in a kubeconfig file is used to group access parameters under a convenient name. Each context has three parameters: cluster, namespace, and user. By default, the kubectl command-line tool uses parameters from the current context to communicate with the cluster. Read more.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-07-02 08:00:51 +0530 IST'>July 2, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-07-02 08:00:51 +0530 +0530'>July 2, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Change namespaces in Kubernetes" href="https://suraj.io/post/changing-k8s-ns/"></a>
 </article>
 
@@ -189,7 +189,7 @@ A context element in a kubeconfig file is used to group access parameters under 
 On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-10-06 19:32:33 +0530 IST'>October 6, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-10-06 19:32:33 +0530 +0530'>October 6, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Using private container registries from minikube" href="https://suraj.io/post/private-registry-from-minikube/"></a>
 </article>
 
@@ -203,7 +203,7 @@ On the configuration side of doing that you will need to create Kubernetes Secre
 This blog is only replacement of section Install the Standalone Kubelet in tutorial.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-09-23 13:10:14 +0530 IST'>September 23, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-09-23 13:10:14 +0530 +0530'>September 23, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Static Pods using Kubelet on Fedora" href="https://suraj.io/post/static-pods/"></a>
 </article>
 
@@ -216,7 +216,7 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
     <p>Following is the list of all the places you can learn Kubernetes from:
 Scalable Microservices with Kubernetes - Video tutorial Fundamentals of Containers, Kubernetes, and Red Hat OpenShift - Video tutorial Kubernetes By Example - DIY tutorial Learn Kubernetes using Interactive Browser-Based Scenarios - DIY tutorial in your own web browser Interactive Learning Portal for OpenShift - DIY tutorial in your own web browser Kubernetes docs - Textual DIY docs Kubernetes API reference v1.6 OpenShift docs - Textual DIY docs </p>
   </div>
-  <footer class="entry-footer"><span title='2017-08-17 23:12:18 +0530 IST'>August 17, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-08-17 23:12:18 +0530 +0530'>August 17, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Kubernetes Learning resources" href="https://suraj.io/post/k8s-learning-resources/"></a>
 </article>
 
@@ -231,7 +231,7 @@ I have a flask application which I am working on. The basic directory structure 
 $ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo foo 201 Apr 23 16:55 docker-compose.yml -rw-rw-r--. 1 foo foo 363 Apr 23 16:21 Dockerfile -rwxrwxr-x. 1 foo foo 82 Dec 5 19:41 entrypoint.sh -rw-rw-r--. 1 foo foo 3010 Dec 5 19:41 README.adoc -rw-rw-r--. 1 foo foo 11 Dec 5 19:41 requirements.txt You can find all of these files in this github repo.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-04-23 15:57:07 +0530 IST'>April 23, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-04-23 15:57:07 +0530 +0530'>April 23, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Enabling local development with Kubernetes" href="https://suraj.io/post/enabling-local-development-with-k8s/"></a>
 </article>
 
@@ -246,7 +246,7 @@ Enter into the machine running k8s If using minikube you can do
 minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-04-18 23:56:15 +0530 IST'>April 18, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-04-18 23:56:15 +0530 +0530'>April 18, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Quick PV for local Kubernetes cluster" href="https://suraj.io/post/quick-pv-for-local-k8s/"></a>
 </article>
 
@@ -260,7 +260,7 @@ minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /t
 Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &#39;GOPATH=~/go&#39; &gt;&gt; ~/.bashrc echo &#39;GOBIN=$GOPATH/bin&#39; &gt;&gt; ~/.bashrc echo &#39;PATH=$PATH:$GOBIN&#39; &gt;&gt; ~/.bashrc Pull all the code dependencies go get -d k8s.io/kubernetes go get -u github.com/cloudflare/cfssl/cmd/... Install runc go get -d github.com/opencontainers/runc cd $GOPATH/src/github.com/opencontainers/runc git reset --hard v1.0.0-rc3 make BUILDTAGS=&#39;seccomp selinux&#39; &amp;&amp; make install Build cri-o cd go get -d github.com/kubernetes-incubator/cri-o cd $GOPATH/src/github.com/kubernetes-incubator/cri-o make install.tools make &amp;&amp; make install make install.config Set up CNI go get -d github.com/containernetworking/cni cd $GOPATH/src/github.com/containernetworking/cni ./build.sh mkdir -p /opt/cni/bin cp bin/* /opt/cni/bin/ mkdir -p /etc/cni/net.d/ cat &gt; /etc/cni/net.d/10-ocid-bridge.conf &lt;&lt;EOF { &#34;cniVersion&#34;: &#34;0.2.0&#34;, &#34;name&#34;: &#34;ocid-bridge&#34;, &#34;type&#34;: &#34;bridge&#34;, &#34;bridge&#34;: &#34;cni0&#34;, &#34;isGateway&#34;: true, &#34;ipMasq&#34;: true, &#34;ipam&#34;: { &#34;type&#34;: &#34;host-local&#34;, &#34;subnet&#34;: &#34;10.88.0.0/16&#34;, &#34;routes&#34;: [ { &#34;dst&#34;: &#34;0.0.0.0/0&#34; } ] } } EOF cat &gt; /etc/cni/net.d/99-loopback.conf &lt;&lt;EOF { &#34;cniVersion&#34;: &#34;0.2.0&#34;, &#34;type&#34;: &#34;loopback&#34; } EOF Create policy.json mkdir -p /etc/containers cat &gt; /etc/containers/policy.json &lt;&lt;EOF { &#34;default&#34;: [ { &#34;type&#34;: &#34;insecureAcceptAnything&#34; } ] } EOF Make SELinux happy mkdir -p /var/lib/containers/ chcon -Rt svirt_sandbox_file_t /var/lib/containers/ Start ocid service export PATH=$PATH:/usr/local/bin/ echo &#39;PATH=$PATH:/usr/local/bin/&#39; &gt;&gt; ~/.bashrc ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug --selinux true Start k8s cluster with crio cd $GOPATH/src/k8s.io/kubernetes/ CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT=&#39;/var/run/ocid.sock --runtime-request-timeout=15m&#39; ./hack/local-up-cluster.sh To use kubectl (in new terminal)
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-04-08 00:11:37 +0530 IST'>April 8, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-04-08 00:11:37 +0530 +0530'>April 8, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to k8s on CRI-O - single node" href="https://suraj.io/post/using-crio-with-k8s-single-node/"></a>
 </article>
 <footer class="page-footer">
@@ -273,7 +273,7 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

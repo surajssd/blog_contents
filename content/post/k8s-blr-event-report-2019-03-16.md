@@ -13,17 +13,17 @@ Meetup agenda can be found [here](https://www.meetup.com/kubernetes-openshift-In
 
 The moments from Meetup:
 
-{{< twitter user="k8sBLR" id="1106836598987997184" >}}
+{{< x user="k8sBLR" id="1106836598987997184" >}}
 
-{{< twitter user="k8sBLR" id="1106843045570453507" >}}
+{{< x user="k8sBLR" id="1106843045570453507" >}}
 
-{{< twitter user="k8sBLR" id="1106847490299576320" >}}
+{{< x user="k8sBLR" id="1106847490299576320" >}}
 
-{{< twitter user="k8sBLR" id="1106893383954501632" >}}
+{{< x user="k8sBLR" id="1106893383954501632" >}}
 
-{{< twitter user="k8sBLR" id="1106901676575911937" >}}
+{{< x user="k8sBLR" id="1106901676575911937" >}}
 
-{{< twitter user="k8sBLR" id="1107299154433376256" >}}
+{{< x user="k8sBLR" id="1107299154433376256" >}}
 
 Here is the link to meetup recording:
 

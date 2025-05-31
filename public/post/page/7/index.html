@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -103,7 +103,7 @@
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -181,122 +181,170 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Capabilities on executables
+    <h2 class="entry-hint-parent">HostPath volumes and it&#39;s problems
     </h2>
   </header>
   <div class="entry-content">
-    <p>File capabilities allow users to execute programs with higher privileges. Best example is network utility ping.
-A ping binary has capabilities CAP_NET_ADMIN and CAP_NET_RAW. A normal user doesn’t have CAP_NET_ADMIN privilege, since the executable file ping has that capability you can run it.
-$ getcap `which ping` /usr/bin/ping = cap_net_admin,cap_net_raw&#43;p Which normally works as follows:
-$ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1.1.1.1: icmp_seq=1 ttl=55 time=36.9 ms --- 1.1.1.1 ping statistics --- 1 packets transmitted, 1 received, 0% packet loss, time 0ms rtt min/avg/max/mdev = 36.885/36.885/36.885/0.000 ms If you copy file as a normal user the binary loses its privilege and the command ceases to work:
+    <p>This post will demonstrate how Kubernetes HostPath volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.
+I have a 3-master and 3-node cluster and setup using this script, running in a Vagrant environment.
+All the nodes are in ready state:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-25 15:15:07 +0530 IST'>June 25, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Capabilities on executables" href="https://suraj.io/post/linux-cap-note/"></a>
+  <footer class="entry-footer"><span title='2018-09-10 01:00:51 +0530 +0530'>September 10, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to HostPath volumes and it&#39;s problems" href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Root user inside container is root on the host
+    <h2 class="entry-hint-parent">HTTPS during development using &#39;mkcert&#39;
     </h2>
   </header>
   <div class="entry-content">
-    <p>Here are simple steps that you can follow to prove that the root user inside container is also root on the host. And how to mitigate this.
-Root in container, root on host I have a host with docker daemon running on it. I start a normal container on it with sleep process as PID1. See in the following output that the container clever_lalande started with sleep process.
-$ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &#34;sleep 9999&#34; 12 seconds ago Up 11 seconds clever_lalande Now let’s find out the process sleep on the host. Here in the following output you can see that the process sleep is running as user root.
+    <p>It’s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
+Once installed just run:
+$ mkcert -install Created a new local CA at &#34;/home/hummer/.local/share/mkcert&#34; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)! 🦊 This has installed the local CA. Now all you need to do is create a new certificate.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-25 11:57:07 +0530 IST'>June 25, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Root user inside container is root on the host" href="https://suraj.io/post/root-in-container-root-on-host/"></a>
+  <footer class="entry-footer"><span title='2018-08-14 01:00:51 +0530 +0530'>August 14, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to HTTPS during development using &#39;mkcert&#39;" href="https://suraj.io/post/mkcert-using-python-http-server/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Project specific scripts
+    <h2 class="entry-hint-parent">Golang struct tags gotchas
     </h2>
   </header>
   <div class="entry-content">
-    <p>There are always scripts that you write to automate some mundane tasks. And then you put that script in a directory that is in your PATH. But what this does is that it pollutes your system global PATH and shows up in places you wouldn’t want it to be in.
-I was struggling with this issue for a while and struggling to get a proper solution. But there is a very simple and clever trick to solve this problem. You extend your PATH to have a relative path .scripts in it. Like following (this is a snippet from my .bashrc).
+    <p>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
+type PodStatus struct { Status string `json: &#34;,status&#34;` } If you run go vet on this piece of code you will get following error:
+$ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &#34;,status&#34;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value Now this does not tell us what is wrong with the struct tag, json: &#34;,status&#34;. The problem with this struct tag is that the extra space can be interpreted as delimiter so provide key-value pair without space.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-23 11:57:07 +0530 IST'>June 23, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Project specific scripts" href="https://suraj.io/post/project-specific-scripts/"></a>
+  <footer class="entry-footer"><span title='2018-08-12 01:00:51 +0530 +0530'>August 12, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Golang struct tags gotchas" href="https://suraj.io/post/golang-struct-tags-space/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Copying files to container the generic way
+    <h2 class="entry-hint-parent">Access etcd in OpenShift origin
     </h2>
   </header>
   <div class="entry-content">
-    <p>This blog shows you how you can copy stuff from your host machine to the running container without the docker cp command that we usually use.
-Steps in text Here I have a script on the host, which looks following:
-#!/bin/bash tput bold echo &#34;OS Information:&#34; tput sgr0 echo cat /etc/os-release After running which looks like following:
-$ ls script.sh $ ./script.sh OS Information: NAME=&#34;Flatcar Linux by Kinvolk&#34; ID=flatcar ID_LIKE=coreos VERSION=2079.6.0 VERSION_ID=2079.6.0 BUILD_ID=2019-06-18-0855 PRETTY_NAME=&#34;Flatcar Linux by Kinvolk 2079.6.0 (Rhyolite)&#34; ANSI_COLOR=&#34;38;5;75&#34; HOME_URL=&#34;https://flatcar-linux.org/&#34; BUG_REPORT_URL=&#34;https://issues.flatcar-linux.org&#34; FLATCAR_BOARD=&#34;amd64-usr&#34; And here is the running container in another tab to which I want to copy the file.
+    <p>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
+If you are using minishift then get docker environment access of the minishift VM by running following commands.
+eval $(minishift docker-env) &amp;&amp; eval $(minishift oc-env) Exec into the container named origin that runs OpenShift and all the needed services.
+$ docker exec -it origin bash First install the etcdctl needed to talk to etcd.
+[root@surajd origin]$ yum -y install etcd Get into the directory where all the certs and keys are available.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-21 11:57:07 +0530 IST'>June 21, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Copying files to container the generic way" href="https://suraj.io/post/copy-to-container-without-docker-cp/"></a>
+  <footer class="entry-footer"><span title='2018-07-11 01:00:51 +0530 +0530'>July 11, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Access etcd in OpenShift origin" href="https://suraj.io/post/accessing-oc-cluster-up-etcd/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Writing your own Seccomp profiles for Docker
+    <h2 class="entry-hint-parent">Change namespaces in Kubernetes
     </h2>
   </header>
   <div class="entry-content">
-    <p>What is Seccomp? A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.
+    <p>There is no easy way to change namespace in Kubernetes using kubectl command line utility. But here are some commands that you can alias in your bashrc file so that it’s just a single command that you can use to change the namespace in the Kubernetes cluster.
+Change namespace Let’s see step by step what goes in to change the namespace. So the first step is to find the context.
+A context element in a kubeconfig file is used to group access parameters under a convenient name. Each context has three parameters: cluster, namespace, and user. By default, the kubectl command-line tool uses parameters from the current context to communicate with the cluster. Read more.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-10 11:57:07 +0530 IST'>June 10, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Writing your own Seccomp profiles for Docker" href="https://suraj.io/post/docker-seccomp-manual/"></a>
+  <footer class="entry-footer"><span title='2018-07-02 08:00:51 +0530 +0530'>July 2, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Change namespaces in Kubernetes" href="https://suraj.io/post/changing-k8s-ns/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Kubernetes Bangalore March 2019 Event Report
+    <h2 class="entry-hint-parent">Prometheus with existing application on OpenShift
     </h2>
   </header>
   <div class="entry-content">
-    <p>The Kubernetes Bangalore Meetup was organized at Arvind Internet on Feb 16th 2019. The agenda for the meetup was to teach Kubernetes to the beginners.
-Meetup agenda can be found here.
-The moments from Meetup:
-We go online in sometime here https://t.co/FkwgOx0Tm4
-— Kubernetes Bangalore (@k8sBLR) March 16, 2019 .@pmishra1598 kick started the Meetup by explaining what #Kubernetes is! Currently clarifying what a pod is. pic.twitter.com/Ny7bN9c62x
-— Kubernetes Bangalore (@k8sBLR) March 16, 2019 Huge turnout at today&#39;s meetup it&#39;s on 🔥🔥 pic.twitter.com/YYbMBoumWw
+    <p>This post is very specific to OpenShift and how you can have an application exposing prometheus metrics to be scraped by a prometheus running in the same cluster.
+Requirements Setting up cluster I have done it using the oc cluster up, read about how to do this here. You could also setup a local OpenShift cluster by running minishift, read about setting up minishift here.
+Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge. This makes configuration easier to understand and edit. So for using this setup download Kedge and put it in your path as explained here.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-03-21 01:00:51 +0530 IST'>March 21, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Kubernetes Bangalore March 2019 Event Report" href="https://suraj.io/post/k8s-blr-event-report-2019-03-16/"></a>
+  <footer class="entry-footer"><span title='2018-04-04 08:00:51 +0530 +0530'>April 4, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Prometheus with existing application on OpenShift" href="https://suraj.io/post/using-prometheus/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Make static configs available for apiserver in minikube
+    <h2 class="entry-hint-parent">Notes on talk - Advanced testing in golang by Mitchell Hashimoto
     </h2>
   </header>
   <div class="entry-content">
-    <p>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube’s --extra-config flag with apiserver.&lt;apiserver flag&gt;=&lt;value&gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
---extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path. Because you will have to make that file available for apiserver. And this apiserver runs as a static pod inside minikube. How do you make the file available to that process inside pod inside minikube?
+    <p>Test Fixtures “go test” sets pwd as package directory Test Helpers should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9&#43;) for things reqiuiring clean up return closures Configurability Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It’s ok to make these configs unexported so only tests can set them. Slides Video GopherCon 2017: Mitchell Hashimoto - Advanced Testing with Go by Mitchell Hashimoto </p>
+  </div>
+  <footer class="entry-footer"><span title='2018-03-07 02:21:49 +0530 +0530'>March 7, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Notes on talk - Advanced testing in golang by Mitchell Hashimoto" href="https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Methods that satisfy interfaces in golang
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Pointer receiver For a struct User with a method Work with pointer receiver.
+type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &#34;has worked for&#34;, u.Period, &#34;hrs.&#34;) } func main() { uval := User{&#34;UserVal&#34;, 5} uval.Work() pval := &amp;User{&#34;UserPtr&#34;, 6} pval.Work() } See on go playground.
+output:
+UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval.
+Value receiver Now we change the method receiver from pointer to value.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-01-20 01:00:51 +0530 IST'>January 20, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Make static configs available for apiserver in minikube" href="https://suraj.io/post/apiserver-in-minikube-static-configs/"></a>
+  <footer class="entry-footer"><span title='2018-02-23 08:00:51 +0530 +0530'>February 23, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Methods that satisfy interfaces in golang" href="https://suraj.io/post/golang-methods-interfaces/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">vscode Shortcuts
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
+Shortcuts Toggle side bar Ctrl &#43; B
+Project explorer in side bar Ctrl &#43; Shift &#43; E
+Project wide search in side bar Ctrl &#43; Shift &#43; F
+Source control in side bar Ctrl &#43; Shift &#43; G
+Copy entire line Ctrl &#43; C (without any selection)
+Delete entire line Ctrl &#43; Shift &#43; K
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-02-22 08:00:51 +0530 +0530'>February 22, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to vscode Shortcuts" href="https://suraj.io/post/vscode-shortcuts/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Using private container registries from minikube
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
+On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-10-06 19:32:33 +0530 +0530'>October 6, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Using private container registries from minikube" href="https://suraj.io/post/private-registry-from-minikube/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://suraj.io/post/page/6/">
-      «&nbsp;Prev&nbsp;6/13
+      «&nbsp;Prev&nbsp;6/9
     </a>
-    <a class="next" href="https://suraj.io/post/page/8/">Next&nbsp;8/13&nbsp;»
+    <a class="next" href="https://suraj.io/post/page/8/">Next&nbsp;8/9&nbsp;»
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

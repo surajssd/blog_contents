@@ -9,7 +9,7 @@
       <url>https://suraj.io/images/papermod-cover.png</url>
       <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.139.0</generator>
+    <generator>Hugo -- 0.147.6</generator>
     <language>en</language>
     <lastBuildDate>Thu, 21 Mar 2019 01:00:51 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/categories/event_report/index.xml" rel="self" type="application/rss+xml" />
@@ -46,7 +46,7 @@
       <link>https://suraj.io/post/blr-k8s-meetup-april-2017/</link>
       <pubDate>Sat, 08 Apr 2017 14:31:33 +0530</pubDate>
       <guid>https://suraj.io/post/blr-k8s-meetup-april-2017/</guid>
-      <description>&lt;p&gt;Like many Saturday mornings, &lt;a href=&#34;https://www.google.co.in/search?q=red+hat+bangalore&amp;oq=red+ha&amp;aqs=chrome.0.69i59j69i61l3j69i57j69i59.5776j0j7&amp;sourceid=chrome&amp;ie=UTF-8#q=red+hat+bangalore&amp;rflfq=1&amp;rlha=0&amp;rllag=12949018,77600064,1885&amp;tbm=lcl&amp;tbs=lf_pqs:EAE,lf:1,lf_ui:3&amp;rldoc=1&amp;rlfi=hd:;si:1155840882052252649;mv:!1m3!1d18064.656204115003!2d77.600064!3d12.949018050000001!2m3!1f0!2f0!3f0!3m2!1i91!2i446!4f13.1;tbs:lf_pqs:EAE,lf:1,lf_ui:3&#34;&gt;Red Hat Bangalore&lt;/a&gt;
+      <description>&lt;p&gt;Like many Saturday mornings, &lt;a href=&#34;https://www.google.co.in/search?q=red&amp;#43;hat&amp;#43;bangalore&amp;amp;oq=red&amp;#43;ha&amp;amp;aqs=chrome.0.69i59j69i61l3j69i57j69i59.5776j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8#q=red&amp;#43;hat&amp;#43;bangalore&amp;amp;rflfq=1&amp;amp;rlha=0&amp;amp;rllag=12949018,77600064,1885&amp;amp;tbm=lcl&amp;amp;tbs=lf_pqs:EAE,lf:1,lf_ui:3&amp;amp;rldoc=1&amp;amp;rlfi=hd:;si:1155840882052252649;mv:!1m3!1d18064.656204115003!2d77.600064!3d12.949018050000001!2m3!1f0!2f0!3f0!3m2!1i91!2i446!4f13.1;tbs:lf_pqs:EAE,lf:1,lf_ui:3&#34;&gt;Red Hat Bangalore&lt;/a&gt;
 office was once again abuzz with enthusiasm on 8th of April, for hosting yet
 another successful chapter of &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/238335903/&#34;&gt;Bangalore Kubernetes Meetup&lt;/a&gt;.
 The Meetup had a good turnaround of about 40 people who gave up on their

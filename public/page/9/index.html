@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.139.0"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.147.6"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -12,7 +12,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -103,7 +103,7 @@
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -168,123 +168,151 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Add new Node to k8s cluster with cert rotation
+    <h2 class="entry-hint-parent">Bangalore Kubernetes Meetup April 2017
     </h2>
   </header>
   <div class="entry-content">
-    <p>The setup here is created by following Kubernetes the Hard Way by Kelsey Hightower. So if you are following along in this then do all the setup till the step Bootstrapping the Kubernetes Worker Nodes. In this just don’t start the kubelet, start other services like containerd and kube-proxy.
-master node Following the docs of TLS Bootstrapping, let’s first create the token authentication file. Create a file with following content:
-$ cat tokenfile 02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,&#34;system:bootstrappers&#34; You should create the token which is as random as possible by running following command:
+    <p>Like many Saturday mornings, Red Hat Bangalore office was once again abuzz with enthusiasm on 8th of April, for hosting yet another successful chapter of Bangalore Kubernetes Meetup. The Meetup had a good turnaround of about 40 people who gave up on their early morning saturday sleep to attend it despite the sweltering hot season and in line were four awesome talks.
+Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc., introduced CRI-O and it’s architecture. Explaining how it glues Kubernetes and OCI compliant runtimes and concluding it with a demo showing how Kubernetes uses CRI-O. Link to slides, video.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-10-16 01:00:51 +0530 IST'>October 16, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Add new Node to k8s cluster with cert rotation" href="https://suraj.io/post/add-new-k8s-node-cert-rotate/"></a>
+  <footer class="entry-footer"><span title='2017-04-08 14:31:33 +0530 +0530'>April 8, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Bangalore Kubernetes Meetup April 2017" href="https://suraj.io/post/blr-k8s-meetup-april-2017/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Adding new worker to existing Kubernetes cluster
+    <h2 class="entry-hint-parent">k8s on CRI-O - single node
     </h2>
   </header>
   <div class="entry-content">
-    <p>To setup a multi-node Kubernetes cluster just run this script and you will have a cluster with 3 masters and 3 workers.
-$ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &lt;none&gt; 1h v1.11.2 192.168.199.20 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &lt;none&gt; 1h v1.11.2 192.168.199.21 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &lt;none&gt; 1h v1.11.2 192.168.199.22 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 Now to add a new node to this cluster you will need to bring up a VM, for this just use following Vagrantfile.
+    <p>Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.
+Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &#39;GOPATH=~/go&#39; &gt;&gt; ~/.bashrc echo &#39;GOBIN=$GOPATH/bin&#39; &gt;&gt; ~/.bashrc echo &#39;PATH=$PATH:$GOBIN&#39; &gt;&gt; ~/.bashrc Pull all the code dependencies go get -d k8s.io/kubernetes go get -u github.com/cloudflare/cfssl/cmd/... Install runc go get -d github.com/opencontainers/runc cd $GOPATH/src/github.com/opencontainers/runc git reset --hard v1.0.0-rc3 make BUILDTAGS=&#39;seccomp selinux&#39; &amp;&amp; make install Build cri-o cd go get -d github.com/kubernetes-incubator/cri-o cd $GOPATH/src/github.com/kubernetes-incubator/cri-o make install.tools make &amp;&amp; make install make install.config Set up CNI go get -d github.com/containernetworking/cni cd $GOPATH/src/github.com/containernetworking/cni ./build.sh mkdir -p /opt/cni/bin cp bin/* /opt/cni/bin/ mkdir -p /etc/cni/net.d/ cat &gt; /etc/cni/net.d/10-ocid-bridge.conf &lt;&lt;EOF { &#34;cniVersion&#34;: &#34;0.2.0&#34;, &#34;name&#34;: &#34;ocid-bridge&#34;, &#34;type&#34;: &#34;bridge&#34;, &#34;bridge&#34;: &#34;cni0&#34;, &#34;isGateway&#34;: true, &#34;ipMasq&#34;: true, &#34;ipam&#34;: { &#34;type&#34;: &#34;host-local&#34;, &#34;subnet&#34;: &#34;10.88.0.0/16&#34;, &#34;routes&#34;: [ { &#34;dst&#34;: &#34;0.0.0.0/0&#34; } ] } } EOF cat &gt; /etc/cni/net.d/99-loopback.conf &lt;&lt;EOF { &#34;cniVersion&#34;: &#34;0.2.0&#34;, &#34;type&#34;: &#34;loopback&#34; } EOF Create policy.json mkdir -p /etc/containers cat &gt; /etc/containers/policy.json &lt;&lt;EOF { &#34;default&#34;: [ { &#34;type&#34;: &#34;insecureAcceptAnything&#34; } ] } EOF Make SELinux happy mkdir -p /var/lib/containers/ chcon -Rt svirt_sandbox_file_t /var/lib/containers/ Start ocid service export PATH=$PATH:/usr/local/bin/ echo &#39;PATH=$PATH:/usr/local/bin/&#39; &gt;&gt; ~/.bashrc ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug --selinux true Start k8s cluster with crio cd $GOPATH/src/k8s.io/kubernetes/ CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT=&#39;/var/run/ocid.sock --runtime-request-timeout=15m&#39; ./hack/local-up-cluster.sh To use kubectl (in new terminal)
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-23 01:00:51 +0530 IST'>September 23, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Adding new worker to existing Kubernetes cluster" href="https://suraj.io/post/add-new-k8s-node-manually/"></a>
+  <footer class="entry-footer"><span title='2017-04-08 00:11:37 +0530 +0530'>April 8, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to k8s on CRI-O - single node" href="https://suraj.io/post/using-crio-with-k8s-single-node/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Single node Kubernetes Cluster on Fedora with SELinux enabled
+    <h2 class="entry-hint-parent">TODOs for new project
     </h2>
   </header>
   <div class="entry-content">
-    <p>Start a single node fedora machine, using whatever method but I have used this Vagrantfile to do it:
-# -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(&#34;2&#34;) do |config| config.vm.define &#34;fedora&#34; do |fedora| fedora.vm.box = &#34;fedora/28-cloud-base&#34; config.vm.hostname = &#34;fedora&#34; end config.vm.provider &#34;virtualbox&#34; do |virtualbox, override| virtualbox.memory = 4096 virtualbox.cpus = 4 end config.vm.provision &#34;shell&#34;, privileged: false, inline: &lt;&lt;-SHELL echo &#39;127.0.0.1 localhost&#39; | cat - /etc/hosts &gt; temp &amp;&amp; sudo mv temp /etc/hosts SHELL end Now start it and ssh into it:
-vagrant up vagrant ssh Once inside the machine, become root user and run this script:
-sudo -i curl https://raw.githubusercontent.com/surajssd/scripts/master/shell/k8s-install-single-node/install.sh | sh And you should have a running Kubernetes cluster.
+    <p>When starting a new open source project, apart from coding following are the things that need to be done.
+Docs README LICENSE How to install? How to use? Code of conduct guidelines Copyright Issue template like .github in repo. Developer docs How to install for developer? Developer docs Contribution guidelines Team meetings info Team communication channels Issue label guidelines Coding standards Code placement doc, or something that explains the way code is ordered Design document Development Makefile Unit tests Functional tests Coverage check CI for automatic tests Distro based package This is just few things that I could think of, please suggest if you know more in comments.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-11 01:00:51 +0530 IST'>September 11, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Single node Kubernetes Cluster on Fedora with SELinux enabled" href="https://suraj.io/post/single-node-k8s-fedora-selinux/"></a>
+  <footer class="entry-footer"><span title='2017-03-26 18:19:15 +0530 +0530'>March 26, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to TODOs for new project" href="https://suraj.io/post/starting-a-new-opensource-project-requirements/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">HostPath volumes and it&#39;s problems
+    <h2 class="entry-hint-parent">rpm Notes
     </h2>
   </header>
   <div class="entry-content">
-    <p>This post will demonstrate how Kubernetes HostPath volumes can help you get access to the Kubernetes nodes. Atleast you can play with the filesystem of the node on which you pod is scheduled on. You can get access to other containers running on the host, certificates of the kubelet, etc.
-I have a 3-master and 3-node cluster and setup using this script, running in a Vagrant environment.
-All the nodes are in ready state:
+    <p>This post will get you through all the steps needed for doing RPM packaging.
+Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG My Notes Start reading from: Fedora packager’s guide Some macros come from redhat-rpm-config and fedora-rpm-macros. $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch To see all macros on the system: $ rpm --showrc Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package $ rpm -qip ./x86_64/namaskar-1-1.fc25.x86_64.rpm OR
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-10 01:00:51 +0530 IST'>September 10, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to HostPath volumes and it&#39;s problems" href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"></a>
+  <footer class="entry-footer"><span title='2017-03-24 10:35:54 +0530 +0530'>March 24, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to rpm Notes" href="https://suraj.io/post/rpm-notes/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">HTTPS during development using &#39;mkcert&#39;
+    <h2 class="entry-hint-parent">Git Notes
     </h2>
   </header>
   <div class="entry-content">
-    <p>It’s always a hassle creating certificates and lot of technical jargons involved. This can be simplified, using mkcert. Install by following one of the steps mentioned in the docs.
-Once installed just run:
-$ mkcert -install Created a new local CA at &#34;/home/hummer/.local/share/mkcert&#34; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)! 🦊 This has installed the local CA. Now all you need to do is create a new certificate.
+    <p>Notes about using git.
+Tips and tricks Switch branches $ git checkout &lt;branch&gt; status $ git status -sb Show status in short format and also give branch info
+show $ git show Shows log message and diff about the commit you are on.
+log $ git log -L 70,100:pkg/transformer/kubernetes/kubernetes.go Get logs on file between line numbers.
+$ git log --graph --abbrev-commit Show graph in logs.
+commit $ git add -p Commit only parts of file. Interactively choose chunks of patch.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-08-14 01:00:51 +0530 IST'>August 14, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to HTTPS during development using &#39;mkcert&#39;" href="https://suraj.io/post/mkcert-using-python-http-server/"></a>
+  <footer class="entry-footer"><span title='2017-03-21 22:03:48 +0530 +0530'>March 21, 2017</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Git Notes" href="https://suraj.io/post/git-notes/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Golang struct tags gotchas
+    <h2 class="entry-hint-parent">Intellij Shortcuts
     </h2>
   </header>
   <div class="entry-content">
-    <p>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
-type PodStatus struct { Status string `json: &#34;,status&#34;` } If you run go vet on this piece of code you will get following error:
-$ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &#34;,status&#34;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value Now this does not tell us what is wrong with the struct tag, json: &#34;,status&#34;. The problem with this struct tag is that the extra space can be interpreted as delimiter so provide key-value pair without space.
+    <p>Note: This is a living document and will be updated as I discover new things.
+Shortcuts Ctrl &#43; Shift &#43; A Find any action in IDE
+Ctrl &#43; Shift &#43; F Find in Path
+Alt &#43; 1 Open project navigator. You can search here, just start typing here, after the project navigator window is opened.
+Shift &#43; Insert in Project window Here you can add new file to the project. The filename could be the entire path, so the intermediate directories will be created for you.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-08-12 01:00:51 +0530 IST'>August 12, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Golang struct tags gotchas" href="https://suraj.io/post/golang-struct-tags-space/"></a>
+  <footer class="entry-footer"><span title='2017-03-17 14:41:51 +0530 +0530'>March 17, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Intellij Shortcuts" href="https://suraj.io/post/intellij-shortcuts/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Access etcd in OpenShift origin
+    <h2 class="entry-hint-parent">Packaging &#39;kompose&#39; for centos paas sig
     </h2>
   </header>
   <div class="entry-content">
-    <p>How do you access the etcd that is being used by the OpenShift started by oc cluster up or using minishift.
-If you are using minishift then get docker environment access of the minishift VM by running following commands.
-eval $(minishift docker-env) &amp;&amp; eval $(minishift oc-env) Exec into the container named origin that runs OpenShift and all the needed services.
-$ docker exec -it origin bash First install the etcdctl needed to talk to etcd.
-[root@surajd origin]$ yum -y install etcd Get into the directory where all the certs and keys are available.
+    <p>Note: This is a living document and will be updated from time to time.
+Following are steps to package kompose for CentOS PAAS SIG. CentOS PAAS SIG is a repository of packages where rpms related to OpenShift and eco-system around it are delivered.
+Setup your machine Install packages needed
+sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager Setup certs
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-07-11 01:00:51 +0530 IST'>July 11, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Access etcd in OpenShift origin" href="https://suraj.io/post/accessing-oc-cluster-up-etcd/"></a>
+  <footer class="entry-footer"><span title='2017-03-15 14:16:43 +0530 +0530'>March 15, 2017</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Packaging &#39;kompose&#39; for centos paas sig" href="https://suraj.io/post/packaging-kompose-for-centos-paas-sig/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
+Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
+Starting the environment:
+docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
+# Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.com/kubernetes/kompose/ cd kompose git reset --hard $(kompose version | cut -d &#34;(&#34; -f2 | cut -d &#34;)&#34; -f1) # Run cmd tests make test-cmd CentOS epel repo Spin the CentOS environment in container.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-03-14 00:31:57 +0530 +0530'>March 14, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package" href="https://suraj.io/post/test-kompose/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">First post
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This is the new home for my blog. I use to write on wordpress before. You can find the older blog at https://deshmukhsuraj.wordpress.com. But I wanted to have my own domain and wordpress was charging exorbitantly to connect a custom domain to wordpress, so I just ditched it and started writing here. This is much more convenient.
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-03-13 00:31:57 +0530 +0530'>March 13, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to First post" href="https://suraj.io/post/first-post/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://suraj.io/page/8/">
-      «&nbsp;Prev&nbsp;8/13
-    </a>
-    <a class="next" href="https://suraj.io/page/10/">Next&nbsp;10/13&nbsp;»
+      «&nbsp;Prev&nbsp;8/9
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by
