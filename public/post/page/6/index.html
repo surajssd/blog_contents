@@ -181,6 +181,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Make static configs available for apiserver in minikube
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>If you want to provide extra flags to the kube-apiserver that runs inside minikube how do you do it? You can use the minikube’s --extra-config flag with apiserver.&lt;apiserver flag&gt;=&lt;value&gt;, for e.g. if you want to enable RBAC authorization mode you do it as follows:
+--extra-config=apiserver.authorization-mode=RBAC So this is a no brainer when doing it for flags whose value can be given right away, like the one above. But what if you want to provide value which is a file path. Because you will have to make that file available for apiserver. And this apiserver runs as a static pod inside minikube. How do you make the file available to that process inside pod inside minikube?
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-01-20 01:00:51 +0530 +0530'>January 20, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Make static configs available for apiserver in minikube" href="https://suraj.io/post/apiserver-in-minikube-static-configs/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Recreate Kubernetes CVE-2017-1002101
     </h2>
   </header>
@@ -306,22 +320,6 @@ $ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-I
   </div>
   <footer class="entry-footer"><span title='2018-09-23 01:00:51 +0530 +0530'>September 23, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Adding new worker to existing Kubernetes cluster" href="https://suraj.io/post/add-new-k8s-node-manually/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Single node Kubernetes Cluster on Fedora with SELinux enabled
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Start a single node fedora machine, using whatever method but I have used this Vagrantfile to do it:
-# -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(&#34;2&#34;) do |config| config.vm.define &#34;fedora&#34; do |fedora| fedora.vm.box = &#34;fedora/28-cloud-base&#34; config.vm.hostname = &#34;fedora&#34; end config.vm.provider &#34;virtualbox&#34; do |virtualbox, override| virtualbox.memory = 4096 virtualbox.cpus = 4 end config.vm.provision &#34;shell&#34;, privileged: false, inline: &lt;&lt;-SHELL echo &#39;127.0.0.1 localhost&#39; | cat - /etc/hosts &gt; temp &amp;&amp; sudo mv temp /etc/hosts SHELL end Now start it and ssh into it:
-vagrant up vagrant ssh Once inside the machine, become root user and run this script:
-sudo -i curl https://raw.githubusercontent.com/surajssd/scripts/master/shell/k8s-install-single-node/install.sh | sh And you should have a running Kubernetes cluster.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-09-11 01:00:51 +0530 +0530'>September 11, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Single node Kubernetes Cluster on Fedora with SELinux enabled" href="https://suraj.io/post/single-node-k8s-fedora-selinux/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -181,6 +181,23 @@
 
 <article class="post-entry"> 
 <figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/post/2021/06/automatic-cert-gen/obama.jpg" alt="Self Signed Certificates">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The previous blog talked about generating self-signed certificates using a binary. It was a manual, cumbersome process where you had to generate the certificates using a tool, embed them into a Kubernetes Secret via Helm chart, and then use it. There is a better way of doing it! Which is what this blog will discuss.
+We will use a Helm chart, which has a couple of Kubernetes Jobs that generates the self-signed certificate, embed them in a Kubernetes Secret and finally update the ValidatingWebhookConfiguration or MutatingWebhookConfiguration of your choice. And that’s it. Life is simpler!
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-06-25 09:00:00 +0530 +0530'>June 25, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?" href="https://suraj.io/post/2021/06/automatic-cert-gen/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
         <img loading="lazy" src="https://suraj.io/post/2021/06/systemd-service/systemd.png" alt="Systemd">
 </figure>
   <header class="entry-header">
@@ -327,22 +344,6 @@ But all that can be intimidating to someone who hasn’t played with Kubernetes 
   </div>
   <footer class="entry-footer"><span title='2021-03-23 07:07:07 +0530 +0530'>March 23, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Kubernetes The Hard Way in &#34;Vagrant&#34;?" href="https://suraj.io/post/2021/03/kthw-vagrant/"></a>
-</article>
-
-<article class="post-entry"> 
-<figure class="entry-cover">
-        <img loading="lazy" src="https://suraj.io/post/2021/03/k8s-blr-meetup/meetup.jpeg" alt="Kubernetes Bangalore Meetup">
-</figure>
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">How we manage Kubernetes Bangalore Meetup?
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I took the reins of the Kubernetes Bangalore Meetup back in 2017. I have been organising the meetup since then. Earlier with Suraj Narwade, Aditya Konarde and now with Prakash Mishra. Over time the meetup has grown a lot, now it boasts about 5000 members. Organising meetup earlier was a straightforward affair, especially with Narwade and Konarde being my colleagues and friends. We could chat about the upcoming meetup at any time we would like, and it was all spontaneous. Once they left in 2019, Prakash took over as co-organiser, and we are managing the meetup since then.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-03-17 07:07:07 +0530 +0530'>March 17, 2021</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to How we manage Kubernetes Bangalore Meetup?" href="https://suraj.io/post/2021/03/k8s-blr-meetup/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -181,6 +181,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Using private container registries from minikube
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
+On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-10-06 19:32:33 +0530 +0530'>October 6, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Using private container registries from minikube" href="https://suraj.io/post/private-registry-from-minikube/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Static Pods using Kubelet on Fedora
     </h2>
   </header>
@@ -308,21 +322,6 @@ $ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo fo
   </div>
   <footer class="entry-footer"><span title='2017-04-23 15:57:07 +0530 +0530'>April 23, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Enabling local development with Kubernetes" href="https://suraj.io/post/enabling-local-development-with-k8s/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Quick PV for local Kubernetes cluster
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I do lot of Kubernetes related work either on minikube or local OpenShift cluster setup in a VM. Often I need to create a PersistentVolumeClaim a.k.a. pvc. But to use pvc you have to have a PersistentVolume or pv defined.
-Enter into the machine running k8s If using minikube you can do
-minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2017-04-18 23:56:15 +0530 +0530'>April 18, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Quick PV for local Kubernetes cluster" href="https://suraj.io/post/quick-pv-for-local-k8s/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

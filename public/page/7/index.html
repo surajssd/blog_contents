@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.147.6"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.147.8"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -168,6 +168,22 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Single node Kubernetes Cluster on Fedora with SELinux enabled
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Start a single node fedora machine, using whatever method but I have used this Vagrantfile to do it:
+# -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(&#34;2&#34;) do |config| config.vm.define &#34;fedora&#34; do |fedora| fedora.vm.box = &#34;fedora/28-cloud-base&#34; config.vm.hostname = &#34;fedora&#34; end config.vm.provider &#34;virtualbox&#34; do |virtualbox, override| virtualbox.memory = 4096 virtualbox.cpus = 4 end config.vm.provision &#34;shell&#34;, privileged: false, inline: &lt;&lt;-SHELL echo &#39;127.0.0.1 localhost&#39; | cat - /etc/hosts &gt; temp &amp;&amp; sudo mv temp /etc/hosts SHELL end Now start it and ssh into it:
+vagrant up vagrant ssh Once inside the machine, become root user and run this script:
+sudo -i curl https://raw.githubusercontent.com/surajssd/scripts/master/shell/k8s-install-single-node/install.sh | sh And you should have a running Kubernetes cluster.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-09-11 01:00:51 +0530 +0530'>September 11, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Single node Kubernetes Cluster on Fedora with SELinux enabled" href="https://suraj.io/post/single-node-k8s-fedora-selinux/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">HostPath volumes and it&#39;s problems
     </h2>
   </header>
@@ -304,20 +320,6 @@ Delete entire line Ctrl &#43; Shift &#43; K
   </div>
   <footer class="entry-footer"><span title='2018-02-22 08:00:51 +0530 +0530'>February 22, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to vscode Shortcuts" href="https://suraj.io/post/vscode-shortcuts/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Using private container registries from minikube
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I am doing Kubernetes native development using minikube. And for doing that I had to download a Container image that is available in internally hosted private container registry.
-On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2017-10-06 19:32:33 +0530 +0530'>October 6, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Using private container registries from minikube" href="https://suraj.io/post/private-registry-from-minikube/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
