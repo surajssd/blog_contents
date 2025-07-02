@@ -151,7 +151,7 @@ Notice that this is the same OpenAI API format, which makes it easy to integrate
 
 ## Using grok with OpenAI Codex
 
-Codex is a powerful coding agent that runs from CLI. You can use it to talk to the Grok-3 model deployed on Azure. Once you install the Codex CLI, you would need to create a configuration file. Run the following command to create a configuration file:
+[Codex](https://github.com/openai/codex) is a powerful coding agent from OpenAI that runs on CLI. You can use it to talk to the Grok-3 model deployed on Azure. Once you install the Codex CLI, you would need to create a configuration file. Run the following command to create a configuration file:
 
 ```toml
 mkdir -p ~/.codex
