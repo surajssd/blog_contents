@@ -177,7 +177,7 @@ Now you can start using the codex CLI to interact with Grok-3:
 codex -p grok "Explain this project to me?"
 ```
 
-> [!NOTE]:
+> **NOTE:**
 > You have to have the environment variable `AZURE_API_KEY` set in your shell for the Codex CLI to work properly.
 
 ## Useful Azure CLI Commands
