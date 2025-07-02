@@ -149,6 +149,37 @@ curl -X POST "${AZURE_API_ENDPOINT}" \
 
 Notice that this is the same OpenAI API format, which makes it easy to integrate with existing applications.
 
+## Using grok with OpenAI Codex
+
+Codex is a powerful coding agent that runs from CLI. You can use it to talk to the Grok-3 model deployed on Azure. Once you install the Codex CLI, you would need to create a configuration file. Run the following command to create a configuration file:
+
+```toml
+mkdir -p ~/.codex
+cat << EOF | tee -a ~/.codex/config.toml
+[model_providers.azure]
+name = "Azure"
+
+base_url = "https://${AZURE_AI_NAME}.services.ai.azure.com/models"
+env_key = "AZURE_API_KEY"
+
+# Newer versions appear to support the responses API, see https://github.com/openai/codex/pull/1321
+query_params = { api-version = "2024-05-01-preview" }
+
+[profiles.grok]
+model_provider = "azure"
+model = "${AZURE_AI_NAME}-${MODEL}"
+EOF
+```
+
+Now you can start using the codex CLI to interact with Grok-3:
+
+```bash
+codex -p grok "Explain this project to me?"
+```
+
+> [!NOTE]:
+> You have to have the environment variable `AZURE_API_KEY` set in your shell for the Codex CLI to work properly.
+
 ## Useful Azure CLI Commands
 
 Here are some additional commands that might be helpful:
