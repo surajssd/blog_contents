@@ -156,13 +156,12 @@ Notice that this is the same OpenAI API format, which makes it easy to integrate
 ```toml
 mkdir -p ~/.codex
 cat << EOF | tee -a ~/.codex/config.toml
+profile = "grok"
+
 [model_providers.azure]
 name = "Azure"
-
 base_url = "https://${AZURE_AI_NAME}.services.ai.azure.com/models"
 env_key = "AZURE_API_KEY"
-
-# Newer versions appear to support the responses API, see https://github.com/openai/codex/pull/1321
 query_params = { api-version = "2024-05-01-preview" }
 
 [profiles.grok]
@@ -174,7 +173,7 @@ EOF
 Now you can start using the codex CLI to interact with Grok-3:
 
 ```bash
-codex -p grok "Explain this project to me?"
+codex "Explain this project to me?"
 ```
 
 > **NOTE:**
