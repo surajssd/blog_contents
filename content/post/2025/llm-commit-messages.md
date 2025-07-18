@@ -94,3 +94,11 @@ llm -m github_copilot/gpt-4o ...
 Using LLMs to write meaningful commit messages can significantly improve your productivity and the quality of your codebase. The `llm` CLI tool with the GitHub Copilot extension makes it easy to generate these messages directly from your terminal, without needing to switch contexts or copy-paste between applications.
 
 Although LLMs generate good commit messages, they may not always be exactly what you want. You should always review the generated messages, make necessary edits, and ensure they follow your project's commit message conventions.
+
+## P.S
+
+I learnt that you can also use OpenAI's Codex CLI to read from the standard input and generate commit message. The CLI has to be invoked with `codex exec`. Here is how you can do that:
+
+```bash
+git diff --cached | codex exec "Write a commit message for these staged changes"
+```
