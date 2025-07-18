@@ -9,10 +9,17 @@
       <url>https://suraj.io/images/papermod-cover.png</url>
       <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.147.8</generator>
+    <generator>Hugo -- 0.148.1</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 11 Sep 2021 17:09:07 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 17 Jul 2025 15:21:07 -0800</lastBuildDate>
     <atom:link href="https://suraj.io/categories/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using LLMs to write meaningful commit messages</title>
+      <link>https://suraj.io/post/2025/llm-commit-messages/</link>
+      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
+      <guid>https://suraj.io/post/2025/llm-commit-messages/</guid>
+      <description>Learn how to use the llm CLI tool with GitHub Copilot models to generate meaningful commit messages directly from your terminal.</description>
+    </item>
     <item>
       <title>Unchanging Contexts and Degrading Productivity</title>
       <link>https://suraj.io/post/2021/09/unchanging-context/</link>

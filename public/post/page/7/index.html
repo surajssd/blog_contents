@@ -181,6 +181,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Adding new worker to existing Kubernetes cluster
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>To setup a multi-node Kubernetes cluster just run this script and you will have a cluster with 3 masters and 3 workers.
+$ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &lt;none&gt; 1h v1.11.2 192.168.199.20 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &lt;none&gt; 1h v1.11.2 192.168.199.21 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &lt;none&gt; 1h v1.11.2 192.168.199.22 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 Now to add a new node to this cluster you will need to bring up a VM, for this just use following Vagrantfile.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-09-23 01:00:51 +0530 +0530'>September 23, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Adding new worker to existing Kubernetes cluster" href="https://suraj.io/post/add-new-k8s-node-manually/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Single node Kubernetes Cluster on Fedora with SELinux enabled
     </h2>
   </header>
@@ -315,31 +329,12 @@ Value receiver Now we change the method receiver from pointer to value.
   <footer class="entry-footer"><span title='2018-02-23 08:00:51 +0530 +0530'>February 23, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Methods that satisfy interfaces in golang" href="https://suraj.io/post/golang-methods-interfaces/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">vscode Shortcuts
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>This post has shortcuts that are generic and golang specific as well. This post will edited from time to time.
-Shortcuts Toggle side bar Ctrl &#43; B
-Project explorer in side bar Ctrl &#43; Shift &#43; E
-Project wide search in side bar Ctrl &#43; Shift &#43; F
-Source control in side bar Ctrl &#43; Shift &#43; G
-Copy entire line Ctrl &#43; C (without any selection)
-Delete entire line Ctrl &#43; Shift &#43; K
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-02-22 08:00:51 +0530 +0530'>February 22, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to vscode Shortcuts" href="https://suraj.io/post/vscode-shortcuts/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://suraj.io/post/page/6/">
-      «&nbsp;Prev&nbsp;6/9
+      «&nbsp;Prev&nbsp;6/10
     </a>
-    <a class="next" href="https://suraj.io/post/page/8/">Next&nbsp;8/9&nbsp;»
+    <a class="next" href="https://suraj.io/post/page/8/">Next&nbsp;8/10&nbsp;»
     </a>
   </nav>
 </footer>

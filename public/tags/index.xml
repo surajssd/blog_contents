@@ -9,15 +9,85 @@
       <url>https://suraj.io/images/papermod-cover.png</url>
       <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.147.8</generator>
+    <generator>Hugo -- 0.148.1</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 24 Jun 2025 09:21:07 -0800</lastBuildDate>
+    <lastBuildDate>Thu, 17 Jul 2025 15:21:07 -0800</lastBuildDate>
     <atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ai</title>
       <link>https://suraj.io/tags/ai/</link>
-      <pubDate>Tue, 24 Jun 2025 09:21:07 -0800</pubDate>
+      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
       <guid>https://suraj.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cli</title>
+      <link>https://suraj.io/tags/cli/</link>
+      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
+      <guid>https://suraj.io/tags/cli/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Copilot</title>
+      <link>https://suraj.io/tags/copilot/</link>
+      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
+      <guid>https://suraj.io/tags/copilot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Desktop</title>
+      <link>https://suraj.io/tags/desktop/</link>
+      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
+      <guid>https://suraj.io/tags/desktop/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Development</title>
+      <link>https://suraj.io/tags/development/</link>
+      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
+      <guid>https://suraj.io/tags/development/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Git</title>
+      <link>https://suraj.io/tags/git/</link>
+      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
+      <guid>https://suraj.io/tags/git/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Github</title>
+      <link>https://suraj.io/tags/github/</link>
+      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
+      <guid>https://suraj.io/tags/github/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://suraj.io/tags/linux/</link>
+      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
+      <guid>https://suraj.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Llm</title>
+      <link>https://suraj.io/tags/llm/</link>
+      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
+      <guid>https://suraj.io/tags/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Productivity</title>
+      <link>https://suraj.io/tags/productivity/</link>
+      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
+      <guid>https://suraj.io/tags/productivity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Programming</title>
+      <link>https://suraj.io/tags/programming/</link>
+      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
+      <guid>https://suraj.io/tags/programming/</guid>
       <description></description>
     </item>
     <item>
@@ -46,13 +116,6 @@
       <link>https://suraj.io/tags/grok/</link>
       <pubDate>Tue, 24 Jun 2025 09:21:07 -0800</pubDate>
       <guid>https://suraj.io/tags/grok/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Llm</title>
-      <link>https://suraj.io/tags/llm/</link>
-      <pubDate>Tue, 24 Jun 2025 09:21:07 -0800</pubDate>
-      <guid>https://suraj.io/tags/llm/</guid>
       <description></description>
     </item>
     <item>
@@ -119,13 +182,6 @@
       <description></description>
     </item>
     <item>
-      <title>Productivity</title>
-      <link>https://suraj.io/tags/productivity/</link>
-      <pubDate>Sat, 11 Sep 2021 17:09:07 +0530</pubDate>
-      <guid>https://suraj.io/tags/productivity/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Cka</title>
       <link>https://suraj.io/tags/cka/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
@@ -137,13 +193,6 @@
       <link>https://suraj.io/tags/cks/</link>
       <pubDate>Sat, 04 Sep 2021 13:30:07 +0530</pubDate>
       <guid>https://suraj.io/tags/cks/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linux</title>
-      <link>https://suraj.io/tags/linux/</link>
-      <pubDate>Sat, 19 Jun 2021 16:16:00 +0530</pubDate>
-      <guid>https://suraj.io/tags/linux/</guid>
       <description></description>
     </item>
     <item>
@@ -165,13 +214,6 @@
       <link>https://suraj.io/tags/activism/</link>
       <pubDate>Mon, 12 Apr 2021 07:07:07 +0530</pubDate>
       <guid>https://suraj.io/tags/activism/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Desktop</title>
-      <link>https://suraj.io/tags/desktop/</link>
-      <pubDate>Fri, 02 Apr 2021 07:07:07 +0530</pubDate>
-      <guid>https://suraj.io/tags/desktop/</guid>
       <description></description>
     </item>
     <item>
@@ -245,13 +287,6 @@
       <description></description>
     </item>
     <item>
-      <title>Programming</title>
-      <link>https://suraj.io/tags/programming/</link>
-      <pubDate>Sun, 17 Jan 2021 12:28:51 +0530</pubDate>
-      <guid>https://suraj.io/tags/programming/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Lokomotive</title>
       <link>https://suraj.io/tags/lokomotive/</link>
       <pubDate>Sat, 16 Jan 2021 13:10:51 +0530</pubDate>
@@ -277,13 +312,6 @@
       <link>https://suraj.io/tags/configuration/</link>
       <pubDate>Sat, 29 Aug 2020 15:33:51 +0530</pubDate>
       <guid>https://suraj.io/tags/configuration/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Git</title>
-      <link>https://suraj.io/tags/git/</link>
-      <pubDate>Sun, 16 Aug 2020 22:00:51 +0530</pubDate>
-      <guid>https://suraj.io/tags/git/</guid>
       <description></description>
     </item>
     <item>
@@ -392,13 +420,6 @@
       <description></description>
     </item>
     <item>
-      <title>Development</title>
-      <link>https://suraj.io/tags/development/</link>
-      <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
-      <guid>https://suraj.io/tags/development/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Https</title>
       <link>https://suraj.io/tags/https/</link>
       <pubDate>Tue, 14 Aug 2018 01:00:51 +0530</pubDate>
@@ -459,13 +480,6 @@
       <link>https://suraj.io/tags/crio/</link>
       <pubDate>Sat, 08 Apr 2017 00:11:37 +0530</pubDate>
       <guid>https://suraj.io/tags/crio/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Github</title>
-      <link>https://suraj.io/tags/github/</link>
-      <pubDate>Sun, 26 Mar 2017 18:19:15 +0530</pubDate>
-      <guid>https://suraj.io/tags/github/</guid>
       <description></description>
     </item>
     <item>
