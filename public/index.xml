@@ -21,7 +21,7 @@
       <description>List of all the talks presented by me</description>
     </item>
     <item>
-      <title>Using LLMs to write meaningful commit messages</title>
+      <title>Using LLMs to write meaningful commit messages from CLI</title>
       <link>https://suraj.io/post/2025/llm-commit-messages/</link>
       <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
       <guid>https://suraj.io/post/2025/llm-commit-messages/</guid>

@@ -1,7 +1,7 @@
 ---
 author: "Suraj Deshmukh"
 date: "2025-07-17T15:21:07-08:00"
-title: "Using LLMs to write meaningful commit messages"
+title: "Using LLMs to write meaningful commit messages from CLI"
 description: "Learn how to use the llm CLI tool with GitHub Copilot models to generate meaningful commit messages directly from your terminal."
 draft: false
 categories: ["ai", "llm", "copilot", "cmd-line", "bash", "git", "linux", "productivity", "programming", "desktop"]
