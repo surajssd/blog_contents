@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.2211ca3164be7830024f6aad2b3a2e520843a64f8f048445c3401c1249aa051d.css" integrity="sha256-IhHKMWS&#43;eDACT2qtKzouUghDpk&#43;PBIRFw0AcEkmqBR0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -331,7 +331,8 @@
 </span></span><span class="line"><span class="cl">         command: [&#34;/bin/bash&#34;]
 </span></span></code></pre></div><p>See the new full configuration of Job manifest <a href="https://github.com/surajssd/kill-jobpod-with-sidecar/blob/80dd2e8d485c62f62ff1de67d6c5128c07c6fba0/job/templates/deployment.yaml#L12-L15">here</a>.</p>
 <blockquote>
-<p><strong>NOTE:</strong> In your case, it could be any other sidecar, for illustration purposes I have added a dummy sidecar.</p></blockquote>
+<p><strong>NOTE:</strong> In your case, it could be any other sidecar, for illustration purposes I have added a dummy sidecar.</p>
+</blockquote>
 <p>Now let&rsquo;s see the full run of this setup:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ helm install --generate-name job/
 </span></span><span class="line"><span class="cl">NAME: job-1598685624
@@ -377,7 +378,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="gi">+true
 </span></span></span></code></pre></div><p>But have you realised how does a script running in one container has access to the process in another container? Well, we have a Kubernetes native answer to that: <code>shareProcessNamespace</code>. Here is what it mean straight from the docs:</p>
 <blockquote>
-<p><code>Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set.</code></p></blockquote>
+<p><code>Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set.</code></p>
+</blockquote>
 <p>In simple terms set the field <code>shareProcessNamespace</code> to <code>true</code> in <code>pod.spec</code> and all containers now share the process namespace and can see each other. Due to this enablement <code>pkill sleep</code> from the <code>foojob</code> container can kill its sidecar or sidecar&rsquo;s main process.</p>
 <p>Here is the diff from the Job YAML file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl"><span class="gh">diff --git job/templates/job.yaml job/templates/job.yaml

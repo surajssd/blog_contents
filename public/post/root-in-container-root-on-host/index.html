@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/root-in-container-root-on-host/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.2211ca3164be7830024f6aad2b3a2e520843a64f8f048445c3401c1249aa051d.css" integrity="sha256-IhHKMWS&#43;eDACT2qtKzouUghDpk&#43;PBIRFw0AcEkmqBR0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -272,7 +272,8 @@
 </span></span></code></pre></div><p>Let&rsquo;s start the container in the same way but with additional flag <code>--user</code>. Here I started a new container and forced it to run under the security context of the user <code>core</code>. Here I specify the UID same as the UID on the host. The documentation of the flag says that:</p>
 <blockquote>
 <p>-u, &ndash;user=&quot;&quot;.</p>
-<p>Sets the username or UID used and optionally the groupname or GID for the specified command.</p></blockquote>
+<p>Sets the username or UID used and optionally the groupname or GID for the specified command.</p>
+</blockquote>
 <p>Here is the container that is started with <code>sleep</code> process named <code>wonderful_proskuriakova</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ docker run -d --rm --user <span class="si">${</span><span class="nv">UID</span><span class="si">}</span>:<span class="si">${</span><span class="nv">UID</span><span class="si">}</span> alpine sleep <span class="m">9999</span>
 </span></span><span class="line"><span class="cl">1cdc11a449e4e62a9557a4d7b586aa320f5512f2746f4a8e1cac7b9e6d2e1225

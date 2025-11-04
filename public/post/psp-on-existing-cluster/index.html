@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/psp-on-existing-cluster/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.2211ca3164be7830024f6aad2b3a2e520843a64f8f048445c3401c1249aa051d.css" integrity="sha256-IhHKMWS&#43;eDACT2qtKzouUghDpk&#43;PBIRFw0AcEkmqBR0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -263,7 +263,8 @@
 <p>Using PSP; if you enable it on a running cluster and if it had some workloads that were running already they won&rsquo;t be affected. But once a pod is deleted and is up for re-scheduling again it will fail with something like above.</p>
 <p>So to enable it on the running cluster here is what the <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/#enabling-pod-security-policies">Kubernetes documentation</a> says:</p>
 <blockquote>
-<p>Since the pod security policy API (<strong><code>policy/v1beta1/podsecuritypolicy</code></strong>) is enabled independently of the admission controller, for existing clusters it is recommended that policies are added and authorized before enabling the admission controller.</p></blockquote>
+<p>Since the pod security policy API (<strong><code>policy/v1beta1/podsecuritypolicy</code></strong>) is enabled independently of the admission controller, for existing clusters it is recommended that policies are added and authorized before enabling the admission controller.</p>
+</blockquote>
 
 
   </div>

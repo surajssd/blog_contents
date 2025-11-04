@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/2021/05/k8s-import/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.2211ca3164be7830024f6aad2b3a2e520843a64f8f048445c3401c1249aa051d.css" integrity="sha256-IhHKMWS&#43;eDACT2qtKzouUghDpk&#43;PBIRFw0AcEkmqBR0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -250,19 +250,19 @@
   <div class="post-content"><p>The client libraries that Kubernetes ships are meant to be imported, and you definitely don&rsquo;t need this post explaining how to import them in your Golang based project. A simple <code>go get ...</code> should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of <em>&ldquo;technical reasons&rdquo;</em> ? Could you simply add them to your import statements in the <code>.go</code> file, and the <code>go</code> binary will do the right thing when you build the code? Well, let&rsquo;s find that out!</p>
 <h2 id="usecase">Usecase<a hidden class="anchor" aria-hidden="true" href="#usecase">#</a></h2>
 <p>I have a project, and in it, the imported packages look like this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
-</span></span><span class="line"><span class="cl"> <span class="s">&#34;crypto/x509&#34;</span>
-</span></span><span class="line"><span class="cl"> <span class="s">&#34;fmt&#34;</span>
-</span></span><span class="line"><span class="cl"> <span class="s">&#34;io/ioutil&#34;</span>
-</span></span><span class="line"><span class="cl"> <span class="s">&#34;log&#34;</span>
-</span></span><span class="line"><span class="cl"> <span class="s">&#34;path/filepath&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="s">&#34;github.com/spf13/cobra&#34;</span>
-</span></span><span class="line"><span class="cl"> <span class="s">&#34;k8s.io/client-go/util/cert&#34;</span>
-</span></span><span class="line"><span class="cl"> <span class="s">&#34;k8s.io/client-go/util/keyutil&#34;</span>
-</span></span><span class="line"><span class="cl"> <span class="s">&#34;k8s.io/kubernetes/test/utils&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span></code></pre></div><p><a href="https://github.com/surajssd/self-signed-cert/blob/61a5c44ca2f4d6d951b361e1f271bd13ce355f9d/main.go#L3-L14">source</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="s">&#34;crypto/x509&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="s">&#34;fmt&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="s">&#34;io/ioutil&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="s">&#34;log&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="s">&#34;path/filepath&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="s">&#34;github.com/spf13/cobra&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="s">&#34;k8s.io/client-go/util/cert&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="s">&#34;k8s.io/client-go/util/keyutil&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="s">&#34;k8s.io/kubernetes/test/utils&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></div><p><a href="https://github.com/surajssd/self-signed-cert/blob/61a5c44ca2f4d6d951b361e1f271bd13ce355f9d/main.go#L3-L14">source</a></p>
 <p>So it consists of a couple of inbuilt packages, and then the CLI library <a href="https://github.com/spf13/cobra">Cobra</a>, a couple of <a href="https://github.com/kubernetes/client-go">client-go</a> packages. The only out of the ordinary thing is the <code>k8s.io/kubernetes/test/utils</code> package.</p>
 <h2 id="importing">Importing<a hidden class="anchor" aria-hidden="true" href="#importing">#</a></h2>
 <p>Let us tidy up the dependencies before building the code:</p>
@@ -320,7 +320,8 @@ go: downloading k8s.io/kubernetes v1.21.0
 go get: added k8s.io/kubernetes v1.21.0
 </code></pre><p>Now you can build your code! Keep reading further to understand why this happens.</p>
 <blockquote>
-<p>Kudos 👏 to <a href="https://github.com/abursavich">Andy Bursavich</a> for writing the aforementioned script. I took the script from <a href="https://github.com/kubernetes/kubernetes/issues/79384#issuecomment-521493597">this comment</a> and made minor modifications.</p></blockquote>
+<p>Kudos 👏 to <a href="https://github.com/abursavich">Andy Bursavich</a> for writing the aforementioned script. I took the script from <a href="https://github.com/kubernetes/kubernetes/issues/79384#issuecomment-521493597">this comment</a> and made minor modifications.</p>
+</blockquote>
 <h2 id="reasoning">Reasoning<a hidden class="anchor" aria-hidden="true" href="#reasoning">#</a></h2>
 <p>The error <code>k8s.io/api@v0.0.0: reading k8s.io/api/go.mod at revision v0.0.0: unknown revision v0.0.0</code> is caused because, in Kubernetes&rsquo;s <a href="https://github.com/kubernetes/kubernetes/blob/e6136c0303028d68cac67290d94a60cec167ccdf/go.mod#L109-L120"><code>go.mod</code></a>, you will find the following snippet:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">require (</span><span class="w">
@@ -342,7 +343,8 @@ go get: added k8s.io/kubernetes v1.21.0
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">)</span><span class="w">
 </span></span></span></code></pre></div><p>In the Kubernetes repository, the packages listed under <code>require</code> directive are tagged with a pseudo-version <code>v0.0.0</code> but then are replaced with a local code in the <a href="https://github.com/kubernetes/kubernetes/tree/e8760b95bb0a0dfb5c184fd4e5ab95da3650a040/staging"><code>staging</code></a> directory. Now <code>replace</code> directive works fine when building Kubernetes itself but won&rsquo;t work when someone is importing it. The Golang documentation says the following about <code>replace</code> directive:</p>
 <blockquote>
-<p><code>replace</code> directives only apply in the main module&rsquo;s go.mod file and are ignored in other modules.</p></blockquote>
+<p><code>replace</code> directives only apply in the main module&rsquo;s go.mod file and are ignored in other modules.</p>
+</blockquote>
 <p><a href="https://golang.org/ref/mod#go-mod-file-replace">source</a></p>
 <p>Generally, the pseudo-version has a format <code>v0.0.0-Time-commit_id</code>, but in this case, it practically is a dead end. Why is Kubernetes doing such a thing in their project? Why not tag with an actual pseudo-version format? Well, because the code is available locally. And the directories in the <code>staging</code> folder are published as standalone projects for folks to use later on.</p>
 <p>So the net effect is that I am trying to import code using <code>go get</code>, but it is tagged with a pseudo-version <code>v0.0.0</code> and hence <code>go get</code> fails. The solution to this problem is to find the correct versions of those dependencies yourself and add them to your repo&rsquo;s <code>go.mod</code> under <code>replace</code> directive.</p>
@@ -376,7 +378,8 @@ go get: added k8s.io/kubernetes v1.21.0
 </span></span></span></code></pre></div><h2 id="caveats">Caveats<a hidden class="anchor" aria-hidden="true" href="#caveats">#</a></h2>
 <p>Kubernetes upstream cautions against using the packages as we have done in this blog (Thanks, <a href="https://twitter.com/dims/status/1398972850883682304">Dims</a>, for bringing this to my notice):</p>
 <blockquote>
-<p>To use Kubernetes code as a library in other applications, see the <a href="https://github.com/kubernetes/kubernetes/blob/master/staging/README.md">list of published components</a>. Use of the <code>k8s.io/kubernetes</code> module or <code>k8s.io/kubernetes/...</code> packages as libraries is not supported.</p></blockquote>
+<p>To use Kubernetes code as a library in other applications, see the <a href="https://github.com/kubernetes/kubernetes/blob/master/staging/README.md">list of published components</a>. Use of the <code>k8s.io/kubernetes</code> module or <code>k8s.io/kubernetes/...</code> packages as libraries is not supported.</p>
+</blockquote>
 <p><a href="https://github.com/kubernetes/kubernetes#to-start-using-k8s">source</a></p>
 <p>If you are importing a package that is not supported as a library by the upstream community, you might be up for a catch-up going forward. The unsupported, non-library packages are subject to API definition changes without any public warning. And if your production code relies on such a package, it might impact you. At that point, you have no right to go and accuse upstream of not being public about the changes.</p>
 <p>That being said, if there are any libraries you identify that are widely used and should be published, bring them to the notice of the upstream community. They will surely help in publishing them. This helps the broader community by consuming the libraries from a widely published place and saving anyone and everyone from catching up. But unless they are not published as libraries consuming anything else is a call for a lot of code churn.</p>

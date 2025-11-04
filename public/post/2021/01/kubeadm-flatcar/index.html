@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/2021/01/kubeadm-flatcar/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.2211ca3164be7830024f6aad2b3a2e520843a64f8f048445c3401c1249aa051d.css" integrity="sha256-IhHKMWS&#43;eDACT2qtKzouUghDpk&#43;PBIRFw0AcEkmqBR0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -329,7 +329,8 @@ sysctl --system
 <p>Here we are ensuring that the Kubelet volume-plugins directory is writable, the default path used is under <code>/usr</code> which is read-only on Flatcar, therefore we are setting it to writable path <code>/opt/libexec/kubernetes/kubelet-plugins/volume/exec/</code>.</p>
 <p>From the <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/troubleshooting-kubeadm/#usr-mounted-read-only">kubeadm docs</a>:</p>
 <blockquote>
-<p>On Linux distributions such as Flatcar Container Linux, the directory <code>/usr</code> is mounted as a read-only filesystem. For flex-volume support, Kubernetes components like the kubelet and kube-controller-manager use the default path of <code>/usr/libexec/kubernetes/kubelet-plugins/volume/exec/</code>, yet the flex-volume directory <strong>must be writeable</strong> for the feature to work.</p></blockquote>
+<p>On Linux distributions such as Flatcar Container Linux, the directory <code>/usr</code> is mounted as a read-only filesystem. For flex-volume support, Kubernetes components like the kubelet and kube-controller-manager use the default path of <code>/usr/libexec/kubernetes/kubelet-plugins/volume/exec/</code>, yet the flex-volume directory <strong>must be writeable</strong> for the feature to work.</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">cat &lt;&lt;EOF | tee kubeadm-config.yaml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">kubeadm.k8s.io/v1beta3</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">InitConfiguration</span><span class="w">

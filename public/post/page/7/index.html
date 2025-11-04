@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.2211ca3164be7830024f6aad2b3a2e520843a64f8f048445c3401c1249aa051d.css" integrity="sha256-IhHKMWS&#43;eDACT2qtKzouUghDpk&#43;PBIRFw0AcEkmqBR0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -323,7 +323,6 @@ Downloading Kedge The configurations defined for setting up this cluster is writ
 type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &#34;has worked for&#34;, u.Period, &#34;hrs.&#34;) } func main() { uval := User{&#34;UserVal&#34;, 5} uval.Work() pval := &amp;User{&#34;UserPtr&#34;, 6} pval.Work() } See on go playground.
 output:
 UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval.
-Value receiver Now we change the method receiver from pointer to value.
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2018-02-23 08:00:51 +0530 +0530'>February 23, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>

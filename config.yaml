@@ -105,7 +105,7 @@ params:
   - name: github
     url: https://github.com/surajssd/
   - name: Bluesky
-    url: https://bsky.app/profile/surajd.bsky.social
+    url: https://bsky.app/profile/suraj.io
   - name: threads
     url: https://www.threads.net/@itssurajd
   - name: mastodon

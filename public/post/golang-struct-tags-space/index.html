@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/golang-struct-tags-space/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.2211ca3164be7830024f6aad2b3a2e520843a64f8f048445c3401c1249aa051d.css" integrity="sha256-IhHKMWS&#43;eDACT2qtKzouUghDpk&#43;PBIRFw0AcEkmqBR0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -224,20 +224,20 @@
   </header> 
 
   <div class="post-content"><p>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">PodStatus</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">Status</span> <span class="kt">string</span> <span class="s">`json: &#34;,status&#34;`</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>If you run <a href="https://golang.org/cmd/vet/"><code>go vet</code></a> on this piece of code you will get following error:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">PodStatus</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Status</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json: &#34;,status&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>If you run <a href="https://golang.org/cmd/vet/"><code>go vet</code></a> on this piece of code you will get following error:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ go vet types.go 
 </span></span><span class="line"><span class="cl"><span class="c1"># command-line-arguments</span>
 </span></span><span class="line"><span class="cl">./types.go:28: struct field tag <span class="sb">`</span>json: <span class="s2">&#34;,status&#34;</span><span class="sb">`</span> 
 </span></span><span class="line"><span class="cl">not compatible with reflect.StructTag.Get: bad syntax <span class="k">for</span> struct tag value
 </span></span></code></pre></div><p>Now this does not tell us what is wrong with the struct tag, <code>json: &quot;,status&quot;</code>. The problem with this struct tag is that the extra space can be interpreted as delimiter so provide key-value pair without space.</p>
 <p>So if the struct changes from:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="s">`json: &#34;,status&#34;`</span>
-</span></span></code></pre></div><p>to</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="s">`json:&#34;,status&#34;`</span>
-</span></span></code></pre></div><p>So the change is just the space after <code>json:</code>, now we don&rsquo;t see the error.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="s">`json: &#34;,status&#34;`</span><span class="w">
+</span></span></span></code></pre></div><p>to</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="s">`json:&#34;,status&#34;`</span><span class="w">
+</span></span></span></code></pre></div><p>So the change is just the space after <code>json:</code>, now we don&rsquo;t see the error.</p>
 <p>More information about the struct tags can be found in this elaborated blog post named: <a href="https://medium.com/golangspec/tags-in-golang-3e5db0b8ef3e"><em>Tags in Golang</em></a>.</p>
 
 
