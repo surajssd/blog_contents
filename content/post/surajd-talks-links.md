@@ -11,6 +11,12 @@ cover:
   image: /images/talks/talks.jpeg
 ---
 
+## LLMs on Kubernetes: Squeeze 5x GPU Efficiency With Cache, Route, Repeat! - Kubecon North America 2025
+
+{{< youtube 2YCDvZokqnk >}}
+
+---
+
 ## Confidential Containers 101: A Hands-on Workshop - Kubecon North America 2024
 
 {{< youtube n2M_vvUGO4U >}}

@@ -190,7 +190,7 @@ I have a flask application which I am working on. The basic directory structure 
 $ ll total 24 -rw-rw-r--. 1 foo foo 427 Apr 23 16:23 app.py -rw-rw-r--. 1 foo foo 201 Apr 23 16:55 docker-compose.yml -rw-rw-r--. 1 foo foo 363 Apr 23 16:21 Dockerfile -rwxrwxr-x. 1 foo foo 82 Dec 5 19:41 entrypoint.sh -rw-rw-r--. 1 foo foo 3010 Dec 5 19:41 README.adoc -rw-rw-r--. 1 foo foo 11 Dec 5 19:41 requirements.txt You can find all of these files in this github repo.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-04-23 15:57:07 +0530 +0530'>April 23, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-04-23 15:57:07 +0530 IST'>April 23, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Enabling local development with Kubernetes" href="https://suraj.io/post/enabling-local-development-with-k8s/"></a>
 </article>
 
@@ -205,7 +205,7 @@ Enter into the machine running k8s If using minikube you can do
 minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-04-18 23:56:15 +0530 +0530'>April 18, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-04-18 23:56:15 +0530 IST'>April 18, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Quick PV for local Kubernetes cluster" href="https://suraj.io/post/quick-pv-for-local-k8s/"></a>
 </article>
 
@@ -219,7 +219,7 @@ minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /t
 Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein he explained different jargons like OCI, CRI, etc., introduced CRI-O and it’s architecture. Explaining how it glues Kubernetes and OCI compliant runtimes and concluding it with a demo showing how Kubernetes uses CRI-O. Link to slides, video.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-04-08 14:31:33 +0530 +0530'>April 8, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-04-08 14:31:33 +0530 IST'>April 8, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Bangalore Kubernetes Meetup April 2017" href="https://suraj.io/post/blr-k8s-meetup-april-2017/"></a>
 </article>
 
@@ -233,7 +233,7 @@ Suraj Deshmukh set the stage with his opening talk, Kubernetes on CRI-O, wherein
 Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ device-mapper-devel \ glib2-devel \ glibc-devel \ glibc-static \ gpgme-devel \ libassuan-devel \ libgpg-error-devel \ libseccomp-devel \ libselinux-devel \ pkgconfig \ wget \ etcd \ iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo &#39;GOPATH=~/go&#39; &gt;&gt; ~/.bashrc echo &#39;GOBIN=$GOPATH/bin&#39; &gt;&gt; ~/.bashrc echo &#39;PATH=$PATH:$GOBIN&#39; &gt;&gt; ~/.bashrc Pull all the code dependencies go get -d k8s.io/kubernetes go get -u github.com/cloudflare/cfssl/cmd/... Install runc go get -d github.com/opencontainers/runc cd $GOPATH/src/github.com/opencontainers/runc git reset --hard v1.0.0-rc3 make BUILDTAGS=&#39;seccomp selinux&#39; &amp;&amp; make install Build cri-o cd go get -d github.com/kubernetes-incubator/cri-o cd $GOPATH/src/github.com/kubernetes-incubator/cri-o make install.tools make &amp;&amp; make install make install.config Set up CNI go get -d github.com/containernetworking/cni cd $GOPATH/src/github.com/containernetworking/cni ./build.sh mkdir -p /opt/cni/bin cp bin/* /opt/cni/bin/ mkdir -p /etc/cni/net.d/ cat &gt; /etc/cni/net.d/10-ocid-bridge.conf &lt;&lt;EOF { &#34;cniVersion&#34;: &#34;0.2.0&#34;, &#34;name&#34;: &#34;ocid-bridge&#34;, &#34;type&#34;: &#34;bridge&#34;, &#34;bridge&#34;: &#34;cni0&#34;, &#34;isGateway&#34;: true, &#34;ipMasq&#34;: true, &#34;ipam&#34;: { &#34;type&#34;: &#34;host-local&#34;, &#34;subnet&#34;: &#34;10.88.0.0/16&#34;, &#34;routes&#34;: [ { &#34;dst&#34;: &#34;0.0.0.0/0&#34; } ] } } EOF cat &gt; /etc/cni/net.d/99-loopback.conf &lt;&lt;EOF { &#34;cniVersion&#34;: &#34;0.2.0&#34;, &#34;type&#34;: &#34;loopback&#34; } EOF Create policy.json mkdir -p /etc/containers cat &gt; /etc/containers/policy.json &lt;&lt;EOF { &#34;default&#34;: [ { &#34;type&#34;: &#34;insecureAcceptAnything&#34; } ] } EOF Make SELinux happy mkdir -p /var/lib/containers/ chcon -Rt svirt_sandbox_file_t /var/lib/containers/ Start ocid service export PATH=$PATH:/usr/local/bin/ echo &#39;PATH=$PATH:/usr/local/bin/&#39; &gt;&gt; ~/.bashrc ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug --selinux true Start k8s cluster with crio cd $GOPATH/src/k8s.io/kubernetes/ CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT=&#39;/var/run/ocid.sock --runtime-request-timeout=15m&#39; ./hack/local-up-cluster.sh To use kubectl (in new terminal)
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-04-08 00:11:37 +0530 +0530'>April 8, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-04-08 00:11:37 +0530 IST'>April 8, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to k8s on CRI-O - single node" href="https://suraj.io/post/using-crio-with-k8s-single-node/"></a>
 </article>
 
@@ -247,7 +247,7 @@ Installing OS dependencies dnf -y install \ go \ git \ btrfs-progs-devel \ devic
 Docs README LICENSE How to install? How to use? Code of conduct guidelines Copyright Issue template like .github in repo. Developer docs How to install for developer? Developer docs Contribution guidelines Team meetings info Team communication channels Issue label guidelines Coding standards Code placement doc, or something that explains the way code is ordered Design document Development Makefile Unit tests Functional tests Coverage check CI for automatic tests Distro based package This is just few things that I could think of, please suggest if you know more in comments.
 </p>
   </div>
-  <footer class="entry-footer"><span title='2017-03-26 18:19:15 +0530 +0530'>March 26, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-03-26 18:19:15 +0530 IST'>March 26, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to TODOs for new project" href="https://suraj.io/post/starting-a-new-opensource-project-requirements/"></a>
 </article>
 
@@ -261,7 +261,7 @@ Docs README LICENSE How to install? How to use? Code of conduct guidelines Copyr
 Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG My Notes Start reading from: Fedora packager’s guide Some macros come from redhat-rpm-config and fedora-rpm-macros. $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch To see all macros on the system: $ rpm --showrc Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package $ rpm -qip ./x86_64/namaskar-1-1.fc25.x86_64.rpm OR
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-03-24 10:35:54 +0530 +0530'>March 24, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-03-24 10:35:54 +0530 IST'>March 24, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to rpm Notes" href="https://suraj.io/post/rpm-notes/"></a>
 </article>
 
@@ -279,7 +279,7 @@ $ git log --graph --abbrev-commit Show graph in logs.
 commit $ git add -p Commit only parts of file. Interactively choose chunks of patch.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-03-21 22:03:48 +0530 +0530'>March 21, 2017</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-03-21 22:03:48 +0530 IST'>March 21, 2017</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Git Notes" href="https://suraj.io/post/git-notes/"></a>
 </article>
 
@@ -296,7 +296,7 @@ Alt &#43; 1 Open project navigator. You can search here, just start typing here,
 Shift &#43; Insert in Project window Here you can add new file to the project. The filename could be the entire path, so the intermediate directories will be created for you.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-03-17 14:41:51 +0530 +0530'>March 17, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-03-17 14:41:51 +0530 IST'>March 17, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Intellij Shortcuts" href="https://suraj.io/post/intellij-shortcuts/"></a>
 </article>
 
@@ -312,7 +312,7 @@ Setup your machine Install packages needed
 sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager Setup certs
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-03-15 14:16:43 +0530 +0530'>March 15, 2017</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-03-15 14:16:43 +0530 IST'>March 15, 2017</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Packaging &#39;kompose&#39; for centos paas sig" href="https://suraj.io/post/packaging-kompose-for-centos-paas-sig/"></a>
 </article>
 
@@ -329,7 +329,7 @@ docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
 # Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.com/kubernetes/kompose/ cd kompose git reset --hard $(kompose version | cut -d &#34;(&#34; -f2 | cut -d &#34;)&#34; -f1) # Run cmd tests make test-cmd CentOS epel repo Spin the CentOS environment in container.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-03-14 00:31:57 +0530 +0530'>March 14, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-03-14 00:31:57 +0530 IST'>March 14, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package" href="https://suraj.io/post/test-kompose/"></a>
 </article>
 <footer class="page-footer">

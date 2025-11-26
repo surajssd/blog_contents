@@ -175,7 +175,7 @@ Root in container, root on host I have a host with docker daemon running on it. 
 $ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &#34;sleep 9999&#34; 12 seconds ago Up 11 seconds clever_lalande Now let’s find out the process sleep on the host. Here in the following output you can see that the process sleep is running as user root.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-25 11:57:07 +0530 +0530'>June 25, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2019-06-25 11:57:07 +0530 IST'>June 25, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Root user inside container is root on the host" href="https://suraj.io/post/root-in-container-root-on-host/"></a>
 </article>
 
@@ -188,7 +188,7 @@ $ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f4
     <p>What is Seccomp? A large number of system calls are exposed to every userland process with many of them going unused for the entire lifetime of the process. A certain subset of userland applications benefit by having a reduced set of available system calls. The resulting set reduces the total kernel surface exposed to the application. System call filtering is meant for use with those applications. Seccomp filtering provides a means for a process to specify a filter for incoming system calls.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-10 11:57:07 +0530 +0530'>June 10, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2019-06-10 11:57:07 +0530 IST'>June 10, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Writing your own Seccomp profiles for Docker" href="https://suraj.io/post/docker-seccomp-manual/"></a>
 </article>
 
@@ -202,7 +202,7 @@ $ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f4
 In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host’s filesystem.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-01-14 01:00:51 +0530 +0530'>January 14, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2019-01-14 01:00:51 +0530 IST'>January 14, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Recreate Kubernetes CVE-2017-1002101" href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"></a>
 </article>
 
@@ -216,7 +216,7 @@ In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 
 Few days back I wrote a blog about adding new node to the cluster using the static token file. The problem with that approach is that you need to restart kube-apiserver providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like secrets.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-10-24 01:00:51 +0530 +0530'>October 24, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-10-24 01:00:51 +0530 IST'>October 24, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Add new Node to k8s cluster with Bootstrap token" href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/"></a>
 </article>
 
@@ -231,7 +231,7 @@ Few days back I wrote a blog about adding new node to the cluster using the stat
 $ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h Which got me thinking what is wrong with the way PSPs work. So if you look closely only two pods are scheduled by a deployment.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-10-23 00:00:51 +0530 +0530'>October 23, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-10-23 00:00:51 +0530 IST'>October 23, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to PodSecurityPolicy on existing Kubernetes clusters" href="https://suraj.io/post/psp-on-existing-cluster/"></a>
 </article>
 
@@ -246,7 +246,7 @@ master node Following the docs of TLS Bootstrapping, let’s first create the to
 $ cat tokenfile 02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,&#34;system:bootstrappers&#34; You should create the token which is as random as possible by running following command:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-10-16 01:00:51 +0530 +0530'>October 16, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-10-16 01:00:51 +0530 IST'>October 16, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Add new Node to k8s cluster with cert rotation" href="https://suraj.io/post/add-new-k8s-node-cert-rotate/"></a>
 </article>
 
@@ -262,7 +262,7 @@ vagrant up vagrant ssh Once inside the machine, become root user and run this sc
 sudo -i curl https://raw.githubusercontent.com/surajssd/scripts/master/shell/k8s-install-single-node/install.sh | sh And you should have a running Kubernetes cluster.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-11 01:00:51 +0530 +0530'>September 11, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-09-11 01:00:51 +0530 IST'>September 11, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Single node Kubernetes Cluster on Fedora with SELinux enabled" href="https://suraj.io/post/single-node-k8s-fedora-selinux/"></a>
 </article>
 
@@ -277,7 +277,7 @@ I have a 3-master and 3-node cluster and setup using this script, running in a V
 All the nodes are in ready state:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-10 01:00:51 +0530 +0530'>September 10, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-09-10 01:00:51 +0530 IST'>September 10, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to HostPath volumes and it&#39;s problems" href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"></a>
 </article>
 <footer class="page-footer">

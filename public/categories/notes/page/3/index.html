@@ -177,7 +177,7 @@ docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
 # Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.com/kubernetes/kompose/ cd kompose git reset --hard $(kompose version | cut -d &#34;(&#34; -f2 | cut -d &#34;)&#34; -f1) # Run cmd tests make test-cmd CentOS epel repo Spin the CentOS environment in container.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-03-14 00:31:57 +0530 +0530'>March 14, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-03-14 00:31:57 +0530 IST'>March 14, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package" href="https://suraj.io/post/test-kompose/"></a>
 </article>
 <footer class="page-footer">
