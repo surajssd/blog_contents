@@ -5,16 +5,58 @@
     <loc>https://suraj.io/post/surajd-talks-links/</loc>
     <lastmod>2024-03-30T01:00:51+05:30</lastmod>
   </url><url>
-    <loc>https://suraj.io/categories/ai/</loc>
-    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
+    <loc>https://suraj.io/categories/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/cli/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/categories/containers/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/containers/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/categories/development/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/development/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/devops/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/categories/docker/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/docker/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/post/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/remote/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/post/2026/remote-machine-as-docker-runner/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/ssh/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
   </url><url>
     <loc>https://suraj.io/tags/ai/</loc>
     <lastmod>2026-01-31T10:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://suraj.io/tags/anthropic/</loc>
+    <loc>https://suraj.io/categories/ai/</loc>
     <lastmod>2026-01-31T10:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://suraj.io/categories/</loc>
+    <loc>https://suraj.io/tags/anthropic/</loc>
     <lastmod>2026-01-31T10:00:00+05:30</lastmod>
   </url><url>
     <loc>https://suraj.io/tags/claude/</loc>
@@ -29,22 +71,10 @@
     <loc>https://suraj.io/tags/litellm/</loc>
     <lastmod>2026-01-31T10:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://suraj.io/post/</loc>
-    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/</loc>
-    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
-  </url><url>
     <loc>https://suraj.io/post/2026/use-claude-code-with-gh-models/</loc>
     <lastmod>2026-01-31T10:00:00+05:30</lastmod>
   </url><url>
     <loc>https://suraj.io/categories/bash/</loc>
-    <lastmod>2025-07-17T15:21:07-08:00</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/cli/</loc>
     <lastmod>2025-07-17T15:21:07-08:00</lastmod>
   </url><url>
     <loc>https://suraj.io/categories/cmd-line/</loc>
@@ -60,9 +90,6 @@
     <lastmod>2025-07-17T15:21:07-08:00</lastmod>
   </url><url>
     <loc>https://suraj.io/tags/desktop/</loc>
-    <lastmod>2025-07-17T15:21:07-08:00</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/development/</loc>
     <lastmod>2025-07-17T15:21:07-08:00</lastmod>
   </url><url>
     <loc>https://suraj.io/categories/git/</loc>
@@ -314,12 +341,6 @@
     <loc>https://suraj.io/tags/notes/</loc>
     <lastmod>2021-02-06T10:25:41+05:30</lastmod>
   </url><url>
-    <loc>https://suraj.io/categories/containers/</loc>
-    <lastmod>2021-01-29T22:02:41+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/containers/</loc>
-    <lastmod>2021-01-29T22:02:41+05:30</lastmod>
-  </url><url>
     <loc>https://suraj.io/categories/flatcar/</loc>
     <lastmod>2021-01-29T22:02:41+05:30</lastmod>
   </url><url>
@@ -426,12 +447,6 @@
     <lastmod>2020-04-14T11:57:07+05:30</lastmod>
   </url><url>
     <loc>https://suraj.io/post/linux-cap-note/</loc>
-    <lastmod>2019-06-25T15:15:07+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/categories/docker/</loc>
-    <lastmod>2019-06-25T15:15:07+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/docker/</loc>
     <lastmod>2019-06-25T15:15:07+05:30</lastmod>
   </url><url>
     <loc>https://suraj.io/categories/host/</loc>

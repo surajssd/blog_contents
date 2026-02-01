@@ -171,6 +171,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">How to backup and restore Prometheus?
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This blog will show you how to take a backup from a running Prometheus and restore it in some other Prometheus instance. You might ask why would you even want to do something like that? Well, sometimes you want the Prometheus metrics because they were collected for some particular purpose and you want to do some analysis later.
+Prerequisites/Assumptions This blog assumes that you have a Prometheus running that is deployed using prometheus-operator in monitoring namespace. But even if you have deployed it in some other way modify the commands in few places.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-07-31 19:00:51 +0530 +0530'>July 31, 2020</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <a class="entry-link" aria-label="post link to How to backup and restore Prometheus?" href="https://suraj.io/post/how-to-backup-and-restore-prometheus/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Book Review: Getting Things Done
     </h2>
   </header>
@@ -297,22 +311,6 @@ I was struggling with this issue for a while and struggling to get a proper solu
   </div>
   <footer class="entry-footer"><span title='2019-06-23 11:57:07 +0530 +0530'>June 23, 2019</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Project specific scripts" href="https://suraj.io/post/project-specific-scripts/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Copying files to container the generic way
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>This blog shows you how you can copy stuff from your host machine to the running container without the docker cp command that we usually use.
-Steps in text Here I have a script on the host, which looks following:
-#!/bin/bash tput bold echo &#34;OS Information:&#34; tput sgr0 echo cat /etc/os-release After running which looks like following:
-$ ls script.sh $ ./script.sh OS Information: NAME=&#34;Flatcar Linux by Kinvolk&#34; ID=flatcar ID_LIKE=coreos VERSION=2079.6.0 VERSION_ID=2079.6.0 BUILD_ID=2019-06-18-0855 PRETTY_NAME=&#34;Flatcar Linux by Kinvolk 2079.6.0 (Rhyolite)&#34; ANSI_COLOR=&#34;38;5;75&#34; HOME_URL=&#34;https://flatcar-linux.org/&#34; BUG_REPORT_URL=&#34;https://issues.flatcar-linux.org&#34; FLATCAR_BOARD=&#34;amd64-usr&#34; And here is the running container in another tab to which I want to copy the file.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2019-06-21 11:57:07 +0530 +0530'>June 21, 2019</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
-  <a class="entry-link" aria-label="post link to Copying files to container the generic way" href="https://suraj.io/post/copy-to-container-without-docker-cp/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

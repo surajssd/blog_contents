@@ -171,6 +171,22 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Copying files to container the generic way
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This blog shows you how you can copy stuff from your host machine to the running container without the docker cp command that we usually use.
+Steps in text Here I have a script on the host, which looks following:
+#!/bin/bash tput bold echo &#34;OS Information:&#34; tput sgr0 echo cat /etc/os-release After running which looks like following:
+$ ls script.sh $ ./script.sh OS Information: NAME=&#34;Flatcar Linux by Kinvolk&#34; ID=flatcar ID_LIKE=coreos VERSION=2079.6.0 VERSION_ID=2079.6.0 BUILD_ID=2019-06-18-0855 PRETTY_NAME=&#34;Flatcar Linux by Kinvolk 2079.6.0 (Rhyolite)&#34; ANSI_COLOR=&#34;38;5;75&#34; HOME_URL=&#34;https://flatcar-linux.org/&#34; BUG_REPORT_URL=&#34;https://issues.flatcar-linux.org&#34; FLATCAR_BOARD=&#34;amd64-usr&#34; And here is the running container in another tab to which I want to copy the file.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-06-21 11:57:07 +0530 +0530'>June 21, 2019</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <a class="entry-link" aria-label="post link to Copying files to container the generic way" href="https://suraj.io/post/copy-to-container-without-docker-cp/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Writing your own Seccomp profiles for Docker
     </h2>
   </header>
@@ -299,19 +315,6 @@ The duration of exam is three hours, which is enough time if you do good practic
   </div>
   <footer class="entry-footer"><span title='2018-10-21 00:00:51 +0530 +0530'>October 21, 2018</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Road to CKA" href="https://suraj.io/post/road-to-cka/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">How to disable your Chrome Ctrl &#43; W keybinding
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I am about to attempt the CKA exam and it has a browser based terminal. And I am used to this terminal shortcut Ctrl &#43; W which deletes a word. But the same shortcut in browser can close a tab. Since this exam is combination of both I am afraid I might close my exam tab while deleting a word in terminal. Now the only solution to this is disabling the shortcut in chrome. But turns out that the shortcut is hard coded in chrome.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-10-16 22:00:51 +0530 +0530'>October 16, 2018</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
-  <a class="entry-link" aria-label="post link to How to disable your Chrome Ctrl &#43; W keybinding" href="https://suraj.io/post/disable-ctrl-w/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

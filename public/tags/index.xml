@@ -11,8 +11,57 @@
     </image>
     <generator>Hugo -- 0.155.1</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 31 Jan 2026 10:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 01 Feb 2026 10:00:00 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cli</title>
+      <link>https://suraj.io/tags/cli/</link>
+      <pubDate>Sun, 01 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/cli/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Containers</title>
+      <link>https://suraj.io/tags/containers/</link>
+      <pubDate>Sun, 01 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/containers/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Development</title>
+      <link>https://suraj.io/tags/development/</link>
+      <pubDate>Sun, 01 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/development/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Devops</title>
+      <link>https://suraj.io/tags/devops/</link>
+      <pubDate>Sun, 01 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/devops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>https://suraj.io/tags/docker/</link>
+      <pubDate>Sun, 01 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Remote</title>
+      <link>https://suraj.io/tags/remote/</link>
+      <pubDate>Sun, 01 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/remote/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ssh</title>
+      <link>https://suraj.io/tags/ssh/</link>
+      <pubDate>Sun, 01 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/ssh/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Ai</title>
       <link>https://suraj.io/tags/ai/</link>
@@ -49,13 +98,6 @@
       <description></description>
     </item>
     <item>
-      <title>Cli</title>
-      <link>https://suraj.io/tags/cli/</link>
-      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
-      <guid>https://suraj.io/tags/cli/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Copilot</title>
       <link>https://suraj.io/tags/copilot/</link>
       <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
@@ -67,13 +109,6 @@
       <link>https://suraj.io/tags/desktop/</link>
       <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
       <guid>https://suraj.io/tags/desktop/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Development</title>
-      <link>https://suraj.io/tags/development/</link>
-      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
-      <guid>https://suraj.io/tags/development/</guid>
       <description></description>
     </item>
     <item>
@@ -287,13 +322,6 @@
       <description></description>
     </item>
     <item>
-      <title>Containers</title>
-      <link>https://suraj.io/tags/containers/</link>
-      <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
-      <guid>https://suraj.io/tags/containers/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Flatcar</title>
       <link>https://suraj.io/tags/flatcar/</link>
       <pubDate>Fri, 29 Jan 2021 22:02:41 +0530</pubDate>
@@ -354,13 +382,6 @@
       <link>https://suraj.io/tags/seccomp/</link>
       <pubDate>Tue, 14 Apr 2020 11:57:07 +0530</pubDate>
       <guid>https://suraj.io/tags/seccomp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Docker</title>
-      <link>https://suraj.io/tags/docker/</link>
-      <pubDate>Tue, 25 Jun 2019 15:15:07 +0530</pubDate>
-      <guid>https://suraj.io/tags/docker/</guid>
       <description></description>
     </item>
     <item>

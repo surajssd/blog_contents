@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- 0.155.1</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 29 Jan 2021 22:02:41 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 01 Feb 2026 10:00:00 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/categories/containers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Running Docker Commands on a Remote Machine via SSH</title>
+      <link>https://suraj.io/post/2026/remote-machine-as-docker-runner/</link>
+      <pubDate>Sun, 01 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/post/2026/remote-machine-as-docker-runner/</guid>
+      <description>Learn how to execute Docker commands on a remote machine from your local terminal using SSH and Docker contexts</description>
+    </item>
     <item>
       <title>Kubernetes Cluster using Kubeadm on Flatcar Container Linux</title>
       <link>https://suraj.io/post/2021/01/kubeadm-flatcar/</link>
