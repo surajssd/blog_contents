@@ -219,7 +219,7 @@
     <div class="post-description">
       Getting the game of PSP right!
     </div>
-    <div class="post-meta"><span title='2021-01-16 13:10:51 +0530 IST'>January 16, 2021</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/mental-models-for-understanding-kubernetes-pod-security-policy.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2021-01-16 13:10:51 +0530 +0530'>January 16, 2021</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/mental-models-for-understanding-kubernetes-pod-security-policy.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> <div class="toc">
@@ -265,12 +265,12 @@
 <li>Start from <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/#example-policies">privileged PSP</a> (see below) and keep restricting it as per the application pod specification.</li>
 </ol>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">policy/v1beta1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">PodSecurityPolicy</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">PodSecurityPolicy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">privileged</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">seccomp.security.alpha.kubernetes.io/allowedProfileNames</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">spec</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">allowedCapabilities</span><span class="p">:</span><span class="w">
@@ -299,15 +299,15 @@
 <h2 id="cluster-wide-psp">Cluster-wide PSP<a hidden class="anchor" aria-hidden="true" href="#cluster-wide-psp">#</a></h2>
 <p>These PSPs apply to the workloads that don&rsquo;t ship their own PSP manifests. You would want your clusters to have a catch-all PSP config. Such a generalised PSP should ideally be restrictive in nature. The PSP should have everything locked down like no root user, no privilege escalation using <code>privileged</code> field, all the host namespace fields are disallowed, etc.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">policy/v1beta1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">PodSecurityPolicy</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">PodSecurityPolicy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">aa-restricted</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">seccomp.security.alpha.kubernetes.io/allowedProfileNames</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;docker/default,runtime/default&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">apparmor.security.beta.kubernetes.io/allowedProfileNames</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;runtime/default&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">seccomp.security.alpha.kubernetes.io/defaultProfileName</span><span class="p">:</span><span class="w">  </span><span class="s1">&#39;runtime/default&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">apparmor.security.beta.kubernetes.io/defaultProfileName</span><span class="p">:</span><span class="w">  </span><span class="s1">&#39;runtime/default&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">spec</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Required to prevent escalations to root.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
@@ -475,7 +475,7 @@ If you are still confused about this, please reach out to me I will happy to exp
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

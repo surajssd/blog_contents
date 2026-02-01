@@ -219,7 +219,7 @@
     <div class="post-description">
       Access the etcd in OpenShift started by oc cluster up
     </div>
-    <div class="post-meta"><span title='2018-07-11 01:00:51 +0530 IST'>July 11, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/accessing-oc-cluster-up-etcd.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2018-07-11 01:00:51 +0530 +0530'>July 11, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/accessing-oc-cluster-up-etcd.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
@@ -236,9 +236,9 @@
 </span></span></code></pre></div><p>Now run following to connect to the <code>etcd</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@surajd master<span class="o">]</span>$ <span class="nb">export</span> <span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span>
 </span></span><span class="line"><span class="cl"><span class="o">[</span>root@surajd master<span class="o">]</span>$ etcdctl --cacert ./ca.crt --cert ./master.etcd-client.crt <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span> --key ./master.etcd-client.key <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span> --endpoints<span class="o">=[</span>https://127.0.0.1:4001<span class="o">]</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span> get --prefix --keys-only<span class="o">=</span><span class="nb">true</span> /
+</span></span></span><span class="line"><span class="cl"> --key ./master.etcd-client.key <span class="se">\
+</span></span></span><span class="line"><span class="cl"> --endpoints<span class="o">=[</span>https://127.0.0.1:4001<span class="o">]</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"> get --prefix --keys-only<span class="o">=</span><span class="nb">true</span> /
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">/kubernetes.io/apiextensions.k8s.io/customresourcedefinitions/openshiftwebconsoleconfigs.webconsole.operator.openshift.io
 </span></span><span class="line"><span class="cl">
@@ -372,7 +372,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

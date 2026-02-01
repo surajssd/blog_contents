@@ -174,7 +174,7 @@
 $ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &lt;none&gt; 1h v1.11.2 192.168.199.20 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &lt;none&gt; 1h v1.11.2 192.168.199.21 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &lt;none&gt; 1h v1.11.2 192.168.199.22 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 Now to add a new node to this cluster you will need to bring up a VM, for this just use following Vagrantfile.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-23 01:00:51 +0530 IST'>September 23, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-09-23 01:00:51 +0530 +0530'>September 23, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Adding new worker to existing Kubernetes cluster" href="https://suraj.io/post/add-new-k8s-node-manually/"></a>
 </article>
 
@@ -190,7 +190,7 @@ vagrant up vagrant ssh Once inside the machine, become root user and run this sc
 sudo -i curl https://raw.githubusercontent.com/surajssd/scripts/master/shell/k8s-install-single-node/install.sh | sh And you should have a running Kubernetes cluster.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-11 01:00:51 +0530 IST'>September 11, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-09-11 01:00:51 +0530 +0530'>September 11, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Single node Kubernetes Cluster on Fedora with SELinux enabled" href="https://suraj.io/post/single-node-k8s-fedora-selinux/"></a>
 </article>
 
@@ -205,7 +205,7 @@ I have a 3-master and 3-node cluster and setup using this script, running in a V
 All the nodes are in ready state:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-10 01:00:51 +0530 IST'>September 10, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-09-10 01:00:51 +0530 +0530'>September 10, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to HostPath volumes and it&#39;s problems" href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"></a>
 </article>
 
@@ -222,7 +222,7 @@ $ docker exec -it origin bash First install the etcdctl needed to talk to etcd.
 [root@surajd origin]$ yum -y install etcd Get into the directory where all the certs and keys are available.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-07-11 01:00:51 +0530 IST'>July 11, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-07-11 01:00:51 +0530 +0530'>July 11, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Access etcd in OpenShift origin" href="https://suraj.io/post/accessing-oc-cluster-up-etcd/"></a>
 </article>
 
@@ -237,7 +237,7 @@ Change namespace Let’s see step by step what goes in to change the namespace. 
 A context element in a kubeconfig file is used to group access parameters under a convenient name. Each context has three parameters: cluster, namespace, and user. By default, the kubectl command-line tool uses parameters from the current context to communicate with the cluster. Read more.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-07-02 08:00:51 +0530 IST'>July 2, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-07-02 08:00:51 +0530 +0530'>July 2, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Change namespaces in Kubernetes" href="https://suraj.io/post/changing-k8s-ns/"></a>
 </article>
 
@@ -252,7 +252,7 @@ Requirements Setting up cluster I have done it using the oc cluster up, read abo
 Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge. This makes configuration easier to understand and edit. So for using this setup download Kedge and put it in your path as explained here.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-04-04 08:00:51 +0530 IST'>April 4, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-04-04 08:00:51 +0530 +0530'>April 4, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Prometheus with existing application on OpenShift" href="https://suraj.io/post/using-prometheus/"></a>
 </article>
 
@@ -266,7 +266,7 @@ Downloading Kedge The configurations defined for setting up this cluster is writ
 This blog is only replacement of section Install the Standalone Kubelet in tutorial.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-09-23 13:10:14 +0530 IST'>September 23, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-09-23 13:10:14 +0530 +0530'>September 23, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Static Pods using Kubelet on Fedora" href="https://suraj.io/post/static-pods/"></a>
 </article>
 
@@ -279,7 +279,7 @@ This blog is only replacement of section Install the Standalone Kubelet in tutor
     <p>Following is the list of all the places you can learn Kubernetes from:
 Scalable Microservices with Kubernetes - Video tutorial Fundamentals of Containers, Kubernetes, and Red Hat OpenShift - Video tutorial Kubernetes By Example - DIY tutorial Learn Kubernetes using Interactive Browser-Based Scenarios - DIY tutorial in your own web browser Interactive Learning Portal for OpenShift - DIY tutorial in your own web browser Kubernetes docs - Textual DIY docs Kubernetes API reference v1.6 OpenShift docs - Textual DIY docs </p>
   </div>
-  <footer class="entry-footer"><span title='2017-08-17 23:12:18 +0530 IST'>August 17, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-08-17 23:12:18 +0530 +0530'>August 17, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Kubernetes Learning resources" href="https://suraj.io/post/k8s-learning-resources/"></a>
 </article>
 
@@ -294,7 +294,7 @@ Kiran Mova set the floor rolling with his talk on Hyperconverged version of Open
 He also explained difference between various storage providers viz. Portworx, StorageOS, Rook, GlusterFS, OpenEBS, etc.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-07-13 22:46:40 +0530 IST'>July 13, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-07-13 22:46:40 +0530 +0530'>July 13, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Bangalore Kubernetes Meetup July 2017" href="https://suraj.io/post/blr-k8s-meetup-july-2017/"></a>
 </article>
 
@@ -309,7 +309,7 @@ Enter into the machine running k8s If using minikube you can do
 minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /tmp/pv0001 If you are on a machine that has SELinux enabled do the following
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-04-18 23:56:15 +0530 IST'>April 18, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-04-18 23:56:15 +0530 +0530'>April 18, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Quick PV for local Kubernetes cluster" href="https://suraj.io/post/quick-pv-for-local-k8s/"></a>
 </article>
 <footer class="page-footer">
@@ -321,7 +321,7 @@ minikube ssh Create a local directory for storage mkdir /tmp/pv0001 chmod 777 /t
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

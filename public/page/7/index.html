@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.152.2"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.155.1"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -168,6 +168,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Add new Node to k8s cluster with cert rotation
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The setup here is created by following Kubernetes the Hard Way by Kelsey Hightower. So if you are following along in this then do all the setup till the step Bootstrapping the Kubernetes Worker Nodes. In this just don’t start the kubelet, start other services like containerd and kube-proxy.
+master node Following the docs of TLS Bootstrapping, let’s first create the token authentication file. Create a file with following content:
+$ cat tokenfile 02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,&#34;system:bootstrappers&#34; You should create the token which is as random as possible by running following command:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-10-16 01:00:51 +0530 +0530'>October 16, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Add new Node to k8s cluster with cert rotation" href="https://suraj.io/post/add-new-k8s-node-cert-rotate/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Adding new worker to existing Kubernetes cluster
     </h2>
   </header>
@@ -176,7 +191,7 @@
 $ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &lt;none&gt; 1h v1.11.2 192.168.199.20 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &lt;none&gt; 1h v1.11.2 192.168.199.21 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &lt;none&gt; 1h v1.11.2 192.168.199.22 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 Now to add a new node to this cluster you will need to bring up a VM, for this just use following Vagrantfile.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-23 01:00:51 +0530 IST'>September 23, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-09-23 01:00:51 +0530 +0530'>September 23, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Adding new worker to existing Kubernetes cluster" href="https://suraj.io/post/add-new-k8s-node-manually/"></a>
 </article>
 
@@ -192,7 +207,7 @@ vagrant up vagrant ssh Once inside the machine, become root user and run this sc
 sudo -i curl https://raw.githubusercontent.com/surajssd/scripts/master/shell/k8s-install-single-node/install.sh | sh And you should have a running Kubernetes cluster.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-11 01:00:51 +0530 IST'>September 11, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-09-11 01:00:51 +0530 +0530'>September 11, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Single node Kubernetes Cluster on Fedora with SELinux enabled" href="https://suraj.io/post/single-node-k8s-fedora-selinux/"></a>
 </article>
 
@@ -207,7 +222,7 @@ I have a 3-master and 3-node cluster and setup using this script, running in a V
 All the nodes are in ready state:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-10 01:00:51 +0530 IST'>September 10, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-09-10 01:00:51 +0530 +0530'>September 10, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to HostPath volumes and it&#39;s problems" href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"></a>
 </article>
 
@@ -222,7 +237,7 @@ Once installed just run:
 $ mkcert -install Created a new local CA at &#34;/home/hummer/.local/share/mkcert&#34; 💥 [sudo] password for hummer: The local CA is now installed in the system trust store! ⚡ The local CA is now installed in the Firefox and/or Chrome/Chromium trust store (requires browser restart)! 🦊 This has installed the local CA. Now all you need to do is create a new certificate.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-08-14 01:00:51 +0530 IST'>August 14, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-08-14 01:00:51 +0530 +0530'>August 14, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to HTTPS during development using &#39;mkcert&#39;" href="https://suraj.io/post/mkcert-using-python-http-server/"></a>
 </article>
 
@@ -237,7 +252,7 @@ type PodStatus struct { Status string `json: &#34;,status&#34;` } If you run go 
 $ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &#34;,status&#34;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value Now this does not tell us what is wrong with the struct tag, json: &#34;,status&#34;. The problem with this struct tag is that the extra space can be interpreted as delimiter so provide key-value pair without space.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-08-12 01:00:51 +0530 IST'>August 12, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-08-12 01:00:51 +0530 +0530'>August 12, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Golang struct tags gotchas" href="https://suraj.io/post/golang-struct-tags-space/"></a>
 </article>
 
@@ -254,7 +269,7 @@ $ docker exec -it origin bash First install the etcdctl needed to talk to etcd.
 [root@surajd origin]$ yum -y install etcd Get into the directory where all the certs and keys are available.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-07-11 01:00:51 +0530 IST'>July 11, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-07-11 01:00:51 +0530 +0530'>July 11, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Access etcd in OpenShift origin" href="https://suraj.io/post/accessing-oc-cluster-up-etcd/"></a>
 </article>
 
@@ -269,7 +284,7 @@ Change namespace Let’s see step by step what goes in to change the namespace. 
 A context element in a kubeconfig file is used to group access parameters under a convenient name. Each context has three parameters: cluster, namespace, and user. By default, the kubectl command-line tool uses parameters from the current context to communicate with the cluster. Read more.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-07-02 08:00:51 +0530 IST'>July 2, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-07-02 08:00:51 +0530 +0530'>July 2, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Change namespaces in Kubernetes" href="https://suraj.io/post/changing-k8s-ns/"></a>
 </article>
 
@@ -284,7 +299,7 @@ Requirements Setting up cluster I have done it using the oc cluster up, read abo
 Downloading Kedge The configurations defined for setting up this cluster is written in a format that is understood by a tool called Kedge. This makes configuration easier to understand and edit. So for using this setup download Kedge and put it in your path as explained here.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-04-04 08:00:51 +0530 IST'>April 4, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-04-04 08:00:51 +0530 +0530'>April 4, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Prometheus with existing application on OpenShift" href="https://suraj.io/post/using-prometheus/"></a>
 </article>
 
@@ -296,24 +311,8 @@ Downloading Kedge The configurations defined for setting up this cluster is writ
   <div class="entry-content">
     <p>Test Fixtures “go test” sets pwd as package directory Test Helpers should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9&#43;) for things reqiuiring clean up return closures Configurability Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It’s ok to make these configs unexported so only tests can set them. Slides Video GopherCon 2017: Mitchell Hashimoto - Advanced Testing with Go by Mitchell Hashimoto </p>
   </div>
-  <footer class="entry-footer"><span title='2018-03-07 02:21:49 +0530 IST'>March 7, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-03-07 02:21:49 +0530 +0530'>March 7, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Notes on talk - Advanced testing in golang by Mitchell Hashimoto" href="https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Methods that satisfy interfaces in golang
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Pointer receiver For a struct User with a method Work with pointer receiver.
-type User struct { Name string Period int } func (u *User) Work() { fmt.Println(u.Name, &#34;has worked for&#34;, u.Period, &#34;hrs.&#34;) } func main() { uval := User{&#34;UserVal&#34;, 5} uval.Work() pval := &amp;User{&#34;UserPtr&#34;, 6} pval.Work() } See on go playground.
-output:
-UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-02-23 08:00:51 +0530 IST'>February 23, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
-  <a class="entry-link" aria-label="post link to Methods that satisfy interfaces in golang" href="https://suraj.io/post/golang-methods-interfaces/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
@@ -327,7 +326,7 @@ UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this meth
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

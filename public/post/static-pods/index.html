@@ -218,7 +218,7 @@
     <div class="post-description">
       Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;
     </div>
-    <div class="post-meta"><span title='2017-09-23 13:10:14 +0530 IST'>September 23, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/static-pods.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2017-09-23 13:10:14 +0530 +0530'>September 23, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/static-pods.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> <div class="toc">
@@ -268,15 +268,15 @@ Docker manually alongwith Kubelet.</p>
 <p>Apply following changes to <code>/etc/kubernetes/config</code></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl"><span class="gh">diff --git a/config b/config
 </span></span></span><span class="line"><span class="cl"><span class="gh">index 8c0a284..cfccbee 100644
-</span></span></span><span class="line"><span class="cl"><span class="gh"></span><span class="gd">--- a/config
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+++ b/config
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span><span class="gu">@@ -16,7 +16,7 @@ KUBE_LOGTOSTDERR=&#34;--logtostderr=true&#34;
-</span></span></span><span class="line"><span class="cl"><span class="gu"></span> KUBE_LOG_LEVEL=&#34;--v=0&#34;
+</span></span></span><span class="line"><span class="cl"><span class="gd">--- a/config
+</span></span></span><span class="line"><span class="cl"><span class="gi">+++ b/config
+</span></span></span><span class="line"><span class="cl"><span class="gu">@@ -16,7 +16,7 @@ KUBE_LOGTOSTDERR=&#34;--logtostderr=true&#34;
+</span></span></span><span class="line"><span class="cl"> KUBE_LOG_LEVEL=&#34;--v=0&#34;
 </span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"> # Should this cluster be allowed to run privileged docker containers
 </span></span><span class="line"><span class="cl"><span class="gd">-KUBE_ALLOW_PRIV=&#34;--allow-privileged=false&#34;
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+KUBE_ALLOW_PRIV=&#34;--allow-privileged=true&#34;
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span> 
+</span></span></span><span class="line"><span class="cl"><span class="gi">+KUBE_ALLOW_PRIV=&#34;--allow-privileged=true&#34;
+</span></span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"> # How the controller-manager, scheduler, and proxy find the apiserver
 </span></span><span class="line"><span class="cl"> KUBE_MASTER=&#34;--master=http://127.0.0.1:8080&#34;
 </span></span></code></pre></div><p>By default in Fedora the Kubelet service won&rsquo;t be running privileged pods. Setting flag
@@ -285,14 +285,14 @@ find it <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial/
 <p>Apply following changes to <code>/etc/kubernetes/kubelet</code></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl"><span class="gh">diff --git a/kubelet b/kubelet
 </span></span></span><span class="line"><span class="cl"><span class="gh">index cfd5686..07c11ab 100644
-</span></span></span><span class="line"><span class="cl"><span class="gh"></span><span class="gd">--- a/kubelet
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+++ b/kubelet
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span><span class="gu">@@ -14,4 +14,4 @@ KUBELET_HOSTNAME=&#34;--hostname-override=127.0.0.1&#34;
-</span></span></span><span class="line"><span class="cl"><span class="gu"></span> KUBELET_API_SERVER=&#34;--api-servers=http://127.0.0.1:8080&#34;
+</span></span></span><span class="line"><span class="cl"><span class="gd">--- a/kubelet
+</span></span></span><span class="line"><span class="cl"><span class="gi">+++ b/kubelet
+</span></span></span><span class="line"><span class="cl"><span class="gu">@@ -14,4 +14,4 @@ KUBELET_HOSTNAME=&#34;--hostname-override=127.0.0.1&#34;
+</span></span></span><span class="line"><span class="cl"> KUBELET_API_SERVER=&#34;--api-servers=http://127.0.0.1:8080&#34;
 </span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"> # Add your own!
 </span></span><span class="line"><span class="cl"><span class="gd">-KUBELET_ARGS=&#34;--cgroup-driver=systemd&#34;
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+KUBELET_ARGS=&#34;--cgroup-driver=systemd --pod-manifest-path=/etc/kubernetes/manifests&#34;
+</span></span></span><span class="line"><span class="cl"><span class="gi">+KUBELET_ARGS=&#34;--cgroup-driver=systemd --pod-manifest-path=/etc/kubernetes/manifests&#34;
 </span></span></span></code></pre></div><p>To Kubelet we have added one more flag called <code>--pod-manifest-path</code> which is explained in
 docs as:</p>
 <blockquote>
@@ -424,7 +424,7 @@ manifest file.</p>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

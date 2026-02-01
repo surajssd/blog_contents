@@ -220,7 +220,7 @@
     <div class="post-description">
       How wrong usage of persistent flags can burn you
     </div>
-    <div class="post-meta"><span title='2019-01-04 01:00:51 +0530 IST'>January 4, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/cobra-persistent-flag.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2019-01-04 01:00:51 +0530 +0530'>January 4, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/cobra-persistent-flag.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
@@ -241,7 +241,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nx">os</span><span class="p">.</span><span class="nf">ExpandEnv</span><span class="p">(</span><span class="s">&#34;$HOME/.config&#34;</span><span class="p">),</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="s">&#34;Path to config file&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">viper</span><span class="p">.</span><span class="nf">BindPFlag</span><span class="p">(</span><span class="s">&#34;config&#34;</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">().</span><span class="nf">Lookup</span><span class="p">(</span><span class="s">&#34;config&#34;</span><span class="p">))</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>Above code is <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/root.go#L29-L36">here</a>.</p>
 <p>Now this is called from <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/one.go#L18"><code>one.go</code></a> and <a href="https://github.com/surajssd/cobrademo/blob/26122e97d841bb1545d19bac6ce11110413803ec/cmd/alpha.go#L18"><code>alpha.go</code></a> to add the flag under those sub-command.</p>
 <p>Now the command structure for <code>alpha</code> sub-command looks like following:</p>
@@ -423,7 +423,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

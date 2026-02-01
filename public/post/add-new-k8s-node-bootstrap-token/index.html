@@ -218,7 +218,7 @@
     <div class="post-description">
       Use this technique to add new node to the cluster without providing any certificates and without having to restart the kube-apiserver
     </div>
-    <div class="post-meta"><span title='2018-10-24 01:00:51 +0530 IST'>October 24, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/add-new-k8s-node-bootstrap-token.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2018-10-24 01:00:51 +0530 +0530'>October 24, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/add-new-k8s-node-bootstrap-token.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> <div class="toc">
@@ -363,16 +363,16 @@ EOF
 </code></pre><h2 id="rbac-policies-to-enable-bootstrapping">RBAC policies to enable bootstrapping<a hidden class="anchor" aria-hidden="true" href="#rbac-policies-to-enable-bootstrapping">#</a></h2>
 <p>The user authenticated by that token belongs to the group <code>system:bootstrappers</code>, that is why following permissions are given to that group.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl create clusterrolebinding kubelet-bootstrap <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --clusterrole<span class="o">=</span>system:node-bootstrapper <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --group<span class="o">=</span>system:bootstrappers
+</span></span></span><span class="line"><span class="cl">  --clusterrole<span class="o">=</span>system:node-bootstrapper <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --group<span class="o">=</span>system:bootstrappers
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">kubectl create clusterrolebinding node-autoapprove-bootstrap <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --clusterrole<span class="o">=</span>system:certificates.k8s.io:certificatesigningrequests:nodeclient <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --group<span class="o">=</span>system:bootstrappers
+</span></span></span><span class="line"><span class="cl">  --clusterrole<span class="o">=</span>system:certificates.k8s.io:certificatesigningrequests:nodeclient <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --group<span class="o">=</span>system:bootstrappers
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">kubectl create clusterrolebinding node-autoapprove-certificate-rotation <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --clusterrole<span class="o">=</span>system:certificates.k8s.io:certificatesigningrequests:selfnodeclient <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --group<span class="o">=</span>system:nodes
+</span></span></span><span class="line"><span class="cl">  --clusterrole<span class="o">=</span>system:certificates.k8s.io:certificatesigningrequests:selfnodeclient <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --group<span class="o">=</span>system:nodes
 </span></span></code></pre></div><h1 id="worker-node-changes">Worker node changes<a hidden class="anchor" aria-hidden="true" href="#worker-node-changes">#</a></h1>
 <h2 id="kubelet">Kubelet<a hidden class="anchor" aria-hidden="true" href="#kubelet">#</a></h2>
 <p>Add this flag <code>--bootstrap-kubeconfig</code>, it is a path to kubeconfig which we will generate shortly, it contains bootstrap token and information to talk to the <code>kube-apiserver</code>. And also you don&rsquo;t need to provide <code>--kubeconfig</code> but provide a path to it, this will be auto-generated and saved at that path.</p>
@@ -426,23 +426,23 @@ EOF
 <h2 id="create-bootstrap-kubeconfig">Create bootstrap kubeconfig<a hidden class="anchor" aria-hidden="true" href="#create-bootstrap-kubeconfig">#</a></h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># I have used the ip address of my kube kube-apiserver use yours</span>
 </span></span><span class="line"><span class="cl">kubectl config set-cluster kthwkinvolk <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --certificate-authority<span class="o">=</span>ca.pem <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --embed-certs<span class="o">=</span><span class="nb">true</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --server<span class="o">=</span>https://192.168.50.10:6443 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --kubeconfig<span class="o">=</span>/home/vagrant/bootstrap.kubeconfig
+</span></span></span><span class="line"><span class="cl">  --certificate-authority<span class="o">=</span>ca.pem <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --embed-certs<span class="o">=</span><span class="nb">true</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --server<span class="o">=</span>https://192.168.50.10:6443 <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --kubeconfig<span class="o">=</span>/home/vagrant/bootstrap.kubeconfig
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># this token is above generated</span>
 </span></span><span class="line"><span class="cl">kubectl config set-credentials kubelet-bootstrap <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --token<span class="o">=</span>07401b.f395accd246ae52d <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --kubeconfig<span class="o">=</span>/home/vagrant/bootstrap.kubeconfig
+</span></span></span><span class="line"><span class="cl">  --token<span class="o">=</span>07401b.f395accd246ae52d <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --kubeconfig<span class="o">=</span>/home/vagrant/bootstrap.kubeconfig
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">kubectl config set-context default <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cluster<span class="o">=</span>kthwkinvolk <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --user<span class="o">=</span>kubelet-bootstrap <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --kubeconfig<span class="o">=</span>/home/vagrant/bootstrap.kubeconfig
+</span></span></span><span class="line"><span class="cl">  --cluster<span class="o">=</span>kthwkinvolk <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --user<span class="o">=</span>kubelet-bootstrap <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --kubeconfig<span class="o">=</span>/home/vagrant/bootstrap.kubeconfig
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">kubectl config use-context default <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --kubeconfig<span class="o">=</span>/home/vagrant/bootstrap.kubeconfig
+</span></span></span><span class="line"><span class="cl">  --kubeconfig<span class="o">=</span>/home/vagrant/bootstrap.kubeconfig
 </span></span></code></pre></div><p>This is the bootstrap config file which we referred earlier in kubelet service file.</p>
 <p>Now once you start <code>kubelet</code> service it will use the bootstrap token in the initial request and fetch the certificates.</p>
 <h1 id="trying-it-all-in-one-go">Trying it all in one go<a hidden class="anchor" aria-hidden="true" href="#trying-it-all-in-one-go">#</a></h1>
@@ -562,7 +562,7 @@ EOF
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

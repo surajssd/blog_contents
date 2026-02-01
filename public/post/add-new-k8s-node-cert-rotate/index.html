@@ -218,7 +218,7 @@
     <div class="post-description">
       Use this technique to add node to the cluster without providing any certificates
     </div>
-    <div class="post-meta"><span title='2018-10-16 01:00:51 +0530 IST'>October 16, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/add-new-k8s-node-cert-rotate.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2018-10-16 01:00:51 +0530 +0530'>October 16, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/add-new-k8s-node-cert-rotate.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> <div class="toc">
@@ -257,36 +257,36 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="o">[</span>Service<span class="o">]</span>
 </span></span><span class="line"><span class="cl"><span class="nv">ExecStart</span><span class="o">=</span>/usr/local/bin/kube-apiserver <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --advertise-address<span class="o">=</span>192.168.50.10 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --allow-privileged<span class="o">=</span><span class="nb">true</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --apiserver-count<span class="o">=</span><span class="m">3</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --audit-log-maxage<span class="o">=</span><span class="m">30</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --audit-log-maxbackup<span class="o">=</span><span class="m">3</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --audit-log-maxsize<span class="o">=</span><span class="m">100</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --audit-log-path<span class="o">=</span>/var/log/audit.log <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --authorization-mode<span class="o">=</span>Node,RBAC <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --bind-address<span class="o">=</span>0.0.0.0 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --client-ca-file<span class="o">=</span>/var/lib/kubernetes/ca.pem <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --enable-admission-plugins<span class="o">=</span>Initializers,NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --enable-swagger-ui<span class="o">=</span><span class="nb">true</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --etcd-cafile<span class="o">=</span>/var/lib/kubernetes/ca.pem <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --etcd-certfile<span class="o">=</span>/var/lib/kubernetes/kubernetes.pem <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --etcd-keyfile<span class="o">=</span>/var/lib/kubernetes/kubernetes-key.pem <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --etcd-servers<span class="o">=</span>https://192.168.50.10:2379 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --event-ttl<span class="o">=</span>1h <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --experimental-encryption-provider-config<span class="o">=</span>/var/lib/kubernetes/encryption-config.yaml <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --kubelet-certificate-authority<span class="o">=</span>/var/lib/kubernetes/ca.pem <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --kubelet-client-certificate<span class="o">=</span>/var/lib/kubernetes/kubernetes.pem <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --kubelet-client-key<span class="o">=</span>/var/lib/kubernetes/kubernetes-key.pem <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --kubelet-https<span class="o">=</span><span class="nb">true</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --runtime-config<span class="o">=</span>api/all <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --service-account-key-file<span class="o">=</span>/var/lib/kubernetes/service-account.pem <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --service-cluster-ip-range<span class="o">=</span>10.32.0.0/24 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --service-node-port-range<span class="o">=</span>30000-32767 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --tls-cert-file<span class="o">=</span>/var/lib/kubernetes/kubernetes.pem <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --tls-private-key-file<span class="o">=</span>/var/lib/kubernetes/kubernetes-key.pem <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --token-auth-file<span class="o">=</span>/home/vagrant/tokenfile <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --v<span class="o">=</span><span class="m">2</span>
+</span></span></span><span class="line"><span class="cl">  --advertise-address<span class="o">=</span>192.168.50.10 <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --allow-privileged<span class="o">=</span><span class="nb">true</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --apiserver-count<span class="o">=</span><span class="m">3</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --audit-log-maxage<span class="o">=</span><span class="m">30</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --audit-log-maxbackup<span class="o">=</span><span class="m">3</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --audit-log-maxsize<span class="o">=</span><span class="m">100</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --audit-log-path<span class="o">=</span>/var/log/audit.log <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --authorization-mode<span class="o">=</span>Node,RBAC <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --bind-address<span class="o">=</span>0.0.0.0 <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --client-ca-file<span class="o">=</span>/var/lib/kubernetes/ca.pem <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --enable-admission-plugins<span class="o">=</span>Initializers,NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --enable-swagger-ui<span class="o">=</span><span class="nb">true</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --etcd-cafile<span class="o">=</span>/var/lib/kubernetes/ca.pem <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --etcd-certfile<span class="o">=</span>/var/lib/kubernetes/kubernetes.pem <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --etcd-keyfile<span class="o">=</span>/var/lib/kubernetes/kubernetes-key.pem <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --etcd-servers<span class="o">=</span>https://192.168.50.10:2379 <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --event-ttl<span class="o">=</span>1h <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --experimental-encryption-provider-config<span class="o">=</span>/var/lib/kubernetes/encryption-config.yaml <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --kubelet-certificate-authority<span class="o">=</span>/var/lib/kubernetes/ca.pem <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --kubelet-client-certificate<span class="o">=</span>/var/lib/kubernetes/kubernetes.pem <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --kubelet-client-key<span class="o">=</span>/var/lib/kubernetes/kubernetes-key.pem <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --kubelet-https<span class="o">=</span><span class="nb">true</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --runtime-config<span class="o">=</span>api/all <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --service-account-key-file<span class="o">=</span>/var/lib/kubernetes/service-account.pem <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --service-cluster-ip-range<span class="o">=</span>10.32.0.0/24 <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --service-node-port-range<span class="o">=</span>30000-32767 <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --tls-cert-file<span class="o">=</span>/var/lib/kubernetes/kubernetes.pem <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --tls-private-key-file<span class="o">=</span>/var/lib/kubernetes/kubernetes-key.pem <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --token-auth-file<span class="o">=</span>/home/vagrant/tokenfile <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --v<span class="o">=</span><span class="m">2</span>
 </span></span><span class="line"><span class="cl"><span class="nv">Restart</span><span class="o">=</span>on-failure
 </span></span><span class="line"><span class="cl"><span class="nv">RestartSec</span><span class="o">=</span><span class="m">5</span>
 </span></span><span class="line"><span class="cl">
@@ -298,16 +298,16 @@
 </span></span><span class="line"><span class="cl">sudo systemctl status kube-apiserver
 </span></span></code></pre></div><p>Now that api-server has restart we need to give permissions so that our worker node can ask for certs automatically, for that run following commands:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl create clusterrolebinding kubelet-bootstrap <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --clusterrole<span class="o">=</span>system:node-bootstrapper <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --user<span class="o">=</span>kubelet-bootstrap
+</span></span></span><span class="line"><span class="cl">    --clusterrole<span class="o">=</span>system:node-bootstrapper <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --user<span class="o">=</span>kubelet-bootstrap
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">kubectl create clusterrolebinding node-client-auto-approve-csr <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --clusterrole<span class="o">=</span>system:certificates.k8s.io:certificatesigningrequests:nodeclient <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --group<span class="o">=</span>system:node-bootstrappers
+</span></span></span><span class="line"><span class="cl">    --clusterrole<span class="o">=</span>system:certificates.k8s.io:certificatesigningrequests:nodeclient <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --group<span class="o">=</span>system:node-bootstrappers
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">kubectl create clusterrolebinding node-client-auto-renew-crt <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --clusterrole<span class="o">=</span>system:certificates.k8s.io:certificatesigningrequests:selfnodeclient <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --group<span class="o">=</span>system:nodes
+</span></span></span><span class="line"><span class="cl">    --clusterrole<span class="o">=</span>system:certificates.k8s.io:certificatesigningrequests:selfnodeclient <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --group<span class="o">=</span>system:nodes
 </span></span></code></pre></div><h2 id="worker-node">worker node<a hidden class="anchor" aria-hidden="true" href="#worker-node">#</a></h2>
 <p>First create a bootstrap kubeconfig file that will be used by <code>kubelet</code>. Run following commands to create it.</p>
 <pre tabindex="0"><code># I have used the ip address of my api-server use yours
@@ -345,17 +345,17 @@ kubectl config use-context default \
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="o">[</span>Service<span class="o">]</span>
 </span></span><span class="line"><span class="cl"><span class="nv">ExecStart</span><span class="o">=</span>/usr/local/bin/kubelet <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --bootstrap-kubeconfig<span class="o">=</span>/home/vagrant/bootstrap.kubeconfig <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --config<span class="o">=</span>/var/lib/kubelet/kubelet-config.yaml <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --container-runtime<span class="o">=</span>remote <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --container-runtime-endpoint<span class="o">=</span>unix:///var/run/containerd/containerd.sock <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --image-pull-progress-deadline<span class="o">=</span>2m <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --kubeconfig<span class="o">=</span>/home/vagrant/kubeconfig <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --network-plugin<span class="o">=</span>cni <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --register-node<span class="o">=</span><span class="nb">true</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --rotate-certificates<span class="o">=</span><span class="nb">true</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --rotate-server-certificates<span class="o">=</span><span class="nb">true</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --v<span class="o">=</span><span class="m">2</span>
+</span></span></span><span class="line"><span class="cl">  --bootstrap-kubeconfig<span class="o">=</span>/home/vagrant/bootstrap.kubeconfig <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --config<span class="o">=</span>/var/lib/kubelet/kubelet-config.yaml <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --container-runtime<span class="o">=</span>remote <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --container-runtime-endpoint<span class="o">=</span>unix:///var/run/containerd/containerd.sock <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --image-pull-progress-deadline<span class="o">=</span>2m <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --kubeconfig<span class="o">=</span>/home/vagrant/kubeconfig <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --network-plugin<span class="o">=</span>cni <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --register-node<span class="o">=</span><span class="nb">true</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --rotate-certificates<span class="o">=</span><span class="nb">true</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --rotate-server-certificates<span class="o">=</span><span class="nb">true</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --v<span class="o">=</span><span class="m">2</span>
 </span></span><span class="line"><span class="cl"><span class="nv">Restart</span><span class="o">=</span>on-failure
 </span></span><span class="line"><span class="cl"><span class="nv">RestartSec</span><span class="o">=</span><span class="m">5</span>
 </span></span><span class="line"><span class="cl">
@@ -510,7 +510,7 @@ kubectl config use-context default \
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

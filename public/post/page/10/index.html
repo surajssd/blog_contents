@@ -181,6 +181,23 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I generally do kompose package testing for fedora and CentOS. So here are the steps I follow.
+Fedora For respective fedora version use the tag respectively for e.g. 25 for fedora 25.
+Starting the environment:
+docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
+# Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.com/kubernetes/kompose/ cd kompose git reset --hard $(kompose version | cut -d &#34;(&#34; -f2 | cut -d &#34;)&#34; -f1) # Run cmd tests make test-cmd CentOS epel repo Spin the CentOS environment in container.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2017-03-14 00:31:57 +0530 +0530'>March 14, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <a class="entry-link" aria-label="post link to Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package" href="https://suraj.io/post/test-kompose/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">First post
     </h2>
   </header>
@@ -188,7 +205,7 @@
     <p>This is the new home for my blog. I use to write on wordpress before. You can find the older blog at https://deshmukhsuraj.wordpress.com. But I wanted to have my own domain and wordpress was charging exorbitantly to connect a custom domain to wordpress, so I just ditched it and started writing here. This is much more convenient.
 </p>
   </div>
-  <footer class="entry-footer"><span title='2017-03-13 00:31:57 +0530 IST'>March 13, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-03-13 00:31:57 +0530 +0530'>March 13, 2017</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to First post" href="https://suraj.io/post/first-post/"></a>
 </article>
 <footer class="page-footer">
@@ -201,7 +218,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

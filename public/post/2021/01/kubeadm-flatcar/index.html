@@ -220,7 +220,7 @@
     <div class="post-description">
       Simple steps to install the cluster based on Flatcar Container Linux
     </div>
-    <div class="post-meta"><span title='2021-01-29 22:02:41 +0530 IST'>January 29, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/01/kubeadm-flatcar.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2021-01-29 22:02:41 +0530 +0530'>January 29, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/01/kubeadm-flatcar.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
@@ -332,24 +332,24 @@ sysctl --system
 <p>On Linux distributions such as Flatcar Container Linux, the directory <code>/usr</code> is mounted as a read-only filesystem. For flex-volume support, Kubernetes components like the kubelet and kube-controller-manager use the default path of <code>/usr/libexec/kubernetes/kubelet-plugins/volume/exec/</code>, yet the flex-volume directory <strong>must be writeable</strong> for the feature to work.</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">cat &lt;&lt;EOF | tee kubeadm-config.yaml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">kubeadm.k8s.io/v1beta3</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">InitConfiguration</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">nodeRegistration</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">kubeadm.k8s.io/v1beta3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">InitConfiguration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">nodeRegistration</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">kubeletExtraArgs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volume-plugin-dir</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/opt/libexec/kubernetes/kubelet-plugins/volume/exec/&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">kubeadm.k8s.io/v1beta3</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterConfiguration</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">networking</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">kubeadm.k8s.io/v1beta3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ClusterConfiguration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">networking</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">podSubnet</span><span class="p">:</span><span class="w"> </span><span class="m">192.168.0.0</span><span class="l">/16</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">controllerManager</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">controllerManager</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">extraArgs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">flex-volume-plugin-dir</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/opt/libexec/kubernetes/kubelet-plugins/volume/exec/&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">KubeletConfiguration</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">kubelet.config.k8s.io/v1beta1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">cgroupDriver</span><span class="p">:</span><span class="w"> </span><span class="l">$(docker info -f &#39;{{.CgroupDriver}}&#39;)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">EOF</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">KubeletConfiguration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">kubelet.config.k8s.io/v1beta1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">cgroupDriver</span><span class="p">:</span><span class="w"> </span><span class="l">$(docker info -f &#39;{{.CgroupDriver}}&#39;)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">EOF</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubeadm config images pull
 </span></span><span class="line"><span class="cl">kubeadm init --config kubeadm-config.yaml
 </span></span><span class="line"><span class="cl">
@@ -358,12 +358,12 @@ sysctl --system
 </span></span></code></pre></div><h3 id="22-install-cni">2.2. Install CNI<a hidden class="anchor" aria-hidden="true" href="#22-install-cni">#</a></h3>
 <p>Here I have chosen <a href="https://www.projectcalico.org/">Calico</a> as the CNI to install because it is the one that I am familiar with, but you can choose to install any <a href="https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model">other CNI</a>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">cat &lt;&lt;EOF | tee calico.yaml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Source: https://docs.projectcalico.org/manifests/custom-resources.yaml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">operator.tigera.io/v1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Installation</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># Source: https://docs.projectcalico.org/manifests/custom-resources.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">operator.tigera.io/v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Installation</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">default</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">spec</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Configures Calico networking.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">calicoNetwork</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Note: The ipPools section cannot be modified post-install.</span><span class="w">
@@ -374,7 +374,7 @@ sysctl --system
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">natOutgoing</span><span class="p">:</span><span class="w"> </span><span class="l">Enabled</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"> </span><span class="l">all()</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">flexVolumePath</span><span class="p">:</span><span class="w"> </span><span class="l">/opt/libexec/kubernetes/kubelet-plugins/volume/exec/</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">EOF</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">EOF</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
 </span></span><span class="line"><span class="cl">kubectl apply -f calico.yaml
 </span></span><span class="line"><span class="cl">kubectl taint nodes --all node-role.kubernetes.io/master-
@@ -386,19 +386,19 @@ sysctl --system
 </span></span><span class="line"><span class="cl"><span class="nv">prefix</span><span class="o">=</span><span class="s2">&#34;https://&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">short_url</span><span class="o">=</span><span class="si">${</span><span class="nv">URL</span><span class="p">#</span><span class="s2">&#34;</span><span class="nv">$prefix</span><span class="s2">&#34;</span><span class="si">}</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">cat &lt;&lt;EOF</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">kubeadm.k8s.io/v1beta3</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">JoinConfiguration</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">discovery</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">kubeadm.k8s.io/v1beta3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">JoinConfiguration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">discovery</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">bootstrapToken</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">apiServerEndpoint</span><span class="p">:</span><span class="w"> </span><span class="l">$short_url</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l">$(kubeadm token create)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">caCertHashes</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">sha256:$(openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2&gt;/dev/null | openssl dgst -sha256 -hex | sed &#39;s/^.* //&#39;)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">controlPlane</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">nodeRegistration</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">controlPlane</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">nodeRegistration</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">kubeletExtraArgs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volume-plugin-dir</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/opt/libexec/kubernetes/kubelet-plugins/volume/exec/&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">EOF</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">EOF</span><span class="w">
 </span></span></span></code></pre></div><p>Copy the generated config to worker nodes and save it in a file named <code>worker-config.yaml</code>.</p>
 <h2 id="3-join-workers-to-controllers">3. Join Workers to Controllers<a hidden class="anchor" aria-hidden="true" href="#3-join-workers-to-controllers">#</a></h2>
 <p>Run the following steps only on worker nodes.</p>
@@ -536,7 +536,7 @@ sysctl --system
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

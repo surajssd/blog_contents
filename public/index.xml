@@ -9,9 +9,9 @@
       <url>https://suraj.io/images/papermod-cover.png</url>
       <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.152.2</generator>
+    <generator>Hugo -- 0.155.1</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 17 Jul 2025 15:21:07 -0800</lastBuildDate>
+    <lastBuildDate>Sat, 31 Jan 2026 10:00:00 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Suraj Deshmukh&#39;s talks at conferences</title>
@@ -19,6 +19,13 @@
       <pubDate>Sat, 30 Mar 2024 01:00:51 +0530</pubDate>
       <guid>https://suraj.io/post/surajd-talks-links/</guid>
       <description>List of all the talks presented by me</description>
+    </item>
+    <item>
+      <title>Using Claude Code with GitHub-Hosted Anthropic Models</title>
+      <link>https://suraj.io/post/2026/use-claude-code-with-gh-models/</link>
+      <pubDate>Sat, 31 Jan 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/post/2026/use-claude-code-with-gh-models/</guid>
+      <description>Learn how to use Claude Code CLI with GitHub Models by proxying requests through litellm-proxy</description>
     </item>
     <item>
       <title>Using LLMs to write meaningful commit messages from CLI</title>
@@ -652,9 +659,9 @@ showing how Kubernetes uses CRI-O. Link to &lt;a href=&#34;https://docs.google.c
 &lt;h2 id=&#34;setup-your-machine&#34;&gt;Setup your machine&lt;/h2&gt;
 &lt;p&gt;Install packages needed&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo yum update -y &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;sudo yum install -y epel-release &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;sudo yum install -y rpm-build go redhat-rpm-config make koji &lt;span class=&#34;se&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;                    gcc byobu rpmlint rpmdevtools centos-packager
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo yum install -y epel-release &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo yum install -y rpm-build go redhat-rpm-config make koji &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    gcc byobu rpmlint rpmdevtools centos-packager
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Setup certs&lt;/p&gt;</description>
     </item>
     <item>

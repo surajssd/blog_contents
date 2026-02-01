@@ -220,7 +220,7 @@
     <div class="post-description">
       Explore how Azure’s support for nested confidential compute unlocks a straightforward path to deploying Confidential Containers (CoCo), ensuring enhanced data security in the cloud with ease.
     </div>
-    <div class="post-meta"><span title='2024-04-05 09:21:07 +0530 IST'>April 5, 2024</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2024/coco-on-azure.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2024-04-05 09:21:07 +0530 +0530'>April 5, 2024</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2024/coco-on-azure.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
@@ -333,23 +333,23 @@
 <p><strong>Note</strong>: You can skip this step if you already have a resource group you use.</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">az group create <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="s2">&#34;</span><span class="si">${</span><span class="nv">RESOURCE_GROUP</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --location <span class="s2">&#34;</span><span class="si">${</span><span class="nv">LOCATION</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span></span><span class="line"><span class="cl">  --name <span class="s2">&#34;</span><span class="si">${</span><span class="nv">RESOURCE_GROUP</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --location <span class="s2">&#34;</span><span class="si">${</span><span class="nv">LOCATION</span><span class="si">}</span><span class="s2">&#34;</span>
 </span></span></code></pre></div><h3 id="13-deploy-the-vm">1.3: Deploy the VM<a hidden class="anchor" aria-hidden="true" href="#13-deploy-the-vm">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">az vm create <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --resource-group <span class="s2">&#34;</span><span class="si">${</span><span class="nv">RESOURCE_GROUP</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --size <span class="s2">&#34;</span><span class="si">${</span><span class="nv">VM_SIZE</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="s2">&#34;</span><span class="si">${</span><span class="nv">VM_NAME</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --location <span class="s2">&#34;</span><span class="si">${</span><span class="nv">LOCATION</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --admin-username <span class="s2">&#34;</span><span class="si">${</span><span class="nv">USER_NAME</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --ssh-key-values <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SSH_KEY</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --authentication-type ssh <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --image <span class="s2">&#34;</span><span class="si">${</span><span class="nv">VM_IMAGE</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --public-ip-address-dns-name <span class="s2">&#34;</span><span class="si">${</span><span class="nv">VM_NAME</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --os-disk-size-gb <span class="m">300</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --accelerated-networking <span class="nb">true</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --security-type standard <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --accept-term
+</span></span></span><span class="line"><span class="cl">  --resource-group <span class="s2">&#34;</span><span class="si">${</span><span class="nv">RESOURCE_GROUP</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --size <span class="s2">&#34;</span><span class="si">${</span><span class="nv">VM_SIZE</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --name <span class="s2">&#34;</span><span class="si">${</span><span class="nv">VM_NAME</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --location <span class="s2">&#34;</span><span class="si">${</span><span class="nv">LOCATION</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --admin-username <span class="s2">&#34;</span><span class="si">${</span><span class="nv">USER_NAME</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --ssh-key-values <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SSH_KEY</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --authentication-type ssh <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --image <span class="s2">&#34;</span><span class="si">${</span><span class="nv">VM_IMAGE</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --public-ip-address-dns-name <span class="s2">&#34;</span><span class="si">${</span><span class="nv">VM_NAME</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --os-disk-size-gb <span class="m">300</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --accelerated-networking <span class="nb">true</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --security-type standard <span class="se">\
+</span></span></span><span class="line"><span class="cl">  --accept-term
 </span></span></code></pre></div><h3 id="14-ssh-into-the-vm">1.4: SSH into the VM<a hidden class="anchor" aria-hidden="true" href="#14-ssh-into-the-vm">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">eval</span> <span class="s2">&#34;ssh -i </span><span class="si">${</span><span class="nv">SSH_PRIV_KEY</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">USER_NAME</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">VM_NAME</span><span class="si">}</span><span class="s2">.</span><span class="si">${</span><span class="nv">LOCATION</span><span class="si">}</span><span class="s2">.cloudapp.azure.com&#34;</span>
 </span></span></code></pre></div><h2 id="2-install-single-node-kubernetes-cluster">2: Install Single-Node Kubernetes Cluster<a hidden class="anchor" aria-hidden="true" href="#2-install-single-node-kubernetes-cluster">#</a></h2>
@@ -363,7 +363,7 @@
 </span></span><span class="line"><span class="cl">sudo chmod a+r /etc/apt/keyrings/docker.asc
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  <span class="s2">&#34;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+</span></span></span><span class="line"><span class="cl">  <span class="s2">&#34;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
 </span></span></span><span class="line"><span class="cl"><span class="s2">  </span><span class="k">$(</span>. /etc/os-release <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$VERSION_CODENAME</span><span class="s2">&#34;</span><span class="k">)</span><span class="s2"> stable&#34;</span> <span class="p">|</span>
 </span></span><span class="line"><span class="cl">  sudo tee /etc/apt/sources.list.d/docker.list &gt;/dev/null
 </span></span></code></pre></div><h3 id="23-configure-kubernetes-repository">2.3: Configure Kubernetes Repository<a hidden class="anchor" aria-hidden="true" href="#23-configure-kubernetes-repository">#</a></h3>
@@ -662,7 +662,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

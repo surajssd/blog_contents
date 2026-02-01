@@ -174,7 +174,7 @@
 In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 1.8.9 and 1.9.4 containers using subpath volume mounts with any volume type (including non-privileged pods, subject to file permissions) can access files/directories outside of the volume, including the host’s filesystem.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-01-14 01:00:51 +0530 IST'>January 14, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2019-01-14 01:00:51 +0530 +0530'>January 14, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Recreate Kubernetes CVE-2017-1002101" href="https://suraj.io/post/cve-2017-1002101-subpath-volume-mount-recreate/"></a>
 </article>
 
@@ -188,7 +188,7 @@ In Kubernetes versions 1.3.x, 1.4.x, 1.5.x, 1.6.x and prior to versions 1.7.14, 
 Few days back I wrote a blog about adding new node to the cluster using the static token file. The problem with that approach is that you need to restart kube-apiserver providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like secrets.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-10-24 01:00:51 +0530 IST'>October 24, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-10-24 01:00:51 +0530 +0530'>October 24, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Add new Node to k8s cluster with Bootstrap token" href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/"></a>
 </article>
 
@@ -203,7 +203,7 @@ Few days back I wrote a blog about adding new node to the cluster using the stat
 $ kubectl -n kube-system get pods NAME READY STATUS RESTARTS AGE coredns-576cbf47c7-g2t8v 1/1 Running 4 5d11h etcd-minikube 1/1 Running 2 5d11h heapster-bn5xp 1/1 Running 2 5d11h influxdb-grafana-qzpv4 2/2 Running 4 5d11h kube-addon-manager-minikube 1/1 Running 2 5d11h kube-controller-manager-minikube 1/1 Running 1 4d20h kube-scheduler-minikube 1/1 Running 2 5d11h kubernetes-dashboard-5bb6f7c8c6-9d564 1/1 Running 8 5d11h storage-provisioner 1/1 Running 7 5d11h Which got me thinking what is wrong with the way PSPs work. So if you look closely only two pods are scheduled by a deployment.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-10-23 00:00:51 +0530 IST'>October 23, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-10-23 00:00:51 +0530 +0530'>October 23, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to PodSecurityPolicy on existing Kubernetes clusters" href="https://suraj.io/post/psp-on-existing-cluster/"></a>
 </article>
 
@@ -218,7 +218,7 @@ A lot of folks are curious about how to prepare and what resources to follow. He
 The duration of exam is three hours, which is enough time if you do good practice. The exam is pretty straight forward and tests your Kubernetes hands-on knowledge, so whatever you read please try to do it on a real cluster.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-10-21 00:00:51 +0530 IST'>October 21, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-10-21 00:00:51 +0530 +0530'>October 21, 2018</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Road to CKA" href="https://suraj.io/post/road-to-cka/"></a>
 </article>
 
@@ -233,7 +233,7 @@ master node Following the docs of TLS Bootstrapping, let’s first create the to
 $ cat tokenfile 02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,&#34;system:bootstrappers&#34; You should create the token which is as random as possible by running following command:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-10-16 01:00:51 +0530 IST'>October 16, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-10-16 01:00:51 +0530 +0530'>October 16, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Add new Node to k8s cluster with cert rotation" href="https://suraj.io/post/add-new-k8s-node-cert-rotate/"></a>
 </article>
 
@@ -247,7 +247,7 @@ $ cat tokenfile 02b50b05283e98dd0fd71db496ef01e8,kubelet-bootstrap,10001,&#34;sy
 $ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &lt;none&gt; 1h v1.11.2 192.168.199.20 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &lt;none&gt; 1h v1.11.2 192.168.199.21 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &lt;none&gt; 1h v1.11.2 192.168.199.22 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 Now to add a new node to this cluster you will need to bring up a VM, for this just use following Vagrantfile.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-23 01:00:51 +0530 IST'>September 23, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-09-23 01:00:51 +0530 +0530'>September 23, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Adding new worker to existing Kubernetes cluster" href="https://suraj.io/post/add-new-k8s-node-manually/"></a>
 </article>
 
@@ -263,7 +263,7 @@ vagrant up vagrant ssh Once inside the machine, become root user and run this sc
 sudo -i curl https://raw.githubusercontent.com/surajssd/scripts/master/shell/k8s-install-single-node/install.sh | sh And you should have a running Kubernetes cluster.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-11 01:00:51 +0530 IST'>September 11, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-09-11 01:00:51 +0530 +0530'>September 11, 2018</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Single node Kubernetes Cluster on Fedora with SELinux enabled" href="https://suraj.io/post/single-node-k8s-fedora-selinux/"></a>
 </article>
 
@@ -278,7 +278,7 @@ I have a 3-master and 3-node cluster and setup using this script, running in a V
 All the nodes are in ready state:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-10 01:00:51 +0530 IST'>September 10, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-09-10 01:00:51 +0530 +0530'>September 10, 2018</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to HostPath volumes and it&#39;s problems" href="https://suraj.io/post/k8s-hostpat-nuke-nodes/"></a>
 </article>
 
@@ -293,7 +293,7 @@ Change namespace Let’s see step by step what goes in to change the namespace. 
 A context element in a kubeconfig file is used to group access parameters under a convenient name. Each context has three parameters: cluster, namespace, and user. By default, the kubectl command-line tool uses parameters from the current context to communicate with the cluster. Read more.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-07-02 08:00:51 +0530 IST'>July 2, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-07-02 08:00:51 +0530 +0530'>July 2, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Change namespaces in Kubernetes" href="https://suraj.io/post/changing-k8s-ns/"></a>
 </article>
 
@@ -307,7 +307,7 @@ A context element in a kubeconfig file is used to group access parameters under 
 On the configuration side of doing that you will need to create Kubernetes Secret of type docker-registry. And now refer that secret you just created in your Pod manifest under pod.spec.imagePullSecrets. For more info follow the tutorial in Kubernetes docs on Pull an Image from a Private Registry.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-10-06 19:32:33 +0530 IST'>October 6, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-10-06 19:32:33 +0530 +0530'>October 6, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Using private container registries from minikube" href="https://suraj.io/post/private-registry-from-minikube/"></a>
 </article>
 <footer class="page-footer">
@@ -322,7 +322,7 @@ On the configuration side of doing that you will need to create Kubernetes Secre
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

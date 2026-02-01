@@ -215,7 +215,7 @@
     <h1 class="post-title entry-hint-parent">
       How to import &#39;any&#39; Kubernetes package into your project?
     </h1>
-    <div class="post-meta"><span title='2021-05-30 09:40:00 +0530 IST'>May 30, 2021</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/05/k8s-import.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2021-05-30 09:40:00 +0530 +0530'>May 30, 2021</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/05/k8s-import.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
@@ -261,7 +261,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="s">&#34;k8s.io/client-go/util/cert&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="s">&#34;k8s.io/client-go/util/keyutil&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="s">&#34;k8s.io/kubernetes/test/utils&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">)</span><span class="w">
 </span></span></span></code></pre></div><p><a href="https://github.com/surajssd/self-signed-cert/blob/61a5c44ca2f4d6d951b361e1f271bd13ce355f9d/main.go#L3-L14">source</a></p>
 <p>So it consists of a couple of inbuilt packages, and then the CLI library <a href="https://github.com/spf13/cobra">Cobra</a>, a couple of <a href="https://github.com/kubernetes/client-go">client-go</a> packages. The only out of the ordinary thing is the <code>k8s.io/kubernetes/test/utils</code> package.</p>
 <h2 id="importing">Importing<a hidden class="anchor" aria-hidden="true" href="#importing">#</a></h2>
@@ -283,7 +283,7 @@ go get: k8s.io/kubernetes@v1.15.0-alpha.0 updating to
 <p><strong>NOTE</strong>: Please read the &ldquo;Caveats&rdquo; section before you venture into using this solution.</p>
 <p>Save the following bash script in <code>download-deps.sh</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nv">VERSION</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="p">#</span><span class="s2">&#34;v&#34;</span><span class="si">}</span>
 </span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -z <span class="s2">&#34;</span><span class="nv">$VERSION</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
 </span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;Please specify the Kubernetes version: e.g.&#34;</span>
@@ -325,22 +325,22 @@ go get: added k8s.io/kubernetes v1.21.0
 <h2 id="reasoning">Reasoning<a hidden class="anchor" aria-hidden="true" href="#reasoning">#</a></h2>
 <p>The error <code>k8s.io/api@v0.0.0: reading k8s.io/api/go.mod at revision v0.0.0: unknown revision v0.0.0</code> is caused because, in Kubernetes&rsquo;s <a href="https://github.com/kubernetes/kubernetes/blob/e6136c0303028d68cac67290d94a60cec167ccdf/go.mod#L109-L120"><code>go.mod</code></a>, you will find the following snippet:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">require (</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="l">k8s.io/api v0.0.0</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="l">k8s.io/apiextensions-apiserver v0.0.0</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="l">k8s.io/apimachinery v0.0.0</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="l">k8s.io/apiserver v0.0.0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">replace (</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">replace (</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="l">k8s.io/api =&gt; ./staging/src/k8s.io/api</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="l">k8s.io/apiextensions-apiserver =&gt; ./staging/src/k8s.io/apiextensions-apiserver</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="l">k8s.io/apimachinery =&gt; ./staging/src/k8s.io/apimachinery</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="l">k8s.io/apiserver =&gt; ./staging/src/k8s.io/apiserver</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">)</span><span class="w">
 </span></span></span></code></pre></div><p>In the Kubernetes repository, the packages listed under <code>require</code> directive are tagged with a pseudo-version <code>v0.0.0</code> but then are replaced with a local code in the <a href="https://github.com/kubernetes/kubernetes/tree/e8760b95bb0a0dfb5c184fd4e5ab95da3650a040/staging"><code>staging</code></a> directory. Now <code>replace</code> directive works fine when building Kubernetes itself but won&rsquo;t work when someone is importing it. The Golang documentation says the following about <code>replace</code> directive:</p>
 <blockquote>
 <p><code>replace</code> directives only apply in the main module&rsquo;s go.mod file and are ignored in other modules.</p>
@@ -353,28 +353,28 @@ go get: added k8s.io/kubernetes v1.21.0
 <p>So in our project, the <code>go.mod</code> looks like this from the successful imports before running the script:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">module foobar</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">go 1.16</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">go 1.16</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">require (</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">require (</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">github.com/spf13/cobra v1.1.3 // indirect</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">k8s.io/client-go v0.21.1 // indirect</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">)</span><span class="w">
 </span></span></span></code></pre></div><p>After running the script, this is how it looks like:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">module foobar</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">go 1.16</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">go 1.16</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">require (</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">require (</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">github.com/spf13/cobra v1.1.3 // indirect</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">k8s.io/client-go v0.21.1 // indirect</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">k8s.io/kubernetes v1.21.0 // indirect</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">replace k8s.io/api =&gt; k8s.io/api v0.21.0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">replace k8s.io/apiextensions-apiserver =&gt; k8s.io/apiextensions-apiserver v0.21.0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">replace k8s.io/apimachinery =&gt; k8s.io/apimachinery v0.21.1-rc.0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">replace k8s.io/apiserver =&gt; k8s.io/apiserver v0.21.0</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">replace k8s.io/api =&gt; k8s.io/api v0.21.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">replace k8s.io/apiextensions-apiserver =&gt; k8s.io/apiextensions-apiserver v0.21.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">replace k8s.io/apimachinery =&gt; k8s.io/apimachinery v0.21.1-rc.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">replace k8s.io/apiserver =&gt; k8s.io/apiserver v0.21.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
 </span></span></span></code></pre></div><h2 id="caveats">Caveats<a hidden class="anchor" aria-hidden="true" href="#caveats">#</a></h2>
 <p>Kubernetes upstream cautions against using the packages as we have done in this blog (Thanks, <a href="https://twitter.com/dims/status/1398972850883682304">Dims</a>, for bringing this to my notice):</p>
 <blockquote>
@@ -497,7 +497,7 @@ go get: added k8s.io/kubernetes v1.21.0
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

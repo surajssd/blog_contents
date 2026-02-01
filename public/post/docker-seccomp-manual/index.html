@@ -219,7 +219,7 @@
     <div class="post-description">
       Understanding the seccomp profile json format
     </div>
-    <div class="post-meta"><span title='2019-06-10 11:57:07 +0530 IST'>June 10, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/docker-seccomp-manual.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2019-06-10 11:57:07 +0530 +0530'>June 10, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/docker-seccomp-manual.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> <div class="toc">
@@ -284,26 +284,26 @@
 <p>I have done my own experiment where I am tying the <code>chmod</code> syscall to the capability <code>CAP_WAKE_ALARM</code> (There is no serious thinking put behind tying <code>chmod</code> to this capability <code>CAP_WAKE_ALARM</code>, I chose it because this capability did not seem to be doing much important hence I picked it up).</p>
 <p>To try this out I have created a config of my own by changing the default config which looks like following diff:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl"><span class="gd">--- default.json                2019-06-10 14:23:11.688170627 +0530
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+++ chmod-wake-alarm.json       2019-06-10 14:19:25.706274172 +0530
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span><span class="gu">@@ -62,7 +62,6 @@
-</span></span></span><span class="line"><span class="cl"><span class="gu"></span>                                &#34;capget&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="gi">+++ chmod-wake-alarm.json       2019-06-10 14:19:25.706274172 +0530
+</span></span></span><span class="line"><span class="cl"><span class="gu">@@ -62,7 +62,6 @@
+</span></span></span><span class="line"><span class="cl">                                &#34;capget&#34;,
 </span></span><span class="line"><span class="cl">                                &#34;capset&#34;,
 </span></span><span class="line"><span class="cl">                                &#34;chdir&#34;,
 </span></span><span class="line"><span class="cl"><span class="gd">-                               &#34;chmod&#34;,
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span>                                &#34;chown&#34;,
+</span></span></span><span class="line"><span class="cl">                                &#34;chown&#34;,
 </span></span><span class="line"><span class="cl">                                &#34;chown32&#34;,
 </span></span><span class="line"><span class="cl">                                &#34;clock_getres&#34;,
 </span></span><span class="line"><span class="cl"><span class="gu">@@ -94,8 +93,6 @@
-</span></span></span><span class="line"><span class="cl"><span class="gu"></span>                                &#34;fallocate&#34;,
+</span></span></span><span class="line"><span class="cl">                                &#34;fallocate&#34;,
 </span></span><span class="line"><span class="cl">                                &#34;fanotify_mark&#34;,
 </span></span><span class="line"><span class="cl">                                &#34;fchdir&#34;,
 </span></span><span class="line"><span class="cl"><span class="gd">-                               &#34;fchmod&#34;,
 </span></span></span><span class="line"><span class="cl"><span class="gd">-                               &#34;fchmodat&#34;,
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span>                                &#34;fchown&#34;,
+</span></span></span><span class="line"><span class="cl">                                &#34;fchown&#34;,
 </span></span><span class="line"><span class="cl">                                &#34;fchown32&#34;,
 </span></span><span class="line"><span class="cl">                                &#34;fchownat&#34;,
 </span></span><span class="line"><span class="cl"><span class="gu">@@ -381,6 +378,22 @@
-</span></span></span><span class="line"><span class="cl"><span class="gu"></span>                },
+</span></span></span><span class="line"><span class="cl">                },
 </span></span><span class="line"><span class="cl">                {
 </span></span><span class="line"><span class="cl">                        &#34;names&#34;: [
 </span></span><span class="line"><span class="cl"><span class="gi">+                               &#34;chmod&#34;,
@@ -322,15 +322,15 @@
 </span></span></span><span class="line"><span class="cl"><span class="gi">+               },
 </span></span></span><span class="line"><span class="cl"><span class="gi">+               {
 </span></span></span><span class="line"><span class="cl"><span class="gi">+                       &#34;names&#34;: [
-</span></span></span><span class="line"><span class="cl"><span class="gi"></span>                                &#34;personality&#34;
+</span></span></span><span class="line"><span class="cl">                                &#34;personality&#34;
 </span></span><span class="line"><span class="cl">                        ],
 </span></span><span class="line"><span class="cl">                        &#34;action&#34;: &#34;SCMP_ACT_ALLOW&#34;,
 </span></span><span class="line"><span class="cl"><span class="gu">@@ -791,4 +804,4 @@
-</span></span></span><span class="line"><span class="cl"><span class="gu"></span>                        &#34;excludes&#34;: {}
+</span></span></span><span class="line"><span class="cl">                        &#34;excludes&#34;: {}
 </span></span><span class="line"><span class="cl">                }
 </span></span><span class="line"><span class="cl">        ]
 </span></span><span class="line"><span class="cl"><span class="gd">-}
-</span></span></span><span class="line"><span class="cl"><span class="gd"></span>\ No newline at end of file
+</span></span></span><span class="line"><span class="cl">\ No newline at end of file
 </span></span><span class="line"><span class="cl"><span class="gi">+}
 </span></span></span></code></pre></div><p>To understand what has changed I first removed all the references to the <code>chmod</code> and then added following snippet to tie the <code>chmod</code> to <code>CAP_WAKE_ALARM</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
@@ -482,7 +482,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

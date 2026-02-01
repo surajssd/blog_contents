@@ -174,7 +174,7 @@
 Setup of the system for building rpms $ dnf -y install fedora-packager fedora-review $ sudo usermod -a -G mock vagrant $ fedora-packager-setup $ kinit surajd@FEDORAPROJECT.ORG My Notes Start reading from: Fedora packager’s guide Some macros come from redhat-rpm-config and fedora-rpm-macros. $ sudo rpm -ql redhat-rpm-config-45-1.fc25.noarch To see all macros on the system: $ rpm --showrc Koji - fedora build system fedora uses fedpkg for doing builds, while rpmbuild is for CentOS To get general info about the package $ rpm -qip ./x86_64/namaskar-1-1.fc25.x86_64.rpm OR
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-03-24 10:35:54 +0530 IST'>March 24, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-03-24 10:35:54 +0530 +0530'>March 24, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to rpm Notes" href="https://suraj.io/post/rpm-notes/"></a>
 </article>
 
@@ -190,7 +190,7 @@ Setup your machine Install packages needed
 sudo yum update -y &amp;&amp; \ sudo yum install -y epel-release &amp;&amp; \ sudo yum install -y rpm-build go redhat-rpm-config make koji \ gcc byobu rpmlint rpmdevtools centos-packager Setup certs
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-03-15 14:16:43 +0530 IST'>March 15, 2017</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-03-15 14:16:43 +0530 +0530'>March 15, 2017</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Packaging &#39;kompose&#39; for centos paas sig" href="https://suraj.io/post/packaging-kompose-for-centos-paas-sig/"></a>
 </article>
 
@@ -207,13 +207,13 @@ docker run -it registry.fedoraproject.org/fedora:26 bash Running tests:
 # Inside the container # Pull packages from the testing repository dnf --enablerepo updates-testing -y install kompose # Check the kompose version kompose version # Install the testing dependencies dnf install -y jq make # Pull the git repository to run the functional tests git clone https://github.com/kubernetes/kompose/ cd kompose git reset --hard $(kompose version | cut -d &#34;(&#34; -f2 | cut -d &#34;)&#34; -f1) # Run cmd tests make test-cmd CentOS epel repo Spin the CentOS environment in container.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-03-14 00:31:57 +0530 IST'>March 14, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-03-14 00:31:57 +0530 +0530'>March 14, 2017</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
   <a class="entry-link" aria-label="post link to Testing &#39;fedora&#39; and &#39;CentOS&#39; kompose package" href="https://suraj.io/post/test-kompose/"></a>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by

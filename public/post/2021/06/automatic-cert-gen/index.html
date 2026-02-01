@@ -218,7 +218,7 @@
     <div class="post-description">
       A simple Helm chart to generate TLS x509 certificates.
     </div>
-    <div class="post-meta"><span title='2021-06-25 09:00:00 +0530 IST'>June 25, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/06/automatic-cert-gen.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2021-06-25 09:00:00 +0530 +0530'>June 25, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh&nbsp;|&nbsp;<a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/06/automatic-cert-gen.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
@@ -253,7 +253,7 @@
 <p>Helm allows you to specify a particular chart to be a dependency for your chart. During installation, Helm will install the dependencies first and then install your application chart. When you install a chart as a dependency, it is effortless to do the maintenance. You just have to keep updating the dependent chart version going forward.</p>
 <p>Let us start out by adding the dependency in your chart. Include the following snippet in your chart’s <code>Chart.yaml</code> file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">dependencies</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">automatic-webhook-certificates</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">automatic-webhook-certificates</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0.1.1&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://suraj.io/helm-charts&#34;</span><span class="w">
 </span></span></span></code></pre></div><p>Now define the configuration for the sub-chart. To do that, include the following configuration in your chart&rsquo;s <code>values.yaml</code> file with fields populated as necessary:</p>
@@ -281,16 +281,16 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">failurePolicy</span><span class="p">:</span><span class="w"> </span><span class="l">Fail or Ignore</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">validating</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="l">or false</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mutating</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="l">or false</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">psp</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="l">or false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">psp</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="l">or false</span><span class="w">
 </span></span></span></code></pre></div><p><strong>NOTE</strong>: For detailed information on each field in the above values file, consult <a href="https://github.com/surajssd/helm-charts/tree/main/charts/automatic-webhook-certificates">this documentation</a>.</p>
 <p>Now run the following commands to generate the YAML file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">helm repo add suraj-helm-charts https://suraj.io/helm-charts
 </span></span><span class="line"><span class="cl">helm repo update
 </span></span><span class="line"><span class="cl">helm template <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --values<span class="o">=</span>values.yaml <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --namespace<span class="o">=</span>&lt;namespace&gt; <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    automatic-webhook-certificates <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    suraj-helm-charts/automatic-webhook-certificates &gt; auto-cert-gen.yaml
+</span></span></span><span class="line"><span class="cl">    --values<span class="o">=</span>values.yaml <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --namespace<span class="o">=</span>&lt;namespace&gt; <span class="se">\
+</span></span></span><span class="line"><span class="cl">    automatic-webhook-certificates <span class="se">\
+</span></span></span><span class="line"><span class="cl">    suraj-helm-charts/automatic-webhook-certificates &gt; auto-cert-gen.yaml
 </span></span></code></pre></div><p>The downside with this approach is that you will have to generate this YAML file from time to time as new updates are rolled out.</p>
 <h2 id="manual-vs-automatic">Manual vs Automatic<a hidden class="anchor" aria-hidden="true" href="#manual-vs-automatic">#</a></h2>
 <p>Now let us see what the subtle advantages and disadvantages of Manual and Automatic cert generation methods are. The most obvious one is convenience. But like in most places, this convenience comes with a trade-off. Since <a href="https://github.com/jet/kube-webhook-certgen">kube-webhook-certgen</a> runs inside the Kubernetes cluster, creating secrets and updating the Webhook configurations. It needs permissions to make these modifications on the Kubernetes cluster.</p>
@@ -411,7 +411,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
+        <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
     <span>
         Powered by
