@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/tags/programming/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.2211ca3164be7830024f6aad2b3a2e520843a64f8f048445c3401c1249aa051d.css" integrity="sha256-IhHKMWS&#43;eDACT2qtKzouUghDpk&#43;PBIRFw0AcEkmqBR0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -19,7 +19,7 @@
 <link rel="mask-icon" href="https://suraj.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://suraj.io/tags/programming/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://suraj.io/tags/programming/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="https://suraj.io/tags/programming/">
 <noscript>
     <style>
@@ -41,23 +41,38 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><meta property="og:url" content="https://suraj.io/tags/programming/">
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://suraj.io/tags/programming/">
   <meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Programming">
   <meta property="og:description" content="Suraj Deshmukh - Personal Blog">
@@ -70,20 +85,8 @@
 <meta name="twitter:description" content="Suraj Deshmukh - Personal Blog">
 
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
@@ -177,7 +180,7 @@
 I’ve been trying various CLI tools viz. OpenAI’s Codex CLI, Google’s Gemini CLI, etc. But codex lacks piping support and Gemini CLI cannot be used with internal codebases! I can use GitHub Copilot extension in VS Code with internal codebases, but I wanted a CLI tool that I can use in my terminal. GitHub Copilot is now free for all GitHub users, so this is useful for everyone.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-07-17 15:21:07 -0800 -0800'>July 17, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2025-07-17 15:21:07 -0800 -0800'>July 17, 2025</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Using LLMs to write meaningful commit messages from CLI" href="https://suraj.io/post/2025/llm-commit-messages/"></a>
 </article>
 
@@ -191,7 +194,7 @@ I’ve been trying various CLI tools viz. OpenAI’s Codex CLI, Google’s Gemin
 Github Releases and RSS feeds For every repository on Github, if the project is posting their releases, you can follow the RSS feed of that project’s release. The RSS feed link for any project’s release is:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-01-17 12:28:51 +0530 +0530'>January 17, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-01-17 12:28:51 +0530 +0530'>January 17, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Monitor releases of your favourite software" href="https://suraj.io/post/monitor-releases-of-your-favourite-software/"></a>
 </article>
 
@@ -205,7 +208,7 @@ Github Releases and RSS feeds For every repository on Github, if the project is 
 All the code referenced here can be found here https://github.com/surajssd/cobrademo.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-01-04 01:00:51 +0530 +0530'>January 4, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2019-01-04 01:00:51 +0530 +0530'>January 4, 2019</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Cobra and Persistentflags gotchas" href="https://suraj.io/post/cobra-persistent-flag/"></a>
 </article>
 
@@ -217,7 +220,7 @@ All the code referenced here can be found here https://github.com/surajssd/cobra
   <div class="entry-content">
     <p>Test Fixtures “go test” sets pwd as package directory Test Helpers should never return an error they should access to the *testing.T object call t.Helper() in the beginning (works only for go1.9&#43;) for things reqiuiring clean up return closures Configurability Unconfigurable behavior is often a point of difficulty for tests. e.g. ports, timeouts, paths. Over-parameterize structs to allow tests to fine-tune their behavior It’s ok to make these configs unexported so only tests can set them. Slides Video GopherCon 2017: Mitchell Hashimoto - Advanced Testing with Go by Mitchell Hashimoto </p>
   </div>
-  <footer class="entry-footer"><span title='2018-03-07 02:21:49 +0530 +0530'>March 7, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-03-07 02:21:49 +0530 +0530'>March 7, 2018</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Notes on talk - Advanced testing in golang by Mitchell Hashimoto" href="https://suraj.io/post/advanced-golang-testing-mitchellh-talk-notes/"></a>
 </article>
 
@@ -233,7 +236,7 @@ output:
 UserVal has worked for 5 hrs. UserPtr has worked for 6 hrs. If we call this method on value type object uval it works, and obviously it works with pointer type object pval.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-02-23 08:00:51 +0530 +0530'>February 23, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-02-23 08:00:51 +0530 +0530'>February 23, 2018</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Methods that satisfy interfaces in golang" href="https://suraj.io/post/golang-methods-interfaces/"></a>
 </article>
 
@@ -252,7 +255,7 @@ Copy entire line Ctrl &#43; C (without any selection)
 Delete entire line Ctrl &#43; Shift &#43; K
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-02-22 08:00:51 +0530 +0530'>February 22, 2018</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-02-22 08:00:51 +0530 +0530'>February 22, 2018</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to vscode Shortcuts" href="https://suraj.io/post/vscode-shortcuts/"></a>
 </article>
 
@@ -269,7 +272,7 @@ Alt &#43; 1 Open project navigator. You can search here, just start typing here,
 Shift &#43; Insert in Project window Here you can add new file to the project. The filename could be the entire path, so the intermediate directories will be created for you.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2017-03-17 14:41:51 +0530 +0530'>March 17, 2017</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2017-03-17 14:41:51 +0530 +0530'>March 17, 2017</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Intellij Shortcuts" href="https://suraj.io/post/intellij-shortcuts/"></a>
 </article>
     </main>
@@ -290,9 +293,14 @@ Shift &#43; Insert in Project window Here you can add new file to the project. T
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -333,11 +341,12 @@ Shift &#43; Insert in Project window Here you can add new file to the project. T
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

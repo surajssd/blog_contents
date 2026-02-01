@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/tags/notes/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.2211ca3164be7830024f6aad2b3a2e520843a64f8f048445c3401c1249aa051d.css" integrity="sha256-IhHKMWS&#43;eDACT2qtKzouUghDpk&#43;PBIRFw0AcEkmqBR0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -19,7 +19,7 @@
 <link rel="mask-icon" href="https://suraj.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://suraj.io/tags/notes/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://suraj.io/tags/notes/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="https://suraj.io/tags/notes/">
 <noscript>
     <style>
@@ -41,23 +41,38 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><meta property="og:url" content="https://suraj.io/tags/notes/">
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://suraj.io/tags/notes/">
   <meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Notes">
   <meta property="og:description" content="Suraj Deshmukh - Personal Blog">
@@ -70,20 +85,8 @@
 <meta name="twitter:description" content="Suraj Deshmukh - Personal Blog">
 
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
@@ -176,7 +179,7 @@
     <p>This blog is a recap of my old blog “Add new node to Kubernetes cluster with bootstrap token”. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-02-06 10:25:41 +0530 +0530'>February 6, 2021</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-02-06 10:25:41 +0530 +0530'>February 6, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Enable TLS bootstrapping in a Kubernetes cluster" href="https://suraj.io/post/2021/02/k8s-bootstrap-token/"></a>
 </article>
 
@@ -190,7 +193,7 @@
 Why would you even want a sidecar for Job? Well, one of the most prevalent use case is when using service mesh proxy. There could be something else as well like metrics endpoint, log collection or whatever. Given the complexity and heterogeneity of the workloads, there could be any kind of use case that involves having sidecar for a Job pod.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2020-08-29 15:33:51 +0530 +0530'>August 29, 2020</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2020-08-29 15:33:51 +0530 +0530'>August 29, 2020</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to How to gracefully kill Kubernetes Jobs with a sidecar?" href="https://suraj.io/post/how-to-gracefully-kill-kubernetes-jobs-with-a-sidecar/"></a>
 </article>
 
@@ -204,7 +207,7 @@ Why would you even want a sidecar for Job? Well, one of the most prevalent use c
 Cons of the Traditional Method The round trip time during development and testing of such script is very long. You make some change to the script, you need to build the image, push it and then it is downloaded again. On an average for every change adds a couple of minutes to your feedback loop. Bash scripts are generally precarious in nature. You have to hammer it down, consider edge cases and thereby make it robust. This, of course, takes a lot of iterations. And with iterations comes the added time. So the question is, how do we reduce this feedback loop?
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2020-08-22 21:00:51 +0530 +0530'>August 22, 2020</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2020-08-22 21:00:51 +0530 +0530'>August 22, 2020</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Use Configmap for Scripts" href="https://suraj.io/post/use-configmap-for-scripts/"></a>
 </article>
 
@@ -217,7 +220,7 @@ Cons of the Traditional Method The round trip time during development and testin
     <p>Contents Introduction Bash Aliases Configuration Installation Global Git Configuration Configuration Installation Repository Specific Git Settings Configuration Installation Bash Git Prompt Configuration Installation Git Push PR Reviews Configuration Installation Demo Conclusion Introduction Git is a day to day tool for version control. It has become a de facto method of source code versioning, it has become ubiquitous with development and its an essential skill for a programmer. I use it all the time.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2020-08-16 22:00:51 +0530 +0530'>August 16, 2020</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2020-08-16 22:00:51 +0530 +0530'>August 16, 2020</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Being Productive with Git" href="https://suraj.io/post/being-productive-with-git/"></a>
 </article>
 
@@ -231,7 +234,7 @@ Cons of the Traditional Method The round trip time during development and testin
 Bash Aliases # k8s alias alias k=kubectl alias kg=&#34;kubectl get&#34; alias kgp=&#34;kubectl get pods&#34; alias kgs=&#34;kubectl get services&#34; alias kge=&#34;kubectl get events&#34; alias kgpvc=&#34;kubectl get pvc&#34; alias kgpv=&#34;kubectl get pv&#34; alias kd=&#34;kubectl describe&#34; alias kl=&#34;kubectl logs -f&#34; alias kc=&#34;kubectl create -f&#34; I have above aliases setup in the ~/.bashrc file. The beauty of the aliases is that you can append more flags and parameters to the existing smaller alias. For, e.g. I have an alias for kubectl get pods as kgp, but if I want to get pods from all the namespaces, I use kgp -A.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2020-08-02 16:00:51 +0530 +0530'>August 2, 2020</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2020-08-02 16:00:51 +0530 +0530'>August 2, 2020</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Being Productive with Kubectl" href="https://suraj.io/post/being-productive-with-kubectl/"></a>
 </article>
 
@@ -245,7 +248,7 @@ Bash Aliases # k8s alias alias k=kubectl alias kg=&#34;kubectl get&#34; alias kg
 Prerequisites/Assumptions This blog assumes that you have a Prometheus running that is deployed using prometheus-operator in monitoring namespace. But even if you have deployed it in some other way modify the commands in few places.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2020-07-31 19:00:51 +0530 +0530'>July 31, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2020-07-31 19:00:51 +0530 +0530'>July 31, 2020</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to How to backup and restore Prometheus?" href="https://suraj.io/post/how-to-backup-and-restore-prometheus/"></a>
 </article>
 
@@ -259,7 +262,7 @@ Prerequisites/Assumptions This blog assumes that you have a Prometheus running t
 There are a couple of things I wanted to solve. How do you update these scripts and binaries? How to do it consistently across all my machines? How to make it easier to have my setup available on any new Linux machine(or even container) I setup? How to do it without sudo?
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2020-07-18 19:00:51 +0530 +0530'>July 18, 2020</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2020-07-18 19:00:51 +0530 +0530'>July 18, 2020</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Framework for managing random scripts and binaries" href="https://suraj.io/post/framework-for-scripts-and-binaries/"></a>
 </article>
 
@@ -273,7 +276,7 @@ There are a couple of things I wanted to solve. How do you update these scripts 
 All the code referenced here can be found here https://github.com/surajssd/cobrademo.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-01-04 01:00:51 +0530 +0530'>January 4, 2019</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2019-01-04 01:00:51 +0530 +0530'>January 4, 2019</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Cobra and Persistentflags gotchas" href="https://suraj.io/post/cobra-persistent-flag/"></a>
 </article>
 
@@ -287,7 +290,7 @@ All the code referenced here can be found here https://github.com/surajssd/cobra
 $ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready &lt;none&gt; 1h v1.11.2 192.168.199.20 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready &lt;none&gt; 1h v1.11.2 192.168.199.21 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready &lt;none&gt; 1h v1.11.2 192.168.199.22 &lt;none&gt; Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 Now to add a new node to this cluster you will need to bring up a VM, for this just use following Vagrantfile.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-09-23 01:00:51 +0530 +0530'>September 23, 2018</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-09-23 01:00:51 +0530 +0530'>September 23, 2018</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Adding new worker to existing Kubernetes cluster" href="https://suraj.io/post/add-new-k8s-node-manually/"></a>
 </article>
 
@@ -302,7 +305,7 @@ type PodStatus struct { Status string `json: &#34;,status&#34;` } If you run go 
 $ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &#34;,status&#34;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value Now this does not tell us what is wrong with the struct tag, json: &#34;,status&#34;. The problem with this struct tag is that the extra space can be interpreted as delimiter so provide key-value pair without space.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2018-08-12 01:00:51 +0530 +0530'>August 12, 2018</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2018-08-12 01:00:51 +0530 +0530'>August 12, 2018</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Golang struct tags gotchas" href="https://suraj.io/post/golang-struct-tags-space/"></a>
 </article>
 <footer class="page-footer">
@@ -329,9 +332,14 @@ $ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -372,11 +380,12 @@ $ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

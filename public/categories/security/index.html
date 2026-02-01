@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/categories/security/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.2211ca3164be7830024f6aad2b3a2e520843a64f8f048445c3401c1249aa051d.css" integrity="sha256-IhHKMWS&#43;eDACT2qtKzouUghDpk&#43;PBIRFw0AcEkmqBR0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -19,7 +19,7 @@
 <link rel="mask-icon" href="https://suraj.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://suraj.io/categories/security/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://suraj.io/categories/security/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="https://suraj.io/categories/security/">
 <noscript>
     <style>
@@ -41,23 +41,38 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><meta property="og:url" content="https://suraj.io/categories/security/">
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://suraj.io/categories/security/">
   <meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Security">
   <meta property="og:description" content="Suraj Deshmukh - Personal Blog">
@@ -70,20 +85,8 @@
 <meta name="twitter:description" content="Suraj Deshmukh - Personal Blog">
 
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
@@ -176,7 +179,7 @@
     <p>Introduction In the realm of cloud computing, ensuring data privacy and security is paramount, yet profoundly challenging. One innovative solution to this challenge is Confidential Containers (CoCo)1, designed to provide an extra layer of security for data in use. However, deploying CoCo requires access to specialized hardware, which adds complexity. Beyond just finding the right hardware, the setup involves navigating a maze of technical specifications – from BIOS configurations to kernel versions – making the process daunting.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-04-05 09:21:07 +0530 +0530'>April 5, 2024</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2024-04-05 09:21:07 +0530 +0530'>April 5, 2024</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Open Source Confidential Containers (CoCo) on Azure" href="https://suraj.io/post/2024/coco-on-azure/"></a>
 </article>
 
@@ -193,7 +196,7 @@
 Study Material During the study of CKA almost three years ago, I studied everything from the documentation. Back then, the documentation had less content hence it was comprehensible. But now, to go through the entire documentation was not practical. So I did the course by the killer.sh. This course is rich in information, exercises and tries to explain the basics. At the end of each section in the course, the trainer provides resources to read more on the given topic. I would recommend going through each and every resource provided. Don’t skip these. These resources will help you familiarize yourself with the Kubernetes documentation and support you during the exam.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-09-04 13:30:07 +0530 +0530'>September 4, 2021</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-09-04 13:30:07 +0530 +0530'>September 4, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Certified Kubernetes Security Specialist CKS exam tips" href="https://suraj.io/post/2021/09/cks-tips/"></a>
 </article>
 
@@ -210,7 +213,7 @@ Study Material During the study of CKA almost three years ago, I studied everyth
 We will use a Helm chart, which has a couple of Kubernetes Jobs that generates the self-signed certificate, embed them in a Kubernetes Secret and finally update the ValidatingWebhookConfiguration or MutatingWebhookConfiguration of your choice. And that’s it. Life is simpler!
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-06-25 09:00:00 +0530 +0530'>June 25, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-06-25 09:00:00 +0530 +0530'>June 25, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?" href="https://suraj.io/post/2021/06/automatic-cert-gen/"></a>
 </article>
 
@@ -227,7 +230,7 @@ We will use a Helm chart, which has a couple of Kubernetes Jobs that generates t
 If you are writing a webhook server for Kubernetes Admission Controllers like ValidatingAdmissionWebhooks or MutatingAdmissionWebhooks, you must expose it over HTTPS. To run these servers on HTTPS, you need TLS certificates. There are solutions available which you can use to solve this problem, first and foremost that comes to my mind is cert-manager. It is a great project and automates this problem. But it is an added dependency that you might have to keep running in your cluster.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-21 15:33:07 +0530 +0530'>May 21, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-05-21 15:33:07 +0530 +0530'>May 21, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?" href="https://suraj.io/post/2021/05/self-sign-k8s-cert/"></a>
 </article>
 
@@ -244,7 +247,7 @@ If you are writing a webhook server for Kubernetes Admission Controllers like Va
 What are admission controllers? All requests going to the Kubernetes API server go through the following four steps:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-20 08:47:07 +0530 +0530'>May 20, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-05-20 08:47:07 +0530 +0530'>May 20, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Mitigation of: Access Any Kubernetes Secret" href="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/"></a>
 </article>
 
@@ -261,7 +264,7 @@ What are admission controllers? All requests going to the Kubernetes API server 
 Nasty User Here is a user called nastyuser who can only do stuff on pod objects. Everything else is forbidden. The user cannot list secrets, namespaces or deployments:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-08 12:17:07 +0530 +0530'>May 8, 2021</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-05-08 12:17:07 +0530 +0530'>May 8, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Access Any Kubernetes Secret" href="https://suraj.io/post/2021/05/access-k8s-secrets/"></a>
 </article>
 
@@ -275,7 +278,7 @@ Nasty User Here is a user called nastyuser who can only do stuff on pod objects.
 But for the developers or operators of such applications, it is hard to debug. Since they lack essential tools or even bash for that matter, but the application’s debugging ability should not dictate its production deployment and compromise its security posture.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2020-06-06 20:30:07 +0530 +0530'>June 6, 2020</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2020-06-06 20:30:07 +0530 +0530'>June 6, 2020</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Watch Container Traffic Without Exec" href="https://suraj.io/post/snoop-on-pod-traffic/"></a>
 </article>
 
@@ -290,7 +293,7 @@ Prometheus Operator Prometheus Operator makes it really easy to monitor your Kub
 Almost all the pods that run as a part of Prometheus Operator viz. Prometheus Operator, Prometheus, Alertmanager, Grafana, Kube State Metrics don’t need to run with elevated privileges except Node Exporter. In your Kubernetes cluster if you are using PodSecurityPolicy to make sure that your cluster is secure, then you would want your Prometheus Operator pods to run securely as well. And the good news is, Prometheus Operator chart ships PodSecurityPolicy for each sub-component. We will look at how to enable seccomp for all the sub-components.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2020-04-14 11:57:07 +0530 +0530'>April 14, 2020</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2020-04-14 11:57:07 +0530 +0530'>April 14, 2020</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Enabling Seccomp on your Prometheus Operator and related Pods" href="https://suraj.io/post/seccomp-in-kube-state-metrics/"></a>
 </article>
 
@@ -306,7 +309,7 @@ $ getcap `which ping` /usr/bin/ping = cap_net_admin,cap_net_raw&#43;p Which norm
 $ ping -c 1 1.1.1.1 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data. 64 bytes from 1.1.1.1: icmp_seq=1 ttl=55 time=36.9 ms --- 1.1.1.1 ping statistics --- 1 packets transmitted, 1 received, 0% packet loss, time 0ms rtt min/avg/max/mdev = 36.885/36.885/36.885/0.000 ms If you copy file as a normal user the binary loses its privilege and the command ceases to work:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-25 15:15:07 +0530 +0530'>June 25, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2019-06-25 15:15:07 +0530 +0530'>June 25, 2019</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Capabilities on executables" href="https://suraj.io/post/linux-cap-note/"></a>
 </article>
 
@@ -321,7 +324,7 @@ Root in container, root on host I have a host with docker daemon running on it. 
 $ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f427e182f8597b10f2746ab0b $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 6c541cf8f7b3 alpine &#34;sleep 9999&#34; 12 seconds ago Up 11 seconds clever_lalande Now let’s find out the process sleep on the host. Here in the following output you can see that the process sleep is running as user root.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2019-06-25 11:57:07 +0530 +0530'>June 25, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2019-06-25 11:57:07 +0530 +0530'>June 25, 2019</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Root user inside container is root on the host" href="https://suraj.io/post/root-in-container-root-on-host/"></a>
 </article>
 <footer class="page-footer">
@@ -348,9 +351,14 @@ $ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f4
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -391,11 +399,12 @@ $ docker run -d --rm alpine sleep 9999 6c541cf8f7b315783d2315eebc2f7dddd1f7b26f4
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

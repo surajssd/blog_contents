@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.2211ca3164be7830024f6aad2b3a2e520843a64f8f048445c3401c1249aa051d.css" integrity="sha256-IhHKMWS&#43;eDACT2qtKzouUghDpk&#43;PBIRFw0AcEkmqBR0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -19,7 +19,7 @@
 <link rel="mask-icon" href="https://suraj.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://suraj.io/post/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://suraj.io/post/index.xml" title="rss">
 <link rel="alternate" hreflang="en" href="https://suraj.io/post/">
 <noscript>
     <style>
@@ -41,23 +41,38 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
-</noscript><meta property="og:url" content="https://suraj.io/post/">
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://suraj.io/post/">
   <meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Posts">
   <meta property="og:description" content="Suraj Deshmukh - Personal Blog">
@@ -85,20 +100,8 @@
 }
 </script>
 </head>
-
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
@@ -192,7 +195,7 @@
 It is like running htop but where you can go back in history, unlike htop, which only shows the current state. Using this stack of Prometheus, node-exporter, and Grafana is a proactive approach than being reactive to the problems that occur on a PC. Instead of digging later to figure out what went wrong, you are already collecting metrics so you can see on dashboards what went wrong.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-04-02 07:07:07 +0530 +0530'>April 2, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-04-02 07:07:07 +0530 +0530'>April 2, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Monitor your PC with Prometheus Grafana stack" href="https://suraj.io/post/2021/03/node-monitor/"></a>
 </article>
 
@@ -209,7 +212,7 @@ It is like running htop but where you can go back in history, unlike htop, which
 But all that can be intimidating to someone who hasn’t played with Kubernetes ever. Also, the guide uses Google Cloud as a platform to install everything, which mandates you to have a Google Cloud account. But don’t worry, there is a version of Kubernetes the Hard Way, which runs locally, hence free. Enter Kubernetes the Hard Way Vagrant!
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-03-23 07:07:07 +0530 +0530'>March 23, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-03-23 07:07:07 +0530 +0530'>March 23, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Kubernetes The Hard Way in &#34;Vagrant&#34;?" href="https://suraj.io/post/2021/03/kthw-vagrant/"></a>
 </article>
 
@@ -225,7 +228,7 @@ But all that can be intimidating to someone who hasn’t played with Kubernetes 
     <p>I took the reins of the Kubernetes Bangalore Meetup back in 2017. I have been organising the meetup since then. Earlier with Suraj Narwade, Aditya Konarde and now with Prakash Mishra. Over time the meetup has grown a lot, now it boasts about 5000 members. Organising meetup earlier was a straightforward affair, especially with Narwade and Konarde being my colleagues and friends. We could chat about the upcoming meetup at any time we would like, and it was all spontaneous. Once they left in 2019, Prakash took over as co-organiser, and we are managing the meetup since then.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-03-17 07:07:07 +0530 +0530'>March 17, 2021</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-03-17 07:07:07 +0530 +0530'>March 17, 2021</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to How we manage Kubernetes Bangalore Meetup?" href="https://suraj.io/post/2021/03/k8s-blr-meetup/"></a>
 </article>
 
@@ -241,7 +244,7 @@ But all that can be intimidating to someone who hasn’t played with Kubernetes 
     <p>There are specific skills which you should acquire early on in your life. These skills are the foundational skills. Everything you do after developing these skills becomes better, faster and easier. I call these skills Compounder Skills. Derived from the term “Compound Interest”. The idea is that once you are laced with a particular compounder skill, you can apply it in various fields of your life. An example of a compounder skill that most humans get exposed to is “school education”. The disadvantages of being unlettered are numerous viz. being dependent for information, gullible to most straightforward scams, the limited scope of jobs they can do, etc.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-03-16 07:07:07 +0530 +0530'>March 16, 2021</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-03-16 07:07:07 +0530 +0530'>March 16, 2021</span>&nbsp;·&nbsp;<span>9 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to On Compounder Skills" href="https://suraj.io/post/2021/03/compounder-skills/"></a>
 </article>
 
@@ -258,7 +261,7 @@ But all that can be intimidating to someone who hasn’t played with Kubernetes 
 I typed the most organic way anybody starts doing it. Look at the keyboard when you are typing and fix mistakes after looking at the monitor. I moved my hand around on the keyboard and only used index fingers to touch the keys as if other fingers were glued together away from the keyboard. I learned the QWERTY keyboard’s keys placement while playing GTA Vice City with a friend since I typed cheat codes. Although I was still looking at the keyboard and typing, I did not search for the keys.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-02-28 07:07:07 +0530 +0530'>February 28, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-02-28 07:07:07 +0530 +0530'>February 28, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Importance of Typing Skills" href="https://suraj.io/post/2021/02/typing-skills/"></a>
 </article>
 
@@ -274,7 +277,7 @@ I typed the most organic way anybody starts doing it. Look at the keyboard when 
     <p>If you are reading this, you are definitely a Knowledge Worker. As Knowledge Workers, we rely a lot on the information we know or have access to for our day to day work. Occasionally, we will do the same thing twice, face the situation more than once, want to read that reference or try to understand the insights mentioned in that one particular blog. How do you keep track of such information? How do you find such information again after you have researched it once?! You need a knowledge management system that aids you in revisiting such information.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-02-23 09:07:07 +0530 +0530'>February 23, 2021</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-02-23 09:07:07 +0530 +0530'>February 23, 2021</span>&nbsp;·&nbsp;<span>9 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to My Knowledge Management Journey" href="https://suraj.io/post/2021/02/kms-journey/"></a>
 </article>
 
@@ -291,7 +294,7 @@ I typed the most organic way anybody starts doing it. Look at the keyboard when 
 While listening to Naval Ravikant’s podcast, I found this book when Matt Ridley, the author, was a guest in one episode. I was profoundly influenced by the introduction of the book I got in the podcast.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-02-10 21:43:07 +0530 +0530'>February 10, 2021</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-02-10 21:43:07 +0530 +0530'>February 10, 2021</span>&nbsp;·&nbsp;<span>9 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Book: How Innovation Works" href="https://suraj.io/post/2021/02/book-hiw-learnings/"></a>
 </article>
 
@@ -307,7 +310,7 @@ While listening to Naval Ravikant’s podcast, I found this book when Matt Ridle
     <p>This blog is a recap of my old blog “Add new node to Kubernetes cluster with bootstrap token”. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-02-06 10:25:41 +0530 +0530'>February 6, 2021</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-02-06 10:25:41 +0530 +0530'>February 6, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Enable TLS bootstrapping in a Kubernetes cluster" href="https://suraj.io/post/2021/02/k8s-bootstrap-token/"></a>
 </article>
 
@@ -324,7 +327,7 @@ While listening to Naval Ravikant’s podcast, I found this book when Matt Ridle
 You might wonder why this blog when one can go to the official documentation and follow the steps? Yep, you are right. You can choose to do that. But this blog has a collection of actions specific to Flatcar Container Linux. These steps have been tried and tested on Flatcar, so you don’t need to recreate and test them yourself. There are some nuances related to the read-only partitions of Flatcar, and this blog takes care of them at the control plane level and the CNI level both.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-01-29 22:02:41 +0530 +0530'>January 29, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-01-29 22:02:41 +0530 +0530'>January 29, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Kubernetes Cluster using Kubeadm on Flatcar Container Linux" href="https://suraj.io/post/2021/01/kubeadm-flatcar/"></a>
 </article>
 
@@ -338,7 +341,7 @@ You might wonder why this blog when one can go to the official documentation and
 What are the “Signals”? Signals are messages one process can send to another process, mostly used in UNIX like operating systems.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-01-23 10:10:41 +0530 +0530'>January 23, 2021</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Suraj Deshmukh</footer>
+  <footer class="entry-footer"><span title='2021-01-23 10:10:41 +0530 +0530'>January 23, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Exec in container environment" href="https://suraj.io/post/2021/01/shell-exec/"></a>
 </article>
 <footer class="page-footer">
@@ -368,9 +371,14 @@ What are the “Signals”? Signals are messages one process can send to another
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -411,11 +419,12 @@ What are the “Signals”? Signals are messages one process can send to another
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })
