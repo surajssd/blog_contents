@@ -104,8 +104,8 @@ You should see output indicating the server is running:
 ```bash
 ➜  litellm-proxy.sh start
 ℹ️ Activating virtualenv in /tmp/litellm
-ℹ️ Creating claude settings file at /Users/suraj/.claude/settings.json
-ℹ️ Creating litellm config file at /Users/suraj/.config/litellm/config.yaml
+ℹ️ Creating claude settings file at /Users/foobar/.claude/settings.json
+ℹ️ Creating litellm config file at /Users/foobar/.config/litellm/config.yaml
 ℹ️ Starting litellm proxy server
 INFO:     Started server process [94522]
 INFO:     Waiting for application startup.
@@ -121,6 +121,28 @@ INFO:     Waiting for application startup.
 INFO:     Uvicorn running on http://0.0.0.0:4000 (Press CTRL+C to quit)
 ...
 ```
+
+### First-Time GitHub Authentication
+
+When you run the proxy for the first time (or if your authentication has expired), you'll need to authenticate with GitHub. The proxy will prompt you with a device code:
+
+```bash
+...
+LiteLLM: Proxy initialized with Config, Set models:
+    *
+10:06:31 - LiteLLM:WARNING: authenticator.py:149 - Error reading API endpoint from file: [Errno 2] No such file or directory: '/Users/foobar/.config/litellm/github_copilot/api-key.json'
+10:06:31 - LiteLLM:WARNING: authenticator.py:105 - No API key file found or error opening file
+10:06:31 - LiteLLM:WARNING: authenticator.py:60 - No existing access token found or error reading file
+Please visit https://github.com/login/device and enter code 1234-ABCD to authenticate.
+```
+
+To complete the authentication:
+
+1. Open [https://github.com/login/device](https://github.com/login/device) in your browser
+2. Enter the code shown in your terminal (e.g., `1234-ABCD`)
+3. Authorize the application when prompted
+
+The code expires after a short time, so if you see the message repeat with a new code, just use the latest one. Once authenticated, your credentials are cached and you won't need to do this again for a while.
 
 ### Running Claude Code
 
