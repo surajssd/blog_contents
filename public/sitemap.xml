@@ -5,8 +5,50 @@
     <loc>https://suraj.io/post/surajd-talks-links/</loc>
     <lastmod>2024-03-30T01:00:51+05:30</lastmod>
   </url><url>
+    <loc>https://suraj.io/categories/ai/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/ai/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/categories/azure/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/azure/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
     <loc>https://suraj.io/categories/</loc>
-    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/cloud/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/post/2026/deploying-kimi-k2-on-azure/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/deployment/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/kimi/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/categories/llm/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/llm/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/moonshotai/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/post/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
   </url><url>
     <loc>https://suraj.io/tags/cli/</loc>
     <lastmod>2026-02-01T10:00:00+05:30</lastmod>
@@ -32,9 +74,6 @@
     <loc>https://suraj.io/tags/docker/</loc>
     <lastmod>2026-02-01T10:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://suraj.io/post/</loc>
-    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
-  </url><url>
     <loc>https://suraj.io/tags/remote/</loc>
     <lastmod>2026-02-01T10:00:00+05:30</lastmod>
   </url><url>
@@ -43,18 +82,6 @@
   </url><url>
     <loc>https://suraj.io/tags/ssh/</loc>
     <lastmod>2026-02-01T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/</loc>
-    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/ai/</loc>
-    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/categories/ai/</loc>
-    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
   </url><url>
     <loc>https://suraj.io/tags/anthropic/</loc>
     <lastmod>2026-01-31T10:00:00+05:30</lastmod>
@@ -107,12 +134,6 @@
     <loc>https://suraj.io/tags/linux/</loc>
     <lastmod>2025-07-17T15:21:07-08:00</lastmod>
   </url><url>
-    <loc>https://suraj.io/categories/llm/</loc>
-    <lastmod>2025-07-17T15:21:07-08:00</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/llm/</loc>
-    <lastmod>2025-07-17T15:21:07-08:00</lastmod>
-  </url><url>
     <loc>https://suraj.io/categories/productivity/</loc>
     <lastmod>2025-07-17T15:21:07-08:00</lastmod>
   </url><url>
@@ -128,19 +149,7 @@
     <loc>https://suraj.io/post/2025/llm-commit-messages/</loc>
     <lastmod>2025-07-17T15:21:07-08:00</lastmod>
   </url><url>
-    <loc>https://suraj.io/categories/azure/</loc>
-    <lastmod>2025-06-24T09:21:07-08:00</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/azure/</loc>
-    <lastmod>2025-06-24T09:21:07-08:00</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/cloud/</loc>
-    <lastmod>2025-06-24T09:21:07-08:00</lastmod>
-  </url><url>
     <loc>https://suraj.io/post/2025/deploying-grok-3-on-azure/</loc>
-    <lastmod>2025-06-24T09:21:07-08:00</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/deployment/</loc>
     <lastmod>2025-06-24T09:21:07-08:00</lastmod>
   </url><url>
     <loc>https://suraj.io/categories/grok/</loc>

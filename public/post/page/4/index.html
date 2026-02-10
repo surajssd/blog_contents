@@ -183,6 +183,23 @@
 </header>
 
 <article class="post-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/post/2021/01/kubeadm-flatcar/flatcar.jpg" alt="Image Source: [Flatcar Linux is now open to the public.](https://kinvolk.io/blog/2018/04/flatcar-linux-is-now-open-to-the-public/)">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Kubernetes Cluster using Kubeadm on Flatcar Container Linux
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This blog shows a simple set of commands to install a Kubernetes cluster on Flatcar Container Linux based machines using Kubeadm.
+You might wonder why this blog when one can go to the official documentation and follow the steps? Yep, you are right. You can choose to do that. But this blog has a collection of actions specific to Flatcar Container Linux. These steps have been tried and tested on Flatcar, so you don’t need to recreate and test them yourself. There are some nuances related to the read-only partitions of Flatcar, and this blog takes care of them at the control plane level and the CNI level both.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-01-29 22:02:41 +0530 +0530'>January 29, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <a class="entry-link" aria-label="post link to Kubernetes Cluster using Kubeadm on Flatcar Container Linux" href="https://suraj.io/post/2021/01/kubeadm-flatcar/"></a>
+</article>
+
+<article class="post-entry"> 
   <header class="entry-header">
     <h2 class="entry-hint-parent">Exec in container environment
     </h2>
@@ -303,20 +320,6 @@ Cons of the Traditional Method The round trip time during development and testin
   </div>
   <footer class="entry-footer"><span title='2020-08-16 22:00:51 +0530 +0530'>August 16, 2020</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Being Productive with Git" href="https://suraj.io/post/being-productive-with-git/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Being Productive with Kubectl
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>This blog will showcase my productivity tips with kubectl . This does not venture into any plugins per se. But only using bash aliases to achieve it.
-Bash Aliases # k8s alias alias k=kubectl alias kg=&#34;kubectl get&#34; alias kgp=&#34;kubectl get pods&#34; alias kgs=&#34;kubectl get services&#34; alias kge=&#34;kubectl get events&#34; alias kgpvc=&#34;kubectl get pvc&#34; alias kgpv=&#34;kubectl get pv&#34; alias kd=&#34;kubectl describe&#34; alias kl=&#34;kubectl logs -f&#34; alias kc=&#34;kubectl create -f&#34; I have above aliases setup in the ~/.bashrc file. The beauty of the aliases is that you can append more flags and parameters to the existing smaller alias. For, e.g. I have an alias for kubectl get pods as kgp, but if I want to get pods from all the namespaces, I use kgp -A.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2020-08-02 16:00:51 +0530 +0530'>August 2, 2020</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
-  <a class="entry-link" aria-label="post link to Being Productive with Kubectl" href="https://suraj.io/post/being-productive-with-kubectl/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

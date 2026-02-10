@@ -11,8 +11,29 @@
     </image>
     <generator>Hugo -- 0.155.2</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 01 Feb 2026 10:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 09 Feb 2026 10:00:00 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ai</title>
+      <link>https://suraj.io/categories/ai/</link>
+      <pubDate>Mon, 09 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/categories/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure</title>
+      <link>https://suraj.io/categories/azure/</link>
+      <pubDate>Mon, 09 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/categories/azure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Llm</title>
+      <link>https://suraj.io/categories/llm/</link>
+      <pubDate>Mon, 09 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/categories/llm/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Containers</title>
       <link>https://suraj.io/categories/containers/</link>
@@ -32,13 +53,6 @@
       <link>https://suraj.io/categories/docker/</link>
       <pubDate>Sun, 01 Feb 2026 10:00:00 +0530</pubDate>
       <guid>https://suraj.io/categories/docker/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>AI</title>
-      <link>https://suraj.io/categories/ai/</link>
-      <pubDate>Sat, 31 Jan 2026 10:00:00 +0530</pubDate>
-      <guid>https://suraj.io/categories/ai/</guid>
       <description></description>
     </item>
     <item>
@@ -91,13 +105,6 @@
       <description></description>
     </item>
     <item>
-      <title>Llm</title>
-      <link>https://suraj.io/categories/llm/</link>
-      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
-      <guid>https://suraj.io/categories/llm/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Productivity</title>
       <link>https://suraj.io/categories/productivity/</link>
       <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
@@ -109,13 +116,6 @@
       <link>https://suraj.io/categories/programming/</link>
       <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
       <guid>https://suraj.io/categories/programming/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Azure</title>
-      <link>https://suraj.io/categories/azure/</link>
-      <pubDate>Tue, 24 Jun 2025 09:21:07 -0800</pubDate>
-      <guid>https://suraj.io/categories/azure/</guid>
       <description></description>
     </item>
     <item>
