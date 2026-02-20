@@ -54,7 +54,7 @@ llm github_copilot models
 Set a default model to use:
 
 ```bash
-llm models default github_copilot/claude-sonnet-4
+llm models default github_copilot/claude-opus-4.6
 ```
 
 ## Usage
