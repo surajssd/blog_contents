@@ -189,7 +189,7 @@ services:
   disqus:
     shortname: suraj-io
   googleAnalytics:
-    ID: UA-97006720-1
+    ID: G-PYJ0C1KVD7
   instagram:
     disableInlineCSS: true
   x:

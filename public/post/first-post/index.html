@@ -71,7 +71,21 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://suraj.io/post/first-post/">
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYJ0C1KVD7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-PYJ0C1KVD7');
+        }
+      </script><meta property="og:url" content="https://suraj.io/post/first-post/">
   <meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="First post">
   <meta property="og:description" content="This is the new home for my blog. I use to write on wordpress before. You can find the older blog at https://deshmukhsuraj.wordpress.com. But I wanted to have my own domain and wordpress was charging exorbitantly to connect a custom domain to wordpress, so I just ditched it and started writing here. This is much more convenient.">

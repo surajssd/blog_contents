@@ -71,7 +71,21 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://suraj.io/post/2021/06/systemd-service/">
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYJ0C1KVD7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-PYJ0C1KVD7');
+        }
+      </script><meta property="og:url" content="https://suraj.io/post/2021/06/systemd-service/">
   <meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="How to create a Systemd daemon quickly?">
   <meta property="og:description" content="If you have a script or a binary and want to run it as a Systemd service, keep following. This blog will show you how to take any such executable code and run it using Systemd. Sure, you can do similar stuff using Docker as well. Although there are certain downsides of using Docker (alone) for managing the daemons. Systemd is good at log management on the node over a Docker container. If a container fails, you may or may not have access to the logs. Systemd provides constructs in managing dependencies quite well. And finally, you may not be using Docker on the machine, while Systemd is quite ubiquitous on any Linux.">

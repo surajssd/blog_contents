@@ -72,7 +72,21 @@ I am a Senior Software Engineer at Microsoft, where I work on the Confidential C
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://suraj.io/about/">
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYJ0C1KVD7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-PYJ0C1KVD7');
+        }
+      </script><meta property="og:url" content="https://suraj.io/about/">
   <meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="About me">
   <meta property="og:description" content="Bio I am a Senior Software Engineer at Microsoft, where I work on the Confidential Containers project, a CNCF sandbox initiative that aims to provide a secure and private way to run containerized workloads on Kubernetes. I have been involved in the Kubernetes space for over six years and has worked for Red Hat and Kinvolk on various Kubernetes technologies such as OpenShift, service-meshes, Helm, Lokomotive, etc. I have also contributed to several Kubernetes upstream projects, including Kubernetes, Kubernetes docs, Contour, Podman, and Crio. I hold CKA and CKS certifications, and I was also an organizer of the Kubernetes Bangalore meetup group from 2017 to 2022. I have spoken at numerous conferences and events, such as Kubecon, Pycon India, DevOpsDays Bangalore, FOSDEM, Cloud Native Rejekts, and DevConf.">

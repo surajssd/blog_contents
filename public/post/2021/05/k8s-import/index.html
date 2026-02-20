@@ -71,7 +71,21 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://suraj.io/post/2021/05/k8s-import/">
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYJ0C1KVD7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-PYJ0C1KVD7');
+        }
+      </script><meta property="og:url" content="https://suraj.io/post/2021/05/k8s-import/">
   <meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="How to import &#39;any&#39; Kubernetes package into your project?">
   <meta property="og:description" content="The client libraries that Kubernetes ships are meant to be imported, and you definitely don’t need this post explaining how to import them in your Golang based project. A simple go get ... should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of “technical reasons” ? Could you simply add them to your import statements in the .go file, and the go binary will do the right thing when you build the code? Well, let’s find that out!">

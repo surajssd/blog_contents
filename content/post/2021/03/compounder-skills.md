@@ -53,7 +53,8 @@ Once you have such a system in place, you will be confident of finishing and see
 
 Since this system acts as a guard rail on what you are doing, it helps you focus and not get distracted by every new shiny thing that comes along and distracts you from your work.
 
-{{< x user="kelseyhightower" id="1159871663460085760" >}}
+> Focus requires saying no to great opportunities.
+> — Kelsey Hightower (@kelseyhightower) [August 9, 2019](https://x.com/kelseyhightower/status/1159871663460085760)
 
 Reading the book ["Getting things done by David Allen"](https://suraj.io/post/book-review-getting-things-done/) is a great first thing to do in this direction.
 

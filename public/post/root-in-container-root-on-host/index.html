@@ -71,7 +71,21 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://suraj.io/post/root-in-container-root-on-host/">
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYJ0C1KVD7"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-PYJ0C1KVD7');
+        }
+      </script><meta property="og:url" content="https://suraj.io/post/root-in-container-root-on-host/">
   <meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Root user inside container is root on the host">
   <meta property="og:description" content="The easiest way to prove that root inside the container is also root on the host">
