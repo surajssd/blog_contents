@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- 0.156.0</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 01 Feb 2026 10:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 20 Feb 2026 10:00:00 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/tags/containers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Running Linux Containers Natively on macOS with Apple&#39;s Container CLI</title>
+      <link>https://suraj.io/post/2026/using-osx-containerization/</link>
+      <pubDate>Fri, 20 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/post/2026/using-osx-containerization/</guid>
+      <description>Learn how to use Apple&amp;#39;s container CLI tool to run Linux containers as lightweight VMs on macOS with sub-second startup times</description>
+    </item>
     <item>
       <title>Running Docker Commands on a Remote Machine via SSH</title>
       <link>https://suraj.io/post/2026/remote-machine-as-docker-runner/</link>

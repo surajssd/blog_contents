@@ -5,6 +5,51 @@
     <loc>https://suraj.io/post/surajd-talks-links/</loc>
     <lastmod>2024-03-30T01:00:51+05:30</lastmod>
   </url><url>
+    <loc>https://suraj.io/tags/apple/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/apple-silicon/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/categories/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/cli/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/categories/containers/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/containers/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/categories/development/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/docker/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/categories/macos/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/macos/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/post/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/post/2026/using-osx-containerization/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/virtualization/</loc>
+    <lastmod>2026-02-20T10:00:00+05:30</lastmod>
+  </url><url>
     <loc>https://suraj.io/categories/ai/</loc>
     <lastmod>2026-02-09T10:00:00+05:30</lastmod>
   </url><url>
@@ -15,9 +60,6 @@
     <lastmod>2026-02-09T10:00:00+05:30</lastmod>
   </url><url>
     <loc>https://suraj.io/tags/azure/</loc>
-    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/categories/</loc>
     <lastmod>2026-02-09T10:00:00+05:30</lastmod>
   </url><url>
     <loc>https://suraj.io/tags/cloud/</loc>
@@ -41,27 +83,6 @@
     <loc>https://suraj.io/tags/moonshotai/</loc>
     <lastmod>2026-02-09T10:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://suraj.io/post/</loc>
-    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/</loc>
-    <lastmod>2026-02-09T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/cli/</loc>
-    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/categories/containers/</loc>
-    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/containers/</loc>
-    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/categories/development/</loc>
-    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
-  </url><url>
     <loc>https://suraj.io/tags/development/</loc>
     <lastmod>2026-02-01T10:00:00+05:30</lastmod>
   </url><url>
@@ -69,9 +90,6 @@
     <lastmod>2026-02-01T10:00:00+05:30</lastmod>
   </url><url>
     <loc>https://suraj.io/categories/docker/</loc>
-    <lastmod>2026-02-01T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/docker/</loc>
     <lastmod>2026-02-01T10:00:00+05:30</lastmod>
   </url><url>
     <loc>https://suraj.io/tags/remote/</loc>

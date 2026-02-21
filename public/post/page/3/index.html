@@ -198,6 +198,23 @@
 
 <article class="post-entry"> 
 <figure class="entry-cover">
+        <img loading="lazy" src="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/config.png" alt="Config">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Mitigation of: Access Any Kubernetes Secret
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In the previous blog, we discussed how any user without RBAC access to a Kubernetes secret can use a trick to access that secret. To mitigate that problem, we will use a validating admission webhook. But before looking at what sorcery this validating admission webhook server is, let us understand how Kubernetes handles the API requests.
+What are admission controllers? All requests going to the Kubernetes API server go through the following four steps:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-05-20 08:47:07 +0530 +0530'>May 20, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <a class="entry-link" aria-label="post link to Mitigation of: Access Any Kubernetes Secret" href="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover">
         <img loading="lazy" src="https://suraj.io/post/2021/05/access-k8s-secrets/forbidden.jpg" alt="Forbidden">
 </figure>
   <header class="entry-header">
@@ -344,22 +361,6 @@ While listening to Naval Ravikant’s podcast, I found this book when Matt Ridle
   </div>
   <footer class="entry-footer"><span title='2021-02-10 21:43:07 +0530 +0530'>February 10, 2021</span>&nbsp;·&nbsp;<span>9 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Book: How Innovation Works" href="https://suraj.io/post/2021/02/book-hiw-learnings/"></a>
-</article>
-
-<article class="post-entry"> 
-<figure class="entry-cover">
-        <img loading="lazy" src="https://suraj.io/post/2021/02/k8s-bootstrap-token/rack.jpg" alt="Bootstrap token">
-</figure>
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Enable TLS bootstrapping in a Kubernetes cluster
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>This blog is a recap of my old blog “Add new node to Kubernetes cluster with bootstrap token”. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2021-02-06 10:25:41 +0530 +0530'>February 6, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
-  <a class="entry-link" aria-label="post link to Enable TLS bootstrapping in a Kubernetes cluster" href="https://suraj.io/post/2021/02/k8s-bootstrap-token/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

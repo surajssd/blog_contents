@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Apple-Silicon on Suraj Deshmukh</title>
+    <link>https://suraj.io/tags/apple-silicon/</link>
+    <description>Recent content in Apple-Silicon on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.156.0</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 20 Feb 2026 10:00:00 +0530</lastBuildDate>
+    <atom:link href="https://suraj.io/tags/apple-silicon/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Running Linux Containers Natively on macOS with Apple&#39;s Container CLI</title>
+      <link>https://suraj.io/post/2026/using-osx-containerization/</link>
+      <pubDate>Fri, 20 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/post/2026/using-osx-containerization/</guid>
+      <description>Learn how to use Apple&amp;#39;s container CLI tool to run Linux containers as lightweight VMs on macOS with sub-second startup times</description>
+    </item>
+  </channel>
+</rss>
