@@ -11,8 +11,57 @@
     </image>
     <generator>Hugo -- 0.156.0</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Feb 2026 10:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 22 Feb 2026 10:00:00 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agentic</title>
+      <link>https://suraj.io/tags/agentic/</link>
+      <pubDate>Sun, 22 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/agentic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ai</title>
+      <link>https://suraj.io/tags/ai/</link>
+      <pubDate>Sun, 22 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure</title>
+      <link>https://suraj.io/tags/azure/</link>
+      <pubDate>Sun, 22 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/azure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Llm</title>
+      <link>https://suraj.io/tags/llm/</link>
+      <pubDate>Sun, 22 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Openclaw</title>
+      <link>https://suraj.io/tags/openclaw/</link>
+      <pubDate>Sun, 22 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/openclaw/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Self-Hosted</title>
+      <link>https://suraj.io/tags/self-hosted/</link>
+      <pubDate>Sun, 22 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/self-hosted/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Telegram</title>
+      <link>https://suraj.io/tags/telegram/</link>
+      <pubDate>Sun, 22 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/tags/telegram/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Apple</title>
       <link>https://suraj.io/tags/apple/</link>
@@ -63,20 +112,6 @@
       <description></description>
     </item>
     <item>
-      <title>Ai</title>
-      <link>https://suraj.io/tags/ai/</link>
-      <pubDate>Mon, 09 Feb 2026 10:00:00 +0530</pubDate>
-      <guid>https://suraj.io/tags/ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Azure</title>
-      <link>https://suraj.io/tags/azure/</link>
-      <pubDate>Mon, 09 Feb 2026 10:00:00 +0530</pubDate>
-      <guid>https://suraj.io/tags/azure/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Cloud</title>
       <link>https://suraj.io/tags/cloud/</link>
       <pubDate>Mon, 09 Feb 2026 10:00:00 +0530</pubDate>
@@ -95,13 +130,6 @@
       <link>https://suraj.io/tags/kimi/</link>
       <pubDate>Mon, 09 Feb 2026 10:00:00 +0530</pubDate>
       <guid>https://suraj.io/tags/kimi/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Llm</title>
-      <link>https://suraj.io/tags/llm/</link>
-      <pubDate>Mon, 09 Feb 2026 10:00:00 +0530</pubDate>
-      <guid>https://suraj.io/tags/llm/</guid>
       <description></description>
     </item>
     <item>

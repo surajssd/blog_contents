@@ -60,7 +60,7 @@ container run --name web --cpus 2 --memory 2g -p 8080:80/tcp nginx:latest
 Here's what each flag does:
 
 - `--name web` — gives the container a friendly name (`web`) so you can reference it easily in other commands
-- `--cpus 2` and `--memory 2g` — strictly allocates 2 CPU cores and 2GB of RAM to the VM, this is optional
+- `--cpus 2` and `--memory 2g` — strictly allocates 2 CPU cores and 2GB of RAM to the VM, this is optional (defaults are 4 CPUs and 1GB of RAM if not specified)
 - `-p 8080:80/tcp` — maps port `8080` on your Mac to port `80` inside the container, using TCP. This is how you'll access the nginx web server from your browser or `curl`
 - `nginx:latest` — the OCI container image to run
 

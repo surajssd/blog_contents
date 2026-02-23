@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- 0.156.0</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 09 Feb 2026 10:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 22 Feb 2026 10:00:00 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/categories/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting Up OpenClaw with Azure AI Foundry</title>
+      <link>https://suraj.io/post/2026/openclaw-with-azure/</link>
+      <pubDate>Sun, 22 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/post/2026/openclaw-with-azure/</guid>
+      <description>Learn how to configure OpenClaw to use Azure AI Foundry models, giving you a self-hosted AI assistant accessible from Telegram and other chat apps.</description>
+    </item>
     <item>
       <title>Deploying Kimi K2.5 on Azure: A Complete Guide to Running MoonshotAI&#39;s Model</title>
       <link>https://suraj.io/post/2026/deploying-kimi-k2-on-azure/</link>

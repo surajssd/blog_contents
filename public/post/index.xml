@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- 0.156.0</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 20 Feb 2026 10:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 22 Feb 2026 10:00:00 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Suraj Deshmukh&#39;s talks at conferences</title>
@@ -19,6 +19,13 @@
       <pubDate>Sat, 30 Mar 2024 01:00:51 +0530</pubDate>
       <guid>https://suraj.io/post/surajd-talks-links/</guid>
       <description>List of all the talks presented by me</description>
+    </item>
+    <item>
+      <title>Setting Up OpenClaw with Azure AI Foundry</title>
+      <link>https://suraj.io/post/2026/openclaw-with-azure/</link>
+      <pubDate>Sun, 22 Feb 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/post/2026/openclaw-with-azure/</guid>
+      <description>Learn how to configure OpenClaw to use Azure AI Foundry models, giving you a self-hosted AI assistant accessible from Telegram and other chat apps.</description>
     </item>
     <item>
       <title>Running Linux Containers Natively on macOS with Apple&#39;s Container CLI</title>
