@@ -7,7 +7,7 @@ draft: false
 categories: ["ai", "llm", "azure"]
 tags: ["openclaw", "ai", "llm", "azure", "telegram", "self-hosted", "agentic"]
 cover:
-  image: "/post/2026/images/openclaw-azure.png"
+  image: "/post/2026/images/openclaw-azure/openclaw-azure.png"
   alt: "OpenClaw with Azure AI Foundry"
 ---
 
@@ -23,7 +23,13 @@ If you haven't already deployed a model on Azure, follow the steps in my previou
 
 Before proceeding, make sure you have:
 
-- **OpenClaw** installed ([Installation guide](https://docs.openclaw.ai/))
+- (Optional) An **Azure VM** to run OpenClaw on — see [this gist](https://gist.github.com/surajssd/7931a2d03ed8f3e51fb1a05a27236821) for Azure CLI commands to create one
+- **OpenClaw** installed ([Installation guide](https://docs.openclaw.ai/install))
+
+  ```bash
+  curl -fsSL https://openclaw.ai/install.sh | bash -s -- --no-onboard
+  ```
+
 - A **model deployed on Azure AI Foundry** — see [Deploying Kimi K2.5 on Azure](/post/2026/deploying-kimi-k2-on-azure/) for a step-by-step walkthrough
 - Your Azure **API key** and **deployment domain** from the Azure deployment
 - A **Telegram bot token** (if you want Telegram integration)
@@ -48,8 +54,8 @@ To get your numeric Telegram user ID, see the [Appendix](#appendix-getting-your-
 Once you have both values, set them as environment variables:
 
 ```bash
-export TELEGRAM_BOT_TOKEN="<your-telegram-bot-token>"
-export TELEGRAM_USER_ID="<your-telegram-user-id>"
+export TELEGRAM_BOT_TOKEN="<your-telegram-bot-token>" # Format is 1234567890:ABCdefGHIjklMNOpqrSTUvwxYZ1234567890
+export TELEGRAM_USER_ID="<your-telegram-user-id>"     # Format is a numeric ID, e.g., 12345678
 ```
 
 ## Generating the OpenClaw Configuration
@@ -143,6 +149,14 @@ cat <<EOF > /tmp/models.json
   "browser": {
     "executablePath": "/usr/bin/brave-browser",
     "defaultProfile": "openclaw"
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token"
+    }
   }
 }
 EOF
@@ -201,7 +215,8 @@ chmod 600 ~/.openclaw/openclaw.json
 Then start OpenClaw:
 
 ```bash
-openclaw start
+openclaw doctor --generate-gateway-token --yes
+openclaw gateway start
 ```
 
 ## Accessing the OpenClaw Dashboard
@@ -219,12 +234,20 @@ openclaw dashboard
 The URL already has the token, but if you see you are not connected, you can retrieve the token with:
 
 ```bash
-openclaw config get gateway.auth.token
+cat ~/.openclaw/openclaw.json | jq -r '.gateway.auth.token'
 ```
 
-Paste the token into the input field named **Gateway Token** at [/overview](http://127.0.0.1:18789/overview) and click the **Connect** button.
+Paste the token into the input field named **Gateway Token** at [http://127.0.0.1:18789/overview](http://127.0.0.1:18789/overview) and click the **Connect** button.
 
 Now you'll then have access to the dashboard where you can view active sessions, monitor agent activity, and manage your channels.
+
+> **Note:** If you're running OpenClaw on an Azure VM, the dashboard won't be directly accessible from your local machine. Set up an SSH port forward to access it locally:
+>
+> ```bash
+> ssh -i "${SSH_PRIV_KEY}" -L 18789:127.0.0.1:18789 "${USER_NAME}@${fqdn}"
+> ```
+>
+> Then open [http://127.0.0.1:18789/overview](http://127.0.0.1:18789/overview) in your local browser.
 
 ### Terminal UI
 
@@ -235,6 +258,12 @@ openclaw tui
 ```
 
 If prompted for a token, use the same token from the command above.
+
+### Telegram
+
+Now, open Telegram and start a conversation with your bot:
+
+![Telegram conversation with OpenClaw bot](/post/2026/images/openclaw-azure/telegram-ss.jpg)
 
 ### Viewing Logs
 
@@ -275,11 +304,12 @@ For deploying the underlying model on Azure, refer to the companion post: [Deplo
 - [OpenClaw documentation](https://docs.openclaw.ai/)
 - [OpenClaw Telegram channel guide](https://docs.openclaw.ai/channels/telegram)
 - [GPT-5 Mini Azure deployment gist](https://gist.github.com/surajssd/561a9deb3d2e253c101438fab1b1e070)
+- [Creating an Azure VM for OpenClaw](https://gist.github.com/surajssd/7931a2d03ed8f3e51fb1a05a27236821)
 - [Deploying Kimi K2.5 on Azure](/post/2026/deploying-kimi-k2-on-azure/) (companion post)
 
 ## Appendix: Getting Your Telegram User ID
 
-OpenClaw uses your numeric Telegram user ID in the `allowFrom` field to restrict bot access to only you. Here's how to find it:
+OpenClaw uses your numeric Telegram user ID in the `allowFrom` field to restrict bot access to only you. You can also follow the [OpenClaw Telegram docs](https://docs.openclaw.ai/channels/telegram#finding-your-telegram-user-id) for an alternative method. Here's one way to find it:
 
 1. Open **Telegram**.
 2. Search for [`@userinfobot`](https://t.me/userinfobot) (or [`@getidsbot`](https://t.me/getidsbot)).
