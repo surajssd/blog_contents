@@ -47,7 +47,11 @@ Before you can run any containers, you need to start the container runtime servi
 container system start
 ```
 
-This kicks off the runtime daemon that coordinates pulling images, creating VMs, managing networking, and all the other plumbing that makes containers work. You'll need this running before any other `container` commands will work.
+This kicks off the runtime daemon that coordinates pulling images, creating VMs, managing networking, and all the other plumbing that makes containers work. You'll need this running before any other `container` commands will work. To start container now and restart at login:
+
+```bash
+brew services start container
+```
 
 ## Running Your First Container
 
