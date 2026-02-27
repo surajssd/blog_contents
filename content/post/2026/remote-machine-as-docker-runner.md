@@ -23,7 +23,7 @@ Before we begin, make sure you have:
 
 - Docker daemon installed and running on the remote machine (see [Docker installation guide](https://docs.docker.com/engine/install/))
 - SSH access to the remote machine
-- Docker CLI installed on your local machine (doesn't need Docker daemon running)
+- Docker CLI installed on your local machine (doesn't need Docker daemon running). If you are on a Mac, you can install it via Homebrew: `brew install docker`
 - An SSH key for authentication to the remote machine
 
 ## Step 1: Configure SSH for Easy Access
