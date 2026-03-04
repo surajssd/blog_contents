@@ -68,6 +68,10 @@ Here's what each flag does:
 - `-p 8080:80/tcp` — maps port `8080` on your Mac to port `80` inside the container, using TCP. This is how you'll access the nginx web server from your browser or `curl`
 - `nginx:latest` — the OCI container image to run
 
+> **NOTE:** When you run your first container, macOS may show a permission prompt asking whether to allow local network access. If you see this, click **Allow**:
+
+![macOS local network permission prompt](/post/2026/images/apple-containers/permission-prompt.png)
+
 Once the container is up, test it with `curl`:
 
 ```bash
@@ -167,7 +171,7 @@ No error from the container itself, no obvious misconfiguration — just an empt
 
 ### The Cause
 
-The culprit is macOS's **Local Network** firewall. By default, macOS blocks applications from communicating over the local network, and this includes traffic between `curl` (or your browser) and the container runtime.
+The culprit is macOS's **Local Network** firewall. By default, macOS blocks applications from communicating over the local network, and this includes traffic between `curl` (or your browser) and the container runtime. If you didn't see the [permission prompt](#running-your-first-container) when you first ran the container, or if you clicked **Don't Allow**, that's likely why you're getting an empty response.
 
 ### The Fix
 
