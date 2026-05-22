@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>PR walkthrough — per-engine capabilities mapping</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: #161b22;
+    --panel-2: #1c232c;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --add: #033a16;
+    --add-line: #2ea04366;
+    --add-text: #aff5b4;
+    --del: #67060c;
+    --del-line: #f8514966;
+    --del-text: #ffdcd7;
+    --warn: #d29922;
+    --crit: #f85149;
+    --info: #58a6ff;
+    --ok: #3fb950;
+    --med: #d29922;
+    --low: #8b949e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  header {
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(135deg, #161b22 0%, #1f2937 100%);
+  }
+  header h1 { margin: 0 0 4px 0; font-size: 22px; }
+  header .sub { color: var(--muted); font-size: 13px; }
+  header .branch {
+    display: inline-block; padding: 2px 8px; border-radius: 12px;
+    background: #1f6feb33; color: #79c0ff; font-family: ui-monospace, Menlo, monospace; font-size: 12px;
+  }
+  nav {
+    display: flex; gap: 4px; padding: 0 32px; border-bottom: 1px solid var(--border);
+    background: var(--panel);
+    position: sticky; top: 0; z-index: 50;
+  }
+  nav button {
+    background: transparent; color: var(--muted); border: none;
+    padding: 12px 16px; cursor: pointer; font-size: 13px; border-bottom: 2px solid transparent;
+  }
+  nav button:hover { color: var(--text); }
+  nav button.active { color: var(--accent); border-bottom-color: var(--accent); }
+  main { padding: 24px 32px; max-width: 1400px; }
+  section { display: none; }
+  section.active { display: block; }
+  h2 { font-size: 18px; margin: 0 0 12px 0; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  h3 { font-size: 15px; margin: 18px 0 8px 0; color: var(--accent); }
+  p { color: #c9d1d9; }
+  code, .mono { font-family: ui-monospace, Menlo, monospace; }
+  .pill {
+    display: inline-block; padding: 2px 8px; border-radius: 12px;
+    font-size: 11px; font-family: ui-monospace, Menlo, monospace; margin-right: 4px;
+  }
+  .pill.crit { background: #f8514922; color: var(--crit); border: 1px solid #f8514944; }
+  .pill.med  { background: #d2992222; color: var(--med);  border: 1px solid #d2992244; }
+  .pill.low  { background: #58a6ff22; color: var(--info); border: 1px solid #58a6ff44; }
+  .pill.ok   { background: #3fb95022; color: var(--ok);   border: 1px solid #3fb95044; }
+
+  .grid { display: grid; gap: 14px; }
+  .grid.cards { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 18px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px;
+  }
+  .card .num { font-size: 24px; font-weight: 600; }
+  .card .lbl { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .card.add { border-left: 3px solid var(--ok); }
+  .card.del { border-left: 3px solid var(--crit); }
+  .card.commits { border-left: 3px solid var(--accent); }
+  .card.files { border-left: 3px solid var(--med); }
+
+  .diff {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden; margin-bottom: 16px;
+  }
+  .diff .file-header {
+    background: var(--panel-2); padding: 8px 14px; border-bottom: 1px solid var(--border);
+    font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--muted);
+    display: flex; justify-content: space-between;
+  }
+  .diff table {
+    width: 100%; border-collapse: collapse; font-family: ui-monospace, Menlo, monospace; font-size: 12px;
+  }
+  .diff td { padding: 0 8px; vertical-align: top; white-space: pre; }
+  .diff td.ln { color: #6e7681; text-align: right; width: 40px; user-select: none; border-right: 1px solid var(--border); }
+  .diff td.code { width: auto; }
+  .diff td.annot { width: 280px; padding: 4px 12px; color: var(--muted); border-left: 1px solid var(--border); white-space: normal; font-family: -apple-system, sans-serif; font-size: 12px; }
+  tr.add td.code { background: var(--add); color: var(--add-text); }
+  tr.add td.ln { background: var(--add-line); color: #b8f0c5; }
+  tr.del td.code { background: var(--del); color: var(--del-text); }
+  tr.del td.ln { background: var(--del-line); color: #ffc1ba; }
+  tr.ctx td.code { color: #c9d1d9; }
+  tr.hunk td { background: #1f2937; color: var(--accent); font-style: italic; }
+  .annot.crit { color: var(--crit); }
+  .annot.med  { color: var(--med); }
+  .annot.ok   { color: var(--ok); }
+  .annot.info { color: var(--info); }
+
+  table.data {
+    width: 100%; border-collapse: collapse; margin: 10px 0 18px 0;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  }
+  table.data th, table.data td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  table.data th { background: var(--panel-2); color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  table.data tr:last-child td { border-bottom: none; }
+
+  .map-wrap {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 18px;
+  }
+  .map-toggle { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; }
+  .map-toggle button {
+    background: var(--panel-2); color: var(--text); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px;
+  }
+  .map-toggle button.active { background: var(--accent); color: #0d1117; border-color: var(--accent); }
+
+  .flow-canvas { width: 100%; height: auto; background: var(--panel); border-radius: 8px; }
+
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 8px 0 18px 0; }
+  .legend .item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+  .legend .dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  details { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin: 10px 0; }
+  summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+
+  .callout {
+    background: #1f2937; border-left: 3px solid var(--accent);
+    padding: 10px 14px; margin: 10px 0; border-radius: 4px;
+  }
+  .callout.warn  { border-left-color: var(--warn); }
+  .callout.crit  { border-left-color: var(--crit); }
+
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .yaml-box {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  }
+  .yaml-box .hdr { padding: 8px 12px; background: var(--panel-2); border-bottom: 1px solid var(--border); font-size: 12px; }
+  .yaml-box.before .hdr { color: var(--crit); }
+  .yaml-box.after .hdr { color: var(--ok); }
+  .yaml-box pre { margin: 0; padding: 12px; font-family: ui-monospace, Menlo, monospace; font-size: 12px; overflow-x: auto; }
+  .y-key { color: #79c0ff; }
+  .y-str { color: #a5d6ff; }
+  .y-com { color: var(--muted); font-style: italic; }
+  .y-bool { color: #ff7b72; }
+  .y-new { background: #2ea04322; }
+  .y-old { background: #f8514922; }
+</style>
+</head>
+<body>
+<header>
+  <h1>PR: refactor provider capabilities to a per-engine model</h1>
+  <div class="sub">
+    branch <span class="branch">suraj/per-engine-caps-mapping</span>
+    &nbsp;·&nbsp; 60 commits &nbsp;·&nbsp; 50 files &nbsp;·&nbsp; +4 989 / −551 lines
+  </div>
+</header>
+
+<nav>
+  <button data-tab="overview" class="active">Overview</button>
+  <button data-tab="modulemap">Module map</button>
+  <button data-tab="schema">Schema change</button>
+  <button data-tab="diffs">Annotated diffs</button>
+  <button data-tab="migration">Migration flow</button>
+  <button data-tab="commits">Commits</button>
+  <button data-tab="findings">Findings &amp; risks</button>
+</nav>
+
+<main>
+
+<section id="overview" class="active">
+  <h2>What this PR does, in one sentence</h2>
+  <p>
+    It pivots <strong>provider capabilities</strong> from a single shared blob per provider to a
+    <strong>per-engine</strong> map, then ships a live migration so existing clusters keep working.
+  </p>
+
+  <div class="grid cards">
+    <div class="card commits"><div class="num">60</div><div class="lbl">commits</div></div>
+    <div class="card files"><div class="num">50</div><div class="lbl">files changed</div></div>
+    <div class="card add"><div class="num">+4 989</div><div class="lbl">added</div></div>
+    <div class="card del"><div class="num">−551</div><div class="lbl">deleted</div></div>
+  </div>
+
+  <h3>The repo in three sentences (for a first-time reader)</h3>
+  <p>
+    <strong>AI Runway</strong> is a Kubernetes operator that lets you say "deploy this model" once and have
+    several different inference stacks actually run it. Users create a <code>ModelDeployment</code> custom resource;
+    the controller looks at registered <code>InferenceProviderConfig</code>s (one per provider — kaito, dynamo,
+    kuberay, llmd) and picks the right one based on engine type (vLLM, SGLang, TRT-LLM, llama.cpp), GPU/CPU
+    requirements, and serving mode (aggregated vs disaggregated). A validating webhook rejects bad specs up front,
+    and a gateway reconciler optionally wires the deployment into the Gateway API Inference Extension (GAIE).
+  </p>
+
+  <h3>Why this PR matters</h3>
+  <p>
+    Before this PR, a provider declared things like <code>cpuSupport: true</code>,
+    <code>servingModes: [aggregated]</code>, and <code>gateway: {...}</code> once, and that
+    applied to <em>every</em> engine the provider supported. That is wrong in practice:
+  </p>
+  <ul>
+    <li>KAITO supports both <strong>vLLM</strong> (GPU only) and <strong>llama.cpp</strong> (also CPU). A flat <code>cpuSupport</code> can't say that.</li>
+    <li>Dynamo's <strong>TRT-LLM</strong> engine only does aggregated mode; vLLM and SGLang do both.</li>
+    <li>Gateway capabilities differ per engine: KAITO's llama.cpp ignores <code>servedName</code>; vLLM does not.</li>
+  </ul>
+
+  <h3>What changed at a glance</h3>
+  <table class="data">
+    <thead><tr><th>Area</th><th>Before</th><th>After</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>ProviderCapabilities</code> Go type</td>
+        <td>flat fields: <code>engines []EngineType</code>, <code>servingModes</code>, <code>gpuSupport</code>, <code>cpuSupport</code>, <code>requiresCRD</code>, <code>gateway</code></td>
+        <td>just <code>engines []<strong>EngineCapability</strong></code>; every other capability lives inside each engine</td>
+      </tr>
+      <tr>
+        <td>Provider configs (kaito, dynamo, kuberay, llmd)</td>
+        <td>one shared shape per provider</td>
+        <td>list of engines, each with its own GPU/CPU/serving-mode/gateway capabilities</td>
+      </tr>
+      <tr>
+        <td>Gateway resolver</td>
+        <td><code>GetGatewayCapabilities(providerName)</code></td>
+        <td><code>GetGatewayCapabilities(providerName, <strong>engine</strong>)</code></td>
+      </tr>
+      <tr>
+        <td>Reconciler</td>
+        <td><code>selectEngine</code> read flat fields, then mutated <code>md.Spec.Engine.Type</code></td>
+        <td>thread resolved <code>servingMode</code>, no spec mutation, defer <code>EngineSelected=True</code> until validation passes</td>
+      </tr>
+      <tr>
+        <td>Webhook</td>
+        <td>cached client only; flat capability lookup</td>
+        <td>cached + APIReader fallback, RBAC errors deny admission, per-engine capability checks</td>
+      </tr>
+      <tr>
+        <td>Legacy CRs</td>
+        <td>n/a</td>
+        <td>new <code>migration.go</code> rewrites flat-shape CRs to the new shape at controller startup</td>
+      </tr>
+      <tr>
+        <td>Gateway opt-in</td>
+        <td>any provider with an <code>inferencePoolNamePattern</code> was treated as provider-managed</td>
+        <td>requires explicit <code>managesInferencePool: true</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <strong>Breaking API change</strong> &nbsp; The two commits tagged <code>feat(api)!</code> change the
+    <code>InferenceProviderConfig</code> CRD schema. The PR ships an automatic migration so existing
+    clusters self-heal, but anything that builds the CR <em>off-cluster</em> (e.g. CI scripts,
+    Helm chart fixtures) must be regenerated.
+  </div>
+</section>
+
+<section id="modulemap">
+  <h2>Module map: what touches what</h2>
+  <p>Toggle to see the architecture before vs after. Boxes that shifted are highlighted.</p>
+
+  <div class="map-toggle">
+    <span style="color:var(--muted)">View:</span>
+    <button id="mapBefore">Before</button>
+    <button id="mapAfter" class="active">After</button>
+    <button id="mapDiff">Diff (highlights)</button>
+  </div>
+
+  <div class="map-wrap">
+    <svg id="modulemap" viewBox="0 0 1000 560" class="flow-canvas">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#8b949e" />
+        </marker>
+        <marker id="arrow-add" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#3fb950" />
+        </marker>
+      </defs>
+
+      <text x="20" y="30" fill="#8b949e" font-size="11">USER</text>
+      <text x="20" y="130" fill="#8b949e" font-size="11">CRDs</text>
+      <text x="20" y="260" fill="#8b949e" font-size="11">CONTROL PLANE</text>
+      <text x="20" y="410" fill="#8b949e" font-size="11">PROVIDERS</text>
+
+      <rect x="430" y="10" width="180" height="40" rx="6" fill="#1f2937" stroke="#30363d"/>
+      <text x="520" y="35" text-anchor="middle" fill="#e6edf3" font-size="13">kubectl apply ModelDeployment</text>
+
+      <g id="g-crd-md">
+        <rect x="60" y="100" width="220" height="80" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="170" y="125" text-anchor="middle" fill="#79c0ff" font-size="13" font-weight="600">ModelDeployment</text>
+        <text x="170" y="145" text-anchor="middle" fill="#8b949e" font-size="11">spec.model / engine / serving</text>
+        <text x="170" y="162" text-anchor="middle" fill="#8b949e" font-size="11">+ optional .gateway</text>
+      </g>
+
+      <g id="g-crd-ipc">
+        <rect x="380" y="100" width="280" height="80" rx="6" fill="#161b22" stroke="#30363d" id="ipc-box"/>
+        <text x="520" y="125" text-anchor="middle" fill="#79c0ff" font-size="13" font-weight="600">InferenceProviderConfig</text>
+        <text x="520" y="145" text-anchor="middle" fill="#8b949e" font-size="11" id="ipc-sub">spec.capabilities.engines [EngineCapability]</text>
+        <text x="520" y="162" text-anchor="middle" fill="#8b949e" font-size="11" id="ipc-sub2">per-engine: serving / GPU / CPU / gateway</text>
+      </g>
+
+      <g id="g-crd-legacy" opacity="0.5">
+        <rect x="720" y="100" width="240" height="80" rx="6" fill="#1c1218" stroke="#f8514966" stroke-dasharray="4 3"/>
+        <text x="840" y="125" text-anchor="middle" fill="#ffc1ba" font-size="13" font-weight="600">Legacy flat CRs (in cluster)</text>
+        <text x="840" y="145" text-anchor="middle" fill="#8b949e" font-size="11">capabilities.servingModes / gateway</text>
+        <text x="840" y="162" text-anchor="middle" fill="#8b949e" font-size="11">migrated on startup</text>
+      </g>
+
+      <g id="g-webhook">
+        <rect x="60" y="240" width="220" height="80" rx="6" fill="#161b22" stroke="#d2992288" id="wh-box"/>
+        <text x="170" y="265" text-anchor="middle" fill="#e6edf3" font-size="13" font-weight="600">Validating webhook</text>
+        <text x="170" y="285" text-anchor="middle" fill="#8b949e" font-size="11">per-engine GPU/CPU checks</text>
+        <text x="170" y="302" text-anchor="middle" fill="#8b949e" font-size="11">cached + APIReader fallback</text>
+      </g>
+
+      <g id="g-reconciler">
+        <rect x="320" y="240" width="240" height="120" rx="6" fill="#161b22" stroke="#58a6ff88" id="rec-box"/>
+        <text x="440" y="265" text-anchor="middle" fill="#e6edf3" font-size="13" font-weight="600">ModelDeployment reconciler</text>
+        <text x="440" y="285" text-anchor="middle" fill="#8b949e" font-size="11">selectEngine(ctx, md, configs, mode)</text>
+        <text x="440" y="302" text-anchor="middle" fill="#8b949e" font-size="11">no longer mutates md.Spec</text>
+        <text x="440" y="319" text-anchor="middle" fill="#8b949e" font-size="11">defers EngineSelected condition</text>
+        <text x="440" y="336" text-anchor="middle" fill="#8b949e" font-size="11">delegates to validation package</text>
+      </g>
+
+      <g id="g-gateway">
+        <rect x="600" y="240" width="200" height="80" rx="6" fill="#161b22" stroke="#58a6ff88" id="gw-box"/>
+        <text x="700" y="265" text-anchor="middle" fill="#e6edf3" font-size="13" font-weight="600">Gateway reconciler</text>
+        <text x="700" y="285" text-anchor="middle" fill="#8b949e" font-size="11">resolver(provider, <tspan fill="#3fb950">engine</tspan>)</text>
+        <text x="700" y="302" text-anchor="middle" fill="#8b949e" font-size="11">managesInferencePool gate</text>
+      </g>
+
+      <g id="g-migration">
+        <rect x="820" y="240" width="160" height="80" rx="6" fill="#0f2418" stroke="#3fb950" id="mig-box"/>
+        <text x="900" y="265" text-anchor="middle" fill="#aff5b4" font-size="13" font-weight="600">migration.go</text>
+        <text x="900" y="285" text-anchor="middle" fill="#8b949e" font-size="11">NEW: hoists legacy</text>
+        <text x="900" y="302" text-anchor="middle" fill="#8b949e" font-size="11">flat fields into engines</text>
+      </g>
+
+      <g id="g-validation">
+        <rect x="320" y="380" width="240" height="60" rx="6" fill="#0f2418" stroke="#3fb950"/>
+        <text x="440" y="405" text-anchor="middle" fill="#aff5b4" font-size="13" font-weight="600">internal/validation</text>
+        <text x="440" y="425" text-anchor="middle" fill="#8b949e" font-size="11">NEW: CheckProviderCompatibility</text>
+      </g>
+
+      <g id="g-providers">
+        <rect x="60" y="450" width="160" height="60" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="140" y="475" text-anchor="middle" fill="#e6edf3" font-size="13">kaito</text>
+        <text x="140" y="495" text-anchor="middle" fill="#8b949e" font-size="11">vllm + llamacpp</text>
+
+        <rect x="240" y="450" width="160" height="60" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="320" y="475" text-anchor="middle" fill="#e6edf3" font-size="13">dynamo</text>
+        <text x="320" y="495" text-anchor="middle" fill="#8b949e" font-size="11">vllm + sglang + trtllm</text>
+
+        <rect x="420" y="450" width="160" height="60" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="500" y="475" text-anchor="middle" fill="#e6edf3" font-size="13">kuberay</text>
+        <text x="500" y="495" text-anchor="middle" fill="#8b949e" font-size="11">vllm</text>
+
+        <rect x="600" y="450" width="160" height="60" rx="6" fill="#161b22" stroke="#30363d"/>
+        <text x="680" y="475" text-anchor="middle" fill="#e6edf3" font-size="13">llmd</text>
+        <text x="680" y="495" text-anchor="middle" fill="#8b949e" font-size="11">vllm (requiresCRD)</text>
+      </g>
+
+      <path d="M 520 50 C 520 70, 170 70, 170 100" stroke="#8b949e" fill="none" marker-end="url(#arrow)"/>
+      <path d="M 170 180 C 170 210, 170 210, 170 240" stroke="#8b949e" fill="none" marker-end="url(#arrow)"/>
+      <path d="M 280 280 L 320 280" stroke="#8b949e" fill="none" marker-end="url(#arrow)"/>
+      <path d="M 520 180 C 520 210, 700 210, 700 240" stroke="#8b949e" fill="none" marker-end="url(#arrow)"/>
+      <path d="M 520 180 C 520 210, 440 210, 440 240" stroke="#8b949e" fill="none" marker-end="url(#arrow)"/>
+      <path d="M 840 180 C 840 210, 900 210, 900 240" stroke="#3fb950" fill="none" marker-end="url(#arrow-add)" stroke-dasharray="4 3"/>
+      <path d="M 900 240 C 900 200, 660 200, 660 180" stroke="#3fb950" fill="none" marker-end="url(#arrow-add)" stroke-dasharray="4 3"/>
+      <path d="M 440 360 L 440 380" stroke="#3fb950" fill="none" marker-end="url(#arrow-add)"/>
+      <path d="M 200 320 C 200 360, 140 410, 140 450" stroke="#8b949e" fill="none" marker-end="url(#arrow)"/>
+      <path d="M 700 320 C 700 360, 680 410, 680 450" stroke="#8b949e" fill="none" marker-end="url(#arrow)"/>
+      <path d="M 440 360 C 440 380, 320 410, 320 450" stroke="#8b949e" fill="none" marker-end="url(#arrow)"/>
+    </svg>
+  </div>
+
+  <div class="legend">
+    <div class="item"><span class="dot" style="background: var(--ok)"></span>new in this PR</div>
+    <div class="item"><span class="dot" style="background: var(--info)"></span>signature changed</div>
+    <div class="item"><span class="dot" style="background: var(--med)"></span>behaviour changed</div>
+    <div class="item"><span class="dot" style="background: #30363d; border:1px solid #555"></span>unchanged</div>
+  </div>
+</section>
+
+<section id="schema">
+  <h2>The CRD schema change in YAML</h2>
+  <p>The same KAITO provider rendered both ways. Highlighted lines moved location.</p>
+
+  <div class="compare">
+    <div class="yaml-box before">
+      <div class="hdr">BEFORE — flat capabilities (one shape for all engines)</div>
+<pre><span class="y-key">spec:</span>
+  <span class="y-key">capabilities:</span>
+    <span class="y-old"><span class="y-key">engines:</span> [vllm, llamacpp]</span>
+    <span class="y-old"><span class="y-key">servingModes:</span> [aggregated]</span>
+    <span class="y-old"><span class="y-key">gpuSupport:</span> <span class="y-bool">true</span></span>
+    <span class="y-old"><span class="y-key">cpuSupport:</span> <span class="y-bool">true</span>     <span class="y-com"># &lt;- but only true for llamacpp!</span></span>
+    <span class="y-old"><span class="y-key">gateway:</span>
+      <span class="y-key">inferencePoolNamePattern:</span> <span class="y-str">"{name}-pool"</span></span>
+</pre>
+    </div>
+    <div class="yaml-box after">
+      <div class="hdr">AFTER — per-engine capabilities</div>
+<pre><span class="y-key">spec:</span>
+  <span class="y-key">capabilities:</span>
+    <span class="y-key">engines:</span>
+      <span class="y-new">- <span class="y-key">name:</span> <span class="y-str">vllm</span>
+        <span class="y-key">servingModes:</span> [aggregated]
+        <span class="y-key">gpuSupport:</span> <span class="y-bool">true</span></span>
+      <span class="y-new">- <span class="y-key">name:</span> <span class="y-str">llamacpp</span>
+        <span class="y-key">servingModes:</span> [aggregated]
+        <span class="y-key">gpuSupport:</span> <span class="y-bool">true</span>
+        <span class="y-key">cpuSupport:</span> <span class="y-bool">true</span>
+        <span class="y-key">gateway:</span>
+          <span class="y-key">ignoresServedName:</span> <span class="y-bool">true</span>  <span class="y-com"># engine-specific!</span></span>
+</pre>
+    </div>
+  </div>
+
+  <h3>New gateway sub-fields</h3>
+  <table class="data">
+    <thead><tr><th>Field</th><th>Where</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>managesInferencePool</code></td>
+        <td><code>EngineCapability.Gateway</code></td>
+        <td><strong>New explicit opt-in</strong>: only when <code>true</code> does the controller defer InferencePool creation to the provider's operator. Closes a footgun where any non-nil <code>gateway</code> implied provider-managed.</td>
+      </tr>
+      <tr>
+        <td><code>ignoresServedName</code></td>
+        <td><code>EngineCapability.Gateway</code></td>
+        <td>Replaces a hardcoded <code>kaito+llamacpp</code> branch in the gateway code with a declarative capability.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="diffs">
+  <h2>Annotated diffs — the four hunks that matter</h2>
+  <div class="legend">
+    <div class="item"><span class="pill crit">CRIT</span> behaviour change worth attention</div>
+    <div class="item"><span class="pill med">MED</span> subtle but safe</div>
+    <div class="item"><span class="pill low">INFO</span> mechanical refactor</div>
+    <div class="item"><span class="pill ok">OK</span> safety improvement</div>
+  </div>
+
+  <div class="diff">
+    <div class="file-header">
+      <span>controller/api/v1alpha1/inferenceproviderconfig_types.go</span>
+      <span>+138 -34</span>
+    </div>
+    <table>
+      <tr class="hunk"><td class="ln">@@</td><td class="code">@@ ProviderCapabilities + new EngineCapability @@</td><td class="annot"></td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">type ProviderCapabilities struct {</td><td class="annot info">Old shape: one struct for the whole provider.</td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">    Engines      []EngineType</td><td class="annot"></td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">    ServingModes []ServingMode</td><td class="annot crit">Flat: applies to <em>every</em> engine - the core bug being fixed.</td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">    CPUSupport   bool</td><td class="annot"></td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">    GPUSupport   bool</td><td class="annot"></td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">    RequiresCRD  *bool</td><td class="annot"></td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">    Gateway      *GatewayCapabilities</td><td class="annot"></td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">}</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">type EngineCapability struct {</td><td class="annot ok">New: one per supported engine.</td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">    Name         EngineType</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">    ServingModes []ServingMode</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">    GPUSupport   bool</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">    CPUSupport   bool</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">    RequiresCRD  *bool</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">    Gateway      *GatewayCapabilities</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">}</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">type ProviderCapabilities struct {</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">    // +listType=map  +listMapKey=name</td><td class="annot info">Server-side merge key so kubectl apply patches engines by <code>name</code>, not by index.</td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">    Engines []EngineCapability</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">}</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">// GatewayCapabilities ...</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">    ManagesInferencePool bool</td><td class="annot med">Explicit opt-in. Before, any non-nil <code>gateway</code> implied "provider creates the pool" - a footgun.</td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">    IgnoresServedName    bool</td><td class="annot ok">Replaces a hardcoded kaito+llamacpp branch with a declarative flag.</td></tr>
+    </table>
+  </div>
+
+  <div class="diff">
+    <div class="file-header">
+      <span>providers/kaito/config.go</span>
+      <span>+25 -10</span>
+    </div>
+    <table>
+      <tr class="hunk"><td class="ln">@@</td><td class="code">@@ KAITO provider config registration @@</td><td class="annot"></td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">Engines:      [vllm, llamacpp]</td><td class="annot crit">Before: <code>cpuSupport: true</code> was a lie for vllm.</td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">ServingModes: [aggregated]</td><td class="annot"></td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">CPUSupport:   true</td><td class="annot"></td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">GPUSupport:   true</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">Engines: []EngineCapability{</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">  {Name: vllm,    ServingModes: [aggregated], GPUSupport: true},</td><td class="annot ok">vLLM no longer claims to run on CPU.</td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">  {Name: llamacpp, ServingModes: [aggregated], GPUSupport: true, CPUSupport: true,</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">   Gateway: &amp;GatewayCapabilities{IgnoresServedName: true}},</td><td class="annot ok">Quirk now declared on the engine, not hardcoded in the gateway reconciler.</td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">}</td><td class="annot"></td></tr>
+    </table>
+  </div>
+
+  <div class="diff">
+    <div class="file-header">
+      <span>controller/internal/gateway/provider_capabilities.go</span>
+      <span>+11 -8</span>
+    </div>
+    <table>
+      <tr class="hunk"><td class="ln">@@</td><td class="code">@@ resolver signature gained `engine` arg @@</td><td class="annot"></td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">GetGatewayCapabilities(ctx, providerName)</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">GetGatewayCapabilities(ctx, providerName, engine EngineType)</td><td class="annot med">Every caller must now pass the resolved engine type.</td></tr>
+      <tr class="ctx"><td class="ln">&nbsp;</td><td class="code">  ...</td><td class="annot"></td></tr>
+      <tr class="del"><td class="ln">-</td><td class="code">return ipc.Spec.Capabilities.Gateway</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">engineCap := ipc.Spec.Capabilities.GetEngineCapability(engine)</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">if engineCap == nil { return nil }</td><td class="annot ok">Nil-safe; covered by new resolver tests.</td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">return engineCap.Gateway</td><td class="annot"></td></tr>
+    </table>
+  </div>
+
+  <div class="diff">
+    <div class="file-header">
+      <span>controller/internal/controller/migration.go &nbsp;<span class="pill ok">NEW</span></span>
+      <span>+467 / +1202 tests</span>
+    </div>
+    <table>
+      <tr class="hunk"><td class="ln">@@</td><td class="code">@@ MigrateLegacyProviderConfigs(ctx, cfg) @@</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">var legacyFlatKeys = []string{</td><td class="annot crit">Forward-compat hazard: any new top-level field in <code>ProviderCapabilities</code> whose JSON tag collides with one of these names will be silently stripped at startup. Doc comment warns explicitly.</td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">  "servingModes","gpuSupport","cpuSupport","requiresCRD","gateway"}</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">// idempotent - already-new objects skip</td><td class="annot"></td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">retry.RetryOnConflict(...){ Get, apply, Update }</td><td class="annot ok">HA-safe: re-Gets inside the retry to handle leader-races.</td></tr>
+      <tr class="add"><td class="ln">+</td><td class="code">errMigrationPartial // swallowed at Start</td><td class="annot med">Per-object failures are non-fatal - next leader election retries. List/setup failures still hard-fail.</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="migration">
+  <h2>Migration flow at controller startup</h2>
+  <p>This runs once the manager wins leader election and <em>before</em> Reconcile is allowed to fire.</p>
+
+  <svg viewBox="0 0 1000 460" class="flow-canvas">
+    <defs>
+      <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#58a6ff"/>
+      </marker>
+    </defs>
+
+    <ellipse cx="120" cy="60" rx="80" ry="28" fill="#1f2937" stroke="#58a6ff"/>
+    <text x="120" y="65" text-anchor="middle" fill="#e6edf3" font-size="13">Controller starts</text>
+
+    <rect x="300" y="35" width="220" height="50" rx="6" fill="#161b22" stroke="#30363d"/>
+    <text x="410" y="55" text-anchor="middle" fill="#e6edf3" font-size="13">List InferenceProviderConfig</text>
+    <text x="410" y="74" text-anchor="middle" fill="#8b949e" font-size="11">unstructured client</text>
+
+    <polygon points="700,60 800,30 900,60 800,90" fill="#161b22" stroke="#d29922"/>
+    <text x="800" y="58" text-anchor="middle" fill="#e6edf3" font-size="13">List error?</text>
+    <text x="800" y="74" text-anchor="middle" fill="#8b949e" font-size="11">(setup / RBAC)</text>
+
+    <rect x="720" y="130" width="160" height="50" rx="6" fill="#3a0e10" stroke="#f85149"/>
+    <text x="800" y="150" text-anchor="middle" fill="#ffdcd7" font-size="13">Hard fail</text>
+    <text x="800" y="168" text-anchor="middle" fill="#8b949e" font-size="11">manager exits</text>
+
+    <rect x="60" y="180" width="220" height="50" rx="6" fill="#161b22" stroke="#30363d"/>
+    <text x="170" y="200" text-anchor="middle" fill="#e6edf3" font-size="13">For each IPC</text>
+    <text x="170" y="218" text-anchor="middle" fill="#8b949e" font-size="11">retry.RetryOnConflict</text>
+
+    <polygon points="350,205 460,175 570,205 460,235" fill="#161b22" stroke="#d29922"/>
+    <text x="460" y="200" text-anchor="middle" fill="#e6edf3" font-size="13">Already new shape?</text>
+    <text x="460" y="218" text-anchor="middle" fill="#8b949e" font-size="11">engines: [{name, ...}]</text>
+
+    <rect x="640" y="180" width="160" height="50" rx="6" fill="#0f2418" stroke="#3fb950"/>
+    <text x="720" y="200" text-anchor="middle" fill="#aff5b4" font-size="13">Skip (idempotent)</text>
+    <text x="720" y="218" text-anchor="middle" fill="#8b949e" font-size="11">noop</text>
+
+    <rect x="60" y="290" width="280" height="80" rx="6" fill="#161b22" stroke="#58a6ff"/>
+    <text x="200" y="313" text-anchor="middle" fill="#e6edf3" font-size="13">Hoist flat fields -&gt; each engine</text>
+    <text x="200" y="332" text-anchor="middle" fill="#8b949e" font-size="11">servingModes, gpuSupport, cpuSupport,</text>
+    <text x="200" y="349" text-anchor="middle" fill="#8b949e" font-size="11">requiresCRD, gateway</text>
+
+    <rect x="400" y="290" width="240" height="80" rx="6" fill="#161b22" stroke="#58a6ff"/>
+    <text x="520" y="313" text-anchor="middle" fill="#e6edf3" font-size="13">Strip legacyFlatKeys</text>
+    <text x="520" y="332" text-anchor="middle" fill="#8b949e" font-size="11">delete top-level keys</text>
+    <text x="520" y="349" text-anchor="middle" fill="#8b949e" font-size="11">whether engines existed or not</text>
+
+    <rect x="700" y="290" width="240" height="80" rx="6" fill="#161b22" stroke="#58a6ff"/>
+    <text x="820" y="313" text-anchor="middle" fill="#e6edf3" font-size="13">Update via unstructured</text>
+    <text x="820" y="332" text-anchor="middle" fill="#8b949e" font-size="11">re-Get on conflict</text>
+    <text x="820" y="349" text-anchor="middle" fill="#8b949e" font-size="11">partial failures -&gt; next leader</text>
+
+    <ellipse cx="500" cy="420" rx="100" ry="28" fill="#0f2418" stroke="#3fb950"/>
+    <text x="500" y="425" text-anchor="middle" fill="#aff5b4" font-size="13">Reconcile is allowed to run</text>
+
+    <path d="M 200 60 L 300 60" stroke="#58a6ff" fill="none" marker-end="url(#a2)"/>
+    <path d="M 520 60 L 700 60" stroke="#58a6ff" fill="none" marker-end="url(#a2)"/>
+    <path d="M 800 90 L 800 130" stroke="#f85149" fill="none" marker-end="url(#a2)"/>
+    <text x="810" y="115" fill="#f85149" font-size="11">yes</text>
+    <path d="M 800 90 C 800 150, 280 150, 170 180" stroke="#58a6ff" fill="none" marker-end="url(#a2)"/>
+    <text x="540" y="155" fill="#8b949e" font-size="11">no</text>
+    <path d="M 280 205 L 350 205" stroke="#58a6ff" fill="none" marker-end="url(#a2)"/>
+    <path d="M 570 205 L 640 205" stroke="#3fb950" fill="none" marker-end="url(#a2)"/>
+    <text x="595" y="195" fill="#3fb950" font-size="11">yes</text>
+    <path d="M 460 235 L 200 290" stroke="#58a6ff" fill="none" marker-end="url(#a2)"/>
+    <text x="320" y="265" fill="#d29922" font-size="11">no - migrate</text>
+    <path d="M 340 330 L 400 330" stroke="#58a6ff" fill="none" marker-end="url(#a2)"/>
+    <path d="M 640 330 L 700 330" stroke="#58a6ff" fill="none" marker-end="url(#a2)"/>
+    <path d="M 820 370 C 820 400, 600 410, 500 392" stroke="#3fb950" fill="none" marker-end="url(#a2)"/>
+    <path d="M 720 230 C 720 380, 600 400, 500 392" stroke="#3fb950" fill="none" marker-end="url(#a2)"/>
+  </svg>
+
+  <div class="callout warn">
+    <strong>Why the migration is non-trivial.</strong> If you just deserialize a legacy CR into the new Go struct,
+    the flat fields silently drop because they have no place to land. The unstructured-client approach
+    keeps a copy of the raw JSON, hoists fields into each engine, then re-issues an Update - surviving
+    HA controller races via <code>retry.RetryOnConflict</code> with a fresh Get.
+  </div>
+</section>
+
+<section id="commits">
+  <h2>Commit shape</h2>
+  <p>60 commits, but the &ldquo;types&rdquo; tell the story.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+    <div>
+      <h3>By conventional-commit type</h3>
+      <svg viewBox="0 0 400 240" style="width: 100%; background: var(--panel); border-radius: 8px; padding: 12px;">
+        <g font-family="ui-monospace" font-size="12" fill="#c9d1d9">
+          <text x="10"  y="30">fix(controller)</text> <rect x="140" y="18" width="190" height="14" fill="#f85149"/> <text x="335" y="30">19</text>
+          <text x="10"  y="56">fix(webhook)</text>    <rect x="140" y="44" width="70"  height="14" fill="#f85149aa"/><text x="215" y="56">7</text>
+          <text x="10"  y="82">refactor</text>         <rect x="140" y="70" width="90"  height="14" fill="#58a6ff"/><text x="235" y="82">9</text>
+          <text x="10"  y="108">docs</text>            <rect x="140" y="96" width="80"  height="14" fill="#8b949e"/><text x="225" y="108">8</text>
+          <text x="10"  y="134">test</text>            <rect x="140" y="122" width="30" height="14" fill="#3fb950"/><text x="175" y="134">3</text>
+          <text x="10"  y="160">feat / feat!</text>    <rect x="140" y="148" width="40" height="14" fill="#d29922"/><text x="185" y="160">4</text>
+          <text x="10"  y="186">perf</text>            <rect x="140" y="174" width="20" height="14" fill="#a371f7"/><text x="165" y="186">2</text>
+          <text x="10"  y="212">chore / ci</text>      <rect x="140" y="200" width="30" height="14" fill="#6e7681"/><text x="175" y="212">3</text>
+        </g>
+      </svg>
+      <p style="color: var(--muted); font-size: 12px;">
+        Heavy <strong>fix</strong> tail is normal here - most fixes are bugs spotted during review
+        on this same branch, not bugs that escaped to main.
+      </p>
+    </div>
+
+    <div>
+      <h3>Highest-impact commits</h3>
+      <table class="data">
+        <thead><tr><th>Short SHA</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">370553d</td><td><span class="pill med">feat(api)!</span> moves <code>RequiresCRD</code> + <code>Gateway</code> onto <code>EngineCapability</code> - the breaking change</td></tr>
+          <tr><td class="mono">e56b634</td><td><span class="pill med">fix(providers)</span> propagates that schema move into every provider</td></tr>
+          <tr><td class="mono">a80a909</td><td><span class="pill ok">fix</span> migration tolerates transient apiserver errors</td></tr>
+          <tr><td class="mono">b88058b</td><td><span class="pill ok">fix</span> migration is HA-safe (leader race handled)</td></tr>
+          <tr><td class="mono">9ee1001</td><td><span class="pill ok">refactor</span> replaces hardcoded kaito+llamacpp branch with capability flag</td></tr>
+          <tr><td class="mono">5930962</td><td><span class="pill ok">fix(gateway)</span> requires explicit <code>managesInferencePool</code></td></tr>
+          <tr><td class="mono">7d538b5</td><td><span class="pill ok">fix(webhook)</span> denies admission on RBAC errors (fail-closed)</td></tr>
+          <tr><td class="mono">c2c6178</td><td><span class="pill ok">perf(webhook)</span> cached client + APIReader fallback</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="findings">
+  <h2>Findings &amp; risks</h2>
+  <p>Self-rated severity. Click a row to expand.</p>
+
+  <details open>
+    <summary><span class="pill crit">CRIT</span> <code>legacyFlatKeys</code> is a forward-compat tripwire</summary>
+    <p>
+      The migration unconditionally deletes top-level keys named
+      <code>servingModes / gpuSupport / cpuSupport / requiresCRD / gateway</code> from
+      <code>spec.capabilities</code>. If a future change reintroduces a top-level field whose JSON
+      tag overlaps, that field will be silently stripped on every controller restart.
+    </p>
+    <p><strong>Mitigation already in PR:</strong> a doc comment on
+      <code>ProviderCapabilities</code> and on <code>legacyFlatKeys</code> warns explicitly.
+      Worth pairing with a unit test that fails if the names ever collide.
+    </p>
+  </details>
+
+  <details>
+    <summary><span class="pill med">MED</span> Breaking CRD change for off-cluster consumers</summary>
+    <p>
+      Anything that constructs <code>InferenceProviderConfig</code> outside the cluster (Helm chart
+      values, CI fixtures, Headlamp plugin tests, third-party providers vendoring the API package)
+      must regenerate. The in-cluster migration only covers stored objects, not source.
+    </p>
+  </details>
+
+  <details>
+    <summary><span class="pill med">MED</span> Webhook now fails closed on RBAC errors</summary>
+    <p>
+      Previously, a webhook RBAC failure when reading <code>InferenceProviderConfig</code> would
+      surface as a warning. After <code>7d538b5</code> it denies admission. This is correct
+      (safer default) but is observable: a misconfigured RBAC on upgrade will look like
+      "ModelDeployments suddenly stop accepting" rather than "validation produced a warning".
+    </p>
+  </details>
+
+  <details>
+    <summary><span class="pill ok">OK</span> Reconciler no longer mutates <code>md.Spec.Engine.Type</code></summary>
+    <p>
+      Commit <code>155034f</code> stops the reconciler from writing back the auto-selected engine
+      onto user-owned spec. The resolved engine is threaded through reconcile as a local instead.
+      This brings the reconciler closer to the kubebuilder "spec is user-owned, status is mine" contract.
+    </p>
+  </details>
+
+  <details>
+    <summary><span class="pill ok">OK</span> <code>EngineSelected=True</code> now deferred until validation passes</summary>
+    <p>
+      Commit <code>f9b570d</code>: previously a ModelDeployment that failed compatibility checks
+      could still flip its <code>EngineSelected</code> condition to <code>True</code>, misleading
+      observers. Now it stays unset until the full chain is happy.
+    </p>
+  </details>
+
+  <details>
+    <summary><span class="pill low">INFO</span> Net <em>-551</em> lines hides ~+4 000 lines of test code</summary>
+    <p>
+      Of the <code>+4 989</code>, most are tests: <code>migration_test.go</code> alone is +1 202,
+      plus webhook/cached-reader/storage-volume/e2e tests. The actual product-code delta is closer
+      to <strong>+1 200 / -500</strong>.
+    </p>
+  </details>
+</section>
+
+</main>
+
+<script>
+  const tabs = document.querySelectorAll('nav button');
+  const sections = document.querySelectorAll('main > section');
+  tabs.forEach(b => b.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById(b.dataset.tab).classList.add('active');
+  }));
+
+  const ipcSub  = document.getElementById('ipc-sub');
+  const ipcSub2 = document.getElementById('ipc-sub2');
+  const ipcBox  = document.getElementById('ipc-box');
+  const migBox  = document.getElementById('mig-box');
+  const recBox  = document.getElementById('rec-box');
+  const gwBox   = document.getElementById('gw-box');
+  const whBox   = document.getElementById('wh-box');
+  const btnB = document.getElementById('mapBefore');
+  const btnA = document.getElementById('mapAfter');
+  const btnD = document.getElementById('mapDiff');
+  function setMap(mode) {
+    [btnB, btnA, btnD].forEach(x => x.classList.remove('active'));
+    if (mode === 'before') {
+      btnB.classList.add('active');
+      ipcSub.textContent  = 'spec.capabilities (flat)';
+      ipcSub2.textContent = 'engines + servingModes + gpu/cpu + gateway';
+      ipcBox.setAttribute('stroke', '#30363d');
+      migBox.style.opacity = '0.15';
+    } else if (mode === 'after') {
+      btnA.classList.add('active');
+      ipcSub.textContent  = 'spec.capabilities.engines [EngineCapability]';
+      ipcSub2.textContent = 'per-engine: serving / GPU / CPU / gateway';
+      ipcBox.setAttribute('stroke', '#3fb950');
+      migBox.style.opacity = '1';
+    } else {
+      btnD.classList.add('active');
+      ipcSub.textContent  = 'CHANGED -> per-engine list';
+      ipcSub2.textContent = 'managesInferencePool / ignoresServedName added';
+      ipcBox.setAttribute('stroke', '#d29922');
+      [recBox, gwBox, whBox].forEach(b => b.setAttribute('stroke', '#d29922'));
+      migBox.style.opacity = '1';
+      migBox.setAttribute('stroke', '#3fb950');
+    }
+  }
+  btnB.addEventListener('click', () => setMap('before'));
+  btnA.addEventListener('click', () => setMap('after'));
+  btnD.addEventListener('click', () => setMap('diff'));
+</script>
+
+</body>
+</html>
