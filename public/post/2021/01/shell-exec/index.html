@@ -301,8 +301,8 @@ Make sure that the script is run via <code>ENTRYPOINT</code> the way it is done 
 <p><img alt="Docker commands" loading="lazy" src="/post/2021/01/shell-exec/4-docker-commands.png" title="Docker commands"></p>
 <p>Here is a video that shows how the above commands works:</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/IygRbOeJPGQ?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
-    </div>
+			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/IygRbOeJPGQ?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+		</div>
 
 <h2 id="an-application-spawned-directly">An application spawned directly.<a hidden class="anchor" aria-hidden="true" href="#an-application-spawned-directly">#</a></h2>
 <p>Here is a golang application that handles signals. This golang app can be run directly via <code>ENTRYPOINT</code>.</p>
@@ -315,8 +315,8 @@ Make sure that the script is run via <code>ENTRYPOINT</code> the way it is done 
 </span></span></span></code></pre></div><p>This golang code is also listening on the same signals: <code>SIGHUP</code>, <code>SIGTERM</code>, <code>SIGINT</code>. The code has a main goroutine which spawns another goroutine. The background goroutine is listening to the aforementioned signals. While the main goroutine is waiting (<code>←done</code>) for the background goroutine to receive signal and finally exit. In the <code>Dockerfile</code>, we have simply copied the binary directly and spawn it using <code>ENTRYPOINT</code>, this ensures that the application receives the signals directly. <code>ENTRYPOINT</code> is actually starting the given process using <code>exec</code>.</p>
 <p>Watch the video below, which shows how the signals are passed to the application:</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/z60M7FwYFJM?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
-    </div>
+			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/z60M7FwYFJM?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+		</div>
 
 <h2 id="when-should-you-use-exec">When should you use <code>exec</code>?<a hidden class="anchor" aria-hidden="true" href="#when-should-you-use-exec">#</a></h2>
 <p>Now consider that you have an application which listens to those signals, but for some reason, you need to spawn that application via a shell script. This is when you use <code>exec</code>. We are using the same golang application as before but spawning it from a bash script. Notice that this script is invoking that golang binary using <code>exec</code>, this replaces the bash script with golang binary as <code>PID 1</code>.</p>
@@ -337,8 +337,8 @@ Make sure that the script is run via <code>ENTRYPOINT</code> the way it is done 
 <p><img alt="Console output" loading="lazy" src="/post/2021/01/shell-exec/9-console-output.png" title="Console output"></p>
 <p>Here is the video that shows these signals passing in action:</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/r8QWTeFm4QY?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
-    </div>
+			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/r8QWTeFm4QY?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+		</div>
 
 <h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
 <p>I hope this gives you some clearer picture on how to use <code>exec</code> sanely and make sure that the applications are spawned correctly to get the signals sent by their environment be it systemd, docker or Kubernetes.</p>

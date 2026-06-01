@@ -388,35 +388,35 @@
 </span></span></code></pre></div><p>Meanwhile the method with value receiver worked for both type of objects <strong>pointer</strong> type object <code>pval</code> and <strong>value</strong> type object <code>uval</code>.</p>
 <p>So here is a table which charts this behavior:</p>
 <table>
-  <thead>
-      <tr>
-          <th>scenario</th>
-          <th>object value</th>
-          <th>object pointer</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>pointer method</td>
-          <td>yes</td>
-          <td>yes</td>
-      </tr>
-      <tr>
-          <td>value method</td>
-          <td>yes</td>
-          <td>yes</td>
-      </tr>
-      <tr>
-          <td>interface pointer method</td>
-          <td>no</td>
-          <td>yes</td>
-      </tr>
-      <tr>
-          <td>interface value method</td>
-          <td>yes</td>
-          <td>yes</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>scenario</th>
+					<th>object value</th>
+					<th>object pointer</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>pointer method</td>
+					<td>yes</td>
+					<td>yes</td>
+			</tr>
+			<tr>
+					<td>value method</td>
+					<td>yes</td>
+					<td>yes</td>
+			</tr>
+			<tr>
+					<td>interface pointer method</td>
+					<td>no</td>
+					<td>yes</td>
+			</tr>
+			<tr>
+					<td>interface value method</td>
+					<td>yes</td>
+					<td>yes</td>
+			</tr>
+	</tbody>
 </table>
 <p>More on the case of why code compilation fails or compiler complains about <strong>value</strong> type object <code>uval</code> not implementing the interface <code>Worker</code>.</p>
 <h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>

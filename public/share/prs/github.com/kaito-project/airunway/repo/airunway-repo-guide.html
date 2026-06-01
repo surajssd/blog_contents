@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Runway — Visual Repo Guide</title>
+<style>
+  :root{
+    --bg:#0b1020; --panel:#121a30; --panel2:#0f1730; --ink:#e6ecff; --muted:#9aa9cf;
+    --line:#26314f; --accent:#5b8cff; --accent2:#27d3a2; --warn:#ffb454; --pink:#ff6ec7;
+    --go:#00ADD8; --ts:#3178c6; --k8s:#326ce5; --grad:linear-gradient(135deg,#5b8cff,#27d3a2);
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:radial-gradient(1200px 600px at 80% -10%,#1a2547 0%,transparent 60%),var(--bg);color:var(--ink);line-height:1.55}
+  a{color:var(--accent)}
+  code,pre{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+  /* Header */
+  header.hero{padding:64px 0 40px;border-bottom:1px solid var(--line);
+    background:radial-gradient(800px 400px at 20% 0%,rgba(91,140,255,.18),transparent 70%)}
+  .badge{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);
+    border:1px solid var(--line);border-radius:999px;padding:5px 14px;background:var(--panel);margin-bottom:18px}
+  h1{font-size:46px;margin:0 0 10px;line-height:1.05;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .tagline{font-size:20px;color:var(--muted);max-width:760px;margin:0 0 26px}
+  .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .pill{font-size:13px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 12px;color:var(--ink)}
+  .pill b{color:var(--accent2)}
+
+  /* Nav */
+  nav.toc{position:sticky;top:0;z-index:20;background:rgba(11,16,32,.85);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);padding:12px 0}
+  nav.toc .wrap{display:flex;gap:6px;flex-wrap:wrap}
+  nav.toc a{font-size:13px;color:var(--muted);text-decoration:none;padding:6px 11px;border-radius:7px;border:1px solid transparent}
+  nav.toc a:hover{color:var(--ink);background:var(--panel);border-color:var(--line)}
+
+  section{padding:50px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:30px;margin:0 0 6px;display:flex;align-items:center;gap:12px}
+  h2 .ico{width:34px;height:34px;flex:0 0 34px;border-radius:9px;display:grid;place-items:center;background:var(--grad);color:#04122a;font-weight:800}
+  .lead{color:var(--muted);font-size:16px;margin:0 0 26px;max-width:820px}
+  h3{font-size:19px;margin:28px 0 12px}
+
+  .grid{display:grid;gap:18px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:860px){.g2,.g3,.g4{grid-template-columns:1fr}}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+  .card h4{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:9px}
+  .card p{margin:0;color:var(--muted);font-size:14px}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+  .stat{text-align:center;padding:22px 14px}
+  .stat .num{font-size:34px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .stat .lbl{color:var(--muted);font-size:13px;margin-top:4px}
+
+  /* tags */
+  .tag{display:inline-block;font-size:11px;padding:3px 9px;border-radius:6px;margin:2px 4px 2px 0;font-weight:600}
+  .t-go{background:rgba(0,173,216,.15);color:#56d4f0;border:1px solid rgba(0,173,216,.4)}
+  .t-ts{background:rgba(49,120,198,.15);color:#7eb0ff;border:1px solid rgba(49,120,198,.4)}
+  .t-k8s{background:rgba(50,108,229,.15);color:#8fb0ff;border:1px solid rgba(50,108,229,.4)}
+  .t-opt{background:rgba(154,169,207,.12);color:var(--muted);border:1px solid var(--line)}
+
+  pre{background:#070c1c;border:1px solid var(--line);border-radius:12px;padding:16px;overflow:auto;font-size:13px;margin:14px 0}
+  pre .k{color:var(--pink)} pre .s{color:var(--accent2)} pre .c{color:#5a6a92}
+
+  /* flow diagram */
+  .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+  .layer{flex:1;min-width:170px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px;margin:6px;position:relative}
+  .layer .lh{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700;margin-bottom:10px}
+  .node{background:#0a1228;border:1px solid var(--line);border-radius:9px;padding:9px 11px;font-size:13px;margin:7px 0}
+  .node small{color:var(--muted);display:block;font-size:11px}
+  .arrow{align-self:center;color:var(--accent2);font-size:26px;padding:0 2px}
+  @media(max-width:860px){.arrow{transform:rotate(90deg)}}
+
+  /* pipeline steps */
+  .steps{counter-reset:s;display:grid;gap:14px}
+  .step{display:flex;gap:16px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .step::before{counter-increment:s;content:counter(s);flex:0 0 36px;height:36px;border-radius:50%;background:var(--grad);color:#04122a;font-weight:800;display:grid;place-items:center}
+  .step b{font-size:15px}
+  .step p{margin:3px 0 0;color:var(--muted);font-size:14px}
+
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+  th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line)}
+  th{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+  tr:hover td{background:rgba(91,140,255,.05)}
+
+  /* provider cards */
+  .prov{border-left:4px solid var(--accent)}
+  .prov.d{border-color:#76b900} .prov.k{border-color:#ff6ec7} .prov.r{border-color:#28b5d8} .prov.l{border-color:#ffb454}
+
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 0;font-size:13px;color:var(--muted)}
+  .legend span{display:flex;align-items:center;gap:7px}
+
+  details{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:4px 16px;margin:10px 0}
+  summary{cursor:pointer;padding:12px 0;font-weight:600}
+  details[open] summary{border-bottom:1px solid var(--line);margin-bottom:10px}
+
+  .bar{height:12px;border-radius:6px;background:var(--grad);margin:4px 0}
+  .barwrap{background:#0a1228;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+
+  footer{padding:40px 0 70px;color:var(--muted);text-align:center}
+  .mono-small{font-size:12px;color:var(--muted)}
+  .kbd{font-family:monospace;background:#0a1228;border:1px solid var(--line);border-radius:5px;padding:2px 7px;font-size:12px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">Repository Guide · kaito-project / kubeairunway</span>
+    <h1>AI Runway 🛫</h1>
+    <p class="tagline">Deploy and manage large language models on Kubernetes — <b>no YAML required</b>. A unified <code>ModelDeployment</code> CRD abstracts away many inference providers behind one web UI and one API.</p>
+    <div class="pill-row">
+      <span class="pill"><b>~74.5k</b> lines of Go</span>
+      <span class="pill"><b>~48k</b> lines of TS/TSX</span>
+      <span class="pill"><b>4</b> inference providers</span>
+      <span class="pill"><b>4</b> inference engines</span>
+      <span class="pill">Apache-licensed · v1alpha1 (unstable)</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#what">What it is</a>
+    <a href="#arch">Architecture</a>
+    <a href="#crd">The CRD</a>
+    <a href="#flow">Deploy flow</a>
+    <a href="#providers">Providers</a>
+    <a href="#repo">Repo map</a>
+    <a href="#controller">Controller</a>
+    <a href="#webui">Web UI</a>
+    <a href="#gateway">Gateway</a>
+    <a href="#dev">Dev commands</a>
+  </div>
+</nav>
+
+<!-- WHAT -->
+<section id="what">
+  <div class="wrap">
+    <h2><span class="ico">?</span> What problem does it solve?</h2>
+    <p class="lead">Running an LLM on Kubernetes usually means learning a specific stack — KAITO, NVIDIA Dynamo, KubeRay, llm-d — each with its own CRDs and YAML. AI Runway puts <b>one abstraction</b> on top of all of them: you describe <i>what</i> model you want, and it figures out <i>how</i> and <i>where</i> to run it.</p>
+
+    <div class="grid g3">
+      <div class="card"><h4><span class="dot" style="background:var(--accent)"></span> Unified API</h4><p>A single <code>ModelDeployment</code> CRD works across every provider. Write it once; the controller translates it into provider-specific resources.</p></div>
+      <div class="card"><h4><span class="dot" style="background:var(--accent2)"></span> Auto-selection</h4><p>You can omit the engine and provider. The controller uses <b>CEL rules</b> + capability matching to pick the best fit for your hardware and model.</p></div>
+      <div class="card"><h4><span class="dot" style="background:var(--pink)"></span> Click-to-deploy UI</h4><p>Browse HuggingFace, check GPU fit & cost, deploy — all from a web UI. The UI is fully <b>optional & swappable</b>.</p></div>
+    </div>
+
+    <div class="grid g4" style="margin-top:18px">
+      <div class="card stat"><div class="num">1</div><div class="lbl">CRD to learn</div></div>
+      <div class="card stat"><div class="num">4</div><div class="lbl">Providers (KAITO, Dynamo, KubeRay, llm-d)</div></div>
+      <div class="card stat"><div class="num">4</div><div class="lbl">Engines (vLLM, SGLang, TRT-LLM, llama.cpp)</div></div>
+      <div class="card stat"><div class="num">3</div><div class="lbl">Swappable frontends (React, Headlamp, CLI)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCH -->
+<section id="arch">
+  <div class="wrap">
+    <h2><span class="ico">▣</span> Architecture: fully decoupled layers</h2>
+    <p class="lead">The core value lives in the <b>controller + CRDs</b>. Everything above it talks only over REST/JSON or the Kubernetes API, so any layer can be replaced without touching the others.</p>
+
+    <div class="flow">
+      <div class="layer">
+        <div class="lh">① Frontend · swappable</div>
+        <div class="node">React UI <small>bundled Vite app</small></div>
+        <div class="node">Headlamp plugin <small>dashboard plugin</small></div>
+        <div class="node">Any CLI / portal <small>kubectl, GitOps…</small></div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="layer">
+        <div class="lh">② Backend API · optional</div>
+        <div class="node">Hono REST API <small>Bun runtime · TypeScript</small></div>
+        <div class="node">Auth <small>K8s TokenReview</small></div>
+        <div class="node">Model catalog · costs · logs · Helm installs</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="layer">
+        <div class="lh">③ Core · required</div>
+        <div class="node" style="border-color:var(--accent)">AI Runway Controller <small>Go · Kubebuilder</small></div>
+        <div class="node">ModelDeployment CRD</div>
+        <div class="node">InferenceProviderConfig CRD</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="layer">
+        <div class="lh">④ Providers · 1+ required</div>
+        <div class="node">KAITO → Workspace</div>
+        <div class="node">Dynamo → Graph</div>
+        <div class="node">KubeRay → RayService</div>
+        <div class="node">llm-d → vLLM pods</div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><span class="dot" style="background:var(--accent)"></span> REST/JSON over HTTP between ① and ②</span>
+      <span><span class="dot" style="background:var(--accent2)"></span> Kubernetes API between ② and ③</span>
+      <span><span class="dot" style="background:var(--pink)"></span> watch + delegate between ③ and ④</span>
+    </div>
+
+    <h3>Why this matters</h3>
+    <div class="grid g2">
+      <div class="card"><h4>🔌 Backend is optional</h4><p>The platform works with only the controller + CRDs. Manage models via <code>kubectl</code>, Terraform, or GitOps — no UI needed.</p></div>
+      <div class="card"><h4>🔁 Frontends are swappable</h4><p>React UI, Headlamp plugin, and custom UIs can all drive the same backend simultaneously via the typed <code>@airunway/shared</code> client.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CRD -->
+<section id="crd">
+  <div class="wrap">
+    <h2><span class="ico">{ }</span> The heart: <code>ModelDeployment</code> CRD</h2>
+    <p class="lead">This is the one object you really need to understand. The simplest valid deployment is just a model ID — everything else is auto-filled.</p>
+
+    <div class="grid g2">
+      <div>
+        <h3>Minimal — let it decide everything</h3>
+        <pre><span class="k">apiVersion</span>: airunway.ai/v1alpha1
+<span class="k">kind</span>: ModelDeployment
+<span class="k">metadata</span>:
+  <span class="k">name</span>: my-model
+<span class="k">spec</span>:
+  <span class="k">model</span>:
+    <span class="k">id</span>: <span class="s">"Qwen/Qwen3-0.6B"</span></pre>
+        <p class="mono-small">The controller picks the engine, the provider, the serving mode, and creates the provider-native resource.</p>
+      </div>
+      <div>
+        <h3>Fuller — explicit control</h3>
+        <pre><span class="k">spec</span>:
+  <span class="k">model</span>:
+    <span class="k">id</span>: <span class="s">"Qwen/Qwen3-0.6B"</span>
+    <span class="k">source</span>: <span class="s">huggingface</span>
+  <span class="k">engine</span>:
+    <span class="k">type</span>: <span class="s">vllm</span>        <span class="c"># or sglang/trtllm/llamacpp</span>
+  <span class="k">provider</span>:
+    <span class="k">name</span>: <span class="s">kaito</span>       <span class="c"># optional explicit pick</span>
+  <span class="k">serving</span>:
+    <span class="k">mode</span>: <span class="s">aggregated</span>  <span class="c"># or disaggregated</span>
+  <span class="k">resources</span>:
+    <span class="k">gpu</span>: { <span class="k">count</span>: 1 }
+  <span class="k">gateway</span>:
+    <span class="k">enabled</span>: <span class="s">true</span></pre>
+      </div>
+    </div>
+
+    <h3>Spec field map</h3>
+    <table>
+      <tr><th>Field</th><th>Purpose</th><th>Notes</th></tr>
+      <tr><td><code>model.id / source</code></td><td>Which model & where from</td><td>HuggingFace or custom</td></tr>
+      <tr><td><code>engine.type</code></td><td>Inference runtime</td><td>vllm · sglang · trtllm · llamacpp (auto)</td></tr>
+      <tr><td><code>provider.name</code></td><td>Force a provider</td><td>optional — usually auto-selected</td></tr>
+      <tr><td><code>serving.mode</code></td><td>Topology</td><td>aggregated (default) · disaggregated</td></tr>
+      <tr><td><code>resources.gpu/cpu/memory</code></td><td>Hardware request</td><td>drives capacity & cost checks</td></tr>
+      <tr><td><code>scaling.prefill / decode</code></td><td>Component scaling</td><td>for disaggregated serving</td></tr>
+      <tr><td><code>gateway.enabled / modelName</code></td><td>Gateway routing</td><td>unified inference endpoint</td></tr>
+      <tr><td><code>secrets / podTemplate / tolerations</code></td><td>Advanced overrides</td><td>HF token, node placement, labels</td></tr>
+    </table>
+
+    <h3>Status lifecycle — <code>status.phase</code></h3>
+    <div class="flow" style="gap:0">
+      <div class="node" style="flex:1;text-align:center;border-color:#9aa9cf">⏳ Pending</div><div class="arrow">→</div>
+      <div class="node" style="flex:1;text-align:center;border-color:var(--accent)">🛠 Deploying</div><div class="arrow">→</div>
+      <div class="node" style="flex:1;text-align:center;border-color:var(--accent2)">✅ Running</div><div class="arrow">→</div>
+      <div class="node" style="flex:1;text-align:center;border-color:var(--warn)">🗑 Terminating</div>
+    </div>
+    <p class="mono-small" style="margin-top:8px">…and ❌ <b>Failed</b> if validation or provisioning errors out. The controller owns this status field and reconciles desired vs. ready replicas.</p>
+
+    <h3>The second CRD: <code>InferenceProviderConfig</code> (cluster-scoped)</h3>
+    <p class="lead">Each provider registers itself with a config that declares <b>what it can do</b>. The controller reads these to make selection decisions.</p>
+    <div class="grid g3">
+      <div class="card"><h4>capabilities</h4><p>Which engines, serving modes, GPU/CPU support, gateway features it offers.</p></div>
+      <div class="card"><h4>selectionRules</h4><p><b>CEL expressions</b> + priority that decide if this provider matches a given ModelDeployment.</p></div>
+      <div class="card"><h4>status.ready</h4><p>Health + heartbeat + upstream CRD version/schema hash for drift detection.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section id="flow">
+  <div class="wrap">
+    <h2><span class="ico">↻</span> What happens when you deploy</h2>
+    <p class="lead">From clicking "Deploy" in the UI to a running inference pod serving an OpenAI-compatible API.</p>
+    <div class="steps">
+      <div class="step"><div><b>User picks a model in the UI</b><p>Browse HuggingFace catalog → backend checks GPU fit & cost → submits a <code>ModelDeployment</code> via the REST API.</p></div></div>
+      <div class="step"><div><b>Webhook validates the spec</b><p>The validating webhook checks compatibility (engine ↔ provider ↔ hardware) and rejects invalid or unsafe specs before they're stored.</p></div></div>
+      <div class="step"><div><b>Controller selects a provider</b><p>Runs the selection algorithm: matches required capabilities, evaluates each provider's CEL <code>selectionRules</code> by priority, picks a winner.</p></div></div>
+      <div class="step"><div><b>Provider controller takes over</b><p>The core controller delegates; the out-of-tree provider controller translates the spec into its native CRD (KAITO Workspace, Dynamo Graph, RayService…).</p></div></div>
+      <div class="step"><div><b>Pods spin up</b><p>The engine (vLLM / SGLang / TRT-LLM / llama.cpp) starts on GPU/CPU nodes and pulls model weights from HuggingFace.</p></div></div>
+      <div class="step"><div><b>Status flows back & gateway wires up</b><p>Status aggregates to <code>Running</code>; if Gateway API CRDs exist, an InferencePool + HTTPRoute expose the model on a unified endpoint.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVIDERS -->
+<section id="providers">
+  <div class="wrap">
+    <h2><span class="ico">⚙</span> The four providers</h2>
+    <p class="lead">Each provider is its own Go module under <code>providers/</code> — an out-of-tree controller (a "shim") that bridges AI Runway's CRD to an upstream project. Sizes below are Go LOC.</p>
+    <div class="grid g2">
+      <div class="card prov d"><h4>🟢 NVIDIA Dynamo <span class="tag t-go">~6.2k LOC</span></h4><p>GPU-accelerated inference with <b>aggregated or disaggregated</b> serving. Translates to a Dynamo Graph. The largest provider shim.</p></div>
+      <div class="card prov k"><h4>🩷 KAITO <span class="tag t-go">~5.9k LOC</span></h4><p>vLLM (GPU) and llama.cpp (CPU/GPU). Maps to a KAITO <b>Workspace</b>. The only provider with CPU-only support.</p></div>
+      <div class="card prov r"><h4>🔵 KubeRay <span class="tag t-go">~3.4k LOC</span></h4><p>Ray-based distributed inference. Produces a <b>RayService</b> for multi-node serving.</p></div>
+      <div class="card prov l"><h4>🟠 llm-d <span class="tag t-go">~2.9k LOC</span></h4><p>vLLM (GPU) with aggregated or disaggregated serving. Lighter-weight vLLM-native path.</p></div>
+    </div>
+
+    <h3>Capability matrix</h3>
+    <table>
+      <tr><th>Provider</th><th>Engines</th><th>GPU</th><th>CPU</th><th>Disaggregated</th><th>Produces</th></tr>
+      <tr><td>KAITO</td><td>vLLM, llama.cpp</td><td>✅</td><td>✅</td><td>—</td><td>Workspace</td></tr>
+      <tr><td>NVIDIA Dynamo</td><td>vLLM, TRT-LLM…</td><td>✅</td><td>—</td><td>✅</td><td>Dynamo Graph</td></tr>
+      <tr><td>KubeRay</td><td>vLLM (Ray)</td><td>✅</td><td>—</td><td>—</td><td>RayService</td></tr>
+      <tr><td>llm-d</td><td>vLLM</td><td>✅</td><td>—</td><td>✅</td><td>vLLM pods</td></tr>
+    </table>
+
+    <details>
+      <summary>How a provider shim is structured (every provider follows this)</summary>
+      <table>
+        <tr><th>File</th><th>Role</th></tr>
+        <tr><td><code>cmd/main.go</code></td><td>Entry point for the provider's controller manager</td></tr>
+        <tr><td><code>config.go</code></td><td>Provider config / capability declaration</td></tr>
+        <tr><td><code>controller.go</code></td><td>Reconciler — watches ModelDeployment, owns native CRD</td></tr>
+        <tr><td><code>transformer.go</code></td><td>Translates ModelDeployment → native provider spec</td></tr>
+        <tr><td><code>status.go</code></td><td>Maps native status back to ModelDeployment phase</td></tr>
+        <tr><td><code>deploy/*.yaml</code></td><td>The shim manifest you <code>kubectl apply</code> to register the provider</td></tr>
+        <tr><td><code>config/rbac/</code></td><td>Kustomize RBAC (roles, bindings, HF-secret access)</td></tr>
+      </table>
+    </details>
+  </div>
+</section>
+
+<!-- REPO MAP -->
+<section id="repo">
+  <div class="wrap">
+    <h2><span class="ico">🗂</span> Repository map</h2>
+    <p class="lead">Where to look for what. Colours show the dominant language of each area.</p>
+    <div class="legend" style="margin-bottom:16px">
+      <span><span class="tag t-go">Go</span> controller & providers</span>
+      <span><span class="tag t-ts">TypeScript</span> web UI & shared</span>
+      <span><span class="tag t-k8s">K8s/YAML</span> manifests & deploy</span>
+    </div>
+
+    <pre>kubeairunway/
+├── <span class="s">controller/</span>          <span class="tag t-go">Go</span>  Core Kubebuilder operator
+│   ├── api/v1alpha1/      → CRD type definitions (ModelDeployment, InferenceProviderConfig)
+│   ├── internal/controller/  → reconciliation, provider selection, gateway, migration
+│   ├── internal/webhook/  → validating webhook (compatibility & security)
+│   ├── internal/gateway/  → Gateway API auto-detection
+│   ├── internal/validation/ → engine↔provider compatibility
+│   └── config/            <span class="tag t-k8s">YAML</span> kustomize manifests (CRDs, RBAC)
+│
+├── <span class="s">providers/</span>           <span class="tag t-go">Go</span>  One module per provider shim
+│   ├── dynamo/  kaito/  kuberay/  llmd/   (controller + transformer + status)
+│
+├── <span class="s">backend/</span>             <span class="tag t-ts">TS</span>  Hono REST API on Bun
+│   └── src/routes/        → deployments, models, costs, runtimes, gateway, oauth, secrets…
+│
+├── <span class="s">frontend/</span>            <span class="tag t-ts">TS</span>  React 18 + Vite UI
+│   └── src/pages/         → Models, Deploy, Deployments, Settings, Login…
+│
+├── <span class="s">shared/</span>              <span class="tag t-ts">TS</span>  @airunway/shared — typed API client & contracts
+│
+├── <span class="s">plugins/headlamp/</span>    <span class="tag t-ts">TS</span>  Alternative UI as a Headlamp plugin
+├── <span class="s">deploy/</span>              <span class="tag t-k8s">YAML</span> controller.yaml & dashboard.yaml (apply to cluster)
+├── <span class="s">demos/</span>               gateway-bbr, observability walkthroughs
+├── <span class="s">docs/</span>                deep-dive docs (architecture, CRD ref, gateway…)
+└── <span class="s">images/</span>              model-downloader container</pre>
+
+    <h3>Code distribution</h3>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--muted)"><span>Go (controller + providers)</span><span>~74.5k LOC · 61%</span></div>
+      <div class="barwrap"><div class="bar" style="width:61%"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:12px"><span>TypeScript (UI + backend + shared)</span><span>~48k LOC · 39%</span></div>
+      <div class="barwrap"><div class="bar" style="width:39%;background:linear-gradient(135deg,#3178c6,#7eb0ff)"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTROLLER -->
+<section id="controller">
+  <div class="wrap">
+    <h2><span class="ico">Go</span> Controller internals</h2>
+    <p class="lead">The Go operator under <code>controller/</code> is the brain. Built with Kubebuilder, it follows the standard reconcile loop pattern.</p>
+    <div class="grid g2">
+      <div class="card"><h4>🎯 modeldeployment_controller.go</h4><p>The main reconciler. Validates spec, runs the selection algorithm, delegates to providers, aggregates status.</p></div>
+      <div class="card"><h4>🛡 webhook/v1alpha1/</h4><p>Validating webhook — compatibility checks, security validation, cached reader. Blocks bad specs at admission time.</p></div>
+      <div class="card"><h4>🌐 gateway_reconciler.go + gateway/detection.go</h4><p>Auto-detects Gateway API CRDs; if present, creates InferencePool + HTTPRoute per deployment.</p></div>
+      <div class="card"><h4>🔀 migration.go</h4><p>Handles API/version migrations of existing resources across controller upgrades.</p></div>
+      <div class="card"><h4>📊 metrics/metrics.go</h4><p>Prometheus metrics (recently added — see ServiceMonitor & o11y commits).</p></div>
+      <div class="card"><h4>🧩 validation/compatibility.go</h4><p>Single source of truth for which engine works with which provider & hardware.</p></div>
+    </div>
+    <p class="mono-small" style="margin-top:14px">Test coverage is strong — nearly every <code>*.go</code> file ships a <code>*_test.go</code> sibling (suite_test, run_selection_algorithm_test, security_validation_test, etc.).</p>
+  </div>
+</section>
+
+<!-- WEB UI -->
+<section id="webui">
+  <div class="wrap">
+    <h2><span class="ico">TS</span> Web UI layer</h2>
+    <p class="lead">A React frontend talking to a Hono/Bun backend, sharing types through <code>@airunway/shared</code>. Both are optional — the controller doesn't need them.</p>
+
+    <div class="grid g2">
+      <div>
+        <h3>Frontend pages <span class="tag t-ts">React + Vite</span></h3>
+        <div class="card"><p>
+          <span class="tag t-ts">ModelsPage</span><span class="tag t-ts">DeployPage</span><span class="tag t-ts">DeploymentsPage</span><span class="tag t-ts">DeploymentDetailsPage</span><span class="tag t-ts">SettingsPage</span><span class="tag t-ts">LoginPage</span><span class="tag t-ts">HuggingFaceCallbackPage</span>
+        </p><p style="margin-top:10px">Component folders: <code>metrics</code>, <code>chat</code>, <code>models</code>, <code>deployments</code>, <code>autoscaler</code>, <code>layout</code>, <code>ui</code>.</p></div>
+      </div>
+      <div>
+        <h3>Backend routes <span class="tag t-ts">Hono / Bun</span></h3>
+        <div class="card"><p>
+          <span class="tag t-opt">deployments</span><span class="tag t-opt">models</span><span class="tag t-opt">costs</span><span class="tag t-opt">runtimes</span><span class="tag t-opt">installation</span><span class="tag t-opt">gateway</span><span class="tag t-opt">autoscaler</span><span class="tag t-opt">secrets</span><span class="tag t-opt">settings</span><span class="tag t-opt">oauth</span><span class="tag t-opt">aikit</span><span class="tag t-opt">aiconfigurator</span><span class="tag t-opt">health</span>
+        </p><p style="margin-top:10px">Auth is via Kubernetes <b>TokenReview</b> — the UI just passes a bearer token. Provider-agnostic: reads <code>InferenceProviderConfig</code> CRDs.</p></div>
+      </div>
+    </div>
+
+    <h3>The shared contract</h3>
+    <div class="card"><h4>📦 @airunway/shared</h4><p>TypeScript types + a typed API client used by both the React UI and the Headlamp plugin. Includes <code>model</code>, <code>costs</code>, <code>autoscaler</code>, <code>huggingface</code>, <code>installation</code>, <code>settings</code> types — and generated <code>versions.generated.ts</code>.</p></div>
+  </div>
+</section>
+
+<!-- GATEWAY -->
+<section id="gateway">
+  <div class="wrap">
+    <h2><span class="ico">⤞</span> Gateway API integration</h2>
+    <p class="lead">An optional, auto-detected feature: serve <b>all</b> your models through a single endpoint using body-based routing on the <code>model</code> field.</p>
+    <div class="grid g3">
+      <div class="card"><h4>1 · Detect</h4><p>At startup the controller checks for Gateway API Inference Extension CRDs. Absent → feature silently disabled.</p></div>
+      <div class="card"><h4>2 · Wire</h4><p>Present → for each ModelDeployment it creates an <b>InferencePool</b> + <b>HTTPRoute</b>.</p></div>
+      <div class="card"><h4>3 · Route</h4><p>One gateway endpoint; the <code>model</code> field in the request body picks the backend. Demo in <code>demos/gateway-bbr</code>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEV -->
+<section id="dev">
+  <div class="wrap">
+    <h2><span class="ico">$</span> Developer cheat-sheet</h2>
+    <p class="lead">Top-level <code>Makefile</code> drives everything. Controller and UI have separate workflows.</p>
+    <div class="grid g2">
+      <div>
+        <h3>Controller (Go)</h3>
+        <pre><span class="c"># build / test / run the operator</span>
+make controller-build
+make controller-test
+make controller-run
+
+<span class="c"># after editing *_types.go</span>
+cd controller && make manifests generate
+
+<span class="c"># install CRDs / deploy to cluster</span>
+make controller-install
+make controller-deploy</pre>
+      </div>
+      <div>
+        <h3>Web UI (TypeScript)</h3>
+        <pre><span class="c"># install + dev servers (FE + BE)</span>
+bun install
+bun run dev
+bun run test
+
+<span class="c"># build single binary → dist/</span>
+make compile
+make compile-all   <span class="c"># all platforms</span></pre>
+      </div>
+    </div>
+
+    <h3>Fastest way to try it</h3>
+    <pre><span class="c"># 1. Install CRDs + controller</span>
+kubectl apply -f https://raw.githubusercontent.com/kaito-project/airunway/main/deploy/controller.yaml
+<span class="c"># 2. Install the dashboard UI (optional)</span>
+kubectl apply -f https://raw.githubusercontent.com/kaito-project/airunway/main/deploy/dashboard.yaml
+kubectl port-forward -n airunway-system svc/airunway 3001:80
+<span class="c"># 3. Apply a provider shim (e.g. KAITO), then deploy a model from the UI</span></pre>
+
+    <h3>Mental model in one line</h3>
+    <div class="card" style="text-align:center;font-size:17px">
+      You write a <b>ModelDeployment</b> → the <b>controller</b> picks a <b>provider</b> via CEL rules → the provider shim creates a <b>native CRD</b> → an <b>engine</b> serves an <b>OpenAI-compatible API</b>, optionally behind a <b>gateway</b>.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Generated visual guide for <b>kaito-project/kubeairunway</b> · AI Runway · v1alpha1 (APIs not yet stable).</p>
+    <p class="mono-small">Read deeper in <code>docs/architecture.md</code>, <code>docs/crd-reference.md</code>, <code>docs/providers.md</code>, and <code>docs/gateway.md</code>. Open this file in any browser.</p>
+  </div>
+</footer>
+
+</body>
+</html>
