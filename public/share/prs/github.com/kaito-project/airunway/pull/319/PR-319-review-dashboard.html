@@ -1,0 +1,803 @@
+<!doctype html>
+<!-- PR #319 review dashboard — generated. -->
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>Honour kubeconfig CA under Bun's native fetch — PR #319 Review</title>
+<style>
+  /* ---- THEME TOKENS ---- */
+  :root, [data-theme="dark"] {
+    --bg: #0d1117;
+    --bg-2: #161b22;
+    --panel: #161b22;
+    --panel-2: #1f2733;
+    --fg: #e6edf3;
+    --fg-muted: #8b949e;
+    --border: #30363d;
+    --accent: #58a6ff;
+    --accent-2: #1f6feb;
+    --added: #2ea043;
+    --added-bg: rgba(46, 160, 67, 0.15);
+    --removed: #f85149;
+    --removed-bg: rgba(248, 81, 73, 0.15);
+    --warn: #d29922;
+    --warn-bg: rgba(210, 153, 34, 0.15);
+    --info: #58a6ff;
+    --info-bg: rgba(88, 166, 255, 0.15);
+    --crit: #f85149;
+    --crit-bg: rgba(248, 81, 73, 0.18);
+    --ok: #2ea043;
+    --ok-bg: rgba(46, 160, 67, 0.15);
+    --code-bg: #1f2733;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+  [data-theme="light"] {
+    --bg: #ffffff;
+    --bg-2: #f6f8fa;
+    --panel: #ffffff;
+    --panel-2: #f6f8fa;
+    --fg: #1f2328;
+    --fg-muted: #656d76;
+    --border: #d0d7de;
+    --accent: #0969da;
+    --accent-2: #0550ae;
+    --added: #1a7f37;
+    --added-bg: rgba(26, 127, 55, 0.10);
+    --removed: #cf222e;
+    --removed-bg: rgba(207, 34, 46, 0.10);
+    --warn: #9a6700;
+    --warn-bg: rgba(154, 103, 0, 0.10);
+    --info: #0969da;
+    --info-bg: rgba(9, 105, 218, 0.10);
+    --crit: #cf222e;
+    --crit-bg: rgba(207, 34, 46, 0.12);
+    --ok: #1a7f37;
+    --ok-bg: rgba(26, 127, 55, 0.10);
+    --code-bg: #f6f8fa;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+                font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Helvetica, Arial, sans-serif; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+         font-size: 12.5px; background: var(--code-bg); padding: 1px 5px;
+         border-radius: 4px; border: 1px solid var(--border); }
+  pre  { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+         font-size: 12.5px; background: var(--code-bg); padding: 12px;
+         border-radius: 6px; border: 1px solid var(--border);
+         overflow-x: auto; margin: 0; }
+  h1, h2, h3 { margin: 0 0 12px; color: var(--fg); }
+  h1 { font-size: 20px; font-weight: 600; }
+  h2 { font-size: 17px; font-weight: 600; }
+  h3 { font-size: 14px; font-weight: 600; color: var(--accent); }
+
+  /* ---- LAYOUT ---- */
+  header { border-bottom: 1px solid var(--border); background: var(--bg-2);
+           padding: 14px 28px; display: flex; align-items: center; gap: 18px;
+           flex-wrap: wrap; }
+  header .title-block { flex: 1 1 auto; min-width: 0; }
+  header h1 { margin: 0; }
+  header .meta { color: var(--fg-muted); font-size: 12.5px; margin-top: 4px; }
+  header .meta > * + * { margin-left: 14px; }
+  .theme-toggle { background: var(--panel-2); border: 1px solid var(--border);
+                  color: var(--fg); padding: 6px 12px; border-radius: 6px;
+                  cursor: pointer; font: inherit; }
+  .theme-toggle:hover { border-color: var(--accent); }
+
+  nav.tabs { border-bottom: 1px solid var(--border); background: var(--bg);
+             padding: 0 28px; display: flex; gap: 4px; overflow-x: auto; }
+  nav.tabs button { background: transparent; border: 0; color: var(--fg-muted);
+                    padding: 12px 16px; cursor: pointer; font: inherit;
+                    border-bottom: 2px solid transparent; white-space: nowrap; }
+  nav.tabs button:hover { color: var(--fg); }
+  nav.tabs button.active { color: var(--fg); border-bottom-color: var(--accent); }
+
+  main { padding: 24px 28px; max-width: 1400px; margin: 0 auto; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .card { background: var(--panel); border: 1px solid var(--border);
+          border-radius: 8px; padding: 20px; margin-bottom: 18px;
+          box-shadow: var(--shadow); }
+  .card > h2:first-child { margin-top: 0; }
+  .card .caption { color: var(--fg-muted); font-size: 13px; margin: 0 0 14px; }
+
+  .row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .row > * { flex: 1 1 320px; min-width: 0; }
+
+  /* ---- DIAGRAM PRIMITIVES (HTML/CSS, no JS, no mermaid) ---- */
+  .diagram { display: flex; flex-direction: column; gap: 18px;
+             padding: 18px; background: var(--panel-2);
+             border: 1px solid var(--border); border-radius: 6px; }
+  .diagram-row { display: flex; gap: 28px; align-items: center;
+                 flex-wrap: wrap; justify-content: center; }
+  .diagram-col { display: flex; flex-direction: column; gap: 14px;
+                 align-items: stretch; }
+  .node { padding: 10px 14px; border-radius: 6px; background: var(--panel);
+          border: 1px solid var(--border); text-align: center;
+          font-size: 12.5px; min-width: 120px; color: var(--fg); }
+  .node.new { border-style: dashed; border-color: var(--accent);
+              background: var(--info-bg); }
+  .node.changed { border-color: var(--warn); background: var(--warn-bg); }
+  .node.removed { border-color: var(--removed); background: var(--removed-bg);
+                  text-decoration: line-through; opacity: 0.7; }
+  .node.cluster { background: rgba(255,255,255,0.02); padding: 14px;
+                  border-style: dashed; }
+  .node.cluster .cluster-label { font-size: 11px; color: var(--fg-muted);
+                                 text-transform: uppercase; letter-spacing: 0.5px;
+                                 margin-bottom: 8px; }
+  /* Connector: a thin horizontal line with an arrow. */
+  .arrow {
+    flex: 0 0 56px; height: 2px; background: var(--fg-muted); position: relative;
+  }
+  .arrow::after {
+    content: ""; position: absolute; right: -2px; top: -4px;
+    border-left: 8px solid var(--fg-muted);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+  .arrow.dashed { background: none; border-top: 2px dashed var(--accent); height: 0; }
+  .arrow.dashed::after { border-left-color: var(--accent); }
+  .arrow .label { position: absolute; top: -22px; left: 50%;
+                  transform: translateX(-50%); font-size: 11px;
+                  color: var(--fg-muted); white-space: nowrap;
+                  background: var(--panel-2); padding: 0 6px; }
+  .legend { display: flex; gap: 18px; font-size: 12px; color: var(--fg-muted);
+            margin-top: 8px; flex-wrap: wrap; }
+  .legend .swatch { display: inline-block; width: 14px; height: 14px;
+                    border-radius: 3px; vertical-align: middle;
+                    margin-right: 6px; border: 1px solid var(--border); }
+
+  /* ---- BEFORE / AFTER / DIFF TOGGLE ---- */
+  .view-toggle { display: inline-flex; gap: 0; border: 1px solid var(--border);
+                 border-radius: 6px; overflow: hidden; margin-bottom: 14px; }
+  .view-toggle button { background: var(--panel); border: 0; color: var(--fg-muted);
+                        padding: 6px 14px; cursor: pointer; font: inherit;
+                        border-right: 1px solid var(--border); }
+  .view-toggle button:last-child { border-right: 0; }
+  .view-toggle button.active { background: var(--accent); color: white; }
+  .view-panel { display: none; }
+  .view-panel.active { display: block; }
+
+  /* ---- TABLES ---- */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 8px 12px; text-align: left; vertical-align: top;
+           border-bottom: 1px solid var(--border); }
+  th { color: var(--fg-muted); font-weight: 600; font-size: 12px;
+       text-transform: uppercase; letter-spacing: 0.4px; }
+  tr:last-child td { border-bottom: 0; }
+  td.sev-crit  { color: var(--crit); font-weight: 600; }
+  td.sev-warn  { color: var(--warn); font-weight: 600; }
+  td.sev-info  { color: var(--info); font-weight: 600; }
+  td.sev-ok    { color: var(--ok);   font-weight: 600; }
+  tr.sev-crit  { background: var(--crit-bg); }
+  tr.sev-warn  { background: var(--warn-bg); }
+  tr.sev-info  { background: var(--info-bg); }
+  tr.sev-ok    { background: var(--ok-bg); }
+
+  /* ---- DIFF VIEWER ---- */
+  .diff { border: 1px solid var(--border); border-radius: 6px;
+          margin-bottom: 18px; overflow: hidden; }
+  .diff-header { background: var(--panel-2); padding: 8px 12px;
+                 border-bottom: 1px solid var(--border); display: flex;
+                 justify-content: space-between; font-size: 12.5px; }
+  .diff-header .path { font-family: ui-monospace, monospace; color: var(--fg); }
+  .diff pre { border: 0; border-radius: 0; }
+  .l-add { display: block; background: var(--added-bg); color: var(--added); }
+  .l-del { display: block; background: var(--removed-bg); color: var(--removed); }
+  .l-ctx { display: block; color: var(--fg-muted); }
+  .annotation { padding: 10px 14px; background: var(--info-bg);
+                border-top: 1px solid var(--border); font-size: 12.5px; }
+  .annotation strong { color: var(--accent); }
+
+  /* ---- MERMAID (only used for sequence/state/class diagrams) ---- */
+  .mermaid { background: var(--panel-2); padding: 16px; border-radius: 6px;
+             border: 1px solid var(--border); text-align: center; }
+
+  /* ---- UTILITY ---- */
+  .muted { color: var(--fg-muted); }
+  .pill  { display: inline-block; padding: 2px 8px; border-radius: 10px;
+           background: var(--panel-2); color: var(--fg-muted); font-size: 11.5px;
+           border: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title-block">
+    <h1>fix(backend): honour kubeconfig CA under Bun's native fetch</h1>
+    <div class="meta">
+      <a href="https://github.com/kaito-project/airunway/pull/319">PR #319 on GitHub</a>
+      <span>branch <code>suraj/fix-frontend-authn-issues</code> &rarr; <code>main</code></span>
+      <span>@surajssd</span>
+      <span>7 files, <span style="color:var(--added)">+127</span> / <span style="color:var(--removed)">-20</span></span>
+      <span>1 commit</span>
+      <span class="pill">Bug fix &middot; Refactor</span>
+    </div>
+  </div>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+    <span id="theme-icon">☀️</span> <span id="theme-label">Light</span>
+  </button>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="active" data-tab="summary">Summary</button>
+  <button data-tab="glossary">Glossary</button>
+  <button data-tab="architecture">Architecture</button>
+  <button data-tab="diff">Annotated Diff</button>
+  <button data-tab="risk">Risk Assessment</button>
+  <button data-tab="unknowns">Assumptions &amp; Unknowns</button>
+</nav>
+
+<main>
+
+  <!-- ============================= SUMMARY ============================= -->
+  <section class="tab-panel active" id="tab-summary">
+    <div class="card">
+      <h2>Executive Summary</h2>
+      <p>The Web UI <strong>backend runs on Bun, not Node.js</strong>. The <code>@kubernetes/client-node</code> SDK
+      hands the kubeconfig's TLS material (the cluster CA, plus any client cert/key) to its HTTP layer as a
+      Node.js <code>https.Agent</code>. Bun's native <code>fetch</code> <strong>silently ignores that agent</strong> —
+      it only honours TLS material passed via its own per-request <code>tls</code> option. So every request to a
+      cluster with a private CA (e.g. AKS) failed with <code>UNABLE_TO_VERIFY_LEAF_SIGNATURE</code>.</p>
+      <p>This PR adds two things to <code>backend/src/lib/kubeconfig.ts</code>: <code>BunTlsHttpLibrary</code>, a
+      subclass of the SDK's <code>IsomorphicFetchHttpLibrary</code> that overrides <code>send()</code> to call
+      <code>fetch</code> directly while re-injecting the CA/cert/key as <code>tls</code>; and a
+      <code>makeApiClient(kc, ApiClass)</code> helper that re-creates the SDK's own client wiring but swaps in that
+      HTTP library. All six backend services (<code>auth</code>, <code>autoscaler</code>, <code>config</code>,
+      <code>kubernetes</code>, <code>registry</code>, <code>secrets</code>) are switched from
+      <code>kc.makeApiClient(...)</code> to the new helper. The approach copies a pattern already proven in
+      <code>proxyServiceRequest</code>.</p>
+      <p><strong>What a reviewer should scrutinise most:</strong> TLS verification correctness. The single highest-stakes
+      line is the <code>rejectUnauthorized = false</code> branch — get its condition wrong and you silently disable
+      certificate verification for every cluster call. Tied for attention: this is a security-sensitive auth fix
+      with <strong>zero automated tests</strong> and the PR's own checklist shows <code>bun run test</code> /
+      <code>bun run lint</code> were not run.</p>
+    </div>
+  </section>
+
+  <!-- ============================ GLOSSARY ============================ -->
+  <section class="tab-panel" id="tab-glossary">
+    <div class="card">
+      <h2>Glossary &amp; Concept Primer</h2>
+      <p class="caption">Vocabulary an unfamiliar reviewer needs before the
+        rest of the dashboard makes sense.</p>
+      <dl>
+        <dt><strong>Bun</strong></dt>
+        <dd>A fast JavaScript/TypeScript runtime (alternative to Node.js) that the Web UI backend runs on. Its
+          built-in <code>fetch</code> is WHATWG-native and does <em>not</em> understand Node's <code>https.Agent</code>;
+          TLS config goes through a non-standard <code>tls</code> option on the request.</dd>
+        <dt><strong>kubeconfig / <code>KubeConfig</code></strong></dt>
+        <dd>The credentials file (usually <code>~/.kube/config</code>) describing how to reach a cluster: API server URL,
+          the cluster CA certificate, and the user's auth (token or client cert/key). Represented in code by the SDK's
+          <code>k8s.KubeConfig</code> object.</dd>
+        <dt><strong>CA (Certificate Authority)</strong></dt>
+        <dd>The root cert used to verify the API server's TLS certificate. Managed clusters like <strong>AKS</strong>
+          use a <em>private</em> CA not in the system trust store, so the client must be told about it explicitly.</dd>
+        <dt><strong><code>UNABLE_TO_VERIFY_LEAF_SIGNATURE</code></strong></dt>
+        <dd>The TLS error thrown when the client can't chain the server's cert back to a trusted CA — i.e. the exact
+          symptom this PR fixes.</dd>
+        <dt><strong><code>@kubernetes/client-node</code> (the SDK)</strong></dt>
+        <dd>The official JS Kubernetes client. <code>kc.makeApiClient(ApiClass)</code> normally builds a typed API
+          client (e.g. <code>CoreV1Api</code>) wired to the kubeconfig.</dd>
+        <dt><strong><code>IsomorphicFetchHttpLibrary</code></strong></dt>
+        <dd>The SDK's default HTTP transport. Its <code>send()</code> uses <code>node-fetch</code> and passes TLS via
+          a Node <code>https.Agent</code> — the part Bun ignores. <code>BunTlsHttpLibrary</code> subclasses it and
+          overrides <code>send()</code>.</dd>
+        <dt><strong><code>applyToHTTPSOptions()</code></strong></dt>
+        <dd>SDK method that extracts <code>ca</code>/<code>cert</code>/<code>key</code>/<code>rejectUnauthorized</code>
+          from the kubeconfig into a plain options object — used here to translate into Bun's <code>tls</code> option.</dd>
+        <dt><strong><code>rejectUnauthorized</code> / <code>skipTLSVerify</code></strong></dt>
+        <dd><code>skipTLSVerify</code> is the kubeconfig flag; <code>rejectUnauthorized: false</code> is its TLS-layer
+          equivalent. When set, certificate verification is <em>disabled</em> — intentional only for dev clusters.</dd>
+        <dt><strong><code>authMethods</code> / Bearer token</strong></dt>
+        <dd>The SDK applies auth headers (e.g. <code>Authorization: Bearer &lt;token&gt;</code>) to the request
+          <em>before</em> <code>send()</code> runs, so the override only needs to re-inject TLS, not auth.</dd>
+        <dt><strong><code>proxyServiceRequest</code></strong></dt>
+        <dd>An existing method in <code>kubernetes.ts</code> that already does the same manual TLS-into-<code>fetch</code>
+          translation for in-cluster service proxying — the proven pattern this PR generalises.</dd>
+        <dt><strong><code>AUTH_ENABLED</code> cert-stripping</strong></dt>
+        <dd>When auth is on, <code>loadKubeConfig()</code> deletes the admin client cert/key from the kubeconfig so that
+          Bun's <em>process-wide shared TLS session</em> can't accidentally authenticate user requests as admin.</dd>
+      </dl>    </div>
+  </section>
+
+  <!-- ========================== ARCHITECTURE ========================== -->
+  <section class="tab-panel" id="tab-architecture">
+
+    <div class="card">
+      <h2>Module map: what touches what</h2>
+      <p class="caption">How the six backend services build their Kubernetes API clients. Dashed boxes are new in this
+        PR; the orange box is where the TLS bug lived. Toggle Before/After to see the indirection this PR inserts.</p>
+      <div class="view-toggle" data-group="modmap">
+        <button class="active" data-view="after">After</button>
+        <button data-view="before">Before</button>
+      </div>
+
+      <div class="view-panel active" data-group="modmap" data-view="after">
+        <div class="diagram">
+          <div class="diagram-row">
+            <div class="node cluster">
+              <div class="cluster-label">6 backend services</div>
+              <div class="diagram-col">
+                <div class="node">auth.ts</div>
+                <div class="node">autoscaler.ts</div>
+                <div class="node">config.ts</div>
+                <div class="node">kubernetes.ts</div>
+                <div class="node">registry.ts</div>
+                <div class="node">secrets.ts</div>
+              </div>
+            </div>
+            <div class="arrow"><span class="label">makeApiClient(kc, Api)</span></div>
+            <div class="node new">makeApiClient()<br/>helper (new)</div>
+            <div class="arrow dashed"><span class="label">httpApi =</span></div>
+            <div class="node new">BunTlsHttpLibrary<br/>(new)</div>
+            <div class="arrow dashed"><span class="label">tls: {ca,cert,key}</span></div>
+            <div class="node">Bun fetch()<br/>&rarr; API server</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="view-panel" data-group="modmap" data-view="before">
+        <div class="diagram">
+          <div class="diagram-row">
+            <div class="node cluster">
+              <div class="cluster-label">6 backend services</div>
+              <div class="diagram-col">
+                <div class="node">auth.ts</div>
+                <div class="node">autoscaler.ts</div>
+                <div class="node">config.ts</div>
+                <div class="node">kubernetes.ts</div>
+                <div class="node">registry.ts</div>
+                <div class="node">secrets.ts</div>
+              </div>
+            </div>
+            <div class="arrow"><span class="label">kc.makeApiClient(Api)</span></div>
+            <div class="node changed">IsomorphicFetch<br/>HttpLibrary</div>
+            <div class="arrow"><span class="label">https.Agent (ignored!)</span></div>
+            <div class="node removed">Bun fetch()<br/>CA dropped &rarr; TLS error</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span><span class="swatch" style="background:var(--info-bg);
+              border-style:dashed;border-color:var(--accent);"></span>
+              new in this PR</span>
+        <span><span class="swatch" style="background:var(--warn-bg);border-color:var(--warn);"></span>
+              SDK default (bypassed)</span>
+        <span><span class="swatch" style="background:var(--removed-bg);border-color:var(--removed);"></span>
+              failure point (before)</span>
+        <span><span class="swatch" style="background:var(--panel);"></span>
+              pre-existing</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Why the CA was being dropped — request flow Before vs After</h2>
+      <p class="caption">The same request, traced through the TLS layer. Before, the CA never reaches Bun's
+        TLS stack; after, it is re-injected via the <code>tls</code> option.</p>
+      <div class="view-toggle" data-group="flow">
+        <button class="active" data-view="after">After (fixed)</button>
+        <button data-view="before">Before (broken)</button>
+      </div>
+
+      <div class="view-panel active" data-group="flow" data-view="after">
+        <div class="diagram">
+          <div class="diagram-row">
+            <div class="node">kubeconfig<br/>(CA, cert, key)</div>
+            <div class="arrow"><span class="label">applyToHTTPSOptions()</span></div>
+            <div class="node new">send() builds<br/>tls: {ca,cert,key}</div>
+            <div class="arrow dashed"><span class="label">fetch(url, {tls})</span></div>
+            <div class="node">Bun TLS stack<br/>trusts CA &check;</div>
+            <div class="arrow"><span class="label">200 OK</span></div>
+            <div class="node">API server</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="view-panel" data-group="flow" data-view="before">
+        <div class="diagram">
+          <div class="diagram-row">
+            <div class="node">kubeconfig<br/>(CA, cert, key)</div>
+            <div class="arrow"><span class="label">getAgent()</span></div>
+            <div class="node changed">https.Agent<br/>{ca}</div>
+            <div class="arrow"><span class="label">node-fetch &rarr; Bun</span></div>
+            <div class="node removed">Bun fetch<br/>ignores agent</div>
+            <div class="arrow"><span class="label">no CA</span></div>
+            <div class="node removed">TLS verify fails<br/>LEAF_SIGNATURE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Inside <code>BunTlsHttpLibrary.send()</code> — order of operations</h2>
+      <p class="caption">This sequence answers the key correctness question: are auth headers preserved? Yes —
+        the SDK applies <code>authMethods</code> to the <code>RequestContext</code> <em>before</em> <code>send()</code>
+        runs, and the override re-reads <code>request.getHeaders()</code>, so Bearer tokens survive.</p>
+      <div class="mermaid">
+sequenceDiagram
+    participant Svc as Service auth.ts
+    participant Cfg as Configuration
+    participant Auth as authMethods kc
+    participant Bun as BunTlsHttpLibrary.send
+    participant KC as KubeConfig
+    participant F as Bun fetch
+    Svc->>Cfg: api.listNamespace()
+    Cfg->>Auth: apply auth to RequestContext
+    Auth-->>Cfg: add Authorization Bearer header
+    Cfg->>Bun: send(request)
+    Bun->>KC: applyToHTTPSOptions(opts)
+    KC-->>Bun: returns ca, cert, key, rejectUnauthorized
+    Bun->>Bun: build tls and reuse request.getHeaders()
+    Bun->>F: fetch(url, options with tls)
+    F-->>Bun: Response status, headers, body
+    Bun-->>Cfg: ResponseContext (text / binary)
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Behaviour comparison: SDK Node path vs new Bun path</h2>
+      <p class="caption">What changes and what is deliberately preserved when a request goes through
+        <code>BunTlsHttpLibrary</code> instead of the stock <code>IsomorphicFetchHttpLibrary</code>.</p>
+      <table>
+        <thead><tr><th>Dimension</th><th>Before (SDK default)</th><th>After (BunTlsHttpLibrary)</th></tr></thead>
+        <tbody>
+          <tr><td>TLS material delivery</td><td><code>https.Agent</code> via <code>getAgent()</code> — ignored by Bun</td><td><code>tls: {ca,cert,key}</code> per request — honoured by Bun</td></tr>
+          <tr><td>Auth headers (Bearer)</td><td>Applied by <code>authMethods</code> before send</td><td><strong>Unchanged</strong> — re-read from <code>request.getHeaders()</code></td></tr>
+          <tr><td>Private-CA cluster (AKS)</td><td class="sev-crit">Fails: LEAF_SIGNATURE</td><td class="sev-ok">Works</td></tr>
+          <tr><td><code>skipTLSVerify</code></td><td>Honoured via agent</td><td>Honoured via <code>rejectUnauthorized:false</code></td></tr>
+          <tr><td>Request body</td><td>Handles string / FormData / URLSearchParams</td><td>Cast to <code>BodyInit</code>; Node <code>form-data</code> multipart not handled (none used today)</td></tr>
+          <tr><td>Response body</td><td><code>text()</code> / <code>binary()</code></td><td>Same surface; <code>binary()</code> buffers whole body</td></tr>
+          <tr><td>Non-2xx handling</td><td>ResponseContext returned; API maps to error</td><td><strong>Same</strong> — status passed through, no early throw</td></tr>
+          <tr><td>Streaming (watch / pod logs)</td><td>Supported by SDK</td><td>Not supported (full buffering) — but unused in backend</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============================ DIFF =================================== -->
+  <section class="tab-panel" id="tab-diff">
+    <div class="card">
+      <h2>Annotated Diff</h2>
+      <p class="caption">All substantive hunks shown. The five service files (<code>auth</code>, <code>autoscaler</code>,
+        <code>config</code>, <code>registry</code>, <code>secrets</code>) share one mechanical edit pattern, shown
+        once below; <code>kubernetes.ts</code> has the same plus per-user-token call sites. The real logic is all in
+        <code>kubeconfig.ts</code>.</p>
+
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">backend/src/lib/kubeconfig.ts</span>
+          <span>new: BunTlsHttpLibrary.send()</span>
+        </div>
+<pre><span class="l-ctx">export class BunTlsHttpLibrary extends k8s.IsomorphicFetchHttpLibrary {</span>
+<span class="l-add">+  constructor(private readonly kc: k8s.KubeConfig) { super(); }</span>
+<span class="l-add">+  send(request: k8s.RequestContext): k8s.Observable&lt;k8s.ResponseContext&gt; {</span>
+<span class="l-add">+    const responsePromise = (async () =&gt; {</span>
+<span class="l-add">+      const httpsOptions = {};</span>
+<span class="l-add">+      await this.kc.applyToHTTPSOptions(httpsOptions as any);</span>
+<span class="l-add">+      const tls: Record&lt;string, unknown&gt; = {};</span>
+<span class="l-add">+      if (httpsOptions.ca)   tls.ca = httpsOptions.ca;</span>
+<span class="l-add">+      if (httpsOptions.cert) tls.cert = httpsOptions.cert;</span>
+<span class="l-add">+      if (httpsOptions.key)  tls.key = httpsOptions.key;</span>
+<span class="l-add">+      if (this.kc.getCurrentCluster()?.skipTLSVerify || httpsOptions.rejectUnauthorized === false)</span>
+<span class="l-add">+        tls.rejectUnauthorized = false;</span>
+<span class="l-add">+      const fetchOptions = { method, body, headers: request.getHeaders(), signal: request.getSignal() };</span>
+<span class="l-add">+      if (Object.keys(tls).length &gt; 0) fetchOptions.tls = tls;</span>
+<span class="l-add">+      const response = await fetch(request.getUrl(), fetchOptions);</span>
+<span class="l-add">+      return new k8s.ResponseContext(response.status, headers, { text, binary });</span>
+<span class="l-add">+    })();</span>
+<span class="l-add">+    return new k8s.Observable(responsePromise);</span>
+<span class="l-add">+  }</span>
+<span class="l-ctx">}</span></pre>
+        <div class="annotation"><strong>Why:</strong> The whole fix lives here. By subclassing the SDK's HTTP library and
+          overriding <code>send()</code>, every typed API client can transparently get Bun-compatible TLS. The key insight
+          is re-reading <code>request.getHeaders()</code> (auth already applied) and translating
+          <code>applyToHTTPSOptions</code> output into Bun's <code>tls</code> option. <strong>Scrutinise the
+          <code>rejectUnauthorized = false</code> condition</strong> — it is the only line that can silently disable
+          verification.</div>
+      </div>
+
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">backend/src/lib/kubeconfig.ts</span>
+          <span>new: makeApiClient() helper</span>
+        </div>
+<pre><span class="l-add">+export function makeApiClient&lt;T extends k8s.ApiType&gt;(</span>
+<span class="l-add">+  kc: k8s.KubeConfig, apiClientType: k8s.ApiConstructor&lt;T&gt;): T {</span>
+<span class="l-add">+  const cluster = kc.getCurrentCluster();</span>
+<span class="l-add">+  if (!cluster) throw new Error('No active cluster!');</span>
+<span class="l-add">+  const configuration = k8s.createConfiguration({</span>
+<span class="l-add">+    baseServer: new k8s.ServerConfiguration(cluster.server, {}),</span>
+<span class="l-add">+    authMethods: { default: kc },</span>
+<span class="l-add">+    httpApi: new BunTlsHttpLibrary(kc),</span>
+<span class="l-add">+  });</span>
+<span class="l-add">+  return new apiClientType(configuration);</span>
+<span class="l-add">+}</span></pre>
+        <div class="annotation"><strong>Why:</strong> A drop-in replacement for <code>kc.makeApiClient()</code> that
+          reproduces the SDK's own wiring but injects <code>BunTlsHttpLibrary</code> as the transport. This reproduces
+          SDK internals (<code>createConfiguration</code>, <code>ServerConfiguration</code>) — a maintainability
+          tradeoff: it works today but couples the code to non-public SDK shape that could drift on upgrade.</div>
+      </div>
+
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">backend/src/services/{auth,autoscaler,config,registry,secrets}.ts</span>
+          <span>repeated mechanical edit</span>
+        </div>
+<pre><span class="l-del">-import { loadKubeConfig } from '../lib/kubeconfig';</span>
+<span class="l-add">+import { loadKubeConfig, makeApiClient } from '../lib/kubeconfig';</span>
+<span class="l-ctx">   ...</span>
+<span class="l-del">-    this.coreV1Api = this.kc.makeApiClient(k8s.CoreV1Api);</span>
+<span class="l-add">+    this.coreV1Api = makeApiClient(this.kc, k8s.CoreV1Api);</span></pre>
+        <div class="annotation"><strong>Why:</strong> Each service swaps the SDK's <code>kc.makeApiClient(Api)</code> for
+          the new free function. Purely mechanical and low-risk; the same one-line pattern repeats for every API class
+          (Core, Apps, CustomObjects, Auth, ApiExtensions). Because nothing else in <code>backend/</code> constructs API
+          clients, the migration is complete — no stray <code>kc.makeApiClient</code> left behind.</div>
+      </div>
+
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">backend/src/services/kubernetes.ts</span>
+          <span>lines 245, 255, 264 — per-user-token clients</span>
+        </div>
+<pre><span class="l-del">-    return this.createUserKubeConfig(userToken).makeApiClient(k8s.CustomObjectsApi);</span>
+<span class="l-add">+    return makeApiClient(this.createUserKubeConfig(userToken), k8s.CustomObjectsApi);</span>
+<span class="l-ctx">     ...</span>
+<span class="l-del">-      authorizationV1Api: userKc.makeApiClient(k8s.AuthorizationV1Api),</span>
+<span class="l-add">+      authorizationV1Api: makeApiClient(userKc, k8s.AuthorizationV1Api),</span></pre>
+        <div class="annotation"><strong>Why:</strong> The user-token path (per-request clients built from a Bearer token)
+          is also routed through the helper, making <code>makeApiClient</code> the single source of truth for Bun-safe
+          TLS. Note: each call allocates a fresh <code>KubeConfig</code> + <code>BunTlsHttpLibrary</code> per request —
+          functionally fine, a possible micro-optimisation if GC pressure ever shows up.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ RISK =================================== -->
+  <section class="tab-panel" id="tab-risk">
+    <div class="card">
+      <h2>Risk Assessment</h2>
+      <p class="caption">Severity: <span class="pill" style="color:var(--crit)">CRIT</span>
+        <span class="pill" style="color:var(--warn)">WARN</span>
+        <span class="pill" style="color:var(--info)">INFO</span>
+        <span class="pill" style="color:var(--ok)">OK</span></p>
+      <table>
+        <thead><tr><th>Axis</th><th>Severity</th><th>Finding</th></tr></thead>
+        <tbody>
+          <tr class="sev-ok">
+            <td>Security — TLS verification</td>
+            <td class="sev-ok">OK</td>
+            <td><strong>Verified correct.</strong> <code>rejectUnauthorized = false</code> is set <em>only</em> when
+              <code>skipTLSVerify</code> is true or <code>rejectUnauthorized === false</code> is explicit. Confirmed
+              against SDK <code>config.js:139-142</code> ("only set if explicitly configured"). No silent bypass.</td>
+          </tr>
+          <tr class="sev-warn">
+            <td>API contract — <code>tls-server-name</code></td>
+            <td class="sev-warn">WARN</td>
+            <td>The SDK encodes <code>cluster.tlsServerName</code> into the <em>agent's</em> <code>servername</code>
+              (<code>config.js:147,172-173</code>), which this PR discards. Clusters reached by IP or with a cert-name
+              override lose hostname verification override. Map <code>cluster.tlsServerName</code> &rarr;
+              <code>tls.serverName</code>. (Also absent in <code>proxyServiceRequest</code>.)</td>
+          </tr>
+          <tr class="sev-warn">
+            <td>API contract — <code>proxy-url</code></td>
+            <td class="sev-warn">WARN</td>
+            <td>kubeconfig <code>proxy-url</code> is handled by the SDK's <code>createAgent</code>
+              (<code>config.js:434-449</code>), which this PR bypasses. Users behind a kubeconfig-configured HTTP/SOCKS
+              proxy regress. Map to Bun's <code>fetch({ proxy })</code> or document as unsupported.</td>
+          </tr>
+          <tr class="sev-warn">
+            <td>Test coverage</td>
+            <td class="sev-warn">WARN</td>
+            <td><strong>Zero automated tests</strong> for security-sensitive TLS/auth code. PR checklist confirms
+              <code>bun run test</code> and <code>bun run lint</code> were not run. At minimum: a test that the default
+              path does <em>not</em> set <code>rejectUnauthorized:false</code> (regression guard against silent disable).</td>
+          </tr>
+          <tr class="sev-warn">
+            <td>Maintainability — duplication</td>
+            <td class="sev-warn">WARN</td>
+            <td>TLS-extraction logic is now duplicated between <code>BunTlsHttpLibrary.send()</code> and
+              <code>proxyServiceRequest</code> (<code>kubernetes.ts:2170-2194</code>). They can silently drift (e.g. one
+              gains <code>serverName</code>, the other doesn't). Extract a shared <code>kubeConfigToBunTls(kc)</code> helper.
+              <em>(Flagged by 4 of 4 completed reviewers.)</em></td>
+          </tr>
+          <tr class="sev-info">
+            <td>Maintainability — SDK-internals coupling</td>
+            <td class="sev-info">INFO</td>
+            <td><code>makeApiClient</code> hand-reproduces <code>createConfiguration</code> + <code>ServerConfiguration</code>
+              + subclasses <code>IsomorphicFetchHttpLibrary</code>. Works on <code>@kubernetes/client-node@1.4.0</code>;
+              could break on a major SDK bump. Add a version-pin note and a smoke test.</td>
+          </tr>
+          <tr class="sev-warn">
+            <td>Correctness — per-request re-run of <code>applyOptions</code></td>
+            <td class="sev-warn">WARN</td>
+            <td><strong>Verified.</strong> <code>send()</code> calls <code>applyToHTTPSOptions</code> &rarr;
+              <code>applyOptions</code>, which re-runs both <code>applyHTTPSOptions</code> <em>and</em>
+              <code>applyAuthorizationHeader</code> (<code>config.js:517-519</code>) on <strong>every</strong> request —
+              even though the generated client already applied auth before <code>send()</code>. Effects: exec/OIDC auth
+              plugins (kubelogin, <code>aws eks get-token</code>) run twice per call, and cert files re-read from disk
+              (<code>bufferFromFileOrString</code>, <code>config.js:529-531</code>). Cache the TLS material once per client.
+              <em>(Root cause behind Claude's "double credential resolution", Agency's "disk I/O", Codex's "auth re-run".)</em></td>
+          </tr>
+          <tr class="sev-info">
+            <td>Robustness — request body</td>
+            <td class="sev-info">INFO</td>
+            <td>Body is cast to <code>BodyInit</code>; the SDK's Node <code>form-data</code> multipart type wouldn't
+              serialise under Bun's <code>fetch</code>. None of the 6 API classes used post multipart today, so safe —
+              worth a guard/comment for future callers.</td>
+          </tr>
+          <tr class="sev-info">
+            <td>Robustness — error / non-2xx handling</td>
+            <td class="sev-info">INFO</td>
+            <td>Matches upstream: non-2xx responses pass through as <code>ResponseContext</code> (typed APIs map to
+              errors). <code>fetch</code> rejections (DNS/TLS/abort) propagate via the <code>Observable</code> promise.
+              Behaviour preserved.</td>
+          </tr>
+          <tr class="sev-info">
+            <td>Performance — hot path</td>
+            <td class="sev-info">INFO</td>
+            <td>Per-user-token calls allocate a fresh <code>KubeConfig</code> + <code>BunTlsHttpLibrary</code> per request.
+              Functionally fine; a token-keyed cache is a possible optimisation if GC pressure appears. <code>binary()</code>
+              buffers the whole body (fine for K8s JSON, unsuitable for streaming — but backend does no watches).</td>
+          </tr>
+          <tr class="sev-info">
+            <td>Observability</td>
+            <td class="sev-info">INFO</td>
+            <td>No new logging in <code>send()</code>. TLS failures surface as raw <code>fetch</code> errors. Acceptable;
+              a debug log of which TLS material was applied (without secrets) would aid future diagnosis.</td>
+          </tr>
+          <tr class="sev-ok">
+            <td>Auth-header preservation</td>
+            <td class="sev-ok">OK</td>
+            <td>Verified: SDK applies <code>authMethods</code> to the <code>RequestContext</code> before <code>send()</code>;
+              override re-reads <code>request.getHeaders()</code>, so Bearer tokens survive. Respects
+              <code>AUTH_ENABLED</code> cert-stripping (reads the already-stripped user).</td>
+          </tr>
+          <tr class="sev-info">
+            <td>Concurrency / races</td>
+            <td class="sev-info">INFO</td>
+            <td>Not applicable — clients are constructed once (or per request) with no shared mutable state introduced.
+              Note Bun's documented process-wide TLS session sharing is handled separately in <code>loadKubeConfig</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========================= UNKNOWNS ============================== -->
+  <section class="tab-panel" id="tab-unknowns">
+    <div class="card">
+      <h2>Assumptions &amp; Unknowns</h2>
+      <p class="caption">Everything I'm guessing, couldn't verify, or would
+        need to ask the author about. All hedging lives here.</p>
+      <ul>
+        <li><strong>Verified against SDK source.</strong> Findings citing <code>config.js</code> / <code>http.js</code>
+          line numbers were checked against the actually-installed <code>@kubernetes/client-node@1.4.0</code> in
+          <code>node_modules</code>. Confirmed: <code>getSignal()</code> <em>does</em> exist (<code>http.js:107</code>),
+          so the "runtime crash" one reviewer reported is a <strong>false positive</strong>; <code>tlsServerName</code>/SNI
+          and <code>proxyUrl</code> drops are <strong>real</strong>; <code>applyOptions</code> re-running auth per request
+          is <strong>real</strong>.</li>
+        <li><strong>Runtime behaviour not executed.</strong> I did not run <code>bun run test</code> or stand up a live
+          cluster. The "works against AKS" claim rests on the PR author's manual testing notes (200s on
+          <code>/api/cluster/status</code> etc.), not on a reproduction here.</li>
+        <li><strong>SNI / proxy severity is contextual.</strong> The <code>tls-server-name</code> and <code>proxy-url</code>
+          gaps only bite clusters that actually set those kubeconfig fields. Standard AKS/EKS kubeconfigs usually don't,
+          which is why the author's manual test passed. Would need to confirm the target deployment environments never use
+          a <code>proxy-url</code> or cert-name override to downgrade these from WARN.</li>
+        <li><strong>Bun connection-pool cross-contamination (one reviewer, MEDIUM) is unverified.</strong> The claim that
+          Bun may reuse a pooled insecure connection for a secure client to the same origin is plausible but I did not
+          confirm Bun's pooling semantics. If true it would be serious; worth a targeted test before relying on it either way.</li>
+        <li><strong>Multipart bodies.</strong> I confirmed none of the 6 API classes used (<code>CoreV1Api</code>,
+          <code>AppsV1Api</code>, <code>CustomObjectsApi</code>, <code>AuthenticationV1Api</code>,
+          <code>AuthorizationV1Api</code>, <code>ApiextensionsV1Api</code>) post <code>form-data</code> multipart today,
+          so the <code>BodyInit</code> cast is safe — but this is a property of current call sites, not an invariant.</li>
+        <li><strong>Was the duplication with <code>proxyServiceRequest</code> a deliberate choice?</strong> The PR comment
+          explicitly says it "mirrors" that pattern. Unclear whether the author intends a follow-up to DRY them, or
+          considers two copies acceptable. All four substantive reviewers flagged it.</li>
+        <li><strong>This dashboard's diagrams are my reconstruction</strong> of the control flow from reading the diff and
+          SDK, not generated from a trace. The sequence diagram's ordering (auth-before-send) is verified from
+          <code>CoreV1Api.js</code> + <code>config.js</code>, but treat box-and-arrow flows as explanatory, not authoritative.</li>
+      </ul>    </div>
+  </section>
+
+</main>
+
+<!-- Mermaid is loaded lazily — only fires if a .mermaid element exists.
+     If you don't use mermaid, this script tag can be deleted entirely. -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+(function() {
+  // ---- Tabs ----
+  const tabs = document.querySelectorAll('nav.tabs button');
+  const panels = document.querySelectorAll('.tab-panel');
+  let mermaidRunFor = new Set();  // tabs whose mermaid blocks have been rendered
+
+  function activate(tabName) {
+    tabs.forEach(b => b.classList.toggle('active', b.dataset.tab === tabName));
+    panels.forEach(p => p.classList.toggle('active', p.id === 'tab-' + tabName));
+    // Lazy-render any mermaid blocks in this tab the first time it's shown.
+    // This dodges the "hidden tab measures as zero size" bug.
+    if (window.mermaid && !mermaidRunFor.has(tabName)) {
+      const blocks = document.querySelectorAll('#tab-' + tabName + ' .mermaid');
+      if (blocks.length) {
+        mermaid.run({ nodes: blocks }).catch(e => console.warn('mermaid:', e));
+        mermaidRunFor.add(tabName);
+      }
+    }
+  }
+  tabs.forEach(b => b.addEventListener('click', () => activate(b.dataset.tab)));
+
+  // ---- Theme toggle ----
+  const root = document.documentElement;
+  const stored = localStorage.getItem('pr-dash-theme');
+  const initialTheme = stored || 'dark';
+  applyTheme(initialTheme);
+
+  function applyTheme(t) {
+    root.setAttribute('data-theme', t);
+    localStorage.setItem('pr-dash-theme', t);
+    document.getElementById('theme-icon').textContent  = t === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = t === 'dark' ? 'Light' : 'Dark';
+    if (window.mermaid) {
+      mermaid.initialize({ startOnLoad: false, theme: t === 'dark' ? 'dark' : 'default' });
+      // Re-run all already-rendered diagrams so they pick up the new palette.
+      mermaidRunFor.clear();
+      const active = document.querySelector('nav.tabs button.active');
+      if (active) {
+        // Force re-render of the visible tab's mermaid blocks.
+        const blocks = document.querySelectorAll(
+          '#tab-' + active.dataset.tab + ' .mermaid');
+        blocks.forEach(el => {
+          // mermaid stamps a processed flag and replaces innerHTML; restore source.
+          if (el.dataset.src) el.textContent = el.dataset.src;
+          el.removeAttribute('data-processed');
+        });
+        if (blocks.length) mermaid.run({ nodes: blocks }).catch(()=>{});
+        mermaidRunFor.add(active.dataset.tab);
+      }
+    }
+  }
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  // Stash mermaid source on each block so theme re-init can restore it.
+  document.querySelectorAll('.mermaid').forEach(el => {
+    el.dataset.src = el.textContent;
+  });
+
+  // ---- Mermaid initial setup (do not use startOnLoad) ----
+  if (window.mermaid) {
+    mermaid.initialize({ startOnLoad: false,
+                         theme: initialTheme === 'dark' ? 'dark' : 'default' });
+    // Render the initial tab's mermaid blocks (if any).
+    const blocks = document.querySelectorAll('#tab-summary .mermaid');
+    if (blocks.length) {
+      mermaid.run({ nodes: blocks }).catch(e => console.warn('mermaid:', e));
+      mermaidRunFor.add('summary');
+    }
+  }
+
+  // ---- View toggle (Before / After / Diff) ----
+  document.querySelectorAll('.view-toggle').forEach(group => {
+    const name = group.dataset.group;
+    group.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('button')
+             .forEach(b => b.classList.toggle('active', b === btn));
+        document.querySelectorAll('.view-panel[data-group="' + name + '"]')
+                .forEach(p => p.classList.toggle('active',
+                                                 p.dataset.view === btn.dataset.view));
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
