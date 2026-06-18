@@ -1,0 +1,991 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>Direct vLLM Provider — PR Review</title>
+<style>
+  /* ---- THEME TOKENS ---- */
+  :root, [data-theme="dark"] {
+    --bg: #0d1117;
+    --bg-2: #161b22;
+    --panel: #161b22;
+    --panel-2: #1f2733;
+    --fg: #e6edf3;
+    --fg-muted: #8b949e;
+    --border: #30363d;
+    --accent: #58a6ff;
+    --accent-2: #1f6feb;
+    --added: #2ea043;
+    --added-bg: rgba(46, 160, 67, 0.15);
+    --removed: #f85149;
+    --removed-bg: rgba(248, 81, 73, 0.15);
+    --warn: #d29922;
+    --warn-bg: rgba(210, 153, 34, 0.15);
+    --info: #58a6ff;
+    --info-bg: rgba(88, 166, 255, 0.15);
+    --crit: #f85149;
+    --crit-bg: rgba(248, 81, 73, 0.18);
+    --ok: #2ea043;
+    --ok-bg: rgba(46, 160, 67, 0.15);
+    --code-bg: #1f2733;
+    --shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+  [data-theme="light"] {
+    --bg: #ffffff;
+    --bg-2: #f6f8fa;
+    --panel: #ffffff;
+    --panel-2: #f6f8fa;
+    --fg: #1f2328;
+    --fg-muted: #656d76;
+    --border: #d0d7de;
+    --accent: #0969da;
+    --accent-2: #0550ae;
+    --added: #1a7f37;
+    --added-bg: rgba(26, 127, 55, 0.10);
+    --removed: #cf222e;
+    --removed-bg: rgba(207, 34, 46, 0.10);
+    --warn: #9a6700;
+    --warn-bg: rgba(154, 103, 0, 0.10);
+    --info: #0969da;
+    --info-bg: rgba(9, 105, 218, 0.10);
+    --crit: #cf222e;
+    --crit-bg: rgba(207, 34, 46, 0.12);
+    --ok: #1a7f37;
+    --ok-bg: rgba(26, 127, 55, 0.10);
+    --code-bg: #f6f8fa;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+                font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Helvetica, Arial, sans-serif; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+         font-size: 12.5px; background: var(--code-bg); padding: 1px 5px;
+         border-radius: 4px; border: 1px solid var(--border); }
+  pre  { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+         font-size: 12.5px; background: var(--code-bg); padding: 12px;
+         border-radius: 6px; border: 1px solid var(--border);
+         overflow-x: auto; margin: 0; }
+  h1, h2, h3 { margin: 0 0 12px; color: var(--fg); }
+  h1 { font-size: 20px; font-weight: 600; }
+  h2 { font-size: 17px; font-weight: 600; }
+  h3 { font-size: 14px; font-weight: 600; color: var(--accent); }
+
+  /* ---- LAYOUT ---- */
+  header { border-bottom: 1px solid var(--border); background: var(--bg-2);
+           padding: 14px 28px; display: flex; align-items: center; gap: 18px;
+           flex-wrap: wrap; }
+  header .title-block { flex: 1 1 auto; min-width: 0; }
+  header h1 { margin: 0; }
+  header .meta { color: var(--fg-muted); font-size: 12.5px; margin-top: 4px; }
+  header .meta > * + * { margin-left: 14px; }
+  .theme-toggle { background: var(--panel-2); border: 1px solid var(--border);
+                  color: var(--fg); padding: 6px 12px; border-radius: 6px;
+                  cursor: pointer; font: inherit; }
+  .theme-toggle:hover { border-color: var(--accent); }
+
+  nav.tabs { border-bottom: 1px solid var(--border); background: var(--bg);
+             padding: 0 28px; display: flex; gap: 4px; overflow-x: auto; }
+  nav.tabs button { background: transparent; border: 0; color: var(--fg-muted);
+                    padding: 12px 16px; cursor: pointer; font: inherit;
+                    border-bottom: 2px solid transparent; white-space: nowrap; }
+  nav.tabs button:hover { color: var(--fg); }
+  nav.tabs button.active { color: var(--fg); border-bottom-color: var(--accent); }
+
+  main { padding: 24px 28px; max-width: 1400px; margin: 0 auto; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .card { background: var(--panel); border: 1px solid var(--border);
+          border-radius: 8px; padding: 20px; margin-bottom: 18px;
+          box-shadow: var(--shadow); }
+  .card > h2:first-child { margin-top: 0; }
+  .card .caption { color: var(--fg-muted); font-size: 13px; margin: 0 0 14px; }
+
+  .row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .row > * { flex: 1 1 320px; min-width: 0; }
+
+  /* ---- DIAGRAM PRIMITIVES (HTML/CSS, no JS, no mermaid) ---- */
+  .diagram { display: flex; flex-direction: column; gap: 18px;
+             padding: 18px; background: var(--panel-2);
+             border: 1px solid var(--border); border-radius: 6px; }
+  .diagram-row { display: flex; gap: 28px; align-items: center;
+                 flex-wrap: wrap; justify-content: center; }
+  .diagram-col { display: flex; flex-direction: column; gap: 14px;
+                 align-items: stretch; }
+  .node { padding: 10px 14px; border-radius: 6px; background: var(--panel);
+          border: 1px solid var(--border); text-align: center;
+          font-size: 12.5px; min-width: 120px; color: var(--fg); }
+  .node small { display:block; color: var(--fg-muted); font-size: 11px; margin-top: 3px; }
+  .node.new { border-style: dashed; border-color: var(--accent);
+              background: var(--info-bg); }
+  .node.changed { border-color: var(--warn); background: var(--warn-bg); }
+  .node.removed { border-color: var(--removed); background: var(--removed-bg);
+                  text-decoration: line-through; opacity: 0.7; }
+  .node.cluster { background: rgba(255,255,255,0.02); padding: 14px;
+                  border-style: dashed; }
+  .node.cluster .cluster-label { font-size: 11px; color: var(--fg-muted);
+                                 text-transform: uppercase; letter-spacing: 0.5px;
+                                 margin-bottom: 8px; }
+  /* Connector: a thin horizontal line with an arrow. */
+  .arrow {
+    flex: 0 0 56px; height: 2px; background: var(--fg-muted); position: relative;
+  }
+  .arrow::after {
+    content: ""; position: absolute; right: -2px; top: -4px;
+    border-left: 8px solid var(--fg-muted);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+  .arrow.dashed { background: none; border-top: 2px dashed var(--accent); height: 0; }
+  .arrow.dashed::after { border-left-color: var(--accent); }
+  .arrow.v { flex: 0 0 28px; width: 2px; height: 28px; align-self: center; }
+  .arrow.v::after { right: -4px; top: auto; bottom: -2px;
+                    border-left: 5px solid transparent; border-right: 5px solid transparent;
+                    border-top: 8px solid var(--fg-muted); border-bottom: 0; }
+  .arrow .label { position: absolute; top: -22px; left: 50%;
+                  transform: translateX(-50%); font-size: 11px;
+                  color: var(--fg-muted); white-space: nowrap;
+                  background: var(--panel-2); padding: 0 6px; }
+  .legend { display: flex; gap: 18px; font-size: 12px; color: var(--fg-muted);
+            margin-top: 8px; flex-wrap: wrap; }
+  .legend .swatch { display: inline-block; width: 14px; height: 14px;
+                    border-radius: 3px; vertical-align: middle;
+                    margin-right: 6px; border: 1px solid var(--border); }
+
+  /* ---- BEFORE / AFTER / DIFF TOGGLE ---- */
+  .view-toggle { display: inline-flex; gap: 0; border: 1px solid var(--border);
+                 border-radius: 6px; overflow: hidden; margin-bottom: 14px; }
+  .view-toggle button { background: var(--panel); border: 0; color: var(--fg-muted);
+                        padding: 6px 14px; cursor: pointer; font: inherit;
+                        border-right: 1px solid var(--border); }
+  .view-toggle button:last-child { border-right: 0; }
+  .view-toggle button.active { background: var(--accent); color: white; }
+  .view-panel { display: none; }
+  .view-panel.active { display: block; }
+
+  /* ---- TABLES ---- */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 8px 12px; text-align: left; vertical-align: top;
+           border-bottom: 1px solid var(--border); }
+  th { color: var(--fg-muted); font-weight: 600; font-size: 12px;
+       text-transform: uppercase; letter-spacing: 0.4px; }
+  tr:last-child td { border-bottom: 0; }
+  td.sev-crit  { color: var(--crit); font-weight: 600; }
+  td.sev-warn  { color: var(--warn); font-weight: 600; }
+  td.sev-info  { color: var(--info); font-weight: 600; }
+  td.sev-ok    { color: var(--ok);   font-weight: 600; }
+  tr.sev-crit  { background: var(--crit-bg); }
+  tr.sev-warn  { background: var(--warn-bg); }
+  tr.sev-info  { background: var(--info-bg); }
+  tr.sev-ok    { background: var(--ok-bg); }
+
+  /* ---- DIFF VIEWER ---- */
+  .diff { border: 1px solid var(--border); border-radius: 6px;
+          margin-bottom: 18px; overflow: hidden; }
+  .diff-header { background: var(--panel-2); padding: 8px 12px;
+                 border-bottom: 1px solid var(--border); display: flex;
+                 justify-content: space-between; font-size: 12.5px; }
+  .diff-header .path { font-family: ui-monospace, monospace; color: var(--fg); }
+  .diff pre { border: 0; border-radius: 0; }
+  .l-add { display: block; background: var(--added-bg); color: var(--added); }
+  .l-del { display: block; background: var(--removed-bg); color: var(--removed); }
+  .l-ctx { display: block; color: var(--fg-muted); }
+  .annotation { padding: 10px 14px; background: var(--info-bg);
+                border-top: 1px solid var(--border); font-size: 12.5px; }
+  .annotation strong { color: var(--accent); }
+
+  /* ---- MERMAID (only used for sequence/state/class diagrams) ---- */
+  .mermaid { background: var(--panel-2); padding: 16px; border-radius: 6px;
+             border: 1px solid var(--border); text-align: center; }
+
+  /* ---- UTILITY ---- */
+  .muted { color: var(--fg-muted); }
+  .pill  { display: inline-block; padding: 2px 8px; border-radius: 10px;
+           background: var(--panel-2); color: var(--fg-muted); font-size: 11.5px;
+           border: 1px solid var(--border); }
+  dl.glossary { margin: 0; }
+  dl.glossary dt { font-weight: 600; color: var(--accent); margin-top: 14px; }
+  dl.glossary dt:first-child { margin-top: 0; }
+  dl.glossary dd { margin: 4px 0 0; color: var(--fg); }
+  .kpi-row { display:flex; gap:14px; flex-wrap:wrap; margin: 4px 0 16px; }
+  .kpi { flex:1 1 130px; background: var(--panel-2); border:1px solid var(--border);
+         border-radius:8px; padding:12px 14px; }
+  .kpi .n { font-size:20px; font-weight:700; color: var(--fg); }
+  .kpi .l { font-size:11.5px; color: var(--fg-muted); text-transform:uppercase;
+            letter-spacing:0.4px; margin-top:2px; }
+  ul.tight { margin: 6px 0; padding-left: 20px; }
+  ul.tight li { margin: 4px 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title-block">
+    <h1>feat: Direct vLLM Provider</h1>
+    <div class="meta">
+      <a href="https://github.com/surajssd/kubeairunway/compare/main...vllm-nightly" target="_blank" rel="noopener">Compare on GitHub (no PR yet) &#8599;</a>
+      <span>branch <code>vllm-nightly</code> &rarr; <code>main</code></span>
+      <span>@surajssd</span>
+      <span>86 files, +11,500 / &minus;182</span>
+      <span>20 commits</span>
+    </div>
+  </div>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+    <span id="theme-icon">☀️</span> <span id="theme-label">Light</span>
+  </button>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="active" data-tab="summary">Summary</button>
+  <button data-tab="glossary">Glossary</button>
+  <button data-tab="architecture">Architecture</button>
+  <button data-tab="diff">Annotated Diff</button>
+  <button data-tab="risk">Risk Assessment</button>
+  <button data-tab="unknowns">Assumptions &amp; Unknowns</button>
+</nav>
+
+<main>
+
+  <!-- ============================= SUMMARY ============================= -->
+  <section class="tab-panel active" id="tab-summary">
+    <div class="card">
+      <h2>Executive Summary</h2>
+      <div class="kpi-row">
+        <div class="kpi"><div class="n">+11,500</div><div class="l">insertions</div></div>
+        <div class="kpi"><div class="n">86</div><div class="l">files</div></div>
+        <div class="kpi"><div class="n">~95</div><div class="l">new Go tests</div></div>
+        <div class="kpi"><div class="n">~26</div><div class="l">new TS tests</div></div>
+        <div class="kpi"><div class="n">2 / 18</div><div class="l">feat vs fix commits</div></div>
+      </div>
+      <p>This PR adds a sixth inference provider, <strong>Direct vLLM</strong>, to AI Runway. Unlike the
+      existing providers that render a <code>ModelDeployment</code> into an upstream operator CR
+      (KAITO Workspace, Dynamo, RayService, llm-d), the vLLM provider renders <em>native</em>
+      <code>apps/v1 Deployment</code> + <code>Service</code> objects directly &mdash; no operator dependency,
+      aimed at &ldquo;newest model support and configurable launch images.&rdquo; It ships as a
+      standalone controller under <code>providers/vllm/</code> (controller, transformer, image
+      resolver, status translator, RBAC, Dockerfile, ~3,500 lines of tests).</p>
+
+      <p>Two cross-cutting capabilities ride along. First, new CRD surface:
+      <code>spec.engine.image</code> (preferred image override), <code>spec.engine.extraArgs</code>
+      (raw passthrough flags), and a rich <code>status.image</code> block that records the
+      registry-resolved digest plus provenance. Second, a backend <strong>vLLM recipe</strong>
+      pipeline (<code>recipes.vllm.ai</code>) that the Web UI uses to pre-fill deployment fields,
+      hardened against SSRF / path-traversal / oversized-payload abuse.</p>
+
+      <p>The commit shape is striking: only <strong>2 of 20</strong> commits are <code>feat</code>;
+      the other 18 are <code>fix</code>/<code>build</code>/<code>ci</code>/<code>docs</code>, and at
+      least eight are explicitly &ldquo;address review feedback.&rdquo; The feature landed rough and
+      was hardened in-branch &mdash; reassuring for test depth, but it means the diff mixes the
+      original feature with many small correctness patches across other providers and the shared
+      validation layer.</p>
+
+      <p><strong>Scrutinize first:</strong> the reconcile loop now makes a <em>synchronous remote
+      registry round-trip</em> (<code>setImageResolutionStatus</code> &rarr;
+      <code>RemoteImageResolver.Resolve</code>) to pin the default <code>cu130-nightly</code> tag to a
+      digest, and for the <em>provider-default</em> image a resolution failure is a hard reconcile
+      error. It is cached and 30s-bounded, but a registry outage on a cold cache blocks every
+      default-image deployment from progressing. The second thing to check is the
+      <strong>provider-switch orphan guard</strong> (issue&nbsp;#325): switching
+      <code>spec.provider.name</code> after selection is rejected rather than handled, and
+      deselection never cleans up the old provider&rsquo;s resources.</p>
+    </div>
+  </section>
+
+  <!-- ============================ GLOSSARY ============================ -->
+  <section class="tab-panel" id="tab-glossary">
+    <div class="card">
+      <h2>Glossary &amp; Concept Primer</h2>
+      <p class="caption">Vocabulary an unfamiliar reviewer needs before the
+        rest of the dashboard makes sense.</p>
+      <dl class="glossary">
+        <dt>ModelDeployment (MD)</dt>
+        <dd>The unified CRD users apply. A provider turns it into concrete cluster resources. This
+        PR teaches the <em>vLLM</em> provider to turn it into a Deployment + Service.</dd>
+
+        <dt>Provider</dt>
+        <dd>A controller that reconciles a <code>ModelDeployment</code> into some backend&rsquo;s
+        resources. Existing: <code>kaito</code>, <code>dynamo</code>, <code>kuberay</code>,
+        <code>llmd</code>. New: <code>vllm</code> (&ldquo;Direct vLLM&rdquo;).</dd>
+
+        <dt>Direct vLLM</dt>
+        <dd>The new provider. &ldquo;Direct&rdquo; = it emits stock Kubernetes
+        <code>Deployment</code>+<code>Service</code> running the
+        <code>vllm/vllm-openai</code> OpenAI-compatible server image, with no intermediate operator.</dd>
+
+        <dt>Transformer</dt>
+        <dd>The pure function inside a provider that maps an MD spec to unstructured K8s objects
+        (<code>providers/vllm/transformer.go</code>). Builds the container, args, probes, volumes.</dd>
+
+        <dt>engine.args vs engine.extraArgs</dt>
+        <dd><code>engine.args</code> is a structured <code>map[string]string</code> of vLLM flags.
+        <code>engine.extraArgs</code> (new) is a raw <code>[]string</code> appended verbatim. A flag
+        appearing in <em>both</em> is now rejected at admission.</dd>
+
+        <dt>Recipe</dt>
+        <dd>A JSON document on <code>recipes.vllm.ai</code> describing a known-good launch command
+        for a model. The backend fetches and &ldquo;resolves&rdquo; it into deployment fields
+        (GPU count, engine args, image).</dd>
+
+        <dt>Resolve (recipe)</dt>
+        <dd>Backend logic (<code>vllmRecipeResolver.ts</code>) that parses a recipe&rsquo;s
+        <code>vllm serve …</code> command line into structured <code>engineArgs</code>,
+        <code>engineExtraArgs</code>, GPU count, image ref, and provenance annotations.</dd>
+
+        <dt>Image resolution / digest pinning</dt>
+        <dd>The controller queries the registry to turn a moving tag
+        (<code>cu130-nightly</code>) into an immutable <code>repo@sha256:…</code> digest, recorded in
+        <code>status.image</code> and baked into generated pods.</dd>
+
+        <dt>Provenance annotations</dt>
+        <dd><code>airunway.ai/recipe.*</code> + <code>airunway.ai/generated-by</code> annotations
+        stamped onto a manifest so you can tell a recipe-generated deployment from a hand-written
+        one.</dd>
+
+        <dt>Aggregated vs Disaggregated serving</dt>
+        <dd>Aggregated = one pod does prefill+decode. Disaggregated = separate prefill/decode
+        Deployments sharing a KV cache. Direct vLLM <strong>advertises aggregated only</strong>;
+        disaggregated rendering exists internally but is rejected at reconcile.</dd>
+
+        <dt>Validating webhook vs reconcile backstop</dt>
+        <dd>Two enforcement points. The <em>webhook</em> rejects bad specs synchronously at
+        <code>kubectl apply</code> time. The <em>reconcile backstop</em> re-checks the same rule for
+        objects that bypass admission (tests, upgrades, disabled webhooks).</dd>
+
+        <dt>versions.env / ldflags injection</dt>
+        <dd>Single source of truth for pinned versions. <code>VLLM_VERSION=cu130-nightly</code> is
+        injected into the provider binary via <code>-ldflags -X …VLLMVersion=</code>; a Go literal
+        fallback must match (enforced by <code>make verify-versions</code>).</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ========================== ARCHITECTURE ========================== -->
+  <section class="tab-panel" id="tab-architecture">
+
+    <!-- 1. MODULE MAP : provider landscape, before/after/diff -->
+    <div class="card">
+      <h2>1. Where Direct vLLM fits in the provider landscape</h2>
+      <p class="caption">How a <code>ModelDeployment</code> reaches running pods. Toggle to see what
+        this PR adds. Dashed/blue boxes are new; amber boxes are modified.</p>
+      <div class="view-toggle" data-group="modmap">
+        <button class="active" data-view="after">After</button>
+        <button data-view="before">Before</button>
+        <button data-view="diff">What changed</button>
+      </div>
+
+      <div class="view-panel active" data-group="modmap" data-view="after">
+        <div class="diagram">
+          <div class="diagram-row">
+            <div class="node">ModelDeployment CR</div>
+            <div class="arrow"><span class="label">selects</span></div>
+            <div class="node changed">Core controller<small>+ provider-switch guard<br>+ image-field guard</small></div>
+            <div class="arrow"></div>
+            <div class="node cluster">
+              <div class="cluster-label">providers</div>
+              <div class="diagram-col">
+                <div class="node">kaito</div>
+                <div class="node">dynamo</div>
+                <div class="node changed">kuberay <small>ImageOverride()</small></div>
+                <div class="node changed">llmd <small>extraArgs + ImageOverride()</small></div>
+                <div class="node new">vllm <small>NEW &mdash; native Deploy+Svc</small></div>
+              </div>
+            </div>
+            <div class="arrow"><span class="label">renders</span></div>
+            <div class="node">K8s workloads</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="view-panel" data-group="modmap" data-view="before">
+        <div class="diagram">
+          <div class="diagram-row">
+            <div class="node">ModelDeployment CR</div>
+            <div class="arrow"><span class="label">selects</span></div>
+            <div class="node">Core controller</div>
+            <div class="arrow"></div>
+            <div class="node cluster">
+              <div class="cluster-label">providers</div>
+              <div class="diagram-col">
+                <div class="node">kaito</div>
+                <div class="node">dynamo</div>
+                <div class="node">kuberay</div>
+                <div class="node">llmd</div>
+              </div>
+            </div>
+            <div class="arrow"><span class="label">renders</span></div>
+            <div class="node">K8s workloads</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="view-panel" data-group="modmap" data-view="diff">
+        <div class="diagram">
+          <ul class="tight">
+            <li><span class="pill" style="color:var(--accent)">NEW</span> <code>providers/vllm/</code> &mdash; full standalone controller (transformer, controller, image resolver, status, RBAC, Dockerfile).</li>
+            <li><span class="pill" style="color:var(--accent)">NEW</span> Backend recipe pipeline: <code>vllmRecipesClient.ts</code>, <code>vllmRecipeResolver.ts</code>, route <code>/api/vllm/recipes</code>.</li>
+            <li><span class="pill" style="color:var(--warn)">MOD</span> Core controller gains a provider-switch rejection (#325) and an image-field conflict guard.</li>
+            <li><span class="pill" style="color:var(--warn)">MOD</span> <code>kuberay</code> &amp; <code>llmd</code> now honor <code>spec.engine.image</code> via shared <code>ImageOverride()</code>; <code>llmd</code> appends <code>extraArgs</code>.</li>
+            <li><span class="pill" style="color:var(--warn)">MOD</span> Webhook rejects overriding an <em>auto-selected</em> provider and conflicting image fields.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span><span class="swatch" style="background:var(--info-bg);border-style:dashed;border-color:var(--accent);"></span> new</span>
+        <span><span class="swatch" style="background:var(--warn-bg);border-color:var(--warn);"></span> modified</span>
+        <span><span class="swatch" style="background:var(--panel);"></span> pre-existing</span>
+      </div>
+    </div>
+
+    <!-- 2. RECIPE DATA-FLOW PIPELINE -->
+    <div class="card">
+      <h2>2. Recipe &rarr; Deployment data flow (Web UI path)</h2>
+      <p class="caption">End-to-end: how a click in the form becomes a digest-pinned Deployment. The
+        blue guards are the SSRF / size / arg-conflict defenses added across the review-fix commits.</p>
+      <div class="diagram">
+        <div class="diagram-row">
+          <div class="node new">recipes.vllm.ai<small>external, operator-configurable base URL</small></div>
+          <div class="arrow"><span class="label">fetch</span></div>
+          <div class="node new">vllmRecipesClient<small>HTTPS-only · same-origin · 10s timeout · 5 MiB stream cap · LRU(256) + TTL cache</small></div>
+        </div>
+        <div class="diagram-row"><div class="arrow v"></div></div>
+        <div class="diagram-row">
+          <div class="node new">vllmRecipeResolver<small>parse "vllm serve" argv &rarr; engineArgs / extraArgs / GPU = TP&times;PP / imageRef / provenance</small></div>
+          <div class="arrow"><span class="label">POST /resolve</span></div>
+          <div class="node changed">DeploymentForm.tsx<small>nightly / stable / custom image choice</small></div>
+        </div>
+        <div class="diagram-row"><div class="arrow v"></div></div>
+        <div class="diagram-row">
+          <div class="node changed">toModelDeploymentSpec()<small>env Record &rarr; EnvVar[] · provenance &rarr; annotations</small></div>
+          <div class="arrow"><span class="label">apply</span></div>
+          <div class="node changed">Webhook<small>ValidateEngineArgs · ValidateImageFields</small></div>
+          <div class="arrow"><span class="label">reconcile</span></div>
+          <div class="node new">vllm controller<small>resolve digest &rarr; render Deploy+Svc</small></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. RECONCILE SEQUENCE (mermaid) -->
+    <div class="card">
+      <h2>3. Direct vLLM reconcile sequence</h2>
+      <p class="caption">Time-ordered path through one reconcile. Note the synchronous registry
+        round-trip: for the provider-default image its failure aborts the reconcile.</p>
+      <div class="mermaid">
+sequenceDiagram
+    participant API as kube-apiserver
+    participant R as vLLM Reconciler
+    participant T as Transformer
+    participant REG as Registry
+    R->>API: Get ModelDeployment
+    API-->>R: MD (status.provider = vllm?)
+    alt not selected for vllm
+        R-->>API: return (no-op)
+    end
+    R->>R: validateCompatibility (reject disaggregated, require GPU)
+    R->>REG: Resolve image tag to digest (30s timeout)
+    alt default image and resolve fails
+        REG-->>R: error
+        R->>API: status Failed, requeue
+    else resolved or user image
+        REG-->>R: digest + provenance
+        R->>T: Transform(MD)
+        T-->>R: Deployment + Service
+        R->>API: create or update resources
+        R->>API: Get upstream Deployment status
+        R->>API: PATCH status (phase, image, conditions)
+    end
+      </div>
+    </div>
+
+    <!-- 4. VALIDATION TWO-LAYER -->
+    <div class="card">
+      <h2>4. The recurring pattern: admission guard + reconcile backstop</h2>
+      <p class="caption">Most <code>fix(…)</code> commits in this PR add the <em>same</em> rule in two
+        places &mdash; synchronously at <code>kubectl</code> time, and again at reconcile for objects
+        that bypass admission. This is the single most repeated idea in the diff.</p>
+      <div class="diagram">
+        <div class="diagram-row">
+          <div class="node">kubectl apply / patch</div>
+          <div class="arrow"><span class="label">admission</span></div>
+          <div class="node new">Webhook (synchronous)<small>ValidateEngineArgs<br>ValidateImageFields<br>provider.name immutability<br>(incl. status fallback)</small></div>
+        </div>
+        <div class="diagram-row"><div class="arrow v"></div></div>
+        <div class="diagram-row">
+          <div class="node new">Reconcile backstop<small>ValidateImageFields (core)<br>ValidateEngineArgs (vllm transform)<br>provider-switch rejection (#325)<br>reserved host/port rejection</small></div>
+          <div class="arrow"><span class="label">on conflict</span></div>
+          <div class="node changed">status.phase = Failed<small>condition + human message</small></div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:10px">Why duplicate? The webhook gives a fast, synchronous
+        rejection at <code>kubectl</code> time; the reconcile backstop catches objects that never went
+        through admission (controller tests, in-place upgrades, clusters with the webhook disabled).</p>
+    </div>
+
+    <!-- 5. SCHEMA DIFF SIDE BY SIDE -->
+    <div class="card">
+      <h2>5. CRD schema diff: EngineSpec &amp; status</h2>
+      <p class="caption">New API surface on <code>ModelDeployment</code>. Left = before, right = after.
+        Green lines are additions.</p>
+      <div class="row">
+        <div>
+          <h3>Before</h3>
+<pre><span class="l-ctx">type EngineSpec struct {</span>
+<span class="l-ctx">  Type          EngineType</span>
+<span class="l-ctx">  ContextLength *int64</span>
+<span class="l-ctx">  Args          map[string]string</span>
+<span class="l-ctx">}</span>
+<span class="l-ctx"> </span>
+<span class="l-ctx">type ModelDeploymentStatus struct {</span>
+<span class="l-ctx">  Phase    DeploymentPhase</span>
+<span class="l-ctx">  Endpoint *EndpointStatus</span>
+<span class="l-ctx">  Gateway  *GatewayStatus</span>
+<span class="l-ctx">}</span>
+</pre>
+        </div>
+        <div>
+          <h3>After</h3>
+<pre><span class="l-ctx">type EngineSpec struct {</span>
+<span class="l-ctx">  Type          EngineType</span>
+<span class="l-add">  Image         string        // engine-specific override</span>
+<span class="l-ctx">  ContextLength *int64</span>
+<span class="l-ctx">  Args          map[string]string</span>
+<span class="l-add">  ExtraArgs     []string      // raw passthrough flags</span>
+<span class="l-ctx">}</span>
+<span class="l-ctx">type ModelDeploymentStatus struct {</span>
+<span class="l-ctx">  Phase    DeploymentPhase</span>
+<span class="l-ctx">  Endpoint *EndpointStatus</span>
+<span class="l-ctx">  Gateway  *GatewayStatus</span>
+<span class="l-add">  Image    *ImageStatus  // resolved digest + provenance</span>
+<span class="l-ctx">}</span>
+</pre>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:12px">Plus 6 new condition types: <code>ImageResolved</code>,
+      <code>ImageVerified</code>, <code>UnsupportedImage</code>, <code>RecipeResolved</code>,
+      <code>NightlyAvailable</code>, <code>HardwareCompatible</code>. <code>ImageVerified</code> is
+      always <code>Unknown</code> &mdash; signature/attestation verification is explicitly not
+      implemented yet.</p>
+    </div>
+
+    <!-- 6. CAPABILITIES COMPARISON TABLE -->
+    <div class="card">
+      <h2>6. Direct vLLM behavior contract</h2>
+      <p class="caption">What the provider does and deliberately does <em>not</em> do, as encoded in
+        <code>config.go</code> and <code>controller.go</code>.</p>
+      <table>
+        <thead><tr><th>Dimension</th><th>Behavior</th></tr></thead>
+        <tbody>
+          <tr><td>Selection</td><td><strong>Explicit-only</strong> &mdash; <code>SelectionRules: nil</code>, never auto-selected. Opt in with <code>spec.provider.name: vllm</code>.</td></tr>
+          <tr><td>Output</td><td>Native <code>apps/v1 Deployment</code> + <code>Service</code> (no operator CR).</td></tr>
+          <tr><td>Serving modes</td><td>Aggregated <strong>only</strong>. Disaggregated rendering exists but is rejected at reconcile and unadvertised.</td></tr>
+          <tr><td>Hardware</td><td>GPU required (<code>spec.resources.gpu.count &gt; 0</code>); CPU unsupported.</td></tr>
+          <tr><td>Default image</td><td><code>vllm/vllm-openai:cu130-nightly</code> from <code>versions.env</code>, resolved to a digest.</td></tr>
+          <tr><td>host / port</td><td>Reserved (<code>0.0.0.0:8000</code>); user args setting them are rejected to keep container / Service / probes aligned.</td></tr>
+          <tr><td>HF token</td><td>Injected from <code>spec.secrets.huggingFaceToken</code> via <code>secretKeyRef</code>; a user-supplied duplicate <code>HF_TOKEN</code> in <code>spec.env</code> is dropped.</td></tr>
+          <tr><td>Image verification</td><td>Not implemented &mdash; <code>ImageVerified=Unknown</code>, <code>Verified=false</code> always.</td></tr>
+          <tr><td>Provider switch</td><td>Rejected once selected (interim guard, #325); requires delete + recreate.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 7. COMMIT SHAPE -->
+    <div class="card">
+      <h2>7. Commit shape: a feature, then a long hardening tail</h2>
+      <p class="caption">20 commits grouped by conventional-commit prefix. The story: 2 feature
+        commits, then 18 commits of review-driven hardening, build wiring, and docs.</p>
+      <table>
+        <thead><tr><th>Prefix</th><th>Count</th><th>What it covers</th></tr></thead>
+        <tbody>
+          <tr class="sev-ok"><td><code>feat</code></td><td class="sev-ok">2</td><td>The provider itself + production deployment defaults.</td></tr>
+          <tr class="sev-warn"><td><code>fix</code></td><td class="sev-warn">14</td><td>Arg-conflict / image-field / provider-switch validation, recipe-client hardening, finalizer-timeout, lint/build blockers, &ge;8 explicit &ldquo;review feedback&rdquo; passes.</td></tr>
+          <tr class="sev-info"><td><code>build</code></td><td class="sev-info">2</td><td><code>versions.env</code> wiring + ldflags injection for <code>VLLM_VERSION</code>.</td></tr>
+          <tr class="sev-info"><td><code>ci</code></td><td class="sev-info">1</td><td>Add vllm to the provider go-checks matrix.</td></tr>
+          <tr class="sev-info"><td><code>docs</code></td><td class="sev-info">1</td><td>Direct vLLM provider guide.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <!-- ============================ DIFF =================================== -->
+  <section class="tab-panel" id="tab-diff">
+    <div class="card">
+      <h2>Annotated Diff</h2>
+      <p class="caption">6 of the most consequential hunks shown (this is a large PR; the full diff
+        is ~11.5k lines). Omitted areas are listed at the bottom.</p>
+
+      <!-- hunk 1 -->
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">controller/api/v1alpha1/modeldeployment_validation.go</span>
+          <span>new file · ValidateEngineArgs</span>
+        </div>
+<pre><span class="l-add">+func (spec *ModelDeploymentSpec) ValidateEngineArgs() error {</span>
+<span class="l-add">+  if len(spec.Engine.Args) == 0 || len(spec.Engine.ExtraArgs) == 0 {</span>
+<span class="l-add">+    return nil</span>
+<span class="l-add">+  }</span>
+<span class="l-add">+  for _, arg := range spec.Engine.ExtraArgs {</span>
+<span class="l-add">+    key, ok := extraArgFlagKey(arg)</span>
+<span class="l-add">+    if !ok { continue }</span>
+<span class="l-add">+    if _, dup := spec.Engine.Args[key]; dup {</span>
+<span class="l-add">+      return fmt.Errorf("launch flag %q is set in both spec.engine.args and "+</span>
+<span class="l-add">+        "spec.engine.extraArgs (%q); set it in exactly one place ...", key, arg)</span>
+<span class="l-add">+    }</span>
+<span class="l-add">+  }</span>
+<span class="l-add">+  return nil</span>
+<span class="l-add">+}</span>
+</pre>
+        <div class="annotation"><strong>Why:</strong> <code>engine.args</code> renders first and
+          <code>extraArgs</code> is appended verbatim; the same flag in both produced two copies and
+          vLLM&rsquo;s last-wins argparse silently honored the wrong one. Provider-agnostic on purpose
+          &mdash; it runs at admission even when the provider is auto-selected and unknown.</div>
+      </div>
+
+      <!-- hunk 2 -->
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">controller/internal/webhook/v1alpha1/modeldeployment_webhook.go</span>
+          <span>validateImmutableFields</span>
+        </div>
+<pre><span class="l-ctx">   oldProvider := ""</span>
+<span class="l-ctx">   if oldSpec.Provider != nil {</span>
+<span class="l-ctx">     oldProvider = oldSpec.Provider.Name</span>
+<span class="l-ctx">   }</span>
+<span class="l-add">+  if oldProvider == "" &amp;&amp; oldObj.Status.Provider != nil {</span>
+<span class="l-add">+    oldProvider = oldObj.Status.Provider.Name</span>
+<span class="l-add">+  }</span>
+</pre>
+        <div class="annotation"><strong>Why:</strong> auto-selection records its choice in
+          <code>status</code>, never in the user&rsquo;s spec. Without this fallback, overriding an
+          auto-selected provider slipped past admission and only failed later, asynchronously. Now the
+          status-recorded provider is the &ldquo;old&rdquo; value, so the change is rejected at
+          <code>kubectl</code> time.</div>
+      </div>
+
+      <!-- hunk 3 -->
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">controller/internal/controller/modeldeployment_controller.go</span>
+          <span>Reconcile · Step 7</span>
+        </div>
+<pre><span class="l-add">+  if md.Spec.Provider != nil &amp;&amp; md.Spec.Provider.Name != "" &amp;&amp;</span>
+<span class="l-add">+    md.Status.Provider != nil &amp;&amp; md.Status.Provider.Name != "" &amp;&amp;</span>
+<span class="l-add">+    md.Spec.Provider.Name != md.Status.Provider.Name {</span>
+<span class="l-add">+    msg := fmt.Sprintf("changing spec.provider.name from %q to %q after a "+</span>
+<span class="l-add">+      "provider has been selected is not supported; delete and recreate ...",</span>
+<span class="l-add">+      md.Status.Provider.Name, md.Spec.Provider.Name)</span>
+<span class="l-add">+    r.setCondition(&amp;md, ConditionTypeProviderSelected, False, "ProviderChangeNotSupported", msg)</span>
+<span class="l-add">+    md.Status.Phase = DeploymentPhaseFailed</span>
+<span class="l-add">+    return ctrl.Result{}, r.Status().Patch(ctx, &amp;md, client.MergeFrom(base))</span>
+<span class="l-add">+  }</span>
+</pre>
+        <div class="annotation"><strong>Why:</strong> re-pointing the provider would orphan the old
+          provider&rsquo;s resources and finalizer (controllers only clean up on MD deletion, not
+          deselection). This is an explicit interim failure rather than silently keeping the old
+          provider. Full handoff is deferred to issue&nbsp;#325 &mdash; <strong>a reviewer should
+          confirm that&rsquo;s an acceptable interim UX.</strong></div>
+      </div>
+
+      <!-- hunk 4 -->
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">providers/vllm/transformer.go</span>
+          <span>buildVLLMArgs · derived-flag dedup</span>
+        </div>
+<pre><span class="l-ctx">  explicitKeys := map[string]struct{}{}</span>
+<span class="l-ctx">  for key := range md.Spec.Engine.Args { explicitKeys[key] = struct{}{} }</span>
+<span class="l-add">+  for _, arg := range md.Spec.Engine.ExtraArgs {</span>
+<span class="l-add">+    if key, ok := extraArgKey(arg); ok { explicitKeys[key] = struct{}{} }</span>
+<span class="l-add">+  }</span>
+<span class="l-ctx">  ...</span>
+<span class="l-ctx">  if tpCount &gt; 1 &amp;&amp; !hasExplicitArg("tensor-parallel-size") {</span>
+<span class="l-ctx">    args = append(args, "--tensor-parallel-size", fmt.Sprintf("%d", tpCount))</span>
+<span class="l-ctx">  }</span>
+</pre>
+        <div class="annotation"><strong>Why:</strong> the GPU count is user-editable after a recipe is
+          applied, and recipes fold tensor-parallelism into <em>both</em>
+          <code>resources.gpu</code> and engine args. Emitting the derived
+          <code>--tensor-parallel-size</code> unconditionally would crash vLLM with a duplicate. Now a
+          derived flag yields to any explicit override in args <em>or</em> extraArgs.</div>
+      </div>
+
+      <!-- hunk 5 -->
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">providers/vllm/controller.go</span>
+          <span>setImageResolutionStatus · default-image hard fail</span>
+        </div>
+<pre><span class="l-ctx">    if err != nil {</span>
+<span class="l-ctx">      ... status.Message = message; md.Status.Image = status</span>
+<span class="l-ctx">      r.setCondition(md, ConditionTypeImageResolved, False, "ImageResolutionFailed", message)</span>
+<span class="l-add">+      if usingProviderDefault {</span>
+<span class="l-add">+        return fmt.Errorf("failed to resolve default vLLM image %q: %w", imageRef, err)</span>
+<span class="l-add">+      }</span>
+<span class="l-ctx">      return nil  // user image: surface in status, keep reconciling</span>
+<span class="l-ctx">    }</span>
+</pre>
+        <div class="annotation"><strong>Why:</strong> generated pods for the provider default use the
+          digest-pinned result, so the default <em>must</em> resolve. User-specified images fail soft
+          (status only). <strong>The trade-off to scrutinize:</strong> a registry outage on a cold
+          cache makes every default-image deployment fail its reconcile until the registry recovers.</div>
+      </div>
+
+      <!-- hunk 6 -->
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">backend/src/services/vllmRecipesClient.ts</span>
+          <span>resolveReference + splitModelId (SSRF / traversal guard)</span>
+        </div>
+<pre><span class="l-add">+  resolveReference(reference: string): string {</span>
+<span class="l-add">+    const resolved = new URL(reference, new URL(`${this.sourceBaseUrl}/`));</span>
+<span class="l-add">+    if (resolved.protocol !== 'https:') throw new VllmRecipeValidationError(...);</span>
+<span class="l-add">+    if (resolved.origin !== baseUrl.origin) throw new VllmRecipeValidationError(...);</span>
+<span class="l-add">+    if (!resolved.pathname.startsWith(baseUrl.pathname)) throw ...;</span>
+<span class="l-add">+    return resolved.toString();</span>
+<span class="l-add">+  }</span>
+<span class="l-ctx"> // splitModelId: exactly "&lt;org&gt;/&lt;model&gt;", reject "." / ".." / extra slashes,</span>
+<span class="l-ctx"> // encodeURIComponent each segment before interpolating into the fetch URL.</span>
+</pre>
+        <div class="annotation"><strong>Why:</strong> <code>VLLM_RECIPES_BASE_URL</code> is
+          operator-configurable and recipe payloads contain follow-on references. These three checks
+          (HTTPS-only, same-origin, path-prefix) plus strict model-ID validation keep a crafted recipe
+          from steering fetches to an attacker-controlled host or traversing out of the recipes base.</div>
+      </div>
+
+      <h3 style="margin-top:22px">Omitted (not shown, ~80 files)</h3>
+      <ul class="tight muted">
+        <li><code>providers/vllm/{transformer,controller,status,image_resolver,config}.go</code> &mdash; remaining provider internals (probes, volumes, tolerations, status translation).</li>
+        <li><code>providers/vllm/*_test.go</code> + backend <code>*.test.ts</code> &mdash; ~3,800 lines of tests (not reproduced; coverage summarized in Risk).</li>
+        <li><code>backend/src/services/vllmRecipeResolver.ts</code> (865 lines) &mdash; recipe argv parsing, feature/hardware overrides, GPU = TP&times;PP derivation.</li>
+        <li><code>frontend/src/components/deployments/DeploymentForm.tsx</code> (+657) &mdash; recipe browse/apply UI, image-choice control.</li>
+        <li><code>shared/types/deployment.ts</code> &mdash; <code>env</code> type migration + provenance-to-annotations helper (called out in Risk).</li>
+        <li>RBAC, Dockerfile, Makefile, kustomize, <code>versions.env</code>, docs, <code>docs/plans/vllm-provider-full-plan.md</code> (1,093 lines).</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ RISK =================================== -->
+  <section class="tab-panel" id="tab-risk">
+    <div class="card">
+      <h2>Risk Assessment</h2>
+      <p class="caption">Severity: <span class="pill" style="color:var(--crit)">CRIT</span>
+        <span class="pill" style="color:var(--warn)">WARN</span>
+        <span class="pill" style="color:var(--info)">INFO</span>
+        <span class="pill" style="color:var(--ok)">OK</span></p>
+      <table>
+        <thead><tr><th>Axis</th><th>Severity</th><th>Finding</th></tr></thead>
+        <tbody>
+          <tr class="sev-warn">
+            <td>External dependency / availability</td>
+            <td class="sev-warn">WARN</td>
+            <td>Reconcile makes a synchronous registry round-trip to digest-pin the image. For the
+              <em>provider default</em>, resolution failure is a hard reconcile error
+              (<code>controller.go</code>). Cached + 30s-bounded, but a registry outage on a cold cache
+              blocks all default-image deployments. Verify the cache (<code>reuseResolvedImageStatus</code>)
+              survives controller restarts &mdash; status is persisted, so it should, but worth confirming.</td>
+          </tr>
+          <tr class="sev-warn">
+            <td>Lifecycle / migration safety</td>
+            <td class="sev-warn">WARN</td>
+            <td>Provider switch after selection is rejected, not handled (#325). Deselection never
+              GCs the old provider&rsquo;s resources/finalizer. Acceptable as an interim guard, but a
+              user&rsquo;s only recovery is delete + recreate &mdash; confirm that&rsquo;s surfaced in
+              user-facing UI text, not just code comments.</td>
+          </tr>
+          <tr class="sev-warn">
+            <td>API contract / backward compatibility</td>
+            <td class="sev-warn">WARN</td>
+            <td><code>ModelDeploymentSpec.env</code> changed shape in shared TS types from
+              <code>Record&lt;string,string&gt;</code> to <code>EnvVar[]</code>. The in-repo conversion
+              is handled, but any external consumer of the manifest (notably the Headlamp plugin, not
+              inspected here) that read <code>spec.env</code> as a map will break. The Go CRD already
+              used a structured env, so this is a TS-side alignment &mdash; still a breaking type change.</td>
+          </tr>
+          <tr class="sev-info">
+            <td>Security (input handling, SSRF, secrets)</td>
+            <td class="sev-info">INFO</td>
+            <td>Strong, and clearly the focus of several commits: HTTPS-only + same-origin + path-prefix
+              checks on recipe refs, strict <code>&lt;org&gt;/&lt;model&gt;</code> validation +
+              <code>encodeURIComponent</code>, 5 MiB streamed size bound, 10s timeout, single-segment
+              route. HF token via <code>secretKeyRef</code> with duplicate-drop. Residual: a recipe can
+              still inject an arbitrary <em>image ref</em> resolved to source <code>custom</code> &mdash;
+              the trust boundary is &ldquo;you trust <code>recipes.vllm.ai</code>.&rdquo; Documented.</td>
+          </tr>
+          <tr class="sev-info">
+            <td>Error handling / failure modes</td>
+            <td class="sev-info">INFO</td>
+            <td>Generally careful: finalizer timeout is enforced even when the owned Deployment is stuck
+              Terminating (Delete returns nil); <code>syncStatus</code> failure no longer downgrades a
+              <code>Running</code> deployment back to <code>Deploying</code>; typed recipe errors map to
+              400/502/504. These are exactly the subtle bugs the review tail fixed.</td>
+          </tr>
+          <tr class="sev-info">
+            <td>Performance on hot paths</td>
+            <td class="sev-info">INFO</td>
+            <td>Recipe index + per-model payloads cached (TTL + LRU 256). Image digest reused once
+              resolved. The periodic <code>RequeueAfter</code> status sync is standard. No obvious hot-loop
+              regression; the registry call is the main added latency (see WARN above).</td>
+          </tr>
+          <tr class="sev-info">
+            <td>Concurrency / races</td>
+            <td class="sev-info">INFO</td>
+            <td>Heartbeat goroutine is a standard ticker with ctx cancellation. The JS recipe cache is
+              single-threaded (no lock needed) but allows a cache-stampede of concurrent identical
+              fetches &mdash; harmless, just redundant upstream calls. No shared-state races spotted.</td>
+          </tr>
+          <tr class="sev-info">
+            <td>Observability</td>
+            <td class="sev-info">INFO</td>
+            <td>Good: 6 new conditions, a full <code>status.image</code> block with human messages, recipe
+              provenance annotations. Gap: <code>ImageVerified</code> is permanently <code>Unknown</code>
+              (no attestation) &mdash; correct to surface, but downstream tooling must not treat it as a
+              security signal.</td>
+          </tr>
+          <tr class="sev-ok">
+            <td>Test coverage of new behavior</td>
+            <td class="sev-ok">OK</td>
+            <td>Strong. ~95 Go test cases (transformer 1,421 lines, controller 497, image-status 354)
+              and ~26 TS cases covering cache eviction, streaming bound, arg dedup, HF_TOKEN dedup,
+              finalizer timeout, GPU-per-pod derivation, the <code>--model</code> guard, SSRF rejections,
+              and 301 trailing-slash behavior. CI matrix updated to run vllm checks.</td>
+          </tr>
+          <tr class="sev-info">
+            <td>Dead / unadvertised code path</td>
+            <td class="sev-info">INFO</td>
+            <td><code>transformDisaggregated</code> is fully implemented and tested, but
+              <code>validateCompatibility</code> rejects disaggregated before <code>Transform</code> runs.
+              The rejection precedes <code>Transform</code> in <code>Reconcile</code> (confirmed in read),
+              so the path stays unreachable in production as intended &mdash; just note it as carried-but-dormant code.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========================= UNKNOWNS ============================== -->
+  <section class="tab-panel" id="tab-unknowns">
+    <div class="card">
+      <h2>Assumptions &amp; Unknowns</h2>
+      <p class="caption">Everything I&rsquo;m guessing, couldn&rsquo;t verify, or would
+        need to ask the author about. All hedging lives here.</p>
+      <ul class="tight">
+        <li><strong>No GitHub PR exists</strong> for this branch yet (<code>gh pr view</code> returned
+          nothing), so there is no author-written description to compare intent against. I inferred
+          intent entirely from commit messages and code. The header link is a
+          <em>compare</em> URL, not a PR.</li>
+        <li><strong>Files I did not fully read:</strong> the 865-line
+          <code>vllmRecipeResolver.ts</code> (read its structure + the GPU/strip-prefix hot spots, not
+          every override branch), the +657 <code>DeploymentForm.tsx</code> (read the new
+          state/handlers, not the full JSX), and most <code>*_test.go</code> bodies (counted/spot-checked,
+          did not read every case). Risk findings about those rest on signatures and comments.</li>
+        <li><strong>Headlamp plugin not inspected.</strong> My &ldquo;<code>env</code> type change is
+          breaking&rdquo; finding assumes some consumer reads <code>spec.env</code> as a map. I did not
+          grep the Headlamp plugin (<code>plugins/headlamp/</code>) for that usage &mdash; it may already
+          use the array form or not touch env at all.</li>
+        <li><strong>Registry-cache durability across restarts</strong> is an assumption: I believe the
+          reused digest is read from persisted <code>status.image</code>, so a controller restart with a
+          healthy registry re-populates quickly. I did not test the cold-restart-during-outage path.</li>
+        <li><strong>recipes.vllm.ai payload shape</strong> &mdash; the resolver parses many optional
+          fields (<code>recommended_command</code>, <code>hardware_profile</code>, feature sequences). I
+          trust the resolver&rsquo;s own warnings as the contract; I did not validate against a real live
+          recipe document.</li>
+        <li><strong>Whether issue #325 (provider handoff) is acceptable to defer</strong> is a product
+          call, not a code fact. I flagged the interim guard; the team should confirm the delete+recreate
+          UX is acceptable for a first release of this provider.</li>
+        <li><strong>I did not run the build or tests.</strong> Claims of green CI are inferred from the
+          presence of the tests and the <code>fix: resolve CI lint and test failures</code> /
+          <code>ci:</code> commits, not from executing <code>make controller-test</code> or
+          <code>bun run test</code>.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+(function() {
+  // ---- Tabs ----
+  const tabs = document.querySelectorAll('nav.tabs button');
+  const panels = document.querySelectorAll('.tab-panel');
+  let mermaidRunFor = new Set();
+
+  function activate(tabName) {
+    tabs.forEach(b => b.classList.toggle('active', b.dataset.tab === tabName));
+    panels.forEach(p => p.classList.toggle('active', p.id === 'tab-' + tabName));
+    if (window.mermaid && !mermaidRunFor.has(tabName)) {
+      const blocks = document.querySelectorAll('#tab-' + tabName + ' .mermaid');
+      if (blocks.length) {
+        mermaid.run({ nodes: blocks }).catch(e => console.warn('mermaid:', e));
+        mermaidRunFor.add(tabName);
+      }
+    }
+  }
+  tabs.forEach(b => b.addEventListener('click', () => activate(b.dataset.tab)));
+
+  // ---- Theme toggle ----
+  const root = document.documentElement;
+  const stored = localStorage.getItem('pr-dash-theme');
+  const initialTheme = stored || 'dark';
+  applyTheme(initialTheme);
+
+  function applyTheme(t) {
+    root.setAttribute('data-theme', t);
+    localStorage.setItem('pr-dash-theme', t);
+    document.getElementById('theme-icon').textContent  = t === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = t === 'dark' ? 'Light' : 'Dark';
+    if (window.mermaid) {
+      mermaid.initialize({ startOnLoad: false, theme: t === 'dark' ? 'dark' : 'default' });
+      mermaidRunFor.clear();
+      const active = document.querySelector('nav.tabs button.active');
+      if (active) {
+        const blocks = document.querySelectorAll(
+          '#tab-' + active.dataset.tab + ' .mermaid');
+        blocks.forEach(el => {
+          if (el.dataset.src) el.textContent = el.dataset.src;
+          el.removeAttribute('data-processed');
+        });
+        if (blocks.length) mermaid.run({ nodes: blocks }).catch(()=>{});
+        mermaidRunFor.add(active.dataset.tab);
+      }
+    }
+  }
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  document.querySelectorAll('.mermaid').forEach(el => {
+    el.dataset.src = el.textContent;
+  });
+
+  if (window.mermaid) {
+    mermaid.initialize({ startOnLoad: false,
+                         theme: initialTheme === 'dark' ? 'dark' : 'default' });
+    const blocks = document.querySelectorAll('#tab-summary .mermaid');
+    if (blocks.length) {
+      mermaid.run({ nodes: blocks }).catch(e => console.warn('mermaid:', e));
+      mermaidRunFor.add('summary');
+    }
+  }
+
+  // ---- View toggle (Before / After / Diff) ----
+  document.querySelectorAll('.view-toggle').forEach(group => {
+    const name = group.dataset.group;
+    group.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('button')
+             .forEach(b => b.classList.toggle('active', b === btn));
+        document.querySelectorAll('.view-panel[data-group="' + name + '"]')
+                .forEach(p => p.classList.toggle('active',
+                                                 p.dataset.view === btn.dataset.view));
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
