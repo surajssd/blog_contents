@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>Inject shim version at build time — PR Review</title>
+<style>
+  :root, [data-theme="dark"] {
+    --bg: #0d1117; --bg-2: #161b22; --panel: #161b22; --panel-2: #1f2733;
+    --fg: #e6edf3; --fg-muted: #8b949e; --border: #30363d;
+    --accent: #58a6ff; --accent-2: #1f6feb;
+    --added: #2ea043; --added-bg: rgba(46, 160, 67, 0.15);
+    --removed: #f85149; --removed-bg: rgba(248, 81, 73, 0.15);
+    --warn: #d29922; --warn-bg: rgba(210, 153, 34, 0.15);
+    --info: #58a6ff; --info-bg: rgba(88, 166, 255, 0.15);
+    --crit: #f85149; --crit-bg: rgba(248, 81, 73, 0.18);
+    --ok: #2ea043; --ok-bg: rgba(46, 160, 67, 0.15);
+    --code-bg: #1f2733; --shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+  [data-theme="light"] {
+    --bg: #ffffff; --bg-2: #f6f8fa; --panel: #ffffff; --panel-2: #f6f8fa;
+    --fg: #1f2328; --fg-muted: #656d76; --border: #d0d7de;
+    --accent: #0969da; --accent-2: #0550ae;
+    --added: #1a7f37; --added-bg: rgba(26, 127, 55, 0.10);
+    --removed: #cf222e; --removed-bg: rgba(207, 34, 46, 0.10);
+    --warn: #9a6700; --warn-bg: rgba(154, 103, 0, 0.10);
+    --info: #0969da; --info-bg: rgba(9, 105, 218, 0.10);
+    --crit: #cf222e; --crit-bg: rgba(207, 34, 46, 0.12);
+    --ok: #1a7f37; --ok-bg: rgba(26, 127, 55, 0.10);
+    --code-bg: #f6f8fa; --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+                font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Helvetica, Arial, sans-serif; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+         font-size: 12.5px; background: var(--code-bg); padding: 1px 5px;
+         border-radius: 4px; border: 1px solid var(--border); }
+  pre  { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+         font-size: 12.5px; background: var(--code-bg); padding: 12px;
+         border-radius: 6px; border: 1px solid var(--border);
+         overflow-x: auto; margin: 0; }
+  h1, h2, h3 { margin: 0 0 12px; color: var(--fg); }
+  h1 { font-size: 20px; font-weight: 600; }
+  h2 { font-size: 17px; font-weight: 600; }
+  h3 { font-size: 14px; font-weight: 600; color: var(--accent); }
+  header { border-bottom: 1px solid var(--border); background: var(--bg-2);
+           padding: 14px 28px; display: flex; align-items: center; gap: 18px;
+           flex-wrap: wrap; }
+  header .title-block { flex: 1 1 auto; min-width: 0; }
+  header h1 { margin: 0; }
+  header .meta { color: var(--fg-muted); font-size: 12.5px; margin-top: 4px; }
+  header .meta > * + * { margin-left: 14px; }
+  .theme-toggle { background: var(--panel-2); border: 1px solid var(--border);
+                  color: var(--fg); padding: 6px 12px; border-radius: 6px;
+                  cursor: pointer; font: inherit; }
+  .theme-toggle:hover { border-color: var(--accent); }
+  nav.tabs { border-bottom: 1px solid var(--border); background: var(--bg);
+             padding: 0 28px; display: flex; gap: 4px; overflow-x: auto; }
+  nav.tabs button { background: transparent; border: 0; color: var(--fg-muted);
+                    padding: 12px 16px; cursor: pointer; font: inherit;
+                    border-bottom: 2px solid transparent; white-space: nowrap; }
+  nav.tabs button:hover { color: var(--fg); }
+  nav.tabs button.active { color: var(--fg); border-bottom-color: var(--accent); }
+  main { padding: 24px 28px; max-width: 1400px; margin: 0 auto; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .card { background: var(--panel); border: 1px solid var(--border);
+          border-radius: 8px; padding: 20px; margin-bottom: 18px;
+          box-shadow: var(--shadow); }
+  .card > h2:first-child { margin-top: 0; }
+  .card .caption { color: var(--fg-muted); font-size: 13px; margin: 0 0 14px; }
+  .row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .row > * { flex: 1 1 320px; min-width: 0; }
+  .diagram { display: flex; flex-direction: column; gap: 18px;
+             padding: 18px; background: var(--panel-2);
+             border: 1px solid var(--border); border-radius: 6px; }
+  .diagram-row { display: flex; gap: 28px; align-items: center;
+                 flex-wrap: wrap; justify-content: center; }
+  .diagram-col { display: flex; flex-direction: column; gap: 14px;
+                 align-items: stretch; }
+  .node { padding: 10px 14px; border-radius: 6px; background: var(--panel);
+          border: 1px solid var(--border); text-align: center;
+          font-size: 12.5px; min-width: 120px; color: var(--fg); }
+  .node.new { border-style: dashed; border-color: var(--accent);
+              background: var(--info-bg); }
+  .node.changed { border-color: var(--warn); background: var(--warn-bg); }
+  .node.removed { border-color: var(--removed); background: var(--removed-bg);
+                  text-decoration: line-through; opacity: 0.7; }
+  .node.cluster { background: rgba(255,255,255,0.02); padding: 14px;
+                  border-style: dashed; }
+  .node.cluster .cluster-label { font-size: 11px; color: var(--fg-muted);
+                                 text-transform: uppercase; letter-spacing: 0.5px;
+                                 margin-bottom: 8px; }
+  .arrow { flex: 0 0 56px; height: 2px; background: var(--fg-muted); position: relative; }
+  .arrow::after { content: ""; position: absolute; right: -2px; top: -4px;
+    border-left: 8px solid var(--fg-muted);
+    border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+  .arrow.dashed { background: none; border-top: 2px dashed var(--accent); height: 0; }
+  .arrow.dashed::after { border-left-color: var(--accent); }
+  .arrow .label { position: absolute; top: -22px; left: 50%;
+                  transform: translateX(-50%); font-size: 11px;
+                  color: var(--fg-muted); white-space: nowrap;
+                  background: var(--panel-2); padding: 0 6px; }
+  .arrow.vert { flex: none; width: 2px; height: 34px; align-self: center; }
+  .arrow.vert::after { right: -4px; top: auto; bottom: -2px;
+    border-left: 5px solid transparent; border-right: 5px solid transparent;
+    border-top: 8px solid var(--fg-muted); border-bottom: 0; }
+  .legend { display: flex; gap: 18px; font-size: 12px; color: var(--fg-muted);
+            margin-top: 8px; flex-wrap: wrap; }
+  .legend .swatch { display: inline-block; width: 14px; height: 14px;
+                    border-radius: 3px; vertical-align: middle;
+                    margin-right: 6px; border: 1px solid var(--border); }
+  .view-toggle { display: inline-flex; gap: 0; border: 1px solid var(--border);
+                 border-radius: 6px; overflow: hidden; margin-bottom: 14px; }
+  .view-toggle button { background: var(--panel); border: 0; color: var(--fg-muted);
+                        padding: 6px 14px; cursor: pointer; font: inherit;
+                        border-right: 1px solid var(--border); }
+  .view-toggle button:last-child { border-right: 0; }
+  .view-toggle button.active { background: var(--accent); color: white; }
+  .view-panel { display: none; }
+  .view-panel.active { display: block; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 8px 12px; text-align: left; vertical-align: top;
+           border-bottom: 1px solid var(--border); }
+  th { color: var(--fg-muted); font-weight: 600; font-size: 12px;
+       text-transform: uppercase; letter-spacing: 0.4px; }
+  tr:last-child td { border-bottom: 0; }
+  td.sev-crit  { color: var(--crit); font-weight: 600; }
+  td.sev-warn  { color: var(--warn); font-weight: 600; }
+  td.sev-info  { color: var(--info); font-weight: 600; }
+  td.sev-ok    { color: var(--ok);   font-weight: 600; }
+  tr.sev-crit  { background: var(--crit-bg); }
+  tr.sev-warn  { background: var(--warn-bg); }
+  tr.sev-info  { background: var(--info-bg); }
+  tr.sev-ok    { background: var(--ok-bg); }
+  .diff { border: 1px solid var(--border); border-radius: 6px;
+          margin-bottom: 18px; overflow: hidden; }
+  .diff-header { background: var(--panel-2); padding: 8px 12px;
+                 border-bottom: 1px solid var(--border); display: flex;
+                 justify-content: space-between; font-size: 12.5px; }
+  .diff-header .path { font-family: ui-monospace, monospace; color: var(--fg); }
+  .diff pre { border: 0; border-radius: 0; }
+  .l-add { display: block; background: var(--added-bg); color: var(--added); }
+  .l-del { display: block; background: var(--removed-bg); color: var(--removed); }
+  .l-ctx { display: block; color: var(--fg-muted); }
+  .annotation { padding: 10px 14px; background: var(--info-bg);
+                border-top: 1px solid var(--border); font-size: 12.5px; }
+  .annotation strong { color: var(--accent); }
+  .muted { color: var(--fg-muted); }
+  .pill  { display: inline-block; padding: 2px 8px; border-radius: 10px;
+           background: var(--panel-2); color: var(--fg-muted); font-size: 11.5px;
+           border: 1px solid var(--border); }
+  dl.glossary { margin: 0; }
+  dl.glossary dt { font-weight: 600; color: var(--accent); margin-top: 14px;
+                   font-family: ui-monospace, monospace; font-size: 13px; }
+  dl.glossary dt:first-child { margin-top: 0; }
+  dl.glossary dd { margin: 4px 0 0; color: var(--fg); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title-block">
+    <h1>fix(providers): inject shim version at build time</h1>
+    <div class="meta">
+      <a href="https://github.com/kaito-project/airunway/pull/338">PR #338 on GitHub</a>
+      <span>branch <code>remove-hardcoded-provider-version</code> &rarr; <code>main</code></span>
+      <span>@surajssd</span>
+      <span>25 files, +367 / -54</span>
+      <span>1 commit</span>
+      <span class="pill" style="color:var(--ok)">OPEN</span>
+    </div>
+  </div>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+    <span id="theme-icon">☀️</span> <span id="theme-label">Light</span>
+  </button>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="active" data-tab="summary">Summary</button>
+  <button data-tab="glossary">Glossary</button>
+  <button data-tab="architecture">Architecture</button>
+  <button data-tab="diff">Annotated Diff</button>
+  <button data-tab="risk">Risk Assessment</button>
+  <button data-tab="unknowns">Assumptions &amp; Unknowns</button>
+</nav>
+
+<main>
+
+  <!-- ============================= SUMMARY ============================= -->
+  <section class="tab-panel active" id="tab-summary">
+    <div class="card">
+      <h2>Executive Summary</h2>
+      <p>Each of the five provider shims (<code>dynamo</code>, <code>kaito</code>,
+      <code>kuberay</code>, <code>llmd</code>, <code>vllm</code>) hard-coded its
+      reported version as a Go <code>const</code> in <code>config.go</code> — a
+      string like <code>"dynamo-provider:v0.2.0"</code> written verbatim into
+      <code>InferenceProviderConfig.status.version</code> (surfaced by
+      <code>kubectl</code>, the Web UI, and the Headlamp plugin). Because the
+      const was never bumped at release time, <strong>the reported version
+      lied</strong>.</p>
+      <p>This PR replaces that const with a build-time injection: a package-level
+      <code>var shimVersion = "dev"</code> is overwritten via
+      <code>-ldflags "-X &lt;module&gt;.shimVersion=&lt;tag&gt;"</code>, and
+      <code>ProviderVersion</code> is derived from it. The release workflows pass
+      <code>SHIM_VERSION=${{ inputs.version }}</code> — the same value that tags
+      the image — so <code>status.version</code> equals the image tag by
+      construction. Non-release builds report a git stamp
+      (<code>dev-&lt;sha&gt;</code>, or <code>-dirty</code>). The injection target
+      is resolved with <code>go list -m</code> so the <code>-X</code> path can
+      never drift from a hand-typed module string, and Dockerfiles grow a
+      <code>test -n "${SHIM_VERSION}"</code> guard so a bare <code>docker
+      build</code> fails loud instead of silently shipping <code>:dev</code>.</p>
+      <p><strong>What a reviewer should scrutinize most:</strong> the correctness
+      of the <code>-X</code> injection mechanism — specifically that the linker
+      target is the <em>unexported, constant-string</em> <code>shimVersion</code>
+      and never the <em>composite</em> <code>ProviderVersion</code> (a non-constant
+      initializer that <code>-X</code> silently no-ops). The CI read-back step in
+      <code>test.yml</code> is the guard that proves the wiring holds; verify it
+      actually exercises both the default and the override path for all five
+      providers.</p>
+    </div>
+    <div class="card">
+      <h2>Change at a glance</h2>
+      <table>
+        <thead><tr><th>Surface</th><th>Files</th><th>What changed</th></tr></thead>
+        <tbody>
+          <tr><td><code>config.go</code></td><td>5</td>
+            <td>Drop <code>ProviderVersion</code> const; add <code>var shimVersion = "dev"</code> + derived <code>var ProviderVersion</code>.</td></tr>
+          <tr><td><code>config_test.go</code></td><td>5</td>
+            <td>Exact-literal version assertion &rarr; <code>strings.HasPrefix</code> shape check (llmd/vllm gain a new <code>TestProviderConstants</code>).</td></tr>
+          <tr><td><code>Makefile</code></td><td>5</td>
+            <td>Resolve <code>MODULE</code> via <code>go list -m</code>; git-stamp <code>SHIM_VERSION</code> default; pass <code>--build-arg</code>.</td></tr>
+          <tr><td><code>Dockerfile</code></td><td>5</td>
+            <td>Add <code>ARG SHIM_VERSION</code> (no default) + <code>test -n</code> guard; resolve <code>MODULE</code> in build <code>RUN</code>.</td></tr>
+          <tr><td>release workflows</td><td>5</td>
+            <td>Pass <code>SHIM_VERSION=${{ inputs.version }}</code>; new <code>release-vllm-provider.yml</code>.</td></tr>
+          <tr><td><code>test.yml</code></td><td>1</td>
+            <td>CI step asserts git-stamp default + explicit override both land in the binary.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============================ GLOSSARY ============================ -->
+  <section class="tab-panel" id="tab-glossary">
+    <div class="card">
+      <h2>Glossary &amp; Concept Primer</h2>
+      <p class="caption">Vocabulary an unfamiliar reviewer needs before the rest
+        of the dashboard makes sense.</p>
+      <dl class="glossary">
+        <dt>provider shim</dt>
+        <dd>A small standalone controller under <code>providers/&lt;name&gt;/</code>
+        that renders a <code>ModelDeployment</code> into an upstream provider's
+        resource (KAITO, Dynamo, KubeRay, llm-d, vLLM). Each ships as its own
+        container image.</dd>
+
+        <dt>InferenceProviderConfig.status.version</dt>
+        <dd>A status field on the cluster-scoped CRD that reports which version of
+        a provider shim is running. Read by <code>kubectl</code>, the Web UI, and
+        the Headlamp plugin. The bug: this value was a hard-coded const that never
+        tracked the actual release.</dd>
+
+        <dt>ProviderVersion</dt>
+        <dd>The Go symbol whose value populates <code>status.version</code>. Was a
+        <code>const</code> (e.g. <code>"kaito-provider:v0.1.0"</code>); now a
+        <code>var</code> derived as <code>ProviderConfigName + "-provider:" + shimVersion</code>.</dd>
+
+        <dt>shimVersion</dt>
+        <dd>New unexported package var, initialized to <code>"dev"</code>. The
+        actual <code>-ldflags -X</code> injection target. Unexported visibility
+        doesn't matter to the linker — <code>-X</code> resolves the symbol
+        regardless.</dd>
+
+        <dt>-ldflags "-X importpath.name=value"</dt>
+        <dd>Go linker flag that overwrites a <em>string variable</em>'s value at
+        link time. Critical constraint: it <strong>silently no-ops</strong> on a
+        non-constant initializer (which is why <code>shimVersion</code>, not the
+        composite <code>ProviderVersion</code>, is the target).</dd>
+
+        <dt>SHIM_VERSION</dt>
+        <dd>The build-arg / Make variable carrying the version into the build.
+        Release workflows set it to <code>${{ inputs.version }}</code>; local/CI
+        builds default it to a git stamp.</dd>
+
+        <dt>go list -m</dt>
+        <dd>Prints the current module path from <code>go.mod</code>. Used so the
+        <code>-X</code> target (<code>$(MODULE).shimVersion</code>) is computed,
+        never hand-typed — eliminating path-drift bugs.</dd>
+
+        <dt>git stamp / dev-&lt;sha&gt;</dt>
+        <dd>The default <code>SHIM_VERSION</code> for non-release builds:
+        <code>dev-$(git rev-parse --short HEAD)</code>, with <code>-dirty</code>
+        appended when the working tree has uncommitted/untracked content.</dd>
+
+        <dt>versions.env</dt>
+        <dd>Repo-root file holding pinned <em>upstream</em> runtime versions
+        (e.g. <code>DYNAMO_VERSION</code>, <code>VLLM_VERSION</code>). Distinct
+        from the shim version — the PR deliberately does <em>not</em> add the shim
+        version here (the release tag is its source of truth).</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ========================== ARCHITECTURE ========================== -->
+  <section class="tab-panel" id="tab-architecture">
+
+    <div class="card">
+      <h2>Where the version comes from: before vs. after</h2>
+      <p class="caption">The same value — what <code>status.version</code>
+        reports — but sourced differently. Toggle to compare.</p>
+      <div class="view-toggle" data-group="src">
+        <button class="active" data-view="after">After</button>
+        <button data-view="before">Before</button>
+      </div>
+
+      <div class="view-panel active" data-group="src" data-view="after">
+        <div class="diagram">
+          <div class="diagram-row">
+            <div class="node new">release workflow<br><code>inputs.version</code></div>
+            <div class="arrow"><span class="label">--build-arg</span></div>
+            <div class="node new">SHIM_VERSION</div>
+            <div class="arrow"><span class="label">-ldflags -X</span></div>
+            <div class="node new"><code>shimVersion</code> var</div>
+            <div class="arrow dashed"><span class="label">derives</span></div>
+            <div class="node">ProviderVersion</div>
+            <div class="arrow"><span class="label">status</span></div>
+            <div class="node">status.version</div>
+          </div>
+          <p class="muted" style="text-align:center;margin:0">Same value that tags
+            the image &rarr; version equals tag <em>by construction</em>.</p>
+        </div>
+      </div>
+
+      <div class="view-panel" data-group="src" data-view="before">
+        <div class="diagram">
+          <div class="diagram-row">
+            <div class="node removed">hand-typed const<br><code>"x-provider:v0.2.0"</code></div>
+            <div class="arrow"><span class="label">is</span></div>
+            <div class="node">ProviderVersion</div>
+            <div class="arrow"><span class="label">status</span></div>
+            <div class="node">status.version</div>
+          </div>
+          <p class="muted" style="text-align:center;margin:0">Const never bumped at
+            release &rarr; <span style="color:var(--removed)">reported version
+            lied</span>.</p>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span><span class="swatch" style="background:var(--info-bg);
+              border-style:dashed;border-color:var(--accent);"></span>
+              new in this PR</span>
+        <span><span class="swatch" style="background:var(--removed-bg);
+              border-color:var(--removed);"></span> removed</span>
+        <span><span class="swatch" style="background:var(--panel);"></span>
+              pre-existing</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Injection chain: which build path sets the version</h2>
+      <p class="caption">Three entry points feed the same <code>-X</code> target.
+        The Go literal is the last-resort fallback only.</p>
+      <div class="diagram">
+        <div class="diagram-row">
+          <div class="node cluster">
+            <div class="cluster-label">Release (CI)</div>
+            <div class="node new"><code>inputs.version</code></div>
+          </div>
+          <div class="node cluster">
+            <div class="cluster-label">Local / CI build</div>
+            <div class="node new"><code>dev-&lt;sha&gt;</code> git stamp</div>
+          </div>
+          <div class="node cluster">
+            <div class="cluster-label">go run / go test</div>
+            <div class="node"><code>"dev"</code> literal</div>
+          </div>
+        </div>
+        <div class="diagram-row">
+          <div class="arrow vert"></div>
+        </div>
+        <div class="diagram-row">
+          <div class="node changed" style="min-width:280px">
+            <code>-ldflags "-X $(MODULE).shimVersion=…"</code><br>
+            <span class="muted">(MODULE = <code>go list -m</code>)</span>
+          </div>
+        </div>
+        <div class="diagram-row">
+          <div class="arrow vert"></div>
+        </div>
+        <div class="diagram-row">
+          <div class="node">binary reports
+            <code>&lt;name&gt;-provider:&lt;tag&gt;</code></div>
+        </div>
+      </div>
+      <p class="caption" style="margin-top:14px">Only the first two paths set a
+        real tag. The third (<code>go run</code>/<code>go test</code>) intentionally
+        leaves <code>"dev"</code>, which is why the tests use a prefix check, not an
+        equality check.</p>
+    </div>
+
+    <div class="card">
+      <h2>Dockerfile guard: fail loud, never ship <code>:dev</code></h2>
+      <p class="caption">What happens to a <code>docker build</code> depending on
+        whether <code>SHIM_VERSION</code> was passed.</p>
+      <div class="diagram">
+        <div class="diagram-row">
+          <div class="node"><code>docker build</code></div>
+          <div class="arrow"><span class="label">ARG SHIM_VERSION</span></div>
+          <div class="node changed"><code>test -n "${SHIM_VERSION}"</code></div>
+        </div>
+        <div class="diagram-row">
+          <div class="node new" style="border-color:var(--ok)">passed &rarr; build proceeds,<br>injects real tag</div>
+          <div class="node removed" style="text-decoration:none;opacity:1">empty &rarr; <code>exit 1</code><br>build fails loud</div>
+        </div>
+        <p class="muted" style="text-align:center;margin:0">The Makefile and release
+          workflow always pass it; the guard only trips on a hand-run bare
+          <code>docker build</code>.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>config.go schema diff (representative: dynamo)</h2>
+      <p class="caption">The same shape applies to all five providers. Old on the
+        left, new on the right.</p>
+      <div class="row">
+        <div>
+          <h3>Before</h3>
+<pre><span class="l-ctx">const (</span>
+<span class="l-ctx">  ProviderConfigName = "dynamo"</span>
+<span class="l-del">  // ProviderVersion is the version…</span>
+<span class="l-del">  ProviderVersion = "dynamo-provider:v0.2.0"</span>
+<span class="l-ctx">  ProviderDocumentation = "…"</span>
+<span class="l-ctx">)</span>
+</pre>
+        </div>
+        <div>
+          <h3>After</h3>
+<pre><span class="l-ctx">const (</span>
+<span class="l-ctx">  ProviderConfigName = "dynamo"</span>
+<span class="l-ctx">  ProviderDocumentation = "…"</span>
+<span class="l-ctx">)</span>
+<span class="l-add">// injected via -ldflags -X …shimVersion</span>
+<span class="l-add">var shimVersion = "dev"</span>
+<span class="l-add">var ProviderVersion =</span>
+<span class="l-add">  ProviderConfigName + "-provider:" + shimVersion</span>
+</pre>
+        </div>
+      </div>
+      <p class="caption" style="margin-top:14px"><code>ProviderConfigName</code>
+        stays a <code>const</code>; only the version moves to a <code>var</code>
+        so the linker can rewrite it.</p>
+    </div>
+
+    <div class="card">
+      <h2>Before / After capabilities</h2>
+      <p class="caption">The dimensions a reviewer cares about, side by side.</p>
+      <table>
+        <thead><tr><th>Dimension</th><th>Before</th><th>After</th></tr></thead>
+        <tbody>
+          <tr><td>Version source</td>
+            <td>Hand-typed Go <code>const</code></td>
+            <td>Build-time <code>-ldflags -X</code> from release tag</td></tr>
+          <tr><td>Accuracy of <code>status.version</code></td>
+            <td class="sev-crit">Stale / wrong (never bumped)</td>
+            <td class="sev-ok">Equals image tag by construction</td></tr>
+          <tr><td>Non-release build reports</td>
+            <td>The stale literal</td>
+            <td><code>dev-&lt;sha&gt;</code> (<code>-dirty</code> if applicable)</td></tr>
+          <tr><td><code>-X</code> target path</td>
+            <td>Hand-typed module string (dynamo/vllm)</td>
+            <td>Computed via <code>go list -m</code></td></tr>
+          <tr><td>Bare <code>docker build</code> w/o arg</td>
+            <td>Ships the stale literal silently</td>
+            <td class="sev-ok">Fails loud (<code>test -n</code> guard)</td></tr>
+          <tr><td>Version-assert test</td>
+            <td>Exact literal equality</td>
+            <td>Prefix shape check (no lockstep edits)</td></tr>
+          <tr><td>Regression guard</td>
+            <td>None</td>
+            <td>CI read-back of binary in <code>test.yml</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <!-- ============================ DIFF =================================== -->
+  <section class="tab-panel" id="tab-diff">
+    <div class="card">
+      <h2>Annotated Diff</h2>
+      <p class="caption">5 of the most consequential hunks shown. The remaining
+        ~20 hunks are the same four-part pattern (config.go / Makefile / Dockerfile
+        / config_test.go) repeated across the other four providers, plus the four
+        one-line release-workflow build-arg additions. Omitted hunks listed at the
+        end.</p>
+
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">providers/dynamo/config.go</span>
+          <span>lines 38–70</span>
+        </div>
+<pre><span class="l-ctx">const (</span>
+<span class="l-ctx">  ProviderConfigName = "dynamo"</span>
+<span class="l-del">- // ProviderVersion is the version of the AIRunway Dynamo provider controller.</span>
+<span class="l-del">- ProviderVersion = "dynamo-provider:v0.2.0"</span>
+<span class="l-ctx">  ProviderDocumentation = "https://…/dynamo.md"</span>
+<span class="l-ctx">)</span>
+<span class="l-add">+ // shimVersion is injected at build time via -ldflags -X …shimVersion</span>
+<span class="l-add">+ var shimVersion = "dev"</span>
+<span class="l-add">+ var ProviderVersion = ProviderConfigName + "-provider:" + shimVersion</span>
+</pre>
+        <div class="annotation"><strong>Why:</strong> The heart of the change.
+          <code>ProviderVersion</code> moves from <code>const</code> to a
+          <code>var</code> derived from the injectable <code>shimVersion</code>.
+          Injecting <code>shimVersion</code> (a constant-string initializer) rather
+          than the composite <code>ProviderVersion</code> is deliberate —
+          <code>-X</code> silently no-ops on a non-constant initializer.</div>
+      </div>
+
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">providers/dynamo/Makefile</span>
+          <span>lines 9–34</span>
+        </div>
+<pre><span class="l-add">+ MODULE := $(shell go list -m)</span>
+<span class="l-add">+ GIT_SHA      := $(shell git rev-parse --short HEAD 2>/dev/null || echo unknown)</span>
+<span class="l-add">+ GIT_DIRTY    := $(shell test -n "$$(git status --porcelain 2>/dev/null)" && echo '-dirty')</span>
+<span class="l-add">+ SHIM_VERSION ?= dev-$(GIT_SHA)$(GIT_DIRTY)</span>
+<span class="l-del">- LDFLAGS := -X github.com/kaito-project/airunway/providers/dynamo.DynamoVersion=$(DYNAMO_VERSION)</span>
+<span class="l-add">+ LDFLAGS := -X $(MODULE).DynamoVersion=$(DYNAMO_VERSION)</span>
+<span class="l-add">+ LDFLAGS += -X $(MODULE).shimVersion=$(SHIM_VERSION)</span>
+</pre>
+        <div class="annotation"><strong>Why:</strong> Resolves the module path with
+          <code>go list -m</code> so the existing <code>DynamoVersion</code> flag
+          and the new <code>shimVersion</code> flag both target a computed path,
+          not a hand-typed one. <code>SHIM_VERSION</code> defaults to a git stamp;
+          the release workflow overrides it.</div>
+      </div>
+
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">providers/kaito/Dockerfile</span>
+          <span>lines 2–33</span>
+        </div>
+<pre><span class="l-add">+ ARG SHIM_VERSION</span>
+<span class="l-ctx">  …</span>
+<span class="l-del">- RUN cd providers/kaito && CGO_ENABLED=0 … go build -a -o provider cmd/main.go</span>
+<span class="l-add">+ RUN test -n "${SHIM_VERSION}" || (echo "ERROR: SHIM_VERSION build arg is required…" >&2; exit 1)</span>
+<span class="l-add">+ RUN cd providers/kaito && MODULE=$(go list -m) && \</span>
+<span class="l-add">+   CGO_ENABLED=0 GOOS=${TARGETOS:-linux} GOARCH=${TARGETARCH} \</span>
+<span class="l-add">+   go build -a -ldflags="-X ${MODULE}.shimVersion=${SHIM_VERSION}" -o provider cmd/main.go</span>
+</pre>
+        <div class="annotation"><strong>Why:</strong> <code>kaito</code>/<code>kuberay</code>
+          had no prior <code>-ldflags</code> at all, so this adds the whole
+          injection. The <code>test -n</code> guard makes a hand-run
+          <code>docker build</code> without the arg fail loudly rather than ship
+          <code>status.version=kaito-provider:dev</code> under a real tag.</div>
+      </div>
+
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">providers/dynamo/config_test.go</span>
+          <span>lines 140–148</span>
+        </div>
+<pre><span class="l-del">- if ProviderVersion != "dynamo-provider:v0.2.0" {</span>
+<span class="l-del">-   t.Errorf("expected provider version 'dynamo-provider:v0.2.0', got %s", ProviderVersion)</span>
+<span class="l-add">+ if !strings.HasPrefix(ProviderVersion, "dynamo-provider:") {</span>
+<span class="l-add">+   t.Errorf("expected provider version to start with 'dynamo-provider:', got %s", ProviderVersion)</span>
+</pre>
+        <div class="annotation"><strong>Why:</strong> Under <code>go test</code> the
+          binary isn't linked with <code>-X</code>, so <code>ProviderVersion</code>
+          is <code>"dynamo-provider:dev"</code>. An exact-literal assertion would
+          break; the prefix check validates shape without requiring lockstep edits
+          on every release.</div>
+      </div>
+
+      <div class="diff">
+        <div class="diff-header">
+          <span class="path">.github/workflows/test.yml</span>
+          <span>lines 146–164 (new CI step)</span>
+        </div>
+<pre><span class="l-add">+ - name: Assert shimVersion injection + git-stamp default</span>
+<span class="l-add">+   run: |</span>
+<span class="l-add">+     mod=$(cd "providers/$p" && go list -m)</span>
+<span class="l-add">+     go version -m "providers/$p/bin/provider" \</span>
+<span class="l-add">+       | grep -Eq -- "-X ${mod}.shimVersion=dev-[0-9a-f]+(-dirty)?" || exit 1</span>
+<span class="l-add">+     make -C "providers/$p" build SHIM_VERSION=v9.9.9-citest</span>
+<span class="l-add">+     go version -m "providers/$p/bin/provider" \</span>
+<span class="l-add">+       | grep -F -- "-X ${mod}.shimVersion=v9.9.9-citest" || exit 1</span>
+</pre>
+        <div class="annotation"><strong>Why:</strong> The anti-regression guard. It
+          reads the linker flags back out of the built binary with
+          <code>go version -m</code> to prove (a) the un-overridden build used the
+          git-stamp default and (b) an explicit override actually injects. This is
+          what catches future Makefile/symbol drift.</div>
+      </div>
+
+      <h3 style="margin-top:20px">Omitted hunks (same patterns)</h3>
+      <ul class="muted">
+        <li><code>providers/{kaito,kuberay,llmd,vllm}/config.go</code> — same
+          const&rarr;var conversion as dynamo.</li>
+        <li><code>providers/{kuberay,llmd,vllm}/Makefile</code> — same MODULE +
+          git-stamp + LDFLAGS pattern (llmd/vllm retrofit existing
+          <code>LLMDSchedulerImage</code>/<code>VLLMVersion</code> flags onto
+          <code>$(MODULE)</code>).</li>
+        <li><code>providers/{dynamo,kuberay,llmd,vllm}/Dockerfile</code> — same
+          <code>ARG</code> + <code>test -n</code> guard + computed <code>MODULE</code>.</li>
+        <li><code>providers/{kaito,kuberay,llmd,vllm}/config_test.go</code> — prefix
+          assertion (llmd/vllm <em>add</em> a new <code>TestProviderConstants</code>).</li>
+        <li><code>.github/workflows/release-{dynamo,kaito,kuberay,llmd}-provider.yml</code>
+          — one-line <code>SHIM_VERSION=${{ inputs.version }}</code> build-arg.</li>
+        <li><code>.github/workflows/release-vllm-provider.yml</code> — new file, a
+          full workflow mirroring the dynamo one.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ RISK =================================== -->
+  <section class="tab-panel" id="tab-risk">
+    <div class="card">
+      <h2>Risk Assessment</h2>
+      <p class="caption">Severity:
+        <span class="pill" style="color:var(--crit)">CRIT</span>
+        <span class="pill" style="color:var(--warn)">WARN</span>
+        <span class="pill" style="color:var(--info)">INFO</span>
+        <span class="pill" style="color:var(--ok)">OK</span></p>
+      <table>
+        <thead><tr><th>Axis</th><th>Severity</th><th>Finding</th></tr></thead>
+        <tbody>
+          <tr class="sev-ok">
+            <td>Correctness (injection)</td><td class="sev-ok">OK</td>
+            <td>Injecting the constant-string <code>shimVersion</code> rather than
+            the composite <code>ProviderVersion</code> is correct — <code>-X</code>
+            needs a constant initializer. Init order (<code>shimVersion</code> then
+            <code>ProviderVersion</code>) resolves correctly since Go orders
+            package var init by dependency.</td></tr>
+          <tr class="sev-warn">
+            <td>Release wiring (vllm)</td><td class="sev-warn">WARN</td>
+            <td>The hand-authored <code>release-vllm-provider.yml</code> is
+            <code>workflow_dispatch</code>-only and never lints in PR CI. A missing
+            build-arg would only be caught by the Dockerfile <code>test -n</code>
+            guard at release time. Author flags an <code>actionlint</code> follow-up.</td></tr>
+          <tr class="sev-info">
+            <td>API / compatibility</td><td class="sev-info">INFO</td>
+            <td><code>ProviderVersion</code> changes from <code>const</code> to
+            <code>var</code>. Any external code doing a compile-time
+            <code>const</code> comparison would break, but it's an internal symbol;
+            unlikely to matter. Worth a quick grep for external referencers.</td></tr>
+          <tr class="sev-info">
+            <td>Test coverage</td><td class="sev-info">INFO</td>
+            <td>Tests assert <em>shape</em> (prefix) not injected value — by
+            necessity under <code>go test</code>. The actual injection is covered
+            by the new CI read-back step in <code>test.yml</code>, which is the
+            right place for it. Verify the matrix covers all 5 providers.</td></tr>
+          <tr class="sev-info">
+            <td>Build reproducibility</td><td class="sev-info">INFO</td>
+            <td>Git-stamp default embeds the short SHA + dirty flag into the binary.
+            Intentional and documented; means non-release binaries are not
+            byte-reproducible across commits, which is expected for a dev stamp.</td></tr>
+          <tr class="sev-info">
+            <td>Docs drift</td><td class="sev-info">INFO</td>
+            <td>Author deliberately left illustrative <code>v0.2.0</code> examples
+            in <code>docs/api.md</code> / <code>crd-reference.md</code> (shape
+            examples, untested). Reasonable, but a reader could mistake them for
+            current.</td></tr>
+          <tr class="sev-info">
+            <td>Concurrency</td><td class="sev-info">INFO</td>
+            <td>Not applicable — package-init var assignment, no runtime mutation,
+            no shared state.</td></tr>
+          <tr class="sev-info">
+            <td>Security / secrets</td><td class="sev-info">INFO</td>
+            <td>Not applicable — no secrets, auth, or input handling touched. Build
+            args carry a version string only.</td></tr>
+          <tr class="sev-ok">
+            <td>Failure modes</td><td class="sev-ok">OK</td>
+            <td>The <code>test -n</code> Dockerfile guard converts a silent-wrong
+            outcome (ship <code>:dev</code>) into a loud build failure — a net
+            improvement in failure behavior.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========================= UNKNOWNS ============================== -->
+  <section class="tab-panel" id="tab-unknowns">
+    <div class="card">
+      <h2>Assumptions &amp; Unknowns</h2>
+      <p class="caption">Everything I'm guessing, couldn't verify, or would need to
+        confirm with the author. All hedging lives here.</p>
+      <ul>
+        <li><strong>Go var-init ordering.</strong> I assume
+          <code>ProviderVersion = ProviderConfigName + "-provider:" + shimVersion</code>
+          resolves correctly because Go initializes package-level vars in
+          dependency order regardless of source position. This is guaranteed by the
+          spec — confidence high — but I did not run the binary to confirm the
+          injected value reaches <code>status.version</code> end-to-end.</li>
+        <li><strong>CI matrix coverage.</strong> The <code>test.yml</code> step uses
+          <code>${{ matrix.provider }}</code>; I assume the matrix enumerates all
+          five providers. I did not read the full <code>provider-go-checks</code>
+          matrix definition to confirm <code>vllm</code> is included.</li>
+        <li><strong>External referencers of <code>ProviderVersion</code>.</strong> I
+          did not grep the controller/backend for code that imports and compares
+          <code>ProviderVersion</code> as a <code>const</code>. The const&rarr;var
+          change is compile-compatible for normal use, but a <code>const</code>-only
+          context (e.g. array size, <code>switch</code> case) would break.</li>
+        <li><strong>The <code>go list -m</code> in Dockerfile <code>RUN</code>.</strong>
+          I assume <code>go list -m</code> resolves correctly inside the build
+          container's working directory for each provider. Plausible given the
+          <code>cd providers/&lt;name&gt;</code>, but unverified against an actual
+          image build.</li>
+        <li><strong>vLLM workflow parity.</strong> I assume the new
+          <code>release-vllm-provider.yml</code> faithfully mirrors the dynamo
+          workflow's semantics. I read it in the diff and it looks complete, but it
+          has never run in CI (workflow_dispatch only), so there's no execution
+          evidence.</li>
+        <li><strong>Did not verify the panel's findings here.</strong> This
+          dashboard is my structural read of the diff. The five-model review panel
+          ran independently; their findings are collated in
+          <code>FINAL-REPORT.md</code>, not folded into this dashboard.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function() {
+  const tabs = document.querySelectorAll('nav.tabs button');
+  const panels = document.querySelectorAll('.tab-panel');
+  function activate(tabName) {
+    tabs.forEach(b => b.classList.toggle('active', b.dataset.tab === tabName));
+    panels.forEach(p => p.classList.toggle('active', p.id === 'tab-' + tabName));
+  }
+  tabs.forEach(b => b.addEventListener('click', () => activate(b.dataset.tab)));
+
+  const root = document.documentElement;
+  const stored = localStorage.getItem('pr-dash-theme');
+  applyTheme(stored || 'dark');
+  function applyTheme(t) {
+    root.setAttribute('data-theme', t);
+    localStorage.setItem('pr-dash-theme', t);
+    document.getElementById('theme-icon').textContent  = t === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = t === 'dark' ? 'Light' : 'Dark';
+  }
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  document.querySelectorAll('.view-toggle').forEach(group => {
+    const name = group.dataset.group;
+    group.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        group.querySelectorAll('button')
+             .forEach(b => b.classList.toggle('active', b === btn));
+        document.querySelectorAll('.view-panel[data-group="' + name + '"]')
+                .forEach(p => p.classList.toggle('active',
+                                                 p.dataset.view === btn.dataset.view));
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
