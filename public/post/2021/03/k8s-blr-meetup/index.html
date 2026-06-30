@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/2021/03/k8s-blr-meetup/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -49,12 +49,6 @@
 
             .toc {
                 background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
             }
         }
 
@@ -100,8 +94,8 @@
     <meta property="og:image" content="https://suraj.io/post/2021/03/k8s-blr-meetup/meetup.jpeg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://suraj.io/post/2021/03/k8s-blr-meetup/meetup.jpeg">
-<meta name="twitter:title" content="How we manage Kubernetes Bangalore Meetup?">
-<meta name="twitter:description" content="The method of stress-free event management!">
+  <meta name="twitter:title" content="How we manage Kubernetes Bangalore Meetup?">
+  <meta name="twitter:description" content="The method of stress-free event management!">
 
 
 <script type="application/ld+json">
@@ -160,17 +154,17 @@
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -186,7 +180,7 @@
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://suraj.io/post" title="Blog">
                     <span>Blog</span>
@@ -229,16 +223,29 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://suraj.io/">Home</a>&nbsp;»&nbsp;<a href="https://suraj.io/post/">Posts</a></div>
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/post/">Posts</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
     <h1 class="post-title entry-hint-parent">
       How we manage Kubernetes Bangalore Meetup?
     </h1>
     <div class="post-description">
       The method of stress-free event management!
     </div>
-    <div class="post-meta"><span title='2021-03-17 07:07:07 +0530 +0530'>March 17, 2021</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
-    <a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/03/k8s-blr-meetup.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
-</span>
+    <div class="post-meta">
+
+<span title='2021-03-17 07:07:07 +0530 +0530'>March 17, 2021</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
+        <a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/03/k8s-blr-meetup.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    </span>
 
 </div>
   </header> 
@@ -247,7 +254,7 @@
         
 </figure>
 
-  <div class="post-content"><p>I took the reins of the <a href="https://www.meetup.com/kubernetes-openshift-India-Meetup/">Kubernetes Bangalore Meetup</a> back in 2017. I have been organising the meetup since then. Earlier with <a href="https://twitter.com/red_suraj">Suraj Narwade</a>, <a href="https://twitter.com/aditya_konarde">Aditya Konarde</a> and now with <a href="https://twitter.com/pmishra1598">Prakash Mishra</a>. Over time the meetup has grown a lot, now it boasts about 5000 members. Organising meetup earlier was a straightforward affair, especially with Narwade and Konarde being my colleagues and friends. We could chat about the upcoming meetup at any time we would like, and it was all spontaneous. Once they left in 2019, Prakash took over as co-organiser, and we are managing the meetup since then.</p>
+  <div class="post-content md-content"><p>I took the reins of the <a href="https://www.meetup.com/kubernetes-openshift-India-Meetup/">Kubernetes Bangalore Meetup</a> back in 2017. I have been organising the meetup since then. Earlier with <a href="https://twitter.com/red_suraj">Suraj Narwade</a>, <a href="https://twitter.com/aditya_konarde">Aditya Konarde</a> and now with <a href="https://twitter.com/pmishra1598">Prakash Mishra</a>. Over time the meetup has grown a lot, now it boasts about 5000 members. Organising meetup earlier was a straightforward affair, especially with Narwade and Konarde being my colleagues and friends. We could chat about the upcoming meetup at any time we would like, and it was all spontaneous. Once they left in 2019, Prakash took over as co-organiser, and we are managing the meetup since then.</p>
 <p>Although Prakash and I never worked in the same company, we managed meetup over the phone, text and did tasks as we recalled them. Also, we met every month during the meetup, we brainstormed various ideas on what could be the potential topic or what our audience is looking for. With pandemic, that changed. Now only text or phone was not helping a lot.</p>
 <p>Last year I had a <a href="https://suraj.io/post/book-review-getting-things-done/">personal transformation</a> with the book <a href="https://amzn.to/39ZywVK">&ldquo;Getting Things Done by David Allen&rdquo;</a> and <a href="https://www.notion.so/">Notion</a> for my personal task management. I decided to give it a try with the help of Prakash to create a Notion page for our meetup management. It was a simple checklist of tasks to do on every meetup. We identified the tasks we do for every meetup that are recurring and added them to a template. So with every meetup, we create a new page from the existing template and fill in values.</p>
 <p>This template has gone transformation multiple times, as is the nature of the changing world. Like earlier, when we were doing online meetups using <a href="https://streamyard.com/">StreamYard</a> streaming directly to YouTube. If you wonder why StreamYard, well, Zoom was paid, Google Hangouts disabled the steam to YouTube feature and using Google Meet wasn&rsquo;t an option because we needed the recording for folks to watch later on our <a href="https://www.youtube.com/channel/UCqgyLOBWUikh_umxNICbcbQ">YouTube channel</a>. StreamYard was the only free option that allowed the stream to YouTube. But using StreamYard became monologue-ish because we only allowed speakers on StreamYard. The interaction between speakers and attendees was only via YouTube chat. That&rsquo;s when we moved from StreamYard to Zoom (a sponsored account). After doing this switch, we changed the template.</p>
@@ -272,12 +279,10 @@
 <nav class="paginav">
   <a class="prev" href="https://suraj.io/post/2021/03/kthw-vagrant/">
     <span class="title">« Prev</span>
-    <br>
     <span>Kubernetes The Hard Way in &#34;Vagrant&#34;?</span>
   </a>
   <a class="next" href="https://suraj.io/post/2021/03/compounder-skills/">
     <span class="title">Next »</span>
-    <br>
     <span>On Compounder Skills</span>
   </a>
 </nav>
@@ -376,15 +381,19 @@
 <footer class="footer">
         <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
@@ -423,14 +432,13 @@
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 

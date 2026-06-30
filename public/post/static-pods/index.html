@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/static-pods/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -49,12 +49,6 @@
 
             .toc {
                 background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
             }
         }
 
@@ -97,10 +91,11 @@
     <meta property="article:tag" content="Kubernetes">
     <meta property="article:tag" content="Openshift">
       <meta property="og:image" content="https://suraj.io/images/papermod-cover.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://suraj.io/images/papermod-cover.png">
-<meta name="twitter:title" content="Static Pods using Kubelet on Fedora">
-<meta name="twitter:description" content="Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://suraj.io/images/papermod-cover.png">
+  <meta name="twitter:title" content="Static Pods using Kubelet on Fedora">
+  <meta name="twitter:description" content="Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;">
 
 
 <script type="application/ld+json">
@@ -159,17 +154,17 @@
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -185,7 +180,7 @@
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://suraj.io/post" title="Blog">
                     <span>Blog</span>
@@ -228,40 +223,51 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://suraj.io/">Home</a>&nbsp;»&nbsp;<a href="https://suraj.io/post/">Posts</a></div>
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/post/">Posts</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
     <h1 class="post-title entry-hint-parent">
       Static Pods using Kubelet on Fedora
     </h1>
     <div class="post-description">
       Extension to the Kelsey Hightower&#39;s tutorial on &#39;Standalone Kubelet&#39;
     </div>
-    <div class="post-meta"><span title='2017-09-23 13:10:14 +0530 +0530'>September 23, 2017</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
-    <a href="https://github.com/surajssd/blog_contents/blob/master/content/post/static-pods.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
-</span>
+    <div class="post-meta">
+
+<span title='2017-09-23 13:10:14 +0530 +0530'>September 23, 2017</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
+        <a href="https://github.com/surajssd/blog_contents/blob/master/content/post/static-pods.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    </span>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#installing-packages" aria-label="Installing packages">Installing packages</a></li>
-                <li>
-                    <a href="#editing-kubelet-systemd-service-file" aria-label="Editing kubelet systemd service file">Editing kubelet systemd service file</a></li>
-                <li>
-                    <a href="#make-directory-for-pod-manifests" aria-label="Make directory for pod manifests">Make directory for pod manifests</a></li>
-                <li>
-                    <a href="#restart-kubelet-service" aria-label="Restart kubelet service">Restart kubelet service</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+    <div class="inner"><ul>
+            <li>
+                <a href="#installing-packages" aria-label="Installing packages">Installing packages</a></li>
+            <li>
+                <a href="#editing-kubelet-systemd-service-file" aria-label="Editing kubelet systemd service file">Editing kubelet systemd service file</a></li>
+            <li>
+                <a href="#make-directory-for-pod-manifests" aria-label="Make directory for pod manifests">Make directory for pod manifests</a></li>
+            <li>
+                <a href="#restart-kubelet-service" aria-label="Restart kubelet service">Restart kubelet service</a>
+            </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><p>I wanted to try out <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial"><em>Standalone Kubelet Tutorial</em></a>
+  <div class="post-content md-content"><p>I wanted to try out <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial"><em>Standalone Kubelet Tutorial</em></a>
 of <a href="https://twitter.com/kelseyhightower"><strong>Kelsey Hightower</strong></a> by myself but I could not
 follow it as it is, because it was firstly on <a href="https://cloud.google.com/compute/">GCE</a> and
 secondly it uses <a href="https://en.wikipedia.org/wiki/Container_Linux_by_CoreOS">CoreOS</a>,
@@ -341,12 +347,10 @@ manifest file.</p>
 <nav class="paginav">
   <a class="prev" href="https://suraj.io/post/private-registry-from-minikube/">
     <span class="title">« Prev</span>
-    <br>
     <span>Using private container registries from minikube</span>
   </a>
   <a class="next" href="https://suraj.io/post/move-vagrant-boxes/">
     <span class="title">Next »</span>
-    <br>
     <span>Sharing Vagrant Box offline</span>
   </a>
 </nav>
@@ -445,15 +449,19 @@ manifest file.</p>
 <footer class="footer">
         <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
@@ -492,14 +500,13 @@ manifest file.</p>
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 

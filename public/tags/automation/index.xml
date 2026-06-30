@@ -9,10 +9,17 @@
       <url>https://suraj.io/images/papermod-cover.png</url>
       <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.163.3</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 29 Jun 2026 10:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 10:00:00 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Ironies of AI Coding: Combating Cognitive Debt with Visual PRs</title>
+      <link>https://suraj.io/post/2026/ironies-of-ai-coding/</link>
+      <pubDate>Tue, 30 Jun 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/post/2026/ironies-of-ai-coding/</guid>
+      <description>AI agents churn out massive PRs, accelerating output but compounding cognitive debt. Here&amp;#39;s the visualization skill I built to rebuild my mental models.</description>
+    </item>
     <item>
       <title>Will AI Agents be the Death of YAML?</title>
       <link>https://suraj.io/post/2026/iac-with-agents/</link>

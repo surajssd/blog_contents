@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/categories/kubernetes/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -53,12 +53,6 @@
             }
         }
 
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
     </style>
 </noscript>
 <script>
@@ -93,25 +87,26 @@
   <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
       <meta property="og:image" content="https://suraj.io/images/papermod-cover.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://suraj.io/images/papermod-cover.png">
-<meta name="twitter:title" content="Kubernetes">
-<meta name="twitter:description" content="Suraj Deshmukh - Personal Blog">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://suraj.io/images/papermod-cover.png">
+  <meta name="twitter:title" content="Kubernetes">
+  <meta name="twitter:description" content="Suraj Deshmukh - Personal Blog">
 
 </head>
 <body class="list" id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -127,7 +122,7 @@
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://suraj.io/post" title="Blog">
                     <span>Blog</span>
@@ -167,7 +162,18 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://suraj.io/">Home</a>&nbsp;»&nbsp;<a href="https://suraj.io/categories/">Categories</a></div>
+<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/categories/">Categories</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
   <h1>
     Kubernetes
     <a href="/categories/kubernetes/index.xml" title="RSS" aria-label="RSS">
@@ -193,7 +199,9 @@
     <p>Introduction In the realm of cloud computing, ensuring data privacy and security is paramount, yet profoundly challenging. One innovative solution to this challenge is Confidential Containers (CoCo)1, designed to provide an extra layer of security for data in use. However, deploying CoCo requires access to specialized hardware, which adds complexity. Beyond just finding the right hardware, the setup involves navigating a maze of technical specifications – from BIOS configurations to kernel versions – making the process daunting.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-04-05 09:21:07 +0530 +0530'>April 5, 2024</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <footer class="entry-footer">
+
+<span title='2024-04-05 09:21:07 +0530 +0530'>April 5, 2024</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Open Source Confidential Containers (CoCo) on Azure" href="https://suraj.io/post/2024/coco-on-azure/"></a>
 </article>
 
@@ -210,7 +218,9 @@
 Study Material During the study of CKA almost three years ago, I studied everything from the documentation. Back then, the documentation had less content hence it was comprehensible. But now, to go through the entire documentation was not practical. So I did the course by the killer.sh. This course is rich in information, exercises and tries to explain the basics. At the end of each section in the course, the trainer provides resources to read more on the given topic. I would recommend going through each and every resource provided. Don’t skip these. These resources will help you familiarize yourself with the Kubernetes documentation and support you during the exam.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-09-04 13:30:07 +0530 +0530'>September 4, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <footer class="entry-footer">
+
+<span title='2021-09-04 13:30:07 +0530 +0530'>September 4, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Certified Kubernetes Security Specialist CKS exam tips" href="https://suraj.io/post/2021/09/cks-tips/"></a>
 </article>
 
@@ -227,7 +237,9 @@ Study Material During the study of CKA almost three years ago, I studied everyth
 We will use a Helm chart, which has a couple of Kubernetes Jobs that generates the self-signed certificate, embed them in a Kubernetes Secret and finally update the ValidatingWebhookConfiguration or MutatingWebhookConfiguration of your choice. And that’s it. Life is simpler!
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-06-25 09:00:00 +0530 +0530'>June 25, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <footer class="entry-footer">
+
+<span title='2021-06-25 09:00:00 +0530 +0530'>June 25, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to How to &#39;automatically&#39; generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?" href="https://suraj.io/post/2021/06/automatic-cert-gen/"></a>
 </article>
 
@@ -243,7 +255,9 @@ We will use a Helm chart, which has a couple of Kubernetes Jobs that generates t
     <p>The client libraries that Kubernetes ships are meant to be imported, and you definitely don’t need this post explaining how to import them in your Golang based project. A simple go get ... should do the trick. But, what about the packages that are not meant to be imported? Or the ones that cannot be imported because of “technical reasons” ? Could you simply add them to your import statements in the .go file, and the go binary will do the right thing when you build the code? Well, let’s find that out!
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-30 09:40:00 +0530 +0530'>May 30, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <footer class="entry-footer">
+
+<span title='2021-05-30 09:40:00 +0530 +0530'>May 30, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to How to import &#39;any&#39; Kubernetes package into your project?" href="https://suraj.io/post/2021/05/k8s-import/"></a>
 </article>
 
@@ -260,7 +274,9 @@ We will use a Helm chart, which has a couple of Kubernetes Jobs that generates t
 If you are writing a webhook server for Kubernetes Admission Controllers like ValidatingAdmissionWebhooks or MutatingAdmissionWebhooks, you must expose it over HTTPS. To run these servers on HTTPS, you need TLS certificates. There are solutions available which you can use to solve this problem, first and foremost that comes to my mind is cert-manager. It is a great project and automates this problem. But it is an added dependency that you might have to keep running in your cluster.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-21 15:33:07 +0530 +0530'>May 21, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <footer class="entry-footer">
+
+<span title='2021-05-21 15:33:07 +0530 +0530'>May 21, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?" href="https://suraj.io/post/2021/05/self-sign-k8s-cert/"></a>
 </article>
 
@@ -277,7 +293,9 @@ If you are writing a webhook server for Kubernetes Admission Controllers like Va
 What are admission controllers? All requests going to the Kubernetes API server go through the following four steps:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-20 08:47:07 +0530 +0530'>May 20, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <footer class="entry-footer">
+
+<span title='2021-05-20 08:47:07 +0530 +0530'>May 20, 2021</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Mitigation of: Access Any Kubernetes Secret" href="https://suraj.io/post/2021/05/access-k8s-secrets-mitigation/"></a>
 </article>
 
@@ -294,7 +312,9 @@ What are admission controllers? All requests going to the Kubernetes API server 
 Nasty User Here is a user called nastyuser who can only do stuff on pod objects. Everything else is forbidden. The user cannot list secrets, namespaces or deployments:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-05-08 12:17:07 +0530 +0530'>May 8, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <footer class="entry-footer">
+
+<span title='2021-05-08 12:17:07 +0530 +0530'>May 8, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Access Any Kubernetes Secret" href="https://suraj.io/post/2021/05/access-k8s-secrets/"></a>
 </article>
 
@@ -311,7 +331,9 @@ Nasty User Here is a user called nastyuser who can only do stuff on pod objects.
 It is like running htop but where you can go back in history, unlike htop, which only shows the current state. Using this stack of Prometheus, node-exporter, and Grafana is a proactive approach than being reactive to the problems that occur on a PC. Instead of digging later to figure out what went wrong, you are already collecting metrics so you can see on dashboards what went wrong.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-04-02 07:07:07 +0530 +0530'>April 2, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <footer class="entry-footer">
+
+<span title='2021-04-02 07:07:07 +0530 +0530'>April 2, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Monitor your PC with Prometheus Grafana stack" href="https://suraj.io/post/2021/03/node-monitor/"></a>
 </article>
 
@@ -328,7 +350,9 @@ It is like running htop but where you can go back in history, unlike htop, which
 But all that can be intimidating to someone who hasn’t played with Kubernetes ever. Also, the guide uses Google Cloud as a platform to install everything, which mandates you to have a Google Cloud account. But don’t worry, there is a version of Kubernetes the Hard Way, which runs locally, hence free. Enter Kubernetes the Hard Way Vagrant!
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-03-23 07:07:07 +0530 +0530'>March 23, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <footer class="entry-footer">
+
+<span title='2021-03-23 07:07:07 +0530 +0530'>March 23, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Kubernetes The Hard Way in &#34;Vagrant&#34;?" href="https://suraj.io/post/2021/03/kthw-vagrant/"></a>
 </article>
 
@@ -344,7 +368,9 @@ But all that can be intimidating to someone who hasn’t played with Kubernetes 
     <p>This blog is a recap of my old blog “Add new node to Kubernetes cluster with bootstrap token”. Like the aforementioned blog, we will look at how to enable TLS bootstrapping on an existing Kubernetes cluster at control plane level and add a new node (or modify existing ones) to the cluster using bootstrap tokens. At the end of this blog, you will learn what specific steps to take to enable TLS bootstrapping on any custom-built Kubernetes cluster.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2021-02-06 10:25:41 +0530 +0530'>February 6, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <footer class="entry-footer">
+
+<span title='2021-02-06 10:25:41 +0530 +0530'>February 6, 2021</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Enable TLS bootstrapping in a Kubernetes cluster" href="https://suraj.io/post/2021/02/k8s-bootstrap-token/"></a>
 </article>
 <footer class="page-footer">
@@ -358,15 +384,19 @@ But all that can be intimidating to someone who hasn’t played with Kubernetes 
 <footer class="footer">
         <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
@@ -405,14 +435,13 @@ But all that can be intimidating to someone who hasn’t played with Kubernetes 
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 

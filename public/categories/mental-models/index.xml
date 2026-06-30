@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mental-Models on Suraj Deshmukh</title>
+    <link>http://localhost:1313/categories/mental-models/</link>
+    <description>Recent content in Mental-Models on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.163.3</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 30 Jun 2026 10:00:00 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/mental-models/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/post/2026/creating-mental-models-with-ai/</link>
+      <pubDate>Tue, 30 Jun 2026 10:00:00 +0530</pubDate>
+      <guid>http://localhost:1313/post/2026/creating-mental-models-with-ai/</guid>
+      <description>&lt;p&gt;With the advent of the multi-thousand line PRs, it is hard to know where to start in terms of reviewing them. The models are churning out thousands of lines of code and it is hard to keep up with it. Since I don’t have all the understanding of all the multi-thousand lines of code being merged, it is hard for me to generate mental models of the new features being merged.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

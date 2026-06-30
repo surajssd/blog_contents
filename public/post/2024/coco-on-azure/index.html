@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/2024/coco-on-azure/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -49,12 +49,6 @@
 
             .toc {
                 background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
             }
         }
 
@@ -101,8 +95,8 @@
     <meta property="og:image" content="https://suraj.io/post/2024/images/coco-on-azure.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://suraj.io/post/2024/images/coco-on-azure.png">
-<meta name="twitter:title" content="Open Source Confidential Containers (CoCo) on Azure">
-<meta name="twitter:description" content="Explore how Azure’s support for nested confidential compute unlocks a straightforward path to deploying Confidential Containers (CoCo), ensuring enhanced data security in the cloud with ease.">
+  <meta name="twitter:title" content="Open Source Confidential Containers (CoCo) on Azure">
+  <meta name="twitter:description" content="Explore how Azure’s support for nested confidential compute unlocks a straightforward path to deploying Confidential Containers (CoCo), ensuring enhanced data security in the cloud with ease.">
 
 
 <script type="application/ld+json">
@@ -161,17 +155,17 @@
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -187,7 +181,7 @@
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://suraj.io/post" title="Blog">
                     <span>Blog</span>
@@ -230,96 +224,107 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://suraj.io/">Home</a>&nbsp;»&nbsp;<a href="https://suraj.io/post/">Posts</a></div>
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/post/">Posts</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
     <h1 class="post-title entry-hint-parent">
       Open Source Confidential Containers (CoCo) on Azure
     </h1>
     <div class="post-description">
       Explore how Azure’s support for nested confidential compute unlocks a straightforward path to deploying Confidential Containers (CoCo), ensuring enhanced data security in the cloud with ease.
     </div>
-    <div class="post-meta"><span title='2024-04-05 09:21:07 +0530 +0530'>April 5, 2024</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
-    <a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2024/coco-on-azure.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
-</span>
+    <div class="post-meta">
+
+<span title='2024-04-05 09:21:07 +0530 +0530'>April 5, 2024</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
+        <a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2024/coco-on-azure.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    </span>
 
 </div>
   </header> 
 <figure class="entry-cover">
         <img loading="eager" src="https://suraj.io/post/2024/images/coco-on-azure.png" alt="CoCo on Azure">
         
-</figure><div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
-                <li>
-                    <a href="#1-nested-confidential-compute-capable-vm" aria-label="1: Nested Confidential Compute Capable VM">1: Nested Confidential Compute Capable VM</a><ul>
-                        
-                <li>
-                    <a href="#11-export-environment-variables" aria-label="1.1: Export Environment Variables">1.1: Export Environment Variables</a></li>
-                <li>
-                    <a href="#12-create-azure-resource-group" aria-label="1.2: Create Azure Resource Group">1.2: Create Azure Resource Group</a></li>
-                <li>
-                    <a href="#13-deploy-the-vm" aria-label="1.3: Deploy the VM">1.3: Deploy the VM</a></li>
-                <li>
-                    <a href="#14-ssh-into-the-vm" aria-label="1.4: SSH into the VM">1.4: SSH into the VM</a></li></ul>
-                </li>
-                <li>
-                    <a href="#2-install-single-node-kubernetes-cluster" aria-label="2: Install Single-Node Kubernetes Cluster">2: Install Single-Node Kubernetes Cluster</a><ul>
-                        
-                <li>
-                    <a href="#21-install-prerequisites" aria-label="2.1: Install Prerequisites">2.1: Install Prerequisites</a></li>
-                <li>
-                    <a href="#22-configure-docker-repository" aria-label="2.2: Configure Docker Repository">2.2: Configure Docker Repository</a></li>
-                <li>
-                    <a href="#23-configure-kubernetes-repository" aria-label="2.3: Configure Kubernetes Repository">2.3: Configure Kubernetes Repository</a></li>
-                <li>
-                    <a href="#24-install-docker--kubernetes" aria-label="2.4: Install Docker &amp; Kubernetes">2.4: Install Docker &amp; Kubernetes</a></li>
-                <li>
-                    <a href="#25-start-containerd-daemon" aria-label="2.5: Start Containerd Daemon">2.5: Start Containerd Daemon</a></li>
-                <li>
-                    <a href="#26-disable-swap" aria-label="2.6: Disable Swap">2.6: Disable Swap</a></li>
-                <li>
-                    <a href="#27-ensure-networking-is-configured" aria-label="2.7: Ensure Networking is Configured">2.7: Ensure Networking is Configured</a></li>
-                <li>
-                    <a href="#28-initialize-kubeadm" aria-label="2.8: Initialize Kubeadm">2.8: Initialize Kubeadm</a></li>
-                <li>
-                    <a href="#29-configure-kubernetes-config" aria-label="2.9: Configure Kubernetes Config">2.9: Configure Kubernetes Config</a></li>
-                <li>
-                    <a href="#210-install-cni" aria-label="2.10: Install CNI">2.10: Install CNI</a></li>
-                <li>
-                    <a href="#211-ensure-single-node-acts-as-control-plane-and-worker" aria-label="2.11: Ensure Single-Node Acts as Control Plane and Worker">2.11: Ensure Single-Node Acts as Control Plane and Worker</a></li></ul>
-                </li>
-                <li>
-                    <a href="#3-install-confidential-containers-coco-using-operator" aria-label="3: Install Confidential Containers (CoCo) Using Operator">3: Install Confidential Containers (CoCo) Using Operator</a><ul>
-                        
-                <li>
-                    <a href="#31-install-operator" aria-label="3.1: Install Operator">3.1: Install Operator</a></li>
-                <li>
-                    <a href="#32-verify-runtimeclasses-availability" aria-label="3.2: Verify Runtimeclasses Availability">3.2: Verify Runtimeclasses Availability</a></li></ul>
-                </li>
-                <li>
-                    <a href="#4-run-sample-application" aria-label="4. Run Sample Application">4. Run Sample Application</a><ul>
-                        
-                <li>
-                    <a href="#41-run-nginx-in-tee" aria-label="4.1: Run Nginx in TEE">4.1: Run Nginx in TEE</a></li>
-                <li>
-                    <a href="#42-verify-pod-is-running" aria-label="4.2: Verify Pod is Running">4.2: Verify Pod is Running</a></li>
-                <li>
-                    <a href="#42-verify-pod-is-running-in-tee" aria-label="4.2: Verify Pod is Running in TEE">4.2: Verify Pod is Running in TEE</a></li></ul>
-                </li>
-                <li>
-                    <a href="#wrapping-up" aria-label="Wrapping Up">Wrapping Up</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+    <div class="inner"><ul>
+            <li>
+                <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+            <li>
+                <a href="#1-nested-confidential-compute-capable-vm" aria-label="1: Nested Confidential Compute Capable VM">1: Nested Confidential Compute Capable VM</a><ul>
+                    
+            <li>
+                <a href="#11-export-environment-variables" aria-label="1.1: Export Environment Variables">1.1: Export Environment Variables</a></li>
+            <li>
+                <a href="#12-create-azure-resource-group" aria-label="1.2: Create Azure Resource Group">1.2: Create Azure Resource Group</a></li>
+            <li>
+                <a href="#13-deploy-the-vm" aria-label="1.3: Deploy the VM">1.3: Deploy the VM</a></li>
+            <li>
+                <a href="#14-ssh-into-the-vm" aria-label="1.4: SSH into the VM">1.4: SSH into the VM</a></li></ul>
+            </li>
+            <li>
+                <a href="#2-install-single-node-kubernetes-cluster" aria-label="2: Install Single-Node Kubernetes Cluster">2: Install Single-Node Kubernetes Cluster</a><ul>
+                    
+            <li>
+                <a href="#21-install-prerequisites" aria-label="2.1: Install Prerequisites">2.1: Install Prerequisites</a></li>
+            <li>
+                <a href="#22-configure-docker-repository" aria-label="2.2: Configure Docker Repository">2.2: Configure Docker Repository</a></li>
+            <li>
+                <a href="#23-configure-kubernetes-repository" aria-label="2.3: Configure Kubernetes Repository">2.3: Configure Kubernetes Repository</a></li>
+            <li>
+                <a href="#24-install-docker--kubernetes" aria-label="2.4: Install Docker &amp; Kubernetes">2.4: Install Docker &amp; Kubernetes</a></li>
+            <li>
+                <a href="#25-start-containerd-daemon" aria-label="2.5: Start Containerd Daemon">2.5: Start Containerd Daemon</a></li>
+            <li>
+                <a href="#26-disable-swap" aria-label="2.6: Disable Swap">2.6: Disable Swap</a></li>
+            <li>
+                <a href="#27-ensure-networking-is-configured" aria-label="2.7: Ensure Networking is Configured">2.7: Ensure Networking is Configured</a></li>
+            <li>
+                <a href="#28-initialize-kubeadm" aria-label="2.8: Initialize Kubeadm">2.8: Initialize Kubeadm</a></li>
+            <li>
+                <a href="#29-configure-kubernetes-config" aria-label="2.9: Configure Kubernetes Config">2.9: Configure Kubernetes Config</a></li>
+            <li>
+                <a href="#210-install-cni" aria-label="2.10: Install CNI">2.10: Install CNI</a></li>
+            <li>
+                <a href="#211-ensure-single-node-acts-as-control-plane-and-worker" aria-label="2.11: Ensure Single-Node Acts as Control Plane and Worker">2.11: Ensure Single-Node Acts as Control Plane and Worker</a></li></ul>
+            </li>
+            <li>
+                <a href="#3-install-confidential-containers-coco-using-operator" aria-label="3: Install Confidential Containers (CoCo) Using Operator">3: Install Confidential Containers (CoCo) Using Operator</a><ul>
+                    
+            <li>
+                <a href="#31-install-operator" aria-label="3.1: Install Operator">3.1: Install Operator</a></li>
+            <li>
+                <a href="#32-verify-runtimeclasses-availability" aria-label="3.2: Verify Runtimeclasses Availability">3.2: Verify Runtimeclasses Availability</a></li></ul>
+            </li>
+            <li>
+                <a href="#4-run-sample-application" aria-label="4. Run Sample Application">4. Run Sample Application</a><ul>
+                    
+            <li>
+                <a href="#41-run-nginx-in-tee" aria-label="4.1: Run Nginx in TEE">4.1: Run Nginx in TEE</a></li>
+            <li>
+                <a href="#42-verify-pod-is-running" aria-label="4.2: Verify Pod is Running">4.2: Verify Pod is Running</a></li>
+            <li>
+                <a href="#42-verify-pod-is-running-in-tee" aria-label="4.2: Verify Pod is Running in TEE">4.2: Verify Pod is Running in TEE</a></li></ul>
+            </li>
+            <li>
+                <a href="#wrapping-up" aria-label="Wrapping Up">Wrapping Up</a>
+            </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
+  <div class="post-content md-content"><h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
 <p>In the realm of cloud computing, ensuring data privacy and security is paramount, yet profoundly challenging. One innovative solution to this challenge is <a href="https://confidentialcontainers.org/">Confidential Containers (CoCo)</a><cite><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite>, designed to provide an extra layer of security for data in use. However, deploying CoCo requires access to specialized hardware, which adds complexity. Beyond just finding the right hardware, the setup involves navigating a maze of technical specifications – from BIOS configurations to kernel versions – making the process daunting.</p>
 <p>Enter Azure&rsquo;s <a href="https://techcommunity.microsoft.com/t5/apps-on-azure-blog/public-preview-confidential-containers-on-aks/ba-p/3980871">nested confidential compute</a><cite><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></cite> for AMD SEV-SNP, a breakthrough in making CoCo more accessible and manageable. This blog post will guide you through leveraging Azure&rsquo;s support to deploy CoCo-based workloads with ease. You&rsquo;ll learn not only how to navigate the setup process but also how Azure simplifies the deployment. Whether you&rsquo;re a seasoned cloud professional or new to the concept of confidential computing, this post will provide valuable insights into making the most of CoCo on Azure.</p>
 <p>Here is how we will achieve this installation:</p>
@@ -579,12 +584,10 @@
 <nav class="paginav">
   <a class="prev" href="https://suraj.io/post/2025/opeai-tts-on-azure/">
     <span class="title">« Prev</span>
-    <br>
     <span>Deploying OpenAI Text-to-Speech (TTS) Model on Azure: A Step-by-Step Guide</span>
   </a>
   <a class="next" href="https://suraj.io/post/2021/10/dont-be-default/">
     <span class="title">Next »</span>
-    <br>
     <span>Fight Your Instincts — Your Default Behaviour is Hurting You</span>
   </a>
 </nav>
@@ -683,15 +686,19 @@
 <footer class="footer">
         <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
@@ -730,14 +737,13 @@
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 

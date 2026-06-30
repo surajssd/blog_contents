@@ -1,10 +1,2 @@
-github.com/adityatelange/hugo-PaperMod v0.0.0-20240316195851-dad94ab4b7c5 h1:yczLu4cdgnLAiRHGQuxTP86WHfEvip4IAkcKT/2HocE=
-github.com/adityatelange/hugo-PaperMod v0.0.0-20240316195851-dad94ab4b7c5/go.mod h1:HCHxNMKYdGafUYjVV3ICiAqznZK2yH0iI53jqcDFDdQ=
-github.com/adityatelange/hugo-PaperMod v0.0.0-20240413123840-aa7905eaca43 h1:rQTL6KgZl6drdQcolS0ZHxMM0xxO/Cm4/CSrI0GlZoE=
-github.com/adityatelange/hugo-PaperMod v0.0.0-20240413123840-aa7905eaca43/go.mod h1:HCHxNMKYdGafUYjVV3ICiAqznZK2yH0iI53jqcDFDdQ=
-github.com/adityatelange/hugo-PaperMod v0.0.0-20241109160605-3e5362100777 h1:SWL2QAy3Y42ZToWKeVb9utQaaa8BpHxtCFUf0LDjma8=
-github.com/adityatelange/hugo-PaperMod v0.0.0-20241109160605-3e5362100777/go.mod h1:HCHxNMKYdGafUYjVV3ICiAqznZK2yH0iI53jqcDFDdQ=
-github.com/adityatelange/hugo-PaperMod v0.0.0-20250524045829-5a4651783fa9 h1:vSOmKCogP6L4SV2eO7A2zgO7sdml4Ta7tZSd6ccOTmQ=
-github.com/adityatelange/hugo-PaperMod v0.0.0-20250524045829-5a4651783fa9/go.mod h1:HCHxNMKYdGafUYjVV3ICiAqznZK2yH0iI53jqcDFDdQ=
-github.com/adityatelange/hugo-PaperMod v0.0.0-20260125152547-3bb0ca281fd1 h1:nS0GAIWJZIxy1YWwGce18ePQHB7v1Y1sxUTOOrBAIeA=
-github.com/adityatelange/hugo-PaperMod v0.0.0-20260125152547-3bb0ca281fd1/go.mod h1:HCHxNMKYdGafUYjVV3ICiAqznZK2yH0iI53jqcDFDdQ=
+github.com/adityatelange/hugo-PaperMod v0.0.0-20260510052646-154d006e0182 h1:wKy2+NZXtaj3qjFwoj4RZfouaAxCAY/oY9iiUmGlCZE=
+github.com/adityatelange/hugo-PaperMod v0.0.0-20260510052646-154d006e0182/go.mod h1:sp5WH671pzcVNpWKveBQKlBfu6T9uvcBI/4B3BSojKw=

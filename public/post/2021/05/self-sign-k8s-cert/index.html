@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/2021/05/self-sign-k8s-cert/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -49,12 +49,6 @@
 
             .toc {
                 background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
             }
         }
 
@@ -99,8 +93,8 @@
     <meta property="og:image" content="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png">
-<meta name="twitter:title" content="How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?">
-<meta name="twitter:description" content="A simple binary to generate TLS x509 certificates.">
+  <meta name="twitter:title" content="How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?">
+  <meta name="twitter:description" content="A simple binary to generate TLS x509 certificates.">
 
 
 <script type="application/ld+json">
@@ -159,17 +153,17 @@
 </head>
 <body id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://suraj.io/" accesskey="h" title="Suraj Deshmukh (Alt + H)">Suraj Deshmukh</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -185,7 +179,7 @@
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://suraj.io/post" title="Blog">
                     <span>Blog</span>
@@ -228,42 +222,53 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://suraj.io/">Home</a>&nbsp;»&nbsp;<a href="https://suraj.io/post/">Posts</a></div>
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/post/">Posts</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
     <h1 class="post-title entry-hint-parent">
       How to generate a self-signed TLS certificate for Kubernetes Admission Webhook Servers?
     </h1>
     <div class="post-description">
       A simple binary to generate TLS x509 certificates.
     </div>
-    <div class="post-meta"><span title='2021-05-21 15:33:07 +0530 +0530'>May 21, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
-    <a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/05/self-sign-k8s-cert.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
-</span>
+    <div class="post-meta">
+
+<span title='2021-05-21 15:33:07 +0530 +0530'>May 21, 2021</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
+        <a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2021/05/self-sign-k8s-cert.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
+    </span>
 
 </div>
   </header> 
 <figure class="entry-cover">
         <img loading="eager" src="https://suraj.io/post/2021/05/self-sign-k8s-cert/cert.png" alt="cert">
         
-</figure><div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+</figure><details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#self-signed-cert-generation" aria-label="Self Signed Cert Generation">Self Signed Cert Generation</a></li>
-                <li>
-                    <a href="#loading-certs-into-the-helm-chart" aria-label="Loading certs into the Helm chart">Loading certs into the Helm chart</a></li>
-                <li>
-                    <a href="#loading-certs-for-a-golang-web-server" aria-label="Loading certs for a Golang web server">Loading certs for a Golang web server</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+    <div class="inner"><ul>
+            <li>
+                <a href="#self-signed-cert-generation" aria-label="Self Signed Cert Generation">Self Signed Cert Generation</a></li>
+            <li>
+                <a href="#loading-certs-into-the-helm-chart" aria-label="Loading certs into the Helm chart">Loading certs into the Helm chart</a></li>
+            <li>
+                <a href="#loading-certs-for-a-golang-web-server" aria-label="Loading certs for a Golang web server">Loading certs for a Golang web server</a>
+            </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><blockquote>
+  <div class="post-content md-content"><blockquote>
 <p><strong>UPDATE:</strong> There is a way to generate these certificates automatically. To find out how, <a href="https://suraj.io/post/2021/06/automatic-cert-gen/">read this post</a>.</p>
 </blockquote>
 <p>If you are writing a webhook server for <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#what-are-they">Kubernetes Admission Controllers</a> like <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#validatingadmissionwebhook">ValidatingAdmissionWebhooks</a> or <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#mutatingadmissionwebhook">MutatingAdmissionWebhooks</a>, you must expose it over HTTPS. To run these servers on HTTPS, you need TLS certificates. There are solutions available which you can use to solve this problem, first and foremost that comes to my mind is <a href="https://cert-manager.io/docs/">cert-manager</a>. It is a great project and automates this problem. But it is an added dependency that you might have to keep running in your cluster.</p>
@@ -308,12 +313,10 @@
 <nav class="paginav">
   <a class="prev" href="https://suraj.io/post/2021/05/k8s-import/">
     <span class="title">« Prev</span>
-    <br>
     <span>How to import &#39;any&#39; Kubernetes package into your project?</span>
   </a>
   <a class="next" href="https://suraj.io/post/2021/05/learnings-psychology-of-money/">
     <span class="title">Next »</span>
-    <br>
     <span>Learnings from &#39;The Psychology of Money&#39;</span>
   </a>
 </nav>
@@ -412,15 +415,19 @@
 <footer class="footer">
         <span>&copy; 2026 <a href="https://suraj.io/">Suraj Deshmukh</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
@@ -459,14 +466,13 @@
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 

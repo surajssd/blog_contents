@@ -9,15 +9,29 @@
       <url>https://suraj.io/images/papermod-cover.png</url>
       <link>https://suraj.io/images/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- 0.163.3</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 29 Jun 2026 10:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 10:00:00 +0530</lastBuildDate>
     <atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://suraj.io/categories/ai/</link>
-      <pubDate>Mon, 29 Jun 2026 10:00:00 +0530</pubDate>
+      <pubDate>Tue, 30 Jun 2026 10:00:00 +0530</pubDate>
       <guid>https://suraj.io/categories/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Llm</title>
+      <link>https://suraj.io/categories/llm/</link>
+      <pubDate>Tue, 30 Jun 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/categories/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Productivity</title>
+      <link>https://suraj.io/categories/productivity/</link>
+      <pubDate>Tue, 30 Jun 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/categories/productivity/</guid>
       <description></description>
     </item>
     <item>
@@ -25,13 +39,6 @@
       <link>https://suraj.io/categories/infrastructure/</link>
       <pubDate>Mon, 29 Jun 2026 10:00:00 +0530</pubDate>
       <guid>https://suraj.io/categories/infrastructure/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Llm</title>
-      <link>https://suraj.io/categories/llm/</link>
-      <pubDate>Mon, 29 Jun 2026 10:00:00 +0530</pubDate>
-      <guid>https://suraj.io/categories/llm/</guid>
       <description></description>
     </item>
     <item>
@@ -116,13 +123,6 @@
       <link>https://suraj.io/categories/linux/</link>
       <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
       <guid>https://suraj.io/categories/linux/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Productivity</title>
-      <link>https://suraj.io/categories/productivity/</link>
-      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
-      <guid>https://suraj.io/categories/productivity/</guid>
       <description></description>
     </item>
     <item>
