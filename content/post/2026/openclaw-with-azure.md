@@ -316,3 +316,11 @@ OpenClaw uses your numeric Telegram user ID in the `allowFrom` field to restrict
 3. Click **Start** or type `/start` to activate the bot.
 4. The bot will reply with your details. Look for the **Id** line (e.g., `12345678`).
 5. Copy this number and use it as the value for `TELEGRAM_USER_ID`.
+
+Add the following: <https://docs.openclaw.ai/channels/pairing#approve-a-node-device>
+
+```
+openclaw devices list
+openclaw devices approve <requestId>
+openclaw devices reject <requestId>
+```
