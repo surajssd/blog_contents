@@ -198,6 +198,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Old laptop setup reference
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I have this old PC Dell Inspiron 1525 with 2GB RAM and 32 bit dual core processor and I wanted to install fedora on it, but I cam accross few problems which I am documenting for further reference.
+Wifi device not detected The wifi drivers are not loaded by default, so followed this blog, basically do following:
+export FIRMWARE_INSTALL_DIR=&#34;/lib/firmware&#34; wget http://mirror2.openwrt.org/sources/broadcom-wl-5.100.138.tar.bz2 tar xjf broadcom-wl-5.100.138.tar.bz2 cd broadcom-wl-5.100.138/linux/ sudo b43-fwcutter -w /lib/firmware wl_apsta.o Slow boot problem Since the boot process is very slow so add this line to /etc/default/grub
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2018-12-30 01:00:51 +0530 +0530'>December 30, 2018</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <a class="entry-link" aria-label="post link to Old laptop setup reference" href="https://suraj.io/post/old-laptop-setup/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Add new Node to k8s cluster with Bootstrap token
     </h2>
   </header>
@@ -326,21 +341,6 @@ $ mkcert -install Created a new local CA at &#34;/home/hummer/.local/share/mkcer
   </div>
   <footer class="entry-footer"><span title='2018-08-14 01:00:51 +0530 +0530'>August 14, 2018</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to HTTPS during development using &#39;mkcert&#39;" href="https://suraj.io/post/mkcert-using-python-http-server/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Golang struct tags gotchas
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>In golang while using struct tag, the spaces make a lot of difference. For example look at the following code.
-type PodStatus struct { Status string `json: &#34;,status&#34;` } If you run go vet on this piece of code you will get following error:
-$ go vet types.go # command-line-arguments ./types.go:28: struct field tag `json: &#34;,status&#34;` not compatible with reflect.StructTag.Get: bad syntax for struct tag value Now this does not tell us what is wrong with the struct tag, json: &#34;,status&#34;. The problem with this struct tag is that the extra space can be interpreted as delimiter so provide key-value pair without space.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-08-12 01:00:51 +0530 +0530'>August 12, 2018</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
-  <a class="entry-link" aria-label="post link to Golang struct tags gotchas" href="https://suraj.io/post/golang-struct-tags-space/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

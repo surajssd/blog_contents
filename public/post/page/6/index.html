@@ -198,6 +198,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Enabling Seccomp on your Prometheus Operator and related Pods
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Seccomp helps us limit the system calls the process inside container can make. And PodSecurityPolicy is the way to enable it on pods in Kubernetes.
+Prometheus Operator Prometheus Operator makes it really easy to monitor your Kubernetes cluster. To deploy this behemoth, helm chart is the easiest way to do it.
+Almost all the pods that run as a part of Prometheus Operator viz. Prometheus Operator, Prometheus, Alertmanager, Grafana, Kube State Metrics don’t need to run with elevated privileges except Node Exporter. In your Kubernetes cluster if you are using PodSecurityPolicy to make sure that your cluster is secure, then you would want your Prometheus Operator pods to run securely as well. And the good news is, Prometheus Operator chart ships PodSecurityPolicy for each sub-component. We will look at how to enable seccomp for all the sub-components.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-04-14 11:57:07 +0530 +0530'>April 14, 2020</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
+  <a class="entry-link" aria-label="post link to Enabling Seccomp on your Prometheus Operator and related Pods" href="https://suraj.io/post/seccomp-in-kube-state-metrics/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Capabilities on executables
     </h2>
   </header>
@@ -328,21 +343,6 @@ All the code referenced here can be found here https://github.com/surajssd/cobra
   </div>
   <footer class="entry-footer"><span title='2019-01-04 01:00:51 +0530 +0530'>January 4, 2019</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
   <a class="entry-link" aria-label="post link to Cobra and Persistentflags gotchas" href="https://suraj.io/post/cobra-persistent-flag/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Old laptop setup reference
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I have this old PC Dell Inspiron 1525 with 2GB RAM and 32 bit dual core processor and I wanted to install fedora on it, but I cam accross few problems which I am documenting for further reference.
-Wifi device not detected The wifi drivers are not loaded by default, so followed this blog, basically do following:
-export FIRMWARE_INSTALL_DIR=&#34;/lib/firmware&#34; wget http://mirror2.openwrt.org/sources/broadcom-wl-5.100.138.tar.bz2 tar xjf broadcom-wl-5.100.138.tar.bz2 cd broadcom-wl-5.100.138/linux/ sudo b43-fwcutter -w /lib/firmware wl_apsta.o Slow boot problem Since the boot process is very slow so add this line to /etc/default/grub
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2018-12-30 01:00:51 +0530 +0530'>December 30, 2018</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span></footer>
-  <a class="entry-link" aria-label="post link to Old laptop setup reference" href="https://suraj.io/post/old-laptop-setup/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
