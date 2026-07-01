@@ -19,7 +19,7 @@ Basically, the more intelligent and adaptive the AI becomes at writing code, the
 
 ## The Rise of Cognitive Debt
 
-In software engineering, we are intimately familiar with technical debt. But with the advent of AI agents, we are now dealing with **"cognitive debt."** I won't claim to have coined the term—a 2025 [MIT Media Lab study](https://arxiv.org/abs/2506.08872) measured the "accumulation of cognitive debt" in people who leaned on an LLM to write essays—but it captures exactly what I feel reviewing AI-generated code.
+In software engineering, we are intimately familiar with technical debt. But with the advent of AI agents, we are now dealing with **"cognitive debt."** I won't claim to have coined the term, a 2025 [MIT Media Lab study](https://arxiv.org/abs/2506.08872) measured the "accumulation of cognitive debt" in people who leaned on an LLM to write essays, but it captures exactly what I feel reviewing AI-generated code.
 
 This debt compounds every time you don't write the code yourself, or aren't deeply involved in understanding _why_ it was written the way it was. I've been thinking about this a lot lately: if we aren't writing code by hand anymore, how do we keep our technical skills sharp?
 
@@ -31,7 +31,7 @@ I recently watched a great [InfoQ talk by J. Paul Reed](https://www.infoq.com/pr
 * **The Novelty Trap:** Generating "new strategies" requires an adequate knowledge of the system. Basically: no mental model, no novel fixes!
 * **The Speed/Correctness Tradeoff:** You cannot assert absolute correctness and maintain high speed simultaneously (echoing Erik Hollnagel's ETTO principle: you can never maximize efficiency and thoroughness at the same time).
 * **Camouflaged State:** Automation can easily hide the current state of the system from operators.
-* **Opaque Logic:** Tracing algorithmic decision trees is difficult—and with AI, it can be nearly impossible.
+* **Opaque Logic:** Tracing algorithmic decision trees is difficult, and with AI, it can be nearly impossible.
 
 Adding to this, Mica Endsley notes a newer irony specific to AI: _The more capable the AI, the poorer people’s self-adaptive behaviors for compensating for its shortcomings._
 
@@ -42,7 +42,7 @@ Adding to this, Mica Endsley notes a newer irony specific to AI: _The more capab
 
 So, how do we reduce this compounding cognitive debt? We have to actively build robust mental models to widen our understanding of the systems we manage.
 
-The AI doesn't relieve you of the mental model—you need it precisely to know when the AI is wrong.
+The AI doesn't relieve you of the mental model, you need it precisely to know when the AI is wrong.
 
 It reminds me of a brilliant point [Andrej Karpathy](https://x.com/karpathy) made a few months ago: **You can outsource your thinking, but you cannot outsource understanding.**
 
@@ -78,7 +78,7 @@ Generating visual dashboards is the first step in rebuilding that mental scaffol
 
 ### How the Dashboard Works
 
-If you are curious about the mechanics behind the visualization above, the workflow is straightforward. `pr-review-dashboard` turns a checked-out PR into a single self-contained interactive HTML dashboard (diagrams + annotated diffs + risk table) instead of a markdown summary. It runs a 7-step playbook: detect the default branch, sanity-check you're on a feature branch, gather the diff (three-dot) and resolve the GitHub PR via a fallback ladder, then fill a bundled `dashboard_template.html` across six tabs (Summary, Glossary, Architecture, Diff, Risk, Unknowns). Its core ethos is "visualization is the point" — 3–6 diagrams, defaulting to HTML/CSS box-and-arrow primitives and reserving mermaid only for sequence/state/class diagrams. Strict grounding rules require citing file:line and quarantining all uncertainty in the Unknowns tab.
+If you are curious about the mechanics behind the visualization above, the workflow is straightforward. `pr-review-dashboard` turns a checked-out PR into a single self-contained interactive HTML dashboard (diagrams + annotated diffs + risk table) instead of a markdown summary. It runs a 7-step playbook: detect the default branch, sanity-check you're on a feature branch, gather the diff (three-dot) and resolve the GitHub PR via a fallback ladder, then fill a bundled `dashboard_template.html` across six tabs (Summary, Glossary, Architecture, Diff, Risk, Unknowns). Its core ethos is "visualization is the point", 3–6 diagrams, defaulting to HTML/CSS box-and-arrow primitives and reserving mermaid only for sequence/state/class diagrams. Strict grounding rules require citing file:line and quarantining all uncertainty in the Unknowns tab.
 
 Instead of fighting the agent, I am using its immense context window to generate the exact artifact my human brain needs to do its job.
 
@@ -94,6 +94,6 @@ Check out the PR you want to visualize, and run the following command in your ag
 
 The irony of AI coding agents is that to use them safely, you actually have to understand your system _better_ than before.
 
-Automation will continue to push the boundaries of efficiency, but we can never maximize efficiency and thoroughness at the same time. The AI does not relieve you of the responsibility of the mental model—you need it precisely to know when the AI is hallucinating a fix or introducing a subtle architectural flaw.
+Automation will continue to push the boundaries of efficiency, but we can never maximize efficiency and thoroughness at the same time. The AI does not relieve you of the responsibility of the mental model, you need it precisely to know when the AI is hallucinating a fix or introducing a subtle architectural flaw.
 
 Embrace the agents to write the boilerplate, write the tests, and even write the HTML dashboards. But protect your mental models at all costs. You can outsource your coding, but you cannot outsource your understanding.
