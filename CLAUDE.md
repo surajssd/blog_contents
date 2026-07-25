@@ -6,6 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a Hugo static site generator repository for a personal blog (suraj.io). The blog uses the PaperMod theme and is deployed to GitHub Pages at surajssd.github.io.
 
+## Prerequisites
+
+- **Hugo** (extended version recommended) on `PATH` — the publish script hard-fails if `hugo` is missing.
+- **Go** — the PaperMod theme is pulled in as a Hugo Module, so `go.mod`/`go.sum` (not a vendored `themes/` dir in this repo) manage it. `hugo` fetches the module on first build.
+
 ## Commands
 
 ### Development and Build
@@ -47,6 +52,7 @@ Key behaviors to be aware of:
 - **`content/post/<year>/images/`** and **`content/images/<post-slug>/`**: Post images (two conventions coexist — newer year-based dirs and older per-slug dirs)
 - **`content/about.md`, `archives.md`, `search.md`**: Standalone pages backing the menu entries in `config.yaml`
 - **`draft/`**: Standalone draft files kept outside `content/` (Hugo does not render these). Note: in-content drafts instead use `draft: true` in frontmatter and require `hugo serve -D` to preview. `buildDrafts: false` in `config.yaml` keeps them out of production builds.
+- **`static/`**: Files copied verbatim to the site root (favicons, `apple-touch-icon.png`, etc.). Note the root-level `CNAME` here is *not* under `static/`, so Hugo never copies it into `public/`; the CNAME that GitHub Pages actually serves lives in the website repo (see Git Workflow).
 
 ### Configuration
 

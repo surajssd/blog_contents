@@ -417,7 +417,7 @@ sysctl --system
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">apiServerEndpoint</span><span class="p">:</span><span class="w"> </span><span class="l">$short_url</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l">$(kubeadm token create)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">caCertHashes</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">sha256:$(openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2&gt;/dev/null | openssl dgst -sha256 -hex | sed &#39;s/^.* //&#39;)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">sha256:$(openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2&gt;/dev/null | openssl dgst -sha256 -hex | sed &#39;s/^.*</span><span class="w"> </span><span class="c">//&#39;)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">controlPlane</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="nt">nodeRegistration</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">kubeletExtraArgs</span><span class="p">:</span><span class="w">

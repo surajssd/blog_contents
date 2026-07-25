@@ -380,8 +380,8 @@ go get: added k8s.io/kubernetes v1.21.0
 </span></span></span><span class="line"><span class="cl"><span class="l">go 1.16</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="l">require (</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">github.com/spf13/cobra v1.1.3 // indirect</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">k8s.io/client-go v0.21.1 // indirect</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">github.com/spf13/cobra v1.1.3</span><span class="w"> </span><span class="c">// indirect</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">k8s.io/client-go v0.21.1</span><span class="w"> </span><span class="c">// indirect</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="l">)</span><span class="w">
 </span></span></span></code></pre></div><p>After running the script, this is how it looks like:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">module foobar</span><span class="w">
@@ -389,9 +389,9 @@ go get: added k8s.io/kubernetes v1.21.0
 </span></span></span><span class="line"><span class="cl"><span class="l">go 1.16</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="l">require (</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">github.com/spf13/cobra v1.1.3 // indirect</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">k8s.io/client-go v0.21.1 // indirect</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">k8s.io/kubernetes v1.21.0 // indirect</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">github.com/spf13/cobra v1.1.3</span><span class="w"> </span><span class="c">// indirect</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">k8s.io/client-go v0.21.1</span><span class="w"> </span><span class="c">// indirect</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">k8s.io/kubernetes v1.21.0</span><span class="w"> </span><span class="c">// indirect</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="l">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="l">replace k8s.io/api =&gt; k8s.io/api v0.21.0</span><span class="w">
