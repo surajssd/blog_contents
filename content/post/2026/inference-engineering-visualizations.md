@@ -6,6 +6,9 @@ description: "A set of interactive, self-contained visualizations that make the 
 draft: false
 categories: ["ai", "llm"]
 tags: ["ai", "llm", "inference", "visualization", "transformers", "attention", "mixture-of-experts"]
+cover:
+  image: "/post/2026/images/inference-engineering.png"
+  alt: "Inference Engineering book cover"
 ---
 
 I have been working through **[Inference Engineering](https://www.baseten.co/inference-engineering/)** by **[Philip Kiely](https://philipkiely.com/)** — a book for engineers who want to understand the technologies that power every AI company and application in the world. Along the way I built a handful of interactive visualizations to make some of the denser chapters click for me. Reading about attention or the roofline model is one thing; being able to drag a slider and watch the numbers move is another.
