@@ -1,0 +1,678 @@
+<title>Attention, Visualized</title>
+<style>
+  :root{
+    --bg:#FBFAF7; --panel:#FFFFFF; --ink:#1B2233; --muted:#5D6472;
+    --line:#E4E2D9; --grid:rgba(27,34,51,.16);
+    --t:#0E8A78; --o:#C56A0B; --v:#6558C8; --m:#C2508F;
+    --t-soft:rgba(14,138,120,.09); --o-soft:rgba(197,106,11,.09); --v-soft:rgba(101,88,200,.09);
+    --serif:Charter,'Iowan Old Style','Palatino Linotype',Georgia,serif;
+    --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#12151D; --panel:#1A1F2A; --ink:#E7EAF2; --muted:#9AA3B5;
+      --line:#2A3140; --grid:rgba(231,234,242,.16);
+      --t:#15A188; --o:#C87A16; --v:#8578E8; --m:#D06BA6;
+      --t-soft:rgba(21,161,136,.14); --o-soft:rgba(200,122,22,.14); --v-soft:rgba(133,120,232,.14);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12151D; --panel:#1A1F2A; --ink:#E7EAF2; --muted:#9AA3B5;
+    --line:#2A3140; --grid:rgba(231,234,242,.16);
+    --t:#15A188; --o:#C87A16; --v:#8578E8; --m:#D06BA6;
+    --t-soft:rgba(21,161,136,.14); --o-soft:rgba(200,122,22,.14); --v-soft:rgba(133,120,232,.14);
+  }
+  :root[data-theme="light"]{
+    --bg:#FBFAF7; --panel:#FFFFFF; --ink:#1B2233; --muted:#5D6472;
+    --line:#E4E2D9; --grid:rgba(27,34,51,.16);
+    --t:#0E8A78; --o:#C56A0B; --v:#6558C8; --m:#C2508F;
+    --t-soft:rgba(14,138,120,.09); --o-soft:rgba(197,106,11,.09); --v-soft:rgba(101,88,200,.09);
+  }
+
+  body{background:var(--bg); color:var(--ink); font:16px/1.65 var(--sans); margin:0;}
+  main{max-width:780px; margin:0 auto; padding:0 20px 96px;}
+  header{max-width:780px; margin:0 auto; padding:64px 20px 8px;}
+  .eyebrow{font:600 11px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 18px;}
+  h1{font:400 clamp(36px,6.6vw,54px)/1.08 var(--serif); margin:0 0 20px; text-wrap:balance; letter-spacing:-.01em;}
+  .lede{font-size:19px; color:var(--muted); max-width:60ch; margin:0;}
+  .lede strong{color:var(--ink); font-weight:600;}
+  blockquote{border-left:3px solid var(--t); margin:28px 0 0; padding:4px 0 4px 20px; font:italic 17px/1.6 var(--serif); color:var(--muted);}
+  blockquote cite{display:block; font:600 11px/1 var(--mono); font-style:normal; letter-spacing:.1em; text-transform:uppercase; margin-top:10px;}
+
+  section{margin-top:72px;}
+  h2{font:400 clamp(26px,4.4vw,32px)/1.2 var(--serif); margin:0 0 8px; text-wrap:balance;}
+  .kicker{font:600 11px/1 var(--mono); letter-spacing:.13em; text-transform:uppercase; color:var(--muted); margin:0 0 10px;}
+  section > p{max-width:66ch; margin:14px 0 0;}
+  section > p b{font-weight:600;}
+  .num{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:.94em;}
+  .tn{color:var(--t); font-weight:600;} .on{color:var(--o); font-weight:600;}
+
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:20px; margin-top:24px;}
+  .panel-cap{font:13px/1.5 var(--sans); color:var(--muted); margin:14px 0 0;}
+  .panel-cap b{color:var(--ink);}
+  button{font:600 13px/1 var(--mono); color:var(--ink); background:none; border:1px solid var(--line); border-radius:6px; padding:8px 12px; cursor:pointer;}
+  button:hover{border-color:var(--muted);}
+  button:focus-visible, input:focus-visible{outline:2px solid var(--t); outline-offset:2px;}
+  button[aria-pressed="true"]{border-color:var(--t); color:var(--t); background:var(--t-soft);}
+  button:disabled{opacity:.35; cursor:default;}
+  input[type=range]{accent-color:var(--t); min-width:100px;}
+  canvas{display:block; width:100%; border-radius:4px;}
+
+  .eq{font:15px/1.7 var(--mono); font-variant-numeric:tabular-nums; background:var(--t-soft); border:1px solid var(--t); border-radius:6px; padding:10px 14px; margin-top:16px; overflow-x:auto; white-space:nowrap; text-align:center;}
+
+  /* pipeline map + stepper (shared with sibling pages) */
+  .pipemap{display:flex; flex-wrap:wrap; align-items:center; gap:6px 4px; margin-bottom:18px;}
+  .pchip{font:600 11.5px/1 var(--mono); border:1px solid var(--line); border-radius:99px; padding:7px 11px; cursor:pointer; color:var(--muted); background:none;}
+  .pchip[aria-current="true"]{border-color:var(--t); color:var(--t); background:var(--t-soft);}
+  .parr{color:var(--muted); font:600 12px var(--mono); padding:0 1px;}
+  .stepnav{display:flex; align-items:center; gap:12px; margin-top:18px; flex-wrap:wrap;}
+  .stepnav .title{font:600 15px/1.3 var(--sans); flex:1; min-width:180px;}
+  .stepnav .count{font:600 12px/1 var(--mono); color:var(--muted);}
+  .stepviz{border:1px solid var(--line); border-radius:8px; padding:18px; min-height:190px; margin-top:14px;}
+  .shape{font:600 12px/1.6 var(--mono); font-variant-numeric:tabular-nums; color:var(--t); background:var(--t-soft); border-radius:6px; padding:8px 12px; margin:14px 0 0; overflow-x:auto; white-space:nowrap;}
+  .shape b{color:var(--o); font-weight:600;}
+
+  .toks{display:flex; flex-wrap:wrap; gap:6px; align-items:flex-end;}
+  .tok{display:flex; flex-direction:column; align-items:center; gap:3px;}
+  .tok .w{font:600 13.5px/1 var(--mono); border:1px solid var(--line); border-radius:6px; padding:7px 8px; background:var(--panel);}
+  .tok.hot .w{border-color:var(--t); color:var(--t); background:var(--t-soft); box-shadow:0 0 0 1px var(--t);}
+  .tok.dim{opacity:.32;}
+
+  .vrow{display:flex; align-items:center; gap:12px; margin:14px 0 0; flex-wrap:wrap;}
+  .vrow .lbl{font:600 11px/1.4 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); min-width:120px;}
+  .vrow .grow{flex:1; min-width:200px;}
+  .bigarrow{font:600 16px var(--mono); color:var(--muted); text-align:center; margin:10px 0;}
+
+  .abar{display:grid; grid-template-columns:80px 1fr 62px; align-items:center; gap:10px; margin-top:5px; font:12.5px/1.2 var(--mono);}
+  .abar .tk{text-align:right; color:var(--ink); font-weight:600;}
+  .abar .tr{height:12px; border-radius:3px; background:var(--t-soft); position:relative; overflow:hidden;}
+  .abar .fill{position:absolute; inset:0 auto 0 0; background:var(--t); border-radius:3px;}
+  .abar.neg .fill{background:var(--o);}
+  .abar .pc{color:var(--muted); font-variant-numeric:tabular-nums;}
+
+  .kvrow{display:grid; grid-template-columns:76px 1fr 1fr; gap:8px 12px; align-items:center; margin-top:8px; font:12.5px/1.2 var(--mono);}
+  .kvrow .tk{text-align:right; font-weight:600;}
+  .kvhead{color:var(--muted); font-weight:600; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; text-align:left;}
+
+  .heads{display:grid; grid-template-columns:repeat(8,1fr); gap:5px; margin-top:12px;}
+  .heads canvas{height:16px; border-radius:3px;}
+  .heads .hl{outline:2px solid var(--o); outline-offset:1px; border-radius:3px;}
+
+  /* softmax playground */
+  .smrow{display:grid; grid-template-columns:64px 1fr 60px 74px 1fr 56px; gap:8px 12px; align-items:center; margin-top:8px; font:12.5px/1.2 var(--mono);}
+  @media (max-width:640px){ .smrow{grid-template-columns:56px 1fr 50px 60px 1fr 48px; gap:6px 8px;} }
+  .smrow .tk{text-align:right; font-weight:600;}
+  .smrow input[type=range]{width:100%; min-width:60px;}
+  .smrow .sc,.smrow .ex{font-variant-numeric:tabular-nums; color:var(--muted); text-align:right;}
+  .smrow .tr{height:14px; border-radius:3px; background:var(--t-soft); position:relative; overflow:hidden;}
+  .smrow .fill{position:absolute; inset:0 auto 0 0; background:var(--t); border-radius:3px;}
+  .smhdr{font:600 10px/1.3 var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--muted);}
+
+  /* self vs cross */
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;}
+  @media (max-width:680px){ .duo{grid-template-columns:1fr;} }
+  .duo .box{border:1px solid var(--line); border-radius:8px; padding:14px;}
+  .duo h3{font:600 14px/1.3 var(--sans); margin:0 0 4px;}
+  .duo .sub{font:12px/1.5 var(--sans); color:var(--muted); margin:0 0 12px;}
+  .rowlbl{font:600 9.5px/1 var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:10px 0 6px;}
+  .minitoks{display:flex; flex-wrap:wrap; gap:5px;}
+  .mtok{font:600 12px/1 var(--mono); border:1px solid var(--line); border-radius:5px; padding:6px 7px;}
+  .mtok.q{border-color:var(--t); color:var(--t); background:var(--t-soft);}
+  .mtok.kv{border-color:var(--o); color:var(--o); background:var(--o-soft);}
+  .mtok.dim{opacity:.32;}
+  .duo svg{display:block; width:100%; height:44px; overflow:visible;}
+
+  /* quadratic grid */
+  .quadwrap{display:grid; grid-template-columns:minmax(200px,300px) 1fr; gap:20px; align-items:start; margin-top:4px;}
+  @media (max-width:640px){ .quadwrap{grid-template-columns:1fr;} }
+  #quadgrid{aspect-ratio:1; width:100%; border:1px solid var(--line); border-radius:6px;}
+  .stat{border:1px solid var(--line); border-radius:8px; padding:12px 14px; margin-top:10px;}
+  .stat .l{font:600 10px/1 var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;}
+  .stat .n{font:600 22px/1.1 var(--mono); font-variant-numeric:tabular-nums;}
+  .stat.orange{border-color:var(--o); background:var(--o-soft);} .stat.orange .n{color:var(--o);}
+  .stat.teal{border-color:var(--t); background:var(--t-soft);} .stat.teal .n{color:var(--t);}
+  .legend{display:flex; flex-wrap:wrap; gap:8px 18px; margin:10px 0 0; font:13px/1 var(--sans); color:var(--muted);}
+  .legend span{display:flex; align-items:center; gap:7px;}
+  .legend i{width:11px; height:11px; border-radius:3px; background:var(--lc);}
+
+  table{border-collapse:collapse; width:100%; font-size:14px; margin-top:16px;}
+  .tablewrap{overflow-x:auto;}
+  th{font:600 11px/1 var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-align:right; padding:8px 0 8px 14px; border-bottom:1px solid var(--line);}
+  th:first-child{text-align:left; padding-left:0;}
+  td{padding:9px 0 9px 14px; border-bottom:1px solid var(--line); text-align:right; font-family:var(--mono); font-size:13px; font-variant-numeric:tabular-nums;}
+  td:first-child{text-align:left; padding-left:0;}
+
+  footer{max-width:780px; margin:88px auto 0; padding:28px 20px 64px; border-top:1px solid var(--line); font-size:14px; color:var(--muted);}
+  footer p{max-width:66ch; margin:0 0 10px;}
+</style>
+
+<header>
+  <p class="eyebrow">Reading notes · Inference Engineering · §2.2.3 Attention</p>
+  <h1>Attention: one token asks, every earlier token answers</h1>
+  <p class="lede">Attention is how a transformer relates a token to the rest of the sequence. It
+    works like a soft database lookup: the current token broadcasts a <strong>query</strong>,
+    every earlier token advertises a <strong>key</strong> and carries a <strong>value</strong>,
+    and softmax turns the match scores into a weighted blend.</p>
+  <blockquote>
+    “Consider the sentence ‘I decided to write a book because I thought it would be easy, but it
+    was actually hard.’ Attention shows that the word ‘it’ in the sentence refers to writing a
+    book.”
+    <cite>— Inference Engineering, §2.2.3</cite>
+  </blockquote>
+</header>
+
+<main>
+
+<section>
+  <p class="kicker">01 · The equation as a journey</p>
+  <h2>Resolving “it”, step by step</h2>
+  <p>The book's Figure 2.8 compresses attention into one line. Here is that line unpacked into
+    the seven things that actually happen, following the book's own example: the token
+    <b>“it”</b> arrives at an attention sublayer needing to figure out what it refers to.</p>
+  <p class="eq">Attention(Q, K, V) = softmax( QKᵀ / √d ) · V</p>
+
+  <div class="panel">
+    <div class="pipemap" id="pipemap"></div>
+    <div class="stepviz" id="stepviz"></div>
+    <p class="shape" id="shapetrack"></p>
+    <div class="stepnav">
+      <button id="prev" type="button">← prev</button>
+      <button id="next" type="button">next →</button>
+      <span class="title" id="steptitle"></span>
+      <span class="count" id="stepcount"></span>
+    </div>
+    <p class="panel-cap" id="stepnote"></p>
+  </div>
+
+  <p>The names are the database metaphor made literal. <b>Q — query</b>: what this token is
+    looking for right now (“I'm a pronoun; where's my referent?”). <b>K — key</b>: how each
+    token advertises what it can offer (“I'm a concrete noun, recently introduced”). <b>V —
+    value</b>: the actual content a token contributes if selected. The crucial difference from a
+    real database: instead of returning the single best match, attention returns a
+    <b>weighted blend of every value</b> — a soft lookup, which keeps the whole operation
+    differentiable and therefore trainable.</p>
+</section>
+
+<section>
+  <p class="kicker">02 · The normalizer</p>
+  <h2>Softmax: scores in, probabilities out</h2>
+  <p>Softmax appears twice in this book already — here inside attention, and at the output layer
+    turning logits into sampling probabilities (§2.2). It converts any list of real numbers into
+    a valid probability distribution in two moves: <b>exponentiate</b> each score (making
+    everything positive and stretching gaps), then <b>divide by the sum</b> (making everything
+    add to 1). Drag the scores and watch both columns respond.</p>
+
+  <div class="panel">
+    <div class="smrow"><span class="smhdr" style="text-align:right">token</span><span class="smhdr">raw score s</span><span class="smhdr" style="text-align:right"></span><span class="smhdr" style="text-align:right">eˢ</span><span class="smhdr">eˢ ÷ Σ = probability</span><span class="smhdr"></span></div>
+    <div id="smrows"></div>
+    <p class="panel-cap" id="smcap"></p>
+  </div>
+
+  <p>Three properties to notice while dragging. It <b>never produces zero</b> — even a terrible
+    score gets a sliver of probability, so no token is ever fully ignored. It's
+    <b>order-preserving</b> — ranks never change, only the sharpness of the distribution. And
+    it's <b>exponentially sensitive to gaps</b> — raise one score a little and it drains
+    probability from everyone else fast. That last property is why the equation divides scores
+    by <span class="num">√d</span> first: dot products of long vectors are naturally huge, and
+    unscaled they'd push softmax into winner-take-all, where gradients vanish and training
+    stalls. (It's also exactly what the <b>temperature</b> knob does at the output layer —
+    dividing scores before softmax is the same trick.) One engineering note: real
+    implementations subtract the max score before exponentiating — <span class="num">e³⁰⁰</span>
+    overflows floating point — which changes nothing mathematically but everything numerically;
+    doing this stably while streaming is a core piece of FlashAttention.</p>
+</section>
+
+<section>
+  <p class="kicker">03 · Two kinds of attention</p>
+  <h2>Self-attention and cross-attention</h2>
+  <p>The mechanism is identical in both — only <b>where Q, K, and V come from</b> differs.</p>
+
+  <div class="panel">
+    <div class="duo">
+      <div class="box">
+        <h3>Self-attention <span class="num" style="color:var(--muted)">(LLMs)</span></h3>
+        <p class="sub">Q, K, V all come from the <b>same sequence</b>. The sentence looks at
+          itself — with a causal mask, so “it” sees only leftward. Grayed tokens are masked.</p>
+        <div class="rowlbl">one sequence · Q and K,V together</div>
+        <svg id="selfsvg"></svg>
+        <div class="minitoks" id="selftoks"></div>
+      </div>
+      <div class="box">
+        <h3>Cross-attention <span class="num" style="color:var(--muted)">(Whisper, image gen)</span></h3>
+        <p class="sub">Q comes from <b>one sequence</b>, K and V from <b>another</b> — the
+          decoder consults the encoder. In Whisper, each text token being generated queries the
+          encoded audio; in image generation, image patches query the text prompt.</p>
+        <div class="rowlbl">sequence A · queries (text being decoded)</div>
+        <div class="minitoks" id="crossq"></div>
+        <svg id="crosssvg"></svg>
+        <div class="rowlbl">sequence B · keys &amp; values (encoded audio)</div>
+        <div class="minitoks" id="crosskv"></div>
+      </div>
+    </div>
+    <p class="panel-cap"><span class="tn">Teal</span> = the querying token ·
+      <span class="on">amber</span> = the tokens supplying keys and values. Cross-attention is
+      how encoder-decoder models (§2.1) condition generation on external input — and note there's
+      no causal mask on the K,V side: the decoder may look at the <em>entire</em> encoded input.</p>
+  </div>
+</section>
+
+<section>
+  <p class="kicker">04 · The cost, and the cache</p>
+  <h2>Quadratic by nature, linear in practice</h2>
+  <p>Attention compares the current token with <b>every</b> earlier token, so a sequence of
+    length <span class="num">n</span> involves <span class="num">n × n</span> pairwise scores —
+    that's the quadratic cost the book warns about. But look at what actually
+    <em>changes</em> when one new token is generated: every old token's K and V are exactly what
+    they were last step. Recomputing them is pure waste. The <b>KV cache</b> stores them, so
+    each decode step only computes the <b>one new row</b> of the matrix. Generate a few tokens
+    in each mode and watch the counters diverge.</p>
+
+  <div class="panel">
+    <div class="vrow" style="margin-top:0">
+      <button id="mode-nocache" type="button" aria-pressed="false">no cache</button>
+      <button id="mode-cache" type="button" aria-pressed="true">with KV cache</button>
+      <span style="flex:1"></span>
+      <button id="gen" type="button">+ generate next token</button>
+      <button id="reset" type="button">reset</button>
+    </div>
+    <div class="quadwrap" style="margin-top:16px">
+      <div>
+        <canvas id="quadgrid" height="300"></canvas>
+        <div class="legend">
+          <span><i style="--lc:var(--o)"></i>computed this step</span>
+          <span><i style="--lc:var(--line)"></i>reused from cache</span>
+        </div>
+      </div>
+      <div>
+        <div class="stat orange"><div class="l">scores computed this step</div><div class="n" id="stepcost">–</div></div>
+        <div class="stat"><div class="l">cumulative scores (all steps so far)</div><div class="n" id="cumcost">–</div></div>
+        <div class="stat teal"><div class="l">sequence length</div><div class="n" id="seqlen">–</div></div>
+        <p class="panel-cap" id="quadcap"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>context length n</th><th>next-token cost, no cache (≈n²)</th><th>with KV cache (n)</th><th>speedup</th></tr></thead>
+    <tbody>
+      <tr><td>100</td><td>10,000</td><td>100</td><td>100×</td></tr>
+      <tr><td>1,000</td><td>1,000,000</td><td>1,000</td><td>1,000×</td></tr>
+      <tr><td>100,000</td><td>10,000,000,000</td><td>100,000</td><td>100,000×</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>The trade is compute for memory: those cached K,V tensors live in GPU memory and grow with
+    every token, every layer, every request in the batch — at long contexts the cache can outweigh
+    the model weights themselves. The upper-left triangle you kept during the demo <em>is</em> the
+    KV cache, built once during <b>prefill</b> and extended one row per <b>decode</b> step.
+    Storing, evicting, and reusing it is a major topic of §5.3 — this little grid is why that
+    section exists.</p>
+</section>
+
+</main>
+
+<footer>
+  <p><b>In one sentence:</b> attention lets the current token score its query against every
+    earlier token's key, softmax turns those scores into weights, and the weighted blend of
+    values updates the token — quadratic in sequence length by nature, linear per decode step
+    thanks to the KV cache.</p>
+  <p>Companion note to <em>Inference Engineering</em> §2.2.3 · siblings: “Dimensionality,”
+    “Activation Functions,” and “The Transformer Pipeline.”</p>
+</footer>
+
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const dpr = Math.min(2, window.devicePixelRatio || 1);
+const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const hexRgb = h => { h = h.replace('#',''); return [0,2,4].map(i => parseInt(h.slice(i, i+2), 16)); };
+const fmt = n => n.toLocaleString('en-US');
+
+function fnv(s){ let h = 2166136261; for (let i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+function rng(seed){ let a = seed; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function vecFor(tag, n){ const r = rng(fnv(tag)); return Array.from({length: n}, () => r() * 2 - 1); }
+function heatColor(v){
+  const c = v < 0 ? hexRgb(cssVar('--o')) : hexRgb(cssVar('--t'));
+  const a = 0.13 + 0.87 * Math.min(1, Math.abs(v));
+  return `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+}
+function fitCanvas(cv){
+  const w = cv.clientWidth || cv.parentElement.clientWidth;
+  if (!cv.dataset.h) cv.dataset.h = cv.getAttribute('height');
+  const cssH = parseFloat(cv.dataset.h);
+  cv.width = Math.round(w * dpr); cv.height = Math.round(cssH * dpr);
+  cv.style.height = cssH + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return [ctx, w, cssH];
+}
+function drawStrip(cv, values){
+  const [ctx, W, H] = fitCanvas(cv);
+  ctx.clearRect(0, 0, W, H);
+  const n = values.length, cw = W / n;
+  for (let i = 0; i < n; i++){
+    ctx.fillStyle = heatColor(Math.max(-1, Math.min(1, values[i])));
+    ctx.fillRect(i * cw, 0, cw + 0.5, H);
+  }
+}
+const stripHTML = (id, h) => `<canvas id="${id}" height="${h}"></canvas>`;
+function softmax(arr){
+  const mx = Math.max(...arr);
+  const ex = arr.map(v => Math.exp(v - mx));
+  const s = ex.reduce((a, b) => a + b, 0);
+  return ex.map(e => e / s);
+}
+
+/* ---------- shared example ---------- */
+const TOKS = ['I','decided','to','write','a','book','because','I','thought','it'];
+const QI = 9; // "it"
+// raw q·k scores (d_head = 64, so √d = 8); chosen so softmax lands near the book's story
+const RAW = [2.4, 0.0, -2.4, 11.2, -4.0, 19.2, -1.6, 3.2, 6.0, 4.0];
+const SQRT_D = 8;
+const SCALED = RAW.map(v => v / SQRT_D);
+const WEIGHTS = softmax(SCALED);
+
+function toksHTML(hotIdx, dimAfter){
+  return `<div class="toks">` + TOKS.map((w, i) => {
+    const cls = ['tok'];
+    if (i === hotIdx) cls.push('hot');
+    if (dimAfter !== undefined && i > dimAfter) cls.push('dim');
+    return `<div class="${cls.join(' ')}"><span class="w">${w}</span></div>`;
+  }).join('') + `</div>`;
+}
+function barsHTML(vals, formatter, negOK){
+  const mx = Math.max(...vals.map(Math.abs));
+  return vals.map((v, j) =>
+    `<div class="abar${negOK && v < 0 ? ' neg' : ''}"><span class="tk">${TOKS[j]}</span><span class="tr"><span class="fill" style="width:${(Math.abs(v) / mx * 100).toFixed(1)}%"></span></span><span class="pc">${formatter(v)}</span></div>`
+  ).join('');
+}
+
+/* ---------- 01 · stepper ---------- */
+let step = 0;
+const STEPS = [
+  { title:'Step 0 · The question arrives', map:0,
+    shape:'hidden state of “it” [4,096] — ambiguous: refers to… what?',
+    note:`“it” reaches an attention sublayer carrying only its generic meaning plus whatever
+      earlier blocks added. To be useful downstream it must absorb its referent — the
+      writing-a-book idea — from the context. Future tokens are invisible (causal mask), so the
+      answer must come from the left.`,
+    render(el){ el.innerHTML = toksHTML(QI, QI) +
+      `<div class="vrow"><span class="lbl">“it” arrives as</span><span class="grow">${stripHTML('sv0', 30)}</span></div>`;
+      drawStrip($('sv0'), vecFor('it:in', 300)); } },
+
+  { title:'Step 1 · Project the query — Q', map:1,
+    shape:'[4,096] × W_Q  →  q [128 per head]',
+    note:`A learned matrix W<sub>Q</sub> turns “it”'s hidden state into its <b>query</b> — a
+      compact encoding of what this token needs right now. For a pronoun, training has taught
+      W<sub>Q</sub> to produce queries that resonate with “recently mentioned thing that could
+      be referred to.” Q is the <b>question</b>.`,
+    render(el){ el.innerHTML =
+      `<div class="vrow"><span class="lbl">hidden state</span><span class="grow">${stripHTML('sv1a', 26)}</span></div>
+       <p class="bigarrow">↓ × W_Q</p>
+       <div class="vrow"><span class="lbl">q — the query</span><span class="grow">${stripHTML('sv1b', 34)}</span></div>`;
+      drawStrip($('sv1a'), vecFor('it:in', 300)); drawStrip($('sv1b'), vecFor('it:q', 128)); } },
+
+  { title:'Step 2 · Fetch keys and values — K, V', map:2,
+    shape:'per prior token: k [128] + v [128] — read from the KV cache',
+    note:`Every earlier token was, in its turn, also projected by two other learned matrices:
+      W<sub>K</sub> made its <b>key</b> (how it advertises itself) and W<sub>V</sub> made its
+      <b>value</b> (the content it will hand over if selected). Crucially, these were computed
+      <b>once</b> — during prefill — and stored in the <b>KV cache</b>. Nothing here is
+      recomputed; it's a memory read.`,
+    render(el){
+      const rows = [3, 5, 8].map(j =>
+        `<div class="kvrow"><span class="tk">${TOKS[j]}</span><span>${stripHTML('svk' + j, 18)}</span><span>${stripHTML('svv' + j, 18)}</span></div>`).join('');
+      el.innerHTML = `<div class="kvrow"><span></span><span class="kvhead">key — “what I offer”</span><span class="kvhead">value — “what I deliver”</span></div>` +
+        rows + `<p class="panel-cap">…and likewise for all ${QI} prior tokens, straight from the cache.</p>`;
+      [3, 5, 8].forEach(j => { drawStrip($('svk' + j), vecFor('k:' + j, 128)); drawStrip($('svv' + j), vecFor('v:' + j, 128)); }); } },
+
+  { title:'Step 3 · Score — q · k for every prior token', map:3,
+    shape:'q [128] · each k [128]  →  10 raw scores  (the QKᵀ in the equation)',
+    note:`One dot product per prior token: multiply q and k element-by-element and sum. Vectors
+      pointing the same way score high — and W<sub>Q</sub>/W<sub>K</sub> were trained precisely
+      so that “pronoun seeking referent” aligns with “recently introduced noun.” <b>book</b>
+      resonates loudest; grammar words barely register. Note these are raw, unbounded numbers —
+      some negative.`,
+    render(el){ el.innerHTML = barsHTML(RAW, v => v.toFixed(1), true); } },
+
+  { title:'Step 4 · Scale — divide by √d', map:4,
+    shape:'scores ÷ √128 ≈ ÷ 8  →  tamer scores',
+    note:`Dot products over 128 dimensions are naturally large — their spread grows with vector
+      length. Fed to softmax raw, one token would take everything and gradients would die in
+      training. Dividing by <span class="num">√d</span> (the “scaled” in scaled dot-product
+      attention) keeps the scores in softmax's responsive range. Same bars, same order — smaller
+      numbers.`,
+    render(el){ el.innerHTML = barsHTML(SCALED, v => v.toFixed(2), true); } },
+
+  { title:'Step 5 · Softmax — scores become weights', map:5,
+    shape:'10 scores  →  10 probabilities, ≥ 0, summing to 1.000',
+    note:`Exponentiate, then normalize (full anatomy in the next section). Now the scores are a
+      probability distribution — <b>book takes ${(WEIGHTS[5] * 100).toFixed(0)}%</b> of “it”'s
+      attention, write ${(WEIGHTS[3] * 100).toFixed(0)}%, everything else crumbs. This is the
+      book's claim made visible: attention shows that “it” refers to writing a book.`,
+    render(el){ el.innerHTML = barsHTML(WEIGHTS, v => (v * 100).toFixed(1) + '%', false); } },
+
+  { title:'Step 6 · Blend — weighted sum of values', map:6,
+    shape:'Σ weightⱼ · vⱼ  →  update [128]  →  added to “it” (+ residual)',
+    note:`The payoff: each token's <b>value</b> vector, multiplied by its weight, summed. The
+      result is ${(WEIGHTS[5] * 100).toFixed(0)}% book-ness + ${(WEIGHTS[3] * 100).toFixed(0)}%
+      write-ness + a sprinkle of the rest — and it's <b>added</b> to “it”'s hidden state via the
+      residual connection. “it” now effectively means “the writing-a-book plan,” and every later
+      block inherits that.`,
+    render(el){ el.innerHTML =
+      `<div class="vrow"><span class="lbl">${(WEIGHTS[5]*100).toFixed(0)}% × v(book)</span><span class="grow">${stripHTML('sv6a', 20)}</span></div>
+       <div class="vrow"><span class="lbl">${(WEIGHTS[3]*100).toFixed(0)}% × v(write)</span><span class="grow">${stripHTML('sv6b', 20)}</span></div>
+       <div class="vrow"><span class="lbl">+ 8 more…</span><span class="grow"></span></div>
+       <p class="bigarrow">↓ sum, then + residual</p>
+       <div class="vrow"><span class="lbl">“it”, updated</span><span class="grow">${stripHTML('sv6c', 34)}</span></div>`;
+      drawStrip($('sv6a'), vecFor('v:5', 128).map(v => v * 0.8));
+      drawStrip($('sv6b'), vecFor('v:3', 128).map(v => v * 0.35));
+      drawStrip($('sv6c'), vecFor('it:out', 300)); } },
+
+  { title:'Step 7 · Multi-head — 32 of these, in parallel', map:7,
+    shape:'32 heads × [128]  →  concat [4,096]  →  × W_O  →  sublayer output',
+    note:`Steps 1–6 were <b>one head</b>. The sublayer runs 32 of them side by side, each with
+      its own learned W<sub>Q</sub>, W<sub>K</sub>, W<sub>V</sub> — so each asks a different
+      question of the same context: co-reference here, subject–verb agreement there, style,
+      recency… The 32 answers are concatenated back to [4,096] and mixed by one final matrix
+      W<sub>O</sub>. That's the whole attention sublayer.`,
+    render(el){
+      el.innerHTML = `<div class="heads" id="sv7g"></div>
+        <p class="panel-cap">Each tile is one head's [128] output for “it” — the highlighted one
+        is the co-reference head we just followed.</p>
+        <p class="bigarrow">↓ concat → × W_O → [4,096]</p>
+        <div class="vrow"><span class="lbl">sublayer output</span><span class="grow">${stripHTML('sv7o', 30)}</span></div>`;
+      const g = $('sv7g');
+      for (let h = 0; h < 32; h++){
+        const c = document.createElement('canvas');
+        c.setAttribute('height', '16');
+        if (h === 13) c.className = 'hl';
+        g.appendChild(c);
+        drawStrip(c, vecFor('head:' + h, 64));
+      }
+      drawStrip($('sv7o'), vecFor('it:out', 300)); } },
+];
+
+const MAPCHIPS = ['“it” + context','W_Q → q','cache → K,V','q·k scores','÷ √d','softmax','blend V','×32 heads'];
+function buildMap(){
+  const m = $('pipemap');
+  MAPCHIPS.forEach((label, i) => {
+    if (i){ const a = document.createElement('span'); a.className = 'parr'; a.textContent = '→'; m.appendChild(a); }
+    const c = document.createElement('button');
+    c.type = 'button'; c.className = 'pchip'; c.textContent = label;
+    c.addEventListener('click', () => go(i));
+    m.appendChild(c);
+  });
+}
+function go(i){
+  step = Math.max(0, Math.min(STEPS.length - 1, i));
+  const s = STEPS[step];
+  document.querySelectorAll('.pchip').forEach((c, j) => c.setAttribute('aria-current', j === s.map));
+  $('steptitle').textContent = s.title;
+  $('stepcount').textContent = (step + 1) + ' / ' + STEPS.length;
+  $('shapetrack').innerHTML = s.shape;
+  $('stepnote').innerHTML = s.note;
+  $('prev').disabled = step === 0;
+  $('next').disabled = step === STEPS.length - 1;
+  s.render($('stepviz'));
+}
+$('prev').addEventListener('click', () => go(step - 1));
+$('next').addEventListener('click', () => go(step + 1));
+buildMap();
+
+/* ---------- 02 · softmax playground ---------- */
+const SM = [
+  { t:'book', s:2.4 }, { t:'write', s:1.4 }, { t:'thought', s:0.75 }, { t:'I', s:0.4 }, { t:'would', s:-0.6 },
+];
+function smRender(){
+  const probs = softmax(SM.map(o => o.s));
+  const sum = SM.reduce((a, o) => a + Math.exp(o.s), 0);
+  $('smrows').innerHTML = SM.map((o, i) =>
+    `<div class="smrow">
+      <span class="tk">${o.t}</span>
+      <input type="range" min="-4" max="6" step="0.1" value="${o.s}" data-i="${i}" aria-label="score for ${o.t}">
+      <span class="sc">${o.s.toFixed(1)}</span>
+      <span class="ex">${Math.exp(o.s).toFixed(2)}</span>
+      <span class="tr"><span class="fill" style="width:${(probs[i] * 100).toFixed(1)}%"></span></span>
+      <span class="sc">${(probs[i] * 100).toFixed(1)}%</span>
+    </div>`).join('');
+  $('smrows').querySelectorAll('input').forEach(inp =>
+    inp.addEventListener('input', e => { SM[+e.target.dataset.i].s = +e.target.value; smRender(); }));
+  const top = probs.reduce((b, p, i) => p > probs[b] ? i : b, 0);
+  $('smcap').innerHTML = `Σ eˢ = <b>${sum.toFixed(2)}</b> · probabilities sum to
+    <b>${(probs.reduce((a, b) => a + b, 0)).toFixed(3)}</b> · current winner: <b>${SM[top].t}</b>
+    at ${(probs[top] * 100).toFixed(1)}%. Push any slider to +6 and watch it starve the others —
+    that exponential greed is why attention scores get scaled by √d first.`;
+}
+smRender();
+
+/* ---------- 03 · self vs cross ---------- */
+function line(svg, x1, y1, x2, y2, wt){
+  const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  const my = Math.min(y1, y2) - 18 - wt * 14;
+  p.setAttribute('d', `M ${x1} ${y1} C ${x1} ${my}, ${x2} ${my}, ${x2} ${y2}`);
+  p.setAttribute('fill', 'none');
+  p.setAttribute('stroke', cssVar('--t'));
+  p.setAttribute('stroke-width', (1 + wt * 6).toFixed(1));
+  p.setAttribute('stroke-opacity', (0.3 + wt * 0.7).toFixed(2));
+  p.setAttribute('stroke-linecap', 'round');
+  svg.appendChild(p);
+}
+function lineStraight(svg, x1, x2, wt, H){
+  const p = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  p.setAttribute('x1', x1); p.setAttribute('y1', 0);
+  p.setAttribute('x2', x2); p.setAttribute('y2', H);
+  p.setAttribute('stroke', cssVar('--t'));
+  p.setAttribute('stroke-width', (1 + wt * 6).toFixed(1));
+  p.setAttribute('stroke-opacity', (0.3 + wt * 0.7).toFixed(2));
+  p.setAttribute('stroke-linecap', 'round');
+  svg.appendChild(p);
+}
+function buildDuo(){
+  // self-attention: book sentence, q = "it", plus masked future tokens
+  const selfWords = ['I','wrote','a','book','—','it','sold','well'];
+  const qSelf = 5, wSelf = {3: 0.62, 1: 0.2, 0: 0.06};
+  const st = $('selftoks');
+  st.innerHTML = '';
+  selfWords.forEach((w, i) => {
+    const s = document.createElement('span');
+    s.className = 'mtok' + (i === qSelf ? ' q' : (wSelf[i] ? ' kv' : (i > qSelf ? ' dim' : '')));
+    s.textContent = w;
+    st.appendChild(s);
+  });
+  const ssvg = $('selfsvg');
+  ssvg.innerHTML = '';
+  requestAnimationFrame(() => {
+    const br = st.getBoundingClientRect();
+    ssvg.setAttribute('viewBox', `0 0 ${br.width} 44`);
+    const kids = [...st.children];
+    const cx = i => { const r = kids[i].getBoundingClientRect(); return r.left - br.left + r.width / 2; };
+    Object.entries(wSelf).forEach(([j, wt]) => line(ssvg, cx(qSelf), 44, cx(+j), 44, wt));
+  });
+  // cross-attention: text queries over audio K/V
+  const qWords = ['The','cat','sat'];
+  const kvBlocks = ['▂▄','▅▇','▃▂','▆▅','▂▃','▄▆'];
+  const qCross = 1, wCross = {1: 0.5, 3: 0.3, 0: 0.1};
+  const cq = $('crossq'), ck = $('crosskv');
+  cq.innerHTML = ''; ck.innerHTML = '';
+  qWords.forEach((w, i) => {
+    const s = document.createElement('span');
+    s.className = 'mtok' + (i === qCross ? ' q' : '');
+    s.textContent = w;
+    cq.appendChild(s);
+  });
+  kvBlocks.forEach((w, i) => {
+    const s = document.createElement('span');
+    s.className = 'mtok' + (wCross[i] ? ' kv' : '');
+    s.textContent = w;
+    ck.appendChild(s);
+  });
+  const csvg = $('crosssvg');
+  csvg.innerHTML = '';
+  requestAnimationFrame(() => {
+    const br = csvg.getBoundingClientRect();
+    csvg.setAttribute('viewBox', `0 0 ${br.width} 44`);
+    const qr = cq.children[qCross].getBoundingClientRect();
+    const x1 = qr.left - br.left + qr.width / 2;
+    Object.entries(wCross).forEach(([j, wt]) => {
+      const kr = ck.children[+j].getBoundingClientRect();
+      lineStraight(csvg, x1, kr.left - br.left + kr.width / 2, wt, 44);
+    });
+  });
+}
+buildDuo();
+
+/* ---------- 04 · quadratic vs cache ---------- */
+let seqN = 6, cached = true, stepCost = 0, cumCost = 0;
+function drawQuad(){
+  const cv = $('quadgrid');
+  const [ctx, W, H] = fitCanvas(cv);
+  ctx.clearRect(0, 0, W, H);
+  const n = seqN, cell = Math.min(W, H) / Math.max(n, 8), pad = 1.5;
+  const oC = cssVar('--o'), lC = cssVar('--line');
+  for (let r = 0; r < n; r++){
+    for (let c = 0; c <= r; c++){
+      const isNew = cached ? (r === n - 1) : true;
+      ctx.fillStyle = isNew ? oC : lC;
+      ctx.fillRect(c * cell + pad, r * cell + pad, cell - 2 * pad, cell - 2 * pad);
+    }
+  }
+  ctx.font = '600 11px ' + cssVar('--mono');
+  ctx.fillStyle = cssVar('--muted');
+  ctx.fillText('rows = queries · cols = keys (lower triangle = causal mask)', 4, n * cell + 16);
+  $('seqlen').textContent = n + ' tokens';
+  $('stepcost').textContent = fmt(stepCost) + ' scores';
+  $('cumcost').textContent = fmt(cumCost) + ' scores';
+  $('quadcap').innerHTML = cached
+    ? `With the cache, this step computed only the <b>bottom row</b>: ${n} scores for the new
+       token's query against ${n} stored keys. Old rows sit untouched in GPU memory. Cost per
+       step grows <b>linearly</b> with context.`
+    : `Without a cache, every step recomputes <b>every K, V, and score</b> — the whole triangle,
+       ${fmt(stepCost)} scores just to produce one token. Cost per step grows
+       <b>quadratically</b>. Nobody ships this; it's what the KV cache saves you from.`;
+  document.getElementById('mode-cache').setAttribute('aria-pressed', cached);
+  document.getElementById('mode-nocache').setAttribute('aria-pressed', !cached);
+}
+function stepCostFor(n){ return cached ? n : n * (n + 1) / 2; }
+$('gen').addEventListener('click', () => {
+  if (seqN < 24) seqN++;
+  stepCost = stepCostFor(seqN);
+  cumCost += stepCost;
+  drawQuad();
+});
+$('reset').addEventListener('click', () => { seqN = 6; stepCost = 0; cumCost = 0; drawQuad(); });
+$('mode-cache').addEventListener('click', () => { cached = true; stepCost = 0; cumCost = 0; seqN = 6; drawQuad(); });
+$('mode-nocache').addEventListener('click', () => { cached = false; stepCost = 0; cumCost = 0; seqN = 6; drawQuad(); });
+
+/* ---------- boot & theme reactivity ---------- */
+go(0); drawQuad();
+function redrawAll(){ go(step); smRender(); buildDuo(); drawQuad(); }
+new MutationObserver(redrawAll).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redrawAll);
+let rsz; window.addEventListener('resize', () => { clearTimeout(rsz); rsz = setTimeout(redrawAll, 150); });
+})();
+</script>

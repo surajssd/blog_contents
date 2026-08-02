@@ -1,0 +1,554 @@
+<title>Activation Functions, Visualized</title>
+<style>
+  :root{
+    --bg:#FBFAF7; --panel:#FFFFFF; --ink:#1B2233; --muted:#5D6472;
+    --line:#E4E2D9; --grid:rgba(27,34,51,.16);
+    --t:#0E8A78; --o:#C56A0B; --v:#6558C8; --m:#C2508F;
+    --t-soft:rgba(14,138,120,.09); --o-soft:rgba(197,106,11,.09);
+    --serif:Charter,'Iowan Old Style','Palatino Linotype',Georgia,serif;
+    --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#12151D; --panel:#1A1F2A; --ink:#E7EAF2; --muted:#9AA3B5;
+      --line:#2A3140; --grid:rgba(231,234,242,.16);
+      --t:#15A188; --o:#C87A16; --v:#8578E8; --m:#D06BA6;
+      --t-soft:rgba(21,161,136,.14); --o-soft:rgba(200,122,22,.14);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12151D; --panel:#1A1F2A; --ink:#E7EAF2; --muted:#9AA3B5;
+    --line:#2A3140; --grid:rgba(231,234,242,.16);
+    --t:#15A188; --o:#C87A16; --v:#8578E8; --m:#D06BA6;
+    --t-soft:rgba(21,161,136,.14); --o-soft:rgba(200,122,22,.14);
+  }
+  :root[data-theme="light"]{
+    --bg:#FBFAF7; --panel:#FFFFFF; --ink:#1B2233; --muted:#5D6472;
+    --line:#E4E2D9; --grid:rgba(27,34,51,.16);
+    --t:#0E8A78; --o:#C56A0B; --v:#6558C8; --m:#C2508F;
+    --t-soft:rgba(14,138,120,.09); --o-soft:rgba(197,106,11,.09);
+  }
+
+  body{background:var(--bg); color:var(--ink); font:16px/1.65 var(--sans); margin:0;}
+  main{max-width:760px; margin:0 auto; padding:0 20px 96px;}
+  header{max-width:760px; margin:0 auto; padding:64px 20px 8px;}
+  .eyebrow{font:600 11px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 18px;}
+  h1{font:400 clamp(38px,7vw,56px)/1.08 var(--serif); margin:0 0 20px; text-wrap:balance; letter-spacing:-.01em;}
+  .lede{font-size:19px; color:var(--muted); max-width:58ch; margin:0;}
+  .lede strong{color:var(--ink); font-weight:600;}
+  blockquote{border-left:3px solid var(--t); margin:28px 0 0; padding:4px 0 4px 20px; font:italic 17px/1.6 var(--serif); color:var(--muted);}
+  blockquote cite{display:block; font:600 11px/1 var(--mono); font-style:normal; letter-spacing:.1em; text-transform:uppercase; margin-top:10px;}
+
+  section{margin-top:72px;}
+  h2{font:400 clamp(26px,4.4vw,32px)/1.2 var(--serif); margin:0 0 8px; text-wrap:balance;}
+  h2 em{color:var(--t);}
+  .kicker{font:600 11px/1 var(--mono); letter-spacing:.13em; text-transform:uppercase; color:var(--muted); margin:0 0 10px;}
+  section > p{max-width:66ch; margin:14px 0 0;}
+  section > p b{font-weight:600;}
+  .num{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:.94em;}
+  .tn{color:var(--t); font-weight:600;} .on{color:var(--o); font-weight:600;}
+
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:20px; margin-top:24px;}
+  .panel-cap{font:13px/1.5 var(--sans); color:var(--muted); margin:14px 0 0;}
+  .panel-cap b{color:var(--ink);}
+
+  .controls{display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin-bottom:16px;}
+  .controls label{font:600 12px/1 var(--mono); letter-spacing:.06em; color:var(--muted); text-transform:uppercase;}
+  input[type=range]{accent-color:var(--t); min-width:100px; flex:1;}
+  button, .chip{font:600 13px/1 var(--mono); color:var(--ink); background:none; border:1px solid var(--line); border-radius:6px; padding:8px 12px; cursor:pointer;}
+  button:hover{border-color:var(--muted);}
+  button:focus-visible, input:focus-visible{outline:2px solid var(--t); outline-offset:2px;}
+  button[aria-pressed="true"]{border-color:var(--t); color:var(--t); background:var(--t-soft);}
+  .readout{font:600 14px/1.4 var(--mono); font-variant-numeric:tabular-nums;}
+  canvas{display:block; width:100%; border-radius:6px;}
+
+  .sliders{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px 20px; margin-bottom:16px;}
+  .sliders > div{display:flex; align-items:center; gap:8px;}
+  .sliders label{font:600 12px/1 var(--mono); color:var(--muted); min-width:2.2em;}
+  .sliders output{font:600 12px/1 var(--mono); font-variant-numeric:tabular-nums; min-width:3.4em; text-align:right;}
+
+  .eq{font:15px/1.7 var(--mono); font-variant-numeric:tabular-nums; background:var(--t-soft); border:1px solid var(--t); border-radius:6px; padding:10px 14px; margin-top:14px; overflow-x:auto; white-space:nowrap;}
+  .eq.bent{background:var(--o-soft); border-color:var(--o);}
+
+  .legend{display:flex; flex-wrap:wrap; gap:8px 18px; margin:10px 0 0; font:13px/1 var(--sans); color:var(--muted);}
+  .legend span{display:flex; align-items:center; gap:7px;}
+  .legend i{width:16px; height:0; border-top:3px solid var(--lc); border-radius:2px;}
+  .legend i.dash{border-top-style:dashed;}
+
+  .fncard{border:1px solid var(--line); border-radius:8px; padding:14px 16px; margin-top:14px; display:grid; grid-template-columns:1fr 1fr; gap:4px 24px;}
+  @media (max-width:560px){ .fncard{grid-template-columns:1fr;} }
+  .fncard .k{font:600 10px/1 var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:3px;}
+  .fncard .v{font:13.5px/1.5 var(--sans); margin-bottom:8px;}
+  .fncard .v code{font:600 13px var(--mono);}
+
+  table{border-collapse:collapse; width:100%; font-size:14px; margin-top:16px;}
+  .tablewrap{overflow-x:auto;}
+  th{font:600 11px/1 var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-align:left; padding:8px 14px 8px 0; border-bottom:1px solid var(--line);}
+  td{padding:9px 14px 9px 0; border-bottom:1px solid var(--line); vertical-align:top;}
+  td code{font:600 13px var(--mono);}
+  td:first-child{white-space:nowrap;}
+
+  ul{max-width:66ch; padding-left:22px; margin:14px 0 0;}
+  li{margin-bottom:10px;}
+  li b{font-weight:600;}
+
+  footer{max-width:760px; margin:88px auto 0; padding:28px 20px 64px; border-top:1px solid var(--line); font-size:14px; color:var(--muted);}
+  footer p{max-width:66ch; margin:0 0 10px;}
+</style>
+
+<header>
+  <p class="eyebrow">Reading notes · Inference Engineering · §2.1.2</p>
+  <h1>Activation functions: the bend that makes deep networks deep</h1>
+  <p class="lede">A neural network is mostly matrix multiplications — and matmuls have an
+    embarrassing property: stack as many as you like, they <strong>collapse into one</strong>.
+    Activation functions are the small nonlinear wedges between layers that stop the collapse.</p>
+  <blockquote>
+    “Neural networks separate layers by breaking linearity with an activation function.
+    Activation functions are non-linear to prevent composable matmul from collapsing layers, and
+    are differentiable or mostly-differentiable to support back propagation.”
+    <cite>— Inference Engineering, §2.1.2</cite>
+  </blockquote>
+</header>
+
+<main>
+
+<section>
+  <p class="kicker">01 · The problem</p>
+  <h2>Two linear layers are secretly one</h2>
+  <p>Here are two “layers” acting on a single number: layer 1 computes
+    <span class="num">a₁·x + b₁</span>, layer 2 takes that result and computes
+    <span class="num">a₂·(·) + b₂</span>. Move any slider you like — <b>the composed result is
+    always a straight line</b>. The four parameters buy you nothing that two couldn't:
+    the layers collapse, exactly as the matmul version does in Figure 2.3.</p>
+  <p>Now flip on the ReLU wedged between them and the composed function grows a <b>bend</b>.
+    The two layers stop being redundant: layer 1 decides <em>where</em> the bend sits, layer 2
+    decides what happens on either side of it.</p>
+
+  <div class="panel">
+    <div class="controls">
+      <button id="lin-off" type="button" aria-pressed="true">no activation</button>
+      <button id="lin-on" type="button" aria-pressed="false">ReLU between layers</button>
+    </div>
+    <div class="sliders">
+      <div><label for="a1">a₁</label><input type="range" id="a1" min="-2" max="2" step="0.1" value="1.3"><output id="a1v">+1.3</output></div>
+      <div><label for="b1">b₁</label><input type="range" id="b1" min="-2" max="2" step="0.1" value="0.6"><output id="b1v">+0.6</output></div>
+      <div><label for="a2">a₂</label><input type="range" id="a2" min="-2" max="2" step="0.1" value="0.9"><output id="a2v">+0.9</output></div>
+      <div><label for="b2">b₂</label><input type="range" id="b2" min="-2" max="2" step="0.1" value="-0.4"><output id="b2v">−0.4</output></div>
+    </div>
+    <canvas id="collapse" height="280" role="img" aria-label="Plot of two composed layers, with and without a ReLU between them"></canvas>
+    <div class="legend">
+      <span><i style="--lc:var(--grid)"></i>layer 1 output</span>
+      <span><i style="--lc:var(--t)"></i>final output (layer 2 ∘ layer 1)</span>
+      <span id="kinkleg" hidden><i class="dash" style="--lc:var(--o)"></i>the bend, at x = −b₁/a₁</span>
+    </div>
+    <p class="eq" id="collapse-eq"></p>
+  </div>
+</section>
+
+<section>
+  <p class="kicker">02 · Why bends are enough</p>
+  <h2>Enough bends can draw <em>anything</em></h2>
+  <p>One ReLU gives one bend. A hidden layer with N ReLU units gives N bends — and a
+    piecewise-linear curve with enough segments can trace any shape. That's the practical
+    meaning of the book's line that <b>“more layers use more parameters effectively”</b>: every
+    unit past the first is only useful <em>because</em> the activation keeps it from merging
+    with its neighbors.</p>
+  <p>Below, a tiny network is fitted to a wavy target. Drag the unit count up and watch the
+    approximation sharpen. Then switch the activation to <b>linear</b>: no matter how many units
+    you add, the best it can ever do is one straight line — the collapse again, in action.</p>
+
+  <div class="panel">
+    <div class="controls">
+      <label for="units">Hidden units</label>
+      <input type="range" id="units" min="1" max="24" step="1" value="4">
+      <span class="readout"><span id="unitsval">4</span> units</span>
+      <button class="chip actsel" data-act="relu" type="button" aria-pressed="true">ReLU</button>
+      <button class="chip actsel" data-act="tanh" type="button" aria-pressed="false">tanh</button>
+      <button class="chip actsel" data-act="linear" type="button" aria-pressed="false">linear</button>
+    </div>
+    <canvas id="fitplot" height="280" role="img" aria-label="A small network fitted to a wavy target curve"></canvas>
+    <div class="legend">
+      <span><i class="dash" style="--lc:var(--grid)"></i>target curve</span>
+      <span><i style="--lc:var(--t)"></i>network's best fit</span>
+      <span><i style="--lc:var(--o); width:3px; height:8px; border:none; background:var(--o)"></i>one tick per unit (each adds a bend)</span>
+    </div>
+    <p class="panel-cap" id="fitcap"></p>
+  </div>
+</section>
+
+<section>
+  <p class="kicker">03 · The zoo</p>
+  <h2>Meet the functions</h2>
+  <p>The book names ReLU, SiLU, Swish, and SwiGLU, and notes that most activations follow one
+    pattern: <b>map negatives to zero or near-zero, keep positives roughly unchanged</b>. Click
+    through the family below — the solid curve is the function, the dashed one is its
+    derivative, which is what backpropagation actually consumes. Hover the plot to read values.</p>
+
+  <div class="panel">
+    <div class="controls" id="fnchips"></div>
+    <canvas id="fnplot" height="300" role="img" aria-label="Plot of the selected activation function and its derivative"></canvas>
+    <div class="legend" id="fnlegend">
+      <span><i style="--lc:var(--t)"></i>f(x)</span>
+      <span><i class="dash" style="--lc:var(--o)"></i>f′(x) — the gradient</span>
+    </div>
+    <p class="panel-cap readout" id="fnread">hover the plot to inspect values</p>
+    <div class="fncard" id="fncard"></div>
+  </div>
+
+  <p>Notice what the derivative plots reveal. <b>Sigmoid</b>'s gradient never exceeds
+    <span class="num">0.25</span> — stack ten sigmoid layers and the training signal shrinks by
+    up to <span class="num">0.25¹⁰</span> on the way back: the classic <em>vanishing gradient</em>.
+    <b>ReLU</b>'s gradient is a flat <span class="num">1</span> for every positive input, which
+    is a big part of why it took over — but it's exactly <span class="num">0</span> for negatives
+    (a unit stuck there stops learning: a “dead ReLU”), and undefined at the kink itself. That's
+    the “<em>mostly</em> differentiable” in the book's definition; in practice the kink is just
+    assigned a value. Smooth relatives like <b>GELU</b> and <b>SiLU</b> keep ReLU's shape but
+    round off the corner and let a little gradient through for negative inputs.</p>
+</section>
+
+<section>
+  <p class="kicker">04 · The modern default</p>
+  <h2>SwiGLU is not a curve — it's a gate</h2>
+  <p>SwiGLU, the activation in Llama, Mistral, Qwen, and most current open models, is different
+    in kind: it isn't a function you apply to one number, but a <b>gating arrangement</b> inside
+    the feed-forward block. The input is projected twice — one projection passes through SiLU and
+    acts as a gate that multiplies the other, element by element:</p>
+
+  <div class="panel">
+    <svg viewBox="0 0 720 176" role="img" aria-label="SwiGLU block diagram: input x is projected by a gate matrix through SiLU and by an up matrix, the two are multiplied elementwise, then projected down" style="width:100%; height:auto; display:block; font-family:var(--mono)">
+      <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted)"/></marker></defs>
+      <text x="28" y="93" font-size="15" font-weight="600" fill="var(--ink)">x</text>
+      <line x1="44" y1="88" x2="86" y2="50" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#ah)"/>
+      <line x1="44" y1="88" x2="86" y2="126" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#ah)"/>
+      <rect x="92" y="28" width="92" height="40" rx="6" fill="none" stroke="var(--t)" stroke-width="1.5"/>
+      <text x="138" y="52" font-size="12.5" text-anchor="middle" fill="var(--ink)">W_gate</text>
+      <rect x="92" y="108" width="92" height="40" rx="6" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+      <text x="138" y="132" font-size="12.5" text-anchor="middle" fill="var(--ink)">W_up</text>
+      <line x1="186" y1="48" x2="228" y2="48" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#ah)"/>
+      <rect x="234" y="28" width="76" height="40" rx="6" fill="var(--t-soft)" stroke="var(--t)" stroke-width="1.5"/>
+      <text x="272" y="52" font-size="12.5" text-anchor="middle" fill="var(--t)" font-weight="600">SiLU</text>
+      <line x1="312" y1="48" x2="366" y2="82" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#ah)"/>
+      <line x1="186" y1="128" x2="366" y2="98" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#ah)"/>
+      <circle cx="384" cy="90" r="17" fill="none" stroke="var(--o)" stroke-width="1.5"/>
+      <text x="384" y="96" font-size="15" text-anchor="middle" fill="var(--o)" font-weight="600">⊙</text>
+      <line x1="403" y1="90" x2="446" y2="90" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#ah)"/>
+      <rect x="452" y="70" width="100" height="40" rx="6" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+      <text x="502" y="94" font-size="12.5" text-anchor="middle" fill="var(--ink)">W_down</text>
+      <line x1="554" y1="90" x2="600" y2="90" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#ah)"/>
+      <text x="612" y="95" font-size="14" font-weight="600" fill="var(--ink)">out</text>
+      <text x="384" y="140" font-size="11.5" text-anchor="middle" fill="var(--muted)">elementwise multiply — the “gate”</text>
+    </svg>
+    <p class="eq">FFN(x) = W_down · ( SiLU(W_gate·x) ⊙ (W_up·x) )</p>
+    <p class="panel-cap">This is why, if you open a Llama checkpoint, every MLP block has
+      <b>three</b> weight matrices — <span class="num">gate_proj</span>,
+      <span class="num">up_proj</span>, <span class="num">down_proj</span> — where a GPT-2-style
+      block has two. The gate lets the network learn <em>per-dimension, input-dependent</em>
+      throttling instead of applying one fixed curve everywhere. GeGLU (used by Gemma) is the
+      same trick with GELU as the gate.</p>
+  </div>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Model family</th><th>FFN activation</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>Original Transformer (2017)</td><td><code>ReLU</code></td><td>the baseline the book describes</td></tr>
+      <tr><td>BERT (2018), GPT-2 / GPT-3</td><td><code>GELU</code></td><td>smooth ReLU; often the tanh approximation</td></tr>
+      <tr><td>Llama 1–3, Mistral, Qwen, PaLM</td><td><code>SwiGLU</code></td><td>SiLU-gated; today's default</td></tr>
+      <tr><td>Gemma</td><td><code>GeGLU</code></td><td>GELU-gated variant of the same idea</td></tr>
+      <tr><td>Mixture-of-Experts routers</td><td><code>softmax</code></td><td>different job: picking experts, not breaking linearity</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <p class="kicker">05 · The inference angle</p>
+  <h2>Why an inference engineer cares</h2>
+  <p>For a book about inference, activations matter less for their math and more for how they
+    hit the hardware:</p>
+  <ul>
+    <li><b>They're elementwise, so they're memory-bound.</b> An activation touches each number
+      once — nearly zero FLOPs next to the matmul before it. Run it as its own GPU kernel and
+      you pay a full round-trip to memory just to apply <span class="num">max(0, x)</span>.
+      That's why engines <b>fuse the activation into the matmul's epilogue</b>: the values get
+      bent while they're still in registers. (This is the kernel-fusion story of §4.1.3 —
+      activations are its poster child.)</li>
+    <li><b>Exact vs. approximate GELU.</b> GELU's true form uses the Gaussian CDF (an
+      <span class="num">erf</span>); most implementations ship a cheaper
+      <span class="num">tanh</span> approximation. Two engines choosing differently produce
+      slightly different numbers for the “same” model — one of the small mismatches you chase
+      when validating an inference stack.</li>
+    <li><b>Gated activations change the memory math.</b> SwiGLU needs two projections where ReLU
+      needed one, so models shrink the FFN width (typically to <span class="num">⅔</span> of the
+      classic <span class="num">4×</span> hidden size) to keep parameter count even. The shapes
+      you see in a model's config come from this bargain.</li>
+    <li><b>Activations create the outliers that plague quantization.</b> The tensors flowing
+      out of these functions ("activations" in the other sense) carry rare huge values; handling
+      them is a central headache in §5.1.2's quantization story.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p><b>In one sentence:</b> an activation function is a cheap nonlinear bend inserted after
+    each linear layer so that stacked matmuls can't collapse into one — ReLU is the archetype,
+    smooth variants like GELU/SiLU refine it, and modern LLMs use it as a learned gate (SwiGLU).</p>
+  <p>Companion note to <em>Inference Engineering</em> §2.1.2 · sibling page: “Dimensionality, Visualized.”</p>
+</footer>
+
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const dpr = Math.min(2, window.devicePixelRatio || 1);
+const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt = (v, d=2) => (v >= 0 ? '+' : '−') + Math.abs(v).toFixed(d);
+
+function fitCanvas(cv){
+  const w = cv.clientWidth || cv.parentElement.clientWidth;
+  if (!cv.dataset.h) cv.dataset.h = cv.getAttribute('height');
+  const cssH = parseFloat(cv.dataset.h);
+  cv.width = Math.round(w * dpr); cv.height = Math.round(cssH * dpr);
+  cv.style.height = cssH + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return [ctx, w, cssH];
+}
+
+// shared plot frame: maps math coords -> pixels, draws grid/axes
+function frame(ctx, W, H, x0, x1, y0, y1){
+  const px = x => (x - x0) / (x1 - x0) * W;
+  const py = y => H - (y - y0) / (y1 - y0) * H;
+  ctx.clearRect(0, 0, W, H);
+  ctx.strokeStyle = cssVar('--grid'); ctx.lineWidth = 1;
+  ctx.font = '11px ' + cssVar('--mono');
+  ctx.fillStyle = cssVar('--muted');
+  for (let gx = Math.ceil(x0); gx <= Math.floor(x1); gx++){
+    ctx.beginPath(); ctx.moveTo(px(gx), 0); ctx.lineTo(px(gx), H); ctx.stroke();
+    if (gx !== 0) ctx.fillText(gx, px(gx) + 3, py(0) - 4);
+  }
+  for (let gy = Math.ceil(y0); gy <= Math.floor(y1); gy++){
+    ctx.beginPath(); ctx.moveTo(0, py(gy)); ctx.lineTo(W, py(gy)); ctx.stroke();
+    if (gy !== 0) ctx.fillText(gy, px(0) + 5, py(gy) - 3);
+  }
+  ctx.strokeStyle = cssVar('--muted'); ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(0, py(0)); ctx.lineTo(W, py(0)); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(px(0), 0); ctx.lineTo(px(0), H); ctx.stroke();
+  return [px, py];
+}
+function curve(ctx, px, py, fn, x0, x1, color, dash, width=2.5){
+  ctx.strokeStyle = color; ctx.lineWidth = width;
+  ctx.setLineDash(dash || []);
+  ctx.beginPath();
+  const N = 240;
+  for (let i = 0; i <= N; i++){
+    const x = x0 + (x1 - x0) * i / N, y = fn(x);
+    i ? ctx.lineTo(px(x), py(y)) : ctx.moveTo(px(x), py(y));
+  }
+  ctx.stroke(); ctx.setLineDash([]);
+}
+
+/* ---------- 01 · collapse demo ---------- */
+let useRelu = false;
+function drawCollapse(){
+  const a1 = +$('a1').value, b1 = +$('b1').value, a2 = +$('a2').value, b2 = +$('b2').value;
+  $('a1v').value = fmt(a1, 1); $('b1v').value = fmt(b1, 1);
+  $('a2v').value = fmt(a2, 1); $('b2v').value = fmt(b2, 1);
+  const [ctx, W, H] = fitCanvas($('collapse'));
+  const [px, py] = frame(ctx, W, H, -3, 3, -4, 4);
+  const l1 = x => a1 * x + b1;
+  const out = x => a2 * (useRelu ? Math.max(0, l1(x)) : l1(x)) + b2;
+  curve(ctx, px, py, l1, -3, 3, cssVar('--grid'), [], 2);
+  if (useRelu && a1 !== 0){
+    const kx = -b1 / a1;
+    if (kx >= -3 && kx <= 3){
+      ctx.strokeStyle = cssVar('--o'); ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(px(kx), 0); ctx.lineTo(px(kx), H); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = cssVar('--o');
+      ctx.beginPath(); ctx.arc(px(kx), py(out(kx)), 5.5, 0, 7); ctx.fill();
+    }
+  }
+  curve(ctx, px, py, out, -3, 3, cssVar('--t'));
+  const eq = $('collapse-eq');
+  $('kinkleg').hidden = !useRelu;
+  if (!useRelu){
+    const ca = a2 * a1, cb = a2 * b1 + b2;
+    eq.classList.remove('bent');
+    eq.textContent = `y = a₂·(a₁·x + b₁) + b₂  =  ${fmt(ca)}·x ${fmt(cb)}   ← four knobs, still just one line`;
+  } else {
+    eq.classList.add('bent');
+    const kx = a1 !== 0 ? (-b1 / a1) : NaN;
+    eq.textContent = a1 !== 0
+      ? `y = a₂·ReLU(a₁·x + b₁) + b₂   ← bends at x = ${fmt(kx)}; no single line can imitate this`
+      : `y = a₂·ReLU(b₁) + b₂   ← a₁ = 0 flattens layer 1; give it some slope`;
+  }
+}
+['a1','b1','a2','b2'].forEach(id => $(id).addEventListener('input', drawCollapse));
+$('lin-off').addEventListener('click', () => { useRelu = false; setPressed(); drawCollapse(); });
+$('lin-on').addEventListener('click', () => { useRelu = true; setPressed(); drawCollapse(); });
+function setPressed(){
+  $('lin-off').setAttribute('aria-pressed', !useRelu);
+  $('lin-on').setAttribute('aria-pressed', useRelu);
+}
+
+/* ---------- 02 · fit demo ---------- */
+const target = x => 0.8 * Math.sin(2.5 * x) + 0.15 * x;
+let fitAct = 'relu';
+const ACT2 = {
+  relu:   z => Math.max(0, z),
+  tanh:   z => Math.tanh(2 * z),
+  linear: z => z,
+};
+function solve(M, v){
+  // gaussian elimination with partial pivoting; M is modified in place
+  const n = v.length;
+  for (let c = 0; c < n; c++){
+    let piv = c;
+    for (let r = c + 1; r < n; r++) if (Math.abs(M[r][c]) > Math.abs(M[piv][c])) piv = r;
+    [M[c], M[piv]] = [M[piv], M[c]]; [v[c], v[piv]] = [v[piv], v[c]];
+    const d = M[c][c] || 1e-12;
+    for (let r = c + 1; r < n; r++){
+      const f = M[r][c] / d;
+      for (let k = c; k < n; k++) M[r][k] -= f * M[c][k];
+      v[r] -= f * v[c];
+    }
+  }
+  const x = new Array(n).fill(0);
+  for (let r = n - 1; r >= 0; r--){
+    let s = v[r];
+    for (let k = r + 1; k < n; k++) s -= M[r][k] * x[k];
+    x[r] = s / (M[r][r] || 1e-12);
+  }
+  return x;
+}
+function drawFit(){
+  const N = +$('units').value;
+  $('unitsval').textContent = N;
+  const act = ACT2[fitAct];
+  const cs = Array.from({length: N}, (_, i) => -2 + 4 * (i + 0.5) / N); // breakpoints
+  const basis = x => [1, x, ...cs.map(c => act(x - c))];
+  const S = 160, dim = N + 2;
+  const M = Array.from({length: dim}, () => new Array(dim).fill(0));
+  const v = new Array(dim).fill(0);
+  for (let s = 0; s <= S; s++){
+    const x = -2 + 4 * s / S, y = target(x), phi = basis(x);
+    for (let i = 0; i < dim; i++){
+      v[i] += phi[i] * y;
+      for (let j = 0; j < dim; j++) M[i][j] += phi[i] * phi[j];
+    }
+  }
+  for (let i = 0; i < dim; i++) M[i][i] += 1e-6; // ridge, keeps the linear case solvable
+  const w = solve(M, v);
+  const model = x => basis(x).reduce((s, p, i) => s + p * w[i], 0);
+  let se = 0;
+  for (let s = 0; s <= S; s++){ const x = -2 + 4 * s / S; se += (model(x) - target(x)) ** 2; }
+  const rms = Math.sqrt(se / (S + 1));
+
+  const [ctx, W, H] = fitCanvas($('fitplot'));
+  const [px, py] = frame(ctx, W, H, -2, 2, -1.6, 1.6);
+  ctx.fillStyle = cssVar('--o');
+  cs.forEach(c => ctx.fillRect(px(c) - 1.5, py(0) - 6, 3, 12));
+  curve(ctx, px, py, target, -2, 2, cssVar('--grid'), [5, 5], 2);
+  curve(ctx, px, py, model, -2, 2, cssVar('--t'));
+  document.querySelectorAll('.actsel').forEach(b =>
+    b.setAttribute('aria-pressed', b.dataset.act === fitAct));
+  const err = `fit error (RMS): ${rms.toFixed(3)}`;
+  $('fitcap').innerHTML = fitAct === 'linear'
+    ? `${err} — and it will <b>never improve</b>. With a linear “activation”, all ${N} units plus
+       both layers collapse into one straight line: y = w·x + b.`
+    : `${err}. Each of the ${N} tick marks is a unit's breakpoint — one bend the network can
+       place and weight. More units, more bends, closer fit.`;
+}
+$('units').addEventListener('input', drawFit);
+document.querySelectorAll('.actsel').forEach(b =>
+  b.addEventListener('click', () => { fitAct = b.dataset.act; drawFit(); }));
+
+/* ---------- 03 · function explorer ---------- */
+const sig = x => 1 / (1 + Math.exp(-x));
+const geluTanh = x => 0.5 * x * (1 + Math.tanh(Math.sqrt(2 / Math.PI) * (x + 0.044715 * x ** 3)));
+const FNS = [
+  { id:'relu', name:'ReLU', f:x => Math.max(0, x),
+    formula:'max(0, x)',
+    origin:'Popularized by AlexNet (2012); the book’s archetype',
+    used:'Original Transformer FFN; countless CNNs',
+    note:'Free to compute — a single comparison. Gradient is exactly 1 or 0; the kink at zero is the “mostly differentiable” caveat, and negatives are fully silenced (risk of dead units).' },
+  { id:'leaky', name:'Leaky ReLU', f:x => x > 0 ? x : 0.1 * x,
+    formula:'x > 0 ? x : 0.1·x',
+    origin:'Maas et al., 2013',
+    used:'GANs, some CNNs',
+    note:'ReLU with a small slope on the negative side so no unit can fully die — a tiny gradient always leaks through. (Drawn here with slope 0.1.)' },
+  { id:'sigmoid', name:'Sigmoid', f:sig,
+    formula:'1 / (1 + e⁻ˣ)',
+    origin:'The classic — perceptron era through the 1990s',
+    used:'Today: gates (LSTM, SiLU, SE blocks) and output probabilities',
+    note:'Squashes everything into (0, 1). Its gradient tops out at 0.25 and vanishes at both ends — the reason deep pre-ReLU networks were so hard to train, and why it retired to gating duty.' },
+  { id:'tanh', name:'tanh', f:Math.tanh,
+    formula:'(eˣ − e⁻ˣ) / (eˣ + e⁻ˣ)',
+    origin:'Classic; standard in the RNN/LSTM era',
+    used:'LSTM/GRU cells; GELU’s fast approximation',
+    note:'A zero-centered sigmoid, output in (−1, 1). Better behaved than sigmoid but still saturates: gradients die at both extremes.' },
+  { id:'gelu', name:'GELU', f:geluTanh,
+    formula:'x · Φ(x)   (Φ = Gaussian CDF)',
+    origin:'Hendrycks & Gimpel, 2016',
+    used:'BERT, GPT-2, GPT-3, ViT',
+    note:'“Scale x by the probability a standard normal is below it.” A smooth ReLU with a slight dip below zero. Plotted here as the tanh approximation nearly every engine ships.' },
+  { id:'silu', name:'SiLU / Swish', f:x => x * sig(x),
+    formula:'x · sigmoid(x)',
+    origin:'Ramachandran et al., 2017 (Google, found by architecture search)',
+    used:'EfficientNet; the gate inside SwiGLU → Llama, Mistral, Qwen',
+    note:'The one the book says resembles the Nike logo — see the swoosh: it dips to ≈ −0.28 near x = −1.28 before rising. Smooth everywhere, non-monotonic, lets small negatives through.' },
+];
+let curFn = 'silu', fnHoverX = null;
+const chipwrap = $('fnchips');
+FNS.forEach(d => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'chip'; b.textContent = d.name;
+  b.addEventListener('click', () => { curFn = d.id; fnHoverX = null; drawFn(); });
+  chipwrap.appendChild(b);
+});
+function dfn(f){ const h = 1e-4; return x => (f(x + h) - f(x - h)) / (2 * h); }
+function drawFn(){
+  const d = FNS.find(o => o.id === curFn);
+  chipwrap.querySelectorAll('.chip').forEach(b =>
+    b.setAttribute('aria-pressed', b.textContent === d.name));
+  const [ctx, W, H] = fitCanvas($('fnplot'));
+  const [px, py] = frame(ctx, W, H, -4, 4, -1.6, 4);
+  curve(ctx, px, py, dfn(d.f), -4, 4, cssVar('--o'), [5, 4], 2);
+  curve(ctx, px, py, d.f, -4, 4, cssVar('--t'));
+  if (fnHoverX !== null){
+    const x = fnHoverX;
+    ctx.strokeStyle = cssVar('--grid'); ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(px(x), 0); ctx.lineTo(px(x), H); ctx.stroke();
+    ctx.fillStyle = cssVar('--t');
+    ctx.beginPath(); ctx.arc(px(x), py(d.f(x)), 5, 0, 7); ctx.fill();
+    ctx.fillStyle = cssVar('--o');
+    ctx.beginPath(); ctx.arc(px(x), py(dfn(d.f)(x)), 4, 0, 7); ctx.fill();
+    $('fnread').textContent =
+      `x = ${fmt(x)}   f(x) = ${fmt(d.f(x), 3)}   f′(x) = ${fmt(dfn(d.f)(x), 3)}`;
+  } else {
+    $('fnread').textContent = 'hover the plot to inspect values';
+  }
+  $('fncard').innerHTML =
+    `<div><div class="k">formula</div><div class="v"><code>${d.formula}</code></div>
+      <div class="k">origin</div><div class="v">${d.origin}</div></div>
+     <div><div class="k">used in</div><div class="v">${d.used}</div>
+      <div class="k">character</div><div class="v">${d.note}</div></div>`;
+}
+$('fnplot').addEventListener('pointermove', e => {
+  const r = e.currentTarget.getBoundingClientRect();
+  fnHoverX = -4 + 8 * Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+  drawFn();
+});
+$('fnplot').addEventListener('pointerleave', () => { fnHoverX = null; drawFn(); });
+
+/* ---------- boot & theme reactivity ---------- */
+function redrawAll(){ drawCollapse(); drawFit(); drawFn(); }
+redrawAll();
+new MutationObserver(redrawAll).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redrawAll);
+let rsz; window.addEventListener('resize', () => { clearTimeout(rsz); rsz = setTimeout(redrawAll, 150); });
+})();
+</script>

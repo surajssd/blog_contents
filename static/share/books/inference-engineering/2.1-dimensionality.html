@@ -1,0 +1,647 @@
+<title>Dimensionality, Visualized</title>
+<style>
+  :root{
+    --bg:#FBFAF7; --panel:#FFFFFF; --ink:#1B2233; --muted:#5D6472;
+    --line:#E4E2D9; --grid:rgba(27,34,51,.16);
+    --t:#0E8A78; --o:#C56A0B; --v:#6558C8; --m:#C2508F;
+    --t-soft:rgba(14,138,120,.09); --o-soft:rgba(197,106,11,.09);
+    --serif:Charter,'Iowan Old Style','Palatino Linotype',Georgia,serif;
+    --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#12151D; --panel:#1A1F2A; --ink:#E7EAF2; --muted:#9AA3B5;
+      --line:#2A3140; --grid:rgba(231,234,242,.16);
+      --t:#15A188; --o:#C87A16; --v:#8578E8; --m:#D06BA6;
+      --t-soft:rgba(21,161,136,.14); --o-soft:rgba(200,122,22,.14);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12151D; --panel:#1A1F2A; --ink:#E7EAF2; --muted:#9AA3B5;
+    --line:#2A3140; --grid:rgba(231,234,242,.16);
+    --t:#15A188; --o:#C87A16; --v:#8578E8; --m:#D06BA6;
+    --t-soft:rgba(21,161,136,.14); --o-soft:rgba(200,122,22,.14);
+  }
+  :root[data-theme="light"]{
+    --bg:#FBFAF7; --panel:#FFFFFF; --ink:#1B2233; --muted:#5D6472;
+    --line:#E4E2D9; --grid:rgba(27,34,51,.16);
+    --t:#0E8A78; --o:#C56A0B; --v:#6558C8; --m:#C2508F;
+    --t-soft:rgba(14,138,120,.09); --o-soft:rgba(197,106,11,.09);
+  }
+
+  body{background:var(--bg); color:var(--ink); font:16px/1.65 var(--sans); margin:0;}
+  main{max-width:760px; margin:0 auto; padding:0 20px 96px;}
+
+  header{max-width:760px; margin:0 auto; padding:64px 20px 8px;}
+  .eyebrow{font:600 11px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 18px;}
+  h1{font:400 clamp(38px,7vw,56px)/1.08 var(--serif); margin:0 0 20px; text-wrap:balance; letter-spacing:-.01em;}
+  .lede{font-size:19px; color:var(--muted); max-width:58ch; margin:0;}
+  .lede strong{color:var(--ink); font-weight:600;}
+  blockquote{border-left:3px solid var(--t); margin:28px 0 0; padding:4px 0 4px 20px; font:italic 17px/1.6 var(--serif); color:var(--muted);}
+  blockquote cite{display:block; font:600 11px/1 var(--mono); font-style:normal; letter-spacing:.1em; text-transform:uppercase; margin-top:10px;}
+
+  section{margin-top:72px;}
+  h2{font:400 clamp(26px,4.4vw,32px)/1.2 var(--serif); margin:0 0 8px; text-wrap:balance;}
+  .kicker{font:600 11px/1 var(--mono); letter-spacing:.13em; text-transform:uppercase; margin:0 0 10px;}
+  .kicker.up{color:var(--t);} .kicker.down{color:var(--o);}
+  section > p{max-width:66ch; margin:14px 0 0;}
+  section > p b{font-weight:600;}
+  .num{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:.94em;}
+  .tn{color:var(--t); font-weight:600;} .on{color:var(--o); font-weight:600;}
+
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:20px; margin-top:24px;}
+  .panel-cap{font:13px/1.5 var(--sans); color:var(--muted); margin:14px 0 0;}
+  .panel-cap .num{color:var(--ink);}
+
+  .controls{display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin-bottom:16px;}
+  .controls label{font:600 12px/1 var(--mono); letter-spacing:.06em; color:var(--muted); text-transform:uppercase;}
+  input[type=range]{flex:1; min-width:140px; accent-color:var(--t);}
+  #imgres{accent-color:var(--o);}
+  button, .chip{font:600 13px/1 var(--mono); color:var(--ink); background:none; border:1px solid var(--line); border-radius:6px; padding:8px 12px; cursor:pointer;}
+  button:hover, .chip:hover{border-color:var(--muted);}
+  button:focus-visible, .chip:focus-visible, input:focus-visible, .word:focus-visible{outline:2px solid var(--t); outline-offset:2px;}
+  button[aria-pressed="true"]{border-color:var(--t); color:var(--t); background:var(--t-soft);}
+  .obtn button[aria-pressed="true"]{border-color:var(--o); color:var(--o); background:var(--o-soft);}
+  .readout{font:600 15px/1 var(--mono); font-variant-numeric:tabular-nums; margin-left:auto;}
+
+  canvas{display:block; width:100%; border-radius:6px;}
+
+  /* vector strip (section 1) */
+  .vec{display:flex; gap:3px; margin-top:14px; overflow-x:auto; padding-bottom:4px;}
+  .vec .cell{flex:1; min-width:46px; text-align:center; font:12px/1 var(--mono); font-variant-numeric:tabular-nums; padding:9px 2px; border-radius:4px; border:1px solid var(--line);}
+  .vec-label{font:600 11px/1 var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:14px;}
+
+  /* semantic map (section 2) */
+  .map{position:relative; height:380px; border:1px solid var(--line); border-radius:6px; background:
+      repeating-linear-gradient(0deg, transparent 0 37px, var(--grid) 37px 38px),
+      repeating-linear-gradient(90deg, transparent 0 37px, var(--grid) 37px 38px);}
+  .map svg{position:absolute; inset:0; width:100%; height:100%; pointer-events:none;}
+  .map .axis1d{position:absolute; left:2%; right:2%; top:50%; border-top:2px solid var(--grid); opacity:0; transition:opacity .4s;}
+  .map.one .axis1d{opacity:1;}
+  .word{position:absolute; transform:translate(-50%,-50%); font:600 13px/1 var(--sans); padding:5px 9px 5px 7px; border-radius:99px; background:var(--panel); border:1px solid var(--line); cursor:default; white-space:nowrap; display:flex; align-items:center; gap:6px;}
+  .word i{width:8px; height:8px; border-radius:50%; background:var(--wc);}
+  .word.hot{border-color:var(--wc); box-shadow:0 0 0 1px var(--wc); z-index:2;}
+  @media (prefers-reduced-motion: no-preference){
+    .word{transition:left .6s cubic-bezier(.4,0,.2,1), top .6s cubic-bezier(.4,0,.2,1);}
+  }
+  .legend{display:flex; flex-wrap:wrap; gap:8px 18px; margin:0 0 14px; font:13px/1 var(--sans); color:var(--muted);}
+  .legend span{display:flex; align-items:center; gap:7px;}
+  .legend i{width:9px; height:9px; border-radius:50%;}
+  .map-cap{min-height:2.6em;}
+  .map-cap b{color:var(--ink);}
+
+  /* count cards (sections 3 & 4) */
+  .counts{display:grid; grid-template-columns:1fr auto 1fr; gap:12px; align-items:stretch; margin:16px 0;}
+  .count{border:1px solid var(--line); border-radius:8px; padding:14px 16px;}
+  .count .l{font:600 10px/1 var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
+  .count .n{font:600 26px/1.1 var(--mono); font-variant-numeric:tabular-nums;}
+  .count .u{font:13px/1.3 var(--sans); color:var(--muted); margin-top:4px;}
+  .count.teal{border-color:var(--t); background:var(--t-soft);} .count.teal .n{color:var(--t);}
+  .count.orange{border-color:var(--o); background:var(--o-soft);} .count.orange .n{color:var(--o);}
+  .arrow{align-self:center; font:600 20px/1 var(--mono); color:var(--muted); padding:0 2px;}
+  @media (max-width:560px){ .counts{grid-template-columns:1fr;} .arrow{transform:rotate(90deg); justify-self:center;} }
+
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:6px;}
+  .chip[aria-pressed="true"]{border-color:var(--t); color:var(--t); background:var(--t-soft);}
+  .wordinput{font:13px/1 var(--mono); color:var(--ink); background:none; border:1px solid var(--line); border-radius:6px; padding:8px 10px; width:11ch;}
+  .strip-read{font:12px/1.5 var(--mono); font-variant-numeric:tabular-nums; color:var(--muted); margin-top:10px; min-height:1.5em;}
+
+  /* image panel */
+  .imgrow{display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:start;}
+  @media (max-width:620px){ .imgrow{grid-template-columns:1fr;} }
+  #imgcanvas{width:272px; max-width:100%; aspect-ratio:1; border:1px solid var(--line); image-rendering:pixelated;}
+
+  footer{max-width:760px; margin:88px auto 0; padding:28px 20px 64px; border-top:1px solid var(--line); font-size:14px; color:var(--muted);}
+  footer p{max-width:66ch; margin:0 0 10px;}
+</style>
+
+<header>
+  <p class="eyebrow">Reading notes · Inference Engineering · hidden states</p>
+  <h1>Dimensionality is just <em>how many numbers</em></h1>
+  <p class="lede">Inside a neural network, everything — words, pixels, sounds — is stored as a
+    <strong>vector</strong>: a plain list of numbers. The <strong>dimensionality</strong> of a
+    representation is nothing more mysterious than the length of that list.</p>
+  <blockquote>
+    “Internal representations for text input increase the dimensionality&hellip; But internal
+    representations for image models reduce the dimensionality from millions of pixels down to a
+    manageable size.”
+    <cite>— the passage you're reading</cite>
+  </blockquote>
+</header>
+
+<main>
+
+<section>
+  <p class="kicker" style="color:var(--muted)">01 · The object itself</p>
+  <h2>A point described by <span id="dimword">two</span> numbers</h2>
+  <p>One number places a point on a line. Two numbers place it on a plane; three, in the space
+    around you. Drag the slider past three and geometry gives up — we can't draw a 7-dimensional
+    room — but the <b>math never notices</b>. A point in 768-dimensional space is simply a list of
+    768 numbers, and distances between such points are computed the same way as in 2-D.</p>
+
+  <div class="panel">
+    <div class="controls">
+      <label for="ndims">Dimensions</label>
+      <input type="range" id="ndims" min="1" max="12" value="2" step="1">
+      <span class="readout"><span id="ndimsval">2</span>-D</span>
+      <button id="reroll" type="button">↻ new point</button>
+    </div>
+    <canvas id="dimcanvas" height="260"></canvas>
+    <p class="vec-label">the same point, as its list of numbers</p>
+    <div class="vec" id="vecstrip"></div>
+    <p class="panel-cap" id="dimcap"></p>
+  </div>
+</section>
+
+<section>
+  <p class="kicker up">02 · Why size matters</p>
+  <h2>Meaning needs room</h2>
+  <p>Models place inputs into this space so that <b>similar things sit near each other</b>. That
+    only works if there's room to keep every kind of similarity at once. Below, seventeen words are
+    arranged in two dimensions — animals near animals, fruit near fruit. Now squash them onto a
+    single dimension and watch the neighborhoods collapse.</p>
+  <p><b>Hover any word</b> to see its three nearest neighbors in the current space.</p>
+
+  <div class="panel">
+    <div class="controls">
+      <button id="mode2d" type="button" aria-pressed="true">2 dimensions</button>
+      <button id="mode1d" type="button" aria-pressed="false">1 dimension</button>
+    </div>
+    <div class="legend" id="maplegend"></div>
+    <div class="map" id="map">
+      <div class="axis1d"></div>
+      <svg id="maplines"></svg>
+    </div>
+    <p class="panel-cap map-cap" id="mapcap">Hover a word. In 2-D, each cluster keeps to itself.</p>
+  </div>
+
+  <p>This is the whole argument in miniature: with one number per word, “cat” ends up next to
+    “truck” because there's nowhere else to put it. Real models use <b>hundreds or thousands</b> of
+    dimensions so that a word can be close to other words along many independent directions —
+    animal-ness, size, sentiment, formality — all at the same time.</p>
+</section>
+
+<section>
+  <p class="kicker up">03 · Text</p>
+  <h2>Text <em>expands</em>: a few characters become hundreds of numbers</h2>
+  <p>Raw text is tiny but meaningless to arithmetic — the bytes <span class="num">c·a·t</span> say
+    nothing about whiskers. So the model trades size for meaning: each token is looked up in an
+    embedding table and becomes a long vector. <span class="tn">Dimensionality goes up</span> —
+    from a handful of characters to, say, 768 learned numbers.</p>
+
+  <div class="panel">
+    <div class="controls">
+      <div class="chips" id="wordchips"></div>
+      <input class="wordinput" id="wordinput" type="text" maxlength="14" placeholder="your word…" aria-label="Try your own word">
+    </div>
+    <div class="controls">
+      <label>Embedding size</label>
+      <div class="chips" id="dimchips"></div>
+    </div>
+    <div class="counts">
+      <div class="count">
+        <div class="l">as raw text</div>
+        <div class="n" id="charcount">3</div>
+        <div class="u">characters</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="count teal">
+        <div class="l">as an embedding</div>
+        <div class="n" id="embcount">768</div>
+        <div class="u">numbers · <span class="num" id="embratio">256×</span> more</div>
+      </div>
+    </div>
+    <canvas id="embcanvas" height="44"></canvas>
+    <p class="strip-read" id="embread">hover the strip to inspect one dimension</p>
+    <p class="panel-cap">Illustrative values, not a real model's — but built so words sharing
+      letter-chunks (try <span class="num">cat</span> vs <span class="num">caterpillar</span>) get
+      overlapping patterns, a hint of how similar inputs earn similar vectors.</p>
+  </div>
+</section>
+
+<section>
+  <p class="kicker down">04 · Images</p>
+  <h2>Images <em>compress</em>: millions of pixels become a short summary</h2>
+  <p>An image has the opposite problem. It is already all numbers — far too many, and most of them
+    redundant (the sky is blue in every one of its thousands of sky pixels). An image encoder
+    squeezes the picture down to a compact latent vector that keeps only what matters:
+    <span class="on">dimensionality goes down</span>, from millions to hundreds.</p>
+
+  <div class="panel obtn">
+    <div class="controls">
+      <label for="imgres">Resolution</label>
+      <input type="range" id="imgres" min="0" max="7" value="2" step="1">
+      <span class="readout" id="imgresval">32 × 32</span>
+    </div>
+    <div class="imgrow">
+      <canvas id="imgcanvas" width="272" height="272"></canvas>
+      <div>
+        <div class="counts" style="margin-top:0">
+          <div class="count orange">
+            <div class="l">as raw pixels</div>
+            <div class="n" id="pixcount">3,072</div>
+            <div class="u"><span class="num" id="pixmath">32 × 32 × 3 channels</span></div>
+          </div>
+          <div class="arrow">→</div>
+          <div class="count">
+            <div class="l">as a latent vector</div>
+            <div class="n">512</div>
+            <div class="u">numbers, <b>regardless of resolution</b></div>
+          </div>
+        </div>
+        <canvas id="latcanvas" height="30"></canvas>
+        <p class="panel-cap" id="imgcap"></p>
+      </div>
+    </div>
+  </div>
+
+  <p>Notice the latent stays <span class="num">512</span> numbers whether the photo is
+    <span class="num">32 × 32</span> or <span class="num">1024 × 1024</span>. The encoder isn't
+    storing pixels; it's storing <b>what the image is about</b> — and that doesn't grow with
+    resolution.</p>
+</section>
+
+<section>
+  <p class="kicker" style="color:var(--muted)">05 · The punchline</p>
+  <h2>Both roads lead to the same neighborhood</h2>
+  <p>Put both quotes on one axis and the pattern appears: text is pushed <b>up</b> into more
+    dimensions, images are pulled <b>down</b> into fewer — and both land in the same band of
+    <b>hundreds to thousands of numbers</b>. That's the size at which a vector is rich enough to
+    hold meaning, yet small enough to do arithmetic on billions of times per second. Hidden states
+    live here.</p>
+
+  <div class="panel">
+    <svg id="scale" viewBox="0 0 720 210" role="img" aria-label="Log scale from 1 to 10 million numbers, showing text expanding from 3 characters to a 768-number embedding, and an image compressing from 3.1 million pixel values to a 512-number latent, both landing in the hundreds-to-thousands band." style="width:100%; height:auto; display:block"></svg>
+    <p class="panel-cap">Number count per representation, log scale. <span class="tn">Teal</span>:
+      text expanding. <span class="on">Amber</span>: an image compressing.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><b>In one sentence:</b> dimensionality is the length of the list of numbers a network uses to
+    represent something — text gets a longer list than its raw form so meaning has room, images get
+    a much shorter one because pixels are mostly redundancy.</p>
+  <p>Companion note to <em>Inference Engineering</em>, on internal representations and hidden states.</p>
+</footer>
+
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const dpr = Math.min(2, window.devicePixelRatio || 1);
+const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const hexRgb = h => { h = h.replace('#',''); return [0,2,4].map(i => parseInt(h.slice(i, i+2), 16)); };
+const fmt = n => n.toLocaleString('en-US');
+
+function fnv(s){ let h = 2166136261; for (let i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+function rng(seed){ let a = seed; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+
+// diverging heat color: amber (negative) ↔ teal (positive), alpha = magnitude
+let RGB_T = [14,138,120], RGB_O = [197,106,11];
+function refreshHeatRgb(){ RGB_T = hexRgb(cssVar('--t')); RGB_O = hexRgb(cssVar('--o')); }
+function heatColor(v){
+  const c = v < 0 ? RGB_O : RGB_T;
+  const a = 0.13 + 0.87 * Math.min(1, Math.abs(v));
+  return `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+}
+
+function fitCanvas(cv){
+  const w = cv.clientWidth || cv.parentElement.clientWidth;
+  if (!cv.dataset.h) cv.dataset.h = cv.getAttribute('height');
+  const cssH = parseFloat(cv.dataset.h);
+  cv.width = Math.round(w * dpr); cv.height = Math.round(cssH * dpr);
+  cv.style.height = cssH + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return [ctx, w, cssH];
+}
+
+function drawStrip(cv, values){
+  const [ctx, W, H] = fitCanvas(cv);
+  ctx.clearRect(0, 0, W, H);
+  const n = values.length, cw = W / n, gap = cw > 7 ? 2 : 0;
+  for (let i = 0; i < n; i++){
+    ctx.fillStyle = heatColor(values[i]);
+    ctx.fillRect(i * cw + gap / 2, 0, cw - gap, H);
+  }
+}
+
+/* ---------- 01 · dimensions ---------- */
+const NDMAX = 12;
+let point = [];
+function reroll(){ const r = rng((Math.random() * 1e9) | 0); point = Array.from({length: NDMAX}, () => +(r() * 2 - 1).toFixed(2)); }
+(function seedFirst(){ const r = rng(20260719); point = Array.from({length: NDMAX}, () => +(r() * 2 - 1).toFixed(2)); })();
+
+const DIMWORDS = ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'];
+function drawDims(){
+  const n = +$('ndims').value;
+  $('ndimsval').textContent = n;
+  $('dimword').textContent = DIMWORDS[n - 1];
+  const cv = $('dimcanvas'), [ctx, W, H] = fitCanvas(cv);
+  ctx.clearRect(0, 0, W, H);
+  const grid = cssVar('--grid'), muted = cssVar('--muted'), teal = cssVar('--t');
+  ctx.font = '11px ' + cssVar('--mono');
+  ctx.lineWidth = 1.5;
+
+  const v = point.slice(0, n);
+  if (n <= 3){
+    const cx = W / 2, cy = H / 2, u = Math.min(W, H) * 0.36;
+    ctx.strokeStyle = grid; ctx.fillStyle = muted;
+    const axis = (x1,y1,x2,y2,label,lx,ly) => {
+      ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+      ctx.fillText(label, lx, ly);
+    };
+    let px = cx + v[0] * u, py = cy;
+    axis(cx - u * 1.15, cy, cx + u * 1.15, cy, 'x₁', cx + u * 1.15 + 6, cy + 4);
+    if (n >= 2){ py = cy - v[1] * u * 0.82; axis(cx, cy + u * 0.95, cx, cy - u * 0.95, 'x₂', cx - 8, cy - u * 0.95 - 8); }
+    if (n === 3){
+      const zx = -0.42, zy = 0.30;
+      axis(cx, cy, cx + zx * u * 1.15, cy + zy * u * 1.15, 'x₃', cx + zx * u * 1.15 - 20, cy + zy * u * 1.15 + 12);
+      px += v[2] * zx * u; py += v[2] * zy * u;
+      ctx.setLineDash([3,4]); ctx.beginPath();
+      ctx.moveTo(cx + v[0] * u, cy - (n >= 2 ? v[1] : 0) * u * 0.82); ctx.lineTo(px, py);
+      ctx.stroke(); ctx.setLineDash([]);
+    }
+    ctx.fillStyle = teal; ctx.beginPath(); ctx.arc(px, py, 7, 0, 7); ctx.fill();
+    ctx.strokeStyle = cssVar('--panel'); ctx.lineWidth = 2; ctx.stroke();
+    $('dimcap').innerHTML = n === 1
+      ? 'One axis, one number: the point can only slide left or right.'
+      : n === 2
+      ? 'Two axes, two numbers — a flat map. This is the most we comfortably print on paper.'
+      : 'Three axes drawn in oblique projection — the last space we can sketch honestly.';
+  } else {
+    // parallel coordinates: the honest way to draw a high-dimensional point
+    const mL = 34, mR = 18, top = 26, bot = H - 34;
+    const ax = i => mL + (W - mL - mR) * (n === 1 ? 0.5 : i / (n - 1));
+    const yv = val => top + (bot - top) * (1 - (val + 1) / 2);
+    ctx.strokeStyle = grid; ctx.fillStyle = muted; ctx.textAlign = 'center';
+    for (let i = 0; i < n; i++){
+      ctx.beginPath(); ctx.moveTo(ax(i), top); ctx.lineTo(ax(i), bot); ctx.stroke();
+      ctx.fillText('x' + (i + 1), ax(i), bot + 18);
+    }
+    ctx.textAlign = 'start';
+    ctx.fillText('+1', 6, top + 4); ctx.fillText('−1', 6, bot + 4);
+    ctx.strokeStyle = teal; ctx.lineWidth = 2; ctx.beginPath();
+    v.forEach((val, i) => i ? ctx.lineTo(ax(i), yv(val)) : ctx.moveTo(ax(0), yv(val)));
+    ctx.stroke();
+    ctx.fillStyle = teal;
+    v.forEach((val, i) => { ctx.beginPath(); ctx.arc(ax(i), yv(val), 4.5, 0, 7); ctx.fill(); });
+    $('dimcap').innerHTML = `Past 3-D we switch to <b>parallel coordinates</b>: one vertical axis per
+      dimension, and the point becomes the teal line threading through its ${n} values. A
+      768-dimension hidden state is this picture with 768 axes.`;
+  }
+
+  const strip = $('vecstrip');
+  strip.innerHTML = '';
+  v.forEach(val => {
+    const c = document.createElement('span');
+    c.className = 'cell';
+    c.textContent = (val >= 0 ? '+' : '') + val.toFixed(2);
+    c.style.background = heatColor(val * 0.55);
+    strip.appendChild(c);
+  });
+}
+$('ndims').addEventListener('input', drawDims);
+$('reroll').addEventListener('click', () => { reroll(); drawDims(); });
+
+/* ---------- 02 · semantic map ---------- */
+const CATS = [
+  { name: 'animals',  cv: '--t' },
+  { name: 'fruit',    cv: '--o' },
+  { name: 'vehicles', cv: '--v' },
+  { name: 'feelings', cv: '--m' },
+];
+const WORDS = [
+  ['wolf',.08,.12,0],['dog',.15,.20,0],['puppy',.21,.28,0],['cat',.12,.38,0],['kitten',.19,.46,0],
+  ['mango',.83,.12,1],['apple',.78,.18,1],['banana',.88,.25,1],['grape',.74,.30,1],
+  ['truck',.10,.85,2],['car',.18,.78,2],['bus',.25,.88,2],['bicycle',.31,.72,2],
+  ['calm',.85,.68,3],['happy',.79,.76,3],['sad',.90,.82,3],['angry',.74,.88,3],
+].map(([w,x,y,c]) => ({w,x,y,c}));
+
+let mode1d = false;
+const stagger = [-30,-12,6,24];
+const map = $('map'), mapsvg = $('maplines');
+
+function wordPos(d, i){
+  const r = map.getBoundingClientRect();
+  return mode1d
+    ? [d.x * r.width, r.height / 2 + stagger[i % 4]]
+    : [d.x * r.width, d.y * r.height];
+}
+function layoutWords(){
+  WORDS.forEach((d, i) => {
+    d.el.style.left = (d.x * 100) + '%';
+    d.el.style.top = mode1d ? `calc(50% + ${stagger[i % 4]}px)` : (d.y * 100) + '%';
+  });
+}
+function nearest(i){
+  const a = WORDS[i];
+  return WORDS.map((b, j) => ({ j, d: mode1d ? Math.abs(a.x - b.x) : Math.hypot(a.x - b.x, a.y - b.y) }))
+    .filter(o => o.j !== i).sort((p, q) => p.d - q.d).slice(0, 3).map(o => o.j);
+}
+function clearHover(){
+  mapsvg.innerHTML = '';
+  WORDS.forEach(d => d.el.classList.remove('hot'));
+  $('mapcap').innerHTML = mode1d
+    ? 'Hover a word. With one number each, everything is a rank on a line.'
+    : 'Hover a word. In 2-D, each cluster keeps to itself.';
+}
+function hover(i){
+  mapsvg.innerHTML = '';
+  WORDS.forEach(d => d.el.classList.remove('hot'));
+  const nn = nearest(i);
+  const [x0, y0] = wordPos(WORDS[i], i);
+  const ink = cssVar('--muted');
+  nn.forEach(j => {
+    const [x1, y1] = wordPos(WORDS[j], j);
+    const ln = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    ln.setAttribute('x1', x0); ln.setAttribute('y1', y0);
+    ln.setAttribute('x2', x1); ln.setAttribute('y2', y1);
+    ln.setAttribute('stroke', ink); ln.setAttribute('stroke-width', '1.5');
+    ln.setAttribute('stroke-dasharray', '4 4');
+    mapsvg.appendChild(ln);
+    WORDS[j].el.classList.add('hot');
+  });
+  WORDS[i].el.classList.add('hot');
+  const names = nn.map(j => WORDS[j].w);
+  const stray = nn.some(j => WORDS[j].c !== WORDS[i].c);
+  $('mapcap').innerHTML = `Nearest to <b>${WORDS[i].w}</b>: ${names.join(', ')}.` +
+    (mode1d && stray ? ' <b>Unrelated words collide</b> — one dimension has no room for separate neighborhoods.'
+     : mode1d ? ' This one survived — but look around.'
+     : ' Meaningful neighbors, because there was room to separate the clusters.');
+}
+WORDS.forEach((d, i) => {
+  const el = document.createElement('span');
+  el.className = 'word'; el.tabIndex = 0;
+  el.style.setProperty('--wc', `var(${CATS[d.c].cv})`);
+  el.innerHTML = `<i></i>${d.w}`;
+  el.addEventListener('mouseenter', () => hover(i));
+  el.addEventListener('focus', () => hover(i));
+  el.addEventListener('mouseleave', clearHover);
+  el.addEventListener('blur', clearHover);
+  d.el = el; map.appendChild(el);
+});
+CATS.forEach(c => {
+  const s = document.createElement('span');
+  s.innerHTML = `<i style="background:var(${c.cv})"></i>${c.name}`;
+  $('maplegend').appendChild(s);
+});
+function setMode(one){
+  mode1d = one;
+  map.classList.toggle('one', one);
+  $('mode1d').setAttribute('aria-pressed', one);
+  $('mode2d').setAttribute('aria-pressed', !one);
+  clearHover(); layoutWords();
+}
+$('mode1d').addEventListener('click', () => setMode(true));
+$('mode2d').addEventListener('click', () => setMode(false));
+
+/* ---------- 03 · text embedding ---------- */
+const EMB_WORDS = ['cat','kitten','caterpillar','robot','democracy'];
+const EMB_DIMS = [8, 64, 256, 768];
+let curWord = 'cat', curD = 768;
+
+function embed(word, D){
+  const v = new Float32Array(D);
+  const w = '##' + word.toLowerCase() + '##';
+  let ng = 0;
+  for (let i = 0; i < w.length - 2; i++){
+    const r = rng(fnv(w.slice(i, i + 3)));
+    for (let d = 0; d < D; d++) v[d] += r() * 2 - 1;
+    ng++;
+  }
+  const s = Math.sqrt(Math.max(1, ng)) * 0.72;
+  for (let d = 0; d < D; d++) v[d] = Math.max(-1, Math.min(1, v[d] / s));
+  return v;
+}
+let curEmb = embed(curWord, curD);
+function drawEmb(){
+  curEmb = embed(curWord, curD);
+  drawStrip($('embcanvas'), curEmb);
+  const n = curWord.length;
+  $('charcount').textContent = fmt(n);
+  $('embcount').textContent = fmt(curD);
+  $('embratio').textContent = fmt(Math.round(curD / n)) + '×';
+  document.querySelectorAll('#wordchips .chip').forEach(b =>
+    b.setAttribute('aria-pressed', b.textContent === curWord));
+  document.querySelectorAll('#dimchips .chip').forEach(b =>
+    b.setAttribute('aria-pressed', +b.textContent.replace(',','') === curD));
+  $('embread').textContent = 'hover the strip to inspect one dimension';
+}
+EMB_WORDS.forEach(w => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'chip'; b.textContent = w;
+  b.addEventListener('click', () => { curWord = w; $('wordinput').value = ''; drawEmb(); });
+  $('wordchips').appendChild(b);
+});
+EMB_DIMS.forEach(d => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'chip'; b.textContent = fmt(d);
+  b.addEventListener('click', () => { curD = d; drawEmb(); });
+  $('dimchips').appendChild(b);
+});
+$('wordinput').addEventListener('input', e => {
+  const w = e.target.value.trim();
+  if (w){ curWord = w; drawEmb(); }
+});
+$('embcanvas').addEventListener('pointermove', e => {
+  const r = e.currentTarget.getBoundingClientRect();
+  const i = Math.max(0, Math.min(curD - 1, Math.floor((e.clientX - r.left) / r.width * curD)));
+  const val = curEmb[i];
+  $('embread').textContent = `dimension ${i + 1} of ${fmt(curD)}  ·  value ${(val >= 0 ? '+' : '') + val.toFixed(3)}`;
+});
+$('embcanvas').addEventListener('pointerleave', () =>
+  $('embread').textContent = 'hover the strip to inspect one dimension');
+
+/* ---------- 04 · image compression ---------- */
+const LATENT = (() => { const r = rng(512512); return Array.from({length: 512}, () => r() * 2 - 1); })();
+function drawScene(r){
+  const oc = document.createElement('canvas'); oc.width = oc.height = r;
+  const c = oc.getContext('2d');
+  const g = c.createLinearGradient(0, 0, 0, r);
+  g.addColorStop(0, '#79b4d9'); g.addColorStop(0.65, '#cfe3ea');
+  c.fillStyle = g; c.fillRect(0, 0, r, r);
+  c.fillStyle = '#f0c04a';
+  c.beginPath(); c.arc(r * 0.70, r * 0.26, Math.max(1, r * 0.11), 0, 7); c.fill();
+  c.fillStyle = '#5c8a63';
+  c.beginPath(); c.ellipse(r * 0.22, r * 0.92, r * 0.52, r * 0.30, 0, 0, 7); c.fill();
+  c.fillStyle = '#41694c';
+  c.beginPath(); c.ellipse(r * 0.82, r * 1.02, r * 0.55, r * 0.34, 0, 0, 7); c.fill();
+  return oc;
+}
+function drawImg(){
+  const idx = +$('imgres').value;
+  const res = 8 << idx;
+  const cv = $('imgcanvas');
+  cv.width = 272 * dpr; cv.height = 272 * dpr;
+  const ctx = cv.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(drawScene(res), 0, 0, cv.width, cv.height);
+  const npx = res * res * 3;
+  $('imgresval').textContent = `${res} × ${res}`;
+  $('pixcount').textContent = fmt(npx);
+  $('pixmath').textContent = `${res} × ${res} × 3 channels`;
+  const ratio = npx / 512;
+  $('imgcap').innerHTML = ratio >= 1
+    ? `The encoder squeezes <span class="num">${fmt(npx)}</span> numbers into
+       <span class="num">512</span> — a <span class="num">${fmt(Math.round(ratio))}×</span> reduction.`
+    : `At ${res} × ${res} the raw image is already <em>smaller</em> than the latent — there's
+       nothing left to compress. Push the slider right.`;
+  drawStrip($('latcanvas'), LATENT);
+}
+$('imgres').addEventListener('input', drawImg);
+
+/* ---------- 05 · log scale ---------- */
+function drawScale(){
+  const svg = $('scale');
+  const W = 720, L = 52, R = 686, AX = 138;
+  const x = v => L + (Math.log10(v) / 7) * (R - L);
+  const mono = "font-family:var(--mono);font-size:11px;fill:var(--muted)";
+  const inkm = "font-family:var(--mono);font-size:11px;font-weight:600;fill:var(--ink)";
+  let s = '';
+  // the useful band
+  s += `<rect x="${x(100)}" y="34" width="${x(10000) - x(100)}" height="${AX - 34 + 22}" rx="4" fill="var(--t-soft)"/>`;
+  s += `<text x="${(x(100) + x(10000)) / 2}" y="${AX + 44}" text-anchor="middle" style="${mono}">hundreds – thousands: where hidden states live</text>`;
+  // axis + decade ticks
+  s += `<line x1="${L}" y1="${AX}" x2="${R}" y2="${AX}" stroke="var(--grid)" stroke-width="1.5"/>`;
+  [[1,'1'],[10,'10'],[100,'100'],[1e3,'1k'],[1e4,'10k'],[1e5,'100k'],[1e6,'1M'],[1e7,'10M']].forEach(([v, lb]) => {
+    s += `<line x1="${x(v)}" y1="${AX}" x2="${x(v)}" y2="${AX + 6}" stroke="var(--grid)" stroke-width="1.5"/>`;
+    s += `<text x="${x(v)}" y="${AX + 20}" text-anchor="middle" style="${mono}">${lb}</text>`;
+  });
+  // arrows
+  const arrow = (from, to, y, color, id) => {
+    s += `<defs><marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="${color}"/></marker></defs>`;
+    s += `<line x1="${x(from)}" y1="${y}" x2="${x(to)}" y2="${y}" stroke="${color}" stroke-width="2" marker-end="url(#${id})"/>`;
+  };
+  arrow(3, 768, 66, 'var(--t)', 'at');
+  arrow(3145728, 512, 96, 'var(--o)', 'ao');
+  s += `<text x="${(x(3) + x(768)) / 2}" y="58" text-anchor="middle" style="${inkm}">text: embed → more numbers</text>`;
+  s += `<text x="${(x(512) + x(3145728)) / 2}" y="88" text-anchor="middle" style="${inkm}">image: encode → fewer numbers</text>`;
+  // marks on the axis
+  const mark = (v, label, color, dy, anchor) => {
+    s += `<circle cx="${x(v)}" cy="${AX}" r="5.5" fill="${color}" stroke="var(--panel)" stroke-width="2"/>`;
+    s += `<text x="${x(v)}" y="${AX + dy}" text-anchor="${anchor || 'middle'}" style="${inkm}">${label}</text>`;
+  };
+  mark(3, '“cat”: 3 chars', 'var(--t)', -14, 'start');
+  mark(768, 'embedding: 768', 'var(--t)', -14);
+  mark(512, 'latent: 512', 'var(--o)', -30);
+  mark(3145728, '1024² photo: 3.1M', 'var(--o)', -14, 'end');
+  svg.innerHTML = s;
+}
+
+/* ---------- boot & theme reactivity ---------- */
+function redrawAll(){
+  refreshHeatRgb();
+  drawDims(); drawEmb(); drawImg(); drawScale();
+  clearHover(); layoutWords();
+}
+refreshHeatRgb();
+drawDims(); drawEmb(); drawImg(); drawScale(); layoutWords(); clearHover();
+new MutationObserver(() => redrawAll()).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redrawAll);
+let rsz; window.addEventListener('resize', () => { clearTimeout(rsz); rsz = setTimeout(redrawAll, 150); });
+})();
+</script>

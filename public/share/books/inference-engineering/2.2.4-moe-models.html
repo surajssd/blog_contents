@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mixture of Experts — Inference Engineering §2.2.4</title>
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#131822; --panel2:#1a212e; --line:#26303f;
+    --txt:#e5e9f0; --dim:#8b98ad; --dimmer:#5d6b80;
+    --hot:#ff7a45; --hot2:#ffb066; --cool:#3d8bff; --green:#3ddc97; --purple:#b184ff;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:40px 24px 90px}
+  header{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:34px}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--hot)}
+  h1{font-size:clamp(28px,4.4vw,44px);margin:10px 0 8px;letter-spacing:-.02em;line-height:1.1}
+  .sub{color:var(--dim);font-size:16px;max-width:70ch}
+  h2{font-size:13px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;
+    color:var(--dimmer);margin:0 0 16px;display:flex;align-items:center;gap:10px}
+  h2::after{content:"";flex:1;height:1px;background:var(--line)}
+  section{margin-bottom:52px}
+  p{margin:0 0 14px}
+  .lead{font-size:17px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+  .label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dimmer);margin-bottom:12px}
+  .quote{border-left:2px solid var(--hot);padding:2px 0 2px 16px;color:var(--dim);font-size:15px;font-style:italic}
+
+  /* dense vs sparse */
+  .matrix{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;margin-top:6px}
+  .cell{aspect-ratio:1;border-radius:2px;background:var(--cool);opacity:.85}
+  .expgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:6px}
+  .exp{aspect-ratio:1;border-radius:4px;background:var(--panel2);border:1px solid var(--line)}
+  .exp.on{background:var(--hot);border-color:var(--hot2);box-shadow:0 0 12px rgba(255,122,69,.45)}
+  .foot{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:14px}
+  .foot b{color:var(--txt);font-weight:600}
+
+  /* journey */
+  .stage{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .bar{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--panel2);flex-wrap:wrap}
+  button{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    background:var(--hot);color:#1a0d06;border:0;padding:9px 16px;border-radius:7px;cursor:pointer;font-weight:700}
+  button.ghost{background:transparent;color:var(--dim);border:1px solid var(--line)}
+  button:hover{filter:brightness(1.12)}
+  .readout{font-family:var(--mono);font-size:12px;color:var(--dim);margin-left:auto}
+  .readout b{color:var(--hot2)}
+
+  .levels{display:flex;flex-direction:column}
+  .lvl{display:grid;grid-template-columns:132px 1fr;gap:0;border-bottom:1px solid var(--line);transition:background .25s}
+  .lvl:last-child{border-bottom:0}
+  .lvl.active{background:rgba(255,122,69,.06)}
+  .lvl .lname{padding:16px 14px;border-right:1px solid var(--line);font-family:var(--mono);font-size:11px;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--dimmer);display:flex;flex-direction:column;gap:4px}
+  .lvl.active .lname{color:var(--hot)}
+  .lvl .lname span{font-size:19px;font-family:inherit;letter-spacing:0;color:var(--dimmer);text-transform:none}
+  .lvl.active .lname span{color:var(--hot2)}
+  .lbody{padding:16px 18px}
+  .lbody .t{font-size:14px;color:var(--dim)}
+  .lbody .t b{color:var(--txt);font-weight:600}
+  .pill{display:inline-block;font-family:var(--mono);font-size:11px;padding:3px 8px;border-radius:20px;
+    border:1px solid var(--line);color:var(--dim);margin:6px 6px 0 0}
+  .pill.hot{border-color:var(--hot);color:var(--hot2)}
+  .pill.green{border-color:var(--green);color:var(--green)}
+  .pill.purple{border-color:var(--purple);color:var(--purple)}
+
+  .tokens{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+  .tok{font-family:var(--mono);font-size:12px;padding:4px 8px;border-radius:4px;background:var(--panel2);
+    border:1px solid var(--line);color:var(--dim)}
+  .tok.cur{background:var(--hot);color:#1a0d06;border-color:var(--hot);font-weight:700}
+  .tok.new{background:transparent;border-color:var(--green);color:var(--green)}
+
+  .layerstack{display:flex;gap:2px;margin-top:12px;height:34px;align-items:flex-end}
+  .lay{flex:1;background:var(--panel2);border-radius:1px;height:40%;transition:height .12s,background .12s}
+  .lay.done{background:#2b4a6d;height:60%}
+  .lay.cur{background:var(--hot);height:100%}
+
+  .router{display:flex;align-items:center;gap:16px;margin-top:12px;flex-wrap:wrap}
+  .routerbox{font-family:var(--mono);font-size:11px;padding:8px 12px;border:1px dashed var(--hot);
+    border-radius:7px;color:var(--hot2);background:rgba(255,122,69,.07)}
+  .egrid{display:grid;grid-template-columns:repeat(16,1fr);gap:3px;margin-top:12px}
+  .e{aspect-ratio:1;border-radius:2px;background:#1e2634;transition:background .18s,box-shadow .18s}
+  .e.on{background:var(--hot);box-shadow:0 0 8px rgba(255,122,69,.6)}
+  .e.dense{background:var(--cool)}
+
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line)}
+  th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dimmer);font-weight:500}
+  td.num{font-family:var(--mono);color:var(--hot2)}
+  .big{font-family:var(--mono);font-size:30px;color:var(--hot2);line-height:1.1}
+  .warn{border-left:3px solid var(--hot);background:rgba(255,122,69,.06)}
+  .ok{border-left:3px solid var(--green);background:rgba(61,220,151,.05)}
+  ul{margin:0;padding-left:20px;color:var(--dim);font-size:14px}
+  li{margin-bottom:7px}
+  li b{color:var(--txt)}
+  .cite{font-family:var(--mono);font-size:11px;color:var(--dimmer);text-align:center;
+    border-top:1px solid var(--line);padding-top:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Inference Engineering · §2.2.4</div>
+  <h1>Mixture of Experts</h1>
+  <p class="sub">Instead of one giant matrix per layer, an MoE model keeps hundreds of small ones and lets a tiny router pick a handful per token, per layer. Same knowledge, a fraction of the compute.</p>
+</header>
+
+<!-- 1 -->
+<section>
+  <h2>1 · Density is the whole idea</h2>
+  <p class="lead">The <b>density</b> of a neural network is the number of connections between layers. Denser networks retain more information; sparser networks take less compute and memory to run. MoE is an architecture optimization that <b>adds sparsity to the linear layers</b> — the feed-forward sublayers that hold the majority of an LLM's weights.</p>
+  <div class="grid2" style="margin-top:20px">
+    <div class="card">
+      <div class="label" style="color:var(--cool)">Dense layer</div>
+      <div class="matrix" id="denseMat"></div>
+      <div class="foot">One giant matrix. <b>Every parameter reads for every token.</b></div>
+    </div>
+    <div class="card">
+      <div class="label" style="color:var(--hot)">MoE layer</div>
+      <div class="expgrid" id="expDemo"></div>
+      <div class="foot">Many small matrices — the <b>experts</b>. A router activates only a few.</div>
+    </div>
+  </div>
+  <p class="quote" style="margin-top:20px">"Rather than a single giant matrix, an MoE model has hundreds of smaller matrices (the experts) and routes each input to a small selection of experts. This is called activating the experts."</p>
+</section>
+
+<!-- 2 -->
+<section>
+  <h2>2 · How a request navigates the levels</h2>
+  <p class="lead">Routing is <b>granular</b>. It does not happen once per request — it happens at every layer, for every token. Press play and follow one token down.</p>
+
+  <div class="stage" style="margin-top:20px">
+    <div class="bar">
+      <button id="play">▶ Generate a token</button>
+      <button class="ghost" id="reset">Reset</button>
+      <div class="readout">layer <b id="rLayer">—</b>/94 · experts fired <b id="rFired">0</b> · tokens out <b id="rTok">0</b></div>
+    </div>
+
+    <div class="levels">
+      <div class="lvl" id="L0">
+        <div class="lname">Level 0<span>Request</span></div>
+        <div class="lbody">
+          <div class="t">The prompt arrives, the chat template is applied, and the tokenizer converts text to token IDs. <b>Nothing model-related has happened yet</b> — the router has not seen anything.</div>
+          <div class="tokens" id="tokRow"></div>
+        </div>
+      </div>
+
+      <div class="lvl" id="L1">
+        <div class="lname">Level 1<span>Forward pass</span></div>
+        <div class="lbody">
+          <div class="t">Each forward pass produces <b>exactly one token</b> by working through every layer of the model. Prefill does this for the input sequence; decode repeats it once per output token.</div>
+          <span class="pill hot">1 pass = 1 token</span>
+          <span class="pill">prefill → KV cache</span>
+          <span class="pill">decode → autoregressive</span>
+        </div>
+      </div>
+
+      <div class="lvl" id="L2">
+        <div class="lname">Level 2<span>Layers · 94</span></div>
+        <div class="lbody">
+          <div class="t">The token's hidden state descends through <b>all 94 layers</b>. No layer is skipped — sparsity happens <i>inside</i> a layer, not across layers.</div>
+          <div class="layerstack" id="layStack"></div>
+        </div>
+      </div>
+
+      <div class="lvl" id="L3">
+        <div class="lname">Level 3<span>Attention</span></div>
+        <div class="lbody">
+          <div class="t">Within each layer, the attention sublayer runs <b>dense</b> — it relates this token to every previous token via the KV cache. Attention is never routed.</div>
+          <span class="pill purple">Q · K · V</span>
+          <span class="pill purple">multi-head</span>
+          <span class="pill purple">always active</span>
+        </div>
+      </div>
+
+      <div class="lvl" id="L4">
+        <div class="lname">Level 4<span>Router</span></div>
+        <div class="lbody">
+          <div class="t">The <b>router — a tiny model within the LLM</b> — scores the experts and picks the top few for this token, at this layer. A new decision is made 94 times per token.</div>
+          <div class="router">
+            <div class="routerbox" id="routerBox">router · idle</div>
+            <div class="t" style="font-size:13px">top-8 of 128 → <b id="pickList">—</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lvl" id="L5">
+        <div class="lname">Level 5<span>Experts · 8/128</span></div>
+        <div class="lbody">
+          <div class="t">Only the selected experts run. <b>6.25% of this layer's FFN weights</b> touch the token; the other 120 experts sit idle in memory. Their outputs are weighted and combined, then handed to the next layer.</div>
+          <div class="egrid" id="eGrid"></div>
+        </div>
+      </div>
+
+      <div class="lvl" id="L6">
+        <div class="lname">Level 6<span>Output</span></div>
+        <div class="lbody">
+          <div class="t">After layer 94, the LMHead converts the hidden state into a <b>logit per vocabulary token</b>. One is sampled, appended to the sequence, and the whole descent begins again.</div>
+          <div class="tokens" id="outRow"><span class="tok" style="border-style:dashed">waiting…</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section>
+  <h2>3 · The numbers, on Qwen3-235B-A22B</h2>
+  <div class="grid3">
+    <div class="card"><div class="label">Total parameters</div><div class="big">235B</div><div class="foot">All of it must fit in VRAM.</div></div>
+    <div class="card"><div class="label">Active per request</div><div class="big">22B</div><div class="foot">≈9.4% — the "A22B" in the name.</div></div>
+    <div class="card"><div class="label">Router decisions / token</div><div class="big">94</div><div class="foot">One per layer, 8 experts each.</div></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <table>
+      <tr><th>Quantity</th><th>Value</th><th>Why it matters</th></tr>
+      <tr><td>Experts per layer</td><td class="num">128</td><td>Memory footprint is set by all of them</td></tr>
+      <tr><td>Experts activated per layer</td><td class="num">8</td><td>Compute footprint is set by these</td></tr>
+      <tr><td>Layers</td><td class="num">94</td><td>Every layer routes independently</td></tr>
+      <tr><td>Expert activations per token</td><td class="num">752</td><td>8 × 94 — routing is fine-grained, not per-request</td></tr>
+      <tr><td>Sparsity per layer</td><td class="num">6.25%</td><td>Why a 235B model can feel like a 22B one</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 4 -->
+<section>
+  <h2>4 · The catch: one request vs. a full batch</h2>
+  <div class="grid2">
+    <div class="card ok">
+      <div class="label" style="color:var(--green)">Single request · local inference</div>
+      <div class="egrid" id="gridSingle" style="grid-template-columns:repeat(16,1fr)"></div>
+      <p class="foot">Thanks to their low number of active parameters, MoE models are <b>highly efficient for single-request local inference</b>. Few experts fire, so little weight memory is read.</p>
+    </div>
+    <div class="card warn">
+      <div class="label" style="color:var(--hot)">Batched · production server</div>
+      <div class="egrid" id="gridBatch" style="grid-template-columns:repeat(16,1fr)"></div>
+      <p class="foot">Different requests activate different experts. In batched serving you should expect <b>almost all model parameters to be active at any given time</b> — unless sparsity is recovered through large-scale <b>Expert Parallelism</b> (§5.4.2).</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="label">What Expert Parallelism buys you (§5.4.2)</div>
+    <ul>
+      <li><b>EP divides experts across GPUs.</b> 128 experts served in EP8 across eight GPUs → 16 full experts per GPU.</li>
+      <li><b>Throughput, not latency.</b> Each token takes just as long, but the system handles far more simultaneous tokens.</li>
+      <li><b>Usually mixed with Tensor Parallelism</b> to get both lower latency and higher throughput.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5 -->
+<section>
+  <h2>5 · When MoE is worth it</h2>
+  <div class="grid2">
+    <div class="card ok">
+      <div class="label" style="color:var(--green)">Good fit</div>
+      <ul>
+        <li><b>100B+ parameter models</b> — where MoE is especially popular</li>
+        <li><b>Down to ~20–30B</b>, where MoE models do exist</li>
+        <li><b>Multi-GPU, high-throughput serving</b>, via Expert Parallelism</li>
+        <li><b>Broad, general-purpose capability</b> spread across many domains</li>
+      </ul>
+    </div>
+    <div class="card warn">
+      <div class="label" style="color:var(--hot)">Stay dense</div>
+      <ul>
+        <li><b>Under 32B, and especially under 8B</b> — dense architectures are already efficient at that size</li>
+        <li><b>Domain-specific models</b> like tab completion — <i>the entire model is effectively one expert</i>, so there is little to gain</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="cite">Source: <i>Inference Engineering</i> — §2.2.4 Mixture of Experts Models, with §5.4.2 Expert Parallelism</div>
+</div>
+
+<script>
+const NL = 94, NE = 128, K = 8;
+
+// static decoration
+const dm = document.getElementById('denseMat');
+for (let i=0;i<144;i++){const d=document.createElement('div');d.className='cell';d.style.opacity=(0.45+Math.random()*0.55).toFixed(2);dm.appendChild(d);}
+const ed = document.getElementById('expDemo');
+for (let i=0;i<36;i++){const d=document.createElement('div');d.className='exp'+([4,11,19].includes(i)?' on':'');ed.appendChild(d);}
+
+// batch comparison grids
+function fill(id, frac, cls){
+  const g=document.getElementById(id);
+  for(let i=0;i<NE;i++){const d=document.createElement('div');d.className='e';if(Math.random()<frac)d.classList.add(cls);g.appendChild(d);}
+}
+fill('gridSingle', 8/128, 'on');
+fill('gridBatch', 0.94, 'dense');
+
+// journey elements
+const layStack=document.getElementById('layStack');
+const lays=[];
+for(let i=0;i<NL;i++){const d=document.createElement('div');d.className='lay';layStack.appendChild(d);lays.push(d);}
+const eGrid=document.getElementById('eGrid');
+const es=[];
+for(let i=0;i<NE;i++){const d=document.createElement('div');d.className='e';eGrid.appendChild(d);es.push(d);}
+
+const PROMPT=['Why','_is','_MoE','_efficient','?'];
+const OUT=['_Because','_only','_a','_few','_experts','_run','_per','_token','.'];
+const tokRow=document.getElementById('tokRow'), outRow=document.getElementById('outRow');
+const rLayer=document.getElementById('rLayer'), rFired=document.getElementById('rFired'), rTok=document.getElementById('rTok');
+const routerBox=document.getElementById('routerBox'), pickList=document.getElementById('pickList');
+const lvls=[...Array(7).keys()].map(i=>document.getElementById('L'+i));
+
+let fired=0, produced=0, timer=null, running=false;
+
+function drawTokens(){
+  tokRow.innerHTML='';
+  PROMPT.forEach(t=>{const s=document.createElement('span');s.className='tok';s.textContent=t;tokRow.appendChild(s);});
+  OUT.slice(0,produced).forEach(t=>{const s=document.createElement('span');s.className='tok new';s.textContent=t;tokRow.appendChild(s);});
+}
+function active(i){lvls.forEach((l,j)=>l.classList.toggle('active', j===i));}
+
+function reset(full){
+  clearTimeout(timer); running=false;
+  lays.forEach(l=>l.className='lay'); es.forEach(e=>e.className='e');
+  if(full){fired=0;produced=0;outRow.innerHTML='<span class="tok" style="border-style:dashed">waiting…</span>';}
+  rLayer.textContent='—'; rFired.textContent=fired; rTok.textContent=produced;
+  routerBox.textContent='router · idle'; pickList.textContent='—';
+  active(-1); drawTokens();
+  document.getElementById('play').textContent='▶ Generate a token';
+}
+
+function run(){
+  if(running) return;
+  running=true;
+  document.getElementById('play').textContent='… generating';
+  lays.forEach(l=>l.className='lay'); es.forEach(e=>e.className='e');
+  active(0); drawTokens();
+  setTimeout(()=>{active(1);setTimeout(()=>step(0),420);},480);
+}
+
+function step(i){
+  if(i>=NL){
+    active(6);
+    routerBox.textContent='router · done';
+    produced=Math.min(produced+1,OUT.length);
+    outRow.innerHTML='';
+    const s=document.createElement('span');s.className='tok new';s.textContent=OUT[produced-1];
+    outRow.appendChild(s);
+    const n=document.createElement('span');n.className='tok';n.style.borderStyle='dashed';
+    n.textContent='+ '+(752)+' expert activations';outRow.appendChild(n);
+    rTok.textContent=produced; drawTokens();
+    running=false;
+    document.getElementById('play').textContent= produced<OUT.length ? '▶ Next token' : '▶ Replay';
+    if(produced>=OUT.length){produced=0;}
+    return;
+  }
+  // layer bar
+  lays.forEach((l,j)=>l.className='lay'+(j<i?' done':j===i?' cur':''));
+  rLayer.textContent=i+1;
+  active(2);
+
+  setTimeout(()=>{ active(3); }, 40);
+
+  setTimeout(()=>{
+    active(4);
+    const picks=new Set();
+    while(picks.size<K) picks.add(Math.floor(Math.random()*NE));
+    const arr=[...picks].sort((a,b)=>a-b);
+    routerBox.textContent='router · layer '+(i+1)+' · scoring 128';
+    pickList.textContent='e'+arr.join(', e');
+    es.forEach((e,j)=>e.className='e'+(picks.has(j)?' on':''));
+    fired+=K; rFired.textContent=fired;
+    setTimeout(()=>{active(5);},70);
+    timer=setTimeout(()=>step(i+1), i<6||i>NL-4 ? 260 : 42);
+  }, 90);
+}
+
+document.getElementById('play').onclick=run;
+document.getElementById('reset').onclick=()=>reset(true);
+reset(true);
+</script>
+</body>
+</html>

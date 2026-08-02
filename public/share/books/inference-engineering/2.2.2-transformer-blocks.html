@@ -1,0 +1,631 @@
+<title>The Transformer Pipeline, Visualized</title>
+<style>
+  :root{
+    --bg:#FBFAF7; --panel:#FFFFFF; --ink:#1B2233; --muted:#5D6472;
+    --line:#E4E2D9; --grid:rgba(27,34,51,.16);
+    --t:#0E8A78; --o:#C56A0B; --v:#6558C8; --m:#C2508F;
+    --t-soft:rgba(14,138,120,.09); --o-soft:rgba(197,106,11,.09); --v-soft:rgba(101,88,200,.09);
+    --serif:Charter,'Iowan Old Style','Palatino Linotype',Georgia,serif;
+    --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#12151D; --panel:#1A1F2A; --ink:#E7EAF2; --muted:#9AA3B5;
+      --line:#2A3140; --grid:rgba(231,234,242,.16);
+      --t:#15A188; --o:#C87A16; --v:#8578E8; --m:#D06BA6;
+      --t-soft:rgba(21,161,136,.14); --o-soft:rgba(200,122,22,.14); --v-soft:rgba(133,120,232,.14);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12151D; --panel:#1A1F2A; --ink:#E7EAF2; --muted:#9AA3B5;
+    --line:#2A3140; --grid:rgba(231,234,242,.16);
+    --t:#15A188; --o:#C87A16; --v:#8578E8; --m:#D06BA6;
+    --t-soft:rgba(21,161,136,.14); --o-soft:rgba(200,122,22,.14); --v-soft:rgba(133,120,232,.14);
+  }
+  :root[data-theme="light"]{
+    --bg:#FBFAF7; --panel:#FFFFFF; --ink:#1B2233; --muted:#5D6472;
+    --line:#E4E2D9; --grid:rgba(27,34,51,.16);
+    --t:#0E8A78; --o:#C56A0B; --v:#6558C8; --m:#C2508F;
+    --t-soft:rgba(14,138,120,.09); --o-soft:rgba(197,106,11,.09); --v-soft:rgba(101,88,200,.09);
+  }
+
+  body{background:var(--bg); color:var(--ink); font:16px/1.65 var(--sans); margin:0;}
+  main{max-width:780px; margin:0 auto; padding:0 20px 96px;}
+  header{max-width:780px; margin:0 auto; padding:64px 20px 8px;}
+  .eyebrow{font:600 11px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 18px;}
+  h1{font:400 clamp(36px,6.6vw,54px)/1.08 var(--serif); margin:0 0 20px; text-wrap:balance; letter-spacing:-.01em;}
+  .lede{font-size:19px; color:var(--muted); max-width:60ch; margin:0;}
+  .lede strong{color:var(--ink); font-weight:600;}
+  blockquote{border-left:3px solid var(--t); margin:28px 0 0; padding:4px 0 4px 20px; font:italic 17px/1.6 var(--serif); color:var(--muted);}
+  blockquote cite{display:block; font:600 11px/1 var(--mono); font-style:normal; letter-spacing:.1em; text-transform:uppercase; margin-top:10px;}
+
+  section{margin-top:72px;}
+  h2{font:400 clamp(26px,4.4vw,32px)/1.2 var(--serif); margin:0 0 8px; text-wrap:balance;}
+  .kicker{font:600 11px/1 var(--mono); letter-spacing:.13em; text-transform:uppercase; color:var(--muted); margin:0 0 10px;}
+  section > p{max-width:66ch; margin:14px 0 0;}
+  section > p b{font-weight:600;}
+  .num{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:.94em;}
+  .tn{color:var(--t); font-weight:600;} .on{color:var(--o); font-weight:600;}
+
+  .panel{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:20px; margin-top:24px;}
+  .panel-cap{font:13px/1.5 var(--sans); color:var(--muted); margin:14px 0 0;}
+  .panel-cap b{color:var(--ink);}
+  button{font:600 13px/1 var(--mono); color:var(--ink); background:none; border:1px solid var(--line); border-radius:6px; padding:8px 12px; cursor:pointer;}
+  button:hover{border-color:var(--muted);}
+  button:focus-visible, input:focus-visible{outline:2px solid var(--t); outline-offset:2px;}
+  button[aria-pressed="true"]{border-color:var(--t); color:var(--t); background:var(--t-soft);}
+  button:disabled{opacity:.35; cursor:default;}
+  input[type=range]{accent-color:var(--t); min-width:120px;}
+  canvas{display:block; width:100%; border-radius:4px;}
+
+  /* pipeline map */
+  .pipemap{display:flex; flex-wrap:wrap; align-items:center; gap:6px 4px; margin-bottom:18px;}
+  .pchip{font:600 11.5px/1 var(--mono); border:1px solid var(--line); border-radius:99px; padding:7px 11px; cursor:pointer; color:var(--muted); background:none;}
+  .pchip[aria-current="true"]{border-color:var(--t); color:var(--t); background:var(--t-soft);}
+  .parr{color:var(--muted); font:600 12px var(--mono); padding:0 1px;}
+  .pgroup{display:flex; align-items:center; gap:6px 4px; flex-wrap:wrap; border:1.5px dashed var(--line); border-radius:10px; padding:6px 8px; position:relative; margin:10px 2px 2px;}
+  .pgroup > em{position:absolute; top:-9px; left:10px; font:600 9.5px/1 var(--mono); font-style:normal; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); background:var(--panel); padding:0 6px;}
+  .pgroup.active{border-color:var(--t);}
+
+  /* stepper */
+  .stepnav{display:flex; align-items:center; gap:12px; margin-top:18px; flex-wrap:wrap;}
+  .stepnav .title{font:600 15px/1.3 var(--sans); flex:1; min-width:180px;}
+  .stepnav .count{font:600 12px/1 var(--mono); color:var(--muted);}
+  .stepviz{border:1px solid var(--line); border-radius:8px; padding:18px; min-height:200px; margin-top:14px;}
+  .shape{font:600 12px/1.6 var(--mono); font-variant-numeric:tabular-nums; color:var(--t); background:var(--t-soft); border-radius:6px; padding:8px 12px; margin:14px 0 0; overflow-x:auto; white-space:nowrap;}
+  .shape b{color:var(--o); font-weight:600;}
+
+  /* token chips */
+  .toks{display:flex; flex-wrap:wrap; gap:6px; align-items:flex-end;}
+  .tok{display:flex; flex-direction:column; align-items:center; gap:3px;}
+  .tok .w{font:600 13.5px/1 var(--mono); border:1px solid var(--line); border-radius:6px; padding:7px 8px; background:var(--panel);}
+  .tok .id{font:10.5px/1 var(--mono); color:var(--muted);}
+  .tok.hot .w{border-color:var(--t); color:var(--t); background:var(--t-soft); box-shadow:0 0 0 1px var(--t);}
+  .tok.new .w{border-color:var(--o); color:var(--o); background:var(--o-soft);}
+  .tok.dim{opacity:.32;}
+
+  .vrow{display:flex; align-items:center; gap:12px; margin:14px 0 0; flex-wrap:wrap;}
+  .vrow .lbl{font:600 11px/1.4 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); min-width:106px;}
+  .vrow .grow{flex:1; min-width:200px;}
+  .bigarrow{font:600 18px var(--mono); color:var(--muted); text-align:center; margin:8px 0;}
+
+  /* attention weight bars */
+  .abar{display:grid; grid-template-columns:78px 1fr 52px; align-items:center; gap:10px; margin-top:5px; font:12.5px/1.2 var(--mono);}
+  .abar .tk{text-align:right; color:var(--ink); font-weight:600;}
+  .abar .tr{height:12px; border-radius:3px; background:var(--t-soft); position:relative; overflow:hidden;}
+  .abar .fill{position:absolute; inset:0 auto 0 0; background:var(--t); border-radius:3px;}
+  .abar .pc{color:var(--muted); font-variant-numeric:tabular-nums;}
+
+  /* softmax bars */
+  .sbar{display:grid; grid-template-columns:86px 1fr 58px; align-items:center; gap:10px; margin-top:6px; font:13px/1.2 var(--mono);}
+  .sbar .tk{text-align:right; font-weight:600;}
+  .sbar .tr{height:16px; border-radius:4px; background:var(--t-soft); position:relative; overflow:hidden;}
+  .sbar .fill{position:absolute; inset:0 auto 0 0; background:var(--t); border-radius:4px; transition:width .25s;}
+  .sbar.win .fill{background:var(--o);}
+  .sbar.win .tk{color:var(--o);}
+  .sbar .pc{color:var(--muted); font-variant-numeric:tabular-nums;}
+  @media (prefers-reduced-motion: reduce){ .sbar .fill{transition:none;} }
+
+  /* block stack */
+  .stack{display:flex; flex-direction:column-reverse; gap:3px; margin-top:12px;}
+  .stack i{height:7px; border-radius:3px; background:var(--line);}
+  .stack i.on{background:var(--t);}
+
+  /* arcs playground */
+  .arcbox{position:relative; padding-top:110px;}
+  .arcbox svg{position:absolute; left:0; right:0; top:0; height:110px; width:100%; pointer-events:none; overflow:visible;}
+  .headsel{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;}
+
+  /* weight share bars */
+  .wrow{display:grid; grid-template-columns:150px 1fr 150px; gap:12px; align-items:center; margin-top:12px; font:13px/1.3 var(--sans);}
+  @media (max-width:560px){ .wrow{grid-template-columns:110px 1fr 100px;} }
+  .wrow .nm{font-weight:600; text-align:right;}
+  .wrow .tr{height:20px; background:none; position:relative;}
+  .wrow .fill{position:absolute; inset:0 auto 0 0; border-radius:4px; min-width:2px;}
+  .wrow .val{font:12px/1.4 var(--mono); font-variant-numeric:tabular-nums; color:var(--muted);}
+
+  ul{max-width:66ch; padding-left:22px; margin:14px 0 0;}
+  li{margin-bottom:10px;}
+  li b{font-weight:600;}
+
+  footer{max-width:780px; margin:88px auto 0; padding:28px 20px 64px; border-top:1px solid var(--line); font-size:14px; color:var(--muted);}
+  footer p{max-width:66ch; margin:0 0 10px;}
+</style>
+
+<header>
+  <p class="eyebrow">Reading notes · Inference Engineering · §2.2.2 Transformer Blocks</p>
+  <h1>One token's trip through the transformer</h1>
+  <p class="lede">The body of an LLM is three kinds of layers: an <strong>embedding layer</strong>
+    that turns tokens into vectors, a tall stack of <strong>transformer blocks</strong> that
+    refine them, and an <strong>output layer</strong> that turns the final vector into a
+    prediction. Below, we follow one real token through one full decode pass.</p>
+  <blockquote>
+    “Within the transformer blocks, there are sublayers for attention, a feed-forward neural
+    network, and normalization.”
+    <cite>— Inference Engineering, §2.2.2</cite>
+  </blockquote>
+</header>
+
+<main>
+
+<section>
+  <p class="kicker">01 · The walkthrough</p>
+  <h2>Follow the token</h2>
+  <p>The prompt is the book's own sentence, cut off mid-thought: <em>“I decided to write a book
+    because I thought it would be&hellip;”</em> The model's job in this decode pass is to
+    produce the next token. Step through the pipeline with the buttons; the map shows where you
+    are, and the teal bar tracks what shape the data has at each point.</p>
+
+  <div class="panel">
+    <div class="pipemap" id="pipemap"></div>
+    <div class="stepviz" id="stepviz"></div>
+    <p class="shape" id="shapetrack"></p>
+    <div class="stepnav">
+      <button id="prev" type="button">← prev</button>
+      <button id="next" type="button">next →</button>
+      <span class="title" id="steptitle"></span>
+      <span class="count" id="stepcount"></span>
+    </div>
+    <p class="panel-cap" id="stepnote"></p>
+  </div>
+</section>
+
+<section>
+  <p class="kicker">02 · Inside the attention sublayer</p>
+  <h2>Multi-head attention, on the book's sentence</h2>
+  <p>Attention relates the current token to every earlier one. Each <b>head</b> is a full,
+    independent attention operation running in parallel, and different heads learn different
+    kinds of relationships — the book gives subject–verb agreement and co-reference (figuring
+    out what “it” refers to) as examples. <b>Hover any word</b> to see where that token's query
+    lands; switch heads to see the same token asking a different question.</p>
+
+  <div class="panel">
+    <div class="headsel" id="headsel"></div>
+    <div class="arcbox" id="arcbox">
+      <svg id="arcsvg"></svg>
+      <div class="toks" id="arctoks"></div>
+    </div>
+    <p class="panel-cap" id="arccap">Hover a word. Arcs point only <b>backwards</b> — the causal
+      mask hides every future token, which is what makes this a causal language model.</p>
+  </div>
+
+  <p>Under the hood each head computes the book's Figure 2.8: the current token's
+    <b>query (Q)</b> is dot-producted against the <b>keys (K)</b> of all prior tokens, scores are
+    softmaxed into weights like the arcs above, and those weights blend the prior tokens'
+    <b>values (V)</b> into an update. Because every token looks at every earlier token, the raw
+    cost grows quadratically with sequence length — the <b>KV cache</b> (built during prefill,
+    §5.3) is what keeps decode linear by storing every K and V instead of recomputing them.
+    These weights are hand-drawn for illustration; real heads are learned and messier — one
+    famous quirk being that many heads dump spare attention on the first token, an
+    “attention sink.”</p>
+</section>
+
+<section>
+  <p class="kicker">03 · Where the weights live</p>
+  <h2>The FFN is the heavyweight</h2>
+  <p>The book notes the feed-forward sublayers hold the majority of an LLM's weights, attention
+    is second, and normalization is “a rounding error.” Here is that claim made concrete with
+    Llama-3-8B's actual dimensions (32 blocks, hidden size 4,096, FFN width 14,336, vocabulary
+    128,256):</p>
+
+  <div class="panel">
+    <div class="wrow"><span class="nm">Feed-forward (×32)</span><span class="tr"><span class="fill" style="width:70.2%; background:var(--t)"></span></span><span class="val">5.64 B · 70.2%</span></div>
+    <div class="wrow"><span class="nm">Attention (×32)</span><span class="tr"><span class="fill" style="width:16.7%; background:var(--o)"></span></span><span class="val">1.34 B · 16.7%</span></div>
+    <div class="wrow"><span class="nm">Embedding + LM head</span><span class="tr"><span class="fill" style="width:13.1%; background:var(--v)"></span></span><span class="val">1.05 B · 13.1%</span></div>
+    <div class="wrow"><span class="nm">All normalization</span><span class="tr"><span class="fill" style="width:0.02%; background:var(--m)"></span></span><span class="val">~0.3 M · 0.003%</span></div>
+    <p class="panel-cap">Parameter counts computed from the architecture's <span class="num">config.json</span>
+      dimensions (§2.2.1). Yet the <b>hardest part to run fast is attention</b>, not the FFN —
+      matmuls are the GPU's favorite food, while attention's data movement is what needed
+      inventions like FlashAttention and the KV cache.</p>
+  </div>
+</section>
+
+<section>
+  <p class="kicker">04 · Reading the diagram like an engineer</p>
+  <h2>Details worth noticing</h2>
+  <ul>
+    <li><b>The stack is tall, and depth varies by scale.</b> “Dozens to hundreds” of identical
+      blocks: Llama-3-8B has 32, Llama-3-70B has 80, and the book's Qwen3-235B MoE example has
+      94. Same recipe per block; only count and widths change.</li>
+    <li><b>Residual connections are the spine.</b> Each sublayer's output is <em>added to</em>
+      its input rather than replacing it (the “+” junctions in Figure 2.7). The hidden state is
+      a running total that attention and FFN each nudge — this is what lets gradients survive a
+      100-layer round trip during training.</li>
+    <li><b>Normalization is a thermostat, not a thinker.</b> Before each sublayer, RMSNorm
+      rescales the vector to a steady magnitude so 32–100 blocks of repeated adds don't blow up
+      or fade out. Almost no weights, almost no compute, absolutely load-bearing.</li>
+    <li><b>Attention mixes across tokens; the FFN thinks per token.</b> Attention is the only
+      place tokens exchange information. The FFN — the SwiGLU machine from §2.1.2 — is applied
+      to each position independently, expanding 4,096 → 14,336 → back, bending the
+      representation nonlinearly. Mix, then think; mix, then think; ×32.</li>
+    <li><b>Prefill and decode run the same pipeline.</b> This walkthrough followed one decode
+      pass. Prefill (§2.2) pushes <em>all</em> prompt tokens through the same layers at once,
+      stashing each one's K and V in the KV cache — which is exactly why our token “be” could
+      look prior tokens up instead of reprocessing them.</li>
+    <li><b>Only the last token gets a verdict.</b> The LM head produces logits from the final
+      hidden state of the <em>newest</em> position — everything earlier contributed via
+      attention, but only one 128,256-wide prediction is made per decode pass.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p><b>In one sentence:</b> a token becomes a vector at the embedding layer, gets repeatedly
+    refined by transformer blocks — attention to mix in context, a feed-forward network to
+    transform it, normalization to keep it stable, residuals to accumulate it — and the output
+    layer converts the final vector into logits over the whole vocabulary, from which the next
+    token is sampled.</p>
+  <p>Companion note to <em>Inference Engineering</em> §2.2.2 · siblings: “Dimensionality” and
+    “Activation Functions.”</p>
+</footer>
+
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const dpr = Math.min(2, window.devicePixelRatio || 1);
+const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const hexRgb = h => { h = h.replace('#',''); return [0,2,4].map(i => parseInt(h.slice(i, i+2), 16)); };
+const fmt = n => n.toLocaleString('en-US');
+
+function fnv(s){ let h = 2166136261; for (let i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+function rng(seed){ let a = seed; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function vecFor(tag, n, spiky){
+  const r = rng(fnv(tag));
+  return Array.from({length: n}, () => {
+    const v = r() * 2 - 1;
+    return spiky && r() < 0.06 ? v * 3.2 : v; // occasional outliers for the pre-norm view
+  });
+}
+function heatColor(v){
+  const c = v < 0 ? hexRgb(cssVar('--o')) : hexRgb(cssVar('--t'));
+  const a = 0.13 + 0.87 * Math.min(1, Math.abs(v));
+  return `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+}
+function fitCanvas(cv){
+  const w = cv.clientWidth || cv.parentElement.clientWidth;
+  if (!cv.dataset.h) cv.dataset.h = cv.getAttribute('height');
+  const cssH = parseFloat(cv.dataset.h);
+  cv.width = Math.round(w * dpr); cv.height = Math.round(cssH * dpr);
+  cv.style.height = cssH + 'px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return [ctx, w, cssH];
+}
+function drawStrip(cv, values){
+  const [ctx, W, H] = fitCanvas(cv);
+  ctx.clearRect(0, 0, W, H);
+  const n = values.length, cw = W / n;
+  for (let i = 0; i < n; i++){
+    ctx.fillStyle = heatColor(Math.max(-1, Math.min(1, values[i])));
+    ctx.fillRect(i * cw, 0, cw + 0.5, H);
+  }
+}
+function stripHTML(id, h){ return `<canvas id="${id}" height="${h}"></canvas>`; }
+
+/* ---------- shared sentence data ---------- */
+const TOKS = ['I','decided','to','write','a','book','because','I','thought','it','would','be'];
+const IDS  = [ 40,  6773,  311, 3350, 264, 2363, 1606,  358, 3463, 433, 1053, 387];
+const QI = TOKS.length - 1; // "be", the token we follow
+
+/* attention heads: hand-crafted illustrative weights */
+const HEADS = [
+  { name:'head 1 · recency', desc:'leans on the last few tokens',
+    w:(qi,j) => Math.exp(-(qi - j) / 1.8) },
+  { name:'head 2 · co-reference', desc:'chases what pronouns point at',
+    over:{ 9:{5:.62, 3:.22}, 11:{9:.55, 5:.18}, 10:{9:.5}, 8:{7:.55}, 1:{0:.5} },
+    w:(qi,j) => 0.04 },
+  { name:'head 3 · subject–verb', desc:'links verbs to their subject',
+    over:{ 1:{0:.7}, 3:{0:.5,1:.2}, 8:{7:.68}, 10:{9:.35,7:.3}, 11:{9:.45,10:.25} },
+    w:(qi,j) => (j === 0 ? 0.25 : 0.03) }, // spare mass to token 0: the attention sink
+];
+function attnW(h, qi){
+  const head = HEADS[h], raw = [];
+  for (let j = 0; j <= qi; j++){
+    let s = head.w(qi, j);
+    if (head.over && head.over[qi] && head.over[qi][j] !== undefined) s = head.over[qi][j];
+    raw.push(s);
+  }
+  const sum = raw.reduce((a, b) => a + b, 0);
+  return raw.map(x => x / sum);
+}
+
+/* ---------- 01 · stepper ---------- */
+const CANDS = [
+  { t:'easy', l:8.1 }, { t:'hard', l:6.3 }, { t:'fun', l:5.9 }, { t:'difficult', l:5.6 },
+  { t:'simple', l:5.1 }, { t:'quick', l:4.7 }, { t:'a', l:4.3 }, { t:'worth', l:4.0 },
+];
+let step = 0, blockK = 1, stepHead = 1, temp = 1.0, picked = null;
+
+function toksHTML(opts = {}){
+  return `<div class="toks">` + TOKS.map((w, i) => {
+    const cls = ['tok'];
+    if (i === QI && opts.hotLast) cls.push('hot');
+    if (opts.dimAfter !== undefined && i > opts.dimAfter) cls.push('dim');
+    return `<div class="${cls.join(' ')}"><span class="w">${w}</span><span class="id">${IDS[i]}</span></div>`;
+  }).join('') + (opts.appended ? `<div class="tok new"><span class="w">${opts.appended}</span><span class="id">next</span></div>` : '') + `</div>`;
+}
+function softmaxCands(T){
+  const ex = CANDS.map(c => Math.exp(c.l / T));
+  const s = ex.reduce((a, b) => a + b, 0);
+  return ex.map(e => e / s);
+}
+
+const STEPS = [
+  { title:'Step 0 · Tokenizer (before the network)',
+    map:0,
+    shape:'“…it would be” (string)  →  12 token ids',
+    note:`Plain code, no neural network (§2.2): the tokenizer looks the text up in the model's
+      vocabulary and hands back integers. Our subject is the newest token, “be” — id
+      <b>387</b>. (Ids are illustrative.) Everything after this line is the neural network.`,
+    render(el){ el.innerHTML = toksHTML({hotLast:true}); } },
+
+  { title:'Step 1 · Embedding layer — token in, vector out',
+    map:1,
+    shape:'id 387  →  hidden state [4,096 numbers]',
+    note:`The input layer of the network is a lookup: row 387 of the embedding table becomes
+      “be”'s starting <b>hidden state</b> — 4,096 numbers in this architecture (the
+      dimensionality story from §1). Right now the vector knows only what “be” means in
+      general; nothing about <em>this</em> sentence.`,
+    render(el){
+      el.innerHTML = `<div class="vrow"><span class="lbl">token id</span><span class="num" style="font-weight:600">387 · “be”</span></div>
+        <p class="bigarrow">↓ embedding table lookup (row 387 of 128,256)</p>
+        <div class="vrow"><span class="lbl">hidden state</span><span class="grow">${stripHTML('s1strip', 40)}</span></div>`;
+      drawStrip($('s1strip'), vecFor('be:embed', 320));
+    } },
+
+  { title:'Step 2 · Entering block 1: RMSNorm',
+    map:2,
+    shape:'[4,096]  →  [4,096], rescaled to steady magnitude',
+    note:`First sublayer of the block is <b>normalization</b>. It doesn't change what the vector
+      says — it rescales it to a standard magnitude so that after dozens of blocks of repeated
+      additions the numbers neither explode nor vanish. Nearly zero weights, but the stack
+      would be untrainable without it.`,
+    render(el){
+      el.innerHTML = `<div class="vrow"><span class="lbl">before (spiky)</span><span class="grow">${stripHTML('s2a', 34)}</span></div>
+        <div class="vrow"><span class="lbl">after RMSNorm</span><span class="grow">${stripHTML('s2b', 34)}</span></div>`;
+      const raw = vecFor('be:embed', 320, true);
+      drawStrip($('s2a'), raw);
+      const rms = Math.sqrt(raw.reduce((s, v) => s + v * v, 0) / raw.length);
+      drawStrip($('s2b'), raw.map(v => v / (rms * 1.6)));
+    } },
+
+  { title:'Step 3 · Multi-head attention — mix in the context',
+    map:3,
+    shape:'Q[“be”] × K,V[all 12 tokens]  →  updated [4,096]  (+ residual add)',
+    note:`The only place tokens talk to each other. “be”'s <b>query</b> is scored against every
+      prior token's <b>key</b> (fetched from the KV cache, not recomputed), and the resulting
+      weights blend their <b>values</b> into “be”'s vector. Heads run in parallel, each asking a
+      different question — try them. Then the update is <b>added</b> to the incoming vector
+      (the residual connection), not swapped in.`,
+    render(el){
+      el.innerHTML = `<div class="headsel" id="s3heads"></div><div id="s3bars"></div>
+        <p class="bigarrow">↓ weighted blend of values, + residual</p>
+        <div class="vrow"><span class="lbl">updated state</span><span class="grow">${stripHTML('s3strip', 34)}</span></div>`;
+      HEADS.forEach((h, i) => {
+        const b = document.createElement('button');
+        b.type = 'button'; b.textContent = h.name;
+        b.setAttribute('aria-pressed', i === stepHead);
+        b.addEventListener('click', () => { stepHead = i; this.render(el); });
+        $('s3heads').appendChild(b);
+      });
+      const w = attnW(stepHead, QI);
+      $('s3bars').innerHTML = w.map((x, j) =>
+        `<div class="abar"><span class="tk">${TOKS[j]}</span><span class="tr"><span class="fill" style="width:${(x * 100).toFixed(1)}%"></span></span><span class="pc">${(x * 100).toFixed(0)}%</span></div>`
+      ).join('');
+      drawStrip($('s3strip'), vecFor('be:attn' + stepHead, 320));
+    } },
+
+  { title:'Step 4 · Feed-forward network — think about it',
+    map:4,
+    shape:'[4,096] → [14,336] → [4,096]  (+ residual add)',
+    note:`The multi-layer perceptron: expand to 14,336 numbers, apply the SwiGLU gate (the
+      activation-function story of §2.1.2 — this is where linearity gets broken), and project
+      back down. It runs on “be”'s vector alone — no other tokens involved — and holds
+      <b>most of the model's weights</b>. Its output is again added via residual.`,
+    render(el){
+      el.innerHTML = `<div class="vrow"><span class="lbl">in [4,096]</span><span class="grow">${stripHTML('s4a', 26)}</span></div>
+        <div class="vrow"><span class="lbl">expanded [14,336]</span><span class="grow">${stripHTML('s4b', 40)}</span></div>
+        <div class="vrow"><span class="lbl">out [4,096]</span><span class="grow">${stripHTML('s4c', 26)}</span></div>
+        <p class="panel-cap">up-project → SwiGLU gate → down-project · then + residual</p>`;
+      drawStrip($('s4a'), vecFor('be:attn' + stepHead, 320));
+      drawStrip($('s4b'), vecFor('be:ffn-mid', 640));
+      drawStrip($('s4c'), vecFor('be:block1', 320));
+    } },
+
+  { title:'Step 5 · Repeat ×32 — the tall stack',
+    map:5,
+    shape:'[4,096], refined 32 times: mix (attention) → think (FFN) → …',
+    note:`That whole block — norm, attention, norm, FFN, residuals — is one of <b>32</b> in this
+      architecture (80 in Llama-70B; 94 in the book's Qwen MoE example). Slide through the
+      stack: the hidden state drifts from “the word be” toward “the concept this sentence is
+      about to name.” Early blocks tend to resolve syntax; later ones, meaning.`,
+    render(el){
+      el.innerHTML = `<div class="vrow"><span class="lbl">after block <span id="s5k">${blockK}</span></span>
+          <span class="grow"><input type="range" id="s5r" min="1" max="32" step="1" value="${blockK}" style="width:100%"></span></div>
+        <div class="vrow"><span class="lbl">hidden state</span><span class="grow">${stripHTML('s5strip', 40)}</span></div>
+        <div class="stack" id="s5stack"></div>`;
+      $('s5stack').innerHTML = Array.from({length: 32}, (_, i) =>
+        `<i class="${i < blockK ? 'on' : ''}"></i>`).join('');
+      const draw = () => {
+        const a = vecFor('be:block1', 320), b = vecFor('be:final', 320), f = (blockK - 1) / 31;
+        drawStrip($('s5strip'), a.map((v, i) => v * (1 - f) + b[i] * f));
+        $('s5k').textContent = blockK;
+        $('s5stack').innerHTML = Array.from({length: 32}, (_, i) =>
+          `<i class="${i < blockK ? 'on' : ''}"></i>`).join('');
+      };
+      $('s5r').addEventListener('input', e => { blockK = +e.target.value; draw(); });
+      draw();
+    } },
+
+  { title:'Step 6 · Final norm + LM head — vector in, logits out',
+    map:6,
+    shape:'[4,096]  →  logits [128,256] — one score per vocabulary token',
+    note:`The <b>output layer</b> (language modeling head): one last normalization, then a
+      single giant matmul from hidden size to vocabulary size. Out comes a <b>logit</b> — a raw
+      score — for every one of the 128,256 tokens the model knows. High score means “likely
+      next token.”`,
+    render(el){
+      el.innerHTML = `<div class="vrow"><span class="lbl">final state [4,096]</span><span class="grow">${stripHTML('s6a', 30)}</span></div>
+        <p class="bigarrow">↓ LM head: 4,096 × 128,256 matmul</p>
+        <div class="vrow"><span class="lbl">logits [128,256]</span><span class="grow">${stripHTML('s6b', 44)}</span></div>
+        <p class="panel-cap">Highest raw scores: <b>easy 8.1</b> · hard 6.3 · fun 5.9 ·
+          difficult 5.6 · simple 5.1 · … · <span class="num">128,248</span> others near zero.</p>`;
+      drawStrip($('s6a'), vecFor('be:final', 320));
+      drawStrip($('s6b'), vecFor('be:logits', 900).map(v => v * 0.4));
+    } },
+
+  { title:'Step 7 · Sample a token, then go again',
+    map:7,
+    shape:'logits [128,256]  →  softmax → weighted random pick  →  1 token',
+    note:`Logits are normalized into probabilities and the output token is a <b>weighted random
+      draw</b> (§2.2). Temperature reshapes the distribution before the draw — low = safe,
+      high = adventurous. The chosen token is appended to the sequence and the whole pipeline
+      runs again: that loop is what “autoregressive” means.`,
+    render(el){
+      el.innerHTML = `<div class="vrow"><span class="lbl">temperature</span>
+          <span class="grow"><input type="range" id="s7t" min="0.1" max="2" step="0.1" value="${temp}" style="width:100%"></span>
+          <span class="num" id="s7tv" style="font-weight:600">${temp.toFixed(1)}</span></div>
+        <div id="s7bars"></div>
+        <div class="vrow" style="margin-top:16px"><button id="s7go" type="button">🎲 sample the next token</button>
+          <span class="num" id="s7res" style="font-weight:600"></span></div>
+        <div id="s7out" style="margin-top:14px"></div>`;
+      const bars = () => {
+        const p = softmaxCands(temp);
+        $('s7bars').innerHTML = CANDS.map((c, i) =>
+          `<div class="sbar${picked === c.t ? ' win' : ''}"><span class="tk">${c.t}</span><span class="tr"><span class="fill" style="width:${(p[i] * 100).toFixed(1)}%"></span></span><span class="pc">${(p[i] * 100).toFixed(1)}%</span></div>`
+        ).join('');
+        $('s7out').innerHTML = picked
+          ? toksHTML({appended: picked}) + `<p class="panel-cap">“${picked}” is appended and the
+              pipeline runs again for the token after it — only “${picked}” needs processing,
+              since every earlier token's K and V are already in the cache. ↺</p>`
+          : '';
+      };
+      $('s7t').addEventListener('input', e => { temp = +e.target.value; $('s7tv').textContent = temp.toFixed(1); bars(); });
+      $('s7go').addEventListener('click', () => {
+        const p = softmaxCands(temp);
+        let r = Math.random(), k = 0;
+        while (k < p.length - 1 && r > p[k]) { r -= p[k]; k++; }
+        picked = CANDS[k].t;
+        $('s7res').textContent = '→ “' + picked + '”';
+        bars();
+      });
+      bars();
+    } },
+];
+
+/* pipeline map */
+const MAPCHIPS = ['Tokenizer','Embedding','Norm','Attention','FFN','×32','LM head','Sample ↺'];
+function buildMap(){
+  const m = $('pipemap');
+  m.innerHTML = '';
+  const add = (parent, i) => {
+    const c = document.createElement('button');
+    c.type = 'button'; c.className = 'pchip'; c.textContent = MAPCHIPS[i];
+    c.addEventListener('click', () => go(i));
+    parent.appendChild(c);
+    return c;
+  };
+  const arrow = parent => { const a = document.createElement('span'); a.className = 'parr'; a.textContent = '→'; parent.appendChild(a); };
+  add(m, 0); arrow(m); add(m, 1); arrow(m);
+  const g = document.createElement('span'); g.className = 'pgroup'; g.id = 'pgroup';
+  g.innerHTML = '<em>transformer block · repeated</em>';
+  add(g, 2); arrow(g); add(g, 3); arrow(g); add(g, 4); arrow(g); add(g, 5);
+  m.appendChild(g); arrow(m); add(m, 6); arrow(m); add(m, 7);
+}
+function go(i){
+  step = Math.max(0, Math.min(STEPS.length - 1, i));
+  const s = STEPS[step];
+  document.querySelectorAll('.pchip').forEach((c, j) => c.setAttribute('aria-current', j === s.map));
+  $('pgroup').classList.toggle('active', s.map >= 2 && s.map <= 5);
+  $('steptitle').textContent = s.title;
+  $('stepcount').textContent = (step + 1) + ' / ' + STEPS.length;
+  $('shapetrack').innerHTML = s.shape;
+  $('stepnote').innerHTML = s.note;
+  $('prev').disabled = step === 0;
+  $('next').disabled = step === STEPS.length - 1;
+  const el = $('stepviz');
+  s.render.call(s, el);
+}
+$('prev').addEventListener('click', () => go(step - 1));
+$('next').addEventListener('click', () => go(step + 1));
+buildMap();
+
+/* ---------- 02 · attention playground ---------- */
+let arcHead = 1, arcHover = null;
+const arcbox = $('arcbox'), arctoks = $('arctoks'), arcsvg = $('arcsvg');
+HEADS.forEach((h, i) => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.textContent = h.name;
+  b.setAttribute('aria-pressed', i === arcHead);
+  b.addEventListener('click', () => {
+    arcHead = i;
+    $('headsel').querySelectorAll('button').forEach((x, j) => x.setAttribute('aria-pressed', j === i));
+    drawArcs();
+  });
+  $('headsel').appendChild(b);
+});
+TOKS.forEach((w, i) => {
+  const d = document.createElement('div');
+  d.className = 'tok'; d.tabIndex = 0;
+  d.innerHTML = `<span class="w">${w}</span><span class="id">${IDS[i]}</span>`;
+  d.addEventListener('mouseenter', () => { arcHover = i; drawArcs(); });
+  d.addEventListener('focus', () => { arcHover = i; drawArcs(); });
+  d.addEventListener('mouseleave', () => { arcHover = null; drawArcs(); });
+  d.addEventListener('blur', () => { arcHover = null; drawArcs(); });
+  arctoks.appendChild(d);
+});
+function drawArcs(){
+  const kids = [...arctoks.children];
+  kids.forEach((k, i) => {
+    k.classList.toggle('dim', arcHover !== null && i > arcHover);
+    k.classList.toggle('hot', arcHover === i);
+  });
+  arcsvg.innerHTML = '';
+  if (arcHover === null || arcHover === 0){
+    $('arccap').innerHTML = arcHover === 0
+      ? 'The first token has nothing earlier to attend to — it can only see itself.'
+      : 'Hover a word. Arcs point only <b>backwards</b> — the causal mask hides every future token, which is what makes this a causal language model.';
+    return;
+  }
+  const boxr = arcbox.getBoundingClientRect();
+  const H = 110;
+  arcsvg.setAttribute('viewBox', `0 0 ${boxr.width} ${H}`);
+  const w = attnW(arcHead, arcHover);
+  const cx = i => {
+    const r = kids[i].getBoundingClientRect();
+    return r.left - boxr.left + r.width / 2;
+  };
+  const x1 = cx(arcHover);
+  const names = [];
+  w.forEach((wt, j) => {
+    if (j === arcHover || wt < 0.06) return;
+    const x2 = cx(j);
+    const lift = Math.min(96, 22 + Math.abs(x1 - x2) * 0.22);
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', `M ${x1} ${H} C ${x1} ${H - lift}, ${x2} ${H - lift}, ${x2} ${H}`);
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', cssVar('--t'));
+    p.setAttribute('stroke-width', (1 + wt * 9).toFixed(1));
+    p.setAttribute('stroke-opacity', (0.25 + wt * 0.75).toFixed(2));
+    p.setAttribute('stroke-linecap', 'round');
+    arcsvg.appendChild(p);
+    names.push({ t: TOKS[j], wt });
+  });
+  names.sort((a, b) => b.wt - a.wt);
+  $('arccap').innerHTML = `<b>“${TOKS[arcHover]}”</b> (${HEADS[arcHead].desc}) attends to: ` +
+    names.slice(0, 3).map(n => `<b>${n.t}</b> ${(n.wt * 100).toFixed(0)}%`).join(' · ') +
+    `. Tokens to the right are grayed out — the causal mask.`;
+}
+drawArcs();
+
+/* ---------- boot & theme reactivity ---------- */
+go(0);
+function redrawAll(){ go(step); drawArcs(); }
+new MutationObserver(redrawAll).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redrawAll);
+let rsz; window.addEventListener('resize', () => { clearTimeout(rsz); rsz = setTimeout(redrawAll, 150); });
+})();
+</script>

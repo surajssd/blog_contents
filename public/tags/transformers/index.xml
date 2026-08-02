@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Transformers on Suraj Deshmukh</title>
+    <link>https://suraj.io/tags/transformers/</link>
+    <description>Recent content in Transformers on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 02 Aug 2026 10:00:00 +0530</lastBuildDate>
+    <atom:link href="https://suraj.io/tags/transformers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Interactive Visualizations for the book &#39;Inference Engineering&#39;</title>
+      <link>https://suraj.io/post/2026/inference-engineering-visualizations/</link>
+      <pubDate>Sun, 02 Aug 2026 10:00:00 +0530</pubDate>
+      <guid>https://suraj.io/post/2026/inference-engineering-visualizations/</guid>
+      <description>A set of interactive, self-contained visualizations that make the core concepts of inference engineering — dimensionality, attention, MoE, and the roofline model — tangible.</description>
+    </item>
+  </channel>
+</rss>
