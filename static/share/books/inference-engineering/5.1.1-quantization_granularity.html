@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantization Granularity — Inference Engineering §5.1.1</title>
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#131822; --panel2:#1a212e; --line:#26303f;
+    --txt:#e5e9f0; --dim:#8b98ad; --dimmer:#5d6b80;
+    --hot:#ff7a45; --hot2:#ffb066; --cool:#3d8bff; --green:#3ddc97; --purple:#b184ff; --yellow:#f5d76e; --red:#ff5470;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:40px 24px 90px}
+  header{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:34px}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--hot)}
+  h1{font-size:clamp(26px,4vw,40px);margin:10px 0 8px;letter-spacing:-.02em;line-height:1.1}
+  .sub{color:var(--dim);font-size:16px;max-width:76ch}
+  h2{font-size:13px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dimmer);
+    margin:0 0 16px;display:flex;align-items:center;gap:10px}
+  h2::after{content:"";flex:1;height:1px;background:var(--line)}
+  section{margin-bottom:50px}
+  p{margin:0 0 14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:860px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+  .label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dimmer);margin-bottom:10px}
+  .eq{font-family:var(--mono);font-size:13.5px;background:var(--panel2);border:1px solid var(--line);
+    border-radius:8px;padding:12px 14px;color:var(--hot2);overflow-x:auto;line-height:1.9}
+  .eq .c{color:var(--dimmer)}
+
+  .bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+  button{font-family:var(--mono);font-size:12px;letter-spacing:.04em;background:transparent;color:var(--dim);
+    border:1px solid var(--line);padding:8px 13px;border-radius:7px;cursor:pointer}
+  button:hover{color:var(--txt);border-color:var(--dimmer)}
+  button.on{background:var(--hot);color:#1a0d06;border-color:var(--hot);font-weight:700}
+  .barlabel{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--dimmer);margin-right:2px}
+
+  svg{display:block;width:100%;height:auto}
+  .gt{fill:var(--dimmer);font-family:var(--mono);font-size:9px}
+  .gtl{fill:var(--dim);font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+  .grp{fill:none;stroke:var(--yellow);stroke-width:1.4;opacity:.85}
+
+  .kpi{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:14px}
+  .kpi .v{font-family:var(--mono);font-size:24px;color:var(--hot2);line-height:1.15}
+  .kpi .k{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dimmer);margin-bottom:6px}
+  .kpi .n{font-size:11.5px;color:var(--dim);margin-top:6px}
+  .kpi.good .v{color:var(--green)} .kpi.bad .v{color:var(--red)}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{text-align:left;padding:10px 11px;border-bottom:1px solid var(--line)}
+  th{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dimmer);font-weight:500}
+  td.n{font-family:var(--mono);color:var(--hot2)}
+  ul{margin:0;padding-left:19px;color:var(--dim);font-size:14px}
+  li{margin-bottom:8px} li b{color:var(--txt)}
+  .quote{border-left:2px solid var(--hot);padding:2px 0 2px 16px;color:var(--dim);font-size:15px;font-style:italic}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-family:var(--mono);font-size:11px;color:var(--dimmer);margin-top:10px}
+  .sw{display:inline-block;width:26px;height:9px;border-radius:2px;vertical-align:middle;margin-right:5px}
+  .cite{font-family:var(--mono);font-size:11px;color:var(--dimmer);text-align:center;border-top:1px solid var(--line);padding-top:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Inference Engineering · §5.1.1</div>
+  <h1>Quantization Granularity</h1>
+  <p class="sub">A scale factor maps low-precision values back to high precision. <b>Granularity</b> is how many values share one scale factor. Share too many and a single outlier drags everything else toward zero — which is the entire reason MXFP4 and NVFP4 exist.</p>
+</header>
+
+<section>
+  <h2>0 · What a scale factor does</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="label">The mapping</div>
+      <div class="eq">
+        scale = max(|x| in group) / QMAX<br>
+        q&nbsp;&nbsp;&nbsp;&nbsp;= round_to_format(x / scale)<br>
+        x̂&nbsp;&nbsp;&nbsp;&nbsp;= q × scale &nbsp;&nbsp;<span class="c">← reconstructed</span>
+      </div>
+      <p style="color:var(--dim);font-size:13.5px;margin:14px 0 0">FP4 (E2M1) can only represent eight magnitudes: <span class="mono" style="color:var(--hot2)">0, .5, 1, 1.5, 2, 3, 4, 6</span>. Everything in a group has to land on one of those eight rungs after dividing by the group's single scale factor.</p>
+    </div>
+    <div class="card">
+      <div class="label">Why the group matters</div>
+      <p style="color:var(--dim);font-size:14px;margin-bottom:10px">The scale is set by the <b>largest</b> value in the group. Put one outlier of 9.0 in with a crowd of 0.3s and the scale becomes 1.5 — so every 0.3 rounds to either 0 or 0.75. The outlier didn't just survive, it <b>flattened its neighbors</b>.</p>
+      <p class="quote" style="margin:0">"More granular quantization has a lower chance of smoothing over outliers, preserving quality. However, more granularity introduces more overhead for storing and applying scale factors."</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>1 · Watch it happen — real FP4 quantization</h2>
+  <div class="bar">
+    <span class="barlabel">Granularity</span>
+    <span id="gBtns"></span>
+  </div>
+  <div class="bar" style="margin-bottom:16px">
+    <span class="barlabel">Outliers</span>
+    <span id="oBtns"></span>
+  </div>
+
+  <div class="card">
+    <svg id="viz" viewBox="0 0 880 300"></svg>
+    <div class="legend">
+      <span><span class="sw" style="background:linear-gradient(90deg,#16202e,#3d8bff)"></span>magnitude |x|</span>
+      <span><span class="sw" style="background:linear-gradient(90deg,#1c3a2b,#f5d76e,#ff5470)"></span>quantization error</span>
+      <span><span class="sw" style="background:transparent;border:1.4px solid var(--yellow);height:11px"></span>one scale factor per outlined group</span>
+    </div>
+  </div>
+
+  <div class="grid4" style="margin-top:14px">
+    <div class="kpi" id="k1"><div class="k">Scale factors</div><div class="v">—</div><div class="n">for 384 values</div></div>
+    <div class="kpi" id="k2"><div class="k">Relative RMSE</div><div class="v">—</div><div class="n">error vs. original tensor</div></div>
+    <div class="kpi" id="k3"><div class="k">Values crushed to 0</div><div class="v">—</div><div class="n">non-zero inputs that quantized to zero</div></div>
+    <div class="kpi" id="k4"><div class="k">Scale overhead</div><div class="v">—</div><div class="n">extra bits per stored value</div></div>
+  </div>
+  <p style="color:var(--dimmer);font-size:12.5px;margin-top:12px">Real FP4 E2M1 rounding on a synthetic 6-channel × 64-value tensor with a realistic outlier distribution. Numbers recompute live — nothing here is hardcoded.</p>
+</section>
+
+<section>
+  <h2>2 · The three levels</h2>
+  <div class="grid3">
+    <div class="card">
+      <div class="label" style="color:var(--red)">Tensor level</div>
+      <p style="color:var(--dim);font-size:14px;margin:0 0 10px">A <b>single</b> scale factor for the entire QKV tensor.</p>
+      <ul>
+        <li><b>Cheapest.</b> One extra number for millions of values — overhead is effectively zero.</li>
+        <li><b>Most fragile.</b> The single worst outlier anywhere in the tensor sets the scale for everything.</li>
+        <li>Fine for weights, which are well-behaved. Dangerous for activations, which are not.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="label" style="color:var(--yellow)">Channel level</div>
+      <p style="color:var(--dim);font-size:14px;margin:0 0 10px">A different scale factor for <b>each feature vector</b> within the tensor.</p>
+      <ul>
+        <li><b>Contains the blast radius</b> to one channel instead of the whole tensor.</li>
+        <li>Works especially well because activation outliers tend to <b>concentrate in specific channels</b> — flip the outlier toggle above to see this matter.</li>
+        <li>Still cheap: one scale per few thousand values.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="label" style="color:var(--green)">Block level</div>
+      <p style="color:var(--dim);font-size:14px;margin:0 0 10px">Within each feature vector, split into blocks of <b>N</b> values, one scale factor each.</p>
+      <ul>
+        <li><b>Highest fidelity.</b> An outlier only distorts its own 16 or 32 neighbors.</li>
+        <li>This is what makes 4-bit viable at all — the format's dynamic range is tiny, so the scale has to adapt locally.</li>
+        <li><b>Pays for it</b> in stored scale factors and in compute to apply them.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>3 · How real formats pick their block size</h2>
+  <div class="card" style="padding:6px 0 0">
+    <table>
+      <thead><tr><th>Format</th><th>Granularity</th><th>Scale storage</th><th>Effective bits/value</th></tr></thead>
+      <tbody>
+        <tr><td>FP8 (E4M3), classic</td><td class="n">tensor or channel</td><td class="n">1 per tensor / channel</td><td class="n">~8.0</td></tr>
+        <tr><td><b>MXFP8</b> · Blackwell</td><td class="n">block of 32</td><td class="n">8-bit shared exponent</td><td class="n">8.25</td></tr>
+        <tr><td><b>MXFP4</b> · Blackwell</td><td class="n">block of 32</td><td class="n">8-bit shared exponent</td><td class="n">4.25</td></tr>
+        <tr><td><b>NVFP4</b> · NVIDIA, Blackwell</td><td class="n">block of 16</td><td class="n">FP8 scale + 32-bit global</td><td class="n">~4.5</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid2" style="margin-top:14px">
+    <div class="card">
+      <div class="label">Why 4-bit needs microscaling</div>
+      <p style="color:var(--dim);font-size:14px;margin:0">The book's framing: MX formats "compute a blockwise scale factor on every 32 parameters, <b>reducing the impact of these number formats' lower dynamic range</b>." Granularity is the compensation mechanism for having almost no dynamic range left. NVFP4 goes further — block size 16 plus a secondary 32-bit global scale factor — precisely because 4 bits needs the help.</p>
+    </div>
+    <div class="card">
+      <div class="label">What it costs</div>
+      <p style="color:var(--dim);font-size:14px;margin:0">Two costs, not one. <b>Memory:</b> the small-block scale factors have to be stored and read, shaving the compression win. <b>Compute:</b> both the block and tensor scale factors have to be applied on every operation. Blackwell offsets the second by <b>applying scale factors inside the Tensor Cores</b> — which is why these formats are architecture-specific rather than universal.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>4 · Where this sits in the bigger decision</h2>
+  <div class="card">
+    <p style="color:var(--dim);font-size:14px;margin-bottom:12px">Granularity is one of two knobs the book asks you to set after choosing what to quantize. The other is <b>dynamic range</b> — the reason floating-point formats beat integer ones, since the exponent bits let FP represent outliers that INT simply clips. Together they decide whether a quantized model is production-viable.</p>
+    <p style="color:var(--dim);font-size:14px;margin:0">Model components are not equally forgiving. From least to most sensitive: <span style="color:var(--green)">linear-layer weights</span> → <span style="color:var(--green)">activations</span> → <span style="color:var(--yellow)">KV cache</span> → <span style="color:var(--red)">attention</span>. The last two carry compounding error — a KV cache entry feeds every subsequent token, and each attention calculation depends on the previous one, so small errors accumulate over thousands of tokens. Which is why softmax stays in original precision in all but the most aggressive schemes.</p>
+  </div>
+</section>
+
+<div class="cite">Source: <i>Inference Engineering</i> §5.1–5.1.2 · quantization computed live with FP4 E2M1 rounding</div>
+</div>
+
+<script>
+const ROWS=6, COLS=64, N=ROWS*COLS;
+const LEVELS=[0,0.5,1,1.5,2,3,4,6], QMAX=6;
+let mode='tensor', outlierMode='channel';
+
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function makeData(mode){
+  const r=mulberry32(20260808); const d=new Float64Array(N);
+  const gauss=()=>{let u=0,v=0;while(!u)u=r();while(!v)v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);};
+  for(let i=0;i<N;i++) d[i]=gauss()*0.35;
+  const nOut=8;
+  for(let k=0;k<nOut;k++){
+    let idx;
+    if(mode==='channel'){ const row=(k%2===0)?1:4; idx=row*COLS+Math.floor(r()*COLS); }
+    else if(mode==='scattered'){ idx=Math.floor(r()*N); }
+    else { d.fill(0,0,0); idx=-1; }
+    if(idx>=0) d[idx]=(r()<0.5?-1:1)*(5+r()*7);
+  }
+  if(mode==='none'){ /* no outliers at all */ }
+  return d;
+}
+function groupsFor(mode){
+  const g=[];
+  if(mode==='tensor'){ const ix=[];for(let i=0;i<N;i++)ix.push(i); g.push({ix,r0:0,c0:0,r1:ROWS,c1:COLS}); }
+  else if(mode==='channel'){ for(let rr=0;rr<ROWS;rr++){const ix=[];for(let c=0;c<COLS;c++)ix.push(rr*COLS+c); g.push({ix,r0:rr,c0:0,r1:rr+1,c1:COLS});} }
+  else { const B=mode==='b32'?32:16;
+    for(let rr=0;rr<ROWS;rr++) for(let c0=0;c0<COLS;c0+=B){const ix=[];for(let c=c0;c<c0+B;c++)ix.push(rr*COLS+c); g.push({ix,r0:rr,c0,r1:rr+1,c1:c0+B});} }
+  return g;
+}
+function quantize(d,groups){
+  const out=new Float64Array(N);
+  groups.forEach(g=>{
+    let amax=0; g.ix.forEach(i=>{if(Math.abs(d[i])>amax)amax=Math.abs(d[i]);});
+    const s=amax>0?amax/QMAX:1;
+    g.ix.forEach(i=>{
+      const t=Math.abs(d[i])/s; let best=LEVELS[0],bd=Infinity;
+      for(const L of LEVELS){const dd=Math.abs(L-t); if(dd<bd){bd=dd;best=L;}}
+      out[i]=Math.sign(d[i])*best*s;
+    });
+  });
+  return out;
+}
+const el=(t,a)=>{const n=document.createElementNS('http://www.w3.org/2000/svg',t);for(const k in a)n.setAttribute(k,a[k]);return n;};
+const magCol=v=>{const t=Math.min(1,v); const c=[22,32,46], c2=[61,139,255];
+  return `rgb(${c.map((x,i)=>Math.round(x+(c2[i]-x)*Math.pow(t,.5))).join(',')})`;};
+const errCol=t=>{ t=Math.min(1,t);
+  if(t<.5){const u=t/.5;return `rgb(${Math.round(28+(245-28)*u)},${Math.round(58+(215-58)*u)},${Math.round(43+(110-43)*u)})`;}
+  const u=(t-.5)/.5;return `rgb(${Math.round(245+(255-245)*u)},${Math.round(215+(84-215)*u)},${Math.round(110+(112-110)*u)})`;};
+
+function render(){
+  const d=makeData(outlierMode), groups=groupsFor(mode), q=quantize(d,groups);
+  let se=0,ss=0,zero=0,amaxAll=0;
+  for(let i=0;i<N;i++){se+=(q[i]-d[i])**2; ss+=d[i]**2; if(d[i]!==0&&q[i]===0)zero++; amaxAll=Math.max(amaxAll,Math.abs(d[i]));}
+  const rms=Math.sqrt(ss/N), rmse=Math.sqrt(se/N), rel=rmse/rms*100;
+
+  const svg=document.getElementById('viz'); svg.innerHTML='';
+  const CW=12.4, CH=17, X0=58, Y1=48, Y2=190;
+
+  svg.appendChild(el('text',{x:X0,y:Y1-12,class:'gtl'})).textContent='Original tensor · cell brightness = |value|';
+  svg.appendChild(el('text',{x:X0,y:Y2-12,class:'gtl'})).textContent='Quantization error after FP4 rounding';
+
+  for(let rr=0;rr<ROWS;rr++){
+    const t1=el('text',{x:X0-10,y:Y1+rr*CH+12,class:'gt','text-anchor':'end'});t1.textContent='ch '+rr;svg.appendChild(t1);
+    const t2=el('text',{x:X0-10,y:Y2+rr*CH+12,class:'gt','text-anchor':'end'});t2.textContent='ch '+rr;svg.appendChild(t2);
+    for(let c=0;c<COLS;c++){
+      const i=rr*COLS+c, x=X0+c*CW;
+      svg.appendChild(el('rect',{x,y:Y1+rr*CH,width:CW-1.2,height:CH-1.2,rx:1.5,fill:magCol(Math.abs(d[i])/2.2)}));
+      svg.appendChild(el('rect',{x,y:Y2+rr*CH,width:CW-1.2,height:CH-1.2,rx:1.5,fill:errCol(Math.abs(q[i]-d[i])/(rms*1.6))}));
+    }
+  }
+  groups.forEach(g=>{
+    svg.appendChild(el('rect',{x:X0+g.c0*CW-1.4,y:Y2+g.r0*CH-1.4,width:(g.c1-g.c0)*CW+1.2,height:(g.r1-g.r0)*CH+1.2,rx:2.5,class:'grp'}));
+  });
+  const cap=el('text',{x:X0,y:Y2+ROWS*CH+24,class:'gt'});
+  cap.textContent=`${groups.length} scale factor${groups.length>1?'s':''} · ${N/groups.length} values share each one`;
+  svg.appendChild(cap);
+
+  const ovh={tensor:32/N, channel:32/COLS, b32:8/32, b16:8/16+32/N}[mode];
+  const set=(id,v,note,cls)=>{const e=document.getElementById(id);e.querySelector('.v').textContent=v;
+    if(note)e.querySelector('.n').textContent=note; e.className='kpi'+(cls?' '+cls:'');};
+  set('k1',groups.length,`${N/groups.length} values per scale factor`);
+  set('k2',rel.toFixed(1)+'%','error vs. original tensor', rel<12?'good':rel>30?'bad':'');
+  set('k3',zero,`of ${N} values lost entirely`, zero===0?'good':zero>60?'bad':'');
+  set('k4','+'+ovh.toFixed(2),'extra bits per stored value', ovh<0.1?'good':ovh>0.4?'bad':'');
+}
+
+const MODES=[['tensor','Tensor level'],['channel','Channel level'],['b32','Block of 32 · MXFP4'],['b16','Block of 16 · NVFP4']];
+const OUT=[['channel','Concentrated in channels'],['scattered','Scattered randomly'],['none','No outliers']];
+function mkBtns(host,list,cur,set){
+  const h=document.getElementById(host); h.innerHTML='';
+  list.forEach(([v,lab])=>{const b=document.createElement('button');b.textContent=lab;b.className=v===cur()?'on':'';
+    b.onclick=()=>{set(v);mkBtns(host,list,cur,set);render();};h.appendChild(b);});
+}
+mkBtns('gBtns',MODES,()=>mode,v=>mode=v);
+mkBtns('oBtns',OUT,()=>outlierMode,v=>outlierMode=v);
+render();
+</script>
+</body>
+</html>

@@ -27,5 +27,6 @@ Each visualization is a single, self-contained page — no dependencies, no trac
 - **[Attention, Visualized](https://suraj.io/share/books/inference-engineering/2.2.3-attention.html)** (§2.2.3) — how queries, keys, and values interact to produce the attention pattern.
 - **[Mixture of Experts, Visualized](https://suraj.io/share/books/inference-engineering/2.2.4-moe-models.html)** (§2.2.4) — routing tokens to experts, and how sparse activation changes the compute story.
 - **[Roofline, Ops:Byte & Arithmetic Intensity](https://suraj.io/share/books/inference-engineering/2.4.1-roofline-ops-byte.html)** (§2.4.1) — the roofline model, and how arithmetic intensity decides whether you are compute- or memory-bound.
+- **[Quantization Granularity, Visualized](https://suraj.io/share/books/inference-engineering/5.1.1-quantization_granularity.html)** (§5.1.1) — how the scope of a scale factor — per-tensor, per-channel, or per-block — trades accuracy against the cost of storing more scales.
 
 If you spot something wrong or have an idea for another section worth visualizing, let me know.
