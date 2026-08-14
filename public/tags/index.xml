@@ -11,8 +11,43 @@
     </image>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 02 Aug 2026 10:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2026 10:05:25 -0700</lastBuildDate>
     <atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ghostty</title>
+      <link>https://suraj.io/tags/ghostty/</link>
+      <pubDate>Fri, 14 Aug 2026 10:05:25 -0700</pubDate>
+      <guid>https://suraj.io/tags/ghostty/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Herdr</title>
+      <link>https://suraj.io/tags/herdr/</link>
+      <pubDate>Fri, 14 Aug 2026 10:05:25 -0700</pubDate>
+      <guid>https://suraj.io/tags/herdr/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Macos</title>
+      <link>https://suraj.io/tags/macos/</link>
+      <pubDate>Fri, 14 Aug 2026 10:05:25 -0700</pubDate>
+      <guid>https://suraj.io/tags/macos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Productivity</title>
+      <link>https://suraj.io/tags/productivity/</link>
+      <pubDate>Fri, 14 Aug 2026 10:05:25 -0700</pubDate>
+      <guid>https://suraj.io/tags/productivity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Terminal</title>
+      <link>https://suraj.io/tags/terminal/</link>
+      <pubDate>Fri, 14 Aug 2026 10:05:25 -0700</pubDate>
+      <guid>https://suraj.io/tags/terminal/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Ai</title>
       <link>https://suraj.io/tags/ai/</link>
@@ -182,13 +217,6 @@
       <description></description>
     </item>
     <item>
-      <title>Macos</title>
-      <link>https://suraj.io/tags/macos/</link>
-      <pubDate>Fri, 20 Feb 2026 10:00:00 +0530</pubDate>
-      <guid>https://suraj.io/tags/macos/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Virtualization</title>
       <link>https://suraj.io/tags/virtualization/</link>
       <pubDate>Fri, 20 Feb 2026 10:00:00 +0530</pubDate>
@@ -312,13 +340,6 @@
       <link>https://suraj.io/tags/linux/</link>
       <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
       <guid>https://suraj.io/tags/linux/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Productivity</title>
-      <link>https://suraj.io/tags/productivity/</link>
-      <pubDate>Thu, 17 Jul 2025 15:21:07 -0800</pubDate>
-      <guid>https://suraj.io/tags/productivity/</guid>
       <description></description>
     </item>
     <item>

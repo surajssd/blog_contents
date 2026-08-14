@@ -11,8 +11,22 @@
     </image>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 02 Aug 2026 10:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2026 10:05:25 -0700</lastBuildDate>
     <atom:link href="https://suraj.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Terminal</title>
+      <link>https://suraj.io/categories/terminal/</link>
+      <pubDate>Fri, 14 Aug 2026 10:05:25 -0700</pubDate>
+      <guid>https://suraj.io/categories/terminal/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tools</title>
+      <link>https://suraj.io/categories/tools/</link>
+      <pubDate>Fri, 14 Aug 2026 10:05:25 -0700</pubDate>
+      <guid>https://suraj.io/categories/tools/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AI</title>
       <link>https://suraj.io/categories/ai/</link>
