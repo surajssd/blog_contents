@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 14 Aug 2026 10:05:25 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 10:20:00 -0700</lastBuildDate>
     <atom:link href="https://suraj.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Suraj Deshmukh&#39;s talks at conferences</title>
@@ -19,6 +19,13 @@
       <pubDate>Sat, 30 Mar 2024 01:00:51 +0530</pubDate>
       <guid>https://suraj.io/post/surajd-talks-links/</guid>
       <description>List of all the talks presented by me</description>
+    </item>
+    <item>
+      <title>Visualizations for the book &#39;AI Systems Performance Engineering&#39;</title>
+      <link>https://suraj.io/post/2026/ai-systems-performance-engineering-visualizations/</link>
+      <pubDate>Fri, 02 Oct 2026 10:20:00 -0700</pubDate>
+      <guid>https://suraj.io/post/2026/ai-systems-performance-engineering-visualizations/</guid>
+      <description>Interactive diagrams and an animation for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, and Grace Blackwell hardware.</description>
     </item>
     <item>
       <title>Ghostty as a Shell for Herdr</title>

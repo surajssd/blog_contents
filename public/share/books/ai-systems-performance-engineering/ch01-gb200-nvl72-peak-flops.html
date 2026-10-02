@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where the GB200 NVL72's 1.44 exaFLOPS comes from</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7;
+    --surface-1: #fcfcfb;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --grid: #e1e0d9;
+    --baseline: #c3c2b7;
+    --border: rgba(11, 11, 11, 0.10);
+    --dense: #2a78d6;       /* blue 450 */
+    --sparse: #86b6ef;      /* blue 250, lighter step of the same ramp */
+    --on-dense: #ffffff;
+    --on-sparse: #0b0b0b;
+    --tooltip-bg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --page: #0d0d0d;
+      --surface-1: #1a1a19;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #898781;
+      --grid: #2c2c2a;
+      --baseline: #383835;
+      --border: rgba(255, 255, 255, 0.10);
+      --dense: #3987e5;     /* blue 400 */
+      --sparse: #86b6ef;
+      --tooltip-bg: #242422;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--page); color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 15px; line-height: 1.5; }
+  main { max-width: 1040px; margin: 0 auto; padding: 40px 24px 64px; }
+  h1 { font-size: 26px; line-height: 1.25; margin: 0 0 8px; }
+  h2 { font-size: 18px; margin: 0 0 4px; }
+  h3 { font-size: 15px; margin: 0 0 6px; }
+  p { margin: 0 0 10px; }
+  .lede { color: var(--text-secondary); margin-bottom: 28px; }
+  .sub { color: var(--text-secondary); font-size: 14px; margin-bottom: 14px; }
+  .muted { color: var(--text-muted); font-size: 13px; }
+  sup { font-size: 0.72em; line-height: 0; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92em; }
+
+  figure { margin: 0 0 32px; background: var(--surface-1); border: 1px solid var(--border);
+    border-radius: 10px; padding: 22px 24px 18px; }
+  figure header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  figcaption { color: var(--text-muted); font-size: 13px; margin-top: 12px; }
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+  svg text { font-family: inherit; fill: var(--text-primary); }
+  .t2 { fill: var(--text-secondary); }
+  .t3 { fill: var(--text-muted); }
+  .tab { font-variant-numeric: tabular-nums; }
+  .hair { stroke: var(--grid); stroke-width: 1; }
+  .base { stroke: var(--baseline); stroke-width: 1; }
+
+  .hit { fill: transparent; outline: none; }
+  .mark { transition: filter 120ms ease; }
+  .hit:hover ~ .mark, .hit:focus-visible ~ .mark { filter: brightness(1.08); }
+  .hit:focus-visible ~ .mark.dense { stroke: var(--text-primary); stroke-width: 2; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 4px 0 14px; font-size: 13px; color: var(--text-secondary); }
+  .legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px;
+    margin-right: 7px; vertical-align: -1px; background: var(--c); }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 22px; }
+  @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }
+  .note p { font-size: 14px; color: var(--text-secondary); }
+  .note p strong { color: var(--text-primary); }
+  .math { margin: 8px 0 12px; font-size: 16px; line-height: 1.7; }
+  .math .row { display: grid; grid-template-columns: 8.5em 1fr; }
+  .math .row.final { font-weight: 600; border-top: 1px solid var(--baseline); padding-top: 4px; margin-top: 4px; }
+  ol { padding-left: 1.3em; margin: 6px 0 12px; }
+  ol li { margin-bottom: 8px; font-size: 14px; color: var(--text-secondary); }
+  ol li strong { color: var(--text-primary); }
+
+  button.toggle { font: inherit; font-size: 13px; color: var(--text-secondary); background: transparent;
+    border: 1px solid var(--baseline); border-radius: 6px; padding: 4px 10px; cursor: pointer; white-space: nowrap; }
+  button.toggle:hover { color: var(--text-primary); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; margin-top: 10px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--grid); }
+  th { color: var(--text-secondary); font-weight: 600; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  [hidden] { display: none !important; }
+
+  #tip { position: fixed; z-index: 10; pointer-events: none; max-width: 320px; padding: 10px 12px;
+    background: var(--tooltip-bg); color: var(--text-primary); border: 1px solid var(--border);
+    border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.12); font-size: 13px; line-height: 1.45; }
+  #tip .val { font-weight: 700; font-size: 15px; }
+  #tip .key { display: inline-block; width: 14px; height: 3px; border-radius: 2px; margin-right: 6px; vertical-align: middle; background: var(--c); }
+  #tip .lbl { color: var(--text-secondary); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Where the GB200 NVL72's "1.44 exaFLOPS" comes from</h1>
+  <p class="lede">The chapter quotes 1.44 exaFLOPS for FP4 and 720 petaFLOPS for FP8. Both are NVIDIA datasheet peaks:
+    one Blackwell GPU's rated tensor-core throughput, doubled by 2:1 structured sparsity, multiplied by the 72 GPUs in the rack.</p>
+
+  <figure aria-labelledby="f1-title">
+    <header>
+      <div>
+        <h2 id="f1-title">GB200 NVL72 peak tensor throughput by precision</h2>
+        <p class="sub">Each halving of the number format doubles the rate. The sparsity figure is the dense figure doubled again.
+          The book's 1.44 EFLOPS and 720 PFLOPS are the two top sparse totals.</p>
+      </div>
+      <button class="toggle" id="toggle" aria-pressed="false">Table view</button>
+    </header>
+    <div class="legend" aria-hidden="true">
+      <span style="--c: var(--dense)">Dense (no sparsity)</span>
+      <span style="--c: var(--sparse)">Added by 2:1 structured sparsity</span>
+    </div>
+    <svg id="chart" viewBox="0 0 960 330" role="img"
+      aria-label="Horizontal bars of GB200 NVL72 rack peak petaFLOPS for FP4, FP8, FP16 and TF32, each split into a dense part and an equal sparsity part."></svg>
+    <table id="table" hidden>
+      <thead><tr><th>Precision</th><th class="num">Per GPU, dense</th><th class="num">Per GPU, sparse</th><th class="num">Rack (× 72), dense</th><th class="num">Rack (× 72), sparse</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <figcaption>Source: NVIDIA GB200 NVL72 datasheet, whose footnote reads "All petaFLOPS and petaOPS are with Sparsity except FP64 which is dense."
+      Per-GPU values are the datasheet totals divided by 72. Hover or focus a row for the per-GPU numbers.</figcaption>
+
+    <div class="cols">
+      <div class="note">
+        <h3>The multiplication in the book</h3>
+        <div class="math">
+          <div class="row"><span>per GPU</span><span>20 PFLOPS FP4, with sparsity</span></div>
+          <div class="row"><span>× GPUs</span><span>18 compute trays × 2 superchips × 2 GPUs = 72</span></div>
+          <div class="row final"><span>rack</span><span>72 × 20 = 1,440 PFLOPS = 1.44 EFLOPS</span></div>
+        </div>
+        <div class="math">
+          <div class="row"><span>per GPU</span><span>10 PFLOPS FP8, with sparsity</span></div>
+          <div class="row final"><span>rack</span><span>72 × 10 = 720 PFLOPS</span></div>
+        </div>
+        <p>Without sparsity the same rack is <strong>720 PFLOPS FP4</strong> and <strong>360 PFLOPS FP8</strong>.
+          Dense training runs at the dense figure, and typically sustains 30 to 50 percent of it.</p>
+      </div>
+      <div class="note">
+        <h3>Where a GPU's peak itself comes from</h3>
+        <p>A peak number is a count of tensor-core multiply-adds per clock, times the clock, times 2 FLOPs per multiply-add:</p>
+        <p><code>FLOPS = SMs × FMA per SM per clock × 2 × clock</code></p>
+        <p>NVIDIA published these inputs for Hopper, so the check is exact:
+          <strong>132 SMs × 2,048 dense FP16 FMA × 2 × 1.83 GHz = 989 TFLOPS</strong>, the H100 SXM datasheet value.
+          For Blackwell NVIDIA has not published the SM count and tensor-core clock rates in the same detail, so the 20 PFLOPS per GPU is taken from its rated spec.</p>
+        <p>Two effects stack on top of that base rate:</p>
+        <ol>
+          <li><strong>Narrower formats double throughput.</strong> The same tensor-core datapath processes twice as many 8-bit values as 16-bit ones per cycle, and twice as many 4-bit values again.</li>
+          <li><strong>2:1 structured sparsity doubles it once more.</strong> When 2 of every 4 consecutive weights are zero, the hardware skips them and does only the nonzero half of the work. This applies only to weights pruned to that pattern.</li>
+        </ol>
+      </div>
+    </div>
+  </figure>
+
+  <figure>
+    <h2>The memory figures in the same passage</h2>
+    <div class="math">
+      <div class="row"><span>HBM3e</span><span>72 GPUs × 192 GB = 13,824 GB = 13.5 TiB (the book's "13.5 TB", dividing by 1,024)</span></div>
+      <div class="row"><span>Grace LPDDR5X</span><span>36 CPUs × 480 GB = 17,280 GB ≈ 16.9 TiB (datasheet: "up to 17 TB")</span></div>
+      <div class="row final"><span>fast memory</span><span>13.5 + 16.9 ≈ 30.4 TiB (datasheet: "up to 30 TB")</span></div>
+    </div>
+    <p class="muted">"Fast memory" is NVIDIA's name for the HBM plus CPU memory reachable over NVLink-C2C in one rack. It is not a single flat memory: remote pages have different performance, as the book notes.</p>
+  </figure>
+
+  <p class="muted">Figure for chapter 1, section "NVIDIA's 'AI Supercomputer in a Rack'". Colors follow the OS light or dark setting.</p>
+</main>
+
+<div id="tip" role="tooltip" hidden></div>
+
+<script>
+(function () {
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs, parent) => {
+    const n = document.createElementNS(NS, tag);
+    for (const [k, v] of Object.entries(attrs || {})) n.setAttribute(k, v);
+    if (parent) parent.appendChild(n);
+    return n;
+  };
+  const txt = (parent, x, y, s, attrs) => { const t = el("text", Object.assign({ x, y }, attrs || {}), parent); t.textContent = s; return t; };
+  const fmt = (n) => n.toLocaleString("en-US", { maximumFractionDigits: 2 });
+
+  // ---------- tooltip ----------
+  const tip = document.getElementById("tip");
+  function showTip(rows, x, y) {
+    tip.replaceChildren();
+    for (const r of rows) {
+      const line = document.createElement("div");
+      if (r.color) { const k = document.createElement("span"); k.className = "key"; k.style.setProperty("--c", r.color); line.appendChild(k); }
+      const v = document.createElement("span"); v.className = r.strong ? "val" : "lbl"; v.textContent = r.text; line.appendChild(v);
+      tip.appendChild(line);
+    }
+    tip.hidden = false; moveTip(x, y);
+  }
+  function moveTip(x, y) {
+    const pad = 14, w = tip.offsetWidth, h = tip.offsetHeight;
+    let left = x + pad, top = y + pad;
+    if (left + w > window.innerWidth - 8) left = x - w - pad;
+    if (top + h > window.innerHeight - 8) top = y - h - pad;
+    tip.style.left = left + "px"; tip.style.top = top + "px";
+  }
+  const hideTip = () => { tip.hidden = true; };
+  function attachHover(hit, rows, markEl) {
+    hit.addEventListener("pointerenter", (e) => showTip(rows, e.clientX, e.clientY));
+    hit.addEventListener("pointermove", (e) => moveTip(e.clientX, e.clientY));
+    hit.addEventListener("pointerleave", hideTip);
+    hit.addEventListener("focus", () => { const b = markEl.getBoundingClientRect(); showTip(rows, b.right, b.top); });
+    hit.addEventListener("blur", hideTip);
+  }
+
+  // ---------- data: rack peak PFLOPS with sparsity, from the GB200 NVL72 datasheet ----------
+  const GPUS = 72;
+  const rows = [
+    { name: "FP4", detail: "Blackwell's new 4-bit tensor format", sparse: 1440, quoted: "the book's 1.44 exaFLOPS" },
+    { name: "FP8 / FP6 / INT8", detail: "8-bit formats; INT8 is 720 POPS", sparse: 720, quoted: "the book's 720 petaFLOPS" },
+    { name: "FP16 / BF16", detail: "the usual training precision", sparse: 360, quoted: "" },
+    { name: "TF32", detail: "FP32 inputs on tensor cores", sparse: 180, quoted: "" },
+  ];
+  rows.forEach((r) => { r.dense = r.sparse / 2; r.gpuDense = r.dense / GPUS; r.gpuSparse = r.sparse / GPUS; });
+
+  const svg = document.getElementById("chart");
+  const left = 230, right = 850, top = 14, rowH = 64, barH = 22, r = 4, gap = 2;
+  const xMax = 1500;
+  const xs = (v) => left + (v / xMax) * (right - left);
+  const plotBottom = top + rows.length * rowH;
+
+  for (let v = 0; v <= xMax; v += 500) {
+    const x = xs(v);
+    el("line", { x1: x, x2: x, y1: top, y2: plotBottom, class: "hair" }, svg);
+    txt(svg, x, plotBottom + 22, fmt(v), { "font-size": "12", "text-anchor": "middle", class: "t3 tab" });
+  }
+  el("line", { x1: left, x2: right, y1: plotBottom, y2: plotBottom, class: "base" }, svg);
+  txt(svg, (left + right) / 2, plotBottom + 50, "rack peak, petaFLOPS (1,000 PFLOPS = 1 exaFLOPS)", { "font-size": "13", "text-anchor": "middle", class: "t2" });
+
+  rows.forEach((m, i) => {
+    const cy = top + i * rowH + rowH / 2, y = cy - barH / 2;
+    const g = el("g", {}, svg);
+    const hit = el("rect", { x: 0, y: cy - rowH / 2, width: 960, height: rowH, class: "hit", tabindex: "0", role: "img",
+      "aria-label": `${m.name}: ${fmt(m.dense)} petaFLOPS dense, ${fmt(m.sparse)} petaFLOPS with sparsity` }, g);
+    // dense segment: square both ends (interior of the stack)
+    const xd = xs(m.dense);
+    const dense = el("path", { d: `M${left},${y} H${xd - gap / 2} V${y + barH} H${left} Z`, fill: "var(--dense)", class: "mark dense" }, g);
+    // sparsity segment: rounded data-end
+    const xsps = xs(m.sparse);
+    el("path", { d: `M${xd + gap / 2},${y} H${xsps - r} a${r},${r} 0 0 1 ${r},${r} V${y + barH - r} a${r},${r} 0 0 1 -${r},${r} H${xd + gap / 2} Z`,
+      fill: "var(--sparse)", class: "mark" }, g);
+    // labels
+    txt(g, 0, cy - 4, m.name, { "font-size": "15", "font-weight": "700" });
+    txt(g, 0, cy + 15, m.detail, { "font-size": "12.5", class: "t2" });
+    const inLabel = txt(g, left + 8, cy + 4.5, `${fmt(m.dense)} dense`, { "font-size": "12", "font-weight": "700" });
+    inLabel.style.fill = "var(--on-dense)"; inLabel.style.pointerEvents = "none";
+    if (xd - left < 120) { inLabel.remove(); }  // label would not fit inside; the tooltip and table carry it
+    txt(g, xsps + 10, cy + 5, `${fmt(m.sparse)} PFLOPS`, { "font-size": "13.5", "font-weight": m.quoted ? "700" : "400", class: "tab" });
+    if (m.quoted) txt(g, xsps + 10, cy + 20, m.quoted, { "font-size": "11.5", class: "t2" });
+
+    attachHover(hit, [
+      { text: `${fmt(m.sparse)} PFLOPS with sparsity · ${fmt(m.dense)} PFLOPS dense`, strong: true },
+      { text: m.name, color: "var(--dense)" },
+      { text: `Per GPU: ${fmt(m.gpuDense)} PFLOPS dense, ${fmt(m.gpuSparse)} PFLOPS with sparsity` },
+      { text: `Rack: ${GPUS} GPUs × ${fmt(m.gpuSparse)} = ${fmt(m.sparse)} PFLOPS` },
+    ], dense);
+  });
+
+  // ---------- table view ----------
+  const tbody = document.querySelector("#table tbody");
+  for (const m of rows) {
+    const tr = document.createElement("tr");
+    [m.name, `${fmt(m.gpuDense)} PFLOPS`, `${fmt(m.gpuSparse)} PFLOPS`, `${fmt(m.dense)} PFLOPS`, `${fmt(m.sparse)} PFLOPS`].forEach((c, k) => {
+      const td = document.createElement("td"); if (k > 0) td.className = "num"; td.textContent = c; tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  }
+  const btn = document.getElementById("toggle"), table = document.getElementById("table");
+  btn.addEventListener("click", () => {
+    const showTable = table.hidden;
+    table.hidden = !showTable; svg.hidden = showTable;
+    btn.textContent = showTable ? "Chart view" : "Table view";
+    btn.setAttribute("aria-pressed", String(showTable));
+  });
+})();
+</script>
+</body>
+</html>

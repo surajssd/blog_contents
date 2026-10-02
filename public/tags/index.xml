@@ -11,8 +11,57 @@
     </image>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 14 Aug 2026 10:05:25 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 10:20:00 -0700</lastBuildDate>
     <atom:link href="https://suraj.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ai</title>
+      <link>https://suraj.io/tags/ai/</link>
+      <pubDate>Fri, 02 Oct 2026 10:20:00 -0700</pubDate>
+      <guid>https://suraj.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Blackwell</title>
+      <link>https://suraj.io/tags/blackwell/</link>
+      <pubDate>Fri, 02 Oct 2026 10:20:00 -0700</pubDate>
+      <guid>https://suraj.io/tags/blackwell/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cuda</title>
+      <link>https://suraj.io/tags/cuda/</link>
+      <pubDate>Fri, 02 Oct 2026 10:20:00 -0700</pubDate>
+      <guid>https://suraj.io/tags/cuda/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gpu</title>
+      <link>https://suraj.io/tags/gpu/</link>
+      <pubDate>Fri, 02 Oct 2026 10:20:00 -0700</pubDate>
+      <guid>https://suraj.io/tags/gpu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Llm</title>
+      <link>https://suraj.io/tags/llm/</link>
+      <pubDate>Fri, 02 Oct 2026 10:20:00 -0700</pubDate>
+      <guid>https://suraj.io/tags/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Training</title>
+      <link>https://suraj.io/tags/training/</link>
+      <pubDate>Fri, 02 Oct 2026 10:20:00 -0700</pubDate>
+      <guid>https://suraj.io/tags/training/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Visualization</title>
+      <link>https://suraj.io/tags/visualization/</link>
+      <pubDate>Fri, 02 Oct 2026 10:20:00 -0700</pubDate>
+      <guid>https://suraj.io/tags/visualization/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Ghostty</title>
       <link>https://suraj.io/tags/ghostty/</link>
@@ -49,13 +98,6 @@
       <description></description>
     </item>
     <item>
-      <title>Ai</title>
-      <link>https://suraj.io/tags/ai/</link>
-      <pubDate>Sun, 02 Aug 2026 10:00:00 +0530</pubDate>
-      <guid>https://suraj.io/tags/ai/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Attention</title>
       <link>https://suraj.io/tags/attention/</link>
       <pubDate>Sun, 02 Aug 2026 10:00:00 +0530</pubDate>
@@ -70,13 +112,6 @@
       <description></description>
     </item>
     <item>
-      <title>Llm</title>
-      <link>https://suraj.io/tags/llm/</link>
-      <pubDate>Sun, 02 Aug 2026 10:00:00 +0530</pubDate>
-      <guid>https://suraj.io/tags/llm/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Mixture-of-Experts</title>
       <link>https://suraj.io/tags/mixture-of-experts/</link>
       <pubDate>Sun, 02 Aug 2026 10:00:00 +0530</pubDate>
@@ -88,13 +123,6 @@
       <link>https://suraj.io/tags/transformers/</link>
       <pubDate>Sun, 02 Aug 2026 10:00:00 +0530</pubDate>
       <guid>https://suraj.io/tags/transformers/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Visualization</title>
-      <link>https://suraj.io/tags/visualization/</link>
-      <pubDate>Sun, 02 Aug 2026 10:00:00 +0530</pubDate>
-      <guid>https://suraj.io/tags/visualization/</guid>
       <description></description>
     </item>
     <item>

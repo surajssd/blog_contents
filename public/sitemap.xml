@@ -5,8 +5,47 @@
     <loc>https://suraj.io/post/surajd-talks-links/</loc>
     <lastmod>2024-03-30T01:00:51+05:30</lastmod>
   </url><url>
+    <loc>https://suraj.io/tags/ai/</loc>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
+  </url><url>
+    <loc>https://suraj.io/categories/ai/</loc>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/blackwell/</loc>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
+  </url><url>
     <loc>https://suraj.io/categories/</loc>
-    <lastmod>2026-08-14T10:05:25-07:00</lastmod>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/cuda/</loc>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/gpu/</loc>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
+  </url><url>
+    <loc>https://suraj.io/categories/llm/</loc>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/llm/</loc>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
+  </url><url>
+    <loc>https://suraj.io/post/</loc>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
+  </url><url>
+    <loc>https://suraj.io/</loc>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/</loc>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/training/</loc>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
+  </url><url>
+    <loc>https://suraj.io/tags/visualization/</loc>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
+  </url><url>
+    <loc>https://suraj.io/post/2026/ai-systems-performance-engineering-visualizations/</loc>
+    <lastmod>2026-10-02T10:20:00-07:00</lastmod>
   </url><url>
     <loc>https://suraj.io/tags/ghostty/</loc>
     <lastmod>2026-08-14T10:05:25-07:00</lastmod>
@@ -20,16 +59,7 @@
     <loc>https://suraj.io/tags/macos/</loc>
     <lastmod>2026-08-14T10:05:25-07:00</lastmod>
   </url><url>
-    <loc>https://suraj.io/post/</loc>
-    <lastmod>2026-08-14T10:05:25-07:00</lastmod>
-  </url><url>
     <loc>https://suraj.io/tags/productivity/</loc>
-    <lastmod>2026-08-14T10:05:25-07:00</lastmod>
-  </url><url>
-    <loc>https://suraj.io/</loc>
-    <lastmod>2026-08-14T10:05:25-07:00</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/</loc>
     <lastmod>2026-08-14T10:05:25-07:00</lastmod>
   </url><url>
     <loc>https://suraj.io/categories/terminal/</loc>
@@ -41,12 +71,6 @@
     <loc>https://suraj.io/categories/tools/</loc>
     <lastmod>2026-08-14T10:05:25-07:00</lastmod>
   </url><url>
-    <loc>https://suraj.io/categories/ai/</loc>
-    <lastmod>2026-08-02T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/ai/</loc>
-    <lastmod>2026-08-02T10:00:00+05:30</lastmod>
-  </url><url>
     <loc>https://suraj.io/tags/attention/</loc>
     <lastmod>2026-08-02T10:00:00+05:30</lastmod>
   </url><url>
@@ -56,19 +80,10 @@
     <loc>https://suraj.io/post/2026/inference-engineering-visualizations/</loc>
     <lastmod>2026-08-02T10:00:00+05:30</lastmod>
   </url><url>
-    <loc>https://suraj.io/categories/llm/</loc>
-    <lastmod>2026-08-02T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/llm/</loc>
-    <lastmod>2026-08-02T10:00:00+05:30</lastmod>
-  </url><url>
     <loc>https://suraj.io/tags/mixture-of-experts/</loc>
     <lastmod>2026-08-02T10:00:00+05:30</lastmod>
   </url><url>
     <loc>https://suraj.io/tags/transformers/</loc>
-    <lastmod>2026-08-02T10:00:00+05:30</lastmod>
-  </url><url>
-    <loc>https://suraj.io/tags/visualization/</loc>
     <lastmod>2026-08-02T10:00:00+05:30</lastmod>
   </url><url>
     <loc>https://suraj.io/tags/agents/</loc>

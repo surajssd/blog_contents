@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cuda on Suraj Deshmukh</title>
+    <link>https://suraj.io/tags/cuda/</link>
+    <description>Recent content in Cuda on Suraj Deshmukh</description>
+    <image>
+      <title>Suraj Deshmukh</title>
+      <url>https://suraj.io/images/papermod-cover.png</url>
+      <link>https://suraj.io/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 02 Oct 2026 10:20:00 -0700</lastBuildDate>
+    <atom:link href="https://suraj.io/tags/cuda/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Visualizations for the book &#39;AI Systems Performance Engineering&#39;</title>
+      <link>https://suraj.io/post/2026/ai-systems-performance-engineering-visualizations/</link>
+      <pubDate>Fri, 02 Oct 2026 10:20:00 -0700</pubDate>
+      <guid>https://suraj.io/post/2026/ai-systems-performance-engineering-visualizations/</guid>
+      <description>Interactive diagrams and an animation for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, and Grace Blackwell hardware.</description>
+    </item>
+  </channel>
+</rss>

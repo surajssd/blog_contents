@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C ≈ 6ND: the 100-trillion-parameter training estimate</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7;
+    --surface-1: #fcfcfb;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --grid: #e1e0d9;
+    --baseline: #c3c2b7;
+    --border: rgba(11, 11, 11, 0.10);
+    --deemph: #b3b2ac;
+    --series-1: #2a78d6;
+    --series-2: #eb6834;
+    --series-3: #1baf7a;
+    --on-fill-light: #ffffff;
+    --on-fill-dark: #0b0b0b;
+    --tooltip-bg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --page: #0d0d0d;
+      --surface-1: #1a1a19;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #898781;
+      --grid: #2c2c2a;
+      --baseline: #383835;
+      --border: rgba(255, 255, 255, 0.10);
+      --deemph: #5c5b57;
+      --series-1: #3987e5;
+      --series-2: #d95926;
+      --series-3: #199e70;
+      --tooltip-bg: #242422;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--page); color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 15px; line-height: 1.5; }
+  main { max-width: 1040px; margin: 0 auto; padding: 40px 24px 64px; }
+  h1 { font-size: 26px; line-height: 1.25; margin: 0 0 8px; }
+  h2 { font-size: 18px; margin: 0 0 4px; }
+  h3 { font-size: 15px; margin: 0 0 6px; }
+  p { margin: 0 0 10px; }
+  .lede { color: var(--text-secondary); margin-bottom: 28px; }
+  .sub { color: var(--text-secondary); font-size: 14px; margin-bottom: 18px; }
+  .muted { color: var(--text-muted); font-size: 13px; }
+  em.v { font-style: italic; }
+  sup { font-size: 0.72em; line-height: 0; }
+
+  figure { margin: 0 0 32px; background: var(--surface-1); border: 1px solid var(--border);
+    border-radius: 10px; padding: 22px 24px 18px; }
+  figure header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  figcaption { color: var(--text-muted); font-size: 13px; margin-top: 12px; }
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+  svg text { font-family: inherit; fill: var(--text-primary); }
+  .t2 { fill: var(--text-secondary); }
+  .t3 { fill: var(--text-muted); }
+  .tab { font-variant-numeric: tabular-nums; }
+  .hair { stroke: var(--grid); stroke-width: 1; }
+  .base { stroke: var(--baseline); stroke-width: 1; }
+  .brk { stroke: var(--baseline); stroke-width: 1; fill: none; }
+
+  .hit { fill: transparent; cursor: default; outline: none; }
+  .mark { transition: filter 120ms ease, opacity 120ms ease; }
+  .hit:hover ~ .mark, .hit:focus-visible ~ .mark { filter: brightness(1.10); }
+  .hit:focus-visible ~ .mark { stroke: var(--text-primary); stroke-width: 2; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 4px 0 14px; font-size: 13px;
+    color: var(--text-secondary); }
+  .legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px;
+    margin-right: 7px; vertical-align: -1px; background: var(--c); }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 22px; }
+  @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }
+  .math { margin: 10px 0 12px; font-size: 17px; line-height: 1.75; }
+  .math .row { display: grid; grid-template-columns: 1.4em 1fr; }
+  .math .row.final { font-weight: 600; border-top: 1px solid var(--baseline); padding-top: 4px; margin-top: 4px; }
+  .note p { font-size: 14px; color: var(--text-secondary); }
+
+  button.toggle { font: inherit; font-size: 13px; color: var(--text-secondary); background: transparent;
+    border: 1px solid var(--baseline); border-radius: 6px; padding: 4px 10px; cursor: pointer; white-space: nowrap; }
+  button.toggle:hover { color: var(--text-primary); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; margin-top: 10px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--grid); }
+  th { color: var(--text-secondary); font-weight: 600; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.emph td { font-weight: 600; }
+  [hidden] { display: none !important; }
+
+  #tip { position: fixed; z-index: 10; pointer-events: none; max-width: 300px; padding: 10px 12px;
+    background: var(--tooltip-bg); color: var(--text-primary); border: 1px solid var(--border);
+    border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.12); font-size: 13px; line-height: 1.45; }
+  #tip .val { font-weight: 700; font-size: 15px; }
+  #tip .key { display: inline-block; width: 14px; height: 3px; border-radius: 2px; margin-right: 6px;
+    vertical-align: middle; background: var(--c); }
+  #tip .lbl { color: var(--text-secondary); }
+</style>
+</head>
+<body>
+<main>
+  <h1><em class="v">C</em> ≈ 6<em class="v">N</em><em class="v">D</em>: how the 100-trillion-parameter training estimate is built</h1>
+  <p class="lede">Chapter 1 says a dense 100-trillion-parameter model trained on about 29 trillion tokens needs about
+    1.74 × 10<sup>28</sup> FLOPs. The formula behind that number counts how many times each parameter is touched per training token.</p>
+
+  <!-- ============================ Figure 1 ============================ -->
+  <figure aria-labelledby="f1-title">
+    <header>
+      <div>
+        <h2 id="f1-title">The 6 is FLOPs per parameter per token</h2>
+        <p class="sub">Dense transformer. Every parameter is used once per token in the forward pass and twice more in the backward pass.
+          One use = one multiply + one add = 2 FLOPs.</p>
+      </div>
+    </header>
+    <div class="legend" aria-hidden="true">
+      <span style="--c: var(--series-1)">Forward pass</span>
+      <span style="--c: var(--series-2)">Backward pass: activation gradient</span>
+      <span style="--c: var(--series-3)">Backward pass: weight gradient</span>
+    </div>
+    <svg id="fig1" viewBox="0 0 960 190" role="img" aria-label="A bar of 6 FLOPs split into three equal segments of 2: forward pass, backward activation gradient, backward weight gradient."></svg>
+
+    <div class="cols">
+      <div class="note">
+        <h3>Why 2 FLOPs per parameter</h3>
+        <p>For one token, a layer computes <em class="v">y</em><sub>i</sub> = Σ<sub>j</sub> <em class="v">W</em><sub>ij</sub> <em class="v">x</em><sub>j</sub>.
+          Each weight <em class="v">W</em><sub>ij</sub> is touched exactly once: one multiply (<em class="v">W</em><sub>ij</sub><em class="v">x</em><sub>j</sub>)
+          and one add (accumulate into <em class="v">y</em><sub>i</sub>). So a matrix with <em class="v">P</em> entries costs 2<em class="v">P</em> FLOPs per token, whatever its shape.</p>
+        <p>Backprop repeats this twice: once to push the gradient to the input (<em class="v">W</em><sup>⊤</sup> has the same <em class="v">P</em> entries)
+          and once to form the weight gradient (an outer product with <em class="v">P</em> outputs). Total: 2<em class="v">P</em> + 2<em class="v">P</em> + 2<em class="v">P</em> = 6<em class="v">P</em>.</p>
+        <p class="muted">Ignored by the heuristic: attention scores (<em class="v">QK</em><sup>⊤</sup>, softmax, the multiply by <em class="v">V</em>), layer norms,
+          activations, embeddings. These add a modest fraction unless the context length is very long relative to the hidden size.</p>
+      </div>
+      <div class="note">
+        <h3>Plugging in the 100T model</h3>
+        <p><em class="v">N</em> = 1 × 10<sup>14</sup> parameters (100 trillion)<br>
+           <em class="v">D</em> = 2.9 × 10<sup>13</sup> tokens (29 trillion)</p>
+        <div class="math" aria-label="C equals 6 times N times D equals 1.74 times ten to the 28 FLOPs">
+          <div class="row"><span><em class="v">C</em></span><span>= 6 × <em class="v">N</em> × <em class="v">D</em></span></div>
+          <div class="row"><span></span><span>= 6 × (1 × 10<sup>14</sup>) × (2.9 × 10<sup>13</sup>)</span></div>
+          <div class="row"><span></span><span>= (6 × 2.9) × 10<sup>14 + 13</sup></span></div>
+          <div class="row"><span></span><span>= 17.4 × 10<sup>27</sup></span></div>
+          <div class="row final"><span></span><span>≈ 1.74 × 10<sup>28</sup> FLOPs</span></div>
+        </div>
+        <p class="muted">Read 1.74 × 10<sup>28</sup> as 17.4 billion billion billion floating-point operations.
+          Doubling the tokens doubles <em class="v">C</em>. A sparse MoE model uses active parameters for <em class="v">N</em>.</p>
+      </div>
+    </div>
+  </figure>
+
+  <!-- ============================ Figure 2 ============================ -->
+  <figure aria-labelledby="f2-title">
+    <header>
+      <div>
+        <h2 id="f2-title">Training compute by the 6ND heuristic</h2>
+        <p class="sub">The 100-trillion-parameter model needs about 460× the compute of Llama 3.1 405B and 55,000× GPT-3.
+          Published figures match the heuristic: GPT-3 reported 3.14 × 10<sup>23</sup>, Llama 3.1 reported 3.8 × 10<sup>25</sup>.</p>
+      </div>
+      <button class="toggle" id="f2-toggle" aria-pressed="false" aria-controls="f2-table f2-chart">Table view</button>
+    </header>
+    <svg id="fig2" viewBox="0 0 960 330" role="img" aria-label="Horizontal bars on a log scale comparing training FLOPs of GPT-3, DeepSeek-V3, Llama 3.1 405B, and a 100-trillion-parameter dense model."></svg>
+    <div id="f2-chart"></div>
+    <table id="f2-table" hidden>
+      <thead><tr><th>Model</th><th class="num">Parameters (N)</th><th class="num">Tokens (D)</th><th class="num">C = 6ND (FLOPs)</th><th class="num">Relative to 100T model</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <figcaption>Sources: N and D from each model's paper. MoE (mixture-of-experts) models count the parameters active per token, not the total.
+      Hover or focus a bar for details.</figcaption>
+  </figure>
+
+  <p class="muted">Figures for chapter 1, "Toward 100-Trillion-Parameter Models". Colors follow the OS light or dark setting.</p>
+</main>
+
+<div id="tip" role="tooltip" hidden></div>
+
+<script>
+(function () {
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs, parent) => {
+    const n = document.createElementNS(NS, tag);
+    for (const [k, v] of Object.entries(attrs || {})) n.setAttribute(k, v);
+    if (parent) parent.appendChild(n);
+    return n;
+  };
+  const txt = (parent, x, y, s, attrs) => {
+    const t = el("text", Object.assign({ x, y }, attrs || {}), parent);
+    t.textContent = s;
+    return t;
+  };
+  // "1.74 × 10^28" as text + superscript tspan
+  const sciText = (parent, x, y, mant, exp, attrs) => {
+    const t = el("text", Object.assign({ x, y }, attrs || {}), parent);
+    t.appendChild(document.createTextNode(mant + " × 10"));
+    const sup = el("tspan", { dy: "-0.55em", "font-size": "72%" }, t);
+    sup.textContent = String(exp);
+    return t;
+  };
+  const sci = (v) => {
+    const exp = Math.floor(Math.log10(v));
+    let mant = v / Math.pow(10, exp);
+    let m = mant.toFixed(2).replace(/\.?0+$/, "");
+    return { mant: m, exp, html: `${m} × 10<sup>${exp}</sup>` };
+  };
+
+  // ---------- tooltip ----------
+  const tip = document.getElementById("tip");
+  let tipRows = [];
+  function showTip(rows, x, y) {
+    tip.replaceChildren();
+    for (const r of rows) {
+      const line = document.createElement("div");
+      if (r.color) { const k = document.createElement("span"); k.className = "key"; k.style.setProperty("--c", r.color); line.appendChild(k); }
+      const v = document.createElement("span"); v.className = r.strong ? "val" : "lbl"; v.textContent = r.text; line.appendChild(v);
+      tip.appendChild(line);
+    }
+    tip.hidden = false;
+    moveTip(x, y);
+  }
+  function moveTip(x, y) {
+    const pad = 14, w = tip.offsetWidth, h = tip.offsetHeight;
+    let left = x + pad, top = y + pad;
+    if (left + w > window.innerWidth - 8) left = x - w - pad;
+    if (top + h > window.innerHeight - 8) top = y - h - pad;
+    tip.style.left = left + "px"; tip.style.top = top + "px";
+  }
+  function hideTip() { tip.hidden = true; }
+  function attachHover(hit, rows, markEl) {
+    hit.addEventListener("pointerenter", (e) => showTip(rows, e.clientX, e.clientY));
+    hit.addEventListener("pointermove", (e) => moveTip(e.clientX, e.clientY));
+    hit.addEventListener("pointerleave", hideTip);
+    hit.addEventListener("focus", () => { const b = markEl.getBoundingClientRect(); showTip(rows, b.right, b.top); });
+    hit.addEventListener("blur", hideTip);
+  }
+
+  // ---------- Figure 1: the 6 ----------
+  (function fig1() {
+    const svg = document.getElementById("fig1");
+    const x0 = 0, x1 = 960, gap = 2, barY = 62, barH = 24, r = 4;
+    const segW = (x1 - x0 - 2 * gap) / 3;
+    const segs = [
+      { name: "Forward pass", formula: "y = W x", color: "var(--series-1)", ink: "var(--on-fill-light)",
+        detail: "Compute the layer output for one token. One multiply and one add per weight. This is also what inference pays per token." },
+      { name: "Backward pass: activation gradient", formula: "∂L/∂x = Wᵀ · ∂L/∂y", color: "var(--series-2)", ink: "var(--on-fill-dark)",
+        detail: "Push the loss gradient back to the previous layer. Wᵀ has the same number of entries as W, so the cost matches the forward pass." },
+      { name: "Backward pass: weight gradient", formula: "∂L/∂W = ∂L/∂y · xᵀ", color: "var(--series-3)", ink: "var(--on-fill-dark)",
+        detail: "Form the gradient for every weight, an outer product with one output per parameter. Again 2 FLOPs per parameter." },
+    ];
+    segs.forEach((s, i) => {
+      const sx = x0 + i * (segW + gap);
+      const g = el("g", {}, svg);
+      // labels above
+      txt(g, sx, 22, s.name, { "font-size": "14", "font-weight": "700" });
+      txt(g, sx, 44, s.formula, { "font-size": "13", class: "t2" });
+      // hit target (whole column), then mark so the sibling selector can lift it
+      const hit = el("rect", { x: sx, y: 6, width: segW, height: 100, class: "hit", tabindex: "0", role: "img",
+        "aria-label": `${s.name}, ${s.formula}: 2 FLOPs per parameter per token` }, g);
+      const last = i === segs.length - 1;
+      const path = last
+        ? `M${sx},${barY} H${sx + segW - r} a${r},${r} 0 0 1 ${r},${r} V${barY + barH - r} a${r},${r} 0 0 1 -${r},${r} H${sx} Z`
+        : `M${sx},${barY} H${sx + segW} V${barY + barH} H${sx} Z`;
+      const mark = el("path", { d: path, fill: s.color, class: "mark" }, g);
+      const lab = txt(g, sx + segW / 2, barY + barH / 2 + 4.5, "2 FLOPs per parameter per token",
+        { "font-size": "12.5", "font-weight": "700", "text-anchor": "middle" });
+      lab.style.fill = s.ink;
+      lab.style.pointerEvents = "none";
+      attachHover(hit, [
+        { text: "2 FLOPs per parameter per token", strong: true },
+        { text: s.name, color: s.color },
+        { text: s.formula },
+        { text: s.detail },
+      ], mark);
+    });
+    // brackets below
+    const bY = barY + barH + 8;
+    const bracket = (xa, xb, title, sub) => {
+      el("path", { d: `M${xa},${bY} v6 H${xb} v-6`, class: "brk" }, svg);
+      txt(svg, (xa + xb) / 2, bY + 30, title, { "font-size": "14", "font-weight": "700", "text-anchor": "middle" });
+      txt(svg, (xa + xb) / 2, bY + 50, sub, { "font-size": "13", "text-anchor": "middle", class: "t2" });
+    };
+    bracket(x0 + 1, x0 + segW - 1, "forward = 2 FLOPs", "what inference pays per token");
+    bracket(x0 + segW + gap + 1, x1 - 1, "backward = 4 FLOPs", "two matmuls, each the size of the forward one");
+    txt(svg, 480, 178, "Total: 2 + 2 + 2 = 6 FLOPs per parameter per token, multiplied by N parameters and D tokens.",
+      { "font-size": "13", "text-anchor": "middle", class: "t2" });
+  })();
+
+  // ---------- Figure 2: comparison ----------
+  (function fig2() {
+    const svg = document.getElementById("fig2");
+    const models = [
+      { name: "GPT-3", detail: "175B parameters · 300B tokens", N: 1.75e11, D: 3.0e11, emph: false },
+      { name: "DeepSeek-V3", detail: "37B active of 671B (MoE) · 14.8T tokens", N: 3.7e10, D: 1.48e13, emph: false },
+      { name: "Llama 3.1 405B", detail: "405B parameters · 15.6T tokens", N: 4.05e11, D: 1.56e13, emph: false },
+      { name: "100T dense model", detail: "100T parameters · 29T tokens", N: 1e14, D: 2.9e13, emph: true },
+    ];
+    models.forEach((m) => (m.C = 6 * m.N * m.D));
+    const ref = models.find((m) => m.emph).C;
+    const order = [...models].sort((a, b) => b.C - a.C); // largest on top
+
+    const left = 250, right = 930, top = 18, rowH = 62, barH = 22, r = 4;
+    const e0 = 23, e1 = 29;
+    const xs = (v) => left + ((Math.log10(v) - e0) / (e1 - e0)) * (right - left);
+    const plotBottom = top + order.length * rowH;
+
+    // gridlines + axis
+    for (let e = e0; e <= e1; e++) {
+      const x = xs(Math.pow(10, e));
+      el("line", { x1: x, x2: x, y1: top, y2: plotBottom, class: "hair" }, svg);
+      sciText(svg, x, plotBottom + 22, "", e, { "font-size": "12", "text-anchor": "middle", class: "t3 tab" })
+        .firstChild.textContent = "10";
+    }
+    el("line", { x1: left, x2: right, y1: plotBottom, y2: plotBottom, class: "base" }, svg);
+    txt(svg, (left + right) / 2, plotBottom + 52, "training FLOPs, C = 6 × N × D (log scale: each gridline is 10× the previous)",
+      { "font-size": "13", "text-anchor": "middle", class: "t2" });
+
+    order.forEach((m, i) => {
+      const cy = top + i * rowH + rowH / 2;
+      const g = el("g", {}, svg);
+      const hit = el("rect", { x: 0, y: cy - rowH / 2, width: 960, height: rowH, class: "hit", tabindex: "0", role: "img",
+        "aria-label": `${m.name}: ${sci(m.C).mant} times 10 to the ${sci(m.C).exp} FLOPs` }, g);
+      const xEnd = xs(m.C), y = cy - barH / 2;
+      const d = `M${left},${y} H${xEnd - r} a${r},${r} 0 0 1 ${r},${r} V${y + barH - r} a${r},${r} 0 0 1 -${r},${r} H${left} Z`;
+      const mark = el("path", { d, fill: m.emph ? "var(--series-1)" : "var(--deemph)", class: "mark" }, g);
+      txt(g, 0, cy - 4, m.name, { "font-size": "15", "font-weight": "700" });
+      txt(g, 0, cy + 15, m.detail, { "font-size": "12.5", class: "t2" });
+      const s = sci(m.C);
+      sciText(g, xEnd + 10, cy + 5, s.mant, s.exp, { "font-size": "13.5", "font-weight": m.emph ? "700" : "400", class: "tab" });
+      const ratio = ref / m.C;
+      attachHover(hit, [
+        { text: `${s.mant} × 10^${s.exp} FLOPs`, strong: true },
+        { text: m.name, color: m.emph ? "var(--series-1)" : "var(--deemph)" },
+        { text: `N = ${sci(m.N).mant} × 10^${sci(m.N).exp} parameters, D = ${sci(m.D).mant} × 10^${sci(m.D).exp} tokens` },
+        { text: m.emph ? "Reference run from chapter 1." : `The 100T model needs ${ratio >= 1000 ? Math.round(ratio).toLocaleString() : Math.round(ratio)}× this compute.` },
+      ], mark);
+    });
+
+    // table view
+    const tbody = document.querySelector("#f2-table tbody");
+    for (const m of order) {
+      const tr = document.createElement("tr");
+      if (m.emph) tr.className = "emph";
+      const cells = [m.name, sci(m.N).html, sci(m.D).html, sci(m.C).html,
+        m.emph ? "1" : `1 / ${Math.round(ref / m.C).toLocaleString()}`];
+      cells.forEach((c, k) => {
+        const td = document.createElement("td");
+        if (k > 0) td.className = "num";
+        if (k === 0) td.textContent = c; else td.innerHTML = c; // values are locally computed numbers, not external input
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    }
+    const btn = document.getElementById("f2-toggle"), table = document.getElementById("f2-table");
+    btn.addEventListener("click", () => {
+      const showTable = table.hidden;
+      table.hidden = !showTable; svg.hidden = showTable;
+      btn.textContent = showTable ? "Chart view" : "Table view";
+      btn.setAttribute("aria-pressed", String(showTable));
+    });
+  })();
+})();
+</script>
+</body>
+</html>

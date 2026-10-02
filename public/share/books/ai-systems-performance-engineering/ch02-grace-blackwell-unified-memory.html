@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can the Grace CPU access the GPU's HBM?</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7;
+    --surface-1: #fcfcfb;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --grid: #e1e0d9;
+    --baseline: #c3c2b7;
+    --border: rgba(11, 11, 11, 0.10);
+    --deemph: #b3b2ac;
+    --mem-fast: #2a78d6;    /* blue 450: HBM3e */
+    --mem-slow: #9ec5f4;    /* blue 200: LPDDR5X */
+    --path: #eb6834;        /* slot 2: the highlighted CPU-to-HBM path */
+    --link: #898781;
+    --box: #f3f2ee;
+    --on-fast: #ffffff;
+    --on-slow: #0b0b0b;
+    --tooltip-bg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --page: #0d0d0d;
+      --surface-1: #1a1a19;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #898781;
+      --grid: #2c2c2a;
+      --baseline: #383835;
+      --border: rgba(255, 255, 255, 0.10);
+      --deemph: #5c5b57;
+      --mem-fast: #3987e5;
+      --mem-slow: #86b6ef;
+      --path: #d95926;
+      --link: #898781;
+      --box: #242422;
+      --tooltip-bg: #242422;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--page); color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 15px; line-height: 1.5; }
+  main { max-width: 1040px; margin: 0 auto; padding: 40px 24px 64px; }
+  h1 { font-size: 26px; line-height: 1.25; margin: 0 0 8px; }
+  h2 { font-size: 18px; margin: 0 0 4px; }
+  h3 { font-size: 15px; margin: 0 0 6px; }
+  p { margin: 0 0 10px; }
+  .lede { color: var(--text-secondary); margin-bottom: 28px; }
+  .sub { color: var(--text-secondary); font-size: 14px; margin-bottom: 14px; }
+  .muted { color: var(--text-muted); font-size: 13px; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92em; }
+
+  figure { margin: 0 0 32px; background: var(--surface-1); border: 1px solid var(--border);
+    border-radius: 10px; padding: 22px 24px 18px; }
+  figure header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  figcaption { color: var(--text-muted); font-size: 13px; margin-top: 12px; }
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+  svg text { font-family: inherit; fill: var(--text-primary); }
+  .t2 { fill: var(--text-secondary); }
+  .t3 { fill: var(--text-muted); }
+  .tab { font-variant-numeric: tabular-nums; }
+  .hair { stroke: var(--grid); stroke-width: 1; }
+  .base { stroke: var(--baseline); stroke-width: 1; }
+  .box { fill: var(--box); stroke: var(--border); stroke-width: 1; }
+  .link { stroke: var(--link); fill: none; stroke-linecap: round; }
+  .pathline { stroke: var(--path); fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+  .hit { fill: transparent; outline: none; cursor: default; }
+  .mark { transition: filter 120ms ease; }
+  .hit:hover ~ .mark, .hit:focus-visible ~ .mark { filter: brightness(1.08); }
+  .hit:focus-visible ~ .mark { stroke: var(--text-primary); stroke-width: 2; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 4px 0 14px; font-size: 13px; color: var(--text-secondary); }
+  .legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 3px;
+    margin-right: 7px; vertical-align: -1px; background: var(--c); }
+  .legend span.line::before { height: 3px; border-radius: 2px; vertical-align: 3px; }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 22px; }
+  @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }
+  .note p, .note li { font-size: 14px; color: var(--text-secondary); }
+  .note strong { color: var(--text-primary); }
+  ul { padding-left: 1.2em; margin: 4px 0 10px; }
+  li { margin-bottom: 6px; }
+
+  button.toggle { font: inherit; font-size: 13px; color: var(--text-secondary); background: transparent;
+    border: 1px solid var(--baseline); border-radius: 6px; padding: 4px 10px; cursor: pointer; white-space: nowrap; }
+  button.toggle:hover { color: var(--text-primary); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; margin-top: 10px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--grid); }
+  th { color: var(--text-secondary); font-weight: 600; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.emph td { font-weight: 600; }
+  [hidden] { display: none !important; }
+
+  #tip { position: fixed; z-index: 10; pointer-events: none; max-width: 330px; padding: 10px 12px;
+    background: var(--tooltip-bg); color: var(--text-primary); border: 1px solid var(--border);
+    border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.12); font-size: 13px; line-height: 1.45; }
+  #tip .val { font-weight: 700; font-size: 15px; }
+  #tip .key { display: inline-block; width: 14px; height: 3px; border-radius: 2px; margin-right: 6px; vertical-align: middle; background: var(--c); }
+  #tip .lbl { color: var(--text-secondary); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Can the Grace CPU access the GPU's HBM? Yes, over NVLink-C2C</h1>
+  <p class="lede">On a Grace Blackwell superchip the "unified memory" is not a third pool. It is the GPU's HBM3e plus the CPU's LPDDR5X mapped into one
+    coherent address space. The CPU reaches HBM, and the GPU reaches LPDDR5X, with ordinary loads and stores. What differs is the path each access takes
+    and how much bandwidth that path has.</p>
+
+  <!-- ============================ Figure 1: topology ============================ -->
+  <figure aria-labelledby="f1-title">
+    <header>
+      <div>
+        <h2 id="f1-title">One GB200 superchip: two physical memories, one address space</h2>
+        <p class="sub">The highlighted route is a CPU load or store that lands in HBM. It crosses the chip-to-chip link, so it is limited to the link's
+          bandwidth, not HBM's. Hover or focus any part for details.</p>
+      </div>
+    </header>
+    <div class="legend" aria-hidden="true">
+      <span style="--c: var(--mem-fast)">HBM3e (GPU-attached)</span>
+      <span style="--c: var(--mem-slow)">LPDDR5X (CPU-attached)</span>
+      <span class="line" style="--c: var(--link)">Coherent link</span>
+      <span class="line" style="--c: var(--path)">CPU reading or writing HBM</span>
+    </div>
+    <svg id="topo" viewBox="0 0 960 400" role="img"
+      aria-label="Diagram of a GB200 superchip: a Grace CPU with LPDDR5X on the left, two Blackwell GPUs each with HBM3e on the right, joined by NVLink-C2C links, with the CPU-to-HBM path highlighted."></svg>
+    <figcaption>Capacities and bandwidths are NVIDIA's rated figures for GB200: 192 GB HBM3e at 8 TB/s per GPU, up to 480 GB LPDDR5X at about 500 GB/s per Grace,
+      NVLink-C2C at 900 GB/s bidirectional per GPU, NVLink 5 at 1.8 TB/s bidirectional per GPU.</figcaption>
+  </figure>
+
+  <!-- ============================ Figure 2: bandwidth ============================ -->
+  <figure aria-labelledby="f2-title">
+    <header>
+      <div>
+        <h2 id="f2-title">Bandwidth to a byte depends on who is asking and where it lives</h2>
+        <p class="sub">Links are shown per direction (half of NVIDIA's bidirectional figure). Memory bandwidths are totals. "As if one huge pool" holds for
+          correctness; for performance the CPU-to-HBM route has about one eighteenth of the GPU's local bandwidth.</p>
+      </div>
+      <button class="toggle" id="toggle" aria-pressed="false">Table view</button>
+    </header>
+    <svg id="bw" viewBox="0 0 960 360" role="img" aria-label="Horizontal bars comparing bandwidth: GPU to its own HBM 8,000 GB/s; GPU to a peer GPU's HBM over NVLink 900 GB/s; CPU to its own LPDDR5X about 500 GB/s; CPU to HBM over NVLink-C2C 450 GB/s; GPU to LPDDR5X over NVLink-C2C 450 GB/s."></svg>
+    <table id="bwtable" hidden>
+      <thead><tr><th>Access</th><th>Path</th><th class="num">Bandwidth (GB/s)</th><th class="num">Relative to GPU local HBM</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <figcaption>Latency moves the same way: a CPU access into HBM, or a GPU access into LPDDR5X, is noticeably slower than a local access. The driver's page
+      migration and <code>cudaMemPrefetchAsync</code> / <code>cudaMemAdvise</code> exist to keep hot data on the side that uses it.</figcaption>
+  </figure>
+
+  <div class="cols">
+    <div class="note">
+      <h3>What "unified" means here</h3>
+      <ul>
+        <li><strong>One virtual address space.</strong> A pointer is valid on both sides. For memory from <code>malloc</code> or <code>mmap</code> the GPU uses the CPU's page tables through Address Translation Services (ATS), so nothing has to be registered or copied first.</li>
+        <li><strong>Hardware coherence over NVLink-C2C.</strong> The CPU can cache lines that live in HBM, and the GPU can cache lines that live in LPDDR5X, with the hardware keeping both views consistent. System-scope atomics work across the two.</li>
+        <li><strong>Two physical pools, visible to the OS.</strong> Linux exposes each GPU's HBM as a CPU-less NUMA node, so even <code>numactl --membind</code> can place ordinary allocations in HBM, and the CPU can touch them.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h3>What the CPU can and cannot touch</h3>
+      <ul>
+        <li><strong>System-allocated and managed memory, wherever its pages live.</strong> If a page of <code>malloc</code> or <code>cudaMallocManaged</code> memory is resident in HBM, a CPU load reads it over C2C. The driver may also migrate hot pages between HBM and LPDDR5X.</li>
+        <li><strong>Not <code>cudaMalloc</code> memory.</strong> That stays GPU-private in the CUDA programming model. The CPU cannot dereference such a pointer, even though the bytes physically sit in the same HBM.</li>
+        <li><strong>Extended GPU Memory (EGM) is the GPU-side name.</strong> It lets a GPU address the LPDDR5X of its own Grace and, over NVLink, the LPDDR5X of other superchips in the rack, so a GPU's reachable memory grows toward the rack's roughly 30 TB. The book uses EGM as a synonym for unified memory; strictly it describes the GPU extending into CPU memory, not the CPU reaching HBM.</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="muted">Figure for chapter 2, "AI System Hardware Overview". Colors follow the OS light or dark setting.</p>
+</main>
+
+<div id="tip" role="tooltip" hidden></div>
+
+<script>
+(function () {
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs, parent) => {
+    const n = document.createElementNS(NS, tag);
+    for (const [k, v] of Object.entries(attrs || {})) n.setAttribute(k, v);
+    if (parent) parent.appendChild(n);
+    return n;
+  };
+  const txt = (parent, x, y, s, attrs) => { const t = el("text", Object.assign({ x, y }, attrs || {}), parent); t.textContent = s; return t; };
+  const fmt = (n) => n.toLocaleString("en-US", { maximumFractionDigits: 0 });
+
+  // ---------- tooltip ----------
+  const tip = document.getElementById("tip");
+  function showTip(rows, x, y) {
+    tip.replaceChildren();
+    for (const r of rows) {
+      const line = document.createElement("div");
+      if (r.color) { const k = document.createElement("span"); k.className = "key"; k.style.setProperty("--c", r.color); line.appendChild(k); }
+      const v = document.createElement("span"); v.className = r.strong ? "val" : "lbl"; v.textContent = r.text; line.appendChild(v);
+      tip.appendChild(line);
+    }
+    tip.hidden = false; moveTip(x, y);
+  }
+  function moveTip(x, y) {
+    const pad = 14, w = tip.offsetWidth, h = tip.offsetHeight;
+    let left = x + pad, top = y + pad;
+    if (left + w > window.innerWidth - 8) left = x - w - pad;
+    if (top + h > window.innerHeight - 8) top = y - h - pad;
+    tip.style.left = left + "px"; tip.style.top = top + "px";
+  }
+  const hideTip = () => { tip.hidden = true; };
+  function attachHover(hit, rows, markEl) {
+    hit.addEventListener("pointerenter", (e) => showTip(rows, e.clientX, e.clientY));
+    hit.addEventListener("pointermove", (e) => moveTip(e.clientX, e.clientY));
+    hit.addEventListener("pointerleave", hideTip);
+    hit.addEventListener("focus", () => { const b = markEl.getBoundingClientRect(); showTip(rows, b.right, b.top); });
+    hit.addEventListener("blur", hideTip);
+  }
+
+  // ---------- Figure 1: topology ----------
+  (function topo() {
+    const svg = document.getElementById("topo");
+    // layout
+    const cpu = { x: 40, y: 120, w: 220, h: 110 };
+    const lp  = { x: 40, y: 262, w: 220, h: 56 };
+    const gpus = [
+      { x: 560, y: 40,  w: 200, h: 90, hbm: { x: 800, y: 40,  w: 130, h: 90 }, name: "Blackwell GPU 0" },
+      { x: 560, y: 220, w: 200, h: 90, hbm: { x: 800, y: 220, w: 130, h: 90 }, name: "Blackwell GPU 1" },
+    ];
+
+    const node = (box, cls, label, sub, rows, fill, ink) => {
+      const g = el("g", {}, svg);
+      const hit = el("rect", { x: box.x - 6, y: box.y - 6, width: box.w + 12, height: box.h + 12, rx: 10, class: "hit", tabindex: "0", role: "img", "aria-label": `${label}. ${sub}` }, g);
+      const r = el("rect", { x: box.x, y: box.y, width: box.w, height: box.h, rx: 8, class: cls + " mark" }, g);
+      if (fill) r.style.fill = fill;
+      const t1 = txt(g, box.x + 14, box.y + 26, label, { "font-size": "15", "font-weight": "700" });
+      const t2 = txt(g, box.x + 14, box.y + 46, sub, { "font-size": "12.5", class: ink ? "" : "t2" });
+      if (ink) { t1.style.fill = ink; t2.style.fill = ink; }
+      t1.style.pointerEvents = "none"; t2.style.pointerEvents = "none";
+      attachHover(hit, rows, r);
+      return g;
+    };
+
+    // links first so boxes sit on top
+    // C2C from CPU right edge to each GPU left edge
+    const cpuR = { x: cpu.x + cpu.w, y: cpu.y + cpu.h / 2 };
+    gpus.forEach((gp, i) => {
+      const gy = gp.y + gp.h / 2;
+      const d = `M${cpuR.x},${cpuR.y + (i ? 18 : -18)} C${cpuR.x + 120},${cpuR.y + (i ? 18 : -18)} ${gp.x - 120},${gy} ${gp.x},${gy}`;
+      const g = el("g", {}, svg);
+      const hit = el("path", { d, class: "hit", stroke: "transparent", "stroke-width": "26", fill: "none", tabindex: "0", role: "img",
+        "aria-label": `NVLink-C2C link between Grace CPU and ${gp.name}, 900 GB/s bidirectional, cache coherent` }, g);
+      const line = el("path", { d, class: "link mark", "stroke-width": "4" }, g);
+      attachHover(hit, [
+        { text: "NVLink-C2C: 900 GB/s bidirectional (450 GB/s each way)", strong: true },
+        { text: `Grace CPU ↔ ${gp.name}`, color: "var(--link)" },
+        { text: "Cache-coherent chip-to-chip link. Carries CPU accesses to HBM and GPU accesses to LPDDR5X. Both are capped by this link, not by the memory on the far side." },
+      ], line);
+      // GPU to HBM
+      const hg = el("g", {}, svg);
+      const hd = `M${gp.x + gp.w},${gy} H${gp.hbm.x}`;
+      const hhit = el("path", { d: hd, class: "hit", stroke: "transparent", "stroke-width": "26", fill: "none", tabindex: "0", role: "img", "aria-label": `${gp.name} to its HBM3e, 8 TB/s` }, hg);
+      const hline = el("path", { d: hd, class: "link mark", "stroke-width": "8" }, hg);
+      attachHover(hhit, [{ text: "8 TB/s", strong: true }, { text: `${gp.name} → its own HBM3e`, color: "var(--link)" }, { text: "The GPU's local memory path. About 18× the per-direction bandwidth of NVLink-C2C." }], hline);
+      // NVLink 5 to the rack
+      const ng = el("g", {}, svg);
+      const nd = `M${gp.x + gp.w / 2},${i ? gp.y + gp.h : gp.y} V${i ? 370 : 8}`;
+      const nhit = el("path", { d: nd, class: "hit", stroke: "transparent", "stroke-width": "26", fill: "none", tabindex: "0", role: "img", "aria-label": `${gp.name} NVLink 5 to the rack switch fabric, 1.8 TB/s bidirectional` }, ng);
+      const nline = el("path", { d: nd, class: "link mark", "stroke-width": "4" }, ng);
+      attachHover(nhit, [{ text: "NVLink 5: 1.8 TB/s bidirectional (900 GB/s each way)", strong: true }, { text: `${gp.name} → NVLink switch fabric`, color: "var(--link)" }, { text: "Reaches the other 70 GPUs' HBM in the NVL72 rack, and through them other superchips' LPDDR5X (EGM)." }], nline);
+      txt(svg, gp.x + gp.w / 2 + 10, i ? 366 : 14, "NVLink 5 to the other 70 GPUs in the rack · 1.8 TB/s", { "font-size": "11.5", class: "t3" });
+    });
+    // CPU to LPDDR5X
+    (function () {
+      const d = `M${cpu.x + cpu.w / 2},${cpu.y + cpu.h} V${lp.y}`;
+      const g = el("g", {}, svg);
+      const hit = el("path", { d, class: "hit", stroke: "transparent", "stroke-width": "26", fill: "none", tabindex: "0", role: "img", "aria-label": "Grace CPU to its LPDDR5X, about 500 GB/s" }, g);
+      const line = el("path", { d, class: "link mark", "stroke-width": "5" }, g);
+      attachHover(hit, [{ text: "≈ 500 GB/s", strong: true }, { text: "Grace CPU → its own LPDDR5X", color: "var(--link)" }, { text: "The CPU's local memory path." }], line);
+    })();
+
+    // highlighted CPU -> HBM route (GPU 0): CPU core -> C2C -> GPU 0 -> HBM 0
+    (function () {
+      const gp = gpus[0], gy = gp.y + gp.h / 2;
+      const d = `M${cpu.x + 40},${cpu.y + 72} H${cpuR.x - 20} C${cpuR.x + 120},${cpuR.y - 18} ${gp.x - 120},${gy} ${gp.x + 20},${gy} H${gp.hbm.x + 30}`;
+      const g = el("g", {}, svg);
+      const hit = el("path", { d, class: "hit", stroke: "transparent", "stroke-width": "22", fill: "none", tabindex: "0", role: "img",
+        "aria-label": "Highlighted route: a CPU load or store that targets HBM crosses NVLink-C2C into the GPU and then its HBM, limited to 450 GB/s per direction" }, g);
+      const line = el("path", { d, class: "pathline mark", "stroke-width": "3", "stroke-dasharray": "none" }, g);
+      el("circle", { cx: cpu.x + 40, cy: cpu.y + 72, r: 5, fill: "var(--path)", stroke: "var(--surface-1)", "stroke-width": "2" }, g);
+      el("circle", { cx: gp.hbm.x + 30, cy: gy, r: 5, fill: "var(--path)", stroke: "var(--surface-1)", "stroke-width": "2" }, g);
+      attachHover(hit, [
+        { text: "CPU reads or writes a byte in HBM: ≤ 450 GB/s", strong: true },
+        { text: "Grace core → NVLink-C2C → GPU 0 → HBM3e", color: "var(--path)" },
+        { text: "A plain load or store. No cudaMemcpy. Coherent with the GPU's view. But every byte crosses the C2C link, so the ceiling is the link, about 1/18 of what the GPU gets from the same HBM." },
+      ], line);
+    })();
+
+    node(cpu, "box", "Grace CPU", "72 Arm Neoverse V2 cores", [
+      { text: "Grace CPU", strong: true },
+      { text: "72 Arm Neoverse V2 cores, one per superchip in GB200" },
+      { text: "Addresses its own LPDDR5X directly and the GPUs' HBM3e over NVLink-C2C. HBM appears to Linux as a CPU-less NUMA node." },
+    ]);
+    node(lp, "box", "LPDDR5X · up to 480 GB", "≈ 500 GB/s · CPU-attached", [
+      { text: "LPDDR5X: up to 480 GB, ≈ 500 GB/s", strong: true },
+      { text: "CPU-attached memory", color: "var(--mem-slow)" },
+      { text: "Reachable by the GPUs over NVLink-C2C (and by other superchips' GPUs over NVLink, which NVIDIA calls Extended GPU Memory)." },
+    ], "var(--mem-slow)", "var(--on-slow)");
+    gpus.forEach((gp) => {
+      node(gp, "box", gp.name, "8 TB/s to its HBM", [
+        { text: gp.name, strong: true },
+        { text: "Reads its own HBM3e at 8 TB/s. Reads LPDDR5X over NVLink-C2C at ≤ 450 GB/s per direction. Reads other GPUs' HBM over NVLink 5." },
+      ]);
+      node(gp.hbm, "box", "HBM3e", "192 GB · 8 TB/s", [
+        { text: "HBM3e: 192 GB, 8 TB/s", strong: true },
+        { text: "GPU-attached memory", color: "var(--mem-fast)" },
+        { text: "Local to this GPU. The CPU can read and write it over NVLink-C2C; peer GPUs over NVLink 5. Memory from cudaMalloc lives here but stays GPU-private in the programming model." },
+      ], "var(--mem-fast)", "var(--on-fast)");
+    });
+    txt(svg, cpu.x, 392, "Everything inside the dotted outline is one superchip and one coherent address space.", { "font-size": "12", class: "t3" });
+    el("rect", { x: 20, y: 24, width: 920, height: 320, rx: 14, fill: "none", stroke: "var(--baseline)", "stroke-dasharray": "4 6", "stroke-width": "1" }, svg);
+  })();
+
+  // ---------- Figure 2: bandwidth bars ----------
+  (function bw() {
+    const svg = document.getElementById("bw");
+    const rows = [
+      { who: "GPU → its own HBM3e", path: "local", gbps: 8000, emph: false },
+      { who: "GPU → a peer GPU's HBM3e", path: "NVLink 5, per direction", gbps: 900, emph: false },
+      { who: "CPU → its own LPDDR5X", path: "local", gbps: 500, emph: false },
+      { who: "CPU → HBM3e", path: "NVLink-C2C, per direction", gbps: 450, emph: true },
+      { who: "GPU → LPDDR5X", path: "NVLink-C2C, per direction", gbps: 450, emph: false },
+    ];
+    const ref = rows[0].gbps;
+    const left = 300, right = 870, top = 14, rowH = 56, barH = 22, r = 4;
+    const xMax = 8000;
+    const xs = (v) => left + (v / xMax) * (right - left);
+    const plotBottom = top + rows.length * rowH;
+    for (let v = 0; v <= xMax; v += 2000) {
+      const x = xs(v);
+      el("line", { x1: x, x2: x, y1: top, y2: plotBottom, class: "hair" }, svg);
+      txt(svg, x, plotBottom + 22, fmt(v), { "font-size": "12", "text-anchor": "middle", class: "t3 tab" });
+    }
+    el("line", { x1: left, x2: right, y1: plotBottom, y2: plotBottom, class: "base" }, svg);
+    txt(svg, (left + right) / 2, plotBottom + 50, "bandwidth, GB/s", { "font-size": "13", "text-anchor": "middle", class: "t2" });
+
+    rows.forEach((m, i) => {
+      const cy = top + i * rowH + rowH / 2, y = cy - barH / 2;
+      const g = el("g", {}, svg);
+      const hit = el("rect", { x: 0, y: cy - rowH / 2, width: 960, height: rowH, class: "hit", tabindex: "0", role: "img", "aria-label": `${m.who} via ${m.path}: ${fmt(m.gbps)} gigabytes per second` }, g);
+      const xe = xs(m.gbps);
+      const d = `M${left},${y} H${xe - r} a${r},${r} 0 0 1 ${r},${r} V${y + barH - r} a${r},${r} 0 0 1 -${r},${r} H${left} Z`;
+      const mark = el("path", { d, fill: m.emph ? "var(--path)" : "var(--deemph)", class: "mark" }, g);
+      txt(g, 0, cy - 4, m.who, { "font-size": "14.5", "font-weight": "700" });
+      txt(g, 0, cy + 15, m.path, { "font-size": "12.5", class: "t2" });
+      txt(g, xe + 10, cy + 5, `${fmt(m.gbps)} GB/s`, { "font-size": "13.5", "font-weight": m.emph ? "700" : "400", class: "tab" });
+      const rel = m.gbps / ref;
+      attachHover(hit, [
+        { text: `${fmt(m.gbps)} GB/s`, strong: true },
+        { text: m.who, color: m.emph ? "var(--path)" : "var(--deemph)" },
+        { text: `Path: ${m.path}` },
+        { text: rel === 1 ? "Reference: the GPU's local memory bandwidth." : `About 1/${Math.round(1 / rel)} of the GPU's local HBM bandwidth.` },
+      ], mark);
+    });
+
+    const tbody = document.querySelector("#bwtable tbody");
+    for (const m of rows) {
+      const tr = document.createElement("tr"); if (m.emph) tr.className = "emph";
+      [m.who, m.path, fmt(m.gbps), m.gbps === ref ? "1" : `1 / ${Math.round(ref / m.gbps)}`].forEach((c, k) => {
+        const td = document.createElement("td"); if (k >= 2) td.className = "num"; td.textContent = c; tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    }
+    const btn = document.getElementById("toggle"), table = document.getElementById("bwtable");
+    btn.addEventListener("click", () => {
+      const showTable = table.hidden;
+      table.hidden = !showTable; svg.hidden = showTable;
+      btn.textContent = showTable ? "Chart view" : "Table view";
+      btn.setAttribute("aria-pressed", String(showTable));
+    });
+  })();
+})();
+</script>
+</body>
+</html>
