@@ -2,7 +2,7 @@
 author: "Suraj Deshmukh"
 date: "2026-10-02T10:20:00-07:00"
 title: "Visualizations for the book 'AI Systems Performance Engineering'"
-description: "Interactive diagrams and animations for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, and Grace Blackwell hardware."
+description: "Interactive diagrams and animations for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, Grace Blackwell hardware, and the NVLink fabric."
 draft: false
 categories: ["ai", "llm"]
 tags: ["ai", "llm", "visualization", "gpu", "training", "blackwell", "cuda"]
@@ -42,3 +42,11 @@ This animation accompanies Chapter 2's "Streaming Multiprocessor, Threads, and W
 {{< youtube id="0NxdbAUB1V8" title="Inside the SM, animated" loading="lazy" >}}
 
 The animation runs for 3 minutes and 8 seconds. You can also [watch it on YouTube](https://youtu.be/0NxdbAUB1V8).
+
+## NVLink and NVSwitch, animated
+
+This animation accompanies Chapter 2's "NVLink and NVSwitch" section. It shows how a GB200 NVL72 rack is laid out, the 18 NVLink ports on each Blackwell GPU, and the 144 ports on each NVLink Switch tray. It then shows how every GPU is wired to every NVSwitch chip and how data moves from one GPU to another in a single hop.
+
+{{< youtube id="nL2D-rkvnNI" title="NVLink and NVSwitch, animated" loading="lazy" >}}
+
+The animation runs for 3 minutes and 6 seconds. You can also [watch it on YouTube](https://youtu.be/nL2D-rkvnNI).

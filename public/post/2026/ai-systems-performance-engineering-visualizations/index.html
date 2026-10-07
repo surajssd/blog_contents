@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>Visualizations for the book &#39;AI Systems Performance Engineering&#39; | Suraj Deshmukh</title>
 <meta name="keywords" content="ai, llm, visualization, gpu, training, blackwell, cuda">
-<meta name="description" content="Interactive diagrams and animations for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, and Grace Blackwell hardware.">
+<meta name="description" content="Interactive diagrams and animations for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, Grace Blackwell hardware, and the NVLink fabric.">
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/2026/ai-systems-performance-engineering-visualizations/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
@@ -82,7 +82,7 @@
       </script><meta property="og:url" content="https://suraj.io/post/2026/ai-systems-performance-engineering-visualizations/">
   <meta property="og:site_name" content="Suraj Deshmukh">
   <meta property="og:title" content="Visualizations for the book &#39;AI Systems Performance Engineering&#39;">
-  <meta property="og:description" content="Interactive diagrams and animations for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, and Grace Blackwell hardware.">
+  <meta property="og:description" content="Interactive diagrams and animations for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, Grace Blackwell hardware, and the NVLink fabric.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -98,7 +98,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://suraj.io/post/2026/images/ai-systems-performance-engineering.png">
   <meta name="twitter:title" content="Visualizations for the book &#39;AI Systems Performance Engineering&#39;">
-  <meta name="twitter:description" content="Interactive diagrams and animations for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, and Grace Blackwell hardware.">
+  <meta name="twitter:description" content="Interactive diagrams and animations for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, Grace Blackwell hardware, and the NVLink fabric.">
 
 
 <script type="application/ld+json">
@@ -127,12 +127,12 @@
   "@type": "BlogPosting",
   "headline": "Visualizations for the book 'AI Systems Performance Engineering'",
   "name": "Visualizations for the book \u0027AI Systems Performance Engineering\u0027",
-  "description": "Interactive diagrams and animations for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, and Grace Blackwell hardware.",
+  "description": "Interactive diagrams and animations for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, Grace Blackwell hardware, and the NVLink fabric.",
   "keywords": [
     "ai", "llm", "visualization", "gpu", "training", "blackwell", "cuda"
   ],
-  "articleBody": "I am working through AI Systems Performance Engineering by Chris Fregly. The first two chapters cover training compute estimates and the hardware that runs those workloads. I put together these visualizations to follow the calculations and see how the components connect.\nLike my visualizations for Inference Engineering, these are companions to specific parts of the book. Each link below includes its chapter so you can open the relevant diagram as you read.\nHow to use them Open an interactive page from the links below. Hover over the diagrams or use the Tab key to focus their elements for more detail. The charts also have a table view, and the pages follow your device’s light or dark setting.\nThe animations below explain the hardware with on-screen labels. They have no audio.\nThe visualizations Training compute: where C ≈ 6ND comes from (Chapter 1, “Toward 100-Trillion-Parameter Models”): breaks down the operations in the forward and backward passes, then compares training compute estimates across models. GB200 NVL72: where 1.44 exaFLOPS comes from (Chapter 1, “NVIDIA’s ‘AI Supercomputer in a Rack’”): shows how per-GPU throughput, numeric precision, structured sparsity, and the rack’s 72 GPUs contribute to the quoted peak. Grace Blackwell: how the CPU accesses GPU memory (Chapter 2, “AI System Hardware Overview”): traces the paths between CPU and GPU memory and compares the bandwidth available on each path. The Grace Blackwell superchip, animated This animation accompanies Chapter 2’s “The CPU and GPU Superchip” section. It walks through the Grace CPU, the two Blackwell GPUs, their memory, and the links between them.\nThe animation runs for 3 minutes and 33 seconds. You can also watch it on YouTube.\nInside the SM, animated This animation accompanies Chapter 2’s “Streaming Multiprocessor, Threads, and Warps” section. It shows what a streaming multiprocessor (SM) contains and how the GPU memory hierarchy is laid out. It then shows how an SM runs threads in warps of 32 and hides memory latency by switching between warps.\nThe animation runs for 3 minutes and 8 seconds. You can also watch it on YouTube.\n",
-  "wordCount" : "342",
+  "articleBody": "I am working through AI Systems Performance Engineering by Chris Fregly. The first two chapters cover training compute estimates and the hardware that runs those workloads. I put together these visualizations to follow the calculations and see how the components connect.\nLike my visualizations for Inference Engineering, these are companions to specific parts of the book. Each link below includes its chapter so you can open the relevant diagram as you read.\nHow to use them Open an interactive page from the links below. Hover over the diagrams or use the Tab key to focus their elements for more detail. The charts also have a table view, and the pages follow your device’s light or dark setting.\nThe animations below explain the hardware with on-screen labels. They have no audio.\nThe visualizations Training compute: where C ≈ 6ND comes from (Chapter 1, “Toward 100-Trillion-Parameter Models”): breaks down the operations in the forward and backward passes, then compares training compute estimates across models. GB200 NVL72: where 1.44 exaFLOPS comes from (Chapter 1, “NVIDIA’s ‘AI Supercomputer in a Rack’”): shows how per-GPU throughput, numeric precision, structured sparsity, and the rack’s 72 GPUs contribute to the quoted peak. Grace Blackwell: how the CPU accesses GPU memory (Chapter 2, “AI System Hardware Overview”): traces the paths between CPU and GPU memory and compares the bandwidth available on each path. The Grace Blackwell superchip, animated This animation accompanies Chapter 2’s “The CPU and GPU Superchip” section. It walks through the Grace CPU, the two Blackwell GPUs, their memory, and the links between them.\nThe animation runs for 3 minutes and 33 seconds. You can also watch it on YouTube.\nInside the SM, animated This animation accompanies Chapter 2’s “Streaming Multiprocessor, Threads, and Warps” section. It shows what a streaming multiprocessor (SM) contains and how the GPU memory hierarchy is laid out. It then shows how an SM runs threads in warps of 32 and hides memory latency by switching between warps.\nThe animation runs for 3 minutes and 8 seconds. You can also watch it on YouTube.\nNVLink and NVSwitch, animated This animation accompanies Chapter 2’s “NVLink and NVSwitch” section. It shows how a GB200 NVL72 rack is laid out, the 18 NVLink ports on each Blackwell GPU, and the 144 ports on each NVLink Switch tray. It then shows how every GPU is wired to every NVSwitch chip and how data moves from one GPU to another in a single hop.\nThe animation runs for 3 minutes and 6 seconds. You can also watch it on YouTube.\n",
+  "wordCount" : "423",
   "inLanguage": "en",
   "image":"https://suraj.io/post/2026/images/ai-systems-performance-engineering.png","datePublished": "2026-10-02T10:20:00-07:00",
   "dateModified": "2026-10-02T10:20:00-07:00",
@@ -242,7 +242,7 @@
       Visualizations for the book &#39;AI Systems Performance Engineering&#39;
     </h1>
     <div class="post-description">
-      Interactive diagrams and animations for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, and Grace Blackwell hardware.
+      Interactive diagrams and animations for the first two chapters of AI Systems Performance Engineering: training compute, GB200 NVL72 throughput, Grace Blackwell hardware, and the NVLink fabric.
     </div>
     <div class="post-meta">
 
@@ -268,7 +268,9 @@
             <li>
                 <a href="#the-grace-blackwell-superchip-animated" aria-label="The Grace Blackwell superchip, animated">The Grace Blackwell superchip, animated</a></li>
             <li>
-                <a href="#inside-the-sm-animated" aria-label="Inside the SM, animated">Inside the SM, animated</a>
+                <a href="#inside-the-sm-animated" aria-label="Inside the SM, animated">Inside the SM, animated</a></li>
+            <li>
+                <a href="#nvlink-and-nvswitch-animated" aria-label="NVLink and NVSwitch, animated">NVLink and NVSwitch, animated</a>
             </li>
         </ul>
     </div>
@@ -299,6 +301,13 @@
 		</div>
 
 <p>The animation runs for 3 minutes and 8 seconds. You can also <a href="https://youtu.be/0NxdbAUB1V8">watch it on YouTube</a>.</p>
+<h2 id="nvlink-and-nvswitch-animated">NVLink and NVSwitch, animated<a hidden class="anchor" aria-hidden="true" href="#nvlink-and-nvswitch-animated">#</a></h2>
+<p>This animation accompanies Chapter 2&rsquo;s &ldquo;NVLink and NVSwitch&rdquo; section. It shows how a GB200 NVL72 rack is laid out, the 18 NVLink ports on each Blackwell GPU, and the 144 ports on each NVLink Switch tray. It then shows how every GPU is wired to every NVSwitch chip and how data moves from one GPU to another in a single hop.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+			<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/nL2D-rkvnNI?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="NVLink and NVSwitch, animated"></iframe>
+		</div>
+
+<p>The animation runs for 3 minutes and 6 seconds. You can also <a href="https://youtu.be/nL2D-rkvnNI">watch it on YouTube</a>.</p>
 
 
   </div>
