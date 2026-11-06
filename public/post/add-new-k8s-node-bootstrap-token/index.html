@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/add-new-k8s-node-bootstrap-token/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.95ae6e9689bd0037456375629f411acbf8ed76e0e9a7599900ad281f9526dee6.css" integrity="sha256-la5ulom9ADdFY3Vin0Eay/jtduDpp1mZAK0oH5Um3uY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -128,7 +128,7 @@
   "keywords": [
     "kubernetes", "security"
   ],
-  "articleBody": " NOTE: There is an updated version of this blog here.\nFew days back I wrote a blog about adding new node to the cluster using the static token file. The problem with that approach is that you need to restart kube-apiserver providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like secrets.\nSo if you are following Kubernetes the Hard Way to set up the cluster here are the changes you should do to adapt it to run with bootstrap token.\nMaster Node changes kube-apiserver Add this flag --enable-bootstrap-token-auth=true to your kube-apiserver service file. In the end your service file should look like following:\ncat \u003c",
+  "articleBody": " NOTE: There is an updated version of this blog here.\nFew days back I wrote a blog about adding new node to the cluster using the static token file. The problem with that approach is that you need to restart kube-apiserver providing it the path to the token file. Here we will see how to use the bootstrap token, which is very dynamic in nature and can be controlled by using Kubernetes resources like secrets.\nSo if you are following Kubernetes the Hard Way to set up the cluster here are the changes you should do to adapt it to run with bootstrap token.\nMaster Node changes kube-apiserver Add this flag --enable-bootstrap-token-auth=true to your kube-apiserver service file. In the end your service file should look like following:\ncat \u003c kube-controller-manager Add following flag --controllers=*,bootstrapsigner,tokencleaner to the controller manager service file. So service file should look like following:\ncat \u003c Bootstrap secret The bootstrap token that we are using to setup is 07401b.f395accd246ae52d(You can generate one of yourself). This token has two parts 07401b which is public id and private part f395accd246ae52d a secret. Read more about the token, what is allowed and what it should look like here. And about the bootstrap token secret format here.\nCreate following secret which has certain requirements. The name of the secret should of the format bootstrap-token- and should be available in kube-system namespace.\ncat \u003c\" name: bootstrap-token-07401b namespace: kube-system # Type MUST be 'bootstrap.kubernetes.io/token' type: bootstrap.kubernetes.io/token stringData: # Human readable description. Optional. description: \"Created for Kubernetes the Hard Way\" # Token ID and secret. Required. token-id: 07401b token-secret: f395accd246ae52d # Allowed usages. usage-bootstrap-authentication: \"true\" usage-bootstrap-signing: \"true\" EOF RBAC policies to enable bootstrapping The user authenticated by that token belongs to the group system:bootstrappers, that is why following permissions are given to that group.\nkubectl create clusterrolebinding kubelet-bootstrap \\ --clusterrole=system:node-bootstrapper \\ --group=system:bootstrappers kubectl create clusterrolebinding node-autoapprove-bootstrap \\ --clusterrole=system:certificates.k8s.io:certificatesigningrequests:nodeclient \\ --group=system:bootstrappers kubectl create clusterrolebinding node-autoapprove-certificate-rotation \\ --clusterrole=system:certificates.k8s.io:certificatesigningrequests:selfnodeclient \\ --group=system:nodes Worker node changes Kubelet Add this flag --bootstrap-kubeconfig, it is a path to kubeconfig which we will generate shortly, it contains bootstrap token and information to talk to the kube-apiserver. And also you don’t need to provide --kubeconfig but provide a path to it, this will be auto-generated and saved at that path.\nYour kubelet service file should look like following:\ncat \u003c Now changes in kubelet configuration file\ncat \u003c Provide appropriate path to clientCAFile. And add two more fields rotateCertificates: true \u0026 serverTLSBootstrap: true, this will enable cert rotation.\nCreate bootstrap kubeconfig # I have used the ip address of my kube kube-apiserver use yours kubectl config set-cluster kthwkinvolk \\ --certificate-authority=ca.pem \\ --embed-certs=true \\ --server=https://192.168.50.10:6443 \\ --kubeconfig=/home/vagrant/bootstrap.kubeconfig # this token is above generated kubectl config set-credentials kubelet-bootstrap \\ --token=07401b.f395accd246ae52d \\ --kubeconfig=/home/vagrant/bootstrap.kubeconfig kubectl config set-context default \\ --cluster=kthwkinvolk \\ --user=kubelet-bootstrap \\ --kubeconfig=/home/vagrant/bootstrap.kubeconfig kubectl config use-context default \\ --kubeconfig=/home/vagrant/bootstrap.kubeconfig This is the bootstrap config file which we referred earlier in kubelet service file.\nNow once you start kubelet service it will use the bootstrap token in the initial request and fetch the certificates.\nTrying it all in one go Here is the link to the gist where you can start a master and a node using Vagrant and create cluster using above setup.\nHope that helps. Happy Hacking.\n",
   "wordCount" : "752",
   "inLanguage": "en",
   "image": "https://suraj.io/images/papermod-cover.png","datePublished": "2018-10-24T01:00:51+05:30",
@@ -243,7 +243,7 @@
     </div>
     <div class="post-meta">
 
-<span title='2018-10-24 01:00:51 +0530 +0530'>October 24, 2018</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
+<span title='2018-10-24T01:00:51+05:30'>October 24, 2018</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
         <a href="https://github.com/surajssd/blog_contents/blob/master/content/post/add-new-k8s-node-bootstrap-token.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
     </span>
 
@@ -612,22 +612,34 @@ EOF
             menu.scrollLeft = parseInt(scrollPosition, 10);
         }
         
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+        
+        let menuScrollTimeout;
+        menu.addEventListener("scroll", function () {
+            clearTimeout(menuScrollTimeout);
+            menuScrollTimeout = setTimeout(function () {
+                localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+            }, 150);
+        }, { passive: true });
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
             var id = this.getAttribute("href").substr(1);
+            const target = document.querySelector(`[id='${decodeURIComponent(id)}']`);
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                target.scrollIntoView({
                     behavior: "smooth"
                 });
             } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                target.scrollIntoView();
             }
+            
+            
+            if (target.tabIndex < 0 && !target.hasAttribute("tabindex")) {
+                target.setAttribute("tabindex", "-1");
+            }
+            target.focus({ preventScroll: true });
             if (id === "top") {
                 history.replaceState(null, null, " ");
             } else {
@@ -639,14 +651,20 @@ EOF
 </script>
 <script>
     var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
+    var scrollTicking = false;
+    
+    window.addEventListener("scroll", function () {
+        if (scrollTicking) {
+            return;
         }
-    };
+        scrollTicking = true;
+        requestAnimationFrame(function () {
+            const scrollThreshold = window.innerHeight;
+            const shown = document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold;
+            toplink.classList.toggle("hidden", !shown);
+            scrollTicking = false;
+        });
+    }, { passive: true });
 
 </script>
 <script>

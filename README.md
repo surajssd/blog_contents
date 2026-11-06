@@ -39,6 +39,26 @@ It will:
 
 The published site repo is expected at `../surajssd.github.io` by default; override with the `WEB_REPO` environment variable.
 
+## Presentation slides
+
+The KubeCon NA 2026 deck is a generated Slidev export in `static/kubecon-na26/`. Hugo copies the deck unchanged to `/kubecon-na26/`.
+
+Build the deck and blog from this checkout:
+
+```bash
+../kubecon-na26-tutorial/presentation/publish-blog.sh
+```
+
+The script installs pinned presentation dependencies, builds with hash routing, replaces only `static/kubecon-na26/`, and runs Hugo. Set `BLOG_REPO` if this checkout is not the tutorial's sibling `blog_contents`.
+
+Publish mode commits and pushes all pending changes in both blog repositories. Review both working trees before you run publish mode:
+
+```bash
+../kubecon-na26-tutorial/presentation/publish-blog.sh --publish "your commit message"
+```
+
+Publish mode uses the existing `hack/build-and-publish.sh`. After GitHub Pages finishes deployment, the deck is available at `https://suraj.io/kubecon-na26/`.
+
 ## Repository layout
 
 ```

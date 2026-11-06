@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/add-new-k8s-node-manually/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.95ae6e9689bd0037456375629f411acbf8ed76e0e9a7599900ad281f9526dee6.css" integrity="sha256-la5ulom9ADdFY3Vin0Eay/jtduDpp1mZAK0oH5Um3uY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -129,7 +129,7 @@
   "keywords": [
     "kubernetes", "openshift", "notes"
   ],
-  "articleBody": "To setup a multi-node Kubernetes cluster just run this script and you will have a cluster with 3 masters and 3 workers.\n$ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready 1h v1.11.2 192.168.199.20 Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready 1h v1.11.2 192.168.199.21 Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready 1h v1.11.2 192.168.199.22 Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 Now to add a new node to this cluster you will need to bring up a VM, for this just use following Vagrantfile.\n$ cat Vagrantfile # -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(\"2\") do |config| config.vm.define \"ubuntu\" do |ubuntu| ubuntu.vm.box = \"ubuntu/bionic64\" config.vm.hostname = \"ubuntu\" ubuntu.vm.network \"private_network\", ip: \"192.168.199.23\" end config.vm.provider \"virtualbox\" do |virtualbox, override| virtualbox.memory = 3000 virtualbox.cpus = 3 end end Note: This machine I have given IP address which is in the same subnet as other workers.\nBring up this machine using:\nvagrant up Now you can setup the node in one shot by running this script.\nDownload and install binaries Let’s go through this script and let me try to explain what each step does.\nYou can skip the part where we are downloading tools, if you all the required binaries available, viz. kubelet, kube-proxy, kubectl, cfssl, cni, runc, etc.\nOnce you all the tools available install them following this section:\n# install those tools mkdir -p \\ /etc/containers \\ /etc/cni/net.d \\ /etc/crio \\ /opt/cni/bin \\ /usr/local/libexec/crio \\ /var/lib/kubelet \\ /var/lib/kube-proxy \\ /var/lib/kubernetes \\ /var/run/kubernetes tar -xvf cni-plugins-amd64-v0.6.0.tgz -C /opt/cni/bin/ cp runc /usr/local/bin/ cp {crio,kube-proxy,kubelet,kubectl} /usr/local/bin/ cp {conmon,pause} /usr/local/libexec/crio/ cp {crio.conf,seccomp.json} /etc/crio/ cp policy.json /etc/containers/ curl -sSL \\ -O \"https://pkg.cfssl.org/${cfssl_version}/cfssl_linux-amd64\" \\ -O \"https://pkg.cfssl.org/${cfssl_version}/cfssljson_linux-amd64\" chmod +x cfssl_linux-amd64 cfssljson_linux-amd64 mv -v cfssl_linux-amd64 /usr/local/bin/cfssl mv -v cfssljson_linux-amd64 /usr/local/bin/cfssljson Generating configurations Now that all the required tools are installed. Let’s create the configuration that we need to make sure these tools work fine. But before that you will need the ca.pem, ca-key.pem \u0026 ca-config.json used for createing configs for master nodes.\nConfiguration shared by all workers Some of the configuration are same as other nodes which can be copied from other nodes. This includes following:\n/etc/cni/net.d/99-loopback.conf /var/lib/kube-proxy/kubeconfig /etc/systemd/system/kube-proxy.service Following steps here help you re-create them if you can’t access those from other nodes, follow them from here:\n# generate the 99-loopback.conf common for all the workers, can be copied cat \u003e 99-loopback.conf \u003c",
+  "articleBody": "To setup a multi-node Kubernetes cluster just run this script and you will have a cluster with 3 masters and 3 workers.\n$ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME worker-0 Ready 1h v1.11.2 192.168.199.20 Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-1 Ready 1h v1.11.2 192.168.199.21 Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 worker-2 Ready 1h v1.11.2 192.168.199.22 Ubuntu 18.04.1 LTS 4.15.0-33-generic cri-o://1.11.2 Now to add a new node to this cluster you will need to bring up a VM, for this just use following Vagrantfile.\n$ cat Vagrantfile # -*- mode: ruby -*- # vi: set ft=ruby : Vagrant.configure(\"2\") do |config| config.vm.define \"ubuntu\" do |ubuntu| ubuntu.vm.box = \"ubuntu/bionic64\" config.vm.hostname = \"ubuntu\" ubuntu.vm.network \"private_network\", ip: \"192.168.199.23\" end config.vm.provider \"virtualbox\" do |virtualbox, override| virtualbox.memory = 3000 virtualbox.cpus = 3 end end Note: This machine I have given IP address which is in the same subnet as other workers.\nBring up this machine using:\nvagrant up Now you can setup the node in one shot by running this script.\nDownload and install binaries Let’s go through this script and let me try to explain what each step does.\nYou can skip the part where we are downloading tools, if you all the required binaries available, viz. kubelet, kube-proxy, kubectl, cfssl, cni, runc, etc.\nOnce you all the tools available install them following this section:\n# install those tools mkdir -p \\ /etc/containers \\ /etc/cni/net.d \\ /etc/crio \\ /opt/cni/bin \\ /usr/local/libexec/crio \\ /var/lib/kubelet \\ /var/lib/kube-proxy \\ /var/lib/kubernetes \\ /var/run/kubernetes tar -xvf cni-plugins-amd64-v0.6.0.tgz -C /opt/cni/bin/ cp runc /usr/local/bin/ cp {crio,kube-proxy,kubelet,kubectl} /usr/local/bin/ cp {conmon,pause} /usr/local/libexec/crio/ cp {crio.conf,seccomp.json} /etc/crio/ cp policy.json /etc/containers/ curl -sSL \\ -O \"https://pkg.cfssl.org/${cfssl_version}/cfssl_linux-amd64\" \\ -O \"https://pkg.cfssl.org/${cfssl_version}/cfssljson_linux-amd64\" chmod +x cfssl_linux-amd64 cfssljson_linux-amd64 mv -v cfssl_linux-amd64 /usr/local/bin/cfssl mv -v cfssljson_linux-amd64 /usr/local/bin/cfssljson Generating configurations Now that all the required tools are installed. Let’s create the configuration that we need to make sure these tools work fine. But before that you will need the ca.pem, ca-key.pem \u0026 ca-config.json used for createing configs for master nodes.\nConfiguration shared by all workers Some of the configuration are same as other nodes which can be copied from other nodes. This includes following:\n/etc/cni/net.d/99-loopback.conf /var/lib/kube-proxy/kubeconfig /etc/systemd/system/kube-proxy.service Following steps here help you re-create them if you can’t access those from other nodes, follow them from here:\n# generate the 99-loopback.conf common for all the workers, can be copied cat \u003e 99-loopback.conf \u003c kube-proxy-csr.json \u003c kube-proxy.service \u003c Configuration specific to workers The cri-o daemon’s systemd service file. # generate the service file for the crio daemon, specific to node cat \u003e ${hostname}-crio.service \u003c Here IP address the daemon should bing to is to be specified and the only change.\nGenerating csr file: # generate the worker certs, specific to node cat \u003e ${hostname}-csr.json \u003c{ \"CN\": \"system:node:${hostname}\", \"key\": { \"algo\": \"rsa\", \"size\": 2048 }, \"names\": [ { \"C\": \"US\", \"L\": \"Portland\", \"O\": \"system:nodes\", \"OU\": \"Kubernetes The Hard Way\", \"ST\": \"Oregon\" } ] } EOF Make sure that the CN field in csr is of the format system:node:, because this is used to register the name of the worker with master. This is the only changed field from other worker nodes.\nGenerate certs and kubeconfig: cfssl gencert \\ -ca=${capem} \\ -ca-key=${cakeypem} \\ -config=${caconfig} \\ -hostname=\"${hostname},${ipaddr}\" \\ -profile=kubernetes \\ \"${hostname}-csr.json\" | cfssljson -bare \"${hostname}\" # generate kubeconfig specific to the node kubectl config set-cluster kubernetes-the-hard-way \\ --certificate-authority=${capem} \\ --embed-certs=true \\ --server=https://192.168.199.40:6443 \\ --kubeconfig=\"${hostname}.kubeconfig\" kubectl config set-credentials system:node:${hostname} \\ --client-certificate=\"${hostname}.pem\" \\ --client-key=\"${hostname}-key.pem\" \\ --embed-certs=true \\ --kubeconfig=\"${hostname}.kubeconfig\" kubectl config set-context default \\ --cluster=kubernetes-the-hard-way \\ --user=system:node:${hostname} \\ --kubeconfig=\"${hostname}.kubeconfig\" kubectl config use-context default --kubeconfig=\"${hostname}.kubeconfig\" Now create kubelet systemd service file: cat \u003e ${hostname}-kubelet.service \u003c In above service file the things that changes are two flags: --tls-cert-file and --tls-private-key-file. And another flag value that is different from other nodes is --node-ip. Rest everything is same with other nodes. So just change the path to point to the right cert file and key file.\nInstall configurations Once all those configs are generated, copy all those to the appropriate location.\n# install above generated config cp 99-loopback.conf /etc/cni/net.d cp kube-proxy.kubeconfig /var/lib/kube-proxy/kubeconfig cp kube-proxy.service /etc/systemd/system/ cp \"${hostname}-crio.service\" /etc/systemd/system/crio.service cp ${capem} /var/lib/kubernetes/ cp \"${hostname}.pem\" \"${hostname}-key.pem\" /var/lib/kubelet cp \"${hostname}.kubeconfig\" /var/lib/kubelet/kubeconfig cp \"${hostname}-kubelet.service\" /etc/systemd/system/kubelet.service Start processes Now that all binaries and configs are in place, just restart the processes:\nsystemctl daemon-reload systemctl enable crio kubelet kube-proxy systemctl start crio kubelet kube-proxy Check nodes $ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION CONTAINER-RUNTIME ubuntu Ready 5m v1.11.2 192.168.199.23 Ubuntu 18.04.1 LTS 4.15.0-34-generic cri-o://1.11.2 worker-0 Ready 40m v1.11.2 192.168.199.20 Ubuntu 18.04.1 LTS 4.15.0-34-generic cri-o://1.11.2 worker-1 Ready 39m v1.11.2 192.168.199.21 Ubuntu 18.04.1 LTS 4.15.0-34-generic cri-o://1.11.2 worker-2 Ready 38m v1.11.2 192.168.199.22 Ubuntu 18.04.1 LTS 4.15.0-34-generic cri-o://1.11.2 Node has been added successfully.\n",
   "wordCount" : "1004",
   "inLanguage": "en",
   "image": "https://suraj.io/images/papermod-cover.png","datePublished": "2018-09-23T01:00:51+05:30",
@@ -244,7 +244,7 @@
     </div>
     <div class="post-meta">
 
-<span title='2018-09-23 01:00:51 +0530 +0530'>September 23, 2018</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
+<span title='2018-09-23T01:00:51+05:30'>September 23, 2018</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
         <a href="https://github.com/surajssd/blog_contents/blob/master/content/post/add-new-k8s-node-manually.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
     </span>
 
@@ -701,22 +701,34 @@ EOF
             menu.scrollLeft = parseInt(scrollPosition, 10);
         }
         
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+        
+        let menuScrollTimeout;
+        menu.addEventListener("scroll", function () {
+            clearTimeout(menuScrollTimeout);
+            menuScrollTimeout = setTimeout(function () {
+                localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+            }, 150);
+        }, { passive: true });
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
             var id = this.getAttribute("href").substr(1);
+            const target = document.querySelector(`[id='${decodeURIComponent(id)}']`);
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                target.scrollIntoView({
                     behavior: "smooth"
                 });
             } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                target.scrollIntoView();
             }
+            
+            
+            if (target.tabIndex < 0 && !target.hasAttribute("tabindex")) {
+                target.setAttribute("tabindex", "-1");
+            }
+            target.focus({ preventScroll: true });
             if (id === "top") {
                 history.replaceState(null, null, " ");
             } else {
@@ -728,14 +740,20 @@ EOF
 </script>
 <script>
     var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
+    var scrollTicking = false;
+    
+    window.addEventListener("scroll", function () {
+        if (scrollTicking) {
+            return;
         }
-    };
+        scrollTicking = true;
+        requestAnimationFrame(function () {
+            const scrollThreshold = window.innerHeight;
+            const shown = document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold;
+            toplink.classList.toggle("hidden", !shown);
+            scrollTicking = false;
+        });
+    }, { passive: true });
 
 </script>
 <script>

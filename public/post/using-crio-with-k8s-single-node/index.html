@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/using-crio-with-k8s-single-node/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.95ae6e9689bd0037456375629f411acbf8ed76e0e9a7599900ad281f9526dee6.css" integrity="sha256-la5ulom9ADdFY3Vin0Eay/jtduDpp1mZAK0oH5Um3uY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -129,7 +129,7 @@
   "keywords": [
     "kubernetes", "notes", "crio"
   ],
-  "articleBody": "Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.\nInstalling OS dependencies dnf -y install \\ go \\ git \\ btrfs-progs-devel \\ device-mapper-devel \\ glib2-devel \\ glibc-devel \\ glibc-static \\ gpgme-devel \\ libassuan-devel \\ libgpg-error-devel \\ libseccomp-devel \\ libselinux-devel \\ pkgconfig \\ wget \\ etcd \\ iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo 'GOPATH=~/go' \u003e\u003e ~/.bashrc echo 'GOBIN=$GOPATH/bin' \u003e\u003e ~/.bashrc echo 'PATH=$PATH:$GOBIN' \u003e\u003e ~/.bashrc Pull all the code dependencies go get -d k8s.io/kubernetes go get -u github.com/cloudflare/cfssl/cmd/... Install runc go get -d github.com/opencontainers/runc cd $GOPATH/src/github.com/opencontainers/runc git reset --hard v1.0.0-rc3 make BUILDTAGS='seccomp selinux' \u0026\u0026 make install Build cri-o cd go get -d github.com/kubernetes-incubator/cri-o cd $GOPATH/src/github.com/kubernetes-incubator/cri-o make install.tools make \u0026\u0026 make install make install.config Set up CNI go get -d github.com/containernetworking/cni cd $GOPATH/src/github.com/containernetworking/cni ./build.sh mkdir -p /opt/cni/bin cp bin/* /opt/cni/bin/ mkdir -p /etc/cni/net.d/ cat \u003e /etc/cni/net.d/10-ocid-bridge.conf \u003c",
+  "articleBody": "Here is a single node Kubernetes on CRI-O. This setup is done on Fedora 25.\nInstalling OS dependencies dnf -y install \\ go \\ git \\ btrfs-progs-devel \\ device-mapper-devel \\ glib2-devel \\ glibc-devel \\ glibc-static \\ gpgme-devel \\ libassuan-devel \\ libgpg-error-devel \\ libseccomp-devel \\ libselinux-devel \\ pkgconfig \\ wget \\ etcd \\ iptables Creating go environment cd ~ mkdir -p ~/go export GOPATH=~/go export GOBIN=$GOPATH/bin export PATH=$PATH:$GOBIN echo 'GOPATH=~/go' \u003e\u003e ~/.bashrc echo 'GOBIN=$GOPATH/bin' \u003e\u003e ~/.bashrc echo 'PATH=$PATH:$GOBIN' \u003e\u003e ~/.bashrc Pull all the code dependencies go get -d k8s.io/kubernetes go get -u github.com/cloudflare/cfssl/cmd/... Install runc go get -d github.com/opencontainers/runc cd $GOPATH/src/github.com/opencontainers/runc git reset --hard v1.0.0-rc3 make BUILDTAGS='seccomp selinux' \u0026\u0026 make install Build cri-o cd go get -d github.com/kubernetes-incubator/cri-o cd $GOPATH/src/github.com/kubernetes-incubator/cri-o make install.tools make \u0026\u0026 make install make install.config Set up CNI go get -d github.com/containernetworking/cni cd $GOPATH/src/github.com/containernetworking/cni ./build.sh mkdir -p /opt/cni/bin cp bin/* /opt/cni/bin/ mkdir -p /etc/cni/net.d/ cat \u003e /etc/cni/net.d/10-ocid-bridge.conf \u003c{ \"cniVersion\": \"0.2.0\", \"name\": \"ocid-bridge\", \"type\": \"bridge\", \"bridge\": \"cni0\", \"isGateway\": true, \"ipMasq\": true, \"ipam\": { \"type\": \"host-local\", \"subnet\": \"10.88.0.0/16\", \"routes\": [ { \"dst\": \"0.0.0.0/0\" } ] } } EOF cat \u003e /etc/cni/net.d/99-loopback.conf \u003c{ \"cniVersion\": \"0.2.0\", \"type\": \"loopback\" } EOF Create policy.json mkdir -p /etc/containers cat \u003e /etc/containers/policy.json \u003c{ \"default\": [ { \"type\": \"insecureAcceptAnything\" } ] } EOF Make SELinux happy mkdir -p /var/lib/containers/ chcon -Rt svirt_sandbox_file_t /var/lib/containers/ Start ocid service export PATH=$PATH:/usr/local/bin/ echo 'PATH=$PATH:/usr/local/bin/' \u003e\u003e ~/.bashrc ocid --runtime /usr/local/sbin/runc --log /root/ocid.log --debug --selinux true Start k8s cluster with crio cd $GOPATH/src/k8s.io/kubernetes/ CONTAINER_RUNTIME=remote CONTAINER_RUNTIME_ENDPOINT='/var/run/ocid.sock --runtime-request-timeout=15m' ./hack/local-up-cluster.sh To use kubectl (in new terminal)\nalias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh echo 'alias kubectl=$GOPATH/src/k8s.io/kubernetes/cluster/kubectl.sh' \u003e\u003e ~/.bashrc Ref:\nBangalore Kubernetes Meetup - April 2017 - Slides. runcom’s Setup script for Fedora. cri-o project cri-o tutorial Running cri-o on kubernetes cluster CRI-O: A kubernetes runtime - video ",
   "wordCount" : "289",
   "inLanguage": "en",
   "image": "https://suraj.io/images/papermod-cover.png","datePublished": "2017-04-08T00:11:37+05:30",
@@ -244,7 +244,7 @@
     </div>
     <div class="post-meta">
 
-<span title='2017-04-08 00:11:37 +0530 +0530'>April 8, 2017</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
+<span title='2017-04-08T00:11:37+05:30'>April 8, 2017</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
         <a href="https://github.com/surajssd/blog_contents/blob/master/content/post/using-crio-with-k8s-single-node.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
     </span>
 
@@ -532,22 +532,34 @@
             menu.scrollLeft = parseInt(scrollPosition, 10);
         }
         
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+        
+        let menuScrollTimeout;
+        menu.addEventListener("scroll", function () {
+            clearTimeout(menuScrollTimeout);
+            menuScrollTimeout = setTimeout(function () {
+                localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+            }, 150);
+        }, { passive: true });
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
             var id = this.getAttribute("href").substr(1);
+            const target = document.querySelector(`[id='${decodeURIComponent(id)}']`);
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                target.scrollIntoView({
                     behavior: "smooth"
                 });
             } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                target.scrollIntoView();
             }
+            
+            
+            if (target.tabIndex < 0 && !target.hasAttribute("tabindex")) {
+                target.setAttribute("tabindex", "-1");
+            }
+            target.focus({ preventScroll: true });
             if (id === "top") {
                 history.replaceState(null, null, " ");
             } else {
@@ -559,14 +571,20 @@
 </script>
 <script>
     var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
+    var scrollTicking = false;
+    
+    window.addEventListener("scroll", function () {
+        if (scrollTicking) {
+            return;
         }
-    };
+        scrollTicking = true;
+        requestAnimationFrame(function () {
+            const scrollThreshold = window.innerHeight;
+            const shown = document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold;
+            toplink.classList.toggle("hidden", !shown);
+            scrollTicking = false;
+        });
+    }, { passive: true });
 
 </script>
 <script>

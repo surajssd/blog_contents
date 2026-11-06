@@ -11,7 +11,7 @@
 <meta name="author" content="Suraj Deshmukh">
 <link rel="canonical" href="https://suraj.io/post/2026/using-osx-containerization/">
 <meta name="google-site-verification" content="G-PYJ0C1KVD7">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.95ae6e9689bd0037456375629f411acbf8ed76e0e9a7599900ad281f9526dee6.css" integrity="sha256-la5ulom9ADdFY3Vin0Eay/jtduDpp1mZAK0oH5Um3uY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://suraj.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://suraj.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://suraj.io/favicon-32x32.png">
@@ -131,7 +131,7 @@
   "keywords": [
     "apple", "containers", "macos", "virtualization", "docker", "apple-silicon", "cli"
   ],
-  "articleBody": "Apple now ships a native container CLI tool for macOS — and yes, that means you can run Linux containers without Docker Desktop. Built on top of Apple’s Containerization Swift package and the Virtualization.framework, it spins up lightweight Linux VMs that run OCI-compatible container images with sub-second startup times. It feels native because it is native.\nIn this post, I’ll walk you through installing the container CLI, running your first container, allocating resources for heavy AI workloads, and troubleshooting a common macOS firewall issue that tripped me up the first time I used it.\nPrerequisites Before you begin, make sure you have:\nA Mac with Apple silicon (M1 or later) macOS 26 (Tahoe) or later Homebrew installed (install guide) Installation Installing the container CLI is as simple as running a single Homebrew command:\nbrew install container Once installed, verify that everything is in place:\ncontainer --version You should see the version number printed to the terminal, confirming a successful installation.\nStarting the Container Service Before you can run any containers, you need to start the container runtime service. This manages the background daemon that handles container lifecycle operations:\ncontainer system start This kicks off the runtime daemon that coordinates pulling images, creating VMs, managing networking, and all the other plumbing that makes containers work. You’ll need this running before any other container commands will work. To start container now and restart at login:\nbrew services start container Running Your First Container Let’s run an nginx web server to see the container CLI in action. One of the biggest advantages of this CLI over Docker Desktop is per-container VM isolation, which allows us to explicitly allocate CPU and memory:\ncontainer run --name web --cpus 2 --memory 2g -p 8080:80/tcp nginx:latest Here’s what each flag does:\n--name web — gives the container a friendly name (web) so you can reference it easily in other commands --cpus 2 and --memory 2g — strictly allocates 2 CPU cores and 2GB of RAM to the VM, this is optional (defaults are 4 CPUs and 1GB of RAM if not specified) -p 8080:80/tcp — maps port 8080 on your Mac to port 80 inside the container, using TCP. This is how you’ll access the nginx web server from your browser or curl nginx:latest — the OCI container image to run NOTE: When you run your first container, macOS may show a permission prompt asking whether to allow local network access. If you see this, click Allow:\nOnce the container is up, test it with curl:\ncurl http://localhost:8080 If everything is working, you’ll see the nginx welcome page HTML in your terminal. If you get an empty reply instead, don’t panic — jump to the troubleshooting section below.\nViewing Logs To see what’s happening inside your running container, use the logs command:\ncontainer logs -f web The -f flag follows the log stream in real-time (similar to tail -f), so you’ll see new log entries as they happen. This is particularly handy for debugging — try hitting http://localhost:8080 in another terminal and watch the access log entries appear.\nPress Ctrl + C to stop following the logs.\nAccessing the Container (IP \u0026 Embedded DNS) Container IP Address Besides the port-mapping approach (-p 8080:80/tcp), you can also access the container directly using its IP address. Each container gets its own IP on a private network managed by the runtime.\nFirst, find the container’s IP address using container inspect and jq:\n➜ container inspect web | jq '.[0].networks[0].ipv4Address' \"192.168.64.9/24\" Now you can curl the container directly on port 80 (no port mapping needed):\n➜ curl 192.168.64.9 \u003c!DOCTYPE html\u003e Welcome to nginx! ",
+  "articleBody": "Apple now ships a native container CLI tool for macOS — and yes, that means you can run Linux containers without Docker Desktop. Built on top of Apple’s Containerization Swift package and the Virtualization.framework, it spins up lightweight Linux VMs that run OCI-compatible container images with sub-second startup times. It feels native because it is native.\nIn this post, I’ll walk you through installing the container CLI, running your first container, allocating resources for heavy AI workloads, and troubleshooting a common macOS firewall issue that tripped me up the first time I used it.\nPrerequisites Before you begin, make sure you have:\nA Mac with Apple silicon (M1 or later) macOS 26 (Tahoe) or later Homebrew installed (install guide) Installation Installing the container CLI is as simple as running a single Homebrew command:\nbrew install container Once installed, verify that everything is in place:\ncontainer --version You should see the version number printed to the terminal, confirming a successful installation.\nStarting the Container Service Before you can run any containers, you need to start the container runtime service. This manages the background daemon that handles container lifecycle operations:\ncontainer system start This kicks off the runtime daemon that coordinates pulling images, creating VMs, managing networking, and all the other plumbing that makes containers work. You’ll need this running before any other container commands will work. To start container now and restart at login:\nbrew services start container Running Your First Container Let’s run an nginx web server to see the container CLI in action. One of the biggest advantages of this CLI over Docker Desktop is per-container VM isolation, which allows us to explicitly allocate CPU and memory:\ncontainer run --name web --cpus 2 --memory 2g -p 8080:80/tcp nginx:latest Here’s what each flag does:\n--name web — gives the container a friendly name (web) so you can reference it easily in other commands --cpus 2 and --memory 2g — strictly allocates 2 CPU cores and 2GB of RAM to the VM, this is optional (defaults are 4 CPUs and 1GB of RAM if not specified) -p 8080:80/tcp — maps port 8080 on your Mac to port 80 inside the container, using TCP. This is how you’ll access the nginx web server from your browser or curl nginx:latest — the OCI container image to run NOTE: When you run your first container, macOS may show a permission prompt asking whether to allow local network access. If you see this, click Allow:\nOnce the container is up, test it with curl:\ncurl http://localhost:8080 If everything is working, you’ll see the nginx welcome page HTML in your terminal. If you get an empty reply instead, don’t panic — jump to the troubleshooting section below.\nViewing Logs To see what’s happening inside your running container, use the logs command:\ncontainer logs -f web The -f flag follows the log stream in real-time (similar to tail -f), so you’ll see new log entries as they happen. This is particularly handy for debugging — try hitting http://localhost:8080 in another terminal and watch the access log entries appear.\nPress Ctrl + C to stop following the logs.\nAccessing the Container (IP \u0026 Embedded DNS) Container IP Address Besides the port-mapping approach (-p 8080:80/tcp), you can also access the container directly using its IP address. Each container gets its own IP on a private network managed by the runtime.\nFirst, find the container’s IP address using container inspect and jq:\n➜ container inspect web | jq '.[0].networks[0].ipv4Address' \"192.168.64.9/24\" Now you can curl the container directly on port 80 (no port mapping needed):\n➜ curl 192.168.64.9 Welcome to nginx! ",
   "wordCount" : "1205",
   "inLanguage": "en",
   "image":"https://suraj.io/post/2026/images/apple-containers/banner.png","datePublished": "2026-02-20T10:00:00+05:30",
@@ -246,7 +246,7 @@
     </div>
     <div class="post-meta">
 
-<span title='2026-02-20 10:00:00 +0530 +0530'>February 20, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
+<span title='2026-02-20T10:00:00+05:30'>February 20, 2026</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>Suraj Deshmukh</span>&nbsp;|&nbsp;<span>
         <a href="https://github.com/surajssd/blog_contents/blob/master/content/post/2026/using-osx-containerization.md" rel="noopener noreferrer edit" target="_blank">Suggest Changes</a>
     </span>
 
@@ -577,22 +577,34 @@
             menu.scrollLeft = parseInt(scrollPosition, 10);
         }
         
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+        
+        let menuScrollTimeout;
+        menu.addEventListener("scroll", function () {
+            clearTimeout(menuScrollTimeout);
+            menuScrollTimeout = setTimeout(function () {
+                localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+            }, 150);
+        }, { passive: true });
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
             var id = this.getAttribute("href").substr(1);
+            const target = document.querySelector(`[id='${decodeURIComponent(id)}']`);
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                target.scrollIntoView({
                     behavior: "smooth"
                 });
             } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                target.scrollIntoView();
             }
+            
+            
+            if (target.tabIndex < 0 && !target.hasAttribute("tabindex")) {
+                target.setAttribute("tabindex", "-1");
+            }
+            target.focus({ preventScroll: true });
             if (id === "top") {
                 history.replaceState(null, null, " ");
             } else {
@@ -604,14 +616,20 @@
 </script>
 <script>
     var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
+    var scrollTicking = false;
+    
+    window.addEventListener("scroll", function () {
+        if (scrollTicking) {
+            return;
         }
-    };
+        scrollTicking = true;
+        requestAnimationFrame(function () {
+            const scrollThreshold = window.innerHeight;
+            const shown = document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold;
+            toplink.classList.toggle("hidden", !shown);
+            scrollTicking = false;
+        });
+    }, { passive: true });
 
 </script>
 <script>

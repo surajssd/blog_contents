@@ -1,0 +1,7 @@
+import{C as e,O as t,V as n,et as r,v as i,xt as a,y as o,yt as s}from"./modules/shiki-BEa5DBZm.js";import{at as c,it as l,xt as u}from"./index-D1evO5ZY.js";import{t as d}from"./slidev/default-IChNNWZB.js";var f=u({__name:`05-disaggregation.md__slidev_48`,setup(u){let{$slidev:f,$nav:p,$clicksContext:m,$clicks:h,$page:g,$renderContext:_,$frontmatter:v}=c();return m.setup(),(c,u)=>(n(),o(d,a(t(s(l)(s(v),47))),{default:r(()=>[...u[0]||=[i(`h1`,null,`Prefill vs Decode: The Config Diff`,-1),i(`div`,{class:`config-diff-legend`},[i(`span`,{class:`config-removed`},`− Prefill worker`),i(`span`,{class:`config-added`},`+ Decode worker`)],-1),i(`h2`,null,`Worker mode`,-1),i(`pre`,{class:`config-diff`},[i(`code`,null,[i(`span`,{class:`config-removed`},`- --disaggregation-mode prefill`),e(`
+`),i(`span`,{class:`config-added`},`+ --disaggregation-mode decode`)])],-1),i(`h2`,null,[i(`code`,null,`–kv-transfer-config`)],-1),i(`pre`,{class:`config-diff`},[i(`code`,null,[i(`span`,{class:`config-context`},`  {`),e(`
+`),i(`span`,{class:`config-context`},`    "kv_connector": "NixlConnector",`),e(`
+`),i(`span`,{class:`config-removed`},`-   "kv_role": "kv_producer",`),e(`
+`),i(`span`,{class:`config-added`},`+   "kv_role": "kv_consumer",`),e(`
+`),i(`span`,{class:`config-context`},`    "kv_buffer_device": "cpu"`),e(`
+`),i(`span`,{class:`config-context`},`  }`)])],-1),i(`p`,{class:`small`},`Both workers run together. Prefill creates the KV cache. Decode receives the KV cache and generates tokens.`,-1)]]),_:1},16))}},[[`__scopeId`,`data-v-2a33d8ca`]]);export{f as default};
