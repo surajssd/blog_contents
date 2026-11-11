@@ -37,7 +37,7 @@ hugo serve -D
 This script (`hack/build-and-publish.sh`):
 1. Fast-forward pulls (`--ff-only`) the source repo so it never publishes a stale branch, then builds with `hugo`
 2. Fast-forward pulls the website repo, then copies `public/.` into it
-3. Commits (signed `-S`, signed-off `-s`) and pushes **master** in both repos via a normal `git push`, skipping any repo whose tree is unchanged
+3. Commits (signed `-S`, signed-off `-s`) changed files and pushes **master** in both repos via a normal `git push`, including existing commits left by a failed push
 
 Key behaviors to be aware of:
 - The copy uses `cp -r public/.` and **never deletes** files in the website repo. This is intentional — the website repo holds assets Hugo never regenerates (`CNAME`, `themes/`, `keybase.txt`), and an `rsync --delete`-style sync would wipe them.

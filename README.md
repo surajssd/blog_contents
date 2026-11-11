@@ -35,9 +35,19 @@ It will:
 1. Pull the latest source so it never pushes a stale branch.
 2. Build the site with `hugo`.
 3. Copy the fresh build into the sibling `surajssd.github.io` repo.
-4. Commit (signed + signed-off) and push both repos, skipping any repo with no changes.
+4. Commit (signed + signed-off) changed files and push both repos.
 
 The published site repo is expected at `../surajssd.github.io` by default; override with the `WEB_REPO` environment variable.
+
+If a push fails, run the script again with the same commit message. The script pushes existing commits even when no files changed.
+
+Run the publishing regression tests:
+
+```bash
+bash hack/test-build-and-publish.sh
+```
+
+The tests use temporary local Git repositories and an SSH signing key. They check retries after a failed push in each repository and repeated runs with no changes. The tests require Bash, Git, and `ssh-keygen`.
 
 ## Presentation slides
 

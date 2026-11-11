@@ -8,7 +8,7 @@
 #   1. Pulls the latest source so we never push a stale branch.
 #   2. Builds the site with Hugo.
 #   3. Pulls the website repo, then copies the fresh build into it.
-#   4. Commits and pushes both repos (skipping any repo with no changes).
+#   4. Commits and pushes both repos (skipping empty commits).
 
 set -euo pipefail
 
@@ -39,17 +39,16 @@ function pull() {
     git -C "$1" pull --ff-only origin "${BRANCH}"
 }
 
-# commit <repo> <message>: stage everything and commit + push, but only if the
-# tree actually changed. A no-op run must not abort the script (a plain
-# `git commit` exits non-zero on an empty commit and would kill everything).
+# commit <repo> <message>: skip empty commits, but always push so a retry can
+# publish commits left behind by an earlier failed push.
 function commit() {
     local repo="$1" msg="$2"
     git -C "${repo}" add -A
     if git -C "${repo}" diff --cached --quiet; then
         log "⏭️  no changes in ${repo}, skipping commit"
-        return 0
+    else
+        git -C "${repo}" commit -s -S -m "${msg}"
     fi
-    git -C "${repo}" commit -s -S -m "${msg}"
     git -C "${repo}" push origin "${BRANCH}"
 }
 
