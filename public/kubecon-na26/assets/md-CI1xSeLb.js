@@ -1,0 +1,11 @@
+import{C as e,K as t,O as n,V as r,et as i,tt as a,v as o,x as s,xt as c,y as l,yt as u}from"./modules/shiki-BEa5DBZm.js";import{at as d,it as f,vt as p}from"./index-BQGmT5Q5.js";import{t as m}from"./slidev/default-DWkJtfRK.js";var h={class:`config-diff-columns`},g={class:`small`},_={class:`muted small`},v=p({__name:`04-pipeline-parallel.md__slidev_43`,setup(p){let{$slidev:v,$nav:y,$clicksContext:b,$clicks:x,$page:S,$renderContext:C,$frontmatter:w}=d();return b.setup(),(d,p)=>{let v=t(`click`);return r(),l(m,c(n(u(f)(u(w),42))),{default:i(()=>[p[4]||=o(`h1`,null,`Lesson 2 to 3: The Config Diff`,-1),p[5]||=o(`div`,{class:`config-diff-legend`},[o(`span`,{class:`config-removed`},`− Lesson 2`),o(`span`,{class:`config-added`},`+ Lesson 3`)],-1),o(`div`,h,[a((r(),s(`div`,null,[...p[0]||=[o(`h2`,null,`vLLM arguments`,-1),o(`pre`,{class:`config-diff`},[o(`code`,null,[o(`span`,{class:`config-removed`},`- --tensor-parallel-size 2`),e(`
+`),o(`span`,{class:`config-added`},`+ --tensor-parallel-size 1`),e(`
+`),o(`span`,{class:`config-added`},`+ --pipeline-parallel-size $(LWS_GROUP_SIZE)`),e(`
+`),o(`span`,{class:`config-added`},`+ --nnodes $(LWS_GROUP_SIZE)`),e(`
+`),o(`span`,{class:`config-added`},`+ --node-rank $(LWS_WORKER_INDEX)`),e(`
+`),o(`span`,{class:`config-added`},`+ --master-addr $(LWS_LEADER_ADDRESS)`),e(`
+`),o(`span`,{class:`config-added`},`+ --headless`)])],-1)]])),[[v,1]]),a((r(),s(`div`,null,[...p[1]||=[o(`h2`,null,`Kubernetes`,-1),o(`pre`,{class:`config-diff`},[o(`code`,null,[o(`span`,{class:`config-removed`},`- kind: Deployment`),e(`
+`),o(`span`,{class:`config-added`},`+ kind: LeaderWorkerSet`),e(`
+`),o(`span`,{class:`config-added`},`+ size: 2`),e(`
+`),o(`span`,{class:`config-removed`},`- nvidia.com/gpu: 2`),e(`
+`),o(`span`,{class:`config-added`},`+ nvidia.com/gpu: 1`)])],-1)]])),[[v,2]])]),a((r(),s(`p`,g,[...p[2]||=[e(`Only the worker uses `,-1),o(`code`,null,`--headless`,-1),e(`. Required anti-affinity puts the Pods on different nodes.`,-1)]])),[[v,2]]),a((r(),s(`p`,_,[...p[3]||=[e(`Selected settings. GPU requests and limits change per Pod. The model stays the same.`,-1)]])),[[v,2]])]),_:1},16)}}},[[`__scopeId`,`data-v-d3e6b658`]]);export{v as default};
