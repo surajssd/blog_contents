@@ -1,1 +1,0 @@
-var e=`/kubecon-na26/assets/slides-qr-Dzay8hcc.svg`;export{e as t};
