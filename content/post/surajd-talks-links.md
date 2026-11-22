@@ -11,6 +11,12 @@ cover:
   image: /images/talks/talks.jpeg
 ---
 
+## Minting Your Own Tokens: The Server Side of the Token Economy - Kubecon North America 2026
+
+{{< youtube -K-WIJVoYpM >}}
+
+---
+
 ## LLMs on Kubernetes: Squeeze 5x GPU Efficiency With Cache, Route, Repeat! - Kubecon North America 2025
 
 {{< youtube 2YCDvZokqnk >}}
